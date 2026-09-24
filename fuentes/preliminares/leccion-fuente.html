@@ -1,0 +1,1146 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Preliminares · Fundamentación en Física</title>
+<style>
+:root{
+  --t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px;
+}
+/* ── Lección: Preliminares (lienzo 2280 × 1080, unidades en px) ── */
+section.diapositiva{position:relative}
+section.diapositiva p{margin:0 0 14px}
+section.diapositiva .ceja{font:600 var(--t-rotulo)/1 var(--font-body);text-transform:uppercase;margin:0 0 6px}
+section.diapositiva .ceja .score{float:right;color:var(--tinta2);letter-spacing:.04em}
+section.diapositiva strong{font-weight:700}
+section.diapositiva .sub{color:var(--tinta2);font-size:var(--t-peq)}
+section.diapositiva .mono{font-variant-numeric:tabular-nums}
+
+/* rejillas */
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-60{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-40{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:44px;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pila > * + *{margin-top:18px}
+
+/* cajas */
+.caja{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:18px 26px}
+.caja.c1{border-left-color:var(--caso1)}
+.caja.c2{border-left-color:var(--caso2)}
+.caja.neutra{border-left-color:var(--borde)}
+  .caja h3{font-size:36px;margin:0 0 8px}
+.kf{border:2px solid var(--res);background:var(--res-50);padding:14px 26px;text-align:center;font-size:40px}
+.ec{text-align:center;margin:10px 0}
+.nota{font-size:var(--t-peq);color:var(--tinta2)}
+ol.leyes{margin:0;padding-left:1.3em}
+ol.leyes li{margin-bottom:16px}
+ul.lista{margin:0;padding-left:1.1em}
+ul.lista li{margin-bottom:10px}
+
+/* fragmentos (↓ ↑) */
+.frag{opacity:.0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+.frag.frag-on{opacity:1;transform:none}
+
+/* figuras */
+.svgbox{background:var(--panel);padding:14px 18px 16px}
+.svghd{font:700 var(--t-rotulo)/1.2 var(--font-body);color:var(--tinta2);margin:0 0 10px;display:flex;justify-content:space-between;gap:20px}
+.svghd #os-sub{text-transform:none;letter-spacing:0}
+.svghd .val{color:var(--res);text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+.fig{display:block;width:100%;height:auto}
+.fig text{font-family:'STIX Two Text',Georgia,serif}
+canvas.lienzo{display:block;width:100%;height:auto;cursor:crosshair}
+
+/* controles */
+.ctrl{display:grid;grid-template-columns:270px 1fr 170px;align-items:center;gap:18px;margin:10px 0;font-size:var(--t-peq)}
+.ctrl .v{font:600 var(--t-peq)/1 var(--font-body);text-align:right;font-variant-numeric:tabular-nums;color:var(--res)}
+.ctrl input[type=range]{width:100%;height:30px;cursor:pointer}
+.fila-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;background:var(--panel);color:var(--tinta);border:2px solid var(--linea);cursor:pointer}
+.btn:hover{background:var(--primario-tinte)}
+.btn.on{border-color:var(--res);color:var(--res);background:var(--res-50)}
+.btn.prim{background:var(--res);color:var(--papel);border-color:var(--res)}
+.chk{display:inline-flex;align-items:center;gap:10px;font:600 var(--t-peq)/1 var(--font-body);cursor:pointer;margin-right:26px}
+.chk input{width:22px;height:22px;accent-color:var(--color-accent)}
+.chk.x{color:var(--res)} .chk.p{color:var(--caso1)} .chk.a{color:var(--caso2)} .chk.n{color:var(--tinta2)}
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.lectura div{background:var(--panel);border:2px solid var(--linea);padding:12px 16px;font-size:26px;color:var(--tinta2)}
+.lectura b{display:block;font:700 34px/1.25 var(--font-body);color:var(--tinta);font-variant-numeric:tabular-nums}
+
+/* tabla */
+table.tabla{border-collapse:collapse;width:100%;font-size:30px}
+table.tabla th,table.tabla td{border-bottom:2px solid var(--linea);padding:6px 14px;text-align:center}
+table.tabla th{font:700 25px/1.2 var(--font-body);color:var(--tinta2);border-bottom-color:var(--tinta)}
+table.tabla td.izq{text-align:left}
+table.tabla tr.frag td{background:var(--panel)}
+
+/* chips con ventana emergente */
+.prop{border-bottom:3px dotted var(--res);cursor:help;color:var(--tinta);font-weight:600}
+.prop:hover{background:var(--res-50)}
+.pop-src{display:none}
+.popover{position:absolute;z-index:40;max-width:860px;padding:24px 30px;font-size:31px;line-height:1.45}
+.popover h4{margin:0 0 8px;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.popover .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
+
+/* práctica */
+.pr-item{background:var(--panel);padding:16px 22px;margin-bottom:16px}
+.pr-q{font-weight:600;margin-bottom:10px}
+.pr-opcs{display:flex;flex-wrap:wrap;gap:12px}
+.pr-opc{font:500 var(--t-peq)/1.2 var(--font-body);padding:10px 18px;background:var(--papel);border:2px solid var(--linea);cursor:pointer;color:var(--tinta)}
+.pr-opc.ok{border-color:var(--ok);background:var(--res-50)}
+.pr-opc.mal{border-color:var(--mal);background:var(--mal-50)}
+.pr-fb{margin-top:10px;font-size:var(--t-peq);min-height:1.2em}
+.pr-fb.ok{color:var(--res)} .pr-fb.mal{color:var(--mal)}
+.pr-in{font-size:30px;padding:8px 12px;width:200px;border:2px solid var(--linea);background:var(--papel)}
+.pr-btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;border:2px solid var(--linea);background:var(--papel);cursor:pointer;color:var(--tinta)}
+.pr-pista{display:none;margin-top:8px;font-size:var(--t-peq);color:var(--tinta2)}
+.pr-pista.on{display:block}
+
+/* reto */
+.cz-grid{display:grid;grid-template-columns:120px repeat(3,1fr);gap:16px 22px;align-items:center;font-size:34px}
+.cz-grid .h{font:700 28px/1.2 var(--font-body);color:var(--tinta2)}
+.cz-grid input{font:500 34px/1 'STIX Two Text',Georgia,serif;padding:8px 12px;border:2px solid var(--linea);background:var(--panel);width:100%;box-sizing:border-box}
+.cz-grid input.ok{border-color:var(--res);background:var(--res-50)}
+.cz-grid input.mal{border-color:var(--mal);background:var(--mal-50)}
+.cz-btn{font:600 var(--t-peq)/1 var(--font-body);padding:12px 22px;border:2px solid var(--linea);background:var(--panel);cursor:pointer;color:var(--tinta)}
+.cz-fb{margin-top:16px;font-size:var(--t-peq);min-height:1.3em}
+.cz-sol{display:none;margin-top:14px;background:var(--panel);padding:14px 20px;border:2px solid var(--linea)}
+.cz-sol.on{display:block}
+
+/* glosario */
+dl.glosa{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0}
+dl.glosa div{border-top:2px solid var(--linea);padding-top:10px}
+dl.glosa dt{font:800 34px/1.2 var(--font-heading);color:var(--res);margin-bottom:4px}
+dl.glosa dd{margin:0;font-size:29px}
+
+/* portada */
+.portada .pt-fig{width:720px}
+.portada .sub{font-size:36px;max-width:1250px}
+.ayuda{position:absolute;bottom:84px;font-size:22px;color:var(--tinta2)}
+.ayuda kbd{font:600 20px/1 var(--font-body);border:2px solid var(--linea);padding:3px 8px;margin:0 2px;background:var(--panel)}
+
+/* diagrama de flujo */
+.flujo .blq{transition:all .3s}
+
+/* ── Propio del capítulo 1 ── */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;align-items:start}
+.g4 .caja p{font-size:30px}
+.arrastre svg{cursor:grab;touch-action:none}
+.arrastre svg:active{cursor:grabbing}
+ol.ej{margin:0 0 0 30px;padding-left:1.6em;columns:2;column-gap:60px;font-size:30px}
+ol.ej li{break-inside:avoid;margin-bottom:18px;padding-left:6px}
+ol.ej .resp{display:block;color:var(--res);font-weight:600}
+ol.ej .resp::before{content:'→ ';color:var(--tinta2)}
+.dim-lista{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+.dim{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--linea);padding:14px 20px;font-size:34px}
+.dim .dim-btns{display:flex;gap:10px}
+.dim .dim-exp{grid-column:1 / -1;font-size:26px;color:var(--tinta2);display:none}
+.dim.ok{border-left-color:var(--res)} .dim.mal{border-left-color:var(--mal)}
+.dim.ok .dim-exp,.dim.mal .dim-exp{display:block}
+.btn.sel{border-color:var(--tinta);background:var(--primario-tinte)}
+select.pr-in{font-family:var(--font-body)}
+
+</style></head>
+<body>
+<div id="escenario">
+<span class="marca">Preliminares · Cap. 1</span>
+<p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>
+<!-- ═════════════ §1 · VECTORES ═════════════ -->
+<section class="diapositiva portada" data-seccion="Vectores" data-label="Preliminares">
+  <div>
+    <p class="ceja">Fundamentación en Física · Capítulo 1</p>
+    <h1>Preliminares</h1>
+    <div class="regla"></div>
+    <p class="sub">Vectores en dos y tres dimensiones, sistemas de unidades, análisis dimensional, unidades naturales y la primera idea de invariancia: lo que no cambia cuando cambiamos de sistema de referencia.</p>
+  </div>
+  <figure class="pt-fig svgbox" style="margin:0">
+    <div class="svghd"><span>Un vector, dos lecturas</span><span class="val" id="hero-lect"></span></div>
+    <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
+  </figure>
+  <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-mag" data-label="Magnitud y dirección">
+  <p class="ceja">§ 1.1 · Vectores en dos dimensiones</p>
+  <h2 class="titulo">Un vector tiene <strong>magnitud</strong> y <strong>dirección</strong></h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra la punta de \(\vect{r}\)</span><span class="val" id="mag-lect"></span></div>
+      <div id="mag-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      <p>En el plano, un vector es un par ordenado de <strong>componentes</strong> \(\vect{r} = (x, y)\): la horizontal \(x\) y la vertical \(y\).</p>
+      <div class="kf">\[ \abs{\vect{r}} = r = \sqrt{x^{2} + y^{2}}, \qquad \tan\theta = \dfrac{y}{x}. \]</div>
+      <label class="ctrl"><span>Componente \(x\)</span><input type="range" id="mag-x" min="-5" max="5" step="0.5" value="3"><span class="v" id="mag-xv"></span></label>
+      <label class="ctrl"><span>Componente \(y\)</span><input type="range" id="mag-y" min="-3.5" max="3.5" step="0.5" value="2"><span class="v" id="mag-yv"></span></label>
+      <div class="caja c2"><p style="margin:0" id="mag-nota">Cuidado con el cuadrante: \(\arctan(y/x)\) solo da ángulos entre \(-90^\circ\) y \(90^\circ\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-desp" data-label="Vector con origen desplazado">
+  <p class="ceja">§ 1.1 · Cálculo de magnitud y dirección</p>
+  <h2 class="titulo">Si la cola no está en el origen, cuentan las diferencias</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra la cola \((x_0, y_0)\) o la punta \((x, y)\)</span><span class="val" id="desp-lect"></span></div>
+      <div id="desp-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      <p>Las componentes son los catetos del triángulo rectángulo:</p>
+      \[ \vect{r} = (\Delta x, \Delta y) = (x - x_0,\; y - y_0), \qquad r = \sqrt{\Delta x^{2} + \Delta y^{2}}. \]
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>\(\Delta x\)<b id="desp-dx"></b></div>
+        <div>\(\Delta y\)<b id="desp-dy"></b></div>
+        <div>\(r\)<b id="desp-r"></b></div>
+        <div>\(\theta\)<b id="desp-t"></b></div>
+      </div>
+      <p class="nota">Mueve los dos puntos a la vez la misma cantidad: \(\Delta x\), \(\Delta y\), \(r\) y \(\theta\) no cambian.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-suma" data-label="Suma y diferencia de vectores">
+  <p class="ceja">§ 1.1 · Operaciones con vectores</p>
+  <h2 class="titulo">Suma y diferencia: componente a componente</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra las puntas de \(\vect{u}\) y \(\vect{v}\)</span><span class="val" id="suma-lect"></span></div>
+      <div id="suma-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      <div class="fila-btn"><button type="button" class="btn on" data-modo="suma">Suma \(\vect{u} + \vect{v}\)</button><button type="button" class="btn" data-modo="resta">Diferencia \(\vect{u} - \vect{v}\)</button></div>
+      <div class="caja" id="suma-txt-s"><p style="margin:0">\[ \vect{u} + \vect{v} = (u_x + v_x,\; u_y + v_y) \]Cola de \(\vect{v}\) en la punta de \(\vect{u}\): la resultante va del origen de \(\vect{u}\) a la punta de \(\vect{v}\).</p></div>
+      <div class="caja c1" id="suma-txt-r" style="display:none"><p style="margin:0">\[ \vect{u} - \vect{v} = (u_x - v_x,\; u_y - v_y) \]Con ambos desde el mismo origen, va de la punta de \(\vect{v}\) a la punta de \(\vect{u}\): \(\vect{v} + (\vect{u} - \vect{v}) = \vect{u}\).</p></div>
+      <p class="nota"><strong>Ejemplo.</strong> \(\vect{d}_1 = (3, 2)\qty{}{km}\) y luego \(\vect{d}_2 = (1, 3)\qty{}{km}\) dan \(\vect{d}_{\text{total}} = (4, 5)\qty{}{km}\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-tras" data-label="Invariancia bajo traslaciones">
+  <p class="ceja">§ 1.1 · Invariancia bajo traslaciones</p>
+  <h2 class="titulo">Mover el origen cambia \(\vect{r}_1\) y \(\vect{r}_2\), pero no \(\Delta\vect{r}\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Sistemas \(S\) y \(S'\) con ejes paralelos</span><span class="val" id="tras-lect"></span></div>
+      <div id="tras-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Origen \(x_0\)</span><input type="range" id="tras-x0" min="-3" max="3" step="0.5" value="1"><span class="v" id="tras-x0v"></span></label>
+      <label class="ctrl"><span>Origen \(y_0\)</span><input type="range" id="tras-y0" min="-2" max="2" step="0.5" value="1"><span class="v" id="tras-y0v"></span></label>
+      <p class="frag">Transformación: \(x' = x - x_0\), \(y' = y - y_0\).</p>
+      <div class="frag">\[ \begin{aligned} \Delta x' &= (x_2 - \cancel{x_0}) - (x_1 - \cancel{x_0}) = \Delta x \\ \Delta y' &= (y_2 - \cancel{y_0}) - (y_1 - \cancel{y_0}) = \Delta y \\ \Delta\vect{r}' &= \Delta\vect{r}. \end{aligned} \]</div>
+      <div class="caja frag"><p style="margin:0">Un vector <em>relativo</em> tiene una longitud y una dirección físicas, independientes de dónde pongamos el cero.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" data-label="Vectores libres y ligados">
+  <p class="ceja">§ 1.1 · La regla y la excepción</p>
+  <h2 class="titulo">Vectores libres, vector ligado y homogeneidad del espacio</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="caja c2 frag"><h3>La excepción: el vector ligado</h3><p style="margin:0">La posición \(\vect{r} = (x, y)\) está atada al origen \((0, 0)\): describe <em>dónde</em> está el objeto respecto a un observador. Trasladar el origen cambia sus componentes, su magnitud y su dirección.</p></div>
+      <div class="caja frag"><h3>La regla: los vectores <span class="prop" data-pop="pop-libre">libres</span></h3>
+        \[ \Delta\vect{r} = \vect{r}_f - \vect{r}_i, \quad \vect{v} = \dfrac{\Delta\vect{r}}{\Delta t}, \quad \vect{a} = \dfrac{\Delta\vect{v}}{\Delta t}, \quad \vect{F} = m\vect{a}, \quad \vect{p} = m\vect{v}. \]</div>
+    </div>
+    <div class="pila">
+      <p class="frag">Todos nacen de <strong>restas</strong> de coordenadas: heredan la invariancia bajo traslaciones. Un vehículo a \(\qty{100}{km/h}\) hacia el norte tiene el mismo \(\vect{v}\) visto desde Bogotá, París o el Sol.</p>
+      <div class="kf frag"><p style="margin:0 0 6px;font-size:30px"><strong>Homogeneidad del espacio:</strong> las leyes no dependen del lugar donde pongamos el \((0, 0)\).</p>\[ \vect{F} = \dfrac{\Delta\vect{p}}{\Delta t} \]<p class="nota" style="margin:0">se escribe solo con vectores libres.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-dot" data-label="Producto escalar">
+  <p class="ceja">§ 1.1 · Producto escalar</p>
+  <h2 class="titulo">El producto escalar devuelve un número: proyección × longitud</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra la punta de \(\vect{v}\)</span><span class="val" id="dot-lect"></span></div>
+      <div id="dot-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      \[ \vect{u}\cdot\vect{v} = u_x v_x + u_y v_y = \abs{\vect{u}}\,\abs{\vect{v}}\cos\theta \]
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>Con componentes<b id="dot-comp"></b></div>
+        <div>Con \(\abs{\vect{u}}\,\abs{\vect{v}}\cos\theta\)<b id="dot-geo"></b></div>
+      </div>
+      <div class="caja"><p style="margin:0">Depende solo de longitudes y del ángulo entre los vectores: es <span class="prop" data-pop="pop-inv">invariante</span>. <strong>Ejemplo:</strong> \(\vect{F} = (4, 0)\qty{}{N}\), \(\Delta\vect{r} = (3, 3)\qty{}{m}\):
+        \[ W = (4)(3) + (0)(3) = (4)(3\sqrt{2})\cos 45^\circ = \qty{12}{J}. \]</p></div>
+      <div class="fila-btn"><button type="button" class="btn" id="dot-ej">Cargar el ejemplo</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Vectores" id="dp-cruz" data-label="Producto vectorial">
+  <p class="ceja">§ 1.1 · Tres dimensiones: producto vectorial</p>
+  <h2 class="titulo">El producto vectorial devuelve un vector perpendicular</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Área del paralelogramo = \(\abs{\vect{u}\times\vect{v}}\)</span><span class="val" id="cruz-lect"></span></div>
+      <div id="cruz-fig"></div>
+    </figure>
+    <div class="pila">
+      \[ \abs{\vect{u}\times\vect{v}} = \abs{\vect{u}}\,\abs{\vect{v}}\sin\theta \]
+      <label class="ctrl"><span>Ángulo \(\theta\)</span><input type="range" id="cruz-th" min="0" max="180" step="5" value="60"><span class="v" id="cruz-thv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn on" data-orden="uv">\(\vect{u}\times\vect{v}\)</button><button type="button" class="btn" data-orden="vu">\(\vect{v}\times\vect{u}\)</button></div>
+      <p class="nota">Regla de la mano derecha: curva los dedos del primer vector al segundo; el pulgar da el sentido. Invertir el orden invierte el sentido.</p>
+      <div class="caja c2"><p style="margin:0"><strong>Torque</strong> \(\vect{\tau} = \vect{r}\times\vect{F}\): llave de \(\qty{0{,}2}{m}\), fuerza de \(\qty{50}{N}\) a \(30^\circ\):
+        \[ \abs{\vect{\tau}} = (\qty{0{,}2}{m})(\qty{50}{N})(0{,}5) = \qty{5}{N\cdot m}. \]</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Vectores" data-label="Vectores en física">
+  <p class="ceja">§ 1.1 · Ejemplos de vectores en física</p>
+  <h2 class="titulo">Posición, velocidad, aceleración y fuerza</h2>
+  <div class="g4">
+    <div class="caja frag"><h3>Posición</h3><p>Un robot en \(\vect{r} = (3, 4)\qty{}{m}\): 3 m a la derecha y 4 m arriba del origen.</p>\[ \abs{\vect{r}} = \sqrt{3^{2} + 4^{2}} = \qty{5}{m} \]<p class="nota" style="margin:0">Dirección: \(\arctan(4/3) \approx 53{,}1^\circ\).</p></div>
+    <div class="caja c1 frag"><h3>Velocidad</h3><p>Un dron a \(\qty{10}{m/s}\) formando \(30^\circ\) con el eje \(x\):</p>\[ \vect{v} \approx (8{,}66,\; 5)\qty{}{m/s} \]<p class="nota" style="margin:0">Rapidez \(\abs{\vect{v}} = \qty{10}{m/s}\).</p></div>
+    <div class="caja c2 frag"><h3>Aceleración</h3><p>Un carro que acelera hacia el este:</p>\[ \vect{a} = (2, 0)\qty{}{m/s^2} \]<p class="nota" style="margin:0">Su velocidad horizontal crece \(\qty{2}{m/s}\) cada segundo.</p></div>
+    <div class="caja neutra frag"><h3>Fuerza</h3><p>Empujar una caja en diagonal: 5 N a la derecha y 3 N hacia abajo.</p>\[ \vect{F} = (5, -3)\qty{}{N}, \quad \abs{\vect{F}} = \sqrt{34}\qty{}{N} \]<p class="nota" style="margin:0">\(\approx \qty{5{,}83}{N}\), a \(-31{,}0^\circ\).</p></div>
+  </div>
+</section>
+
+<!-- ═════════════ §2 · UNIDADES Y DIMENSIONES ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Unidades y dimensiones" data-label="Cantidades fundamentales">
+  <p class="ceja">§ 1.2 · Simplificación de unidades</p>
+  <h2 class="titulo">Cantidades fundamentales, sus dimensiones y sus unidades</h2>
+  <div class="g2-60">
+    <table class="tabla">
+      <thead><tr><th>Cantidad</th><th>Dimensión</th><th>Unidad SI</th><th>Unidades naturales</th></tr></thead>
+      <tbody>
+        <tr><td class="izq">Tiempo</td><td>\(\mathsf{T}\)</td><td class="izq">segundo (\(\mathrm{s}\))</td><td>\([\hbar]/\mathsf{E}\)</td></tr>
+        <tr><td class="izq">Distancia</td><td>\(\mathsf{L}\)</td><td class="izq">metro (\(\mathrm{m}\))</td><td>\([\hbar c]/\mathsf{E}\)</td></tr>
+        <tr><td class="izq">Masa</td><td>\(\mathsf{M}\)</td><td class="izq">kilogramo (\(\mathrm{kg}\))</td><td>\(\mathsf{E}/[c^{2}]\)</td></tr>
+        <tr><td class="izq">Carga eléctrica</td><td>\(\mathsf{Q}\)</td><td class="izq">coulomb (\(\mathrm{C}\))</td><td>\(\big[\sqrt{\varepsilon_0 \hbar c}\,\big]\)</td></tr>
+        <tr><td class="izq">Temperatura</td><td>\(\mathsf{\Theta}\)</td><td class="izq">kelvin (\(\mathrm{K}\))</td><td>\(\mathsf{E}/[k_B]\)</td></tr>
+        <tr><td class="izq">Energía</td><td>\(\mathsf{E}\)</td><td class="izq">joule (\(\mathrm{J}\))</td><td>\(\mathsf{E}\)</td></tr>
+      </tbody>
+    </table>
+    <div class="pila">
+      <p class="frag"><strong>Unidades derivadas:</strong></p>
+      <div class="frag">\[ [v] = \dfrac{\mathsf{L}}{\mathsf{T}}, \qquad [a] = \dfrac{\mathsf{L}}{\mathsf{T}^{2}} \]</div>
+      <div class="frag">\[ F = ma \;\Longrightarrow\; [F] = \mathsf{M}\,\dfrac{\mathsf{L}}{\mathsf{T}^{2}} \;\to\; \mathrm{N} \]</div>
+      <div class="frag">\[ E = \tfrac12 m v^{2} \;\Longrightarrow\; [E] = \mathsf{M}\,\dfrac{\mathsf{L}^{2}}{\mathsf{T}^{2}} \;\to\; \mathrm{J} \]</div>
+      <p class="nota">\(\hbar\): constante de Planck reducida; \(c\): velocidad de la luz; \(\varepsilon_0\): permitividad del vacío; \(k_B\): constante de Boltzmann.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Unidades y dimensiones" data-label="Análisis dimensional">
+  <p class="ceja">§ 1.2 · Análisis dimensional</p>
+  <h2 class="titulo">Solo se suman peras con peras</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="kf"><p style="margin:0"><strong>Principio de homogeneidad dimensional:</strong> solo se pueden sumar, restar o igualar cantidades con exactamente las mismas dimensiones.</p></div>
+      <p>Usamos corchetes: \([x]\) es la dimensión de \(x\). Los números puros, las funciones trigonométricas y constantes como \(\pi\) son <span class="prop" data-pop="pop-adim">adimensionales</span>: su dimensión es \(1\).</p>
+      <p><strong>Aplicación 1.</strong> ¿Es correcta \(x = v_0 t + \tfrac12 a t^{2}\)?</p>
+    </div>
+    <div class="pila">
+      <div class="caja neutra frag">\[ [x] = \mathsf{L} \]</div>
+      <div class="caja neutra frag">\[ [v_0 t] = \left(\dfrac{\mathsf{L}}{\mathsf{T}}\right)\mathsf{T} = \mathsf{L} \]</div>
+      <div class="caja neutra frag">\[ \left[\tfrac12 a t^{2}\right] = (1)\left(\dfrac{\mathsf{L}}{\mathsf{T}^{2}}\right)\mathsf{T}^{2} = \mathsf{L} \]</div>
+      <div class="caja frag"><p style="margin:0">Todos los términos tienen dimensión \(\mathsf{L}\): la ecuación es <strong>dimensionalmente correcta</strong>. Un término con \(\mathsf{L}/\mathsf{T}\) delataría un error.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Unidades y dimensiones" data-label="Unidades de la constante G">
+  <p class="ceja">§ 1.2 · Aplicación 2</p>
+  <h2 class="titulo">Deducir las unidades de \(G\) en \(F_g = G\,m_1 m_2/r^{2}\)</h2>
+  <table class="tabla">
+    <thead><tr><th>Razonamiento</th><th>Desarrollo algebraico</th></tr></thead>
+    <tbody>
+      <tr class="frag"><td class="izq">1. Despejar \(G\).</td><td>\(G = \dfrac{F_g\, r^{2}}{m_1 m_2}\)</td></tr>
+      <tr class="frag"><td class="izq">2. Escribir las dimensiones.</td><td>\([G] = \dfrac{[F_g]\,[r^{2}]}{[m_1]\,[m_2]}\)</td></tr>
+      <tr class="frag"><td class="izq">3. Sustituir; la fuerza es masa por aceleración, \([F] = \mathsf{M}\mathsf{L}/\mathsf{T}^{2}\).</td><td>\([G] = \dfrac{\left(\mathsf{M}\mathsf{L}/\mathsf{T}^{2}\right)\mathsf{L}^{2}}{\mathsf{M}\,\mathsf{M}}\)</td></tr>
+      <tr class="frag"><td class="izq">4. Simplificar.</td><td>\([G] = \dfrac{\mathsf{M}\mathsf{L}^{3}}{\mathsf{M}^{2}\mathsf{T}^{2}} = \dfrac{\mathsf{L}^{3}}{\mathsf{M}\,\mathsf{T}^{2}}\)</td></tr>
+      <tr class="frag"><td class="izq">5. Traducir al SI.</td><td>\(\dfrac{\mathrm{m}^{3}}{\mathrm{kg}\cdot\mathrm{s}^{2}} = \dfrac{\mathrm{N}\cdot\mathrm{m}^{2}}{\mathrm{kg}^{2}}\)</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="diapositiva" data-seccion="Unidades y dimensiones" id="dp-conv" data-label="Factores de conversión">
+  <p class="ceja">§ 1.3 · Factores de conversión</p>
+  <h2 class="titulo">Multiplicar por 1 bien escrito</h2>
+  <div class="g2-40">
+    <div class="pila">
+      \[ \begin{gathered} 1 = \dfrac{\text{cantidad}}{\text{la misma cantidad en otras unidades}} \\[8pt] 1 = \dfrac{\qty{1000}{m}}{\qty{1}{km}} = \dfrac{\qty{1}{h}}{\qty{3600}{s}} \end{gathered} \]
+      <div class="fila-btn" id="conv-tipos"><button type="button" class="btn on" data-c="vel">Velocidad</button><button type="button" class="btn" data-c="area">Área</button><button type="button" class="btn" data-c="vol">Volumen</button></div>
+      <label class="ctrl"><span id="conv-lab">Valor</span><input type="range" id="conv-val" min="0" max="200" step="5" value="60"><span class="v" id="conv-vv"></span></label>
+      <p class="nota">Las unidades se cancelan como factores algebraicos: lo que queda es la unidad del resultado.</p>
+    </div>
+    <div class="svgbox"><div class="svghd"><span>Cadena de conversión</span><span class="val" id="conv-lect"></span></div>
+      <div id="conv-tex" class="ec" style="font-size:40px;min-height:300px"></div></div>
+  </div>
+</section>
+
+<!-- ═════════════ §3 · UNIDADES NATURALES ═════════════ -->
+<section class="diapositiva" data-seccion="Unidades naturales" data-label="El electronvoltio y ħ">
+  <p class="ceja">§ 1.4 · Unidades naturales</p>
+  <h2 class="titulo">Todo en términos de energía: el <span class="prop" data-pop="pop-ev">electronvoltio</span></h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag">Un electrón que atraviesa una diferencia de potencial de \(\qty{1}{V}\) gana
+        \[ E = qV = e\cdot\qty{1}{V} \;\Longrightarrow\; \qty{1}{eV} \equiv \qty{1{,}602\,176\,634\times 10^{-19}}{J}. \]</p>
+      <p class="frag">La constante de Planck reducida, en \(\mathrm{eV\cdot s}\):
+        \[ \hbar = \dfrac{h}{2\pi} = \dfrac{\qty{4{,}135\,667\,7\times 10^{-15}}{eV\cdot s}}{2\pi} = \qty{6{,}582\,119\,569\times 10^{-16}}{eV\cdot s}. \]</p>
+    </div>
+    <div class="pila">
+      <p class="frag">Y la masa por \(c^{2}\) tiene unidades de energía:
+        \[ \qty{1}{kg}\;c^{2} = \qty{5{,}609\,588\,603\times 10^{26}}{GeV}. \]</p>
+      <div class="kf frag">\[ \begin{aligned} \mathsf{T} &\to \dfrac{[\hbar]}{\mathsf{E}}: & \qty{1}{s} &= 1{,}519\,267\,447\times 10^{15}\,\dfrac{\hbar}{\mathrm{eV}} \\ \mathsf{L} &\to \dfrac{[\hbar c]}{\mathsf{E}}: & \qty{1}{m} &= 5{,}067\,730\,71\times 10^{6}\,\dfrac{\hbar c}{\mathrm{eV}} \\ \mathsf{M} &\to \dfrac{\mathsf{E}}{[c^{2}]}: & \qty{1}{kg} &= 5{,}609\,588\,603\times 10^{26}\,\mathrm{GeV}/c^{2} \end{aligned} \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Unidades naturales" id="dp-nat" data-label="Conversor a unidades naturales">
+  <p class="ceja">§ 1.4 · Laboratorio</p>
+  <h2 class="titulo">Conversor: del SI a unidades naturales y de vuelta</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <div class="fila-btn" id="nat-pre">
+        <button type="button" class="btn" data-p="mp">Protón</button><button type="button" class="btn" data-p="me">Electrón</button>
+        <button type="button" class="btn" data-p="higgs">Bosón de Higgs</button><button type="button" class="btn" data-p="bohr">Radio de Bohr</button>
+        <button type="button" class="btn" data-p="alfa">Partícula alfa</button><button type="button" class="btn" data-p="seg">Un segundo</button>
+      </div>
+      <label class="ctrl" style="grid-template-columns:200px 1fr"><span>Magnitud</span>
+        <select id="nat-mag" class="pr-in" style="width:100%"><option value="M">Masa</option><option value="L">Distancia</option><option value="T">Tiempo</option><option value="E">Energía</option></select></label>
+      <label class="ctrl" style="grid-template-columns:200px 1fr 170px"><span>Valor SI</span><input type="text" id="nat-in" class="pr-in" style="width:100%" value="1,672 621 924e-27"><span class="v" id="nat-u">kg</span></label>
+      <p class="nota">Admite coma decimal y notación científica: 1,67e-27 significa \(1{,}67\times 10^{-27}\). Enter o cambiar de campo recalcula.</p>
+    </div>
+    <div class="svgbox"><div class="svghd"><span>Resultado</span><span class="val" id="nat-lect"></span></div>
+      <div id="nat-tex" class="ec" style="font-size:42px;min-height:340px"></div></div>
+  </div>
+</section>
+
+<!-- ═════════════ §4 · TRANSFORMACIONES ═════════════ -->
+<section class="diapositiva" data-seccion="Transformaciones" id="dp-rot" data-label="Rotación del sistema de referencia">
+  <p class="ceja">§ 1.5 · Noción de transformaciones</p>
+  <h2 class="titulo">Rotar los ejes cambia las coordenadas, no la longitud</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra el punto; gira los ejes con \(\theta\)</span><span class="val" id="rot-lect"></span></div>
+      <div id="rot-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      \[ \begin{aligned} x' &= x\cos\theta + y\sin\theta \\ y' &= -x\sin\theta + y\cos\theta \end{aligned} \]
+      <label class="ctrl"><span>Rotación \(\theta\)</span><input type="range" id="rot-th" min="-90" max="90" step="1" value="25"><span class="v" id="rot-thv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>\((x, y)\)<b id="rot-xy"></b></div>
+        <div>\((x', y')\)<b id="rot-xpyp"></b></div>
+        <div>\(x^{2} + y^{2}\)<b id="rot-r2"></b></div>
+        <div>\(x'^{2} + y'^{2}\)<b id="rot-rp2"></b></div>
+      </div>
+      <p class="nota">Como en la mesa que se gira bajo el montaje experimental: la trayectoria no depende del sistema de referencia.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Transformaciones" data-label="Demostración de la invariancia">
+  <p class="ceja">§ 1.5 · Demostración</p>
+  <h2 class="titulo">El producto escalar es invariante bajo rotaciones</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <p>Queremos probar que \(\vect{r}'\cdot\vect{r}' = \vect{r}\cdot\vect{r}\), es decir, \(x'^{2} + y'^{2} = x^{2} + y^{2}\).</p>
+      <div class="kf frag">\[ r'^{2} = x'^{2} + y'^{2} = x^{2} + y^{2} = r^{2} \]</div>
+      <p class="frag">Por eso \(v^{2}\) en la energía cinética \(E = \tfrac12 m v^{2}\) no cambia al rotar los ejes. En el capítulo de relatividad buscaremos qué se conserva entre observadores en movimiento.</p>
+    </div>
+    <div class="caja neutra frag" style="font-size:31px">\[ \begin{aligned} x'^{2} + y'^{2} &= (x\cos\theta + y\sin\theta)^{2} + (-x\sin\theta + y\cos\theta)^{2} \\ &= x^{2}\cos^{2}\theta + \cancel{2xy\cos\theta\sin\theta} + y^{2}\sin^{2}\theta \\ &\quad + x^{2}\sin^{2}\theta - \cancel{2xy\sin\theta\cos\theta} + y^{2}\cos^{2}\theta \\ &= x^{2}(\cos^{2}\theta + \sin^{2}\theta) + y^{2}(\sin^{2}\theta + \cos^{2}\theta) \\ &= x^{2} + y^{2}. \end{aligned} \]</div>
+  </div>
+</section>
+
+<!-- ═════════════ §5 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: ¿dimensionalmente correcta?">
+  <p class="ceja">Reto <span class="score">Aciertos: <b id="dim-score">0</b> / 6</span></p>
+  <h2 class="titulo">¿Es dimensionalmente correcta?</h2>
+  <div class="dim-lista" id="dim-lista">
+    <div class="dim" data-ok="1" data-exp="Los tres términos tienen dimensión L."><span class="dim-ec">\( x = v_0 t + \tfrac12 a t^{2} \)</span></div>
+    <div class="dim" data-ok="0" data-exp="[a t²] = L, pero [v] = L/T: no se pueden sumar."><span class="dim-ec">\( v = v_0 + a t^{2} \)</span></div>
+    <div class="dim" data-ok="1" data-exp="[v²] = L²/T² y [a Δx] = (L/T²)·L = L²/T²."><span class="dim-ec">\( v^{2} = v_0^{2} + 2a\,\Delta x \)</span></div>
+    <div class="dim" data-ok="0" data-exp="[m v] = M L/T (cantidad de movimiento), no M L²/T²."><span class="dim-ec">\( E = m v \)</span></div>
+    <div class="dim" data-ok="1" data-exp="[m v²/r] = M (L²/T²)/L = M L/T², la dimensión de una fuerza."><span class="dim-ec">\( F = m\,\dfrac{v^{2}}{r} \)</span></div>
+    <div class="dim" data-ok="1" data-exp="[2h/g] = L/(L/T²) = T², y su raíz es T."><span class="dim-ec">\( t = \sqrt{2h/g} \)</span></div>
+  </div>
+  <div class="fila-btn" style="margin-top:14px"><button type="button" class="cz-btn cz-btn-p" id="dim-ok">Comprobar</button><button type="button" class="cz-btn" id="dim-borrar">Empezar de nuevo</button><span class="cz-fb" id="dim-fb"></span></div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica">
+  <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Comprueba lo aprendido</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok="c">
+        <div class="pr-q">1. ¿Cuál es la magnitud de \(\vect{F} = (6, -8)\qty{}{N}\)?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{2}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{14}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{10}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\sqrt{28}\qty{}{N}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Correcto: √(36 + 64) = √100 = 10 N." data-mal-txt="Eleva al cuadrado cada componente, súmalas y saca la raíz: el signo desaparece."></div>
+      </div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">2. \(\vect{u} = (4, -2)\) y \(\vect{v} = (3, 5)\). ¿Cuánto vale \(\vect{u}\cdot\vect{v}\)?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\((12, -10)\)</button><button type="button" class="pr-opc" data-o="b">\(2\)</button><button type="button" class="pr-opc" data-o="c">\(22\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: (4)(3) + (−2)(5) = 12 − 10 = 2. Es un número, no un vector." data-mal-txt="El producto escalar es un número: u_x v_x + u_y v_y."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok="a">
+        <div class="pr-q">3. ¿Qué ángulo entre \(\vect{u}\) y \(\vect{v}\) maximiza \(\abs{\vect{u}\times\vect{v}}\)?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(90^\circ\)</button><button type="button" class="pr-opc" data-o="b">\(0^\circ\)</button><button type="button" class="pr-opc" data-o="c">\(180^\circ\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: sin θ es máximo en 90°; en 0° y 180° el producto vectorial es nulo." data-mal-txt="Recuerda que |u × v| = |u||v| sin θ."></div>
+      </div>
+      <div class="pr-item" data-ok-num="22.22" data-tol="0.1">
+        <div class="pr-q">4. Expresa \(\qty{80}{km/h}\) en \(\mathrm{m/s}\) y pulsa Enter.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="m/s"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">Multiplica por \(\dfrac{\qty{1000}{m}}{\qty{1}{km}}\) y por \(\dfrac{\qty{1}{h}}{\qty{3600}{s}}\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 80 000 m / 3600 s ≈ 22,2 m/s." data-mal-txt="Aún no. 80 km/h = 80 000 m / 3600 s."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios 1 a 10">
+  <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
+  <h2 class="titulo">Unidades, conversiones y componentes</h2>
+  <ol class="ej">
+    <li>\(\qty{80}{km/h}\) en \(\mathrm{m/s}\). <span class="frag aparece resp">\(\approx \qty{22{,}2}{m/s}\)</span></li>
+    <li>\(\qty{2500}{cm^2}\) en \(\mathrm{m^2}\); \(\qty{5}{L}\) en \(\mathrm{m^3}\). <span class="frag aparece resp">\(\qty{0{,}25}{m^2}\); \(\qty{5\times 10^{-3}}{m^3}\)</span></li>
+    <li>Unidades de \(K = \tfrac12 m v^{2}\). <span class="frag aparece resp">\(\mathrm{kg\cdot m^2/s^2} = \mathrm{J}\)</span></li>
+    <li>\(\qty{8{,}0\times 10^{-13}}{J}\) en \(\mathrm{MeV}\). <span class="frag aparece resp">\(\approx \qty{5{,}0}{MeV}\)</span></li>
+    <li>Higgs, \(\qty{125}{GeV}/c^{2}\), en \(\mathrm{kg}\). <span class="frag aparece resp">\(\approx \qty{2{,}23\times 10^{-25}}{kg}\)</span></li>
+    <li>\(\qty{0{,}53\times 10^{-10}}{m}\) en \(\hbar c/\mathrm{eV}\). <span class="frag aparece resp">\(\approx 2{,}69\times 10^{-4}\,\hbar c/\mathrm{eV}\)</span></li>
+    <li>\(\vect{F} = (6, -8)\qty{}{N}\): magnitud y ángulo. <span class="frag aparece resp">\(\qty{10}{N}\), \(-53{,}1^\circ\)</span></li>
+    <li>Dron a \(\qty{15}{m/s}\) y \(60^\circ\): componentes. <span class="frag aparece resp">\((7{,}5;\; 13{,}0)\qty{}{m/s}\)</span></li>
+    <li>\(\qty{4}{km}\) al este y \(\qty{3}{km}\) al norte. <span class="frag aparece resp">\(\vect{d} = (4, 3)\qty{}{km}\), \(\qty{5}{km}\)</span></li>
+    <li>Barco en \(\vect{r}_A = (-5, 12)\qty{}{km}\): distancia al faro. <span class="frag aparece resp">\(\qty{13}{km}\)</span></li>
+  </ol>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios 11 a 20">
+  <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
+  <h2 class="titulo">Suma, producto escalar y producto vectorial</h2>
+  <ol class="ej" start="11">
+    <li>\(\vect{F}_1 = (12, 5)\), \(\vect{F}_2 = (-4, 3)\qty{}{N}\): fuerza neta. <span class="frag aparece resp">\((8, 8)\qty{}{N}\), \(8\sqrt{2} \approx \qty{11{,}3}{N}\)</span></li>
+    <li>\(\vect{r}_A = (10, 5)\), \(\vect{r}_B = (3, 29)\qty{}{m}\): \(\vect{r}_A - \vect{r}_B\). <span class="frag aparece resp">\((7, -24)\qty{}{m}\)</span></li>
+    <li>\(\vect{F}_3\) que equilibra \((500, 200)\) y \((-300, 150)\qty{}{N}\). <span class="frag aparece resp">\((-200, -350)\qty{}{N}\)</span></li>
+    <li>\(\vect{u} = (2, -3)\), \(\vect{v} = (-1, 4)\): \(\vect{u} + \vect{v} = \vect{v} + \vect{u}\). <span class="frag aparece resp">ambos dan \((1, 1)\)</span></li>
+    <li>\(W = \vect{F}\cdot\Delta\vect{r}\) con \((4, -2)\qty{}{N}\) y \((3, 5)\qty{}{m}\). <span class="frag aparece resp">\(\qty{2}{J}\)</span></li>
+    <li>\(\qty{150}{N}\) a \(30^\circ\) a lo largo de \(\qty{10}{m}\). <span class="frag aparece resp">\(\approx \qty{1299}{J}\)</span></li>
+    <li>Ángulo entre \((3, 0)\) y \((3, 3)\). <span class="frag aparece resp">\(45^\circ\)</span></li>
+    <li>Llave de \(\qty{0{,}40}{m}\), \(\qty{200}{N}\) a \(60^\circ\): torque. <span class="frag aparece resp">\(\approx \qty{69{,}3}{N\cdot m}\)</span></li>
+    <li>\(\vect{v}\) según \(+x\), \(\vect{B}\) según \(+y\): sentido de \(q\,\vect{v}\times\vect{B}\). <span class="frag aparece resp">\(+z\), saliendo del plano</span></li>
+    <li>¿Qué \(\theta\) maximiza \(\abs{\vect{u}\times\vect{v}}\)? ¿Cuándo es cero? <span class="frag aparece resp">\(90^\circ\); vectores paralelos o antiparalelos</span></li>
+  </ol>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
+  <p class="ceja">Glosario</p>
+  <h2 class="titulo">Términos del capítulo</h2>
+  <dl class="glosa">
+    <div><dt>Vector</dt><dd>Cantidad con magnitud y dirección; en el plano, \(\vect{r} = (x, y)\).</dd></div>
+    <div><dt>Magnitud</dt><dd>Longitud del vector, \(\abs{\vect{r}} = \sqrt{x^{2} + y^{2}}\).</dd></div>
+    <div><dt>Vector libre</dt><dd>Nace de una resta de coordenadas; no cambia al trasladar el origen.</dd></div>
+    <div><dt>Vector ligado</dt><dd>La posición \(\vect{r}\): está atada al origen y cambia con él.</dd></div>
+    <div><dt>Producto escalar</dt><dd>\(\vect{u}\cdot\vect{v} = \abs{\vect{u}}\,\abs{\vect{v}}\cos\theta\): un número invariante.</dd></div>
+    <div><dt>Producto vectorial</dt><dd>\(\vect{u}\times\vect{v}\): perpendicular, de magnitud \(\abs{\vect{u}}\,\abs{\vect{v}}\sin\theta\).</dd></div>
+    <div><dt>Dimensión</dt><dd>Naturaleza física de una cantidad: \(\mathsf{L}\), \(\mathsf{M}\), \(\mathsf{T}\), …</dd></div>
+    <div><dt>Electronvoltio</dt><dd>\(\qty{1}{eV} = \qty{1{,}602\times 10^{-19}}{J}\): base de las unidades naturales.</dd></div>
+  </dl>
+
+  
+  
+  
+  
+</section>
+
+<div class="pop-src" id="pop-libre" style="display:none"><h4>Vector libre</h4><p>Se define por una diferencia de posiciones (o por una tasa de cambio de ellas). Al trasladar el origen, \(x_0\) y \(y_0\) se cancelan: sus componentes no cambian.</p></div><div class="pop-src" id="pop-inv" style="display:none"><h4>Invariante</h4><p>Cantidad que tiene el mismo valor en cualquier sistema de referencia de una familia (trasladados, rotados…). Ejemplos: \(\abs{\Delta\vect{r}}\), \(\vect{u}\cdot\vect{v}\).</p></div><div class="pop-src" id="pop-adim" style="display:none"><h4>Adimensional</h4><p>Sin dimensión física: números puros, fracciones, ángulos en radianes, \(\sin\theta\), \(\pi\). Su dimensión se toma como \(1\).</p></div><div class="pop-src" id="pop-ev" style="display:none"><h4>Electronvoltio</h4><p>Energía que gana un electrón al atravesar \(\qty{1}{V}\): \(\qty{1}{eV} = \qty{1{,}602\,176\,634\times 10^{-19}}{J}\). Múltiplos: \(\mathrm{keV}\), \(\mathrm{MeV}\), \(\mathrm{GeV}\).</p></div>
+</div>
+<script>
+/* ═══ UTILIDADES ═══════════════════════════════════════════════════════ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const NS = 'http://www.w3.org/2000/svg';
+/* Número con coma decimal y signo menos tipográfico (texto, no TeX). */
+const num = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', ','); return (x < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s; };
+const activa = el => { const d = el && el.closest('section'); return !!(d && d.hasAttribute('data-deck-active')); };
+const FMATH = "'STIX Two Text',Georgia,serif";
+const FTXT = 'Archivo,system-ui,sans-serif';
+
+function nodo(tag, at, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in at) {
+    if (k === 'txt') e.textContent = at[k];
+    else if (k === 'html') e.innerHTML = at[k];
+    else e.setAttribute(k, at[k]);
+  }
+  if (padre) padre.appendChild(e);
+  return e;
+}
+/* Rótulo con variables en cursiva: «*x* (m)» → x en cursiva. */
+function rotulo(g, x, y, s, extra) {
+  const t = nodo('text', Object.assign({ x: x, y: y, 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH }, extra || {}), g);
+  /* *v* cursiva · !v! vector (negrita cursiva) · _sub subíndice */
+  s.split(/(\*[^*]+\*|![^!]+!|_[A-Za-z0-9]+)/).forEach(tr => {
+    if (!tr) return;
+    if (tr[0] === '*') nodo('tspan', { 'font-style': 'italic', txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '!') nodo('tspan', { 'font-style': 'italic', 'font-weight': 700, txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '_') { nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '70%', 'font-style': /^[a-z]$/.test(tr.slice(1)) ? 'italic' : 'normal', txt: tr.slice(1) }, t); nodo('tspan', { txt: '\u200a' }, t); }
+    else nodo('tspan', { txt: tr }, t);
+  });
+  return t;
+}
+/* Ejes cartesianos en SVG con rejilla y marcas. */
+function ejes(host, o) {
+  host.innerHTML = '';
+  const W = o.W, H = o.H, m = o.m || { l: 96, r: 24, t: 20, b: 76 };
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => m.l + (v - o.x[0]) / (o.x[1] - o.x[0]) * (W - m.l - m.r);
+  const Y = v => H - m.b - (v - o.y[0]) / (o.y[1] - o.y[0]) * (H - m.t - m.b);
+  const fondo = nodo('g', {}, svg);
+  (o.xt || []).forEach(v => {
+    nodo('line', { x1: X(v), x2: X(v), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: X(v), y: H - m.b + 34, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fx ? o.fx(v) : num(v, 0) }, fondo);
+  });
+  (o.yt || []).forEach(v => {
+    nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(v), y2: Y(v), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: m.l - 12, y: Y(v) + 9, 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fy ? o.fy(v) : num(v, 0) }, fondo);
+  });
+  if (o.y[0] < 0 && o.y[1] > 0) nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[0]), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(o.y[0]), y2: Y(o.y[0]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  if (o.xl) rotulo(fondo, (m.l + W - m.r) / 2, H - 8, o.xl, { 'text-anchor': 'middle' });
+  if (o.yl) rotulo(fondo, 24, (m.t + H - m.b) / 2, o.yl, { 'text-anchor': 'middle', transform: 'rotate(-90 24 ' + (m.t + H - m.b) / 2 + ')' });
+  const capa = nodo('g', {}, svg);
+  return { svg: svg, X: X, Y: Y, capa: capa, W: W, H: H, m: m };
+}
+const polilinea = (A, pts, estilo, g) => nodo('polyline', { points: pts.map(p => A.X(p[0]).toFixed(1) + ',' + A.Y(p[1]).toFixed(1)).join(' '), style: 'fill:none;' + estilo }, g || A.capa);
+function flecha(g, x1, y1, x2, y2, color, grosor) {
+  const w = grosor || 5, a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1), c = Math.min(22, L * 0.45);
+  const bx = x2 - c * Math.cos(a), by = y2 - c * Math.sin(a);
+  nodo('line', { x1: x1, y1: y1, x2: bx, y2: by, style: 'stroke:' + color + ';stroke-width:' + w + ';stroke-linecap:round' }, g);
+  if (L > 2) nodo('polygon', { points: [[x2, y2], [bx + c * 0.5 * Math.sin(a), by - c * 0.5 * Math.cos(a)], [bx - c * 0.5 * Math.sin(a), by + c * 0.5 * Math.cos(a)]].map(p => p.join(',')).join(' '), style: 'fill:' + color }, g);
+}
+function rango(id, alCambiar) {
+  const r = document.getElementById(id);
+  if (!r) return null;
+  r.addEventListener('input', () => alCambiar(+r.value));
+  return r;
+}
+
+
+/* ═══ VENTANAS EMERGENTES ══════════════════════════════════════════════ */
+(function () {
+  let pop = null;
+  const cerrar = () => { if (pop) { pop.remove(); pop = null; } };
+  document.addEventListener('click', ev => {
+    const chip = ev.target instanceof Element ? ev.target.closest('.prop') : null;
+    if (!chip) { if (pop && !(ev.target instanceof Element && ev.target.closest('.popover'))) cerrar(); return; }
+    ev.stopPropagation();
+    cerrar();
+    const src = document.getElementById(chip.dataset.pop);
+    const dp = chip.closest('section');
+    if (!src || !dp) return;
+    pop = document.createElement('div');
+    pop.className = 'popover';
+    pop.innerHTML = '<button type="button" class="cerrar" aria-label="Cerrar">×</button>' + src.innerHTML;
+    pop.querySelector('.cerrar').addEventListener('click', cerrar);
+    dp.appendChild(pop);
+    const R = dp.getBoundingClientRect(), c = chip.getBoundingClientRect(), s = R.width / dp.offsetWidth;
+    let x = (c.left - R.left) / s, y = (c.bottom - R.top) / s + 14;
+    x = Math.min(x, dp.offsetWidth - pop.offsetWidth - 40);
+    if (y + pop.offsetHeight > dp.offsetHeight - 40) y = (c.top - R.top) / s - pop.offsetHeight - 14;
+    pop.style.left = Math.max(40, x) + 'px';
+    pop.style.top = Math.max(40, y) + 'px';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('slidechange', cerrar);
+})();
+
+
+/* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
+(function () {
+  const dp = document.getElementById('dp-practica');
+  if (!dp) return;
+  const marcador = $('.pr-score', dp);
+  let aciertos = 0;
+  const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
+  const acierta = it => { if (!it.dataset.hecho) { it.dataset.hecho = '1'; aciertos++; marcador.textContent = aciertos; } };
+  $$('.pr-item', dp).forEach(it => {
+    $$('.pr-opc', it).forEach(b => b.addEventListener('click', () => {
+      const ok = b.dataset.o === it.dataset.ok;
+      $$('.pr-opc', it).forEach(o => o.classList.remove('ok', 'mal'));
+      b.classList.add(ok ? 'ok' : 'mal'); fb(it, ok); if (ok) acierta(it);
+    }));
+    const inp = $('.pr-in', it);
+    if (inp) {
+      const revisa = () => {
+        const v = parseFloat(inp.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+        const ok = Math.abs(v - +it.dataset.okNum) <= +it.dataset.tol;
+        inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)'; fb(it, ok); if (ok) acierta(it);
+      };
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+      $$('.pr-btn', it).forEach(b => b.addEventListener('click', () => {
+        if (b.classList.contains('pr-verpista')) $('.pr-pista', it).classList.toggle('on'); else revisa();
+      }));
+    }
+  });
+})();
+
+
+
+/* ═══ PLANO CARTESIANO CON ARRASTRE ════════════════════════════════════ */
+/* Ejes con la misma escala en x e y (1180 × 800, x ∈ [-6, 6], y ∈ [-4, 4]). */
+function plano(host, o) {
+  o = Object.assign({ W: 1180, H: 800, x: [-6, 6], y: [-4, 4] }, o || {});
+  const xt = [], yt = [];
+  for (let v = Math.ceil(o.x[0]); v <= o.x[1]; v++) xt.push(v);
+  for (let v = Math.ceil(o.y[0]); v <= o.y[1]; v++) yt.push(v);
+  const A = ejes(host, { W: o.W, H: o.H, x: o.x, y: o.y, xt: xt, yt: yt, m: { l: 60, r: 24, t: 20, b: 56 },
+                         fx: v => v % 2 ? '' : num(v, 0), fy: v => v % 2 ? '' : num(v, 0) });
+  /* ejes x e y por el origen (ejes() dibuja los bordes; aquí los centrales) */
+  nodo('line', { x1: A.X(0), x2: A.X(0), y1: A.Y(o.y[0]), y2: A.Y(o.y[1]), style: 'stroke:var(--proy);stroke-width:2.5' }, A.capa);
+  A.ix = px => o.x[0] + (px - A.m.l) / (A.W - A.m.l - A.m.r) * (o.x[1] - o.x[0]);
+  A.iy = py => o.y[0] + (A.H - A.m.b - py) / (A.H - A.m.t - A.m.b) * (o.y[1] - o.y[0]);
+  A.o = o;
+  return A;
+}
+const vec = (A, x1, y1, x2, y2, color, g, w) => flecha(g || A.capa, A.X(x1), A.Y(y1), A.X(x2), A.Y(y2), color, w || 6);
+const etq = (A, x, y, s, color, extra) => rotulo(A.capa, A.X(x), A.Y(y), s, Object.assign({ 'font-size': 34, style: 'fill:' + color + ';font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' }, extra || {}));
+const punto = (A, x, y, color, r) => nodo('circle', { cx: A.X(x), cy: A.Y(y), r: r || 12, style: 'fill:' + color + ';stroke:var(--panel);stroke-width:3' }, A.capa);
+const grados = r => r * 180 / Math.PI;
+const paso = (v, p) => Math.round(v / (p || 0.5)) * (p || 0.5);
+/* Arrastre de puntos: obtener() → [{x, y, id}], mover(id, x, y). El SVG se
+   redibuja en cada cambio, así que se escucha en el contenedor. */
+function arrastre(host, obtener, mover, getA) {
+  let activo = null;
+  const aDatos = ev => {
+    const svg = host.querySelector('svg'), pt = svg.createSVGPoint();
+    pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse()), A = getA();
+    return { x: A.ix(p.x), y: A.iy(p.y) };
+  };
+  host.addEventListener('pointerdown', ev => {
+    const d = aDatos(ev); let mejor = null, dist = 0.9;
+    obtener().forEach(q => { const e = Math.hypot(q.x - d.x, q.y - d.y); if (e < dist) { dist = e; mejor = q.id; } });
+    if (mejor === null) return;
+    activo = mejor; host.setPointerCapture(ev.pointerId); ev.preventDefault();
+  });
+  host.addEventListener('pointermove', ev => {
+    if (activo === null) return;
+    const d = aDatos(ev), o = getA().o;
+    mover(activo, Math.max(o.x[0] + 0.5, Math.min(o.x[1] - 0.5, paso(d.x))), Math.max(o.y[0] + 0.5, Math.min(o.y[1] - 0.5, paso(d.y))));
+  });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { activo = null; }));
+}
+const par = (x, y, d) => '(' + num(x, d === undefined ? 1 : d) + '; ' + num(y, d === undefined ? 1 : d) + ')';
+
+/* TeX dinámico: se compone con MathJax cuando el documento ya está listo. */
+let colaMJ = Promise.resolve();
+function texVivo(el, tex) {
+  if (el.__tex === tex) return;
+  el.__tex = tex;
+  el.textContent = '\\[' + tex + '\\]';
+  if (document.documentElement.dataset.mathjax !== 'ok' || !window.MathJax || !MathJax.typesetPromise) return;
+  colaMJ = colaMJ.then(() => MathJax.typesetPromise([el])).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+}
+const tx = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', '{,}'); return (x < 0 && +Math.abs(x).toFixed(d) !== 0 ? '-' : '') + s; };
+function cientTex(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const ms = m.toFixed(cifras || 3).replace(/\.?0+$/, '').replace('.', '{,}');
+  return (e >= -2 && e <= 3) ? tx(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : ms + '\\times 10^{' + e + '}';
+}
+function cientTxt(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const sup = String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  const mt = num(m, cifras || 3).replace(/,?0+$/, '');
+  return (e >= -2 && e <= 3) ? num(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : mt + ' × 10' + sup;
+}
+
+/* ═══ PORTADA: vector que gira con sus componentes ═════════════════════ */
+(function () {
+  const cv = document.getElementById('hero-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, lect = document.getElementById('hero-lect');
+  const ox = 290, oy = 330, esc = 62, R = 3.4;
+  let t = 0.6, ult = 0;
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 1.5;
+    for (let i = -4; i <= 6; i++) { g.beginPath(); g.moveTo(ox + i * esc, 20); g.lineTo(ox + i * esc, H - 20); g.stroke(); }
+    for (let j = -3; j <= 4; j++) { g.beginPath(); g.moveTo(20, oy - j * esc); g.lineTo(W - 20, oy - j * esc); g.stroke(); }
+    g.strokeStyle = tok('--proy'); g.lineWidth = 2.5;
+    g.beginPath(); g.moveTo(20, oy); g.lineTo(W - 20, oy); g.moveTo(ox, 20); g.lineTo(ox, H - 20); g.stroke();
+    const x = R * Math.cos(t), y = R * Math.sin(t), px = ox + x * esc, py = oy - y * esc;
+    g.setLineDash([10, 8]); g.lineWidth = 3;
+    g.strokeStyle = tok('--caso1'); g.beginPath(); g.moveTo(ox, oy); g.lineTo(px, oy); g.stroke();
+    g.strokeStyle = tok('--caso2'); g.beginPath(); g.moveTo(px, oy); g.lineTo(px, py); g.stroke(); g.setLineDash([]);
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 2.5; g.beginPath(); g.arc(ox, oy, 52, 0, -t, t > 0); g.stroke();
+    const a = Math.atan2(py - oy, px - ox);
+    g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 7; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(ox, oy); g.lineTo(px - 20 * Math.cos(a), py - 20 * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(px, py); g.lineTo(px - 30 * Math.cos(a - 0.4), py - 30 * Math.sin(a - 0.4)); g.lineTo(px - 30 * Math.cos(a + 0.4), py - 30 * Math.sin(a + 0.4)); g.fill();
+    g.font = 'italic 700 40px ' + FMATH; g.fillText('r', px + 14, py - 10);
+    g.font = 'italic 32px ' + FMATH; g.fillStyle = tok('--caso1'); g.fillText('x', (ox + px) / 2 - 8, oy + (y >= 0 ? 38 : -14));
+    g.fillStyle = tok('--caso2'); g.fillText('y', px + (x >= 0 ? 12 : -30), (oy + py) / 2);
+    g.fillStyle = tok('--tinta2'); g.fillText('θ', ox + 60, oy - 14);
+    if (lect) lect.textContent = 'θ = ' + num(((grados(t) % 360) + 360) % 360, 0) + '° · r = ' + num(R, 1);
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 33) { t += 0.012; ult = ms; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ MAGNITUD Y DIRECCIÓN ═════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('mag-fig');
+  if (!host) return;
+  const rx = document.getElementById('mag-x'), ry = document.getElementById('mag-y');
+  let A;
+  function pinta() {
+    const x = +rx.value, y = +ry.value, r = Math.hypot(x, y);
+    A = plano(host);
+    polilinea(A, [[0, 0], [x, 0]], 'stroke:var(--caso1);stroke-width:4;stroke-dasharray:12 8');
+    polilinea(A, [[x, 0], [x, y]], 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    if (r > 0.01) {
+      const th = Math.atan2(y, x), R = 0.9, pts = [];
+      for (let i = 0; i <= 40; i++) pts.push([R * Math.cos(th * i / 40), R * Math.sin(th * i / 40)]);
+      polilinea(A, pts, 'stroke:var(--tinta2);stroke-width:3');
+      etq(A, 1.25 * Math.cos(th / 2), 1.25 * Math.sin(th / 2) - 0.15, '*θ*', 'var(--tinta2)', { 'font-size': 30, 'text-anchor': 'middle' });
+      vec(A, 0, 0, x, y, 'var(--res)', null, 7);
+    }
+    etq(A, x / 2, y >= 0 ? -0.45 : 0.25, '*x* = ' + num(x, 1), 'var(--caso1)', { 'text-anchor': 'middle', 'font-size': 30 });
+    etq(A, x + (x >= 0 ? 0.2 : -0.2), y / 2, '*y* = ' + num(y, 1), 'var(--caso2)', { 'text-anchor': x >= 0 ? 'start' : 'end', 'font-size': 30 });
+    etq(A, x * 0.55 - (y >= 0 ? 0.4 : -0.4) * Math.sign(x || 1), y * 0.55 + 0.35, '!r!', 'var(--res)', { 'text-anchor': 'middle' });
+    punto(A, x, y, 'var(--res)');
+    const th = grados(Math.atan2(y, x)), ar = x !== 0 ? grados(Math.atan(y / x)) : (y >= 0 ? 90 : -90);
+    document.getElementById('mag-lect').textContent = 'r = ' + num(r, 3) + ' · θ = ' + num(th, 1) + '°';
+    document.getElementById('mag-xv').textContent = num(x, 1);
+    document.getElementById('mag-yv').textContent = num(y, 1);
+    const nota = document.getElementById('mag-nota');
+    const txt = x < 0 ? 'Aquí arctan(y/x) = ' + num(ar, 1) + '°, pero el vector apunta hacia la izquierda: el ángulo real es ' + num(th, 1) + '° (se suman o restan 180°).'
+                      : 'arctan(y/x) = ' + num(ar, 1) + '° coincide con la dirección porque x > 0. Si x < 0, hay que sumar o restar 180°.';
+    nota.textContent = txt;
+  }
+  arrastre(host, () => [{ id: 0, x: +rx.value, y: +ry.value }], (id, x, y) => { rx.value = x; ry.value = Math.max(-3.5, Math.min(3.5, y)); pinta(); }, () => A);
+  rx.addEventListener('input', pinta); ry.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ VECTOR CON ORIGEN DESPLAZADO ═════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('desp-fig');
+  if (!host) return;
+  const P = [{ x: -3, y: -1.5 }, { x: 2, y: 2 }];
+  let A;
+  function pinta() {
+    const [p0, p1] = P, dx = p1.x - p0.x, dy = p1.y - p0.y, r = Math.hypot(dx, dy);
+    A = plano(host);
+    [[p0, 'x', '0'], [p1, 'x', '']].forEach(() => {});
+    polilinea(A, [[p0.x, p0.y], [p0.x, A.o.y[0]]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:4 6');
+    polilinea(A, [[p1.x, p1.y], [p1.x, A.o.y[0]]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:4 6');
+    polilinea(A, [[p0.x, p0.y], [p1.x, p0.y]], 'stroke:var(--caso1);stroke-width:4;stroke-dasharray:12 8');
+    polilinea(A, [[p1.x, p0.y], [p1.x, p1.y]], 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    if (r > 0.01) vec(A, p0.x, p0.y, p1.x, p1.y, 'var(--res)', null, 7);
+    etq(A, (p0.x + p1.x) / 2, p0.y + (dy >= 0 ? -0.45 : 0.3), 'Δ*x*', 'var(--caso1)', { 'text-anchor': 'middle', 'font-size': 30 });
+    etq(A, p1.x + (dx >= 0 ? 0.2 : -0.2), (p0.y + p1.y) / 2, 'Δ*y*', 'var(--caso2)', { 'text-anchor': dx >= 0 ? 'start' : 'end', 'font-size': 30 });
+    punto(A, p0.x, p0.y, 'var(--tinta)', 11); punto(A, p1.x, p1.y, 'var(--res)');
+    etq(A, p0.x - 0.15, p0.y + 0.35, '(*x*_0, *y*_0)', 'var(--tinta)', { 'text-anchor': 'end', 'font-size': 28 });
+    etq(A, p1.x + 0.2, p1.y + 0.3, '(*x*, *y*)', 'var(--res)', { 'font-size': 28 });
+    document.getElementById('desp-dx').textContent = num(dx, 1);
+    document.getElementById('desp-dy').textContent = num(dy, 1);
+    document.getElementById('desp-r').textContent = num(r, 3);
+    document.getElementById('desp-t').textContent = r > 0.01 ? num(grados(Math.atan2(dy, dx)), 1) + '°' : '—';
+    document.getElementById('desp-lect').textContent = 'r = (' + num(dx, 1) + '; ' + num(dy, 1) + ')';
+  }
+  arrastre(host, () => P.map((p, i) => ({ id: i, x: p.x, y: p.y })), (id, x, y) => { P[id].x = x; P[id].y = y; pinta(); }, () => A);
+  pinta();
+})();
+
+/* ═══ SUMA Y DIFERENCIA ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('suma-fig');
+  if (!host) return;
+  const u = { x: 3, y: 1 }, v = { x: 1, y: 3 };
+  let modo = 'suma', A;
+  function pinta() {
+    A = plano(host);
+    if (modo === 'suma') {
+      const s = { x: u.x + v.x, y: u.y + v.y };
+      polilinea(A, [[0, 0], [v.x, v.y], [s.x, s.y]], 'stroke:var(--proy);stroke-width:2.5;stroke-dasharray:8 8');
+      vec(A, 0, 0, s.x, s.y, 'var(--res)', null, 7);
+      vec(A, 0, 0, u.x, u.y, 'var(--caso1)'); vec(A, u.x, u.y, s.x, s.y, 'var(--caso2)');
+      etq(A, s.x / 2 - 0.3, s.y / 2 + 0.35, '!u! + !v!', 'var(--res)', { 'text-anchor': 'end' });
+      etq(A, u.x / 2 + 0.1, u.y / 2 - 0.4, '!u!', 'var(--caso1)');
+      etq(A, u.x + v.x / 2 + 0.25, u.y + v.y / 2, '!v!', 'var(--caso2)');
+      punto(A, u.x, u.y, 'var(--caso1)'); punto(A, s.x, s.y, 'var(--caso2)');
+      document.getElementById('suma-lect').textContent = 'u + v = ' + par(s.x, s.y);
+    } else {
+      const d = { x: u.x - v.x, y: u.y - v.y };
+      vec(A, 0, 0, u.x, u.y, 'var(--caso1)'); vec(A, 0, 0, v.x, v.y, 'var(--caso2)');
+      if (Math.hypot(d.x, d.y) > 0.01) vec(A, v.x, v.y, u.x, u.y, 'var(--res)', null, 7);
+      etq(A, (u.x + v.x) / 2 + 0.25, (u.y + v.y) / 2 + 0.35, '!u! − !v!', 'var(--res)');
+      etq(A, u.x / 2 + 0.1, u.y / 2 - 0.4, '!u!', 'var(--caso1)');
+      etq(A, v.x / 2 - 0.3, v.y / 2 + 0.2, '!v!', 'var(--caso2)', { 'text-anchor': 'end' });
+      punto(A, u.x, u.y, 'var(--caso1)'); punto(A, v.x, v.y, 'var(--caso2)');
+      document.getElementById('suma-lect').textContent = 'u − v = ' + par(d.x, d.y);
+    }
+  }
+  const puntos = () => modo === 'suma' ? [{ id: 'u', x: u.x, y: u.y }, { id: 'v', x: u.x + v.x, y: u.y + v.y }] : [{ id: 'u', x: u.x, y: u.y }, { id: 'v', x: v.x, y: v.y }];
+  arrastre(host, puntos, (id, x, y) => {
+    if (id === 'u') { u.x = x; u.y = y; } else if (modo === 'suma') { v.x = x - u.x; v.y = y - u.y; } else { v.x = x; v.y = y; }
+    pinta();
+  }, () => A);
+  $$('#dp-suma .btn[data-modo]').forEach(b => b.addEventListener('click', () => {
+    modo = b.dataset.modo;
+    $$('#dp-suma .btn[data-modo]').forEach(o => o.classList.toggle('on', o === b));
+    document.getElementById('suma-txt-s').style.display = modo === 'suma' ? '' : 'none';
+    document.getElementById('suma-txt-r').style.display = modo === 'resta' ? '' : 'none';
+    pinta();
+  }));
+  pinta();
+})();
+
+/* ═══ INVARIANCIA BAJO TRASLACIONES ════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('tras-fig');
+  if (!host) return;
+  const rx0 = document.getElementById('tras-x0'), ry0 = document.getElementById('tras-y0');
+  const r1 = { x: 1, y: 3 }, r2 = { x: 4, y: 2 };
+  function pinta() {
+    const x0 = +rx0.value, y0 = +ry0.value;
+    const A = plano(host, { x: [-4, 8], y: [-3, 5] });
+    /* ejes de S' */
+    polilinea(A, [[-4, y0], [8, y0]], 'stroke:var(--caso2);stroke-width:3');
+    polilinea(A, [[x0, -3], [x0, 5]], 'stroke:var(--caso2);stroke-width:3');
+    etq(A, 7.6, y0 + 0.25, '*x*′', 'var(--caso2)', { 'font-size': 30 });
+    etq(A, x0 + 0.15, 4.6, '*y*′', 'var(--caso2)', { 'font-size': 30 });
+    etq(A, 7.6, 0.25, '*x*', 'var(--tinta2)', { 'font-size': 30 });
+    etq(A, 0.15, 4.6, '*y*', 'var(--tinta2)', { 'font-size': 30 });
+    /* el triángulo se traslada con el origen de S' (como en la figura del libro) */
+    const a = { x: r1.x + x0, y: r1.y + y0 }, b = { x: r2.x + x0, y: r2.y + y0 };
+    vec(A, x0, y0, a.x, a.y, 'var(--caso1)'); vec(A, x0, y0, b.x, b.y, 'var(--tinta)');
+    vec(A, a.x, a.y, b.x, b.y, 'var(--res)', null, 7);
+    punto(A, x0, y0, 'var(--caso2)', 10);
+    etq(A, (x0 + a.x) / 2 - 0.25, (y0 + a.y) / 2, '!r!′_1', 'var(--caso1)', { 'text-anchor': 'end' });
+    etq(A, (x0 + b.x) / 2 + 0.2, (y0 + b.y) / 2 - 0.35, '!r!′_2', 'var(--tinta)');
+    etq(A, (a.x + b.x) / 2 + 0.2, (a.y + b.y) / 2 + 0.4, 'Δ!r!′', 'var(--res)');
+    etq(A, x0 - 0.2, y0 - 0.45, '(*x*_0, *y*_0)', 'var(--caso2)', { 'text-anchor': 'end', 'font-size': 26 });
+    document.getElementById('tras-lect').textContent = 'r₁ en S = ' + par(a.x, a.y, 1) + ' · Δr′ = ' + par(r2.x - r1.x, r2.y - r1.y, 0);
+    document.getElementById('tras-x0v').textContent = num(x0, 1);
+    document.getElementById('tras-y0v').textContent = num(y0, 1);
+  }
+  rx0.addEventListener('input', pinta); ry0.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ PRODUCTO ESCALAR ═════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('dot-fig');
+  if (!host) return;
+  const u = { x: 4, y: 0 }, v = { x: 2.5, y: 2.5 };
+  let A;
+  function pinta() {
+    A = plano(host);
+    const uu = Math.hypot(u.x, u.y), vv = Math.hypot(v.x, v.y);
+    const th = Math.acos(Math.max(-1, Math.min(1, (u.x * v.x + u.y * v.y) / (uu * vv || 1))));
+    const pr = (u.x * v.x + u.y * v.y) / uu;          /* proyección de v sobre u */
+    const ex = u.x / uu, ey = u.y / uu, qx = pr * ex, qy = pr * ey;
+    polilinea(A, [[v.x, v.y], [qx, qy]], 'stroke:var(--proy);stroke-width:3;stroke-dasharray:8 8');
+    polilinea(A, [[0 + 0.35 * ey, 0 - 0.35 * ex], [qx + 0.35 * ey, qy - 0.35 * ex]], 'stroke:var(--caso2);stroke-width:8');
+    etq(A, qx / 2 + 0.6 * ey, qy / 2 - 0.9, '|!v!| cos *θ*', 'var(--caso2)', { 'text-anchor': 'middle', 'font-size': 28 });
+    vec(A, 0, 0, u.x, u.y, 'var(--caso1)', null, 7); vec(A, 0, 0, v.x, v.y, 'var(--res)', null, 7);
+    etq(A, u.x + 0.2, u.y - 0.1, '!u!', 'var(--caso1)'); etq(A, v.x + 0.2, v.y + 0.2, '!v!', 'var(--res)');
+    punto(A, v.x, v.y, 'var(--res)');
+    const comp = u.x * v.x + u.y * v.y, geo = uu * vv * Math.cos(th);
+    document.getElementById('dot-comp').textContent = num(u.x, 1) + '·' + num(v.x, 1) + ' + ' + num(u.y, 1) + '·' + num(v.y, 1) + ' = ' + num(comp, 2);
+    document.getElementById('dot-geo').textContent = num(uu, 2) + '·' + num(vv, 2) + '·cos ' + num(grados(th), 1) + '° = ' + num(geo, 2);
+    document.getElementById('dot-lect').textContent = 'θ = ' + num(grados(th), 1) + '° · u·v = ' + num(comp, 2);
+  }
+  arrastre(host, () => [{ id: 0, x: v.x, y: v.y }], (id, x, y) => { if (x || y) { v.x = x; v.y = y; pinta(); } }, () => A);
+  document.getElementById('dot-ej').addEventListener('click', () => { u.x = 4; u.y = 0; v.x = 3; v.y = 3; pinta(); });
+  pinta();
+})();
+
+/* ═══ PRODUCTO VECTORIAL (perspectiva) ═════════════════════════════════ */
+(function () {
+  const host = document.getElementById('cruz-fig');
+  if (!host) return;
+  const rt = document.getElementById('cruz-th');
+  let orden = 'uv';
+  function pinta() {
+    const th = +rt.value * Math.PI / 180, U = 3.2, V = 2.6;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 800', class: 'fig' }, host);
+    /* plano horizontal visto en perspectiva: x → derecha, z (profundidad) → arriba-derecha acortada */
+    const O = [430, 560], e = 120, P = (a, b, h) => [O[0] + e * (a + 0.55 * b), O[1] - e * (0.35 * b) - e * (h || 0)];
+    const u = [U, 0], v = [V * Math.cos(th), V * Math.sin(th)];
+    const q = (p, h) => P(p[0], p[1], h).join(',');
+    const sum = [u[0] + v[0], u[1] + v[1]];
+    nodo('polygon', { points: [q([0, 0]), q(u), q(sum), q(v)].join(' '), style: 'fill:var(--res-50);stroke:var(--res-borde);stroke-width:3;stroke-dasharray:8 6' }, svg);
+    const pu = P(u[0], u[1]), pv = P(v[0], v[1]);
+    flecha(svg, O[0], O[1], pu[0], pu[1], 'var(--caso1)', 6);
+    flecha(svg, O[0], O[1], pv[0], pv[1], 'var(--caso2)', 6);
+    rotulo(svg, pu[0] + 12, pu[1] + 34, '!u!', { 'font-size': 36, style: 'fill:var(--caso1);font-family:' + FMATH });
+    rotulo(svg, pv[0] + 10, pv[1] - 12, '!v!', { 'font-size': 36, style: 'fill:var(--caso2);font-family:' + FMATH });
+    const area = U * V * Math.sin(th), h = (orden === 'uv' ? 1 : -1) * area * 0.45;
+    if (Math.abs(h) > 0.02) flecha(svg, O[0], O[1], O[0], O[1] - e * h, 'var(--res)', 8);
+    const et = orden === 'uv' ? '!u! × !v!' : '!v! × !u!';
+    rotulo(svg, O[0] + 18, O[1] - e * h + (h > 0 ? 10 : 40), et, { 'font-size': 36, style: 'fill:var(--res);font-family:' + FMATH });
+    /* arco del ángulo */
+    const arc = []; for (let i = 0; i <= 30; i++) { const a = th * i / 30; arc.push(P(0.7 * Math.cos(a), 0.7 * Math.sin(a)).join(',')); }
+    nodo('polyline', { points: arc.join(' '), style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
+    const pa = P(1.05 * Math.cos(th / 2), 1.05 * Math.sin(th / 2));
+    rotulo(svg, pa[0], pa[1] + 8, '*θ*', { 'font-size': 30, 'text-anchor': 'middle' });
+    rotulo(svg, 40, 760, h >= 0 ? 'Sentido: hacia arriba (fuera del plano)' : 'Sentido: hacia abajo (dentro del plano)', { 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    document.getElementById('cruz-lect').textContent = '|u×v| = ' + num(U, 1) + '·' + num(V, 1) + '·sen ' + rt.value + '° = ' + num(area, 2);
+    document.getElementById('cruz-thv').textContent = rt.value + '°';
+  }
+  rt.addEventListener('input', pinta);
+  $$('#dp-cruz .btn[data-orden]').forEach(b => b.addEventListener('click', () => {
+    orden = b.dataset.orden; $$('#dp-cruz .btn[data-orden]').forEach(o => o.classList.toggle('on', o === b)); pinta();
+  }));
+  pinta();
+})();
+
+/* ═══ FACTORES DE CONVERSIÓN ═══════════════════════════════════════════ */
+(function () {
+  const el = document.getElementById('conv-tex');
+  if (!el) return;
+  const rv = document.getElementById('conv-val'), lab = document.getElementById('conv-lab'), vv = document.getElementById('conv-vv');
+  const T = {
+    vel: { lab: 'Velocidad [km/h]', min: 0, max: 200, paso: 5, ini: 60, u: 'km/h',
+           f: v => ({ tex: tx(v, 0) + '\\,\\dfrac{\\cancel{\\mathrm{km}}}{\\cancel{\\mathrm{h}}}\\cdot\\dfrac{1000\\,\\mathrm{m}}{1\\,\\cancel{\\mathrm{km}}}\\cdot\\dfrac{1\\,\\cancel{\\mathrm{h}}}{3600\\,\\mathrm{s}} \\\\[6pt] = ' + tx(v * 1000, 0).replace(/(\d)(?=(\d{3})+$)/g, '$1\\,') + '\\,\\dfrac{\\mathrm{m}}{3600\\,\\mathrm{s}} \\approx ' + tx(v / 3.6, 1) + '\\,\\mathrm{m/s}', txt: num(v / 3.6, 1) + ' m/s' }) },
+    area: { lab: 'Área [m²]', min: 0.5, max: 10, paso: 0.5, ini: 2, u: 'm²',
+           f: v => ({ tex: tx(v, 1) + '\\,\\cancel{\\mathrm{m}^{2}}\\cdot\\left(\\dfrac{100\\,\\mathrm{cm}}{1\\,\\cancel{\\mathrm{m}}}\\right)^{2} \\\\[6pt] = ' + tx(v, 1) + '\\times 10^{4}\\,\\mathrm{cm}^{2} = ' + tx(v * 1e4, 0).replace(/(\d)(?=(\d{3})+$)/g, '$1\\,') + '\\,\\mathrm{cm}^{2}', txt: num(v * 1e4, 0) + ' cm²' }) },
+    vol: { lab: 'Volumen [L]', min: 1, max: 20, paso: 1, ini: 5, u: 'L',
+           f: v => ({ tex: tx(v, 0) + '\\,\\cancel{\\mathrm{L}}\\cdot\\dfrac{1000\\,\\cancel{\\mathrm{cm}^{3}}}{1\\,\\cancel{\\mathrm{L}}}\\cdot\\left(\\dfrac{1\\,\\mathrm{m}}{100\\,\\cancel{\\mathrm{cm}}}\\right)^{3} \\\\[6pt] = ' + cientTex(v * 1e-3, 2) + '\\,\\mathrm{m}^{3}', txt: cientTxt(v * 1e-3, 2) + ' m³' }) },
+  };
+  let tipo = 'vel';
+  function pinta() {
+    const t = T[tipo], v = +rv.value, r = t.f(v);
+    texVivo(el, '\\begin{gathered}' + r.tex + '\\end{gathered}');
+    vv.textContent = num(v, t.paso < 1 ? 1 : 0) + ' ' + t.u;
+    document.getElementById('conv-lect').textContent = '= ' + r.txt;
+  }
+  function cambia(nuevo) {
+    tipo = nuevo; const t = T[tipo];
+    rv.min = t.min; rv.max = t.max; rv.step = t.paso; rv.value = t.ini; lab.textContent = t.lab;
+    $$('#conv-tipos .btn').forEach(b => b.classList.toggle('on', b.dataset.c === tipo));
+    pinta();
+  }
+  $$('#conv-tipos .btn').forEach(b => b.addEventListener('click', () => cambia(b.dataset.c)));
+  rv.addEventListener('input', pinta);
+  document.addEventListener('diapositiva', () => { if (el.__tex && !el.querySelector('mjx-container')) { el.__tex = null; pinta(); } });
+  cambia('vel');
+})();
+
+/* ═══ CONVERSOR A UNIDADES NATURALES ═══════════════════════════════════ */
+(function () {
+  const el = document.getElementById('nat-tex');
+  if (!el) return;
+  const sel = document.getElementById('nat-mag'), inp = document.getElementById('nat-in'), uni = document.getElementById('nat-u');
+  const K = {
+    M: { si: 'kg', f: 5.609588603e26, nat: '\\mathrm{GeV}/c^{2}', natTxt: 'GeV/c²', fac: '5{,}609\\,588\\,603\\times 10^{26}\\,\\mathrm{GeV}/c^{2}' },
+    L: { si: 'm', f: 5.06773071e6, nat: '\\hbar c/\\mathrm{eV}', natTxt: 'ħc/eV', fac: '5{,}067\\,730\\,71\\times 10^{6}\\,\\hbar c/\\mathrm{eV}' },
+    T: { si: 's', f: 1.519267447e15, nat: '\\hbar/\\mathrm{eV}', natTxt: 'ħ/eV', fac: '1{,}519\\,267\\,447\\times 10^{15}\\,\\hbar/\\mathrm{eV}' },
+    E: { si: 'J', f: 1 / 1.602176634e-19, nat: '\\mathrm{eV}', natTxt: 'eV', fac: '\\dfrac{1\\,\\mathrm{eV}}{1{,}602\\,176\\,634\\times 10^{-19}}' },
+  };
+  const PRE = { mp: ['M', '1,672 621 924e-27', 'masa del protón'], me: ['M', '9,109 383 7e-31', 'masa del electrón'],
+                higgs: ['M', '2,228e-25', 'masa del bosón de Higgs'], bohr: ['L', '0,53e-10', 'radio de Bohr'],
+                alfa: ['E', '8,0e-13', 'partícula alfa'], seg: ['T', '1', 'un segundo'] };
+  let nombre = 'masa del protón';
+  const lee = s => parseFloat(String(s).replace(/\s/g, '').replace('−', '-').replace(',', '.').replace(/[×x]10\^?/, 'e'));
+  function pinta() {
+    const k = K[sel.value], v = lee(inp.value);
+    uni.textContent = k.si;
+    if (!isFinite(v)) { el.textContent = 'Escribe un número, p. ej. 1,67e-27'; el.__tex = null; return; }
+    let r = v * k.f, unidad = k.nat, unTxt = k.natTxt;
+    if (sel.value === 'E' || sel.value === 'M') {        /* prefijo cómodo: eV, keV, MeV, GeV */
+      const base = sel.value === 'M' ? r * 1e9 : r, pref = [['', 1], ['k', 1e3], ['M', 1e6], ['G', 1e9], ['T', 1e12]];
+      let p = pref[0]; pref.forEach(q => { if (Math.abs(base) >= q[1]) p = q; });
+      r = base / p[1];
+      unidad = sel.value === 'M' ? '\\mathrm{' + p[0] + 'eV}/c^{2}' : '\\mathrm{' + p[0] + 'eV}';
+      unTxt = sel.value === 'M' ? p[0] + 'eV/c²' : p[0] + 'eV';
+    }
+    texVivo(el, '\\begin{gathered}' + cientTex(v, 4) + '\\,\\cancel{\\mathrm{' + k.si + '}}\\cdot\\dfrac{' + k.fac + '}{1\\,\\cancel{\\mathrm{' + k.si + '}}} \\\\[10pt] \\approx ' + cientTex(r, 4) + '\\,' + unidad + '\\end{gathered}');
+    document.getElementById('nat-lect').textContent = (nombre ? nombre + ': ' : '') + cientTxt(r, 4) + ' ' + unTxt;
+  }
+  $$('#nat-pre .btn').forEach(b => b.addEventListener('click', () => {
+    const p = PRE[b.dataset.p]; sel.value = p[0]; inp.value = p[1]; nombre = p[2];
+    $$('#nat-pre .btn').forEach(o => o.classList.toggle('on', o === b)); pinta();
+  }));
+  sel.addEventListener('change', () => { nombre = ''; pinta(); });
+  inp.addEventListener('change', () => { nombre = ''; pinta(); });
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); nombre = ''; pinta(); } });
+  pinta();
+})();
+
+/* ═══ ROTACIÓN DEL SISTEMA DE REFERENCIA ═══════════════════════════════ */
+(function () {
+  const host = document.getElementById('rot-fig');
+  if (!host) return;
+  const rt = document.getElementById('rot-th'), P = { x: 3, y: 2 };
+  let A;
+  function pinta() {
+    const th = +rt.value * Math.PI / 180, c = Math.cos(th), s = Math.sin(th);
+    const xp = P.x * c + P.y * s, yp = -P.x * s + P.y * c;
+    A = plano(host);
+    /* ejes rotados x', y' */
+    const L = 5.2;
+    polilinea(A, [[-L * c, -L * s], [L * c, L * s]], 'stroke:var(--caso2);stroke-width:3.5');
+    polilinea(A, [[L * s, -L * c], [-L * s, L * c]], 'stroke:var(--caso2);stroke-width:3.5');
+    etq(A, 4.5 * c + 0.1, 4.5 * s + 0.3, '*x*′', 'var(--caso2)', { 'font-size': 30 });
+    etq(A, -3.6 * s - 0.1, 3.6 * c, '*y*′', 'var(--caso2)', { 'font-size': 30, 'text-anchor': 'end' });
+    /* proyecciones sobre los ejes rotados */
+    polilinea(A, [[P.x, P.y], [xp * c, xp * s]], 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:6 6');
+    polilinea(A, [[P.x, P.y], [-yp * s, yp * c]], 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:6 6');
+    polilinea(A, [[P.x, P.y], [P.x, 0]], 'stroke:var(--proy);stroke-width:2.5;stroke-dasharray:6 6');
+    polilinea(A, [[P.x, P.y], [0, P.y]], 'stroke:var(--proy);stroke-width:2.5;stroke-dasharray:6 6');
+    vec(A, 0, 0, P.x, P.y, 'var(--res)', null, 7);
+    punto(A, P.x, P.y, 'var(--res)');
+    etq(A, P.x + 0.2, P.y + 0.3, '!r!', 'var(--res)');
+    document.getElementById('rot-xy').textContent = par(P.x, P.y, 2);
+    document.getElementById('rot-xpyp').textContent = par(xp, yp, 2);
+    document.getElementById('rot-r2').textContent = num(P.x * P.x + P.y * P.y, 3);
+    document.getElementById('rot-rp2').textContent = num(xp * xp + yp * yp, 3);
+    document.getElementById('rot-thv').textContent = rt.value + '°';
+    document.getElementById('rot-lect').textContent = 'r² = ' + num(P.x * P.x + P.y * P.y, 2) + ' en ambos sistemas';
+  }
+  arrastre(host, () => [{ id: 0, x: P.x, y: P.y }], (id, x, y) => { P.x = x; P.y = y; pinta(); }, () => A);
+  rt.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ RETO: ¿DIMENSIONALMENTE CORRECTA? ════════════════════════════════ */
+(function () {
+  const lista = document.getElementById('dim-lista');
+  if (!lista) return;
+  const items = $$('.dim', lista), fb = document.getElementById('dim-fb'), marc = document.getElementById('dim-score');
+  items.forEach(it => {
+    const bx = document.createElement('div'); bx.className = 'dim-btns';
+    bx.innerHTML = '<button type="button" class="btn" data-r="1">Correcta</button><button type="button" class="btn" data-r="0">Incorrecta</button>';
+    it.appendChild(bx);
+    const ex = document.createElement('div'); ex.className = 'dim-exp'; it.appendChild(ex);
+    bx.addEventListener('click', ev => {
+      const b = ev.target.closest('button'); if (!b) return;
+      it.dataset.resp = b.dataset.r;
+      $$('button', bx).forEach(o => o.classList.toggle('sel', o === b));
+      it.classList.remove('ok', 'mal');
+    });
+  });
+  document.getElementById('dim-ok').addEventListener('click', () => {
+    let n = 0, faltan = 0;
+    items.forEach(it => {
+      if (it.dataset.resp === undefined) { faltan++; return; }
+      const ok = it.dataset.resp === it.dataset.ok; if (ok) n++;
+      it.classList.toggle('ok', ok); it.classList.toggle('mal', !ok);
+      $('.dim-exp', it).textContent = (ok ? '✓ ' : '✗ ') + (it.dataset.ok === '1' ? 'Correcta. ' : 'Incorrecta. ') + it.dataset.exp;
+    });
+    marc.textContent = n;
+    fb.textContent = faltan ? 'Te faltan ' + faltan + ' por clasificar.' : (n === items.length ? '✓ ¡Todas bien! Dominas la homogeneidad dimensional.' : '✗ ' + n + ' de ' + items.length + '. Lee la explicación de cada una.');
+    fb.style.color = !faltan && n === items.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('dim-borrar').addEventListener('click', () => {
+    items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); });
+    marc.textContent = '0'; fb.textContent = '';
+  });
+})();
+
+</script>
+</body></html>

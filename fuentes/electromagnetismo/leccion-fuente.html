@@ -1,0 +1,1158 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Electromagnetismo · Fundamentación en Física</title>
+<style>
+:root{
+  --t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px;
+}
+/* ── Lección: Electromagnetismo (lienzo 2280 × 1080, unidades en px) ── */
+section.diapositiva{position:relative}
+section.diapositiva p{margin:0 0 14px}
+section.diapositiva .ceja{font:600 var(--t-rotulo)/1 var(--font-body);text-transform:uppercase;margin:0 0 6px}
+section.diapositiva .ceja .score{float:right;color:var(--tinta2);letter-spacing:.04em}
+section.diapositiva strong{font-weight:700}
+section.diapositiva .sub{color:var(--tinta2);font-size:var(--t-peq)}
+section.diapositiva .mono{font-variant-numeric:tabular-nums}
+
+/* rejillas */
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-60{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-40{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:44px;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pila > * + *{margin-top:18px}
+
+/* cajas */
+.caja{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:18px 26px}
+.caja.c1{border-left-color:var(--caso1)}
+.caja.c2{border-left-color:var(--caso2)}
+.caja.neutra{border-left-color:var(--borde)}
+  .caja h3{font-size:36px;margin:0 0 8px}
+.kf{border:2px solid var(--res);background:var(--res-50);padding:14px 26px;text-align:center;font-size:40px}
+.ec{text-align:center;margin:10px 0}
+.nota{font-size:var(--t-peq);color:var(--tinta2)}
+ol.leyes{margin:0;padding-left:1.3em}
+ol.leyes li{margin-bottom:16px}
+ul.lista{margin:0;padding-left:1.1em}
+ul.lista li{margin-bottom:10px}
+
+/* fragmentos (↓ ↑) */
+.frag{opacity:.0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+.frag.frag-on{opacity:1;transform:none}
+
+/* figuras */
+.svgbox{background:var(--panel);padding:14px 18px 16px}
+.svghd{font:700 var(--t-rotulo)/1.2 var(--font-body);color:var(--tinta2);margin:0 0 10px;display:flex;justify-content:space-between;gap:20px}
+.svghd #os-sub{text-transform:none;letter-spacing:0}
+.svghd .val{color:var(--res);text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+.fig{display:block;width:100%;height:auto}
+.fig text{font-family:'STIX Two Text',Georgia,serif}
+canvas.lienzo{display:block;width:100%;height:auto;cursor:crosshair}
+
+/* controles */
+.ctrl{display:grid;grid-template-columns:270px 1fr 170px;align-items:center;gap:18px;margin:10px 0;font-size:var(--t-peq)}
+.ctrl .v{font:600 var(--t-peq)/1 var(--font-body);text-align:right;font-variant-numeric:tabular-nums;color:var(--res)}
+.ctrl input[type=range]{width:100%;height:30px;cursor:pointer}
+.fila-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;background:var(--panel);color:var(--tinta);border:2px solid var(--linea);cursor:pointer}
+.btn:hover{background:var(--primario-tinte)}
+.btn.on{border-color:var(--res);color:var(--res);background:var(--res-50)}
+.btn.prim{background:var(--res);color:var(--papel);border-color:var(--res)}
+.chk{display:inline-flex;align-items:center;gap:10px;font:600 var(--t-peq)/1 var(--font-body);cursor:pointer;margin-right:26px}
+.chk input{width:22px;height:22px;accent-color:var(--color-accent)}
+.chk.x{color:var(--res)} .chk.p{color:var(--caso1)} .chk.a{color:var(--caso2)} .chk.n{color:var(--tinta2)}
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.lectura div{background:var(--panel);border:2px solid var(--linea);padding:12px 16px;font-size:26px;color:var(--tinta2)}
+.lectura b{display:block;font:700 34px/1.25 var(--font-body);color:var(--tinta);font-variant-numeric:tabular-nums}
+
+/* tabla */
+table.tabla{border-collapse:collapse;width:100%;font-size:30px}
+table.tabla th,table.tabla td{border-bottom:2px solid var(--linea);padding:6px 14px;text-align:center}
+table.tabla th{font:700 25px/1.2 var(--font-body);color:var(--tinta2);border-bottom-color:var(--tinta)}
+table.tabla td.izq{text-align:left}
+table.tabla tr.frag td{background:var(--panel)}
+
+/* chips con ventana emergente */
+.prop{border-bottom:3px dotted var(--res);cursor:help;color:var(--tinta);font-weight:600}
+.prop:hover{background:var(--res-50)}
+.pop-src{display:none}
+.popover{position:absolute;z-index:40;max-width:860px;padding:24px 30px;font-size:31px;line-height:1.45}
+.popover h4{margin:0 0 8px;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.popover .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
+
+/* práctica */
+.pr-item{background:var(--panel);padding:16px 22px;margin-bottom:16px}
+.pr-q{font-weight:600;margin-bottom:10px}
+.pr-opcs{display:flex;flex-wrap:wrap;gap:12px}
+.pr-opc{font:500 var(--t-peq)/1.2 var(--font-body);padding:10px 18px;background:var(--papel);border:2px solid var(--linea);cursor:pointer;color:var(--tinta)}
+.pr-opc.ok{border-color:var(--ok);background:var(--res-50)}
+.pr-opc.mal{border-color:var(--mal);background:var(--mal-50)}
+.pr-fb{margin-top:10px;font-size:var(--t-peq);min-height:1.2em}
+.pr-fb.ok{color:var(--res)} .pr-fb.mal{color:var(--mal)}
+.pr-in{font-size:30px;padding:8px 12px;width:200px;border:2px solid var(--linea);background:var(--papel)}
+.pr-btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;border:2px solid var(--linea);background:var(--papel);cursor:pointer;color:var(--tinta)}
+.pr-pista{display:none;margin-top:8px;font-size:var(--t-peq);color:var(--tinta2)}
+.pr-pista.on{display:block}
+
+/* reto */
+.cz-grid{display:grid;grid-template-columns:120px repeat(3,1fr);gap:16px 22px;align-items:center;font-size:34px}
+.cz-grid .h{font:700 28px/1.2 var(--font-body);color:var(--tinta2)}
+.cz-grid input{font:500 34px/1 'STIX Two Text',Georgia,serif;padding:8px 12px;border:2px solid var(--linea);background:var(--panel);width:100%;box-sizing:border-box}
+.cz-grid input.ok{border-color:var(--res);background:var(--res-50)}
+.cz-grid input.mal{border-color:var(--mal);background:var(--mal-50)}
+.cz-btn{font:600 var(--t-peq)/1 var(--font-body);padding:12px 22px;border:2px solid var(--linea);background:var(--panel);cursor:pointer;color:var(--tinta)}
+.cz-fb{margin-top:16px;font-size:var(--t-peq);min-height:1.3em}
+.cz-sol{display:none;margin-top:14px;background:var(--panel);padding:14px 20px;border:2px solid var(--linea)}
+.cz-sol.on{display:block}
+
+/* glosario */
+dl.glosa{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0}
+dl.glosa div{border-top:2px solid var(--linea);padding-top:10px}
+dl.glosa dt{font:800 34px/1.2 var(--font-heading);color:var(--res);margin-bottom:4px}
+dl.glosa dd{margin:0;font-size:29px}
+
+/* portada */
+.portada .pt-fig{width:720px}
+.portada .sub{font-size:36px;max-width:1250px}
+.ayuda{position:absolute;bottom:84px;font-size:22px;color:var(--tinta2)}
+.ayuda kbd{font:600 20px/1 var(--font-body);border:2px solid var(--linea);padding:3px 8px;margin:0 2px;background:var(--panel)}
+
+/* diagrama de flujo */
+.flujo .blq{transition:all .3s}
+
+/* ── Propio del capítulo 1 ── */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;align-items:start}
+.g4 .caja p{font-size:30px}
+.arrastre svg{cursor:grab;touch-action:none}
+.arrastre svg:active{cursor:grabbing}
+ol.ej{margin:0 0 0 30px;padding-left:1.6em;columns:2;column-gap:60px;font-size:30px}
+ol.ej li{break-inside:avoid;margin-bottom:18px;padding-left:6px}
+ol.ej .resp{display:block;color:var(--res);font-weight:600}
+ol.ej .resp::before{content:'→ ';color:var(--tinta2)}
+.dim-lista{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+.dim{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--linea);padding:14px 20px;font-size:34px}
+.dim .dim-btns{display:flex;gap:10px}
+.dim .dim-exp{grid-column:1 / -1;font-size:26px;color:var(--tinta2);display:none}
+.dim.ok{border-left-color:var(--res)} .dim.mal{border-left-color:var(--mal)}
+.dim.ok .dim-exp,.dim.mal .dim-exp{display:block}
+.btn.sel{border-color:var(--tinta);background:var(--primario-tinte)}
+select.pr-in{font-family:var(--font-body)}
+
+.dim .dim-ec{font-size:30px;display:flex;align-items:center;gap:14px}
+.sw{display:inline-block;width:70px;height:40px;border:2px solid var(--linea)}
+.octeto{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.est{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:10px 18px;font-size:28px}
+.est:nth-child(-n+2){border-left-color:var(--caso2)}
+.est b{display:block;font:800 30px/1.2 var(--font-heading);margin-bottom:4px}
+
+</style></head>
+<body>
+<div id="escenario">
+<span class="marca">Electromagnetismo · Cap. 4</span>
+<p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>
+<!-- ═════════════ §1 · ELECTRICIDAD ═════════════ -->
+<section class="diapositiva portada" data-seccion="Electricidad" data-label="Electromagnetismo">
+  <div>
+    <p class="ceja">Fundamentación en Física · Capítulo 4</p>
+    <h1>Electromagnetismo</h1>
+    <div class="regla"></div>
+    <p class="sub">De la ley de Coulomb a las ondas de Maxwell, y de ahí al átomo que no debería existir: el colapso clásico que obligó a inventar el modelo de Bohr.</p>
+  </div>
+  <figure class="pt-fig svgbox" style="margin:0">
+    <div class="svghd"><span>Campo de un dipolo</span><span class="val" id="hero-lect">cargas de prueba siguiendo E</span></div>
+    <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
+  </figure>
+  <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+</section>
+
+<section class="diapositiva" data-seccion="Electricidad" id="dp-coul" data-label="Ley de Coulomb">
+  <p class="ceja">§ 4.1 · Electricidad</p>
+  <h2 class="titulo">Ley de Coulomb: una fuerza central entre cargas</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra las cargas; las flechas grises son \(\vect{E}\)</span><span class="val" id="co-lect"></span></div>
+      <div id="co-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      \[ \vect{F} = k\,\dfrac{q_1 q_2}{r^{3}}\,\vect{r}, \qquad \vect{E} = k\,\dfrac{q}{r^{3}}\,\vect{r}, \qquad k = \dfrac{1}{4\pi\varepsilon_0}. \]
+      <label class="ctrl"><span>Carga \(q_1\) [\(\mu\mathrm{C}\)]</span><input type="range" id="co-q1" min="-5" max="5" step="1" value="3"><span class="v" id="co-q1v"></span></label>
+      <label class="ctrl"><span>Carga \(q_2\) [\(\mu\mathrm{C}\)]</span><input type="range" id="co-q2" min="-5" max="5" step="1" value="-2"><span class="v" id="co-q2v"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Distancia \(r\)<b id="co-r"></b></div><div>\(\abs{\vect{F}}\) sobre cada carga<b id="co-F"></b></div></div>
+      <p class="nota">\(k = \qty{8{,}987\,551\,786\times 10^{9}}{N\,m^2/C^2}\). La cuadrícula está en centímetros. Las fuerzas sobre \(q_1\) y \(q_2\) son iguales y opuestas: tercera ley de Newton.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Electricidad" id="dp-pot" data-label="Energía potencial electrostática">
+  <p class="ceja">§ 4.1 · Energía potencial</p>
+  <h2 class="titulo">Energía potencial, potencial eléctrico y electronvoltio</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(U_e(r)\) para \(q_1 q_2 > 0\) y \(q_1 q_2 \lt 0\)</span><span class="val" id="up-lect"></span></div>
+      <div id="up-fig"></div>
+    </figure>
+    <div class="pila">
+      <div class="kf">\[ U_e = k\,\dfrac{q_1 q_2}{r} \]\[ V = k\,\dfrac{q_1}{r}, \qquad U_e = q_2 V \]</div>
+      <label class="ctrl"><span>Separación \(r\)</span><input type="range" id="up-r" min="0.2" max="4" step="0.05" value="1"><span class="v" id="up-rv"></span></label>
+      <div class="caja frag"><p style="margin:0">\(U_e > 0\): repulsión, hay que hacer trabajo para juntarlas. \(U_e \lt 0\): atracción, sistema <em>ligado</em> en un pozo de potencial. Los signos de las cargas sí cuentan.</p></div>
+      <div class="caja c2 frag"><p style="margin:0">Un electrón que atraviesa \(\qty{1}{V}\): \(U_e = eV = \qty{1{,}602\,176\,634\times 10^{-19}}{J} \equiv \qty{1}{eV}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Electricidad" data-label="La electricidad en la materia">
+  <p class="ceja">§ 4.1 · Aplicaciones</p>
+  <h2 class="titulo">La ley de Coulomb por todas partes</h2>
+  <div class="g3">
+    <div class="caja frag"><h3>Globos frotados</h3><p style="margin:0">El paño de algodón pierde electrones (queda \(+\)); el globo de látex los gana (queda \(-\)). Dos globos frotados se repelen.</p></div>
+    <div class="caja c1 frag"><h3>Núcleos pesados</h3><p style="margin:0">Dos protones a \(\qty{2\times 10^{-15}}{m}\) tienen \(U_e \approx \qty{0{,}72}{MeV}\). En núcleos grandes es la repulsión eléctrica la que impulsa la fisión y da energía a los fragmentos.</p></div>
+    <div class="caja c2 frag"><h3>Van der Waals</h3><p style="margin:0">Dipolos instantáneos inducen dipolos vecinos: \(\abs{\vect{F}} \propto 1/r^{7}\). Condensan los gases nobles y sostienen al gecko en una pared de vidrio.</p></div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Electricidad" id="dp-pot2" data-label="Corriente y potencia">
+  <p class="ceja">§ 4.2 · Corriente eléctrica</p>
+  <h2 class="titulo">Corriente, voltaje y la factura de la luz</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <div class="frag">\[ I = \dfrac{q}{t} = \dfrac{n_e\,q_e}{t}, \qquad W = Vq = V I t \;\Longrightarrow\; P = \dfrac{W}{t} = V I. \]</div>
+      <div class="caja frag"><p style="margin:0"><strong>Ejemplo.</strong> Por un cable con \(\qty{0{,}5}{A}\) pasan \(0{,}5/(\qty{1{,}6\times 10^{-19}}{C}) \approx 3{,}1\times 10^{18}\) electrones cada segundo.</p></div>
+      <div class="caja c1 frag"><p style="margin:0"><strong>Nevera:</strong> \(\qty{34{,}7}{kWh}\) al mes \(\div\, \qty{720}{h} \approx \qty{48}{W}\); a \(\qty{110}{V}\), \(I \approx \qty{0{,}44}{A}\).</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Potencia media a partir del consumo mensual</span><span class="val" id="fa-lect"></span></div>
+      <label class="ctrl"><span>Consumo del mes</span><input type="range" id="fa-e" min="10" max="600" step="1" value="191"><span class="v" id="fa-ev"></span></label>
+      <div id="fa-tex" class="ec" style="font-size:40px;min-height:300px"></div>
+      <p class="nota">Mes de 30 días \(= \qty{720}{h}\); red de \(\qty{110}{V}\).</p>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════ §2 · MAGNETISMO ═════════════ -->
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-amp" data-label="Ley de Ampère: alambre recto">
+  <p class="ceja">§ 4.3 · Ley de Ampère</p>
+  <h2 class="titulo">Las corrientes crean campos magnéticos</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Alambre visto de frente (corriente saliendo)</span><span class="val" id="am-lect"></span></div>
+      <div id="am-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>En un lazo cerrado de longitud \(L\) con \(\vect{B}\) constante y paralelo a él:</p>
+      <div class="kf">\[ B\,L = \mu_0\,I_{\text{enc}} \;\xrightarrow{\;L = 2\pi r\;}\; B = \dfrac{\mu_0 I}{2\pi r} \]</div>
+      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="am-i" min="1" max="1000" step="1" value="500"><span class="v" id="am-iv"></span></label>
+      <label class="ctrl"><span>Distancia \(r\)</span><input type="range" id="am-r" min="0.5" max="20" step="0.5" value="10"><span class="v" id="am-rv"></span></label>
+      <p class="nota">\(\mu_0 = \qty{1{,}257\times 10^{-6}}{T\cdot m/A}\). Campo terrestre de referencia: \(\approx \qty{50}{\mu T}\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Magnetismo" id="dp-sol" data-label="Campo en un solenoide">
+  <p class="ceja">§ 4.3 · Solenoide</p>
+  <h2 class="titulo">Un lazo rectangular explica el campo del solenoide</h2>
+  <div class="g2">
+    <div class="pila">
+      <p>Ampère con producto escalar: \(\sum B\,L\cos\theta = \mu_0 I_{\text{enc}}\).</p>
+      <div class="caja neutra frag"><p style="margin:0"><strong>Lado 1</strong> (dentro, paralelo a \(\vect{B}\)): \(B L\cos 0^\circ = BL\).<br><strong>Lados 2 y 4</strong> (perpendiculares): \(\cos 90^\circ = 0\).<br><strong>Lado 3</strong> (fuera, \(B \approx 0\)): nada.</p></div>
+      <div class="frag">\[ B L = \mu_0\,(N I) \;\Longrightarrow\; B = \dfrac{\mu_0 N I}{L}. \]</div>
+      <p class="nota frag">Depende de las vueltas por unidad de longitud: 100 vueltas en \(\qty{1}{m}\) y 50 en \(\qty{0{,}5}{m}\) dan el mismo \(B\) con la misma corriente.</p>
+    </div>
+    <div class="pila">
+      <figure class="svgbox" style="margin:0"><div class="svghd"><span>Diseña tu electroimán</span><span class="val" id="so-lect"></span></div>
+        <div id="so-fig"></div></figure>
+      <label class="ctrl"><span>Vueltas \(N\)</span><input type="range" id="so-n" min="10" max="2000" step="10" value="1600"><span class="v" id="so-nv"></span></label>
+      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="so-i" min="0.5" max="10" step="0.5" value="5"><span class="v" id="so-iv"></span></label>
+      <label class="ctrl"><span>Longitud \(L\)</span><input type="range" id="so-l" min="0.1" max="1" step="0.05" value="0.5"><span class="v" id="so-lv"></span></label>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-fm" data-label="Fuerza magnética y alambres paralelos">
+  <p class="ceja">§ 4.3 · Fuerza magnética</p>
+  <h2 class="titulo">Corrientes paralelas se atraen; antiparalelas se repelen</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Dos alambres separados una distancia \(r\)</span><span class="val" id="fm-lect"></span></div>
+      <div id="fm-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Sobre una carga en movimiento, \(\vect{F} = q\,\vect{v}\times\vect{B}\), \(F = qvB\sin\theta\). Para un tramo de alambre, \(F = I L B\); con el campo del otro alambre:</p>
+      <div class="kf">\[ \dfrac{F}{L} = \dfrac{\mu_0 I_1 I_2}{2\pi r} \]</div>
+      <label class="ctrl"><span>\(I_1\) [A]</span><input type="range" id="fm-i1" min="-20" max="20" step="1" value="10"><span class="v" id="fm-i1v"></span></label>
+      <label class="ctrl"><span>\(I_2\) [A]</span><input type="range" id="fm-i2" min="-20" max="20" step="1" value="10"><span class="v" id="fm-i2v"></span></label>
+      <label class="ctrl"><span>Separación \(r\)</span><input type="range" id="fm-r" min="0.01" max="0.2" step="0.01" value="0.05"><span class="v" id="fm-rv"></span></label>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §3 · INDUCCIÓN Y ONDAS ═════════════ -->
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-far" data-label="Ley de Faraday">
+  <p class="ceja">§ 4.4 · Ley de inducción de Faraday</p>
+  <h2 class="titulo">Un campo magnético variable induce corriente</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra el imán dentro y fuera del solenoide</span><span class="val" id="fa2-lect"></span></div>
+      <div id="far-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      <p>El flujo magnético cambia mientras el imán se mueve: aparece una corriente cuyo campo <strong>se opone</strong> al cambio. Quieto, no hay corriente. El mismo efecto ocurre si se mueve la bobina.</p>
+      <div class="caja c1 frag"><h3>Frenado regenerativo</h3><p style="margin:0">Al soltar el acelerador, las ruedas hacen girar el motor: la inducción recarga la batería y la oposición al giro frena el carro.</p></div>
+      <div class="caja c2 frag"><h3>Estufa de inducción</h3><p style="margin:0">La corriente alterna de una bobina crea un campo variable que induce corrientes en la olla metálica; su resistencia las convierte en calor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Inducción y ondas" data-label="Corriente de desplazamiento">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell</p>
+  <h2 class="titulo">El aporte de Maxwell: la corriente de desplazamiento</h2>
+  <div class="g2">
+    <div class="pila">
+      <p><strong>El problema.</strong> Al cargar un condensador hay corriente \(I\) en el cable y, por Ampère, campo magnético a su alrededor. Entre las placas no cruza ninguna carga… pero se mide el mismo campo magnético.</p>
+      <div class="frag">\[ E = \dfrac{Q}{\varepsilon_0 A} \;\Longrightarrow\; Q = \varepsilon_0 A E \]</div>
+      <div class="frag">\[ I = \dfrac{Q}{t} = \varepsilon_0 A\,\dfrac{E}{t} = \varepsilon_0\,\dfrac{\Phi_E}{t}, \qquad \Phi_E = A E \]</div>
+    </div>
+    <div class="pila">
+      <div class="kf frag">\[ I_d = \varepsilon_0\,\dfrac{\Delta\Phi_E}{\Delta t} \]<p class="nota" style="margin:0">Un flujo eléctrico que cambia actúa como una corriente.</p></div>
+      <div class="caja frag"><p style="margin:0">El magnetismo tiene dos fuentes: cargas en movimiento y campos eléctricos variables. Un \(\vect{E}\) cambiante crea \(\vect{B}\) y un \(\vect{B}\) cambiante crea \(\vect{E}\): la perturbación se sostiene a sí misma y viaja a la velocidad de la luz como <strong>onda electromagnética</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-onda" data-label="Ondas y antenas">
+  <p class="ceja">§ 4.6 · Ondas electromagnéticas</p>
+  <h2 class="titulo">La antena: cargas aceleradas que emiten ondas</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Espectro electromagnético</span><span class="val" id="on-lect"></span></div>
+      <div id="on-fig"></div>
+    </figure>
+    <div class="pila">
+      <div class="kf">\[ c = \lambda f \]</div>
+      <label class="ctrl"><span>Frecuencia \(f\)</span><input type="range" id="on-f" min="4" max="20" step="0.02" value="8"><span class="v" id="on-fv"></span></label>
+      <div class="fila-btn" id="on-pre"><button type="button" class="btn" data-lf="8">FM, \(\qty{100}{MHz}\)</button><button type="button" class="btn" data-lf="9.380">Wi-Fi, \(\qty{2{,}4}{GHz}\)</button><button type="button" class="btn" data-lf="14.66">Luz roja</button><button type="button" class="btn" data-lf="18.5">Rayos X</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Longitud de onda \(\lambda\)<b id="on-l"></b></div><div>Antena \(\lambda/4\)<b id="on-a"></b></div></div>
+      <p class="nota">Por eso las antenas de FM miden metros y las de un teléfono, centímetros.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §4 · DEL ÁTOMO CLÁSICO A BOHR ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" id="dp-col" data-label="El colapso del átomo clásico">
+  <p class="ceja">§ 4.7 · El límite de la física newtoniana</p>
+  <h2 class="titulo">El átomo clásico debería colapsar en \(\sim 10^{-11}\qty{}{s}\)</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag"><strong>Larmor.</strong> Por análisis dimensional con \(k e^{2}\), \(a\) y \(c\), la potencia radiada es
+        \[ P = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}. \]</p>
+      <p class="frag"><strong>Energía disponible.</strong> Con \(m v^{2}/r = k e^{2}/r^{2}\):
+        \[ E = \tfrac12 m v^{2} - \dfrac{k e^{2}}{r} = -\dfrac{k e^{2}}{2r}, \qquad a = \dfrac{k e^{2}}{m r^{2}}. \]</p>
+      <div class="kf frag">\[ \Delta t \approx \dfrac{\abs{E}}{P} = \dfrac{3 c^{3} m^{2} r^{3}}{4 k^{2} e^{4}} \approx \qty{4{,}7\times 10^{-11}}{s} \]</div>
+    </div>
+    <figure class="svgbox" style="margin:0"><div class="svghd"><span>La espiral de la muerte</span><span class="val" id="col-lect"></span></div>
+      <canvas class="lienzo" id="col-cv" width="1000" height="600"></canvas>
+      <label class="ctrl"><span>Radio inicial \(r_0/a_0\)</span><input type="range" id="col-r" min="0.5" max="3" step="0.1" value="1"><span class="v" id="col-rv"></span></label>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Del átomo clásico a Bohr" id="dp-sin" data-label="Radiación de sincrotrón">
+  <p class="ceja">§ 4.7 · Radiación de sincrotrón</p>
+  <h2 class="titulo">El muro de los aceleradores circulares: \(P \propto \gamma^{4}\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Energía perdida por vuelta</span><span class="val" id="si-lect"></span></div>
+      <div id="si-fig"></div>
+    </figure>
+    <div class="pila">
+      \[ P = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}\,\gamma^{4}, \qquad a = \dfrac{c^{2}}{R} \]\[ \Delta E \approx 8{,}85\times 10^{-5}\,\dfrac{E^{4}}{R} \]
+      <p class="nota">\(\Delta E\) y \(E\) en \(\mathrm{GeV}\), \(R\) en metros.</p>
+      <label class="ctrl"><span>Energía \(E\) [GeV]</span><input type="range" id="si-e" min="1" max="120" step="0.5" value="50"><span class="v" id="si-ev"></span></label>
+      <label class="ctrl"><span>Radio \(R\) [m]</span><input type="range" id="si-r" min="100" max="5000" step="10" value="1000"><span class="v" id="si-rv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" id="si-lep">LEP (\(\qty{27}{km}\), \(\qty{104{,}5}{GeV}\))</button></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" data-label="El enigma de los espectros">
+  <p class="ceja">§ 4.8 · Espectros atómicos</p>
+  <h2 class="titulo">El átomo no «grita»: canta en colores precisos</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag"><strong>Predicción clásica.</strong> Un átomo es una antena: al caer en espiral, su frecuencia orbital aumenta y debería emitir un <em>espectro continuo</em>, del rojo al ultravioleta.</p>
+      <div class="frag" id="esp-fig"></div>
+      <p class="frag"><strong>Realidad.</strong> El hidrógeno solo emite cuatro líneas visibles (serie de Balmer): \(\qty{656}{nm}\), \(\qty{486}{nm}\), \(\qty{434}{nm}\) y \(\qty{410}{nm}\). Es la huella digital del átomo.</p>
+    </div>
+    <div class="pila">
+      <div class="caja neutra frag"><h3>1859 · Kirchhoff y Bunsen</h3><p style="margin:0">Cada elemento tiene su patrón de líneas; en 1868 unas líneas solares desconocidas revelaron el <strong>helio</strong>.</p></div>
+      <div class="caja c1 frag"><h3>1885 · Balmer</h3><p style="margin:0">Encuentra por ensayo y error \(E_n = -\qty{13{,}6}{eV}/n^{2}\), sin saber por qué funciona.</p></div>
+      <div class="caja c2 frag"><h3>1911 · Rutherford → 1913 · Bohr</h3><p style="margin:0">Con núcleo y electrones orbitando, Newton y Maxwell predicen el colapso. Bohr impone la cuantización y explica el factor \(1/n^{2}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" data-label="Derivación del modelo de Bohr">
+  <p class="ceja">§ 4.9 · Modelo de Bohr</p>
+  <h2 class="titulo">Dos ecuaciones, dos incógnitas: \(v\) y \(r\)</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="caja neutra frag"><h3>1 · Física clásica</h3>\[ \dfrac{m v^{2}}{r} = k\,\dfrac{e^{2}}{r^{2}} \;\Longrightarrow\; m v^{2} = \dfrac{k e^{2}}{r} \]</div>
+      <div class="caja c1 frag"><h3>2 · Nueva física: cuantización</h3>\[ L = m v r = n\hbar, \qquad n = 1, 2, 3, \dots \]</div>
+      <div class="frag">\[ m\left(\dfrac{n\hbar}{m r}\right)^{2} = \dfrac{k e^{2}}{r} \;\Longrightarrow\; r_n = \dfrac{n^{2}\hbar^{2}}{m k e^{2}}, \quad a_0 \approx \qty{5{,}29\times 10^{-11}}{m} \]</div>
+    </div>
+    <div class="pila">
+      <div class="frag">\[ E_n = -\dfrac12\,\dfrac{k e^{2}}{r_n} = -\left(\dfrac{m k^{2} e^{4}}{2\hbar^{2}}\right)\dfrac{1}{n^{2}} \]</div>
+      <div class="kf frag">\[ E_n = -\dfrac{\qty{13{,}6}{eV}}{n^{2}} \]</div>
+      <p class="frag">Los electrones solo existen en esos niveles; la luz se emite al saltar de un nivel a otro inferior, con \(E_{\text{fotón}} = \abs{\Delta E}\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Del átomo clásico a Bohr" id="dp-bohr" data-label="Laboratorio del átomo de Bohr">
+  <p class="ceja">§ 4.9 · Laboratorio</p>
+  <h2 class="titulo">Saltos entre niveles y el color de la luz emitida</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Niveles \(E_n\) y órbitas \(r_n = n^{2} a_0\)</span><span class="val" id="bo-lect"></span></div>
+      <div id="bo-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Nivel inicial \(n_i\)</span><input type="range" id="bo-ni" min="2" max="7" step="1" value="3"><span class="v" id="bo-niv"></span></label>
+      <label class="ctrl"><span>Nivel final \(n_f\)</span><input type="range" id="bo-nf" min="1" max="6" step="1" value="2"><span class="v" id="bo-nfv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Energía del fotón<b id="bo-e"></b></div><div>\(\lambda = hc/E\)<b id="bo-l"></b></div></div>
+      <div id="bo-color" style="height:60px;border:2px solid var(--linea)"></div>
+      <p class="nota">\(hc \approx \qty{1239{,}84}{eV\cdot nm}\). \(n_f = 1\): serie de Lyman (ultravioleta); \(n_f = 2\): Balmer (visible); \(n_f = 3\): Paschen (infrarrojo).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" data-label="Pauli y la regla del octeto">
+  <p class="ceja">§ 4.9 · Profundización</p>
+  <h2 class="titulo">Ocho electrones en la capa \(n = 2\) sin violar a Pauli</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <p><strong>Principio de exclusión:</strong> dos electrones de un átomo no pueden ocupar el mismo estado cuántico. Basta con que difiera un número del «código postal»:</p>
+      <ul class="lista">
+        <li>\(n\): nivel de energía o capa.</li>
+        <li>\(l\): forma del orbital (\(s\) esférico, \(p\) lobular).</li>
+        <li>\(m_l\): orientación en el espacio.</li>
+        <li>\(m_s = \pm\tfrac12\): espín.</li>
+      </ul>
+      <p class="nota">Con \(2s\) y los tres \(2p\) llenos, el átomo es esféricamente simétrico y de mínima energía: un gas noble inerte.</p>
+    </div>
+    <div class="octeto" id="octeto"><div class="est frag"><b>2s ↑</b><span>\(l = 0,\; m_l = 0,\; m_s = +\tfrac12\)</span></div><div class="est frag"><b>2s ↓</b><span>\(l = 0,\; m_l = 0,\; m_s = -\tfrac12\)</span></div><div class="est frag"><b>2p ↑</b><span>\(l = 1,\; m_l = -1,\; m_s = +\tfrac12\)</span></div><div class="est frag"><b>2p ↓</b><span>\(l = 1,\; m_l = -1,\; m_s = -\tfrac12\)</span></div><div class="est frag"><b>2p ↑</b><span>\(l = 1,\; m_l = 0,\; m_s = +\tfrac12\)</span></div><div class="est frag"><b>2p ↓</b><span>\(l = 1,\; m_l = 0,\; m_s = -\tfrac12\)</span></div><div class="est frag"><b>2p ↑</b><span>\(l = 1,\; m_l = 1,\; m_s = +\tfrac12\)</span></div><div class="est frag"><b>2p ↓</b><span>\(l = 1,\; m_l = 1,\; m_s = -\tfrac12\)</span></div></div>
+  </div>
+</section>
+
+<!-- ═════════════ §5 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: las líneas de Balmer">
+  <p class="ceja">Reto <span class="score">Aciertos: <b id="ba-score">0</b> / 4</span></p>
+  <h2 class="titulo">¿De qué nivel cayó el electrón? (siempre llega a \(n = 2\))</h2>
+  <div id="ba-lista" class="dim-lista"></div>
+  <div class="fila-btn" style="margin-top:14px"><button type="button" class="cz-btn cz-btn-p" id="ba-ok">Comprobar</button><button type="button" class="cz-btn" id="ba-borrar">Empezar de nuevo</button><span class="cz-fb" id="ba-fb"></span></div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica">
+  <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Comprueba lo aprendido</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok-num="4" data-tol="0.05">
+        <div class="pr-q">1. \(q_1 = +\qty{4{,}0}{\mu C}\) y \(q_2 = +\qty{9{,}0}{\mu C}\) separadas \(\qty{10}{cm}\). ¿A cuántos centímetros de \(q_1\) la fuerza neta sobre \(q_3\) es cero?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="cm"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(\dfrac{4}{x^{2}} = \dfrac{9}{(10 - x)^{2}} \Rightarrow \dfrac{2}{x} = \dfrac{3}{10 - x}\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 2(10 − x) = 3x ⇒ x = 4,0 cm." data-mal-txt="Iguala las dos fuerzas sobre q₃ y saca raíz cuadrada."></div>
+      </div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">2. \(\qty{500}{A}\) por un cable a \(\qty{10}{m}\) de altura. ¿Qué campo hay en el suelo?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{50}{\mu T}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{10}{\mu T}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{63}{mT}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: μ₀I/(2πr) ≈ 1,0 × 10⁻⁵ T, cinco veces menos que el campo terrestre." data-mal-txt="Usa B = μ₀I/(2πr) con r = 10 m."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok-num="12.5" data-tol="0.1">
+        <div class="pr-q">3. Longitud de onda del Wi-Fi de \(\qty{2{,}4}{GHz}\), en centímetros. Enter para comprobar.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="cm"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(\lambda = c/f = (\qty{3\times 10^{8}}{m/s})/(\qty{2{,}4\times 10^{9}}{Hz})\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 0,125 m = 12,5 cm; la antena ideal mide λ/4 ≈ 3,1 cm." data-mal-txt="Aún no: divide c entre f y pasa a centímetros."></div>
+      </div>
+      <div class="pr-item" data-ok="c">
+        <div class="pr-q">4. Energía del fotón de la línea \(H_\alpha\) (de \(n = 3\) a \(n = 2\)):</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{13{,}6}{eV}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{3{,}40}{eV}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{1{,}89}{eV}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: −1,51 − (−3,40) = 1,89 eV, luz roja de 656 nm." data-mal-txt="Calcula E₃ − E₂ con Eₙ = −13,6 eV/n²."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios del capítulo 4">
+  <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
+  <h2 class="titulo">Diez ejercicios del capítulo</h2>
+  <ol class="ej">
+    <li>Punto de fuerza nula entre \(+\qty{4}{\mu C}\) y \(+\qty{9}{\mu C}\) a \(\qty{10}{cm}\). <span class="frag aparece resp">\(x = \qty{4{,}0}{cm}\) de \(q_1\)</span></li>
+    <li>Dos protones a \(\qty{2{,}0\times 10^{-15}}{m}\): \(U_e\). <span class="frag aparece resp">\(\approx \qty{1{,}15\times 10^{-13}}{J} \approx \qty{0{,}72}{MeV}\)</span></li>
+    <li>Calentador de \(\qty{120}{V}\) y \(\qty{15}{A}\), 4 h diarias durante 30 días. <span class="frag aparece resp">\(\qty{1800}{W}\); \(\qty{216}{kWh}\)</span></li>
+    <li>\(\qty{500}{A}\) a \(\qty{10}{m}\) de altura. <span class="frag aparece resp">\(\qty{10}{\mu T}\), cinco veces menos que la Tierra</span></li>
+    <li>Solenoide de \(\qty{0{,}5}{m}\), \(\qty{0{,}02}{T}\) con \(\qty{5{,}0}{A}\): vueltas. <span class="frag aparece resp">\(N \approx 1591\)</span></li>
+    <li>Alambre de \(\qty{0{,}2}{m}\), \(\qty{3{,}0}{A}\), fuerza de \(\qty{1{,}5}{N}\): \(B\). <span class="frag aparece resp">\(\qty{2{,}5}{T}\)</span></li>
+    <li>\(A = \qty{0{,}1}{m^2}\), \(\Delta E/\Delta t = \qty{1{,}0\times 10^{6}}{V/(m\cdot s)}\): \(I_d\). <span class="frag aparece resp">\(\approx \qty{8{,}85\times 10^{-7}}{A}\)</span></li>
+    <li>Wi-Fi de \(\qty{2{,}4}{GHz}\): \(\lambda\) y antena \(\lambda/4\). <span class="frag aparece resp">\(\qty{12{,}5}{cm}\); \(\approx \qty{3{,}1}{cm}\)</span></li>
+    <li>Sincrotrón: \(R = \qty{1000}{m}\), \(E = \qty{50}{GeV}\). <span class="frag aparece resp">\(\approx \qty{0{,}553}{GeV}\) por vuelta</span></li>
+    <li>Línea \(H_\alpha\): de \(n = 3\) a \(n = 2\). <span class="frag aparece resp">\(\qty{1{,}89}{eV}\)</span></li>
+  </ol>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
+  <p class="ceja">Glosario</p>
+  <h2 class="titulo">Términos del capítulo</h2>
+  <dl class="glosa">
+    <div><dt>Ley de Coulomb</dt><dd>\(\vect{F} = k\,q_1 q_2\,\vect{r}/r^{3}\): fuerza central entre cargas.</dd></div>
+    <div><dt>Potencial eléctrico</dt><dd>Energía potencial por unidad de carga, \(V = U_e/q\); en voltios.</dd></div>
+    <div><dt>Corriente</dt><dd>\(I = q/t\); la potencia eléctrica es \(P = VI\).</dd></div>
+    <div><dt>Ley de Ampère</dt><dd>\(B\,L = \mu_0 I_{\text{enc}}\): las corrientes crean campos magnéticos.</dd></div>
+    <div><dt>Inducción de Faraday</dt><dd>Un flujo magnético variable induce corriente que se opone al cambio.</dd></div>
+    <div><dt>Corriente de desplazamiento</dt><dd>\(I_d = \varepsilon_0\,\Delta\Phi_E/\Delta t\): un campo eléctrico variable crea campo magnético.</dd></div>
+    <div><dt>Onda electromagnética</dt><dd>Campos \(\vect{E}\) y \(\vect{B}\) que se sostienen mutuamente; \(c = \lambda f\).</dd></div>
+    <div><dt>Modelo de Bohr</dt><dd>\(mvr = n\hbar\) ⇒ \(r_n = n^{2}a_0\), \(E_n = -\qty{13{,}6}{eV}/n^{2}\).</dd></div>
+  </dl>
+</section>
+
+</div>
+<script>
+/* ═══ UTILIDADES ═══════════════════════════════════════════════════════ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const NS = 'http://www.w3.org/2000/svg';
+/* Número con coma decimal y signo menos tipográfico (texto, no TeX). */
+const num = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', ','); return (x < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s; };
+const activa = el => { const d = el && el.closest('section'); return !!(d && d.hasAttribute('data-deck-active')); };
+const FMATH = "'STIX Two Text',Georgia,serif";
+const FTXT = 'Archivo,system-ui,sans-serif';
+
+function nodo(tag, at, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in at) {
+    if (k === 'txt') e.textContent = at[k];
+    else if (k === 'html') e.innerHTML = at[k];
+    else e.setAttribute(k, at[k]);
+  }
+  if (padre) padre.appendChild(e);
+  return e;
+}
+/* Rótulo con variables en cursiva: «*x* (m)» → x en cursiva. */
+function rotulo(g, x, y, s, extra) {
+  const t = nodo('text', Object.assign({ x: x, y: y, 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH }, extra || {}), g);
+  /* *v* cursiva · !v! vector (negrita cursiva) · _sub subíndice */
+  s.split(/(\*[^*]+\*|![^!]+!|_[A-Za-z0-9]+)/).forEach(tr => {
+    if (!tr) return;
+    if (tr[0] === '*') nodo('tspan', { 'font-style': 'italic', txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '!') nodo('tspan', { 'font-style': 'italic', 'font-weight': 700, txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '_') { nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '70%', 'font-style': /^[a-z]$/.test(tr.slice(1)) ? 'italic' : 'normal', txt: tr.slice(1) }, t); nodo('tspan', { txt: '\u200a' }, t); }
+    else nodo('tspan', { txt: tr }, t);
+  });
+  return t;
+}
+/* Ejes cartesianos en SVG con rejilla y marcas. */
+function ejes(host, o) {
+  host.innerHTML = '';
+  const W = o.W, H = o.H, m = o.m || { l: 96, r: 24, t: 20, b: 76 };
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => m.l + (v - o.x[0]) / (o.x[1] - o.x[0]) * (W - m.l - m.r);
+  const Y = v => H - m.b - (v - o.y[0]) / (o.y[1] - o.y[0]) * (H - m.t - m.b);
+  const fondo = nodo('g', {}, svg);
+  (o.xt || []).forEach(v => {
+    nodo('line', { x1: X(v), x2: X(v), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: X(v), y: H - m.b + 34, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fx ? o.fx(v) : num(v, 0) }, fondo);
+  });
+  (o.yt || []).forEach(v => {
+    nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(v), y2: Y(v), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: m.l - 12, y: Y(v) + 9, 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fy ? o.fy(v) : num(v, 0) }, fondo);
+  });
+  if (o.y[0] < 0 && o.y[1] > 0) nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[0]), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(o.y[0]), y2: Y(o.y[0]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  if (o.xl) rotulo(fondo, (m.l + W - m.r) / 2, H - 8, o.xl, { 'text-anchor': 'middle' });
+  if (o.yl) rotulo(fondo, 24, (m.t + H - m.b) / 2, o.yl, { 'text-anchor': 'middle', transform: 'rotate(-90 24 ' + (m.t + H - m.b) / 2 + ')' });
+  const capa = nodo('g', {}, svg);
+  return { svg: svg, X: X, Y: Y, capa: capa, W: W, H: H, m: m };
+}
+const polilinea = (A, pts, estilo, g) => nodo('polyline', { points: pts.map(p => A.X(p[0]).toFixed(1) + ',' + A.Y(p[1]).toFixed(1)).join(' '), style: 'fill:none;' + estilo }, g || A.capa);
+function flecha(g, x1, y1, x2, y2, color, grosor) {
+  const w = grosor || 5, a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1), c = Math.min(22, L * 0.45);
+  const bx = x2 - c * Math.cos(a), by = y2 - c * Math.sin(a);
+  nodo('line', { x1: x1, y1: y1, x2: bx, y2: by, style: 'stroke:' + color + ';stroke-width:' + w + ';stroke-linecap:round' }, g);
+  if (L > 2) nodo('polygon', { points: [[x2, y2], [bx + c * 0.5 * Math.sin(a), by - c * 0.5 * Math.cos(a)], [bx - c * 0.5 * Math.sin(a), by + c * 0.5 * Math.cos(a)]].map(p => p.join(',')).join(' '), style: 'fill:' + color }, g);
+}
+function rango(id, alCambiar) {
+  const r = document.getElementById(id);
+  if (!r) return null;
+  r.addEventListener('input', () => alCambiar(+r.value));
+  return r;
+}
+
+
+/* ═══ VENTANAS EMERGENTES ══════════════════════════════════════════════ */
+(function () {
+  let pop = null;
+  const cerrar = () => { if (pop) { pop.remove(); pop = null; } };
+  document.addEventListener('click', ev => {
+    const chip = ev.target instanceof Element ? ev.target.closest('.prop') : null;
+    if (!chip) { if (pop && !(ev.target instanceof Element && ev.target.closest('.popover'))) cerrar(); return; }
+    ev.stopPropagation();
+    cerrar();
+    const src = document.getElementById(chip.dataset.pop);
+    const dp = chip.closest('section');
+    if (!src || !dp) return;
+    pop = document.createElement('div');
+    pop.className = 'popover';
+    pop.innerHTML = '<button type="button" class="cerrar" aria-label="Cerrar">×</button>' + src.innerHTML;
+    pop.querySelector('.cerrar').addEventListener('click', cerrar);
+    dp.appendChild(pop);
+    const R = dp.getBoundingClientRect(), c = chip.getBoundingClientRect(), s = R.width / dp.offsetWidth;
+    let x = (c.left - R.left) / s, y = (c.bottom - R.top) / s + 14;
+    x = Math.min(x, dp.offsetWidth - pop.offsetWidth - 40);
+    if (y + pop.offsetHeight > dp.offsetHeight - 40) y = (c.top - R.top) / s - pop.offsetHeight - 14;
+    pop.style.left = Math.max(40, x) + 'px';
+    pop.style.top = Math.max(40, y) + 'px';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('slidechange', cerrar);
+})();
+
+
+/* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
+(function () {
+  const dp = document.getElementById('dp-practica');
+  if (!dp) return;
+  const marcador = $('.pr-score', dp);
+  let aciertos = 0;
+  const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
+  const acierta = it => { if (!it.dataset.hecho) { it.dataset.hecho = '1'; aciertos++; marcador.textContent = aciertos; } };
+  $$('.pr-item', dp).forEach(it => {
+    $$('.pr-opc', it).forEach(b => b.addEventListener('click', () => {
+      const ok = b.dataset.o === it.dataset.ok;
+      $$('.pr-opc', it).forEach(o => o.classList.remove('ok', 'mal'));
+      b.classList.add(ok ? 'ok' : 'mal'); fb(it, ok); if (ok) acierta(it);
+    }));
+    const inp = $('.pr-in', it);
+    if (inp) {
+      const revisa = () => {
+        const v = parseFloat(inp.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+        const ok = Math.abs(v - +it.dataset.okNum) <= +it.dataset.tol;
+        inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)'; fb(it, ok); if (ok) acierta(it);
+      };
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+      $$('.pr-btn', it).forEach(b => b.addEventListener('click', () => {
+        if (b.classList.contains('pr-verpista')) $('.pr-pista', it).classList.toggle('on'); else revisa();
+      }));
+    }
+  });
+})();
+
+
+
+/* ═══ PLANO CARTESIANO CON ARRASTRE ════════════════════════════════════ */
+/* Ejes con la misma escala en x e y (1180 × 800, x ∈ [-6, 6], y ∈ [-4, 4]). */
+function plano(host, o) {
+  o = Object.assign({ W: 1180, H: 800, x: [-6, 6], y: [-4, 4] }, o || {});
+  const xt = [], yt = [];
+  for (let v = Math.ceil(o.x[0]); v <= o.x[1]; v++) xt.push(v);
+  for (let v = Math.ceil(o.y[0]); v <= o.y[1]; v++) yt.push(v);
+  const A = ejes(host, { W: o.W, H: o.H, x: o.x, y: o.y, xt: xt, yt: yt, m: { l: 60, r: 24, t: 20, b: 56 },
+                         fx: v => v % 2 ? '' : num(v, 0), fy: v => v % 2 ? '' : num(v, 0) });
+  /* ejes x e y por el origen (ejes() dibuja los bordes; aquí los centrales) */
+  nodo('line', { x1: A.X(0), x2: A.X(0), y1: A.Y(o.y[0]), y2: A.Y(o.y[1]), style: 'stroke:var(--proy);stroke-width:2.5' }, A.capa);
+  A.ix = px => o.x[0] + (px - A.m.l) / (A.W - A.m.l - A.m.r) * (o.x[1] - o.x[0]);
+  A.iy = py => o.y[0] + (A.H - A.m.b - py) / (A.H - A.m.t - A.m.b) * (o.y[1] - o.y[0]);
+  A.o = o;
+  return A;
+}
+const vec = (A, x1, y1, x2, y2, color, g, w) => flecha(g || A.capa, A.X(x1), A.Y(y1), A.X(x2), A.Y(y2), color, w || 6);
+const etq = (A, x, y, s, color, extra) => rotulo(A.capa, A.X(x), A.Y(y), s, Object.assign({ 'font-size': 34, style: 'fill:' + color + ';font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' }, extra || {}));
+const punto = (A, x, y, color, r) => nodo('circle', { cx: A.X(x), cy: A.Y(y), r: r || 12, style: 'fill:' + color + ';stroke:var(--panel);stroke-width:3' }, A.capa);
+const grados = r => r * 180 / Math.PI;
+const paso = (v, p) => Math.round(v / (p || 0.5)) * (p || 0.5);
+/* Arrastre de puntos: obtener() → [{x, y, id}], mover(id, x, y). El SVG se
+   redibuja en cada cambio, así que se escucha en el contenedor. */
+function arrastre(host, obtener, mover, getA) {
+  let activo = null;
+  const aDatos = ev => {
+    const svg = host.querySelector('svg'), pt = svg.createSVGPoint();
+    pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse()), A = getA();
+    return { x: A.ix(p.x), y: A.iy(p.y) };
+  };
+  host.addEventListener('pointerdown', ev => {
+    const d = aDatos(ev); let mejor = null, dist = 0.9;
+    obtener().forEach(q => { const e = Math.hypot(q.x - d.x, q.y - d.y); if (e < dist) { dist = e; mejor = q.id; } });
+    if (mejor === null) return;
+    activo = mejor; host.setPointerCapture(ev.pointerId); ev.preventDefault();
+  });
+  host.addEventListener('pointermove', ev => {
+    if (activo === null) return;
+    const d = aDatos(ev), o = getA().o;
+    mover(activo, Math.max(o.x[0] + 0.5, Math.min(o.x[1] - 0.5, paso(d.x))), Math.max(o.y[0] + 0.5, Math.min(o.y[1] - 0.5, paso(d.y))));
+  });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { activo = null; }));
+}
+const par = (x, y, d) => '(' + num(x, d === undefined ? 1 : d) + '; ' + num(y, d === undefined ? 1 : d) + ')';
+
+/* TeX dinámico: se compone con MathJax cuando el documento ya está listo. */
+let colaMJ = Promise.resolve();
+function texVivo(el, tex) {
+  if (el.__tex === tex) return;
+  el.__tex = tex;
+  el.textContent = '\\[' + tex + '\\]';
+  if (document.documentElement.dataset.mathjax !== 'ok' || !window.MathJax || !MathJax.typesetPromise) return;
+  colaMJ = colaMJ.then(() => MathJax.typesetPromise([el])).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+}
+const tx = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', '{,}'); return (x < 0 && +Math.abs(x).toFixed(d) !== 0 ? '-' : '') + s; };
+function cientTex(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const ms = m.toFixed(cifras || 3).replace(/\.?0+$/, '').replace('.', '{,}');
+  return (e >= -2 && e <= 3) ? tx(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : ms + '\\times 10^{' + e + '}';
+}
+function cientTxt(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const sup = String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  const mt = num(m, cifras || 3).replace(/,?0+$/, '');
+  return (e >= -2 && e <= 3) ? num(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : mt + ' × 10' + sup;
+}
+
+
+
+const K_C = 8.987551786e9, MU0 = 1.257e-6, E_C = 1.602176634e-19;
+/* longitud de onda (nm) → color aproximado */
+function colorLambda(l) {
+  let r = 0, g = 0, b = 0;
+  if (l >= 380 && l < 440) { r = (440 - l) / 60; b = 1; } else if (l >= 440 && l < 490) { g = (l - 440) / 50; b = 1; }
+  else if (l >= 490 && l < 510) { g = 1; b = (510 - l) / 20; } else if (l >= 510 && l < 580) { r = (l - 510) / 70; g = 1; }
+  else if (l >= 580 && l < 645) { r = 1; g = (645 - l) / 65; } else if (l >= 645 && l <= 750) { r = 1; }
+  else return l < 380 ? '#7C6FB0' : '#8C5A4A';
+  const f = x => Math.round(255 * Math.pow(x, 0.8));
+  return 'rgb(' + f(r) + ',' + f(g) + ',' + f(b) + ')';
+}
+const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
+  const p = [[1e9, 'G'], [1e6, 'M'], [1e3, 'k'], [1, ''], [1e-3, 'm'], [1e-6, 'μ'], [1e-9, 'n'], [1e-12, 'p']];
+  const a = Math.abs(v); let q = p[p.length - 1];
+  for (const x of p) if (a >= x[0]) { q = x; break; }
+  return num(v / q[0], d === undefined ? 2 : d) + ' ' + q[1] + u;
+};
+
+/* ═══ PORTADA: partículas siguiendo el campo de un dipolo ══════════════ */
+(function () {
+  const cv = document.getElementById('hero-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const Q = [{ x: 230, y: 280, q: 1 }, { x: 490, y: 280, q: -1 }];
+  const campo = (x, y) => { let ex = 0, ey = 0; Q.forEach(c => { const dx = x - c.x, dy = y - c.y, r = Math.max(12, Math.hypot(dx, dy)); ex += c.q * dx / (r * r * r); ey += c.q * dy / (r * r * r); }); return [ex, ey]; };
+  const nueva = () => { const a = Math.random() * 2 * Math.PI; return { x: Q[0].x + 26 * Math.cos(a), y: Q[0].y + 26 * Math.sin(a), vida: 0 }; };
+  let P = []; for (let i = 0; i < 90; i++) { const p = nueva(); p.vida = Math.random() * 300; P.push(p); }
+  /* líneas de campo precalculadas */
+  const lineas = [];
+  for (let k = 0; k < 16; k++) {
+    const a = 2 * Math.PI * k / 16; let x = Q[0].x + 20 * Math.cos(a), y = Q[0].y + 20 * Math.sin(a); const L = [[x, y]];
+    for (let s = 0; s < 900; s++) { const e = campo(x, y), n = Math.hypot(e[0], e[1]); x += 3 * e[0] / n; y += 3 * e[1] / n; L.push([x, y]); if (Math.hypot(x - Q[1].x, y - Q[1].y) < 16 || x < -50 || x > W + 50 || y < -50 || y > H + 50) break; }
+    lineas.push(L);
+  }
+  let ult = 0;
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 2.5;
+    lineas.forEach(L => { g.beginPath(); L.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); });
+    g.fillStyle = tok('--res');
+    P.forEach(p => { g.globalAlpha = Math.min(1, p.vida / 30); g.beginPath(); g.arc(p.x, p.y, 4.5, 0, 2 * Math.PI); g.fill(); });
+    g.globalAlpha = 1;
+    [[Q[0], '+', '--caso2'], [Q[1], '−', '--caso1']].forEach(c => {
+      g.fillStyle = tok(c[2]); g.beginPath(); g.arc(c[0].x, c[0].y, 26, 0, 2 * Math.PI); g.fill();
+      g.fillStyle = tok('--papel'); g.font = '700 36px ' + FTXT; g.textAlign = 'center'; g.fillText(c[1], c[0].x, c[0].y + 12);
+    });
+    g.textAlign = 'left';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) {
+      ult = ms;
+      P = P.map(p => {
+        const e = campo(p.x, p.y), n = Math.hypot(e[0], e[1]);
+        p.x += 3.2 * e[0] / n; p.y += 3.2 * e[1] / n; p.vida++;
+        return (Math.hypot(p.x - Q[1].x, p.y - Q[1].y) < 22 || p.x < -20 || p.x > W + 20 || p.y < -20 || p.y > H + 20 || p.vida > 600) ? nueva() : p;
+      });
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ LEY DE COULOMB ═══════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('co-fig');
+  if (!host) return;
+  const r1 = document.getElementById('co-q1'), r2 = document.getElementById('co-q2');
+  const C = [{ x: -2, y: 0 }, { x: 2.5, y: 1 }];
+  let A;
+  function pinta() {
+    const q = [+r1.value, +r2.value];
+    A = plano(host);
+    /* campo en una rejilla */
+    for (let x = -5.5; x <= 5.5; x += 1) for (let y = -3.5; y <= 3.5; y += 1) {
+      let ex = 0, ey = 0, cerca = false;
+      C.forEach((c, i) => { const dx = x - c.x, dy = y - c.y, r = Math.hypot(dx, dy); if (r < 0.6) cerca = true; ex += q[i] * dx / (r * r * r); ey += q[i] * dy / (r * r * r); });
+      const n = Math.hypot(ex, ey); if (cerca || n < 1e-4) continue;
+      const L = 0.42, a = Math.min(1, 0.25 + Math.log10(1 + n * 20) / 2);
+      const g = nodo('g', { style: 'opacity:' + a.toFixed(2) }, A.capa);
+      flecha(g, A.X(x - L * ex / n / 2), A.Y(y - L * ey / n / 2), A.X(x + L * ex / n / 2), A.Y(y + L * ey / n / 2), 'var(--tinta2)', 3);
+    }
+    /* fuerzas */
+    const dx = C[1].x - C[0].x, dy = C[1].y - C[0].y, r = Math.hypot(dx, dy), ux = dx / r, uy = dy / r;
+    const F = K_C * q[0] * q[1] * 1e-12 / Math.pow(r * 1e-2, 2);       /* > 0 repulsión */
+    const Lf = q[0] * q[1] === 0 ? 0 : Math.min(2.2, 0.5 + Math.log10(1 + Math.abs(F)) / 2), s = Math.sign(F);
+    if (Lf) {
+      vec(A, C[1].x, C[1].y, C[1].x + s * Lf * ux, C[1].y + s * Lf * uy, 'var(--res)', null, 7);
+      vec(A, C[0].x, C[0].y, C[0].x - s * Lf * ux, C[0].y - s * Lf * uy, 'var(--res)', null, 7);
+    }
+    C.forEach((c, i) => {
+      const col = q[i] > 0 ? 'var(--caso2)' : q[i] < 0 ? 'var(--caso1)' : 'var(--proy)';
+      nodo('circle', { cx: A.X(c.x), cy: A.Y(c.y), r: 26, style: 'fill:' + col + ';stroke:var(--panel);stroke-width:3' }, A.capa);
+      nodo('text', { x: A.X(c.x), y: A.Y(c.y) + 11, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: q[i] > 0 ? '+' : q[i] < 0 ? '−' : '0' }, A.capa);
+      etq(A, c.x, c.y - 0.75, '*q*_' + (i + 1), 'var(--tinta)', { 'text-anchor': 'middle', 'font-size': 28 });
+    });
+    document.getElementById('co-r').textContent = num(r, 2) + ' cm';
+    document.getElementById('co-F').textContent = unidadSI(Math.abs(F), 'N');
+    document.getElementById('co-lect').textContent = F > 0 ? 'repulsión' : F < 0 ? 'atracción' : 'sin fuerza';
+    document.getElementById('co-q1v').textContent = num(q[0], 0) + ' μC';
+    document.getElementById('co-q2v').textContent = num(q[1], 0) + ' μC';
+  }
+  arrastre(host, () => C.map((c, i) => ({ id: i, x: c.x, y: c.y })), (id, x, y) => {
+    const o = C[1 - id]; if (Math.hypot(x - o.x, y - o.y) < 1) return; C[id].x = x; C[id].y = y; pinta();
+  }, () => A);
+  r1.addEventListener('input', pinta); r2.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ ENERGÍA POTENCIAL U(r) ═══════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('up-fig');
+  if (!host) return;
+  const rr = document.getElementById('up-r');
+  function pinta() {
+    const r = +rr.value;
+    const A = ejes(host, { W: 1180, H: 760, x: [0, 4], y: [-5, 5], xt: [0, 1, 2, 3, 4], yt: [-4, -2, 0, 2, 4], xl: '*r* (unidades arbitrarias)', yl: '*U*_e' });
+    const rep = [], atr = [];
+    for (let i = 1; i <= 200; i++) { const x = 0.2 + 3.8 * i / 200; rep.push([x, Math.min(5, 1 / x)]); atr.push([x, Math.max(-5, -1 / x)]); }
+    polilinea(A, rep, 'stroke:var(--caso2);stroke-width:5');
+    polilinea(A, atr, 'stroke:var(--caso1);stroke-width:5');
+    rotulo(A.capa, A.X(1.4), A.Y(1 / 1.4) - 16, '*q*_1*q*_2 > 0: repulsión', { 'font-size': 28, style: 'fill:var(--caso2);font-family:' + FMATH });
+    rotulo(A.capa, A.X(1.4), A.Y(-1 / 1.4) + 44, '*q*_1*q*_2 < 0: pozo de potencial', { 'font-size': 28, style: 'fill:var(--caso1);font-family:' + FMATH });
+    polilinea(A, [[r, -5], [r, 5]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6');
+    nodo('circle', { cx: A.X(r), cy: A.Y(Math.min(5, 1 / r)), r: 10, style: 'fill:var(--caso2)' }, A.capa);
+    nodo('circle', { cx: A.X(r), cy: A.Y(Math.max(-5, -1 / r)), r: 10, style: 'fill:var(--caso1)' }, A.capa);
+    document.getElementById('up-rv').textContent = num(r, 2);
+    document.getElementById('up-lect').textContent = 'U ∝ ±1/r = ±' + num(1 / r, 2) + ' · la fuerza cae como 1/r²';
+  }
+  rr.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ FACTURA: POTENCIA MEDIA ══════════════════════════════════════════ */
+(function () {
+  const el = document.getElementById('fa-tex');
+  if (!el) return;
+  const re = document.getElementById('fa-e');
+  function pinta() {
+    const E = +re.value, P = E / 720 * 1000, I = P / 110;
+    texVivo(el, '\\begin{gathered} P_{\\text{media}} = \\dfrac{' + tx(E, 0) + '\\,\\mathrm{kWh}}{720\\,\\mathrm{h}} \\approx ' + tx(E / 720, 4) + '\\,\\mathrm{kW} \\approx ' + tx(P, 1) + '\\,\\mathrm{W} \\\\[10pt] I = \\dfrac{P}{V} = \\dfrac{' + tx(P, 1) + '\\,\\mathrm{W}}{110\\,\\mathrm{V}} \\approx ' + tx(I, 2) + '\\,\\mathrm{A} \\end{gathered}');
+    document.getElementById('fa-ev').textContent = E + ' kWh';
+    document.getElementById('fa-lect').textContent = 'P ≈ ' + num(P, 0) + ' W';
+  }
+  re.addEventListener('input', pinta);
+  document.addEventListener('diapositiva', () => { if (el.__tex && !el.querySelector('mjx-container')) { el.__tex = null; pinta(); } });
+  pinta();
+})();
+
+/* ═══ AMPÈRE: ALAMBRE RECTO ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('am-fig');
+  if (!host) return;
+  const ri = document.getElementById('am-i'), rr = document.getElementById('am-r');
+  function pinta() {
+    const I = +ri.value, r = +rr.value, B = MU0 * I / (2 * Math.PI * r);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const cx = 590, cy = 370, esc = 16;             /* 1 m → 16 px */
+    for (let k = 1; k <= 5; k++) {
+      const R = k * 64, Bk = MU0 * I / (2 * Math.PI * R / esc);
+      nodo('circle', { cx: cx, cy: cy, r: R, style: 'fill:none;stroke:var(--caso1);stroke-width:' + Math.max(1.5, Math.min(6, Bk * 4e5)).toFixed(1) + ';opacity:.7' }, svg);
+      flecha(svg, cx + 2, cy - R, cx - 22, cy - R, 'var(--caso1)', 3);
+    }
+    const Rr = r * esc;
+    nodo('circle', { cx: cx, cy: cy, r: Rr, style: 'fill:none;stroke:var(--res);stroke-width:4;stroke-dasharray:10 8' }, svg);
+    nodo('circle', { cx: cx + Rr, cy: cy, r: 12, style: 'fill:var(--res)' }, svg);
+    flecha(svg, cx + Rr, cy, cx + Rr, cy - 90, 'var(--res)', 6);
+    rotulo(svg, cx + Rr + 16, cy - 60, '!B!', { 'font-size': 36, style: 'fill:var(--res);font-family:' + FMATH });
+    nodo('circle', { cx: cx, cy: cy, r: 22, style: 'fill:var(--papel);stroke:var(--tinta);stroke-width:4' }, svg);
+    nodo('circle', { cx: cx, cy: cy, r: 6, style: 'fill:var(--tinta)' }, svg);
+    rotulo(svg, cx - 30, cy + 60, '*I* saliendo', { 'font-size': 26, 'text-anchor': 'end', style: 'fill:var(--tinta);font-family:' + FTXT });
+    document.getElementById('am-iv').textContent = I + ' A';
+    document.getElementById('am-rv').textContent = num(r, 1) + ' m';
+    document.getElementById('am-lect').textContent = 'B = ' + unidadSI(B, 'T') + ' = ' + num(B / 50e-6 * 100, 0) + ' % del campo terrestre';
+  }
+  ri.addEventListener('input', pinta); rr.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ SOLENOIDE ════════════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('so-fig');
+  if (!host) return;
+  const rn = document.getElementById('so-n'), ri = document.getElementById('so-i'), rl = document.getElementById('so-l');
+  function pinta() {
+    const N = +rn.value, I = +ri.value, L = +rl.value, B = MU0 * N * I / L;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1000 330', class: 'fig' }, host);
+    const w = 800 * L, x0 = 500 - w / 2, espiras = Math.min(60, Math.max(4, Math.round(N / 30)));
+    for (let k = 0; k < espiras; k++) {
+      const x = x0 + w * (k + 0.5) / espiras;
+      nodo('ellipse', { cx: x, cy: 165, rx: 9, ry: 90, style: 'fill:none;stroke:var(--caso2);stroke-width:3' }, svg);
+    }
+    const n = Math.max(1, Math.min(7, Math.round(Math.log10(B * 1e4 + 1) * 3)));
+    for (let k = 0; k < n; k++) { const y = 165 - 60 + 120 * (k + 0.5) / n; flecha(svg, x0 - 40, y, x0 + w + 60, y, 'var(--res)', 3); }
+    rotulo(svg, x0 + w + 70, 175, '!B!', { 'font-size': 34, style: 'fill:var(--res);font-family:' + FMATH });
+    document.getElementById('so-nv').textContent = N;
+    document.getElementById('so-iv').textContent = num(I, 1) + ' A';
+    document.getElementById('so-lv').textContent = num(L, 2) + ' m';
+    document.getElementById('so-lect').textContent = 'B = ' + unidadSI(B, 'T') + ' · N/L = ' + num(N / L, 0) + ' vueltas/m';
+  }
+  [rn, ri, rl].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
+/* ═══ FUERZA ENTRE ALAMBRES ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('fm-fig');
+  if (!host) return;
+  const r1 = document.getElementById('fm-i1'), r2 = document.getElementById('fm-i2'), rr = document.getElementById('fm-r');
+  function pinta() {
+    const I1 = +r1.value, I2 = +r2.value, r = +rr.value, FL = MU0 * I1 * I2 / (2 * Math.PI * r);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const sep = 120 + 2400 * r, xa = 590 - sep / 2, xb = 590 + sep / 2;
+    [[xa, I1, 'var(--caso2)'], [xb, I2, 'var(--caso1)']].forEach(w => {
+      nodo('line', { x1: w[0], x2: w[0], y1: 80, y2: 660, style: 'stroke:' + w[2] + ';stroke-width:12;stroke-linecap:round' }, svg);
+      if (w[1]) { const s = Math.sign(w[1]); flecha(svg, w[0] + 34, 370 + 60 * s, w[0] + 34, 370 - 60 * s, w[2], 5); }
+      rotulo(svg, w[0] + 50, 380, '*I* = ' + num(w[1], 0) + ' A', { 'font-size': 28, style: 'fill:' + w[2] + ';font-family:' + FMATH });
+    });
+    const L = Math.min(170, 30 + 40 * Math.log10(1 + Math.abs(FL) * 1e5)) * (FL ? 1 : 0), s = Math.sign(FL);   /* s > 0: atracción */
+    if (L) {
+      flecha(svg, xa, 200, xa + s * L, 200, 'var(--res)', 7);
+      flecha(svg, xb, 200, xb - s * L, 200, 'var(--res)', 7);
+    }
+    document.getElementById('fm-i1v').textContent = I1 + ' A';
+    document.getElementById('fm-i2v').textContent = I2 + ' A';
+    document.getElementById('fm-rv').textContent = num(r * 100, 0) + ' cm';
+    document.getElementById('fm-lect').textContent = (FL > 0 ? 'se atraen' : FL < 0 ? 'se repelen' : 'sin fuerza') + ' · F/L = ' + unidadSI(Math.abs(FL), 'N/m');
+  }
+  [r1, r2, rr].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
+/* ═══ FARADAY: IMÁN Y SOLENOIDE ════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('far-fig');
+  if (!host) return;
+  let xm = -4, xmPrev = -4, corr = 0, ult = 0, A;
+  const flujo = x => 1 / (1 + Math.pow(x / 1.3, 2));     /* solenoide centrado en x = 0 */
+  function pinta() {
+    A = plano(host, { x: [-6, 6], y: [-4, 4] });
+    /* solenoide */
+    for (let k = 0; k < 12; k++) { const x = -1.6 + 3.2 * (k + 0.5) / 12; nodo('ellipse', { cx: A.X(x), cy: A.Y(0), rx: 10, ry: 110, style: 'fill:none;stroke:var(--caso2);stroke-width:4' }, A.capa); }
+    /* imán */
+    nodo('rect', { x: A.X(xm - 1), y: A.Y(0.35), width: A.X(xm) - A.X(xm - 1), height: A.Y(-0.35) - A.Y(0.35), style: 'fill:var(--caso1)' }, A.capa);
+    nodo('rect', { x: A.X(xm), y: A.Y(0.35), width: A.X(xm + 1) - A.X(xm), height: A.Y(-0.35) - A.Y(0.35), style: 'fill:var(--mal)' }, A.capa);
+    nodo('text', { x: A.X(xm - 0.5), y: A.Y(0) + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'S' }, A.capa);
+    nodo('text', { x: A.X(xm + 0.5), y: A.Y(0) + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'N' }, A.capa);
+    /* galvanómetro */
+    const gx = A.X(0), gy = A.Y(-2.9), R = 90, ang = Math.max(-1.2, Math.min(1.2, corr * 1.5));
+    nodo('path', { d: 'M ' + (gx - R) + ' ' + gy + ' A ' + R + ' ' + R + ' 0 0 1 ' + (gx + R) + ' ' + gy, style: 'fill:var(--papel);stroke:var(--tinta);stroke-width:3' }, A.capa);
+    nodo('line', { x1: gx, y1: gy, x2: gx + (R - 10) * Math.sin(ang), y2: gy - (R - 10) * Math.cos(ang), style: 'stroke:var(--res);stroke-width:5;stroke-linecap:round' }, A.capa);
+    nodo('text', { x: gx, y: gy + 36, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'corriente inducida' }, A.capa);
+    etq(A, xm, 0.9, 'arrástrame', 'var(--tinta2)', { 'text-anchor': 'middle', 'font-size': 24 });
+    const txt = Math.abs(corr) < 0.03 ? 'sin corriente (flujo constante)' : (corr > 0 ? 'el flujo aumenta: la bobina se opone al imán' : 'el flujo disminuye: la bobina retiene al imán');
+    document.getElementById('fa2-lect').textContent = txt;
+  }
+  function bucle(ms) {
+    if (activa(host)) {
+      const dt = ult ? Math.min(0.05, (ms - ult) / 1000) : 0.016;
+      const dPhi = (flujo(xm) - flujo(xmPrev)) / Math.max(dt, 0.016);
+      corr = 0.8 * corr + 0.2 * dPhi * 0.8; xmPrev = xm;
+      pinta();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  arrastre(host, () => [{ id: 0, x: xm, y: 0 }, { id: 0, x: xm - 0.7, y: 0 }, { id: 0, x: xm + 0.7, y: 0 }], (id, x) => { xm = Math.max(-5, Math.min(5, x)); }, () => A);
+  pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ESPECTRO Y ANTENAS ═══════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('on-fig');
+  if (!host) return;
+  const rf = document.getElementById('on-f');
+  const BANDAS = [[4, 9, 'Radio', 'var(--caso1-50)'], [9, 11.5, 'Microondas', 'var(--res-50)'], [11.5, 14.6, 'Infrarrojo', 'var(--caso2-50)'], [14.6, 14.9, 'Visible', ''], [14.9, 16.5, 'UV', 'var(--res-100)'], [16.5, 19, 'Rayos X', 'var(--primario-tinte)'], [19, 20, 'Gamma', 'var(--linea)']];
+  function pinta() {
+    const lf = +rf.value, f = Math.pow(10, lf), lam = 3e8 / f;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const X = v => 60 + (v - 4) / 16 * 1060;
+    BANDAS.forEach(b => {
+      if (b[2] === 'Visible') {
+        for (let i = 0; i < 30; i++) { const l = 750 - 370 * i / 30; const lv = Math.log10(3e8 / (l * 1e-9)); nodo('rect', { x: X(lv), y: 120, width: X(lv + 0.02) - X(lv) + 1, height: 160, style: 'fill:' + colorLambda(l) }, svg); }
+      } else nodo('rect', { x: X(b[0]), y: 120, width: X(b[1]) - X(b[0]), height: 160, style: 'fill:' + b[3] + ';stroke:var(--linea);stroke-width:2' }, svg);
+      rotulo(svg, (X(b[0]) + X(b[1])) / 2, b[2] === 'Visible' ? 100 : 210, b[2], { 'text-anchor': 'middle', 'font-size': b[2] === 'Visible' ? 22 : 24, style: 'fill:var(--tinta);font-family:' + FTXT });
+    });
+    for (let e = 4; e <= 20; e += 2) rotulo(svg, X(e), 320, '10' + String(e).replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]) + ' Hz', { 'text-anchor': 'middle', 'font-size': 22 });
+    nodo('line', { x1: X(lf), x2: X(lf), y1: 100, y2: 300, style: 'stroke:var(--tinta);stroke-width:5' }, svg);
+    /* onda esquemática con λ relativa */
+    const pts = [], per = 60 + 440 * (lf - 4) / 16;
+    for (let x = 60; x <= 1120; x += 3) pts.push(x + ',' + (540 + 80 * Math.sin(2 * Math.PI * (x - 60) / (540 - per + 40))).toFixed(1));
+    nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:var(--res);stroke-width:5' }, svg);
+    rotulo(svg, 60, 690, 'Onda esquemática: más frecuencia, menor longitud de onda', { 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    const fmt = v => v >= 1 ? num(v, v < 10 ? 2 : 1) + ' m' : v >= 1e-2 ? num(v * 100, 2) + ' cm' : v >= 1e-6 ? num(v * 1e6, 1) + ' μm' : v >= 1e-9 ? num(v * 1e9, 0) + ' nm' : cientTxt(v, 2) + ' m';
+    document.getElementById('on-fv').textContent = unidadSI(f, 'Hz', 1);
+    document.getElementById('on-l').textContent = fmt(lam);
+    document.getElementById('on-a').textContent = fmt(lam / 4);
+    document.getElementById('on-lect').textContent = 'f = ' + unidadSI(f, 'Hz', 2);
+  }
+  rf.addEventListener('input', pinta);
+  $$('#on-pre .btn').forEach(b => b.addEventListener('click', () => { rf.value = b.dataset.lf; pinta(); }));
+  pinta();
+})();
+
+/* ═══ COLAPSO DEL ÁTOMO CLÁSICO ════════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('col-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, rr = document.getElementById('col-r');
+  const t0 = 4.7e-11;                         /* vida para r0 = a0; escala como r0³ */
+  let s = 0, ult = 0;
+  function dibuja() {
+    const r0 = +rr.value, esc = 90;
+    g.clearRect(0, 0, W, H);
+    const cx = W / 2, cy = H / 2;
+    /* r(τ) con r³ decreciendo linealmente en el tiempo (P ∝ 1/r⁴, E ∝ 1/r) */
+    const tr = [];
+    for (let i = 0; i <= 400; i++) {
+      const tau = Math.min(s, 1) * i / 400, r = r0 * Math.cbrt(Math.max(0, 1 - tau));
+      const ph = 60 * (1 - Math.pow(Math.max(0, 1 - tau), 0.5)) / Math.pow(r0, 1.5);
+      tr.push([cx + esc * r * Math.cos(ph * 6), cy - esc * r * Math.sin(ph * 6)]);
+    }
+    g.strokeStyle = tok('--caso1'); g.lineWidth = 2.5; g.beginPath(); tr.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke();
+    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(cx, cy, 16, 0, 2 * Math.PI); g.fill();
+    const q = tr[tr.length - 1]; g.fillStyle = tok('--res'); g.beginPath(); g.arc(q[0], q[1], 10, 0, 2 * Math.PI); g.fill();
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('protón', cx + 22, cy + 34);
+    document.getElementById('col-rv').textContent = num(r0, 1);
+    document.getElementById('col-lect').textContent = 'vida ≈ ' + cientTxt(t0 * Math.pow(r0, 3), 2) + ' s';
+  }
+  function bucle(ms) {
+    if (activa(cv)) { s += ult ? Math.min(0.05, (ms - ult) / 1000) / 5 : 0; if (s > 1.3) s = 0; dibuja(); }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  rr.addEventListener('input', () => { s = 0; dibuja(); }); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ SINCROTRÓN ═══════════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('si-fig');
+  if (!host) return;
+  const re = document.getElementById('si-e'), rr = document.getElementById('si-r');
+  function pinta() {
+    const E = +re.value, R = +rr.value, dE = 8.85e-5 * Math.pow(E, 4) / R;
+    const A = ejes(host, { W: 1180, H: 760, x: [0, 120], y: [-4, 2], xt: [0, 20, 40, 60, 80, 100, 120], yt: [-4, -3, -2, -1, 0, 1, 2], fy: v => '10' + String(v).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]), xl: '*E* (GeV)', yl: 'Δ*E* por vuelta (GeV, log)' });
+    const pts = []; for (let i = 1; i <= 240; i++) { const e = 120 * i / 240; pts.push([e, Math.max(-4, Math.min(2, Math.log10(8.85e-5 * Math.pow(e, 4) / R)))]); }
+    polilinea(A, pts, 'stroke:var(--res);stroke-width:5');
+    polilinea(A, [[0, Math.log10(E)], [120, Math.log10(E)]], 'stroke:none');
+    nodo('circle', { cx: A.X(E), cy: A.Y(Math.max(-4, Math.min(2, Math.log10(dE)))), r: 12, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa);
+    rotulo(A.capa, A.X(8), A.Y(1.6), 'Duplicar la energía multiplica la pérdida por 16', { 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    document.getElementById('si-ev').textContent = num(E, 1) + ' GeV';
+    document.getElementById('si-rv').textContent = num(R, 0) + ' m';
+    document.getElementById('si-lect').textContent = 'ΔE ≈ ' + (dE >= 0.01 ? num(dE, 3) + ' GeV' : num(dE * 1000, 2) + ' MeV') + ' por vuelta (' + num(dE / E * 100, 2) + ' % de E)';
+  }
+  re.addEventListener('input', pinta); rr.addEventListener('input', pinta);
+  document.getElementById('si-lep').addEventListener('click', () => { re.value = 104.5; rr.value = Math.round(27000 / (2 * Math.PI) / 10) * 10; pinta(); });
+  pinta();
+})();
+
+/* ═══ ESPECTRO CONTINUO FRENTE A LÍNEAS ════════════════════════════════ */
+(function () {
+  const host = document.getElementById('esp-fig');
+  if (!host) return;
+  const svg = nodo('svg', { viewBox: '0 0 1000 250', class: 'fig' }, host);
+  const X = l => 40 + (l - 380) / 370 * 920;
+  for (let l = 380; l < 750; l += 2) nodo('rect', { x: X(l), y: 20, width: X(l + 2) - X(l) + 1, height: 80, style: 'fill:' + colorLambda(l) }, svg);
+  nodo('rect', { x: X(380), y: 140, width: X(750) - X(380), height: 80, style: 'fill:#111' }, svg);
+  [656.3, 486.1, 434.0, 410.2].forEach(l => nodo('rect', { x: X(l) - 3, y: 140, width: 6, height: 80, style: 'fill:' + colorLambda(l) }, svg));
+  rotulo(svg, 40, 14, 'Clásico: espectro continuo', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+  rotulo(svg, 40, 244, 'Hidrógeno real: cuatro líneas (Balmer)', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+})();
+
+/* ═══ ÁTOMO DE BOHR ════════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('bo-fig');
+  if (!host) return;
+  const ri = document.getElementById('bo-ni'), rf = document.getElementById('bo-nf');
+  const En = n => -13.6057 / (n * n);
+  function pinta() {
+    let ni = +ri.value, nf = +rf.value;
+    if (nf >= ni) { nf = ni - 1; rf.value = nf; }
+    const dE = En(ni) - En(nf), lam = 1239.84 / dE, col = colorLambda(lam);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    /* diagrama de niveles (izquierda) */
+    const Y = e => 60 + (-e / 13.6) * 620;
+    for (let n = 1; n <= 7; n++) {
+      const on = n === ni || n === nf;
+      nodo('line', { x1: 60, x2: 460, y1: Y(En(n)), y2: Y(En(n)), style: 'stroke:' + (on ? 'var(--res)' : 'var(--tinta2)') + ';stroke-width:' + (on ? 5 : 2.5) }, svg);
+      if (n <= 4 || on) rotulo(svg, 470, Y(En(n)) + 8, '*n* = ' + n + '  (' + num(En(n), 2) + ' eV)', { 'font-size': 22, style: 'fill:var(--tinta);font-family:' + FMATH });
+    }
+    flecha(svg, 200, Y(En(ni)), 200, Y(En(nf)), col, 7);
+    /* órbitas (derecha) */
+    const cx = 900, cy = 370;
+    for (let n = 1; n <= 7; n++) { const R = 11 * n * n * 0.9; if (R > 330) continue; nodo('circle', { cx: cx, cy: cy, r: R, style: 'fill:none;stroke:' + (n === ni || n === nf ? 'var(--res)' : 'var(--linea)') + ';stroke-width:' + (n === ni || n === nf ? 3.5 : 2) }, svg); }
+    nodo('circle', { cx: cx, cy: cy, r: 8, style: 'fill:var(--caso2)' }, svg);
+    const Ri = 11 * ni * ni * 0.9, Rf = 11 * nf * nf * 0.9;
+    if (Ri <= 330) nodo('circle', { cx: cx + Ri, cy: cy, r: 9, style: 'fill:none;stroke:var(--res);stroke-width:3' }, svg);
+    nodo('circle', { cx: cx + Rf, cy: cy, r: 9, style: 'fill:var(--res)' }, svg);
+    rotulo(svg, cx, 720, 'Órbitas a escala: r ∝ n²', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    const serie = nf === 1 ? 'Lyman' : nf === 2 ? 'Balmer' : nf === 3 ? 'Paschen' : nf === 4 ? 'Brackett' : 'Pfund';
+    document.getElementById('bo-niv').textContent = ni; document.getElementById('bo-nfv').textContent = nf;
+    document.getElementById('bo-e').textContent = num(dE, 3) + ' eV';
+    document.getElementById('bo-l').textContent = num(lam, 1) + ' nm';
+    document.getElementById('bo-color').style.background = col;
+    document.getElementById('bo-lect').textContent = 'serie de ' + serie + (lam < 380 ? ' · ultravioleta' : lam > 750 ? ' · infrarrojo' : ' · visible');
+  }
+  ri.addEventListener('input', pinta); rf.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ RETO: LÍNEAS DE BALMER ═══════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ba-lista');
+  if (!host) return;
+  const L = [[486.1, 4], [410.2, 6], [656.3, 3], [434.0, 5]];
+  host.innerHTML = L.map(q => '<div class="dim" data-ok="' + q[1] + '"><span class="dim-ec"><span class="sw" style="background:' + colorLambda(q[0]) + '"></span>Línea de ' + num(q[0], 1) + ' nm</span><div class="dim-btns">' + [3, 4, 5, 6].map(n => '<button type="button" class="btn" data-r="' + n + '">n = ' + n + '</button>').join('') + '</div><div class="dim-exp"></div></div>').join('');
+  const items = $$('.dim', host), fb = document.getElementById('ba-fb'), marc = document.getElementById('ba-score');
+  items.forEach(it => $('.dim-btns', it).addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    it.dataset.resp = b.dataset.r; $$('.dim-btns button', it).forEach(o => o.classList.toggle('sel', o === b)); it.classList.remove('ok', 'mal');
+  }));
+  document.getElementById('ba-ok').addEventListener('click', () => {
+    let n = 0, faltan = 0;
+    items.forEach(it => {
+      if (!it.dataset.resp) { faltan++; return; }
+      const ok = it.dataset.resp === it.dataset.ok; if (ok) n++;
+      const ni = +it.dataset.ok, dE = 13.6057 * (1 / 4 - 1 / (ni * ni));
+      it.classList.toggle('ok', ok); it.classList.toggle('mal', !ok);
+      $('.dim-exp', it).textContent = (ok ? '✓ ' : '✗ ') + 'De n = ' + ni + ' a n = 2: ΔE = 13,6 (1/4 − 1/' + (ni * ni) + ') ≈ ' + num(dE, 2) + ' eV ⇒ λ = 1239,84/ΔE ≈ ' + num(1239.84 / dE, 0) + ' nm.';
+    });
+    marc.textContent = n;
+    fb.textContent = faltan ? 'Te faltan ' + faltan + '.' : (n === items.length ? '✓ ¡Perfecto! Más energía, menor longitud de onda.' : '✗ ' + n + ' de ' + items.length + '. Pista: cuanto más alto el nivel, más azul la línea.');
+    fb.style.color = !faltan && n === items.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('ba-borrar').addEventListener('click', () => { items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); }); marc.textContent = '0'; fb.textContent = ''; });
+})();
+
+</script>
+</body></html>

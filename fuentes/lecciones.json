@@ -1,0 +1,22 @@
+[
+  {
+    "fuente": "fuentes/preliminares/leccion-fuente.html",
+    "salida": "lecciones/capitulo-1-preliminares.html",
+    "ds": "fuentes/_ds/fundamentacion"
+  },
+  {
+    "fuente": "fuentes/relatividad-especial/leccion-fuente.html",
+    "salida": "lecciones/capitulo-2-relatividad-especial.html",
+    "ds": "fuentes/_ds/fundamentacion"
+  },
+  {
+    "fuente": "fuentes/dinamica-newtoniana/leccion-fuente.html",
+    "salida": "lecciones/capitulo-3-dinamica-newtoniana.html",
+    "ds": "fuentes/_ds/fundamentacion"
+  },
+  {
+    "fuente": "fuentes/electromagnetismo/leccion-fuente.html",
+    "salida": "lecciones/capitulo-4-electromagnetismo.html",
+    "ds": "fuentes/_ds/fundamentacion"
+  }
+]

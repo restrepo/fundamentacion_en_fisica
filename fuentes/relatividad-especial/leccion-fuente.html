@@ -1,0 +1,1128 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Relatividad especial · Fundamentación en Física</title>
+<style>
+:root{
+  --t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px;
+}
+/* ── Lección: Relatividad especial (lienzo 2280 × 1080, unidades en px) ── */
+section.diapositiva{position:relative}
+section.diapositiva p{margin:0 0 14px}
+section.diapositiva .ceja{font:600 var(--t-rotulo)/1 var(--font-body);text-transform:uppercase;margin:0 0 6px}
+section.diapositiva .ceja .score{float:right;color:var(--tinta2);letter-spacing:.04em}
+section.diapositiva strong{font-weight:700}
+section.diapositiva .sub{color:var(--tinta2);font-size:var(--t-peq)}
+section.diapositiva .mono{font-variant-numeric:tabular-nums}
+
+/* rejillas */
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-60{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-40{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:44px;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pila > * + *{margin-top:18px}
+
+/* cajas */
+.caja{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:18px 26px}
+.caja.c1{border-left-color:var(--caso1)}
+.caja.c2{border-left-color:var(--caso2)}
+.caja.neutra{border-left-color:var(--borde)}
+  .caja h3{font-size:36px;margin:0 0 8px}
+.kf{border:2px solid var(--res);background:var(--res-50);padding:14px 26px;text-align:center;font-size:40px}
+.ec{text-align:center;margin:10px 0}
+.nota{font-size:var(--t-peq);color:var(--tinta2)}
+ol.leyes{margin:0;padding-left:1.3em}
+ol.leyes li{margin-bottom:16px}
+ul.lista{margin:0;padding-left:1.1em}
+ul.lista li{margin-bottom:10px}
+
+/* fragmentos (↓ ↑) */
+.frag{opacity:.0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+.frag.frag-on{opacity:1;transform:none}
+
+/* figuras */
+.svgbox{background:var(--panel);padding:14px 18px 16px}
+.svghd{font:700 var(--t-rotulo)/1.2 var(--font-body);color:var(--tinta2);margin:0 0 10px;display:flex;justify-content:space-between;gap:20px}
+.svghd #os-sub{text-transform:none;letter-spacing:0}
+.svghd .val{color:var(--res);text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+.fig{display:block;width:100%;height:auto}
+.fig text{font-family:'STIX Two Text',Georgia,serif}
+canvas.lienzo{display:block;width:100%;height:auto;cursor:crosshair}
+
+/* controles */
+.ctrl{display:grid;grid-template-columns:270px 1fr 170px;align-items:center;gap:18px;margin:10px 0;font-size:var(--t-peq)}
+.ctrl .v{font:600 var(--t-peq)/1 var(--font-body);text-align:right;font-variant-numeric:tabular-nums;color:var(--res)}
+.ctrl input[type=range]{width:100%;height:30px;cursor:pointer}
+.fila-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;background:var(--panel);color:var(--tinta);border:2px solid var(--linea);cursor:pointer}
+.btn:hover{background:var(--primario-tinte)}
+.btn.on{border-color:var(--res);color:var(--res);background:var(--res-50)}
+.btn.prim{background:var(--res);color:var(--papel);border-color:var(--res)}
+.chk{display:inline-flex;align-items:center;gap:10px;font:600 var(--t-peq)/1 var(--font-body);cursor:pointer;margin-right:26px}
+.chk input{width:22px;height:22px;accent-color:var(--color-accent)}
+.chk.x{color:var(--res)} .chk.p{color:var(--caso1)} .chk.a{color:var(--caso2)} .chk.n{color:var(--tinta2)}
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.lectura div{background:var(--panel);border:2px solid var(--linea);padding:12px 16px;font-size:26px;color:var(--tinta2)}
+.lectura b{display:block;font:700 34px/1.25 var(--font-body);color:var(--tinta);font-variant-numeric:tabular-nums}
+
+/* tabla */
+table.tabla{border-collapse:collapse;width:100%;font-size:30px}
+table.tabla th,table.tabla td{border-bottom:2px solid var(--linea);padding:6px 14px;text-align:center}
+table.tabla th{font:700 25px/1.2 var(--font-body);color:var(--tinta2);border-bottom-color:var(--tinta)}
+table.tabla td.izq{text-align:left}
+table.tabla tr.frag td{background:var(--panel)}
+
+/* chips con ventana emergente */
+.prop{border-bottom:3px dotted var(--res);cursor:help;color:var(--tinta);font-weight:600}
+.prop:hover{background:var(--res-50)}
+.pop-src{display:none}
+.popover{position:absolute;z-index:40;max-width:860px;padding:24px 30px;font-size:31px;line-height:1.45}
+.popover h4{margin:0 0 8px;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.popover .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
+
+/* práctica */
+.pr-item{background:var(--panel);padding:16px 22px;margin-bottom:16px}
+.pr-q{font-weight:600;margin-bottom:10px}
+.pr-opcs{display:flex;flex-wrap:wrap;gap:12px}
+.pr-opc{font:500 var(--t-peq)/1.2 var(--font-body);padding:10px 18px;background:var(--papel);border:2px solid var(--linea);cursor:pointer;color:var(--tinta)}
+.pr-opc.ok{border-color:var(--ok);background:var(--res-50)}
+.pr-opc.mal{border-color:var(--mal);background:var(--mal-50)}
+.pr-fb{margin-top:10px;font-size:var(--t-peq);min-height:1.2em}
+.pr-fb.ok{color:var(--res)} .pr-fb.mal{color:var(--mal)}
+.pr-in{font-size:30px;padding:8px 12px;width:200px;border:2px solid var(--linea);background:var(--papel)}
+.pr-btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;border:2px solid var(--linea);background:var(--papel);cursor:pointer;color:var(--tinta)}
+.pr-pista{display:none;margin-top:8px;font-size:var(--t-peq);color:var(--tinta2)}
+.pr-pista.on{display:block}
+
+/* reto */
+.cz-grid{display:grid;grid-template-columns:120px repeat(3,1fr);gap:16px 22px;align-items:center;font-size:34px}
+.cz-grid .h{font:700 28px/1.2 var(--font-body);color:var(--tinta2)}
+.cz-grid input{font:500 34px/1 'STIX Two Text',Georgia,serif;padding:8px 12px;border:2px solid var(--linea);background:var(--panel);width:100%;box-sizing:border-box}
+.cz-grid input.ok{border-color:var(--res);background:var(--res-50)}
+.cz-grid input.mal{border-color:var(--mal);background:var(--mal-50)}
+.cz-btn{font:600 var(--t-peq)/1 var(--font-body);padding:12px 22px;border:2px solid var(--linea);background:var(--panel);cursor:pointer;color:var(--tinta)}
+.cz-fb{margin-top:16px;font-size:var(--t-peq);min-height:1.3em}
+.cz-sol{display:none;margin-top:14px;background:var(--panel);padding:14px 20px;border:2px solid var(--linea)}
+.cz-sol.on{display:block}
+
+/* glosario */
+dl.glosa{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0}
+dl.glosa div{border-top:2px solid var(--linea);padding-top:10px}
+dl.glosa dt{font:800 34px/1.2 var(--font-heading);color:var(--res);margin-bottom:4px}
+dl.glosa dd{margin:0;font-size:29px}
+
+/* portada */
+.portada .pt-fig{width:720px}
+.portada .sub{font-size:36px;max-width:1250px}
+.ayuda{position:absolute;bottom:84px;font-size:22px;color:var(--tinta2)}
+.ayuda kbd{font:600 20px/1 var(--font-body);border:2px solid var(--linea);padding:3px 8px;margin:0 2px;background:var(--panel)}
+
+/* diagrama de flujo */
+.flujo .blq{transition:all .3s}
+
+/* ── Propio del capítulo 1 ── */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;align-items:start}
+.g4 .caja p{font-size:30px}
+.arrastre svg{cursor:grab;touch-action:none}
+.arrastre svg:active{cursor:grabbing}
+ol.ej{margin:0 0 0 30px;padding-left:1.6em;columns:2;column-gap:60px;font-size:30px}
+ol.ej li{break-inside:avoid;margin-bottom:18px;padding-left:6px}
+ol.ej .resp{display:block;color:var(--res);font-weight:600}
+ol.ej .resp::before{content:'→ ';color:var(--tinta2)}
+.dim-lista{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+.dim{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--linea);padding:14px 20px;font-size:34px}
+.dim .dim-btns{display:flex;gap:10px}
+.dim .dim-exp{grid-column:1 / -1;font-size:26px;color:var(--tinta2);display:none}
+.dim.ok{border-left-color:var(--res)} .dim.mal{border-left-color:var(--mal)}
+.dim.ok .dim-exp,.dim.mal .dim-exp{display:block}
+.btn.sel{border-color:var(--tinta);background:var(--primario-tinte)}
+select.pr-in{font-family:var(--font-body)}
+
+.dim .dim-ec{font-size:30px}
+
+</style></head>
+<body>
+<div id="escenario">
+<span class="marca">Relatividad especial · Cap. 2</span>
+<p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>
+<!-- ═════════════ §1 · POSTULADOS Y TRANSFORMACIONES ═════════════ -->
+<section class="diapositiva portada" data-seccion="Transformaciones de Lorentz" data-label="Relatividad especial">
+  <div>
+    <p class="ceja">Fundamentación en Física · Capítulo 2</p>
+    <h1>Relatividad especial</h1>
+    <div class="regla"></div>
+    <p class="sub">Dos postulados bastan para cambiar el espacio y el tiempo: transformaciones de Lorentz, dilatación del tiempo, contracción de la longitud, suma de velocidades y la equivalencia entre masa y energía.</p>
+  </div>
+  <figure class="pt-fig svgbox" style="margin:0">
+    <div class="svghd"><span>Reloj de luz en una nave</span><span class="val" id="hero-lect"></span></div>
+    <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
+  </figure>
+  <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+</section>
+
+<section class="diapositiva" data-seccion="Transformaciones de Lorentz" data-label="Los postulados">
+  <p class="ceja">§ 2.1 · Introducción</p>
+  <h2 class="titulo">Dos postulados de Einstein</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="caja frag"><h3>1 · Principio de relatividad</h3><p style="margin:0">Las leyes de la física son las mismas en todos los <span class="prop" data-pop="pop-inercial">sistemas de referencia inerciales</span>.</p></div>
+      <div class="caja c2 frag"><h3>2 · Constancia de la velocidad de la luz</h3><p style="margin:0">La velocidad de la luz en el vacío, \(c\), es la misma para todos los observadores inerciales, sin importar el movimiento de la fuente ni del observador.</p></div>
+      <p class="nota frag">El segundo postulado puede sustituirse por la homogeneidad e isotropía del espacio y el tiempo: de ellas se deduce que existe una velocidad límite invariante.</p>
+    </div>
+    <div class="pila">
+      <p class="frag"><strong>¿Por qué hacía falta?</strong> En mecánica el primer postulado es evidente, pero no en electromagnetismo: una carga en reposo solo tiene campo eléctrico; si se mueve a velocidad constante produce una corriente y, con ella, un campo magnético, y su campo eléctrico pasa de esférico a elipsoidal.</p>
+      <div class="kf frag"><p style="margin:0">Los instrumentos de medida están hechos de cargas: es de esperar que el movimiento, aun uniforme, los afecte. Las transformaciones de <strong>Galileo</strong> no son compatibles con una \(c\) constante; las de <strong>Lorentz</strong> sí.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Transformaciones de Lorentz" data-label="Derivación de las transformaciones">
+  <p class="ceja">§ 2.2 · Transformaciones de Lorentz</p>
+  <h2 class="titulo">De la linealidad y la luz al factor \(\gamma\)</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag"><strong>1 · Linealidad.</strong> Por homogeneidad, \(x' = Ax + Bt\). Las coordenadas perpendiculares no cambian: \(y' = y\), \(z' = z\).</p>
+      <p class="frag"><strong>2 · El origen de \(S'\)</strong> está en \(x = vt\): \(0 = (Av + B)t \Rightarrow B = -Av\), así que
+        \[ x' = \gamma\,(x - vt). \]</p>
+      <p class="frag"><strong>3 · Relatividad.</strong> La inversa tiene la misma forma con \(v \to -v\):
+        \[ x = \gamma\,(x' + vt'). \]</p>
+    </div>
+    <div class="pila">
+      <p class="frag"><strong>4 · Un pulso de luz</strong> sale del origen en \(t = t' = 0\): \(x = ct\) en \(S\) y \(x' = ct'\) en \(S'\).</p>
+      <div class="caja neutra frag">\[ \begin{aligned} ct' &= \gamma t\,(c - v), \qquad ct = \gamma t'\,(c + v) \\ c^{2}\,t t' &= \gamma^{2}\,t t'\,(c - v)(c + v) \\ 1 &= \gamma^{2}\left(1 - \dfrac{v^{2}}{c^{2}}\right) \end{aligned} \]</div>
+      <div class="kf frag">\[ \gamma = \dfrac{1}{\sqrt{1 - v^{2}/c^{2}}} \ge 1 \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Transformaciones de Lorentz" data-label="Resumen de las transformaciones">
+  <p class="ceja">§ 2.2 · Resumen</p>
+  <h2 class="titulo">Transformaciones de Lorentz, sus inversas y el límite de Galileo</h2>
+  <div class="g3">
+    <div class="kf frag">\[ \begin{aligned} t' &= \gamma\left(t - \dfrac{vx}{c^{2}}\right) \\ x' &= \gamma\,(x - vt) \\ y' &= y, \quad z' = z \end{aligned} \]<p class="nota" style="margin:0">De \(S\) a \(S'\).</p></div>
+    <div class="caja frag">\[ \begin{aligned} t &= \gamma\left(t' + \dfrac{vx'}{c^{2}}\right) \\ x &= \gamma\,(x' + vt') \\ y &= y', \quad z = z' \end{aligned} \]<p class="nota" style="margin:0">Inversas: se intercambian primas y \(v \to -v\).</p></div>
+    <div class="caja c2 frag">\[ \begin{aligned} t' &= \lim_{c\to\infty} \gamma\left(t - \dfrac{vx}{c^{2}}\right) = t \\ x' &= \lim_{c\to\infty} \gamma\,(x - vt) = x - vt \end{aligned} \]<p class="nota" style="margin:0">Sin velocidad límite (\(c \to \infty\)), \(\gamma \to 1\): Galileo.</p></div>
+  </div>
+  <p class="nota frag" style="margin-top:24px">Toda la evidencia experimental —del electromagnetismo a la desintegración de partículas— indica que el universo tiene una velocidad límite, \(c\).</p>
+</section>
+
+<section class="diapositiva" data-seccion="Transformaciones de Lorentz" id="dp-gamma" data-label="El factor de Lorentz">
+  <p class="ceja">§ 2.2 · Laboratorio</p>
+  <h2 class="titulo">¿Cuándo importa la relatividad? El factor \(\gamma(\beta)\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(\gamma\) frente a \(\beta = v/c\)</span><span class="val" id="gam-lect"></span></div>
+      <div id="gam-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Rapidez \(\beta = v/c\)</span><input type="range" id="gam-b" min="0" max="0.999" step="0.001" value="0.6"><span class="v" id="gam-bv"></span></label>
+      <div class="fila-btn" id="gam-pre"><button type="button" class="btn" data-b="0.000013">Satélite GPS</button><button type="button" class="btn" data-b="0.6">\(0{,}6c\)</button><button type="button" class="btn" data-b="0.87">\(0{,}87c\)</button><button type="button" class="btn" data-b="0.999">Muón cósmico</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>\(\gamma\)<b id="gam-g"></b></div>
+        <div>\(1/\gamma\)<b id="gam-ig"></b></div>
+        <div>\(\qty{1}{s}\) propio se ve como<b id="gam-t"></b></div>
+        <div>\(\qty{1}{m}\) propio se ve como<b id="gam-l"></b></div>
+      </div>
+      <p class="nota">Para \(\beta \ll 1\), \(\gamma \approx 1 + \tfrac12\beta^{2}\): a velocidades cotidianas el efecto es minúsculo.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Transformaciones de Lorentz" id="dp-mink" data-label="Diagrama de espacio-tiempo">
+  <p class="ceja">§ 2.2 · Espacio de Minkowski</p>
+  <h2 class="titulo">Un mismo evento, dos juegos de coordenadas</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra el evento; los ejes de \(S'\) se cierran con \(\beta\)</span><span class="val" id="mk-lect"></span></div>
+      <div id="mk-fig" class="arrastre"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Velocidad de \(S'\), \(\beta\)</span><input type="range" id="mk-b" min="-0.8" max="0.8" step="0.05" value="0.5"><span class="v" id="mk-bv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>En \(S\): \((ct, x)\)<b id="mk-s"></b></div>
+        <div>En \(S'\): \((ct', x')\)<b id="mk-sp"></b></div>
+        <div>\((ct)^{2} - x^{2}\)<b id="mk-i"></b></div>
+        <div>\((ct')^{2} - x'^{2}\)<b id="mk-ip"></b></div>
+      </div>
+      <p class="nota">Las líneas a \(45^\circ\) son rayos de luz: ningún cambio de sistema las mueve. La hipérbola une los eventos con el mismo intervalo \(\Delta S^{2} = (c\,\Delta t)^{2} - \Delta x^{2}\).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §2 · DILATACIÓN Y CONTRACCIÓN ═════════════ -->
+<section class="diapositiva" data-seccion="Tiempo y longitud" id="dp-dil" data-label="Dilatación del tiempo">
+  <p class="ceja">§ 2.3 · Dilatación del tiempo</p>
+  <h2 class="titulo">Un reloj en movimiento marcha más despacio</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Dos relojes de luz idénticos, vistos desde \(S\)</span><span class="val" id="dil-lect"></span></div>
+      <canvas class="lienzo" id="dil-cv" width="1240" height="660"></canvas>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>\(\beta\) del reloj</span><input type="range" id="dil-b" min="0" max="0.95" step="0.01" value="0.6"><span class="v" id="dil-bv"></span></label>
+      <p class="frag">Dos tictacs del reloj en reposo en \(S'\) ocurren en el mismo \(x'_c\): su separación es el <span class="prop" data-pop="pop-propio">tiempo propio</span> \(\Delta t_0 = t'_2 - t'_1\).</p>
+      <div class="frag">\[ \Delta t = \gamma\left(t'_2 + \dfrac{v x'_c}{c^{2}}\right) - \gamma\left(t'_1 + \dfrac{v x'_c}{c^{2}}\right) = \gamma\,\Delta t_0 \]</div>
+      <div class="kf frag">\[ \Delta t = \dfrac{\Delta t_0}{\sqrt{1 - v^{2}/c^{2}}} \ge \Delta t_0 \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Tiempo y longitud" id="dp-con" data-label="Contracción de la longitud">
+  <p class="ceja">§ 2.4 · Contracción de la longitud</p>
+  <h2 class="titulo">La pelota, la cancha, el tenista y la hormiga</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span id="con-hd">Lo que mide el tenista</span><span class="val" id="con-lect"></span></div>
+      <div id="con-fig"></div>
+    </figure>
+    <div class="pila">
+      <div class="fila-btn"><button type="button" class="btn on" data-vista="tenista">Tenista (en reposo)</button><button type="button" class="btn" data-vista="hormiga">Hormiga (con la pelota)</button></div>
+      <label class="ctrl"><span>\(\beta\) de la pelota</span><input type="range" id="con-b" min="0" max="0.99" step="0.01" value="0.87"><span class="v" id="con-bv"></span></label>
+      <p>La <span class="prop" data-pop="pop-lpropia">longitud propia</span> \(L_0\) la mide quien está en reposo respecto al objeto. Cualquier otro observador mide
+        \[ L = \dfrac{L_0}{\gamma} = L_0\sqrt{1 - v^{2}/c^{2}}. \]</p>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>Cancha (propia \(\qty{24}{m}\))<b id="con-c"></b></div>
+        <div>Pelota (propia \(\qty{67}{mm}\))<b id="con-p"></b></div>
+        <div>Tiempo del tenista<b id="con-tt"></b></div>
+        <div>Tiempo de la hormiga<b id="con-th"></b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Tiempo y longitud" data-label="Contracción desde la dilatación">
+  <p class="ceja">§ 2.4 · Demostración</p>
+  <h2 class="titulo">La contracción es consecuencia de la dilatación</h2>
+  <div class="g2">
+    <div class="pila">
+      <p>Una nave va de la Tierra a una estrella a velocidad \(v\). Ambos observadores coinciden en la rapidez relativa.</p>
+      <div class="caja neutra frag"><h3>Tierra (\(S\))</h3>Distancia propia \(L_0\), tiempo \(\Delta t\): \[ L_0 = v\,\Delta t. \]</div>
+      <div class="caja c1 frag"><h3>Nave (\(S'\))</h3>Salida y llegada ocurren en \(x' = 0\): su tiempo es propio, \(\Delta t_0\): \[ L = v\,\Delta t_0. \]</div>
+    </div>
+    <div class="pila">
+      <div class="frag">\[ L_0 = v\,(\gamma\,\Delta t_0) = \gamma\,(v\,\Delta t_0) = \gamma L \]</div>
+      <div class="kf frag">\[ L = \dfrac{L_0}{\gamma} = L_0\sqrt{1 - v^{2}/c^{2}} \]</div>
+      <div class="caja c2 frag"><p style="margin:0"><strong>No es un aplastamiento material.</strong> Tras el fallido experimento de Michelson y Morley (1887), Lorentz propuso que el éter comprimía los objetos. En la teoría de Einstein el efecto es <em>simétrico</em>: tú ves mi nave contraída y yo veo contraída la tuya. Es geometría del espacio-tiempo: medir una longitud exige ubicar sus extremos a la vez, y la simultaneidad es relativa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Tiempo y longitud" id="dp-muon" data-label="Los muones cósmicos">
+  <p class="ceja">§ 2.4 · Evidencia experimental</p>
+  <h2 class="titulo">Muones: \(\qty{15}{km}\) de atmósfera con una vida de \(\qty{2{,}2}{\mu s}\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Fracción de muones que llega al suelo</span><span class="val" id="mu-lect"></span></div>
+      <div id="mu-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Rapidez del muón</span><input type="range" id="mu-b" min="0.3" max="1.333" step="0.001" value="1"><span class="v" id="mu-bv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>Viaje medido en Tierra<b id="mu-tt"></b></div>
+        <div>Vida dilatada \(\gamma\tau\)<b id="mu-gt"></b></div>
+        <div>Viaje en el reloj del muón<b id="mu-tm"></b></div>
+        <div>Atmósfera para el muón<b id="mu-L"></b></div>
+      </div>
+      <p class="nota">El deslizador recorre \(\beta = 1 - 10^{-3s}\), para llegar cerca de \(c\). Con \(\beta = 0{,}999\): \(\gamma \approx 22{,}4\), viaje de \(\qty{50}{\mu s}\) en Tierra y de \(\qty{2{,}24}{\mu s}\) para el muón.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Tiempo y longitud" data-label="Relatividad en la tecnología">
+  <p class="ceja">§ 2.4 · Aplicaciones</p>
+  <h2 class="titulo">GPS, muones y computación cuántica</h2>
+  <div class="g3">
+    <div class="caja frag"><h3>GPS</h3><p>A \(v \approx \qty{3{,}9}{km/s}\), \(\Delta t \approx \left(1 + \dfrac{v^{2}}{2c^{2}}\right)\Delta t_0\): los relojes de los satélites se atrasan unos \(\qty{7}{\mu s}\) por día. La relatividad general los adelanta \(\qty{45}{\mu s}\): neto, \(+\qty{38}{\mu s}\) diarios.</p><p class="nota" style="margin:0">Sin corregirlo, el error de posición superaría \(\qty{10}{km}\) por día.</p></div>
+    <div class="caja c1 frag"><h3>Muones y ADN</h3><p>Gracias a la dilatación, los muones a \(\approx 0{,}999c\) bañan la superficie: miles atraviesan nuestro cuerpo cada minuto. Son radiación ionizante capaz de romper enlaces del ADN.</p><p class="nota" style="margin:0">Cultivos bajo kilómetros de roca muestran mecanismos de reparación atrofiados.</p></div>
+    <div class="caja c2 frag"><h3>Qubits</h3><p>Un muón que cruza un chip superconductor deposita \(\sim\qty{200}{keV}\) y hace perder su estado a decenas de qubits a la vez durante \(\sim\qty{10}{ms}\): un error <em>correlacionado</em>.</p><p class="nota" style="margin:0">Un estudio de 2025 atribuyó a rayos cósmicos \(\approx 17\,\%\) de esos errores.</p></div>
+  </div>
+</section>
+
+<!-- ═════════════ §3 · SUMA DE VELOCIDADES ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Suma de velocidades" data-label="Derivación de la suma de velocidades">
+  <p class="ceja">§ 2.5 · Suma de velocidades relativista</p>
+  <h2 class="titulo">\(0{,}8c + 0{,}7c\) no puede dar \(1{,}5c\)</h2>
+  <div class="g2">
+    <div class="pila">
+      <p>Una nave (\(S'\)) se aleja de la Tierra (\(S\)) a \(v\) y dispara una sonda a \(u'\) respecto a ella. Con \(u = x/t\) y \(u' = x'/t'\):</p>
+      <div class="frag">\[ u' = \dfrac{x'}{t'} = \dfrac{\gamma\,(x - vt)}{\gamma\left(t - \dfrac{vx}{c^{2}}\right)} = \dfrac{u - v}{1 - \dfrac{uv}{c^{2}}}. \]</div>
+      <div class="caja neutra frag">\[ \begin{aligned} u'\left(1 - \dfrac{uv}{c^{2}}\right) &= u - v \\ u' + v &= u\left(1 + \dfrac{u'v}{c^{2}}\right) \end{aligned} \]</div>
+    </div>
+    <div class="pila">
+      <div class="kf frag">\[ u = \dfrac{u' + v}{1 + \dfrac{u'v}{c^{2}}} \]</div>
+      <div class="caja frag"><p style="margin:0">\(v = 0{,}8c\), \(u' = 0{,}7c\):
+        \[ u = \dfrac{1{,}5c}{1 + 0{,}56} \approx 0{,}9615c. \]</p></div>
+      <div class="caja c2 frag"><p style="margin:0">Despejando, \(c^{2} = \dfrac{u u' v}{u' + v - u}\). Si \(u \approx u' + v\) (Galileo), \(c^{2} \to \infty\): no hay velocidad límite.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Suma de velocidades" id="dp-vel" data-label="Laboratorio de suma de velocidades">
+  <p class="ceja">§ 2.5 · Laboratorio</p>
+  <h2 class="titulo">Suma clásica frente a suma relativista</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(u\) frente a \(u'\) para la \(v\) elegida</span><span class="val" id="vel-lect"></span></div>
+      <div id="vel-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl"><span>Nave, \(v/c\)</span><input type="range" id="vel-v" min="-0.99" max="0.99" step="0.01" value="0.8"><span class="v" id="vel-vv"></span></label>
+      <label class="ctrl"><span>Sonda, \(u'/c\)</span><input type="range" id="vel-u" min="-1" max="1" step="0.01" value="0.7"><span class="v" id="vel-uv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" data-vu="0.8,0.7">Nave y sonda</button><button type="button" class="btn" data-vu="0.9,1">Láser desde \(0{,}9c\)</button><button type="button" class="btn" data-vu="0.01,0.01">Velocidades cotidianas</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>Galileo, \(u' + v\)<b id="vel-g"></b></div>
+        <div>Einstein<b id="vel-e"></b></div>
+      </div>
+      <p class="nota">Con \(u' = c\) el resultado es \(c\) para cualquier \(v\): la fórmula protege el segundo postulado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §4 · DINÁMICA RELATIVISTA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Dinámica relativista" data-label="Cuadrivectores">
+  <p class="ceja">§ 2.6 · Cuadrivectores</p>
+  <h2 class="titulo">Del intervalo invariante al cuadrimomento</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag"><strong>Intervalo.</strong> Con \(\Delta X^{\mu} = (c\,\Delta t, \Delta\vect{r})\), todos los observadores miden el mismo
+        \[ \Delta S^{2} = (c\,\Delta t)^{2} - \abs{\Delta\vect{r}}^{2}. \]</p>
+      <p class="frag"><strong>Tiempo propio.</strong> Viajando con la partícula, \(\Delta\vect{r} = \vect{0}\) y \(\Delta S^{2} = (c\,\Delta t_0)^{2}\):
+        \[ \left(\dfrac{\Delta t_0}{\Delta t}\right)^{2} = 1 - \dfrac{v^{2}}{c^{2}} \;\Longrightarrow\; \Delta t = \gamma\,\Delta t_0. \]</p>
+    </div>
+    <div class="pila">
+      <div class="caja frag"><h3>Cuadrivelocidad</h3>\[ V^{\mu} = \dfrac{\Delta X^{\mu}}{\Delta t_0} = (\gamma c,\; \gamma\vect{v}), \qquad V^{\mu}\cdot V^{\mu} = \gamma^{2}(c^{2} - v^{2}) = c^{2}. \]</div>
+      <div class="kf frag">\[ p^{\mu} = m V^{\mu} = (\gamma m c,\; \gamma m\vect{v}) \;\Longrightarrow\; \vect{p} = \gamma m\vect{v}, \quad E = \gamma m c^{2}. \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Dinámica relativista" data-label="Energía y principio de correspondencia">
+  <p class="ceja">§ 2.6 · Energía relativista</p>
+  <h2 class="titulo">\(E = \gamma m c^{2}\) contiene a Newton… y algo más</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag"><strong>Principio de correspondencia:</strong> la teoría nueva debe reducirse a la antigua donde esta funciona. Con \((1 + x)^{n} \approx 1 + nx\) para \(x \ll 1\):
+        \[ \gamma = \left(1 - \dfrac{v^{2}}{c^{2}}\right)^{-1/2} \approx 1 + \dfrac12\,\dfrac{v^{2}}{c^{2}}. \]</p>
+      <div class="kf frag">\[ E \approx \underbrace{m c^{2}}_{\text{en reposo}} + \underbrace{\tfrac12 m v^{2}}_{\text{cinética de Newton}} \]</div>
+    </div>
+    <div class="pila">
+      <p class="frag"><strong>Invariante energía-momento.</strong> Con \(p^{\mu} = (E/c, \vect{p})\):
+        \[ p^{\mu}\cdot p^{\mu} = \left(\dfrac{E}{c}\right)^{2} - p^{2} = m^{2}c^{2} \;\Longrightarrow\; E^{2} = (mc^{2})^{2} + (pc)^{2}. \]</p>
+      <div class="caja c2 frag"><p style="margin:0"><strong>Límites.</strong> Si \(v \to c\), \(E \to \infty\): acelerar una masa hasta \(c\) costaría energía infinita. Si \(m = 0\) (fotón), \(E = pc\). Además, \(\vect{v} = \vect{p}c^{2}/E\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Dinámica relativista" id="dp-ener" data-label="Laboratorio de energía">
+  <p class="ceja">§ 2.6 · Laboratorio</p>
+  <h2 class="titulo">Energía cinética: Newton frente a Einstein</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(K/mc^{2}\) frente a \(\beta\)</span><span class="val" id="en-lect"></span></div>
+      <div id="en-fig"></div>
+    </figure>
+    <div class="pila">
+      <div class="fila-btn" id="en-part"><button type="button" class="btn on" data-m="0.51099895" data-n="Electrón">Electrón</button><button type="button" class="btn" data-m="105.6583755" data-n="Muón">Muón</button><button type="button" class="btn" data-m="938.272088" data-n="Protón">Protón</button></div>
+      <label class="ctrl"><span>\(\beta = v/c\)</span><input type="range" id="en-b" min="0" max="0.99" step="0.01" value="0.8"><span class="v" id="en-bv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>\(E = \gamma m c^{2}\)<b id="en-E"></b></div>
+        <div>\(pc = \gamma m v c\)<b id="en-p"></b></div>
+        <div>\(K = (\gamma - 1)mc^{2}\)<b id="en-K"></b></div>
+        <div>Newton, \(\tfrac12 m v^{2}\)<b id="en-Kc"></b></div>
+      </div>
+      <p class="nota">Comprueba \(E^{2} - (pc)^{2} = (mc^{2})^{2}\) con cualquier \(\beta\): <span id="en-inv"></span></p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Dinámica relativista" id="dp-dop" data-label="Efecto Doppler relativista">
+  <p class="ceja">§ 2.7 · Efecto Doppler relativista</p>
+  <h2 class="titulo">Dilatación + estiramiento geométrico = corrimiento al rojo</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Onda emitida y onda observada</span><span class="val" id="dop-lect"></span></div>
+      <div id="dop-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>La nave emite con periodo propio \(T_0\); desde la Tierra el periodo se dilata a \(\gamma T_0\) y cada pulso viaja \(vT/c\) más:
+        \[ T_{\text{obs}} = \gamma T_0\,(1 + \beta) = T_0\sqrt{\dfrac{1 + \beta}{1 - \beta}}. \]</p>
+      <label class="ctrl"><span>\(\beta\) (\(+\) se aleja)</span><input type="range" id="dop-b" min="-0.6" max="0.6" step="0.01" value="0.2"><span class="v" id="dop-bv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" data-b="0">En reposo</button><button type="button" class="btn" data-b="-0.3">Se acerca</button><button type="button" class="btn" data-b="0.3">Se aleja</button></div>
+      <p class="nota">Emisión: \(\lambda_0 = \qty{500}{nm}\). Corrimiento \(z = \lambda_{\text{obs}}/\lambda_0 - 1\).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §5 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: ¿propio o no?">
+  <p class="ceja">Reto <span class="score">Aciertos: <b id="pr2-score">0</b> / 6</span></p>
+  <h2 class="titulo">¿Tiempo propio o dilatado? ¿Longitud propia o contraída?</h2>
+  <div class="dim-lista" id="pp-lista">
+    <div class="dim" data-tipo="t" data-ok="1" data-exp="El muón está en reposo respecto a su propio reloj: mismo lugar, tiempo propio.">Los \(\qty{2{,}2}{\mu s}\) de vida del muón medidos en su propio reposo.</div>
+    <div class="dim" data-tipo="t" data-ok="0" data-exp="Salida y llegada ocurren en lugares distintos para la Tierra: tiempo dilatado.">Los \(\qty{50}{\mu s}\) de viaje del muón medidos desde la Tierra.</div>
+    <div class="dim" data-tipo="l" data-ok="1" data-exp="La atmósfera está en reposo respecto a la Tierra: longitud propia.">Los \(\qty{15}{km}\) de atmósfera medidos desde la Tierra.</div>
+    <div class="dim" data-tipo="l" data-ok="0" data-exp="Para el muón la atmósfera se mueve a 0,999c: la ve contraída (≈ 670 m).">Los \(\qty{670}{m}\) de atmósfera que mide el muón.</div>
+    <div class="dim" data-tipo="t" data-ok="0" data-exp="Para el control de misión la salida y la llegada ocurren en sitios distintos: tiempo dilatado.">Los \(5{,}3\) años del viaje a Próxima Centauri según el control de misión.</div>
+    <div class="dim" data-tipo="l" data-ok="1" data-exp="La hormiga viaja con la pelota: la mide en reposo, longitud propia.">Los \(\qty{67}{mm}\) de la pelota medidos por la hormiga que viaja en ella.</div>
+  </div>
+  <div class="fila-btn" style="margin-top:14px"><button type="button" class="cz-btn cz-btn-p" id="pp-ok">Comprobar</button><button type="button" class="cz-btn" id="pp-borrar">Empezar de nuevo</button><span class="cz-fb" id="pp-fb"></span></div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica">
+  <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Comprueba lo aprendido</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">1. Una nave a \(0{,}6c\) enciende un láser hacia la Tierra. ¿A qué velocidad llega la luz según la Tierra?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(1{,}6c\)</button><button type="button" class="pr-opc" data-o="b">\(c\)</button><button type="button" class="pr-opc" data-o="c">\(0{,}4c\)</button></div>
+        <div class="pr-fb" data-ok-txt="Correcto: segundo postulado; c es la misma para todos los observadores inerciales." data-mal-txt="Recuerda el segundo postulado: c no depende del movimiento de la fuente."></div>
+      </div>
+      <div class="pr-item" data-ok="a">
+        <div class="pr-q">2. ¿Cuánto vale \(\gamma\) para \(v = 0{,}6c\)?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(1{,}25\)</button><button type="button" class="pr-opc" data-o="b">\(0{,}8\)</button><button type="button" class="pr-opc" data-o="c">\(1{,}6\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: √(1 − 0,36) = 0,8 y 1/0,8 = 1,25." data-mal-txt="γ = 1/√(1 − β²) y siempre es mayor o igual que 1."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok-num="0.8" data-tol="0.005">
+        <div class="pr-q">3. Una nave a \(0{,}5c\) lanza una sonda a \(0{,}5c\) hacia adelante. Escribe \(u/c\) para la Tierra y pulsa Enter.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="u/c"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(u = \dfrac{0{,}5 + 0{,}5}{1 + 0{,}25}\,c\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 1/1,25 = 0,8, es decir, u = 0,8c." data-mal-txt="Aún no. Usa la fórmula de Einstein, no la suma simple."></div>
+      </div>
+      <div class="pr-item" data-ok="c">
+        <div class="pr-q">4. Trabajo para llevar un protón (\(mc^{2} = \qty{938}{MeV}\)) del reposo a \(0{,}8c\):</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{300}{MeV}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{1563}{MeV}\)</button><button type="button" class="pr-opc" data-o="c">\(\approx\qty{625}{MeV}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: γ = 5/3 y K = (γ − 1)mc² = (2/3)·938 MeV ≈ 625 MeV." data-mal-txt="Usa K = (γ − 1)mc²; ½mv² daría 300 MeV y 1563 MeV es la energía total."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios 1 a 6">
+  <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
+  <h2 class="titulo">Postulados, tiempo, longitud y transformaciones</h2>
+  <ol class="ej">
+    <li>Láser desde una nave a \(0{,}6c\): velocidad medida en Tierra. <span class="frag aparece resp">\(c\), por el segundo postulado</span></li>
+    <li>Viaje a Próxima Centauri a \(0{,}8c\) que en Tierra dura \(5{,}3\) años: tiempo a bordo. <span class="frag aparece resp">\(5{,}3 \times 0{,}6 \approx 3{,}18\) años</span></li>
+    <li>Regla de \(\qty{1{,}0}{m}\) a \(0{,}9c\) en la dirección de su longitud. <span class="frag aparece resp">\(\approx \qty{0{,}436}{m}\)</span></li>
+    <li>Evento en \(x = \qty{120}{m}\), \(t = \qty{3{,}0\times 10^{-7}}{s}\), visto desde \(v = 0{,}5c\). <span class="frag aparece resp">\(x' \approx \qty{86{,}6}{m}\), \(t' \approx \qty{1{,}15\times 10^{-7}}{s}\)</span></li>
+    <li>Bacteria en un StarChip a \(0{,}2c\) hacia Alfa Centauri (\(4{,}3\) años luz). <span class="frag aparece resp">Tierra \(21{,}5\) años; bacteria \(\approx 21{,}07\) años; distancia \(\approx 4{,}21\) años luz</span></li>
+    <li>Raqu viaja a Xquar (\(5\) años luz) a \(0{,}9c\). <span class="frag aparece resp">Tierra \(\approx 5{,}56\) años; Raqu \(\approx 2{,}42\) años</span></li>
+  </ol>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios 7 a 12">
+  <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
+  <h2 class="titulo">Velocidades, energía, momento e intervalo</h2>
+  <ol class="ej" start="7">
+    <li>Demuestre que sumar dos velocidades menores que \(c\) nunca da más que \(c\). <span class="frag aparece resp">\(c - u = \dfrac{(c - u')(c - v)}{c + u'v/c} > 0\)</span></li>
+    <li>Galaxia con corrimiento \(z = 14\): velocidad de recesión aparente. <span class="frag aparece resp">\(v/c = \dfrac{(1 + z)^{2} - 1}{(1 + z)^{2} + 1} \approx 0{,}991\)</span></li>
+    <li>Aniquilación electrón-positrón en reposo: energía liberada. <span class="frag aparece resp">\(2m_e c^{2} \approx \qty{1{,}64\times 10^{-13}}{J} \approx \qty{1{,}02}{MeV}\)</span></li>
+    <li>Asteroide de \(\qty{1000}{kg}\) a \(0{,}99c\): momento clásico, relativista y su razón. <span class="frag aparece resp">\(\qty{2{,}97\times 10^{11}}{kg\cdot m/s}\); \(\qty{2{,}10\times 10^{12}}{kg\cdot m/s}\); razón \(\gamma \approx 7{,}09\)</span></li>
+    <li>\(\Delta t = \qty{5{,}0}{s}\) con \(\Delta x = 0\); en otro sistema \(\Delta x' = \qty{2{,}0\times 10^{9}}{m}\): \(\Delta t'\). <span class="frag aparece resp">\(\approx \qty{8{,}33}{s}\)</span></li>
+    <li>Presupuesto clásico de una nave que llegaría a \(10c\). <span class="frag aparece resp">\(K = \tfrac12 m(10c)^{2} = 50\,mc^{2}\); a \(0{,}99c\) basta \((\gamma - 1)mc^{2} \approx 6{,}09\,mc^{2}\)</span></li>
+  </ol>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
+  <p class="ceja">Glosario</p>
+  <h2 class="titulo">Términos del capítulo</h2>
+  <dl class="glosa">
+    <div><dt>Sistema inercial</dt><dd>Sistema de referencia en el que un cuerpo libre se mueve en línea recta a velocidad constante.</dd></div>
+    <div><dt>Factor de Lorentz</dt><dd>\(\gamma = 1/\sqrt{1 - v^{2}/c^{2}} \ge 1\).</dd></div>
+    <div><dt>Tiempo propio</dt><dd>Intervalo entre dos eventos que ocurren en el mismo lugar de un sistema; \(\Delta t = \gamma\,\Delta t_0\).</dd></div>
+    <div><dt>Longitud propia</dt><dd>La que mide un observador en reposo respecto al objeto; \(L = L_0/\gamma\).</dd></div>
+    <div><dt>Intervalo</dt><dd>\(\Delta S^{2} = (c\,\Delta t)^{2} - \abs{\Delta\vect{r}}^{2}\), igual para todos los observadores.</dd></div>
+    <div><dt>Cuadrimomento</dt><dd>\(p^{\mu} = (E/c, \vect{p})\), con \(E^{2} = (mc^{2})^{2} + (pc)^{2}\).</dd></div>
+    <div><dt>Energía en reposo</dt><dd>\(E_0 = mc^{2}\): energía que la partícula tiene aun sin moverse.</dd></div>
+    <div><dt>Corrimiento al rojo</dt><dd>\(z = \lambda_{\text{obs}}/\lambda_0 - 1\); positivo si la fuente se aleja.</dd></div>
+  </dl>
+
+  
+  
+  
+</section>
+
+<div class="pop-src" id="pop-inercial" style="display:none"><h4>Sistema inercial</h4><p>Un sistema en el que vale la primera ley de Newton: sin fuerzas netas, los cuerpos siguen en reposo o en movimiento rectilíneo uniforme. Dos sistemas inerciales se mueven entre sí a velocidad constante.</p></div><div class="pop-src" id="pop-propio" style="display:none"><h4>Tiempo propio</h4><p>El que marca un reloj que está presente en ambos eventos (mismo lugar en su sistema). Es el más corto de todos los intervalos medidos entre esos eventos: \(\Delta t_0 = \Delta t/\gamma\).</p></div><div class="pop-src" id="pop-lpropia" style="display:none"><h4>Longitud propia</h4><p>La distancia entre dos puntos medida por un observador en reposo respecto a ellos. Para el tenista, la cancha (\(\qty{24}{m}\)); para la hormiga, la pelota (\(\qty{67}{mm}\)).</p></div>
+</div>
+<script>
+/* ═══ UTILIDADES ═══════════════════════════════════════════════════════ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const NS = 'http://www.w3.org/2000/svg';
+/* Número con coma decimal y signo menos tipográfico (texto, no TeX). */
+const num = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', ','); return (x < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s; };
+const activa = el => { const d = el && el.closest('section'); return !!(d && d.hasAttribute('data-deck-active')); };
+const FMATH = "'STIX Two Text',Georgia,serif";
+const FTXT = 'Archivo,system-ui,sans-serif';
+
+function nodo(tag, at, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in at) {
+    if (k === 'txt') e.textContent = at[k];
+    else if (k === 'html') e.innerHTML = at[k];
+    else e.setAttribute(k, at[k]);
+  }
+  if (padre) padre.appendChild(e);
+  return e;
+}
+/* Rótulo con variables en cursiva: «*x* (m)» → x en cursiva. */
+function rotulo(g, x, y, s, extra) {
+  const t = nodo('text', Object.assign({ x: x, y: y, 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH }, extra || {}), g);
+  /* *v* cursiva · !v! vector (negrita cursiva) · _sub subíndice */
+  s.split(/(\*[^*]+\*|![^!]+!|_[A-Za-z0-9]+)/).forEach(tr => {
+    if (!tr) return;
+    if (tr[0] === '*') nodo('tspan', { 'font-style': 'italic', txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '!') nodo('tspan', { 'font-style': 'italic', 'font-weight': 700, txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '_') { nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '70%', 'font-style': /^[a-z]$/.test(tr.slice(1)) ? 'italic' : 'normal', txt: tr.slice(1) }, t); nodo('tspan', { txt: '\u200a' }, t); }
+    else nodo('tspan', { txt: tr }, t);
+  });
+  return t;
+}
+/* Ejes cartesianos en SVG con rejilla y marcas. */
+function ejes(host, o) {
+  host.innerHTML = '';
+  const W = o.W, H = o.H, m = o.m || { l: 96, r: 24, t: 20, b: 76 };
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => m.l + (v - o.x[0]) / (o.x[1] - o.x[0]) * (W - m.l - m.r);
+  const Y = v => H - m.b - (v - o.y[0]) / (o.y[1] - o.y[0]) * (H - m.t - m.b);
+  const fondo = nodo('g', {}, svg);
+  (o.xt || []).forEach(v => {
+    nodo('line', { x1: X(v), x2: X(v), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: X(v), y: H - m.b + 34, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fx ? o.fx(v) : num(v, 0) }, fondo);
+  });
+  (o.yt || []).forEach(v => {
+    nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(v), y2: Y(v), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: m.l - 12, y: Y(v) + 9, 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fy ? o.fy(v) : num(v, 0) }, fondo);
+  });
+  if (o.y[0] < 0 && o.y[1] > 0) nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[0]), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(o.y[0]), y2: Y(o.y[0]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  if (o.xl) rotulo(fondo, (m.l + W - m.r) / 2, H - 8, o.xl, { 'text-anchor': 'middle' });
+  if (o.yl) rotulo(fondo, 24, (m.t + H - m.b) / 2, o.yl, { 'text-anchor': 'middle', transform: 'rotate(-90 24 ' + (m.t + H - m.b) / 2 + ')' });
+  const capa = nodo('g', {}, svg);
+  return { svg: svg, X: X, Y: Y, capa: capa, W: W, H: H, m: m };
+}
+const polilinea = (A, pts, estilo, g) => nodo('polyline', { points: pts.map(p => A.X(p[0]).toFixed(1) + ',' + A.Y(p[1]).toFixed(1)).join(' '), style: 'fill:none;' + estilo }, g || A.capa);
+function flecha(g, x1, y1, x2, y2, color, grosor) {
+  const w = grosor || 5, a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1), c = Math.min(22, L * 0.45);
+  const bx = x2 - c * Math.cos(a), by = y2 - c * Math.sin(a);
+  nodo('line', { x1: x1, y1: y1, x2: bx, y2: by, style: 'stroke:' + color + ';stroke-width:' + w + ';stroke-linecap:round' }, g);
+  if (L > 2) nodo('polygon', { points: [[x2, y2], [bx + c * 0.5 * Math.sin(a), by - c * 0.5 * Math.cos(a)], [bx - c * 0.5 * Math.sin(a), by + c * 0.5 * Math.cos(a)]].map(p => p.join(',')).join(' '), style: 'fill:' + color }, g);
+}
+function rango(id, alCambiar) {
+  const r = document.getElementById(id);
+  if (!r) return null;
+  r.addEventListener('input', () => alCambiar(+r.value));
+  return r;
+}
+
+
+/* ═══ VENTANAS EMERGENTES ══════════════════════════════════════════════ */
+(function () {
+  let pop = null;
+  const cerrar = () => { if (pop) { pop.remove(); pop = null; } };
+  document.addEventListener('click', ev => {
+    const chip = ev.target instanceof Element ? ev.target.closest('.prop') : null;
+    if (!chip) { if (pop && !(ev.target instanceof Element && ev.target.closest('.popover'))) cerrar(); return; }
+    ev.stopPropagation();
+    cerrar();
+    const src = document.getElementById(chip.dataset.pop);
+    const dp = chip.closest('section');
+    if (!src || !dp) return;
+    pop = document.createElement('div');
+    pop.className = 'popover';
+    pop.innerHTML = '<button type="button" class="cerrar" aria-label="Cerrar">×</button>' + src.innerHTML;
+    pop.querySelector('.cerrar').addEventListener('click', cerrar);
+    dp.appendChild(pop);
+    const R = dp.getBoundingClientRect(), c = chip.getBoundingClientRect(), s = R.width / dp.offsetWidth;
+    let x = (c.left - R.left) / s, y = (c.bottom - R.top) / s + 14;
+    x = Math.min(x, dp.offsetWidth - pop.offsetWidth - 40);
+    if (y + pop.offsetHeight > dp.offsetHeight - 40) y = (c.top - R.top) / s - pop.offsetHeight - 14;
+    pop.style.left = Math.max(40, x) + 'px';
+    pop.style.top = Math.max(40, y) + 'px';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('slidechange', cerrar);
+})();
+
+
+/* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
+(function () {
+  const dp = document.getElementById('dp-practica');
+  if (!dp) return;
+  const marcador = $('.pr-score', dp);
+  let aciertos = 0;
+  const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
+  const acierta = it => { if (!it.dataset.hecho) { it.dataset.hecho = '1'; aciertos++; marcador.textContent = aciertos; } };
+  $$('.pr-item', dp).forEach(it => {
+    $$('.pr-opc', it).forEach(b => b.addEventListener('click', () => {
+      const ok = b.dataset.o === it.dataset.ok;
+      $$('.pr-opc', it).forEach(o => o.classList.remove('ok', 'mal'));
+      b.classList.add(ok ? 'ok' : 'mal'); fb(it, ok); if (ok) acierta(it);
+    }));
+    const inp = $('.pr-in', it);
+    if (inp) {
+      const revisa = () => {
+        const v = parseFloat(inp.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+        const ok = Math.abs(v - +it.dataset.okNum) <= +it.dataset.tol;
+        inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)'; fb(it, ok); if (ok) acierta(it);
+      };
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+      $$('.pr-btn', it).forEach(b => b.addEventListener('click', () => {
+        if (b.classList.contains('pr-verpista')) $('.pr-pista', it).classList.toggle('on'); else revisa();
+      }));
+    }
+  });
+})();
+
+
+
+/* ═══ PLANO CARTESIANO CON ARRASTRE ════════════════════════════════════ */
+/* Ejes con la misma escala en x e y (1180 × 800, x ∈ [-6, 6], y ∈ [-4, 4]). */
+function plano(host, o) {
+  o = Object.assign({ W: 1180, H: 800, x: [-6, 6], y: [-4, 4] }, o || {});
+  const xt = [], yt = [];
+  for (let v = Math.ceil(o.x[0]); v <= o.x[1]; v++) xt.push(v);
+  for (let v = Math.ceil(o.y[0]); v <= o.y[1]; v++) yt.push(v);
+  const A = ejes(host, { W: o.W, H: o.H, x: o.x, y: o.y, xt: xt, yt: yt, m: { l: 60, r: 24, t: 20, b: 56 },
+                         fx: v => v % 2 ? '' : num(v, 0), fy: v => v % 2 ? '' : num(v, 0) });
+  /* ejes x e y por el origen (ejes() dibuja los bordes; aquí los centrales) */
+  nodo('line', { x1: A.X(0), x2: A.X(0), y1: A.Y(o.y[0]), y2: A.Y(o.y[1]), style: 'stroke:var(--proy);stroke-width:2.5' }, A.capa);
+  A.ix = px => o.x[0] + (px - A.m.l) / (A.W - A.m.l - A.m.r) * (o.x[1] - o.x[0]);
+  A.iy = py => o.y[0] + (A.H - A.m.b - py) / (A.H - A.m.t - A.m.b) * (o.y[1] - o.y[0]);
+  A.o = o;
+  return A;
+}
+const vec = (A, x1, y1, x2, y2, color, g, w) => flecha(g || A.capa, A.X(x1), A.Y(y1), A.X(x2), A.Y(y2), color, w || 6);
+const etq = (A, x, y, s, color, extra) => rotulo(A.capa, A.X(x), A.Y(y), s, Object.assign({ 'font-size': 34, style: 'fill:' + color + ';font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' }, extra || {}));
+const punto = (A, x, y, color, r) => nodo('circle', { cx: A.X(x), cy: A.Y(y), r: r || 12, style: 'fill:' + color + ';stroke:var(--panel);stroke-width:3' }, A.capa);
+const grados = r => r * 180 / Math.PI;
+const paso = (v, p) => Math.round(v / (p || 0.5)) * (p || 0.5);
+/* Arrastre de puntos: obtener() → [{x, y, id}], mover(id, x, y). El SVG se
+   redibuja en cada cambio, así que se escucha en el contenedor. */
+function arrastre(host, obtener, mover, getA) {
+  let activo = null;
+  const aDatos = ev => {
+    const svg = host.querySelector('svg'), pt = svg.createSVGPoint();
+    pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse()), A = getA();
+    return { x: A.ix(p.x), y: A.iy(p.y) };
+  };
+  host.addEventListener('pointerdown', ev => {
+    const d = aDatos(ev); let mejor = null, dist = 0.9;
+    obtener().forEach(q => { const e = Math.hypot(q.x - d.x, q.y - d.y); if (e < dist) { dist = e; mejor = q.id; } });
+    if (mejor === null) return;
+    activo = mejor; host.setPointerCapture(ev.pointerId); ev.preventDefault();
+  });
+  host.addEventListener('pointermove', ev => {
+    if (activo === null) return;
+    const d = aDatos(ev), o = getA().o;
+    mover(activo, Math.max(o.x[0] + 0.5, Math.min(o.x[1] - 0.5, paso(d.x))), Math.max(o.y[0] + 0.5, Math.min(o.y[1] - 0.5, paso(d.y))));
+  });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { activo = null; }));
+}
+const par = (x, y, d) => '(' + num(x, d === undefined ? 1 : d) + '; ' + num(y, d === undefined ? 1 : d) + ')';
+
+/* TeX dinámico: se compone con MathJax cuando el documento ya está listo. */
+let colaMJ = Promise.resolve();
+function texVivo(el, tex) {
+  if (el.__tex === tex) return;
+  el.__tex = tex;
+  el.textContent = '\\[' + tex + '\\]';
+  if (document.documentElement.dataset.mathjax !== 'ok' || !window.MathJax || !MathJax.typesetPromise) return;
+  colaMJ = colaMJ.then(() => MathJax.typesetPromise([el])).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+}
+const tx = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', '{,}'); return (x < 0 && +Math.abs(x).toFixed(d) !== 0 ? '-' : '') + s; };
+function cientTex(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const ms = m.toFixed(cifras || 3).replace(/\.?0+$/, '').replace('.', '{,}');
+  return (e >= -2 && e <= 3) ? tx(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : ms + '\\times 10^{' + e + '}';
+}
+function cientTxt(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const sup = String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  const mt = num(m, cifras || 3).replace(/,?0+$/, '');
+  return (e >= -2 && e <= 3) ? num(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : mt + ' × 10' + sup;
+}
+
+
+
+const gam = b => 1 / Math.sqrt(1 - b * b);
+
+/* ═══ PORTADA: reloj de luz en una nave ════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('hero-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, lect = document.getElementById('hero-lect');
+  const b = 0.6, h = 300, y0 = 420, vel = 140;          /* px/s de la luz vertical en el reloj propio */
+  let t = 0, ult = 0, traza = [];
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const per = 2 * h / vel * gam(b);                    /* periodo de ida y vuelta visto desde S */
+    const x = 40 + ((b * vel * gam(b) * t) % (W - 120));
+    const fase = (t % per) / per, yL = y0 - h * (fase < 0.5 ? 2 * fase : 2 - 2 * fase);
+    if (x < 45) traza = [];
+    traza.push([x, yL]);
+    /* nave */
+    g.fillStyle = tok('--primario-tinte'); g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+    g.beginPath(); g.rect(x - 60, y0 - h - 30, 120, h + 60); g.fill(); g.stroke();
+    g.fillStyle = tok('--tinta'); g.fillRect(x - 50, y0 - h - 12, 100, 8); g.fillRect(x - 50, y0 + 4, 100, 8);
+    /* trayectoria de la luz vista desde S */
+    g.strokeStyle = tok('--caso2'); g.lineWidth = 3; g.setLineDash([10, 8]); g.beginPath();
+    traza.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); g.setLineDash([]);
+    g.fillStyle = tok('--res'); g.beginPath(); g.arc(x, yL, 11, 0, 2 * Math.PI); g.fill();
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 3;
+    g.beginPath(); g.moveTo(x + 70, y0 - h / 2); g.lineTo(x + 130, y0 - h / 2); g.stroke();
+    g.beginPath(); g.moveTo(x + 130, y0 - h / 2); g.lineTo(x + 115, y0 - h / 2 - 9); g.lineTo(x + 115, y0 - h / 2 + 9); g.closePath(); g.fillStyle = tok('--tinta2'); g.fill();
+    g.font = 'italic 30px ' + FMATH; g.fillText('v', x + 95, y0 - h / 2 - 14);
+    g.font = '22px ' + FTXT; g.fillStyle = tok('--tinta2');
+    g.fillText('en la nave: la luz sube y baja', 20, 40);
+    g.fillStyle = tok('--caso2'); g.fillText('desde la Tierra: zigzag más largo ⇒ tictac más lento', 20, 72);
+    if (lect) lect.textContent = 'β = 0,6 · γ = 1,25';
+  }
+  function bucle(ms) {
+    if (activa(cv)) { const dt = ult ? Math.min(0.05, (ms - ult) / 1000) : 0; t += dt; dibuja(); }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ FACTOR DE LORENTZ ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('gam-fig');
+  if (!host) return;
+  const rb = document.getElementById('gam-b');
+  function pinta() {
+    const b = +rb.value, G = gam(b);
+    const A = ejes(host, { W: 1180, H: 760, x: [0, 1], y: [1, 10], xt: [0, 0.2, 0.4, 0.6, 0.8, 1], yt: [1, 2, 4, 6, 8, 10], fx: v => num(v, 1), xl: '*β* = *v*/*c*', yl: '*γ*' });
+    const pts = []; for (let i = 0; i <= 400; i++) { const x = 0.995 * i / 400; pts.push([x, Math.min(10, gam(x))]); }
+    polilinea(A, pts, 'stroke:var(--res);stroke-width:5');
+    polilinea(A, [[0, 1], [1, 1]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6');
+    polilinea(A, [[1, 1], [1, 10]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:10 8');
+    rotulo(A.capa, A.X(1) - 10, A.Y(9.4), '*v* → *c*: *γ* → ∞', { 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH });
+    const gy = Math.min(10, G);
+    polilinea(A, [[b, 1], [b, gy], [0, gy]], 'stroke:var(--caso1);stroke-width:2.5;stroke-dasharray:6 6');
+    nodo('circle', { cx: A.X(b), cy: A.Y(gy), r: 11, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa);
+    const fg = x => x < 1.001 ? num(x, 9) : x < 100 ? num(x, 3) : cientTxt(x, 3);
+    document.getElementById('gam-g').textContent = fg(G);
+    document.getElementById('gam-ig').textContent = num(1 / G, b < 0.01 ? 9 : 4);
+    document.getElementById('gam-t').textContent = (b < 0.01 ? num(G, 9) : num(G, 3)) + ' s';
+    document.getElementById('gam-l').textContent = (b < 0.01 ? num(1 / G, 9) : num(1 / G, 3)) + ' m';
+    document.getElementById('gam-bv').textContent = b < 0.01 ? cientTxt(b, 2) : num(b, 3);
+    document.getElementById('gam-lect').textContent = 'γ = ' + fg(G);
+  }
+  rb.addEventListener('input', pinta);
+  $$('#gam-pre .btn').forEach(bt => bt.addEventListener('click', () => { rb.value = bt.dataset.b; pinta(); if (+bt.dataset.b < 0.001) { /* el deslizador no llega: se muestra el valor exacto */ const b = +bt.dataset.b, G = gam(b); document.getElementById('gam-bv').textContent = cientTxt(b, 2); document.getElementById('gam-g').textContent = '1 + ' + cientTxt(G - 1, 2); document.getElementById('gam-lect').textContent = 'γ − 1 ≈ ' + cientTxt(b * b / 2, 2); } }));
+  pinta();
+})();
+
+/* ═══ DIAGRAMA DE MINKOWSKI ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('mk-fig');
+  if (!host) return;
+  const rb = document.getElementById('mk-b'), E = { x: 1.5, y: 3 };   /* y ≡ ct */
+  let A;
+  function pinta() {
+    const b = +rb.value, G = gam(b);
+    A = plano(host, { x: [-4, 4], y: [-1, 4.33] });
+    const X = A.X, Y = A.Y;
+    /* conos de luz */
+    polilinea(A, [[-4.33 * 0 - 1, -1], [4, 4]].map(p => p), 'stroke:none');
+    polilinea(A, [[-1, -1], [4, 4]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:4 8');
+    polilinea(A, [[1, -1], [-4, 4]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:4 8');
+    etq(A, 3.4, 3.95, '*x* = *ct*', 'var(--caso2)', { 'font-size': 26, 'text-anchor': 'end' });
+    /* ejes de S': ct' (x = β ct) y x' (ct = β x) */
+    polilinea(A, [[b * -1, -1], [b * 4.33, 4.33]], 'stroke:var(--res);stroke-width:4');
+    polilinea(A, [[-4, -4 * b], [4, 4 * b]], 'stroke:var(--res);stroke-width:4');
+    etq(A, b * 4.1 + 0.15, 4.1, '*ct*′', 'var(--res)', { 'font-size': 30 });
+    etq(A, 3.7, 3.7 * b + 0.3, '*x*′', 'var(--res)', { 'font-size': 30 });
+    etq(A, 3.75, 0.3, '*x*', 'var(--tinta2)', { 'font-size': 30 });
+    etq(A, 0.15, 4.1, '*ct*', 'var(--tinta2)', { 'font-size': 30 });
+    /* marcas unitarias de S' sobre sus ejes (calibradas por las hipérbolas) */
+    for (let k = 1; k <= 3; k++) {
+      const pt = [G * b * k, G * k], px = [G * k, G * b * k];
+      if (pt[1] < 4.3) nodo('circle', { cx: X(pt[0]), cy: Y(pt[1]), r: 6, style: 'fill:var(--res)' }, A.capa);
+      if (px[0] < 4) nodo('circle', { cx: X(px[0]), cy: Y(px[1]), r: 6, style: 'fill:var(--res)' }, A.capa);
+    }
+    /* hipérbola del intervalo del evento */
+    const s2 = E.y * E.y - E.x * E.x, hip = [];
+    if (Math.abs(s2) > 0.01) {
+      for (let i = -60; i <= 60; i++) {
+        const r = i / 20;
+        const p = s2 > 0 ? [Math.sqrt(s2) * Math.sinh(r), Math.sign(E.y || 1) * Math.sqrt(s2) * Math.cosh(r)] : [Math.sign(E.x || 1) * Math.sqrt(-s2) * Math.cosh(r), Math.sqrt(-s2) * Math.sinh(r)];
+        if (p[0] > -4 && p[0] < 4 && p[1] > -1 && p[1] < 4.33) hip.push(p);
+      }
+      if (hip.length > 1) polilinea(A, hip, 'stroke:var(--caso1);stroke-width:3');
+    }
+    /* coordenadas en S' (proyección paralela a los ejes primados) */
+    const ctp = G * (E.y - b * E.x), xp = G * (E.x - b * E.y);
+    const pA = [xp * G, xp * G * b], pB = [ctp * G * b, ctp * G];     /* pies sobre x' y ct' */
+    polilinea(A, [[E.x, E.y], pA], 'stroke:var(--res);stroke-width:2;stroke-dasharray:6 6');
+    polilinea(A, [[E.x, E.y], pB], 'stroke:var(--res);stroke-width:2;stroke-dasharray:6 6');
+    polilinea(A, [[E.x, E.y], [E.x, 0]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6');
+    polilinea(A, [[E.x, E.y], [0, E.y]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6');
+    punto(A, E.x, E.y, 'var(--tinta)', 13);
+    etq(A, E.x + 0.2, E.y + 0.25, 'evento', 'var(--tinta)', { 'font-size': 26 });
+    document.getElementById('mk-s').textContent = par(E.y, E.x, 2);
+    document.getElementById('mk-sp').textContent = par(ctp, xp, 2);
+    document.getElementById('mk-i').textContent = num(s2, 3);
+    document.getElementById('mk-ip').textContent = num(ctp * ctp - xp * xp, 3);
+    document.getElementById('mk-bv').textContent = num(b, 2);
+    document.getElementById('mk-lect').textContent = 'γ = ' + num(G, 3) + ' · ' + (s2 > 0.005 ? 'separación temporal' : s2 < -0.005 ? 'separación espacial' : 'separación luminosa');
+  }
+  arrastre(host, () => [{ id: 0, x: E.x, y: E.y }], (id, x, y) => { E.x = x; E.y = Math.max(-0.5, Math.min(3.83, y)); pinta(); }, () => A);
+  rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DILATACIÓN: DOS RELOJES DE LUZ ═══════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('dil-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, rb = document.getElementById('dil-b');
+  const h = 420, y0 = 560, vl = 420;      /* px/s de la luz */
+  let t = 0, ult = 0;
+  function reloj(x, yLuz, ticks, color, rotu, traza) {
+    g.fillStyle = tok('--primario-tinte'); g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+    g.beginPath(); g.rect(x - 50, y0 - h - 24, 100, h + 48); g.fill(); g.stroke();
+    g.fillStyle = tok('--tinta'); g.fillRect(x - 42, y0 - h - 10, 84, 7); g.fillRect(x - 42, y0 + 3, 84, 7);
+    if (traza) { g.strokeStyle = color; g.globalAlpha = 0.5; g.lineWidth = 3; g.setLineDash([8, 8]); g.beginPath(); traza.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); g.setLineDash([]); g.globalAlpha = 1; }
+    g.fillStyle = color; g.beginPath(); g.arc(x, yLuz, 12, 0, 2 * Math.PI); g.fill();
+    g.fillStyle = tok('--tinta'); g.font = '700 30px ' + FTXT; g.textAlign = 'center';
+    g.fillText(ticks + (ticks === 1 ? ' tictac' : ' tictacs'), x, y0 + 60); g.font = '24px ' + FTXT; g.fillStyle = tok('--tinta2'); g.fillText(rotu, x, 44);
+    g.textAlign = 'left';
+  }
+  let trz = [];
+  function dibuja() {
+    const b = +rb.value, G = gam(b);
+    g.clearRect(0, 0, W, H);
+    const T0 = 2 * h / vl, T = G * T0;
+    const f0 = (t % T0) / T0, y1 = y0 - h * (f0 < 0.5 ? 2 * f0 : 2 - 2 * f0);
+    reloj(170, y1, Math.floor(t / T0), tok('--caso1'), 'en reposo', null);
+    const span = W - 560, x2 = 420 + ((b * vl * G * t * 0.35) % span);   /* avance visual escalado */
+    const f = (t % T) / T, y2 = y0 - h * (f < 0.5 ? 2 * f : 2 - 2 * f);
+    if (trz.length && x2 < trz[trz.length - 1][0]) trz = [];
+    trz.push([x2, y2]);
+    reloj(x2, y2, Math.floor(t / T), tok('--res'), 'en movimiento', trz);
+  }
+  function bucle(ms) {
+    if (activa(cv)) { t += ult ? Math.min(0.05, (ms - ult) / 1000) : 0; dibuja(); }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  function lee() {
+    const b = +rb.value, G = gam(b); t = 0; trz = [];
+    document.getElementById('dil-bv').textContent = num(b, 2);
+    document.getElementById('dil-lect').textContent = 'γ = ' + num(G, 3) + ' · 1 tictac propio = ' + num(G, 3) + ' tictacs en S';
+    dibuja();
+  }
+  rb.addEventListener('input', lee); lee(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ CONTRACCIÓN: TENISTA Y HORMIGA ═══════════════════════════════════ */
+(function () {
+  const host = document.getElementById('con-fig');
+  if (!host) return;
+  const rb = document.getElementById('con-b');
+  let vista = 'tenista';
+  function pinta() {
+    const b = +rb.value, G = gam(b), fc = vista === 'hormiga' ? 1 / G : 1, fp = vista === 'tenista' ? 1 / G : 1;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    /* cancha: 24 m → 1000 px de ancho propio */
+    const W0 = 1000, cw = W0 * fc, x0 = 90, y0 = 150, ch = 300;
+    nodo('rect', { x: x0, y: y0, width: cw, height: ch, style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4' }, svg);
+    nodo('line', { x1: x0 + cw / 2, x2: x0 + cw / 2, y1: y0, y2: y0 + ch, style: 'stroke:var(--caso1);stroke-width:3' }, svg);
+    if (fc < 1) nodo('rect', { x: x0, y: y0, width: W0, height: ch, style: 'fill:none;stroke:var(--proy);stroke-width:2;stroke-dasharray:8 8' }, svg);
+    rotulo(svg, x0, y0 - 20, 'cancha: ' + num(24 * fc, 2) + ' m', { 'font-size': 30, style: 'fill:var(--caso1);font-family:' + FTXT });
+    /* pelota (ampliada: 67 mm → radio 110 px propio) */
+    const R = 110, cx = x0 + cw * 0.35 + 30, cy = y0 + ch + 170;
+    nodo('ellipse', { cx: cx, cy: cy, rx: R * fp, ry: R, style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:4' }, svg);
+    if (fp < 1) nodo('circle', { cx: cx, cy: cy, r: R, style: 'fill:none;stroke:var(--proy);stroke-width:2;stroke-dasharray:8 8' }, svg);
+    flecha(svg, cx + R + 30, cy, cx + R + 180, cy, 'var(--tinta2)', 5);
+    rotulo(svg, cx + R + 40, cy - 16, '*v* = ' + num(b, 2) + '*c*', { 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH });
+    rotulo(svg, cx - R, cy - R - 20, 'pelota (ampliada): ' + num(67 * fp, 1) + ' mm', { 'font-size': 28, style: 'fill:var(--caso2);font-family:' + FTXT });
+    const tt = 24 / (b * 3e8), th = tt / G;
+    document.getElementById('con-c').textContent = num(24 * (vista === 'hormiga' ? 1 / G : 1), 2) + ' m';
+    document.getElementById('con-p').textContent = num(67 * (vista === 'tenista' ? 1 / G : 1), 1) + ' mm';
+    document.getElementById('con-tt').textContent = b > 0 ? cientTxt(tt, 2) + ' s' : '—';
+    document.getElementById('con-th').textContent = b > 0 ? cientTxt(th, 2) + ' s' : '—';
+    document.getElementById('con-bv').textContent = num(b, 2);
+    document.getElementById('con-hd').textContent = vista === 'tenista' ? 'Lo que mide el tenista' : 'Lo que mide la hormiga';
+    document.getElementById('con-lect').textContent = '1/γ = ' + num(1 / G, 3);
+  }
+  $$('#dp-con .btn[data-vista]').forEach(bt => bt.addEventListener('click', () => {
+    vista = bt.dataset.vista; $$('#dp-con .btn[data-vista]').forEach(o => o.classList.toggle('on', o === bt)); pinta();
+  }));
+  rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ MUONES ═══════════════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('mu-fig');
+  if (!host) return;
+  const rs = document.getElementById('mu-b'), L0 = 15e3, tau = 2.2e-6, c = 3e8;
+  function pinta() {
+    const b = 1 - Math.pow(10, -3 * +rs.value), G = gam(b), t = L0 / (b * c);
+    const fc = Math.exp(-t / tau), fr = Math.exp(-t / (G * tau));
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const base = 640, alto = 520, bw = 260;
+    [['Sin relatividad', fc, 'var(--caso2)', 250], ['Con relatividad', fr, 'var(--res)', 700]].forEach(q => {
+      const hh = Math.max(2, q[1] * alto);
+      nodo('rect', { x: q[3], y: base - alto, width: bw, height: alto, style: 'fill:none;stroke:var(--linea);stroke-width:2;stroke-dasharray:6 6' }, svg);
+      nodo('rect', { x: q[3], y: base - hh, width: bw, height: hh, style: 'fill:' + q[2] }, svg);
+      rotulo(svg, q[3] + bw / 2, base + 44, q[0], { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta);font-family:' + FTXT });
+      rotulo(svg, q[3] + bw / 2, base - hh - 16, q[1] < 1e-3 ? cientTxt(q[1] * 100, 2) + ' %' : num(q[1] * 100, 1) + ' %', { 'text-anchor': 'middle', 'font-size': 32, style: 'fill:var(--tinta);font-family:' + FMATH });
+    });
+    nodo('line', { x1: 150, x2: 1080, y1: base, y2: base, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    rotulo(svg, 150, 70, 'Supervivencia: e^(−t / vida media)', { 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    const us = s => num(s * 1e6, s * 1e6 < 10 ? 2 : 1) + ' μs';
+    document.getElementById('mu-tt').textContent = us(t);
+    document.getElementById('mu-gt').textContent = us(G * tau);
+    document.getElementById('mu-tm').textContent = us(t / G);
+    document.getElementById('mu-L').textContent = L0 / G >= 1000 ? num(L0 / G / 1000, 2) + ' km' : num(L0 / G, 0) + ' m';
+    document.getElementById('mu-bv').textContent = 'β = ' + (b > 0.9995 ? num(b, 5) : num(b, 4));
+    document.getElementById('mu-lect').textContent = 'γ = ' + num(G, 2);
+  }
+  rs.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ SUMA DE VELOCIDADES ══════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('vel-fig');
+  if (!host) return;
+  const rv = document.getElementById('vel-v'), ru = document.getElementById('vel-u');
+  const suma = (u, v) => (u + v) / (1 + u * v);
+  function pinta() {
+    const v = +rv.value, u = +ru.value;
+    const A = ejes(host, { W: 1180, H: 760, x: [-1, 1], y: [-2, 2], xt: [-1, -0.5, 0, 0.5, 1], yt: [-2, -1, 0, 1, 2], fx: x => num(x, 1), xl: '*u*′/*c*', yl: '*u*/*c*' });
+    nodo('rect', { x: A.X(-1), y: A.Y(1), width: A.X(1) - A.X(-1), height: A.Y(-1) - A.Y(1), style: 'fill:var(--res-50);stroke:none' }, A.capa);
+    polilinea(A, [[-1, 1], [1, 1]], 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:8 6');
+    polilinea(A, [[-1, -1], [1, -1]], 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:8 6');
+    rotulo(A.capa, A.X(-0.97), A.Y(1) - 12, '*u* = *c*', { 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH });
+    const gal = [], ein = [];
+    for (let i = 0; i <= 200; i++) { const x = -1 + 2 * i / 200; gal.push([x, Math.max(-2, Math.min(2, x + v))]); ein.push([x, suma(x, v)]); }
+    polilinea(A, gal, 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    polilinea(A, ein, 'stroke:var(--res);stroke-width:5');
+    nodo('circle', { cx: A.X(u), cy: A.Y(Math.max(-2, Math.min(2, u + v))), r: 10, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:3' }, A.capa);
+    nodo('circle', { cx: A.X(u), cy: A.Y(suma(u, v)), r: 12, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa);
+    rotulo(A.capa, A.X(0.35), A.Y(Math.min(1.9, 0.35 + v)) - 14, 'Galileo', { 'font-size': 28, style: 'fill:var(--caso2);font-family:' + FTXT });
+    rotulo(A.capa, A.X(-0.2), A.Y(suma(-0.2, v)) + 40, 'Einstein', { 'font-size': 28, style: 'fill:var(--res);font-family:' + FTXT });
+    const e = suma(u, v);
+    document.getElementById('vel-g').textContent = num(u + v, 4) + ' c';
+    document.getElementById('vel-e').textContent = num(e, 4) + ' c';
+    document.getElementById('vel-vv').textContent = num(v, 2) + ' c';
+    document.getElementById('vel-uv').textContent = num(u, 2) + ' c';
+    document.getElementById('vel-lect').textContent = 'u = ' + num(e, 4) + ' c';
+  }
+  rv.addEventListener('input', pinta); ru.addEventListener('input', pinta);
+  $$('#dp-vel .btn[data-vu]').forEach(bt => bt.addEventListener('click', () => { const q = bt.dataset.vu.split(','); rv.value = q[0]; ru.value = q[1]; pinta(); }));
+  pinta();
+})();
+
+/* ═══ ENERGÍA CINÉTICA ═════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('en-fig');
+  if (!host) return;
+  const rb = document.getElementById('en-b');
+  let m = 0.51099895, nombre = 'Electrón';
+  const mev = x => x >= 1000 ? num(x / 1000, 3) + ' GeV' : x >= 1 ? num(x, 3) + ' MeV' : num(x * 1000, 2) + ' keV';
+  function pinta() {
+    const b = +rb.value, G = gam(b);
+    const A = ejes(host, { W: 1180, H: 760, x: [0, 1], y: [0, 3], xt: [0, 0.2, 0.4, 0.6, 0.8, 1], yt: [0, 1, 2, 3], fx: v => num(v, 1), xl: '*β*', yl: '*K*/*mc*²' });
+    const rel = [], cla = [];
+    for (let i = 0; i <= 300; i++) { const x = 0.97 * i / 300; rel.push([x, Math.min(3, gam(x) - 1)]); cla.push([x, x * x / 2]); }
+    polilinea(A, cla, 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    polilinea(A, rel, 'stroke:var(--res);stroke-width:5');
+    rotulo(A.capa, A.X(0.62), A.Y(0.62 * 0.62 / 2) + 40, 'Newton: ½*β*²', { 'font-size': 28, style: 'fill:var(--caso2);font-family:' + FMATH });
+    rotulo(A.capa, A.X(0.7), A.Y(2.3), 'Einstein: *γ* − 1', { 'font-size': 28, style: 'fill:var(--res);font-family:' + FMATH });
+    nodo('circle', { cx: A.X(b), cy: A.Y(Math.min(3, G - 1)), r: 12, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa);
+    nodo('circle', { cx: A.X(b), cy: A.Y(b * b / 2), r: 10, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:3' }, A.capa);
+    const E = G * m, pc = G * m * b, K = (G - 1) * m, Kc = 0.5 * m * b * b;
+    document.getElementById('en-E').textContent = mev(E);
+    document.getElementById('en-p').textContent = mev(pc);
+    document.getElementById('en-K').textContent = mev(K);
+    document.getElementById('en-Kc').textContent = mev(Kc);
+    document.getElementById('en-bv').textContent = num(b, 2);
+    document.getElementById('en-inv').textContent = '√(E² − (pc)²) = ' + mev(Math.sqrt(E * E - pc * pc)) + ' = mc².';
+    document.getElementById('en-lect').textContent = nombre + ' · γ = ' + num(G, 3);
+  }
+  $$('#en-part .btn').forEach(bt => bt.addEventListener('click', () => { m = +bt.dataset.m; nombre = bt.dataset.n; $$('#en-part .btn').forEach(o => o.classList.toggle('on', o === bt)); pinta(); }));
+  rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DOPPLER RELATIVISTA ══════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('dop-fig');
+  if (!host) return;
+  const rb = document.getElementById('dop-b'), L0 = 500;
+  /* longitud de onda (nm) → color aproximado; fuera del visible, gris */
+  function color(l) {
+    let r = 0, g = 0, b = 0;
+    if (l >= 380 && l < 440) { r = (440 - l) / 60; b = 1; } else if (l < 490) { g = (l - 440) / 50; b = 1; }
+    else if (l < 510) { g = 1; b = (510 - l) / 20; } else if (l < 580) { r = (l - 510) / 70; g = 1; }
+    else if (l < 645) { r = 1; g = (645 - l) / 65; } else if (l <= 750) { r = 1; }
+    else return l < 380 ? '#7C6FB0' : '#8C5A4A';
+    const f = x => Math.round(255 * Math.pow(x, 0.8));
+    return 'rgb(' + f(r) + ',' + f(g) + ',' + f(b) + ')';
+  }
+  function onda(svg, y, lam, etiqueta) {
+    const esc = 1.6, pts = [];            /* 1 nm → 1,6 px */
+    for (let x = 60; x <= 1120; x += 4) pts.push(x + ',' + (y + 60 * Math.sin(2 * Math.PI * (x - 60) / (lam * esc))).toFixed(1));
+    nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:' + color(lam) + ';stroke-width:6' }, svg);
+    nodo('rect', { x: 60, y: y + 90, width: 60, height: 36, style: 'fill:' + color(lam) + ';stroke:var(--tinta);stroke-width:1' }, svg);
+    rotulo(svg, 140, y + 118, etiqueta + ': λ = ' + num(lam, 0) + ' nm' + (lam < 380 ? ' (ultravioleta)' : lam > 750 ? ' (infrarrojo)' : ''), { 'font-size': 30, style: 'fill:var(--tinta);font-family:' + FTXT });
+  }
+  function pinta() {
+    const b = +rb.value, lo = L0 * Math.sqrt((1 + b) / (1 - b));
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    onda(svg, 150, L0, 'Emitida');
+    onda(svg, 470, lo, 'Observada');
+    document.getElementById('dop-bv').textContent = num(b, 2);
+    document.getElementById('dop-lect').textContent = 'z = ' + num(lo / L0 - 1, 3) + (b > 0 ? ' · corrimiento al rojo' : b < 0 ? ' · corrimiento al azul' : '');
+  }
+  rb.addEventListener('input', pinta);
+  $$('#dp-dop .btn[data-b]').forEach(bt => bt.addEventListener('click', () => { rb.value = bt.dataset.b; pinta(); }));
+  pinta();
+})();
+
+/* ═══ RETO: ¿PROPIO O NO? ══════════════════════════════════════════════ */
+(function () {
+  const lista = document.getElementById('pp-lista');
+  if (!lista) return;
+  const items = $$('.dim', lista), fb = document.getElementById('pp-fb'), marc = document.getElementById('pr2-score');
+  items.forEach(it => {
+    const txt = it.innerHTML; it.innerHTML = '<span class="dim-ec">' + txt + '</span>';
+    const t = it.dataset.tipo === 't';
+    const bx = document.createElement('div'); bx.className = 'dim-btns';
+    bx.innerHTML = '<button type="button" class="btn" data-r="1">' + (t ? 'Propio' : 'Propia') + '</button><button type="button" class="btn" data-r="0">' + (t ? 'Dilatado' : 'Contraída') + '</button>';
+    it.appendChild(bx);
+    const ex = document.createElement('div'); ex.className = 'dim-exp'; it.appendChild(ex);
+    bx.addEventListener('click', ev => {
+      const b = ev.target.closest('button'); if (!b) return;
+      it.dataset.resp = b.dataset.r; $$('button', bx).forEach(o => o.classList.toggle('sel', o === b)); it.classList.remove('ok', 'mal');
+    });
+  });
+  document.getElementById('pp-ok').addEventListener('click', () => {
+    let n = 0, faltan = 0;
+    items.forEach(it => {
+      if (it.dataset.resp === undefined) { faltan++; return; }
+      const ok = it.dataset.resp === it.dataset.ok; if (ok) n++;
+      it.classList.toggle('ok', ok); it.classList.toggle('mal', !ok);
+      $('.dim-exp', it).textContent = (ok ? '✓ ' : '✗ ') + it.dataset.exp;
+    });
+    marc.textContent = n;
+    fb.textContent = faltan ? 'Te faltan ' + faltan + ' por clasificar.' : (n === items.length ? '✓ ¡Todas bien! Sabes quién mide lo propio.' : '✗ ' + n + ' de ' + items.length + '. Pregúntate: ¿quién está en reposo respecto al reloj o al objeto?');
+    fb.style.color = !faltan && n === items.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('pp-borrar').addEventListener('click', () => {
+    items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); });
+    marc.textContent = '0'; fb.textContent = '';
+  });
+})();
+
+</script>
+</body></html>

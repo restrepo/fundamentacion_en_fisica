@@ -5,7 +5,7 @@ autocontenido, con la navegación y el cromo originales de clase-slides.
 Uso:
   python build_html.py LECCION.html --ds RUTA/_ds/<sistema> --out SALIDA.html
          [--ancho 2280 --alto 1080] [--sin-posters] [--sin-cierre]
-         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO]
+         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO | --credito-leccion]
 
 Qué produce (ver references/autonomo.md):
   · #escenario 19:9 adaptable con el cromo de clase-slides: barra (marca, menú
@@ -66,6 +66,34 @@ def marcado_html(s):
     return s.replace('''font-family="'Inter',sans-serif"''', '''font-family="Archivo,sans-serif"''')
 
 
+SUP = str.maketrans('0123456789-', '⁰¹²³⁴⁵⁶⁷⁸⁹⁻')
+SUB = str.maketrans('0123456789', '₀₁₂₃₄₅₆₇₈₉')
+def a_texto(s):
+    """Título con TeX → texto plano legible (pósteres, data-label):
+    Δt, v², m₂, (F)/(m)… en lugar de restos de macros."""
+    def f(m):
+        c = m.group(1) if m.group(1) is not None else m.group(2)
+        for a_, z in (('\\Delta ', 'Δ'), ('\\Delta', 'Δ'), ('\\omega', 'ω'), ('\\pi', 'π'), ('\\theta', 'θ'),
+                      ('\\approx', '≈'), ('\\cdot', '·'), ('\\times', '×'), ('\\leq', '≤'), ('\\geq', '≥'), ('\\le ', '≤ '), ('\\ge ', '≥ '), ('\\left', ''), ('\\right', ''), ('{,}', ','),
+                      ('\\alpha', 'α'), ('\\beta', 'β'), ('\\gamma', 'γ'), ('\\varepsilon', 'ε'), ('\\epsilon', 'ε'), ('\\lambda', 'λ'),
+                      ('\\mu', 'μ'), ('\\nu', 'ν'), ('\\rho', 'ρ'), ('\\sigma', 'σ'), ('\\tau', 'τ'), ('\\phi', 'φ'), ('\\hbar', 'ħ'), ('\\infty', '∞'), ('\\propto', '∝'), ('\\sim', '∼')):
+            c = c.replace(a_, z)
+        for _ in range(4):
+            c = re.sub(r'\\qty\{([^{}]*)\}\{([^{}]*)\}', lambda m: (m.group(1) + ' ' + m.group(2).replace(' ', '')) if m.group(1) else ' ' + m.group(2).replace(' ', ''), c)
+            c = re.sub(r'\\(?:vect|mathrm|mathsf|text|boldsymbol|mathbf)\{([^{}]*)\}', r'\1', c)
+            c = re.sub(r'\\(?:abs)\{([^{}]*)\}', r'|\1|', c)
+            c = re.sub(r'\\[dt]?frac\{([^{}]*)\}\{([^{}]*)\}', lambda m: (m.group(1) if len(m.group(1)) < 2 else '(' + m.group(1) + ')') + '/' + (m.group(2) if len(m.group(2)) < 2 else '(' + m.group(2) + ')'), c)
+        c = re.sub(r'\^\{?(-?\d+)\}?', lambda m: m.group(1).translate(SUP), c)
+        c = re.sub(r'_\{?(\d)\}?', lambda m: m.group(1).translate(SUB), c)
+        c = re.sub(r'_\{?([A-Za-z]+)\}?', r'\1', c)
+        c = c.replace('\\,', ' ').replace('\\;', ' ').replace('\\!', '')
+        c = re.sub(r'\\[a-zA-Z]+', '', c).replace('{', '').replace('}', '')
+        return c
+    s = re.sub(r'\\\((.+?)\\\)|\\\[(.+?)\\\]', f, s, flags=re.S)
+    s = re.sub(r'<[^>]+>', '', s)
+    return re.sub(r'\s+', ' ', html.unescape(s)).strip()
+
+
 def js_autonomo(scripts):
     """Conserva los módulos de la lección; cambia su núcleo por el autónomo,
     conserva el contador (salto a diapositiva) y descarta MathJax embebido y
@@ -99,6 +127,7 @@ def main():
     ap.add_argument('--sin-posters', action='store_true'); ap.add_argument('--sin-cierre', action='store_true')
     ap.add_argument('--mathjax', choices=['inline', 'cdn'], default='inline')
     ap.add_argument('--marca'); ap.add_argument('--credito')
+    ap.add_argument('--credito-leccion', action='store_true', help='usar el crédito que trae la lección fuente')
     a = ap.parse_args()
 
     src = leer(a.leccion)
@@ -109,7 +138,8 @@ def main():
 
     titulo = re.search(r'<title>([\s\S]*?)</title>', src).group(1).strip()
     autor = (re.search(r'<meta name="author" content="([^"]*)"', src) or [None, ''])[1]
-    credito = a.credito or (lambda m: m.group(1).strip() if m else autor)(re.search(r'<p class="credito">([\s\S]*?)</p>', src)) or titulo
+    credito_fuente = (lambda m: m.group(1).strip() if m else autor)(re.search(r'<p class="credito">([\s\S]*?)</p>', src)) or titulo
+    credito = a.credito or (credito_fuente if a.credito_leccion else bd.CREDITO_POR_DEFECTO)
     marca = a.marca or (lambda m: m.group(1).strip() if m else titulo.split('·')[0].strip())(re.search(r'<span class="marca">([\s\S]*?)</span>', src))
 
     # CSS de la lección sin :root, cromo ni reglas de visibilidad (como el deck)
@@ -156,15 +186,15 @@ def main():
     salida, n = [], 0
     for k, (nom, lista) in enumerate(grupos):
         if not a.sin_posters and k > 0:
-            tit = [bd.tex_a_texto((re.search(r'<h2[^>]*>([\s\S]*?)</h2>', x) or [0, ''])[1]) for x in lista]
+            tit = [a_texto((re.search(r'<h2[^>]*>([\s\S]*?)</h2>', x) or [0, ''])[1]) for x in lista]
             tit = [t for t in tit if t][:4]
-            p = bd.poster(nom, bd.num_seccion(lista[0]) or '§ %d' % (k + 1), tit)
+            p = bd.poster(nom, '§ %d' % (k + 1), tit)   # ordinal de la sección: coincide con el menú
             salida.append(p.replace('<section class="poster"', '<section class="poster" data-seccion="%s"' % html.escape(nom, quote=True), 1))
         for s in lista:
             n += 1
             if 'data-label=' not in s[:300]:
                 h = re.search(r'<h[12][^>]*>([\s\S]*?)</h[12]>', s)
-                s = s.replace('<section ', '<section data-label="%s" ' % html.escape(bd.tex_a_texto(h.group(1)) if h else nom, quote=True), 1)
+                s = s.replace('<section ', '<section data-label="%s" ' % html.escape(a_texto(h.group(1)) if h else nom, quote=True), 1)
             salida.append(s)
     if not a.sin_cierre:
         salida.append(('<section class="poster" data-seccion="%s" data-label="Fin">\n  <div class="p-num">Fin</div>\n  <h2 class="p-tit">%s</h2>\n'

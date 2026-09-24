@@ -86,3 +86,15 @@ body{background:var(--lienzo);display:flex;align-items:center;justify-content:ce
 #escenario > .popover{border:2px solid var(--tinta);box-shadow:var(--shadow-lg, 0 18px 48px rgba(0,0,0,.18));background:var(--panel);z-index:45}
 #escenario > .popover mjx-container:not([display="true"]){display:inline-block !important;margin:0 !important}
 #escenario > .popover mjx-container svg{display:inline}
+
+/* ── Pasos (↓ ↑) con el modelo del diseño original ─────────────────────
+   Los pasos pendientes se ven ATENUADOS (anticipan lo que viene) y pasan al
+   100 % cuando les llega el turno. Excepción: .frag.aparece (respuestas,
+   preguntas cuyos datos aún no existen) permanece oculto hasta su turno.
+   Va con #lienzo delante para ganar a cualquier .frag de la lección. */
+#lienzo .frag{opacity:.25;transform:none;filter:none;transition:opacity .35s ease}
+#lienzo [data-intento] .frag{opacity:.07}
+#lienzo .frag.frag-on{opacity:1}
+#lienzo .frag.aparece{visibility:hidden}
+#lienzo .frag.aparece.frag-on{visibility:visible;opacity:1}
+@media print{ #lienzo .frag,#lienzo .frag.aparece{opacity:1;visibility:visible} }

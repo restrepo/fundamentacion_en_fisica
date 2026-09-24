@@ -17,8 +17,17 @@ python <skill>/scripts/build_html.py "<lección>.html" --ds _ds/<sistema> --out 
 python <skill>/scripts/verificar_html.py "<lección>.html" /home/claude/caps   # sin red, desde file://
 ```
 Opciones: `--ancho/--alto` (2280×1080), `--sin-posters`, `--sin-cierre`,
-`--mathjax cdn` (enlaza MathJax en vez de incrustarlo), `--marca`, `--credito`
-(por defecto se toman de la lección). Si el sistema trae `--color-accent-2` /
+`--mathjax cdn` (enlaza MathJax en vez de incrustarlo), `--marca` (por
+defecto, la de la lección), `--credito TEXTO` o `--credito-leccion`.
+
+**Crédito de autoría.** Todas las lecciones muestran, abajo a la izquierda y en
+el pie del póster de cierre, **«Diseño de material de estudio · W. Alexander
+Flórez»** (`CREDITO_POR_DEFECTO` en `scripts/build_deck.py`, que usan los dos
+scripts). Sustituye al crédito de la lección fuente (p. ej. «Material de
+estudio · W. Alexander Flórez»). `--credito "…"` lo cambia para una lección;
+`--credito-leccion` conserva el de la fuente.
+
+Si el sistema trae `--color-accent-2` /
 `--color-accent-3` / `--color-error`, se usan para `--caso2` / `--caso1` /
 `--mal` y sus macros TeX (`\casodos`, `\casouno`); si no, perfil «mono».
 
@@ -30,6 +39,13 @@ contador «n / N» que abre un campo para saltar; recta de progreso con muescas
 por sección; crédito abajo a la izquierda; aviso de giro en móvil vertical;
 atenuación del cromo en reposo; hash `#/n`; zoom de pellizco en pantalla
 completa. En los pósteres a campo de acento, crédito y contador pasan a claro.
+
+**Pasos dentro de la diapositiva (↓ ↑), como en el diseño original:** los
+pasos pendientes se ven **atenuados** (opacidad 0,25) y se revelan al 100 %
+en su turno, con las flechas verticales o sus botones. Lo impone `cromo.css`
+sobre cualquier estilo `.frag` de la lección. Para contenido que no debe
+verse antes de tiempo —respuestas de ejercicios, preguntas cuyos datos aún no
+existen— usa `class="frag aparece"`: queda oculto hasta su turno.
 
 **Si no hay sistema de diseño** en la petición, crea uno mínimo en
 `_ds/<nombre>/styles.css` con los tokens que usa la capa (`--color-bg`,

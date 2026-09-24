@@ -224,11 +224,18 @@ def poster(nombre, num, titulos):
             '</section>\n') % (html.escape(num + ' · ' + nombre), html.escape(nombre), len(titulos),
                                html.escape(num), html.escape(nombre), cols, pie)
 
+# Crédito de autoría que muestran todas las lecciones (esquina inferior
+# izquierda y pie del póster de cierre). --credito lo cambia para una lección;
+# --credito-leccion conserva el que trae la lección fuente.
+CREDITO_POR_DEFECTO = 'Diseño de material de estudio · W. Alexander Flórez'
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('leccion'); ap.add_argument('--ds', required=True); ap.add_argument('--out', required=True)
     ap.add_argument('--ancho', type=int, default=2280); ap.add_argument('--alto', type=int, default=1080)
     ap.add_argument('--sin-posters', action='store_true'); ap.add_argument('--sin-cierre', action='store_true')
+    ap.add_argument('--credito'); ap.add_argument('--credito-leccion', action='store_true')
     a = ap.parse_args()
 
     src = open(a.leccion, encoding='utf-8').read()
@@ -240,6 +247,8 @@ def main():
     autor = (re.search(r'<meta name="author" content="([^"]*)"', src) or [None, ''])[1]
     credito = re.search(r'<p class="credito">([\s\S]*?)</p>', src)
     credito = credito.group(1).strip() if credito else autor
+    if not a.credito_leccion:
+        credito = a.credito or CREDITO_POR_DEFECTO
 
     # CSS de la lección: sin :root, sin escenario/cromo, sin reglas de visibilidad
     css = [m.group(1) for m in re.finditer(r'<style>([\s\S]*?)</style>', src)][-1]

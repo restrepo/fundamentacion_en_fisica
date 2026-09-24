@@ -28,7 +28,7 @@ de la lección en lugar de la de `<deck-stage>`.
 | Archivo | Papel |
 |---|---|
 | `plantilla-autonoma.html` | Marcado del cromo, copiado de clase-slides (mismos ids y clases). |
-| `cromo.css` | Medidas del cromo original en `cqh`/`cqw` del escenario; colores por rol. Oculta ↑ ↓ con `#escenario.sin-pasos`, atenúa con `.quieto`, aclara crédito y contador en pósteres (`.en-poster`). |
+| `cromo.css` | Pasos ↓ ↑ con el modelo original: pendientes **atenuados** al 25 % y al 100 % en su turno; `.frag.aparece` (respuestas) oculto hasta su turno. Medidas del cromo original en `cqh`/`cqw` del escenario; colores por rol. Oculta ↑ ↓ con `#escenario.sin-pasos`, atenúa con `.quieto`, aclara crédito y contador en pósteres (`.en-poster`). |
 | `escala.js` | Escala `#lienzo` al ancho del escenario (ResizeObserver) y marca `.en-poster`. |
 | `nucleo-autonomo.js` | Núcleo clase-slides v1.3: menú, recta, contador, flechas, teclado (← → diapositiva; ↓ ↑ pasos; espacio todo en orden; Inicio/Fin; F pantalla completa), hash `#/n`, atenuación en reposo, zoom de pellizco en pantalla completa. Adaptado para recorrer `#lienzo > section` (diapositivas **y** pósteres), poner `data-deck-active` y emitir `slidechange` además de `diapositiva`. |
 | `contador.js` | Clic en el contador → número + Enter. Se añade si la lección no lo trae. |
@@ -53,7 +53,8 @@ Escribe una fuente con la forma mínima que el script entiende y ejecútalo igua
 <style>:root{--t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px}
   /* CSS propio: en px del lienzo o en cqh de la diapositiva; colores con roles var(--res)… */</style>
 <body><div id="escenario">
-  <span class="marca">Tema · Cap. n</span> <p class="credito">Autoría</p>
+  <span class="marca">Tema · Cap. n</span>
+  <p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>  <!-- opcional: se usa el crédito por defecto -->
   <section class="diapositiva portada" data-seccion="Sección 1">…</section>
   <section class="diapositiva" data-seccion="Sección 1" id="dp-x">
     <p class="ceja">§ 1 · …</p><h2 class="titulo">…</h2> … <li class="frag">…</li>
