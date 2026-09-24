@@ -1,0 +1,1247 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Dinámica newtoniana · Fundamentación en Física</title>
+<style>
+:root{
+  --t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px;
+}
+/* ── Lección: Dinámica newtoniana (lienzo 2280 × 1080, unidades en px) ── */
+section.diapositiva{position:relative}
+section.diapositiva p{margin:0 0 14px}
+section.diapositiva .ceja{font:600 var(--t-rotulo)/1 var(--font-body);text-transform:uppercase;margin:0 0 6px}
+section.diapositiva .ceja .score{float:right;color:var(--tinta2);letter-spacing:.04em}
+section.diapositiva strong{font-weight:700}
+section.diapositiva .sub{color:var(--tinta2);font-size:var(--t-peq)}
+section.diapositiva .mono{font-variant-numeric:tabular-nums}
+
+/* rejillas */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+.g2-60{display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:start}
+.g2-40{display:grid;grid-template-columns:1fr 1.35fr;gap:44px;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pila > * + *{margin-top:18px}
+
+/* cajas */
+.caja{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:18px 26px}
+.caja.c1{border-left-color:var(--caso1)}
+.caja.c2{border-left-color:var(--caso2)}
+.caja.neutra{border-left-color:var(--borde)}
+  .caja h3{font-size:36px;margin:0 0 8px}
+.kf{border:2px solid var(--res);background:var(--res-50);padding:14px 26px;text-align:center;font-size:40px}
+.ec{text-align:center;margin:10px 0}
+.nota{font-size:var(--t-peq);color:var(--tinta2)}
+ol.leyes{margin:0;padding-left:1.3em}
+ol.leyes li{margin-bottom:16px}
+ul.lista{margin:0;padding-left:1.1em}
+ul.lista li{margin-bottom:10px}
+
+/* fragmentos (↓ ↑) */
+.frag{opacity:.0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+.frag.frag-on{opacity:1;transform:none}
+
+/* figuras */
+.svgbox{background:var(--panel);padding:14px 18px 16px}
+.svghd{font:700 var(--t-rotulo)/1.2 var(--font-body);color:var(--tinta2);margin:0 0 10px;display:flex;justify-content:space-between;gap:20px}
+.svghd #os-sub{text-transform:none;letter-spacing:0}
+.svghd .val{color:var(--res);text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+.fig{display:block;width:100%;height:auto}
+.fig text{font-family:'STIX Two Text',Georgia,serif}
+canvas.lienzo{display:block;width:100%;height:auto;cursor:crosshair}
+
+/* controles */
+.ctrl{display:grid;grid-template-columns:270px 1fr 170px;align-items:center;gap:18px;margin:10px 0;font-size:var(--t-peq)}
+.ctrl .v{font:600 var(--t-peq)/1 var(--font-body);text-align:right;font-variant-numeric:tabular-nums;color:var(--res)}
+.ctrl input[type=range]{width:100%;height:30px;cursor:pointer}
+.fila-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;background:var(--panel);color:var(--tinta);border:2px solid var(--linea);cursor:pointer}
+.btn:hover{background:var(--primario-tinte)}
+.btn.on{border-color:var(--res);color:var(--res);background:var(--res-50)}
+.btn.prim{background:var(--res);color:var(--papel);border-color:var(--res)}
+.chk{display:inline-flex;align-items:center;gap:10px;font:600 var(--t-peq)/1 var(--font-body);cursor:pointer;margin-right:26px}
+.chk input{width:22px;height:22px;accent-color:var(--color-accent)}
+.chk.x{color:var(--res)} .chk.p{color:var(--caso1)} .chk.a{color:var(--caso2)} .chk.n{color:var(--tinta2)}
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.lectura div{background:var(--panel);border:2px solid var(--linea);padding:12px 16px;font-size:26px;color:var(--tinta2)}
+.lectura b{display:block;font:700 34px/1.25 var(--font-body);color:var(--tinta);font-variant-numeric:tabular-nums}
+
+/* tabla */
+table.tabla{border-collapse:collapse;width:100%;font-size:30px}
+table.tabla th,table.tabla td{border-bottom:2px solid var(--linea);padding:6px 14px;text-align:center}
+table.tabla th{font:700 25px/1.2 var(--font-body);color:var(--tinta2);border-bottom-color:var(--tinta)}
+table.tabla td.izq{text-align:left}
+table.tabla tr.frag td{background:var(--panel)}
+
+/* chips con ventana emergente */
+.prop{border-bottom:3px dotted var(--res);cursor:help;color:var(--tinta);font-weight:600}
+.prop:hover{background:var(--res-50)}
+.pop-src{display:none}
+.popover{position:absolute;z-index:40;max-width:860px;padding:24px 30px;font-size:31px;line-height:1.45}
+.popover h4{margin:0 0 8px;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.popover .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
+
+/* práctica */
+.pr-item{background:var(--panel);padding:16px 22px;margin-bottom:16px}
+.pr-q{font-weight:600;margin-bottom:10px}
+.pr-opcs{display:flex;flex-wrap:wrap;gap:12px}
+.pr-opc{font:500 var(--t-peq)/1.2 var(--font-body);padding:10px 18px;background:var(--papel);border:2px solid var(--linea);cursor:pointer;color:var(--tinta)}
+.pr-opc.ok{border-color:var(--ok);background:var(--res-50)}
+.pr-opc.mal{border-color:var(--mal);background:var(--mal-50)}
+.pr-fb{margin-top:10px;font-size:var(--t-peq);min-height:1.2em}
+.pr-fb.ok{color:var(--res)} .pr-fb.mal{color:var(--mal)}
+.pr-in{font-size:30px;padding:8px 12px;width:200px;border:2px solid var(--linea);background:var(--papel)}
+.pr-btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;border:2px solid var(--linea);background:var(--papel);cursor:pointer;color:var(--tinta)}
+.pr-pista{display:none;margin-top:8px;font-size:var(--t-peq);color:var(--tinta2)}
+.pr-pista.on{display:block}
+
+/* reto */
+.cz-grid{display:grid;grid-template-columns:120px repeat(3,1fr);gap:16px 22px;align-items:center;font-size:34px}
+.cz-grid .h{font:700 28px/1.2 var(--font-body);color:var(--tinta2)}
+.cz-grid input{font:500 34px/1 'STIX Two Text',Georgia,serif;padding:8px 12px;border:2px solid var(--linea);background:var(--panel);width:100%;box-sizing:border-box}
+.cz-grid input.ok{border-color:var(--res);background:var(--res-50)}
+.cz-grid input.mal{border-color:var(--mal);background:var(--mal-50)}
+.cz-btn{font:600 var(--t-peq)/1 var(--font-body);padding:12px 22px;border:2px solid var(--linea);background:var(--panel);cursor:pointer;color:var(--tinta)}
+.cz-fb{margin-top:16px;font-size:var(--t-peq);min-height:1.3em}
+.cz-sol{display:none;margin-top:14px;background:var(--panel);padding:14px 20px;border:2px solid var(--linea)}
+.cz-sol.on{display:block}
+
+/* glosario */
+dl.glosa{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0}
+dl.glosa div{border-top:2px solid var(--linea);padding-top:10px}
+dl.glosa dt{font:800 34px/1.2 var(--font-heading);color:var(--res);margin-bottom:4px}
+dl.glosa dd{margin:0;font-size:29px}
+
+/* portada */
+.portada .pt-fig{width:720px}
+.portada .sub{font-size:36px;max-width:1250px}
+.ayuda{position:absolute;bottom:84px;font-size:22px;color:var(--tinta2)}
+.ayuda kbd{font:600 20px/1 var(--font-body);border:2px solid var(--linea);padding:3px 8px;margin:0 2px;background:var(--panel)}
+
+/* diagrama de flujo */
+.flujo .blq{transition:all .3s}
+
+</style></head>
+<body>
+<div id="escenario">
+<span class="marca">Dinámica newtoniana · Cap. 3</span>
+<p class="credito">Material de estudio · Fundamentación en Física</p>
+<!-- ═════════════ §1 · LEYES DE NEWTON ═════════════ -->
+<section class="diapositiva portada" data-seccion="Leyes de Newton" data-label="Dinámica newtoniana" data-speaker-notes="Portada del capítulo 3. La animación muestra el oscilador del ejemplo 3.2.1 integrado con Euler-Cromer.">
+  <div>
+    <p class="ceja">Fundamentación en Física · Capítulo 3</p>
+    <h1>Dinámica newtoniana</h1>
+    <div class="regla"></div>
+    <p class="sub">De la ley \(\vect{F} = \Delta\vect{p}/\Delta t\) a un algoritmo que predice el movimiento paso a paso: aceleración constante, trabajo y energía, cantidad de movimiento, fuerzas y el oscilador armónico resuelto numéricamente.</p>
+  </div>
+  <figure class="pt-fig svgbox" style="margin:0">
+    <div class="svghd"><span>Oscilador · Euler-Cromer</span><span class="val" id="hero-t"></span></div>
+    <canvas class="lienzo" id="hero-cv" width="720" height="520"></canvas>
+  </figure>
+  <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden</p>
+</section>
+
+<section class="diapositiva" data-seccion="Leyes de Newton" data-label="Las leyes de Newton" data-speaker-notes="§ 3.1. ↓ revela 4 pasos. Pulse los términos subrayados para ver su definición.">
+  <p class="ceja">§ 3.1 · Leyes de Newton</p>
+  <h2 class="titulo">Las tres leyes, escritas con la cantidad de movimiento</h2>
+  <div class="g2-60">
+    <ol class="leyes">
+      <li class="frag"><strong>Inercia.</strong> Si la fuerza neta es nula, la <span class="prop" data-pop="pop-p">cantidad de movimiento</span> no cambia: el objeto sigue en reposo o en movimiento rectilíneo uniforme.</li>
+      <li class="frag"><strong>Fuerza.</strong> La fuerza neta es la tasa de cambio de la cantidad de movimiento:
+        \[ \vect{F} = \dfrac{\Delta\vect{p}}{\Delta t}, \qquad \Delta t = t_{\text{final}} - t_{\text{inicial}}, \qquad \Delta\vect{p} = \vect{p}_{\text{final}} - \vect{p}_{\text{inicial}}. \]</li>
+      <li class="frag"><strong>Acción y reacción.</strong> A toda fuerza que un objeto ejerce sobre otro le corresponde una fuerza de igual magnitud y sentido opuesto: \(\vect{F}_{12} = -\vect{F}_{21}\).</li>
+    </ol>
+    <div class="pila">
+      <div class="caja frag">
+        <h3>Cantidad de movimiento</h3>
+        \[ \vect{p} = \gamma m \vect{v} \;\xrightarrow{\;\gamma \,\to\, 1\;}\; \vect{p} = m\vect{v} \]
+        <p class="nota">En el límite no relativista (\(\gamma = 1\)) y con masa constante, la segunda ley se reduce a \(\vect{F} = m\vect{a}\).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Leyes de Newton" id="dp-vinst" data-label="Velocidad instantánea" data-speaker-notes="§ 3.1. Explorador: al reducir Δt la secante tiende a la tangente.">
+  <p class="ceja">§ 3.1 · Cinemática para la dinámica</p>
+  <h2 class="titulo">Velocidad instantánea: la secante se convierte en tangente</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Posición \(x(t) = 0{,}3\,t^{2} + 0{,}2\,t\)</span><span class="val" id="vi-lect"></span></div>
+      <div id="vi-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Para un \(\Delta t\) suficientemente pequeño, la pendiente de la secante entre \((t_0, x_0)\) y \((t, x)\) aproxima la velocidad:</p>
+      \[ v \approx \dfrac{x - x_0}{t - t_0} = \dfrac{\Delta x}{\Delta t}. \]
+      <label class="ctrl"><span>Intervalo \(\Delta t\)</span><input type="range" id="vi-dt" min="0.05" max="1.5" step="0.05" value="1.5"><span class="v" id="vi-dtv"></span></label>
+      <div class="caja">
+        <p style="margin:0">En tres dimensiones, y con \(\vect{p} = m\vect{v}\):</p>
+        \[ \vect{r} \approx \vect{r}_0 + \dfrac{\vect{p}}{m}\,\Delta t. \]
+      </div>
+      <p class="nota">La tangente en \(t_0 = 2{,}5\qty{}{s}\) tiene pendiente \(v_{\text{inst}} = 1{,}7\qty{}{m/s}\).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §2 · SOLUCIÓN NUMÉRICA ═════════════ -->
+<section class="diapositiva" data-seccion="Solución numérica" id="dp-flujo" data-label="El algoritmo de integración" data-speaker-notes="§ 3.2. ↓ recorre el diagrama de flujo bloque a bloque.">
+  <p class="ceja">§ 3.2 · Solución numérica</p>
+  <h2 class="titulo">Un algoritmo que avanza la física en pasos \(\Delta t\)</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <p class="frag">Despejamos el nuevo momento de la segunda ley:
+        \[ \Delta\vect{p} = \vect{p} - \vect{p}_0 = \vect{F}\,\Delta t \;\Longrightarrow\; \vect{p} = \vect{p}_0 + \vect{F}\,\Delta t. \]</p>
+      <p class="frag">Con el momento <strong>ya actualizado</strong> movemos la partícula:
+        \[ \vect{r} = \vect{r}_0 + \dfrac{\vect{p}}{m}\,\Delta t. \]</p>
+      <p class="frag">Avanzamos el reloj, \(t \leftarrow t + \Delta t\), y repetimos mientras \(t \lt t_{\text{final}}\).</p>
+      <div class="caja frag"><p style="margin:0">Usar el momento nuevo para actualizar la posición es el método de <span class="prop" data-pop="pop-ec">Euler-Cromer</span>.</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Diagrama de flujo</span><span class="val" id="fl-lect">Inicio</span></div>
+      <div id="fl-fig"></div>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Solución numérica" id="dp-vertical" data-label="Lanzamiento vertical numérico" data-speaker-notes="§ 3.2. Explorador: integración numérica del lanzamiento vertical frente a la solución analítica.">
+  <p class="ceja">§ 3.2 · Primer ejemplo</p>
+  <h2 class="titulo">Lanzamiento vertical: fuerza constante \(F = -mg\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Altura \(y\) frente al tiempo \(t\)</span><span class="val" id="lv-lect"></span></div>
+      <div id="lv-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Con \(m = \qty{1}{kg}\), \(v_0 = \qty{10}{m/s}\), \(g \approx \qty{10}{m/s^2}\) e \(y_0 = 0\):</p>
+      \[ \begin{aligned} p &\leftarrow p - mg\,\Delta t, \\ y &\leftarrow y + \dfrac{p}{m}\,\Delta t. \end{aligned} \]
+      <label class="ctrl"><span>Paso \(\Delta t\)</span><input type="range" id="lv-dt" min="0.02" max="0.5" step="0.02" value="0.1"><span class="v" id="lv-dtv"></span></label>
+      <div class="caja c2"><p style="margin:0">Solución analítica: \(y(t) = v_0 t - \tfrac12 g t^{2}\).</p></div>
+      <p class="nota">Los puntos numéricos quedan ligeramente por debajo de la parábola: el error es proporcional a \(\Delta t\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Solución numérica" data-label="3.2.1 Planteamiento del oscilador" data-speaker-notes="§ 3.2.1. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.2.1 · Ejemplo numérico</p>
+  <h2 class="titulo">El oscilador armónico \((F = -kx)\)</h2>
+  <div class="g2">
+    <div class="pila">
+      <p>Aplicamos el algoritmo a una fuerza que <strong>no es constante</strong>: la <span class="prop" data-pop="pop-hooke">fuerza restauradora</span> de un resorte ideal (ley de Hooke).</p>
+      <div class="g3 frag">
+        <div class="caja neutra">\( m = \qty{1}{kg} \)</div>
+        <div class="caja neutra">\( k = \qty{1}{N/m} \)</div>
+        <div class="caja neutra">\( \omega = \sqrt{k/m} = \qty{1}{rad/s} \)</div>
+        <div class="caja neutra">\( x_0 = \qty{1}{m} \)</div>
+        <div class="caja neutra">\( p_0 = 0 \)</div>
+        <div class="caja neutra">\( T = 2\pi\sqrt{m/k} \approx \qty{6{,}283}{s} \)</div>
+      </div>
+    </div>
+    <div class="pila">
+      <p class="frag">La fuerza depende de la posición <em>actual</em>, así que se recalcula en cada vuelta del bucle:</p>
+      <div class="kf frag">\[ \begin{aligned} p &\leftarrow p + (-kx)\,\Delta t, \\ x &\leftarrow x + \dfrac{p}{m}\,\Delta t, \\ t &\leftarrow t + \Delta t. \end{aligned} \]</div>
+      <p class="nota">Solución exacta de referencia: \(x(t) = x_0 \cos(\omega t) = \cos t\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Solución numérica" id="dp-tabla" data-label="Seguimiento tabular con Δt = 1 s" data-speaker-notes="§ 3.2.1. ↓ revela los 6 pasos de la tabla y los dibuja en la gráfica.">
+  <p class="ceja">§ 3.2.1 · Seguimiento tabular</p>
+  <h2 class="titulo">Paso grande: \(\Delta t = \qty{1}{s}\), a mano</h2>
+  <div class="g2-60">
+    <table class="tabla">
+      <thead><tr><th>Paso</th><th>Ecuación y sustitución</th><th>\(t\)&nbsp;[s]</th><th>\(x\)&nbsp;[m]</th><th>\(p\)&nbsp;[kg·m/s]</th><th>\(E\)&nbsp;[J]</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="izq">Condición inicial</td><td>\(0\)</td><td>\(1\)</td><td>\(0\)</td><td>\(0{,}5\)</td></tr>
+        <tr class="frag"><td>1</td><td class="izq">\(\begin{aligned} p &= -(1)(1) + 0 = -1 \\ x &= (-1)(1) + 1 = 0 \end{aligned}\)</td><td>\(1\)</td><td>\(0\)</td><td>\(-1\)</td><td>\(0{,}5\)</td></tr>
+        <tr class="frag"><td>2</td><td class="izq">\(\begin{aligned} p &= -(0)(1) + (-1) = -1 \\ x &= (-1)(1) + 0 = -1 \end{aligned}\)</td><td>\(2\)</td><td>\(-1\)</td><td>\(-1\)</td><td>\(1\)</td></tr>
+        <tr class="frag"><td>3</td><td class="izq">\(\begin{aligned} p &= -(-1)(1) + (-1) = 0 \\ x &= (0)(1) + (-1) = -1 \end{aligned}\)</td><td>\(3\)</td><td>\(-1\)</td><td>\(0\)</td><td>\(0{,}5\)</td></tr>
+        <tr class="frag"><td>4</td><td class="izq">\(\begin{aligned} p &= -(-1)(1) + 0 = 1 \\ x &= (1)(1) + (-1) = 0 \end{aligned}\)</td><td>\(4\)</td><td>\(0\)</td><td>\(1\)</td><td>\(0{,}5\)</td></tr>
+        <tr class="frag"><td>5</td><td class="izq">\(\begin{aligned} p &= -(0)(1) + 1 = 1 \\ x &= (1)(1) + 0 = 1 \end{aligned}\)</td><td>\(5\)</td><td>\(1\)</td><td>\(1\)</td><td>\(1\)</td></tr>
+        <tr class="frag"><td>6</td><td class="izq">\(\begin{aligned} p &= -(1)(1) + 1 = 0 \\ x &= (0)(1) + 1 = 1 \end{aligned}\)</td><td>\(6\)</td><td>\(1\)</td><td>\(0\)</td><td>\(0{,}5\)</td></tr>
+      </tbody>
+    </table>
+    <div class="pila">
+      <figure class="svgbox" style="margin:0">
+        <div class="svghd"><span>\(x\) frente a \(t\)</span><span class="val" id="tb-lect">paso 0</span></div>
+        <div id="tb-fig"></div>
+      </figure>
+      <p class="nota">Con \(E = \dfrac{p^{2}}{2m} + \tfrac12 k x^{2}\). Tras 6 pasos el estado vuelve a \((x, p) = (1, 0)\): la trayectoria es tosca, pero <strong>acotada</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Solución numérica" id="dp-sim" data-label="Simulador Euler-Cromer" data-speaker-notes="§ 3.2.1. Implementación p5.js trasladada al deck: deslizador Δt, preajustes, casillas, inspección con el cursor y captura PNG.">
+  <p class="ceja">§ 3.2.1 · Laboratorio</p>
+  <h2 class="titulo">Evolución temporal \(x(t)\) en un ciclo completo, \(T = 2\pi \approx \qty{6{,}283}{s}\)</h2>
+  <div class="g2-60" style="grid-template-columns:1.62fr 1fr">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span id="os-sub"></span><span class="val" id="os-dtbadge"></span></div>
+      <div id="os-checks" class="fila-btn"></div>
+      <canvas class="lienzo" id="os-cv" width="1340" height="720"></canvas>
+    </figure>
+    <div class="pila">
+      <label class="ctrl" style="grid-template-columns:170px 1fr 110px"><span>Paso \(\Delta t\)</span><input type="range" id="os-dt" min="0.01" max="1" step="0.01" value="1"><span class="v" id="os-dtv"></span></label>
+      <div class="sub" style="display:flex;justify-content:space-between"><span>0,01 s · mayor resolución</span><span>1,00 s · paso grueso</span></div>
+      <div id="os-presets" class="fila-btn"></div>
+      <div class="fila-btn"><button type="button" class="btn" id="os-reset">↺ Restablecer enunciado</button><button type="button" class="btn prim" id="os-png">Captura PNG</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr">
+        <div>Pasos<b id="os-n"></b></div>
+        <div>Error máx. \(\abs{x - \cos t}\)<b id="os-err"></b></div>
+        <div>\(x(T)\)<b id="os-xT"></b></div>
+        <div>\(E\) mín. – máx.<b id="os-E"></b></div>
+      </div>
+      <div class="caja"><p style="margin:0;font-size:24px">Con \(\Delta t = \qty{1{,}00}{s}\) la posición avanza en saltos notables pero se mantiene acotada. Al reducir \(\Delta t \le \qty{0{,}10}{s}\) converge hacia la solución analítica \(x(t) = \cos t\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Solución numérica" id="dp-energia" data-label="¿Se conserva la energía?" data-speaker-notes="§ 3.2.1. Comparación de la energía con Euler-Cromer y con Euler explícito durante tres períodos.">
+  <p class="ceja">§ 3.2.1 · El efecto del paso temporal</p>
+  <h2 class="titulo">¿Gana energía el oscilador numérico?</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Energía \(E(t)\) en tres períodos · exacta \(E = \qty{0{,}5}{J}\)</span><span class="val" id="en-lect"></span></div>
+      <div id="en-fig"></div>
+    </figure>
+    <div class="pila">
+      <label class="ctrl" style="grid-template-columns:170px 1fr 110px"><span>Paso \(\Delta t\)</span><input type="range" id="en-dt" min="0.01" max="1" step="0.01" value="0.5"><span class="v" id="en-dtv"></span></label>
+      <div class="fila-btn"><label class="chk x"><input type="checkbox" id="en-ec">Euler-Cromer</label><label class="chk a"><input type="checkbox" id="en-ex">Euler explícito</label></div>
+      <div class="caja"><h3>Euler-Cromer</h3><p style="margin:0">\(x\) se actualiza con el momento <em>nuevo</em>. La energía oscila alrededor de \(\qty{0{,}5}{J}\) pero queda <strong>acotada</strong>; la oscilación se reduce con \(\Delta t\).</p></div>
+      <div class="caja c2"><h3>Euler explícito</h3><p style="margin:0">\(x\) se actualiza con el momento <em>viejo</em>. Cada paso multiplica la energía por \(1 + (\omega\,\Delta t)^{2}\): crece sin límite.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Solución numérica" data-label="Conclusión computacional" data-speaker-notes="§ 3.2.1. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.2.1 · Conclusión computacional</p>
+  <h2 class="titulo">La precisión depende del tamaño de \(\Delta t\)</h2>
+  <div class="g3">
+    <div class="caja frag"><h3>Paso grueso</h3><p>Con \(\Delta t = \qty{1}{s}\) solo hay 6 puntos por ciclo: la curvatura del movimiento armónico se pierde y la trayectoria es poligonal.</p></div>
+    <div class="caja c1 frag"><h3>Paso fino</h3><p>Con \(\Delta t = \qty{0{,}05}{s}\) (unos 126 pasos por ciclo) el algoritmo reproduce el coseno con un error inferior al 3&nbsp;%.</p></div>
+    <div class="caja c2 frag"><h3>El método importa</h3><p>El mismo \(\Delta t\) que estabiliza a Euler-Cromer hace diverger a Euler explícito: el orden de las actualizaciones es física, no un detalle de código.</p></div>
+  </div>
+</section>
+
+<!-- ═════════════ §3 · ACELERACIÓN CONSTANTE Y ENERGÍA ═════════════ -->
+<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-acel" data-label="Aceleración constante" data-speaker-notes="§ 3.3. Explorador: pendiente del gráfico v–t.">
+  <p class="ceja">§ 3.3 · Aceleración constante</p>
+  <h2 class="titulo">La aceleración es la pendiente de la recta \(v\)–\(t\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Velocidad frente al tiempo</span><span class="val" id="ac-lect"></span></div>
+      <div id="ac-fig"></div>
+    </figure>
+    <div class="pila">
+      \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{v - v_0}{t - t_0} \;\Longrightarrow\; v = v_0 + a\,(t - t_0). \]
+      <label class="ctrl"><span>Aceleración \(a\)</span><input type="range" id="ac-a" min="-2" max="2" step="0.1" value="1"><span class="v" id="ac-av"></span></label>
+      <label class="ctrl"><span>Velocidad \(v_0\)</span><input type="range" id="ac-v0" min="-2" max="4" step="0.1" value="1"><span class="v" id="ac-v0v"></span></label>
+      <div class="caja"><p style="margin:0">El área bajo la recta es el desplazamiento:
+        \[ x = x_0 + v_0 t + \tfrac12 a t^{2}. \]</p></div>
+      <p class="nota">El área sombreada del gráfico es \(\Delta x\) en el intervalo \([0, 4]\qty{}{s}\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Aceleración constante y energía" data-label="Teorema del trabajo y la energía" data-speaker-notes="§ 3.4. ↓ revela 4 pasos de la derivación.">
+  <p class="ceja">§ 3.4 · Trabajo y energía</p>
+  <h2 class="titulo">Del \(v^{2}\) cinemático al teorema del trabajo y la energía</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="caja neutra frag"><h3>1 · Ecuación sin tiempo</h3>\[ v_f^{2} = v_i^{2} + 2a\,\Delta x \]</div>
+      <div class="caja neutra frag"><h3>2 · Multiplicar por \(\tfrac12 m\)</h3>\[ \tfrac12 m v_f^{2} = \tfrac12 m v_i^{2} + m a\,\Delta x \]</div>
+    </div>
+    <div class="pila">
+      <div class="caja neutra frag"><h3>3 · Segunda ley, \(F = ma\)</h3>\[ \tfrac12 m v_f^{2} - \tfrac12 m v_i^{2} = F\,\Delta x \]</div>
+      <div class="kf frag">\[ \Delta K = W, \qquad K = \tfrac12 m v^{2}, \qquad W = F\,\Delta x \]<p class="nota" style="margin:6px 0 0">El trabajo neto sobre un objeto es igual al cambio de su <span class="prop" data-pop="pop-trabajo">energía cinética</span>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-conserva" data-label="Conservación de la energía" data-speaker-notes="§ 3.5. Explorador: K y U durante el lanzamiento vertical.">
+  <p class="ceja">§ 3.5 · Conservación de la energía</p>
+  <h2 class="titulo">Lo que pierde la energía cinética lo gana la potencial</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Lanzamiento vertical · \(m = \qty{1}{kg}\), \(v_0 = \qty{10}{m/s}\)</span><span class="val" id="ce-lect"></span></div>
+      <div id="ce-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Con \(W = -mgh\) en el teorema del trabajo y la energía:</p>
+      \[ \tfrac12 m v_0^{2} = \tfrac12 m v^{2} + mgh \;\Longrightarrow\; E_{\text{total}} = K + E_{\text{pot}} = \text{cte.} \]
+      <label class="ctrl"><span>Tiempo \(t\)</span><input type="range" id="ce-t" min="0" max="2" step="0.02" value="0.5"><span class="v" id="ce-tv"></span></label>
+      <p class="nota">La igualdad vale para toda fuerza conservativa: aquellas cuyo trabajo solo transforma energía mecánica.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §4 · CANTIDAD DE MOVIMIENTO ═════════════ -->
+<section class="diapositiva" data-seccion="Cantidad de movimiento" data-label="Conservación de la cantidad de movimiento" data-speaker-notes="§ 3.6. ↓ revela 4 pasos de la derivación.">
+  <p class="ceja">§ 3.6 · Conservación de la cantidad de movimiento</p>
+  <h2 class="titulo">Un <span class="prop" data-pop="pop-aislado">sistema aislado</span> no puede cambiar su momento total</h2>
+  <div class="g2">
+    <div class="pila">
+      <p class="frag">Tercera ley: \(\vect{F}_{12} = -\vect{F}_{21}\). Con la segunda ley en cada partícula,
+        \[ \dfrac{\Delta\vect{p}_2}{\Delta t} = -\dfrac{\Delta\vect{p}_1}{\Delta t} \;\Longrightarrow\; \Delta\vect{p}_1 + \Delta\vect{p}_2 = \vect{0}. \]</p>
+      <p class="frag">Separando estados inicial y final:
+        \[ \vect{p}_{1i} + \vect{p}_{2i} = \vect{p}_{1f} + \vect{p}_{2f} \;\Longrightarrow\; \vect{P}_{\text{total},i} = \vect{P}_{\text{total},f}. \]</p>
+    </div>
+    <div class="pila">
+      <div class="caja frag"><h3>Centro de masas</h3>
+        \[ \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}}, \qquad \vect{r}_{\text{CM}} = \dfrac{m_1\vect{r}_1 + m_2\vect{r}_2 + \dots + m_N\vect{r}_N}{M_{\text{total}}}. \]</div>
+      <div class="kf frag">\[ \vect{F}_{\text{neta, ext}} = \dfrac{\Delta\vect{P}_{\text{total}}}{\Delta t} = M_{\text{total}}\,\vect{a}_{\text{CM}} \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Cantidad de movimiento" id="dp-choque" data-label="Colisión elástica en una dimensión" data-speaker-notes="§ 3.6. Explorador: velocidades finales en función de la razón de masas.">
+  <p class="ceja">§ 3.6 · Colisiones</p>
+  <h2 class="titulo">Colisión elástica: el blanco \(m_2\) está en reposo</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Antes y después del choque</span><span class="val" id="ch-lect"></span></div>
+      <div id="ch-fig"></div>
+    </figure>
+    <div class="pila">
+      \[ v_{1f} = \left(\dfrac{m_1 - m_2}{m_1 + m_2}\right) v_{1i}, \qquad v_{2f} = \left(\dfrac{2m_1}{m_1 + m_2}\right) v_{1i}. \]
+      <label class="ctrl"><span>Razón \(m_1/m_2\)</span><input type="range" id="ch-r" min="-2" max="2" step="0.05" value="0"><span class="v" id="ch-rv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" data-r="0">Masas iguales</button><button type="button" class="btn" data-r="2">\(m_1 \gg m_2\)</button><button type="button" class="btn" data-r="-2">\(m_1 \ll m_2\)</button></div>
+      <p class="nota">Deslizador en escala logarítmica: de \(m_1/m_2 = 0{,}01\) a \(100\).</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §5 · FUERZAS EN ACCIÓN ═════════════ -->
+<section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-friccion" data-label="Bloque con fricción y fuerza inclinada" data-speaker-notes="§ 3.7. Explorador: diagrama de cuerpo libre y aceleración en función de θ y μ_k.">
+  <p class="ceja">§ 3.7 · Diagrama de cuerpo libre</p>
+  <h2 class="titulo">Tirar en ángulo reduce la fricción… y la fuerza útil</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(m = \qty{2}{kg}\), \(F = \qty{20}{N}\), \(g = \qty{9{,}8}{m/s^2}\)</span><span class="val" id="fr-lect"></span></div>
+      <div id="fr-fig"></div>
+    </figure>
+    <div class="pila">
+      \[ F_N = mg - F\sin\theta, \qquad a_x = \dfrac{F\cos\theta - \mu_k\,(mg - F\sin\theta)}{m}. \]
+      <label class="ctrl"><span>Ángulo \(\theta\)</span><input type="range" id="fr-th" min="0" max="60" step="1" value="30"><span class="v" id="fr-thv"></span></label>
+      <label class="ctrl"><span>Coeficiente \(\mu_k\)</span><input type="range" id="fr-mu" min="0" max="0.9" step="0.01" value="0.4"><span class="v" id="fr-muv"></span></label>
+      <div class="caja c2"><p style="margin:0">La aceleración es máxima cuando \(\tan\theta = \mu_k\). <span class="nota" id="fr-opt"></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-centripeta" data-label="Fuerza centrípeta" data-speaker-notes="§ 3.8. Explorador: aceleración centrípeta en función de v y r.">
+  <p class="ceja">§ 3.8 · Movimiento circular</p>
+  <h2 class="titulo">Fuerza centrípeta \(F_c = mv^{2}/r\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Rapidez constante, dirección variable</span><span class="val" id="cp-lect"></span></div>
+      <div id="cp-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Los triángulos de posición y de velocidad son semejantes:
+        \[ \dfrac{\abs{\Delta\vect{v}}}{v} = \dfrac{\abs{\Delta\vect{r}}}{r} \;\Longrightarrow\; a_c = \dfrac{v^{2}}{r}, \qquad F_c = m\,\dfrac{v^{2}}{r}. \]</p>
+      <label class="ctrl"><span>Rapidez \(v\)</span><input type="range" id="cp-v" min="1" max="10" step="0.5" value="4"><span class="v" id="cp-vv"></span></label>
+      <label class="ctrl"><span>Radio \(r\)</span><input type="range" id="cp-r" min="1" max="5" step="0.1" value="3"><span class="v" id="cp-rv"></span></label>
+      <p class="nota">\(m = \qty{1}{kg}\). La fuerza centrípeta no es una fuerza nueva: es la resultante (tensión, gravedad, fricción…) que apunta al centro.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orbita" data-label="Simulación Tierra–Luna" data-speaker-notes="§ 3.9. El mismo algoritmo de Euler-Cromer con la fuerza gravitacional, en el sistema del centro de masas.">
+  <p class="ceja">§ 3.9 · Gravitación y simulación</p>
+  <h2 class="titulo">El mismo algoritmo, ahora con \(\vect{F}_L = -G\,m_L M_T\,\vect{r}/\abs{\vect{r}}^{3}\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Órbita en el sistema del centro de masas (escala de la Tierra ×10)</span><span class="val" id="or-lect"></span></div>
+      <canvas class="lienzo" id="or-cv" width="1240" height="700"></canvas>
+    </figure>
+    <div class="pila">
+      \[ \begin{aligned} \vect{p}_L &\leftarrow \vect{p}_L + \vect{F}_L\,\Delta t, & \vect{p}_T &\leftarrow \vect{p}_T - \vect{F}_L\,\Delta t, \\ \vect{r}_L &\leftarrow \vect{r}_L + \dfrac{\vect{p}_L}{m_L}\,\Delta t, & \vect{r}_T &\leftarrow \vect{r}_T + \dfrac{\vect{p}_T}{M_T}\,\Delta t. \end{aligned} \]
+      <label class="ctrl"><span>Paso \(\Delta t\) [h]</span><input type="range" id="or-dt" min="1" max="24" step="1" value="1"><span class="v" id="or-dtv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" id="or-play">Pausa</button><button type="button" class="btn" id="or-reset">↺ Reiniciar</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Tiempo simulado<b id="or-t"></b></div><div>Período medido<b id="or-T"></b></div></div>
+      <p class="nota">Condiciones en el perigeo con \(\vect{P}_{\text{total}} = \vect{0}\): el centro de masas no se traslada.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §6 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica" data-speaker-notes="Cuatro preguntas; el marcador está en la ceja.">
+  <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Comprueba lo aprendido</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">1. Oscilador con \(\Delta t = \qty{1}{s}\) desde \((x, p) = (1, 0)\). ¿Cuánto vale \(x\) tras el primer paso?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(1\)</button><button type="button" class="pr-opc" data-o="b">\(0\)</button><button type="button" class="pr-opc" data-o="c">\(-1\)</button><button type="button" class="pr-opc" data-o="d">\(0{,}5\)</button></div>
+        <div class="pr-fb" data-ok-txt="Correcto: p = −1 y luego x = 1 + (−1)(1) = 0." data-mal-txt="Revisa el orden: primero p ← p − kxΔt = −1; después x ← x + pΔt."></div>
+      </div>
+      <div class="pr-item" data-ok="c">
+        <div class="pr-q">2. ¿Qué distingue a Euler-Cromer de Euler explícito?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">Usa un \(\Delta t\) variable</button><button type="button" class="pr-opc" data-o="b">Calcula la fuerza al final del paso</button><button type="button" class="pr-opc" data-o="c">Actualiza \(x\) con el momento nuevo</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: ese orden mantiene la energía acotada." data-mal-txt="No: la diferencia está en qué momento se usa para mover la partícula."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok="a">
+        <div class="pr-q">3. Choque elástico con \(m_1 = m_2\) y \(m_2\) en reposo. ¿Cuánto vale \(v_{1f}\)?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(0\)</button><button type="button" class="pr-opc" data-o="b">\(v_{1i}/2\)</button><button type="button" class="pr-opc" data-o="c">\(-v_{1i}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: la primera bola se detiene y cede todo su momento." data-mal-txt="Sustituye m₁ = m₂ en v₁f = (m₁ − m₂)/(m₁ + m₂)·v₁i."></div>
+      </div>
+      <div class="pr-item" data-ok-num="12.566" data-tol="0.05">
+        <div class="pr-q">4. Período \(T = 2\pi\sqrt{m/k}\) con \(m = \qty{4}{kg}\) y \(k = \qty{1}{N/m}\). Escribe \(T\) en segundos y pulsa Enter.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="T ="><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(\sqrt{4/1} = 2\), así que \(T = 4\pi\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: T = 4π ≈ 12,57 s." data-mal-txt="Aún no. Calcula √(m/k) y multiplica por 2π."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Práctica" id="dp-reto" data-label="Reto: completa la tabla" data-speaker-notes="Juego: el alumno completa dos pasos de Euler-Cromer con Δt = 0,5 s.">
+  <p class="ceja">Reto</p>
+  <h2 class="titulo">Sé el ordenador: dos pasos con \(\Delta t = \qty{0{,}5}{s}\)</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <p>Oscilador con \(m = \qty{1}{kg}\), \(k = \qty{1}{N/m}\), \(x_0 = \qty{1}{m}\), \(p_0 = 0\). Aplica
+        \[ p \leftarrow p - kx\,\Delta t, \qquad x \leftarrow x + \dfrac{p}{m}\,\Delta t \]
+        y escribe los valores (se admite coma decimal).</p>
+      <p class="nota">Tolerancia: \(\pm 0{,}01\). Cada casilla correcta se marca en azul.</p>
+    </div>
+    <div>
+      <div class="cz-grid">
+        <span class="h">Paso</span><span class="h">\(t\) [s]</span><span class="h">\(p\) [kg·m/s]</span><span class="h">\(x\) [m]</span>
+        <span>0</span><span>\(0\)</span><span>\(0\)</span><span>\(1\)</span>
+        <span>1</span><span>\(0{,}5\)</span><input type="text" data-sol="-0.5"><input type="text" data-sol="0.75">
+        <span>2</span><span>\(1\)</span><input type="text" data-sol="-0.875"><input type="text" data-sol="0.3125">
+      </div>
+      <div class="fila-btn" style="margin-top:22px"><button type="button" class="cz-btn cz-btn-p" id="cz-ok">Comprobar</button><button type="button" class="cz-btn" id="cz-ver">Ver solución</button><button type="button" class="cz-btn" id="cz-borrar">Borrar</button></div>
+      <div class="cz-fb" id="cz-fb"></div>
+      <div class="cz-sol" id="cz-sol" style="display:none">
+        \[ \begin{aligned} p_1 &= 0 - (1)(1)(0{,}5) = -0{,}5, & x_1 &= 1 + (-0{,}5)(0{,}5) = 0{,}75, \\ p_2 &= -0{,}5 - (0{,}75)(0{,}5) = -0{,}875, & x_2 &= 0{,}75 + (-0{,}875)(0{,}5) = 0{,}3125. \end{aligned} \]
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario" data-speaker-notes="Glosario del capítulo.">
+  <p class="ceja">Glosario</p>
+  <h2 class="titulo">Términos del capítulo</h2>
+  <dl class="glosa">
+    <div><dt>Cantidad de movimiento</dt><dd>\(\vect{p} = \gamma m\vect{v}\); en el límite no relativista, \(\vect{p} = m\vect{v}\).</dd></div>
+    <div><dt>Segunda ley de Newton</dt><dd>La fuerza neta es la tasa de cambio del momento, \(\vect{F} = \Delta\vect{p}/\Delta t\).</dd></div>
+    <div><dt>Paso temporal \(\Delta t\)</dt><dd>Intervalo con el que el algoritmo avanza el reloj; controla la precisión.</dd></div>
+    <div><dt>Euler-Cromer</dt><dd>Actualiza primero \(p\) con la fuerza y después \(x\) con el \(p\) nuevo; mantiene acotada la energía de las oscilaciones.</dd></div>
+    <div><dt>Trabajo</dt><dd>\(W = F\,\Delta x\) para una fuerza constante en la dirección del movimiento; \(W = \Delta K\).</dd></div>
+    <div><dt>Energía mecánica</dt><dd>\(E = K + E_{\text{pot}}\); se conserva bajo fuerzas conservativas.</dd></div>
+    <div><dt>Centro de masas</dt><dd>Punto que se mueve como una partícula con toda la masa del sistema: \(\vect{F}_{\text{ext}} = M\vect{a}_{\text{CM}}\).</dd></div>
+    <div><dt>Fuerza centrípeta</dt><dd>Resultante dirigida al centro que mantiene el movimiento circular: \(F_c = mv^{2}/r\).</dd></div>
+  </dl>
+
+  
+  
+  
+  
+  
+</section>
+
+<div class="pop-src" style="display:none" id="pop-p"><h4>Cantidad de movimiento</h4><p>Medida de la inercia en movimiento: \(\vect{p} = \gamma m\vect{v}\). Es un vector con la dirección de la velocidad; en el SI se mide en \(\mathrm{kg\cdot m/s}\).</p></div><div class="pop-src" style="display:none" id="pop-ec"><h4>Euler-Cromer</h4><p>Variante del método de Euler en la que la posición se actualiza con el momento recién calculado: \(p_{n+1} = p_n + F(x_n)\,\Delta t\), \(x_{n+1} = x_n + (p_{n+1}/m)\,\Delta t\). Es un integrador simpléctico.</p></div><div class="pop-src" style="display:none" id="pop-hooke"><h4>Ley de Hooke</h4><p>Un resorte ideal ejerce \(F = -kx\): proporcional al desplazamiento \(x\) desde el equilibrio y opuesta a él. La constante \(k\) se mide en \(\mathrm{N/m}\).</p></div><div class="pop-src" style="display:none" id="pop-trabajo"><h4>Energía cinética</h4><p>\(K = \tfrac12 m v^{2}\), la energía asociada al movimiento. Surge al eliminar el tiempo de las ecuaciones de aceleración constante.</p></div><div class="pop-src" style="display:none" id="pop-aislado"><h4>Sistema aislado</h4><p>Conjunto de partículas sobre el que la fuerza externa neta es nula, \(\vect{F}_{\text{ext}} = \vect{0}\); solo actúan fuerzas internas de acción y reacción.</p></div>
+</div>
+<script>
+/* ═══ UTILIDADES ═══════════════════════════════════════════════════════ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const NS = 'http://www.w3.org/2000/svg';
+/* Número con coma decimal y signo menos tipográfico (texto, no TeX). */
+const num = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', ','); return (x < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s; };
+const activa = el => { const d = el && el.closest('section'); return !!(d && d.hasAttribute('data-deck-active')); };
+const FMATH = "'STIX Two Text',Georgia,serif";
+const FTXT = 'Archivo,system-ui,sans-serif';
+
+function nodo(tag, at, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in at) {
+    if (k === 'txt') e.textContent = at[k];
+    else if (k === 'html') e.innerHTML = at[k];
+    else e.setAttribute(k, at[k]);
+  }
+  if (padre) padre.appendChild(e);
+  return e;
+}
+/* Rótulo con variables en cursiva: «*x* (m)» → x en cursiva. */
+function rotulo(g, x, y, s, extra) {
+  const t = nodo('text', Object.assign({ x: x, y: y, 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH }, extra || {}), g);
+  /* *v* cursiva · !v! vector (negrita cursiva) · _sub subíndice */
+  s.split(/(\*[^*]+\*|![^!]+!|_[A-Za-z0-9]+)/).forEach(tr => {
+    if (!tr) return;
+    if (tr[0] === '*') nodo('tspan', { 'font-style': 'italic', txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '!') nodo('tspan', { 'font-style': 'italic', 'font-weight': 700, txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '_') { nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '70%', 'font-style': /^[a-z]$/.test(tr.slice(1)) ? 'italic' : 'normal', txt: tr.slice(1) }, t); nodo('tspan', { txt: '\u200a' }, t); }
+    else nodo('tspan', { txt: tr }, t);
+  });
+  return t;
+}
+/* Ejes cartesianos en SVG con rejilla y marcas. */
+function ejes(host, o) {
+  host.innerHTML = '';
+  const W = o.W, H = o.H, m = o.m || { l: 96, r: 24, t: 20, b: 76 };
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => m.l + (v - o.x[0]) / (o.x[1] - o.x[0]) * (W - m.l - m.r);
+  const Y = v => H - m.b - (v - o.y[0]) / (o.y[1] - o.y[0]) * (H - m.t - m.b);
+  const fondo = nodo('g', {}, svg);
+  (o.xt || []).forEach(v => {
+    nodo('line', { x1: X(v), x2: X(v), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: X(v), y: H - m.b + 34, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fx ? o.fx(v) : num(v, 0) }, fondo);
+  });
+  (o.yt || []).forEach(v => {
+    nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(v), y2: Y(v), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: m.l - 12, y: Y(v) + 9, 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fy ? o.fy(v) : num(v, 0) }, fondo);
+  });
+  if (o.y[0] < 0 && o.y[1] > 0) nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[0]), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(o.y[0]), y2: Y(o.y[0]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  if (o.xl) rotulo(fondo, (m.l + W - m.r) / 2, H - 8, o.xl, { 'text-anchor': 'middle' });
+  if (o.yl) rotulo(fondo, 24, (m.t + H - m.b) / 2, o.yl, { 'text-anchor': 'middle', transform: 'rotate(-90 24 ' + (m.t + H - m.b) / 2 + ')' });
+  const capa = nodo('g', {}, svg);
+  return { svg: svg, X: X, Y: Y, capa: capa, W: W, H: H, m: m };
+}
+const polilinea = (A, pts, estilo, g) => nodo('polyline', { points: pts.map(p => A.X(p[0]).toFixed(1) + ',' + A.Y(p[1]).toFixed(1)).join(' '), style: 'fill:none;' + estilo }, g || A.capa);
+function flecha(g, x1, y1, x2, y2, color, grosor) {
+  const w = grosor || 5, a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1), c = Math.min(22, L * 0.45);
+  const bx = x2 - c * Math.cos(a), by = y2 - c * Math.sin(a);
+  nodo('line', { x1: x1, y1: y1, x2: bx, y2: by, style: 'stroke:' + color + ';stroke-width:' + w + ';stroke-linecap:round' }, g);
+  if (L > 2) nodo('polygon', { points: [[x2, y2], [bx + c * 0.5 * Math.sin(a), by - c * 0.5 * Math.cos(a)], [bx - c * 0.5 * Math.sin(a), by + c * 0.5 * Math.cos(a)]].map(p => p.join(',')).join(' '), style: 'fill:' + color }, g);
+}
+function rango(id, alCambiar) {
+  const r = document.getElementById(id);
+  if (!r) return null;
+  r.addEventListener('input', () => alCambiar(+r.value));
+  return r;
+}
+/* Integradores del oscilador (k = m = 1 por defecto). */
+function eulerCromer(dt, tFin, k, m, x0, p0, exacto) {
+  let t = 0, x = x0, p = p0, paso = 0;
+  const w = Math.sqrt(k / m), E = (x, p) => 0.5 * p * p / m + 0.5 * k * x * x;
+  const pts = [{ paso: 0, t: 0, x: x, p: p, xEx: Math.cos(0), E: E(x, p) }];
+  while (t < tFin - 1e-9) {
+    paso++;
+    const h = exacto ? Math.min(dt, tFin - t) : dt;
+    const F = -k * x;          /* fuerza restauradora con la posición actual */
+    p = p + F * h;             /* 1. momento con la fuerza actual            */
+    x = x + (p / m) * h;       /* 2. posición con el momento NUEVO           */
+    t += h;
+    pts.push({ paso: paso, t: t, x: x, p: p, xEx: Math.cos(w * t), E: E(x, p) });
+  }
+  return pts;
+}
+function eulerExplicito(dt, tFin) {
+  let t = 0, x = 1, p = 0;
+  const pts = [{ t: 0, E: 0.5 }];
+  while (t < tFin - 1e-9) {
+    const xn = x + p * dt, pn = p - x * dt;   /* ambos con el estado viejo */
+    x = xn; p = pn; t += dt;
+    pts.push({ t: t, E: 0.5 * p * p + 0.5 * x * x });
+  }
+  return pts;
+}
+const T_OSC = 2 * Math.PI;
+
+/* ═══ VENTANAS EMERGENTES ══════════════════════════════════════════════ */
+(function () {
+  let pop = null;
+  const cerrar = () => { if (pop) { pop.remove(); pop = null; } };
+  document.addEventListener('click', ev => {
+    const chip = ev.target instanceof Element ? ev.target.closest('.prop') : null;
+    if (!chip) { if (pop && !(ev.target instanceof Element && ev.target.closest('.popover'))) cerrar(); return; }
+    ev.stopPropagation();
+    cerrar();
+    const src = document.getElementById(chip.dataset.pop);
+    const dp = chip.closest('section');
+    if (!src || !dp) return;
+    pop = document.createElement('div');
+    pop.className = 'popover';
+    pop.innerHTML = '<button type="button" class="cerrar" aria-label="Cerrar">×</button>' + src.innerHTML;
+    pop.querySelector('.cerrar').addEventListener('click', cerrar);
+    dp.appendChild(pop);
+    const R = dp.getBoundingClientRect(), c = chip.getBoundingClientRect(), s = R.width / dp.offsetWidth;
+    let x = (c.left - R.left) / s, y = (c.bottom - R.top) / s + 14;
+    x = Math.min(x, dp.offsetWidth - pop.offsetWidth - 40);
+    if (y + pop.offsetHeight > dp.offsetHeight - 40) y = (c.top - R.top) / s - pop.offsetHeight - 14;
+    pop.style.left = Math.max(40, x) + 'px';
+    pop.style.top = Math.max(40, y) + 'px';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('slidechange', cerrar);
+})();
+
+/* ═══ PORTADA: oscilador animado ═══════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('hero-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), lect = document.getElementById('hero-t');
+  let x = 1, p = 0, t = 0, traza = [], ult = 0;
+  const dt = 0.05;
+  function dibuja() {
+    const W = cv.width, H = cv.height;
+    g.clearRect(0, 0, W, H);
+    const y0 = 150, eqX = 360, esc = 190, bx = eqX + x * esc;
+    /* pared y suelo */
+    g.fillStyle = tok('--linea'); g.fillRect(20, 60, 18, 180);
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+    g.beginPath(); g.moveTo(20, 240); g.lineTo(W - 20, 240); g.stroke();
+    /* resorte */
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 4; g.beginPath(); g.moveTo(38, y0);
+    const n = 14, x1 = bx - 50;
+    for (let i = 1; i <= n; i++) g.lineTo(38 + (x1 - 38) * i / (n + 1), y0 + (i % 2 ? -26 : 26));
+    g.lineTo(x1, y0); g.stroke();
+    /* bloque */
+    g.fillStyle = tok('--res'); g.fillRect(bx - 50, y0 - 50, 100, 100);
+    g.fillStyle = tok('--papel'); g.font = 'italic 40px ' + FMATH; g.textAlign = 'center'; g.fillText('m', bx, y0 + 13);
+    /* equilibrio */
+    g.setLineDash([8, 8]); g.strokeStyle = tok('--proy'); g.lineWidth = 2;
+    g.beginPath(); g.moveTo(eqX, 50); g.lineTo(eqX, 250); g.stroke(); g.setLineDash([]);
+    /* traza x(t) */
+    const ty = 390, ta = 95;
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 2; g.beginPath(); g.moveTo(30, ty); g.lineTo(W - 20, ty); g.stroke();
+    g.strokeStyle = tok('--caso2'); g.setLineDash([6, 6]); g.beginPath();
+    for (let i = 0; i <= 300; i++) { const tt = t - 12 + 12 * i / 300; const px = 30 + (W - 50) * i / 300; if (i) g.lineTo(px, ty - ta * Math.cos(tt)); else g.moveTo(px, ty - ta * Math.cos(tt)); }
+    g.stroke(); g.setLineDash([]);
+    g.strokeStyle = tok('--res'); g.lineWidth = 4; g.beginPath();
+    traza.forEach((q, i) => { const px = 30 + (W - 50) * (q[0] - (t - 12)) / 12; if (i) g.lineTo(px, ty - ta * q[1]); else g.moveTo(px, ty - ta * q[1]); });
+    g.stroke();
+    g.fillStyle = tok('--tinta2'); g.font = '22px ' + FMATH; g.textAlign = 'left';
+    g.fillText('x(t) numérico · cos t exacto', 30, H - 12);
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) {
+      ult = ms;
+      p += -x * dt; x += p * dt; t += dt;
+      traza.push([t, x]); while (traza.length && traza[0][0] < t - 12) traza.shift();
+      dibuja();
+      if (lect) lect.textContent = 't = ' + num(t % 100, 1) + ' s';
+    }
+    requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ VELOCIDAD INSTANTÁNEA ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('vi-fig');
+  if (!host) return;
+  const f = t => 0.3 * t * t + 0.2 * t, t0 = 2.5;
+  const lect = document.getElementById('vi-lect'), dv = document.getElementById('vi-dtv');
+  function pinta(dt) {
+    const A = ejes(host, { W: 1180, H: 740, x: [0, 4.2], y: [0, 6.5], xt: [0, 1, 2, 3, 4], yt: [0, 2, 4, 6], xl: 'Tiempo *t* (s)', yl: 'Posición *x* (m)' });
+    const cur = []; for (let i = 0; i <= 120; i++) { const t = 4.2 * i / 120; cur.push([t, f(t)]); }
+    polilinea(A, cur, 'stroke:var(--tinta);stroke-width:4');
+    const x0 = f(t0), t1 = t0 + dt, x1 = f(t1), s = (x1 - x0) / dt;
+    polilinea(A, [[t0 - 1.2, x0 - 1.7 * 1.2], [t0 + 1.2, x0 + 1.7 * 1.2]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:10 8');
+    polilinea(A, [[t0 - 1, x0 - s], [Math.min(4.2, t1 + 0.6), x0 + s * (Math.min(4.2, t1 + 0.6) - t0)]], 'stroke:var(--res);stroke-width:4');
+    polilinea(A, [[t0, x0], [t1, x0], [t1, x1]], 'stroke:var(--caso1);stroke-width:3;stroke-dasharray:6 6');
+    rotulo(A.capa, (A.X(t0) + A.X(t1)) / 2, A.Y(x0) + 32, 'Δ*t*', { 'text-anchor': 'middle', style: 'fill:var(--caso1);font-family:' + FMATH });
+    rotulo(A.capa, A.X(t1) + 10, (A.Y(x0) + A.Y(x1)) / 2, 'Δ*x*', { style: 'fill:var(--caso1);font-family:' + FMATH });
+    [[t0, x0], [t1, x1]].forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: 9, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa));
+    lect.textContent = 'Δx/Δt = ' + num(s, 3) + ' m/s';
+    dv.textContent = num(dt, 2) + ' s';
+  }
+  const r = rango('vi-dt', pinta); pinta(r ? +r.value : 1.5);
+})();
+
+/* ═══ DIAGRAMA DE FLUJO ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('fl-fig');
+  if (!host) return;
+  const svg = nodo('svg', { viewBox: '0 0 1100 760', class: 'fig flujo' }, host);
+  const B = [
+    { id: 0, y: 20, h: 70, t: 'Inicio (*t* = 0)', f: 'startstop' },
+    { id: 0, y: 130, h: 80, t: '!r! = !r!₀,   !p! = !p!₀', f: 'init' },
+    { id: 1, y: 250, h: 80, t: '!p! ← !p! + !F! Δ*t*', f: 'proc' },
+    { id: 2, y: 370, h: 80, t: '!r! ← !r! + (!p!/*m*) Δ*t*', f: 'proc' },
+    { id: 3, y: 490, h: 80, t: '*t* ← *t* + Δ*t*', f: 'proc' },
+    { id: 3, y: 610, h: 120, t: '¿*t* < *t*_final?', f: 'dec' },
+  ];
+  const cx = 470, bw = 520, bloques = [];
+  B.forEach((b, k) => {
+    const g = nodo('g', { class: 'blq' }, svg);
+    if (b.f === 'dec') nodo('polygon', { points: [[cx, b.y], [cx + 190, b.y + b.h / 2], [cx, b.y + b.h], [cx - 190, b.y + b.h / 2]].map(p => p.join(',')).join(' '), style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:3' }, g);
+    else nodo('rect', { x: cx - bw / 2, y: b.y, width: bw, height: b.h, rx: b.f === 'startstop' ? 30 : 6, style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:3' }, g);
+    rotulo(g, cx, b.y + b.h / 2 + 10, b.t, { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta);font-family:' + FMATH });
+    if (k) flecha(svg, cx, B[k - 1].y + B[k - 1].h + 2, cx, b.y - 2, 'var(--tinta)', 3);
+    bloques.push({ g: g, b: b });
+  });
+  /* salida y regreso */
+  const d = B[5], ym = d.y + d.h / 2;
+  const fin = nodo('g', { class: 'blq' }, svg);
+  nodo('rect', { x: 800, y: ym - 40, width: 260, height: 80, rx: 30, style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:3' }, fin);
+  rotulo(fin, 930, ym + 10, 'Graficar y fin', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--tinta);font-family:' + FTXT });
+  flecha(svg, cx + 190, ym, 798, ym, 'var(--tinta)', 3);
+  rotulo(svg, 700, ym - 14, 'No', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+  nodo('polyline', { points: [[cx - 190, ym], [60, ym], [60, B[2].y + 40]].map(p => p.join(',')).join(' '), style: 'fill:none;stroke:var(--tinta);stroke-width:3' }, svg);
+  flecha(svg, 60, B[2].y + 40, cx - bw / 2 - 2, B[2].y + 40, 'var(--tinta)', 3);
+  rotulo(svg, 110, ym - 14, 'Sí', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+  const NOM = ['Inicio y condiciones iniciales', 'Actualizar el momento', 'Actualizar la posición', 'Avanzar el reloj y decidir', 'Bucle completo'];
+  function marca(k) {
+    bloques.forEach(o => {
+      const on = k >= 4 || o.b.id === k;
+      const fig = o.g.firstChild;
+      fig.style.fill = on ? 'var(--res-50)' : 'var(--panel)';
+      fig.style.stroke = on ? 'var(--res)' : 'var(--tinta)';
+      fig.style.strokeWidth = on ? 5 : 3;
+    });
+    document.getElementById('fl-lect').textContent = NOM[Math.min(k, 4)];
+  }
+  const dp = document.getElementById('dp-flujo');
+  document.addEventListener('diapositiva', () => { if (dp.hasAttribute('data-deck-active')) marca($$('.frag.frag-on', dp).length); });
+  marca(0);
+})();
+
+/* ═══ LANZAMIENTO VERTICAL ═════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('lv-fig');
+  if (!host) return;
+  function pinta(dt) {
+    const A = ejes(host, { W: 1180, H: 740, x: [0, 2.1], y: [-0.5, 5.8], xt: [0, 0.5, 1, 1.5, 2], yt: [0, 1, 2, 3, 4, 5], fx: v => num(v, 1), xl: 'Tiempo *t* (s)', yl: 'Altura *y* (m)' });
+    const ex = []; for (let i = 0; i <= 100; i++) { const t = 2 * i / 100; ex.push([t, 10 * t - 5 * t * t]); }
+    polilinea(A, ex, 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    let t = 0, y = 0, p = 10; const pts = [[0, 0]];
+    while (t < 2 - 1e-9) { p += -10 * dt; y += p * dt; t += dt; pts.push([t, y]); }
+    polilinea(A, pts, 'stroke:var(--res);stroke-width:3.5');
+    pts.forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: pts.length > 40 ? 5 : 8, style: 'fill:var(--res);stroke:var(--panel);stroke-width:2' }, A.capa));
+    const ymax = Math.max.apply(null, pts.map(q => q[1]));
+    document.getElementById('lv-lect').textContent = 'y máx = ' + num(ymax, 3) + ' m (exacta 5,000 m)';
+    document.getElementById('lv-dtv').textContent = num(dt, 2) + ' s';
+  }
+  const r = rango('lv-dt', pinta); pinta(r ? +r.value : 0.1);
+})();
+
+/* ═══ TABLA Δt = 1 s ═══════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('tb-fig');
+  if (!host) return;
+  const datos = eulerCromer(1, 6, 1, 1, 1, 0, false);
+  function pinta(k) {
+    const A = ejes(host, { W: 820, H: 520, x: [0, 6.4], y: [-1.35, 1.35], xt: [0, 1, 2, 3, 4, 5, 6], yt: [-1, 0, 1], xl: '*t* (s)', yl: '*x* (m)', m: { l: 76, r: 18, t: 16, b: 60 } });
+    const ex = []; for (let i = 0; i <= 120; i++) { const t = 6.4 * i / 120; ex.push([t, Math.cos(t)]); }
+    polilinea(A, ex, 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:10 8');
+    const v = datos.slice(0, k + 1).map(q => [q.t, q.x]);
+    if (v.length > 1) polilinea(A, v, 'stroke:var(--res);stroke-width:4');
+    v.forEach((q, i) => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: i === k ? 11 : 8, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa));
+    document.getElementById('tb-lect').textContent = 'paso ' + k + ' · x = ' + num(datos[k].x, 0) + ' m';
+  }
+  const dp = document.getElementById('dp-tabla');
+  document.addEventListener('diapositiva', () => { if (dp.hasAttribute('data-deck-active')) pinta($$('.frag.frag-on', dp).length); });
+  pinta(0);
+})();
+
+/* ═══ SIMULADOR EULER-CROMER (traslado de oscilador.js, p5.js) ═════════ */
+(function () {
+  const cv = document.getElementById('os-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d');
+  const W = cv.width, H = cv.height, M = { l: 100, r: 30, t: 20, b: 84 }, PW = W - M.l - M.r, PH = H - M.t - M.b;
+  const sx = t => M.l + t / T_OSC * PW, sy = v => M.t + PH - (v + 1.25) / 2.5 * PH;
+  const k = 1, m = 1, x0 = 1, p0 = 0;
+  /* casillas (se crean aquí para que el runtime no las convierta en controladas) */
+  const cajas = {}, host = document.getElementById('os-checks');
+  [['pos', 'Posición x(t)', 'x', true], ['mom', 'Momento p(t)', 'p', false], ['exa', 'Analítica cos t', 'a', false], ['pts', 'Puntos', 'n', true]].forEach(c => {
+    const l = document.createElement('label'); l.className = 'chk ' + c[2];
+    const i = document.createElement('input'); i.type = 'checkbox'; i.checked = c[3];
+    l.appendChild(i); l.appendChild(document.createTextNode(c[1])); host.appendChild(l);
+    i.addEventListener('change', () => pinta()); cajas[c[0]] = i;
+  });
+  const sl = document.getElementById('os-dt');
+  const PRE = [1, 0.5, 0.25, 0.1, 0.05, 0.01], hp = document.getElementById('os-presets');
+  PRE.forEach(v => {
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = num(v, 2) + ' s';
+    b.addEventListener('click', () => { sl.value = v; pinta(); }); hp.appendChild(b);
+  });
+  let raton = null, pts = [];
+  const dtAct = () => Math.round(+sl.value * 100) / 100;
+  function curva(clave, color, ancho) {
+    g.strokeStyle = color; g.lineWidth = ancho; g.lineJoin = 'round'; g.beginPath();
+    pts.forEach((q, i) => i ? g.lineTo(sx(q.t), sy(q[clave])) : g.moveTo(sx(q.t), sy(q[clave]))); g.stroke();
+    if (cajas.pts.checked) {
+      g.fillStyle = color; g.strokeStyle = tok('--panel'); g.lineWidth = 2;
+      pts.forEach(q => { g.beginPath(); g.arc(sx(q.t), sy(q[clave]), pts.length > 50 ? 4 : 7, 0, 2 * Math.PI); g.fill(); g.stroke(); });
+    }
+  }
+  function pinta() {
+    const dt = dtAct();
+    pts = eulerCromer(dt, T_OSC, k, m, x0, p0, true);
+    g.clearRect(0, 0, W, H);
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, H);
+    /* rejilla */
+    g.font = '25px ' + FMATH; g.fillStyle = tok('--tinta2');
+    [-1, -0.5, 0, 0.5, 1].forEach(v => {
+      g.strokeStyle = v === 0 ? tok('--proy') : tok('--rejilla'); g.lineWidth = v === 0 ? 2.5 : 1.5;
+      g.beginPath(); g.moveTo(M.l, sy(v)); g.lineTo(M.l + PW, sy(v)); g.stroke();
+      g.textAlign = 'right'; g.textBaseline = 'middle'; g.fillText(num(v, 1), M.l - 10, sy(v));
+    });
+    for (let i = 0; i <= 6; i++) {
+      const tv = i / 6 * T_OSC;
+      g.strokeStyle = tok('--rejilla'); g.lineWidth = 1.5; g.beginPath(); g.moveTo(sx(tv), M.t); g.lineTo(sx(tv), M.t + PH); g.stroke();
+      g.textAlign = 'center'; g.textBaseline = 'top'; g.fillText(num(tv, 2) + ' s', sx(tv), M.t + PH + 10);
+    }
+    g.fillStyle = tok('--tinta'); g.font = 'italic 27px ' + FMATH; g.textAlign = 'center'; g.textBaseline = 'alphabetic';
+    g.fillText('Tiempo t (s)', M.l + PW / 2, H - 8);
+    g.save(); g.translate(28, M.t + PH / 2); g.rotate(-Math.PI / 2); g.fillText('x(t) [m] · p(t) [kg·m/s]', 0, 0); g.restore();
+    /* analítica */
+    if (cajas.exa.checked) {
+      g.strokeStyle = tok('--caso2'); g.lineWidth = 3; g.setLineDash([12, 8]); g.beginPath();
+      for (let i = 0; i <= 400; i++) { const t = T_OSC * i / 400; i ? g.lineTo(sx(t), sy(Math.cos(t))) : g.moveTo(sx(t), sy(Math.cos(t))); }
+      g.stroke(); g.setLineDash([]);
+    }
+    if (cajas.mom.checked) curva('p', tok('--caso1'), 3.5);
+    if (cajas.pos.checked) curva('x', tok('--res'), 4.5);
+    /* marcador inicial */
+    g.strokeStyle = tok('--mal'); g.lineWidth = 2.5; g.beginPath(); g.moveTo(sx(0), M.t); g.lineTo(sx(0), M.t + PH); g.stroke();
+    g.fillStyle = tok('--mal'); g.beginPath(); g.arc(sx(0), sy(x0), 8, 0, 2 * Math.PI); g.fill();
+    /* inspección con el cursor */
+    if (raton && raton.x >= M.l && raton.x <= M.l + PW && raton.y >= M.t && raton.y <= M.t + PH) {
+      const tt = (raton.x - M.l) / PW * T_OSC;
+      let q = pts[0]; pts.forEach(r => { if (Math.abs(r.t - tt) < Math.abs(q.t - tt)) q = r; });
+      const hx = sx(q.t), hy = sy(q.x);
+      g.strokeStyle = tok('--tinta2'); g.lineWidth = 1.5; g.beginPath(); g.moveTo(hx, M.t); g.lineTo(hx, M.t + PH); g.stroke();
+      g.fillStyle = tok('--res'); g.strokeStyle = tok('--panel'); g.lineWidth = 3; g.beginPath(); g.arc(hx, hy, 11, 0, 2 * Math.PI); g.fill(); g.stroke();
+      const tw = 400, th = 204, tx = raton.x > W - 450 ? raton.x - tw - 16 : raton.x + 16, ty = raton.y < 200 ? raton.y + 12 : raton.y - th - 12;
+      g.fillStyle = tok('--papel'); g.strokeStyle = tok('--tinta'); g.lineWidth = 2; g.fillRect(tx, ty, tw, th); g.strokeRect(tx, ty, tw, th);
+      g.textAlign = 'left'; g.textBaseline = 'top';
+      g.font = '700 27px ' + FTXT; g.fillStyle = tok('--tinta'); g.fillText('Paso ' + q.paso + '  (t = ' + num(q.t, 3) + ' s)', tx + 14, ty + 12);
+      g.font = '26px ' + FMATH;
+      g.fillStyle = tok('--res'); g.fillText('x(t) = ' + num(q.x, 4) + ' m', tx + 14, ty + 54);
+      g.fillStyle = tok('--caso1'); g.fillText('p(t) = ' + num(q.p, 4) + ' kg·m/s', tx + 14, ty + 88);
+      g.fillStyle = tok('--caso2'); g.fillText('exacta = ' + num(q.xEx, 4) + ' m', tx + 14, ty + 122);
+      g.fillStyle = tok('--tinta2'); g.fillText('E = ' + num(q.E, 4) + ' J', tx + 14, ty + 156);
+    }
+    /* lecturas */
+    const n = pts.length - 1, err = Math.max.apply(null, pts.map(q => Math.abs(q.x - q.xEx)));
+    const Es = pts.map(q => q.E);
+    document.getElementById('os-sub').textContent = 'Δt = ' + num(dt, 2) + ' s · ' + n + ' pasos · t ∈ [0; 6,283] s';
+    document.getElementById('os-dtbadge').textContent = num(dt, 2) + ' s';
+    document.getElementById('os-dtv').textContent = num(dt, 2) + ' s';
+    document.getElementById('os-n').textContent = n;
+    document.getElementById('os-err').textContent = num(err, 4) + ' m';
+    document.getElementById('os-xT').textContent = num(pts[n].x, 4) + ' m';
+    document.getElementById('os-E').textContent = num(Math.min.apply(null, Es), 3) + ' – ' + num(Math.max.apply(null, Es), 3) + ' J';
+    $$('button', hp).forEach((b, i) => b.classList.toggle('on', Math.abs(PRE[i] - dt) < 1e-9));
+  }
+  const pos = ev => { const r = cv.getBoundingClientRect(); return { x: (ev.clientX - r.left) * W / r.width, y: (ev.clientY - r.top) * H / r.height }; };
+  cv.addEventListener('mousemove', ev => { raton = pos(ev); pinta(); });
+  cv.addEventListener('mouseleave', () => { raton = null; pinta(); });
+  sl.addEventListener('input', pinta);
+  document.getElementById('os-reset').addEventListener('click', () => { sl.value = 1; pinta(); });
+  document.getElementById('os-png').addEventListener('click', () => {
+    const r0 = raton; raton = null; pinta();
+    cv.toBlob(b => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(b);
+      a.download = 'oscilador_euler_cromer_dt_' + dtAct().toFixed(2) + '.png';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(a.href), 2000);
+    }, 'image/png');
+    raton = r0;
+  });
+  pinta();
+})();
+
+/* ═══ ENERGÍA: EULER-CROMER FRENTE A EULER EXPLÍCITO ═══════════════════ */
+(function () {
+  const host = document.getElementById('en-fig');
+  if (!host) return;
+  const cEC = document.getElementById('en-ec'), cEX = document.getElementById('en-ex'), sl = document.getElementById('en-dt');
+  cEC.checked = true; cEX.checked = true;
+  function pinta() {
+    const dt = +sl.value, tF = 3 * T_OSC;
+    const A = ejes(host, { W: 1180, H: 740, x: [0, tF], y: [0, 1.6], xt: [0, 5, 10, 15], yt: [0, 0.5, 1, 1.5], fy: v => num(v, 1), xl: 'Tiempo *t* (s)', yl: 'Energía *E* (J)' });
+    const clip = nodo('clipPath', { id: 'en-clip' }, A.svg);
+    nodo('rect', { x: A.m.l, y: A.m.t, width: A.W - A.m.l - A.m.r, height: A.H - A.m.t - A.m.b }, clip);
+    A.capa.setAttribute('clip-path', 'url(#en-clip)');
+    polilinea(A, [[0, 0.5], [tF, 0.5]], 'stroke:var(--tinta2);stroke-width:2.5;stroke-dasharray:4 6');
+    const ec = eulerCromer(dt, tF, 1, 1, 1, 0, false), ex = eulerExplicito(dt, tF);
+    if (cEX.checked) polilinea(A, ex.map(q => [q.t, Math.min(q.E, 5)]), 'stroke:var(--caso2);stroke-width:4');
+    if (cEC.checked) polilinea(A, ec.map(q => [q.t, q.E]), 'stroke:var(--res);stroke-width:4');
+    const Es = ec.map(q => q.E);
+    document.getElementById('en-lect').textContent = 'EC: ' + num(Math.min.apply(null, Es), 3) + '–' + num(Math.max.apply(null, Es), 3) + ' J · Euler: E(3T) = ' + (ex[ex.length - 1].E > 1e4 ? ex[ex.length - 1].E.toExponential(1).replace('.', ',') : num(ex[ex.length - 1].E, 2)) + ' J';
+    document.getElementById('en-dtv').textContent = num(dt, 2) + ' s';
+  }
+  sl.addEventListener('input', pinta); cEC.addEventListener('change', pinta); cEX.addEventListener('change', pinta);
+  pinta();
+})();
+
+/* ═══ ACELERACIÓN CONSTANTE ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ac-fig');
+  if (!host) return;
+  const ra = document.getElementById('ac-a'), rv = document.getElementById('ac-v0');
+  function pinta() {
+    const a = +ra.value, v0 = +rv.value, v = t => v0 + a * t;
+    const A = ejes(host, { W: 1180, H: 740, x: [0, 4.5], y: [-10, 12], xt: [0, 1, 2, 3, 4], yt: [-8, -4, 0, 4, 8, 12], xl: 'Tiempo *t* (s)', yl: 'Velocidad *v* (m/s)' });
+    const area = [[0, 0]]; for (let i = 0; i <= 40; i++) area.push([4 * i / 40, v(4 * i / 40)]); area.push([4, 0]);
+    nodo('polygon', { points: area.map(q => A.X(q[0]) + ',' + A.Y(q[1])).join(' '), style: 'fill:var(--res-50);stroke:none' }, A.capa);
+    polilinea(A, [[0, v(0)], [4.5, v(4.5)]], 'stroke:var(--res);stroke-width:5');
+    polilinea(A, [[1, v(1)], [3, v(1)], [3, v(3)]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:8 6');
+    rotulo(A.capa, A.X(2), A.Y(v(1)) + (a >= 0 ? 34 : -14), 'Δ*t* = 2 s', { 'text-anchor': 'middle', style: 'fill:var(--caso2);font-family:' + FMATH });
+    rotulo(A.capa, A.X(3) + 12, A.Y((v(1) + v(3)) / 2) + 8, 'Δ*v* = ' + num(2 * a, 1) + ' m/s', { style: 'fill:var(--caso2);font-family:' + FMATH });
+    [[1, v(1)], [3, v(3)]].forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: 9, style: 'fill:var(--res)' }, A.capa));
+    const dx = v0 * 4 + 0.5 * a * 16;
+    document.getElementById('ac-lect').textContent = 'a = ' + num(a, 1) + ' m/s² · Δx(0→4 s) = ' + num(dx, 1) + ' m';
+    document.getElementById('ac-av').textContent = num(a, 1) + ' m/s²';
+    document.getElementById('ac-v0v').textContent = num(v0, 1) + ' m/s';
+  }
+  ra.addEventListener('input', pinta); rv.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CONSERVACIÓN DE LA ENERGÍA ═══════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ce-fig');
+  if (!host) return;
+  const rt = document.getElementById('ce-t');
+  function pinta() {
+    const t = +rt.value, v = 10 - 10 * t, h = 10 * t - 5 * t * t, K = 0.5 * v * v, U = 10 * h;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const base = 660, esc = 115;
+    nodo('line', { x1: 60, x2: 460, y1: base, y2: base, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    nodo('line', { x1: 200, x2: 200, y1: base, y2: base - 5.2 * esc, style: 'stroke:var(--rejilla);stroke-width:3;stroke-dasharray:6 6' }, svg);
+    for (let i = 0; i <= 5; i++) { nodo('line', { x1: 188, x2: 212, y1: base - i * esc, y2: base - i * esc, style: 'stroke:var(--tinta2);stroke-width:2' }, svg); rotulo(svg, 176, base - i * esc + 8, i + ' m', { 'text-anchor': 'end', 'font-size': 22 }); }
+    const yb = base - h * esc;
+    nodo('circle', { cx: 290, cy: yb - 22, r: 22, style: 'fill:var(--res)' }, svg);
+    if (Math.abs(v) > 0.05) flecha(svg, 340, yb - 22, 340, yb - 22 - v * 10, 'var(--caso1)', 5);
+    rotulo(svg, 360, yb - 22 - v * 5, '*v* = ' + num(v, 1) + ' m/s', { 'font-size': 24, style: 'fill:var(--caso1);font-family:' + FMATH });
+    const bx = 600, bw = 150, fe = 540 / 50;
+    [['K', K, 'var(--caso1)'], ['U', U, 'var(--caso2)'], ['E', K + U, 'var(--res)']].forEach((c, i) => {
+      const x = bx + i * (bw + 40);
+      nodo('rect', { x: x, y: base - c[1] * fe, width: bw, height: c[1] * fe, style: 'fill:' + c[2] }, svg);
+      rotulo(svg, x + bw / 2, base + 34, '*' + c[0] + '*', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta);font-family:' + FMATH });
+      rotulo(svg, x + bw / 2, base - c[1] * fe - 12, num(c[1], 1) + ' J', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FMATH });
+    });
+    nodo('line', { x1: bx - 10, x2: bx + 3 * bw + 90, y1: base, y2: base, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    document.getElementById('ce-lect').textContent = 'h = ' + num(h, 2) + ' m · K + U = ' + num(K + U, 1) + ' J';
+    document.getElementById('ce-tv').textContent = num(t, 2) + ' s';
+  }
+  rt.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ COLISIÓN ELÁSTICA ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ch-fig');
+  if (!host) return;
+  const rr = document.getElementById('ch-r');
+  function pinta() {
+    const r = Math.pow(10, +rr.value), m1 = r, m2 = 1, u = 1;
+    const v1 = (m1 - m2) / (m1 + m2) * u, v2 = 2 * m1 / (m1 + m2) * u;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const mmax = Math.max(m1, m2), lado = m => 60 + 100 * Math.cbrt(m / mmax);
+    const s1 = lado(m1), s2 = lado(m2);
+    [['Antes', 290, u, 0], ['Después', 600, v1, v2]].forEach(f => {
+      const y = f[1];
+      rotulo(svg, 40, y - 200, f[0], { 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FTXT + ';font-weight:700' });
+      nodo('line', { x1: 40, x2: 1140, y1: y, y2: y, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+      const x1 = 440 - s1, x2 = 600;
+      nodo('rect', { x: x1, y: y - s1, width: s1, height: s1, style: 'fill:var(--res)' }, svg);
+      nodo('rect', { x: x2, y: y - s2, width: s2, height: s2, style: 'fill:var(--caso2)' }, svg);
+      rotulo(svg, x1 + s1 / 2, y - s1 / 2 + 10, '*m*₁', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-family:' + FMATH });
+      rotulo(svg, x2 + s2 / 2, y - s2 / 2 + 10, '*m*₂', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-family:' + FMATH });
+      const ay = y - Math.max(s1, s2) - 26;
+      if (Math.abs(f[2]) > 0.005) flecha(svg, x1 + s1 / 2, ay, x1 + s1 / 2 + f[2] * 220, ay, 'var(--res)', 6);
+      rotulo(svg, x1 + s1 / 2 - 40, ay - 16, (f[0] === 'Antes' ? '*v*₁ᵢ' : '*v*₁f = ' + num(f[2], 2) + ' *v*₁ᵢ'), { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH });
+      if (f[0] !== 'Antes') {
+        if (Math.abs(f[3]) > 0.005) flecha(svg, x2 + s2 / 2, ay, x2 + s2 / 2 + f[3] * 220, ay, 'var(--caso2)', 6);
+        rotulo(svg, x2 + s2 / 2 + 80, ay - 16, '*v*₂f = ' + num(f[3], 2) + ' *v*₁ᵢ', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH });
+      }
+    });
+    const p0 = m1 * u, pf = m1 * v1 + m2 * v2, K0 = 0.5 * m1 * u * u, Kf = 0.5 * m1 * v1 * v1 + 0.5 * m2 * v2 * v2;
+    document.getElementById('ch-lect').textContent = 'P conservado: ' + (Math.abs(p0 - pf) < 1e-9 ? 'sí' : 'no') + ' · K conservada: ' + (Math.abs(K0 - Kf) < 1e-9 ? 'sí' : 'no');
+    document.getElementById('ch-rv').textContent = num(r, r < 1 ? 2 : 1);
+  }
+  rr.addEventListener('input', pinta);
+  $$('#dp-choque .btn[data-r]').forEach(b => b.addEventListener('click', () => { rr.value = b.dataset.r; pinta(); }));
+  pinta();
+})();
+
+/* ═══ BLOQUE CON FRICCIÓN ══════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('fr-fig');
+  if (!host) return;
+  const rth = document.getElementById('fr-th'), rmu = document.getElementById('fr-mu');
+  const m = 2, F = 20, g = 9.8;
+  const ax = (th, mu) => { const r = th * Math.PI / 180, N = m * g - F * Math.sin(r); return (F * Math.cos(r) - mu * N) / m; };
+  function pinta() {
+    const th = +rth.value, mu = +rmu.value, r = th * Math.PI / 180;
+    const N = m * g - F * Math.sin(r), fk = mu * N, a = ax(th, mu);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+    const cx = 330, cy = 360, e = 13;
+    nodo('line', { x1: 20, x2: 660, y1: cy + 80, y2: cy + 80, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    nodo('rect', { x: cx - 100, y: cy - 80, width: 200, height: 160, style: 'fill:var(--primario-tinte);stroke:var(--tinta);stroke-width:3' }, svg);
+    flecha(svg, cx, cy, cx, cy + m * g * e, 'var(--tinta)', 6);
+    rotulo(svg, cx + 14, cy + m * g * e - 4, '*mg*', { 'font-size': 28, style: 'fill:var(--tinta);font-family:' + FMATH });
+    flecha(svg, cx, cy, cx, cy - N * e, 'var(--caso1)', 6);
+    rotulo(svg, cx - 14, cy - N * e - 8, '*F*_N = ' + num(N, 1) + ' N', { 'text-anchor': 'end', 'font-size': 30, style: 'fill:var(--caso1);font-family:' + FMATH });
+    if (fk > 0.01) flecha(svg, cx - 100, cy + 60, cx - 100 - fk * e, cy + 60, 'var(--caso2)', 6);
+    rotulo(svg, cx - 100, cy + 115, '*f*_k = ' + num(fk, 1) + ' N', { 'text-anchor': 'end', 'font-size': 30, style: 'fill:var(--caso2);font-family:' + FMATH });
+    const fx = cx + F * Math.cos(r) * e, fy = cy - F * Math.sin(r) * e;
+    polilinea({ X: v => v, Y: v => v, capa: svg }, [[cx, cy], [fx, cy], [fx, fy]], 'stroke:var(--res-borde);stroke-width:3;stroke-dasharray:8 6', svg);
+    flecha(svg, cx, cy, fx, fy, 'var(--res)', 6);
+    rotulo(svg, fx + 10, fy - 8, '*F*', { 'font-size': 30, style: 'fill:var(--res);font-family:' + FMATH });
+    /* recuadro: a_x frente a θ */
+    const A = { l: 760, r: 1160, t: 70, b: 560 }, X = t => A.l + t / 60 * (A.r - A.l), amax = 10, Y = v => A.b - (v + 2) / (amax + 2) * (A.b - A.t);
+    nodo('rect', { x: A.l, y: A.t, width: A.r - A.l, height: A.b - A.t, style: 'fill:var(--papel);stroke:var(--linea);stroke-width:2' }, svg);
+    nodo('line', { x1: A.l, x2: A.r, y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2' }, svg);
+    const cur = []; for (let t = 0; t <= 60; t += 1) cur.push(X(t).toFixed(1) + ',' + Y(ax(t, mu)).toFixed(1));
+    nodo('polyline', { points: cur.join(' '), style: 'fill:none;stroke:var(--res);stroke-width:4' }, svg);
+    const opt = Math.atan(mu) * 180 / Math.PI;
+    nodo('line', { x1: X(opt), x2: X(opt), y1: A.t, y2: A.b, style: 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:6 6' }, svg);
+    nodo('circle', { cx: X(th), cy: Y(a), r: 10, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, svg);
+    rotulo(svg, (A.l + A.r) / 2, A.b + 40, '*θ* (0° – 60°)', { 'text-anchor': 'middle', 'font-size': 24 });
+    rotulo(svg, A.l + 10, A.t - 14, '*a*_x (m/s²)', { 'font-size': 24 });
+    [0, 5, 10].forEach(v => rotulo(svg, A.l - 8, Y(v) + 8, '' + v, { 'text-anchor': 'end', 'font-size': 20 }));
+    const txt = a > 0 ? 'aₓ = ' + num(a, 2) + ' m/s²' : 'F cos θ ≤ fₖ: el bloque no acelera';
+    document.getElementById('fr-lect').textContent = txt;
+    document.getElementById('fr-thv').textContent = th + '°';
+    document.getElementById('fr-muv').textContent = num(mu, 2);
+    document.getElementById('fr-opt').textContent = 'Aquí θ* = ' + num(opt, 1) + '° y aₓ máx = ' + num(ax(opt, mu), 2) + ' m/s².';
+  }
+  rth.addEventListener('input', pinta); rmu.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ FUERZA CENTRÍPETA ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('cp-fig');
+  if (!host) return;
+  const rv = document.getElementById('cp-v'), rr = document.getElementById('cp-r');
+  host.innerHTML = '';
+  const svg = nodo('svg', { viewBox: '0 0 1180 740', class: 'fig' }, host);
+  const capa = nodo('g', {}, svg);
+  let fase = 0.6, ult = 0;
+  function pinta() {
+    const v = +rv.value, r = +rr.value, ac = v * v / r, cx = 590, cy = 370, R = r * 66;
+    capa.innerHTML = '';
+    nodo('circle', { cx: cx, cy: cy, r: R, style: 'fill:none;stroke:var(--rejilla);stroke-width:4' }, capa);
+    nodo('circle', { cx: cx, cy: cy, r: 7, style: 'fill:var(--tinta)' }, capa);
+    rotulo(capa, cx + 12, cy + 30, '*O*', { 'font-size': 26 });
+    const px = cx + R * Math.cos(fase), py = cy - R * Math.sin(fase);
+    nodo('line', { x1: cx, y1: cy, x2: px, y2: py, style: 'stroke:var(--proy);stroke-width:2.5;stroke-dasharray:8 6' }, capa);
+    const tv = 20 * v, ta = Math.min(R - 24, 14 * ac);
+    flecha(capa, px, py, px - tv * Math.sin(fase), py - tv * Math.cos(fase), 'var(--caso1)', 6);
+    flecha(capa, px, py, px - ta * Math.cos(fase), py + ta * Math.sin(fase), 'var(--res)', 6);
+    nodo('circle', { cx: px, cy: py, r: 16, style: 'fill:var(--tinta)' }, capa);
+    rotulo(capa, px - tv * Math.sin(fase) + 10, py - tv * Math.cos(fase) - 10, '*v*', { 'font-size': 30, style: 'fill:var(--caso1);font-family:' + FMATH });
+    rotulo(capa, px - ta * 0.6 * Math.cos(fase) + 14, py + ta * 0.6 * Math.sin(fase) + 24, '*a*_c', { 'font-size': 30, style: 'fill:var(--res);font-family:' + FMATH });
+    document.getElementById('cp-lect').textContent = 'Aceleración ' + num(ac, 2) + ' m/s² · Fuerza ' + num(ac, 2) + ' N · Período ' + num(2 * Math.PI * r / v, 2) + ' s';
+    document.getElementById('cp-vv').textContent = num(v, 1) + ' m/s';
+    document.getElementById('cp-rv').textContent = num(r, 1) + ' m';
+  }
+  function bucle(ms) {
+    if (activa(host) && ms - ult > 33) { const dt = Math.min(0.05, (ms - ult) / 1000); ult = ms; fase += 0.35 * (+rv.value / +rr.value) * dt; pinta(); }
+    else if (!activa(host)) ult = ms;
+    requestAnimationFrame(bucle);
+  }
+  rv.addEventListener('input', pinta); rr.addEventListener('input', pinta); pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ÓRBITA TIERRA–LUNA (Euler-Cromer en el sistema del CM) ═══════════ */
+(function () {
+  const cv = document.getElementById('or-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const G = 6.67430e-11, MT = 5.972e24, mL = 7.342e22, rp = 363296440.0, vp = 1082.4, Mtot = MT + mL;
+  const rd = document.getElementById('or-dt'), bPlay = document.getElementById('or-play');
+  let s, corre = true, ult = 0;
+  function reinicia() {
+    s = { rL: [MT / Mtot * rp, 0], rT: [-mL / Mtot * rp, 0], pL: [0, mL * MT / Mtot * vp], t: 0, T: null, trL: [], trT: [], yPrev: 0 };
+    s.pT = [-s.pL[0], -s.pL[1]];
+    document.getElementById('or-dtv').textContent = rd.value + ' h';
+    dibuja();
+  }
+  function paso(dt) {
+    const rx = s.rL[0] - s.rT[0], ry = s.rL[1] - s.rT[1], d = Math.hypot(rx, ry), c = -G * MT * mL / (d * d * d);
+    const Fx = c * rx, Fy = c * ry;
+    s.pL[0] += Fx * dt; s.pL[1] += Fy * dt; s.pT[0] -= Fx * dt; s.pT[1] -= Fy * dt;
+    s.rL[0] += s.pL[0] / mL * dt; s.rL[1] += s.pL[1] / mL * dt;
+    s.rT[0] += s.pT[0] / MT * dt; s.rT[1] += s.pT[1] / MT * dt;
+    s.t += dt;
+    if (s.yPrev < 0 && s.rL[1] >= 0 && s.T === null) s.T = s.t;
+    s.yPrev = s.rL[1];
+  }
+  const E = 290 / 4.1e8, X = v => W / 2 + v * E, Y = v => H / 2 - v * E;
+  function dibuja() {
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, H);
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 1.5;
+    g.beginPath(); g.moveTo(0, H / 2); g.lineTo(W, H / 2); g.moveTo(W / 2, 0); g.lineTo(W / 2, H); g.stroke();
+    const traza = (tr, col, esc) => { g.strokeStyle = col; g.lineWidth = 3; g.beginPath(); tr.forEach((q, i) => i ? g.lineTo(X(q[0] * esc), Y(q[1] * esc)) : g.moveTo(X(q[0] * esc), Y(q[1] * esc))); g.stroke(); };
+    traza(s.trL, tok('--res'), 1); traza(s.trT, tok('--caso1'), 10);
+    g.fillStyle = tok('--caso1'); g.beginPath(); g.arc(X(s.rT[0] * 10), Y(s.rT[1] * 10), 16, 0, 2 * Math.PI); g.fill();
+    g.fillStyle = tok('--res'); g.beginPath(); g.arc(X(s.rL[0]), Y(s.rL[1]), 9, 0, 2 * Math.PI); g.fill();
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.beginPath(); g.moveTo(W / 2 - 12, H / 2); g.lineTo(W / 2 + 12, H / 2); g.moveTo(W / 2, H / 2 - 12); g.lineTo(W / 2, H / 2 + 12); g.stroke();
+    g.font = '22px ' + FTXT; g.textAlign = 'left'; g.fillStyle = tok('--res'); g.fillText('Luna', X(s.rL[0]) + 14, Y(s.rL[1]) - 10);
+    g.fillStyle = tok('--caso1'); g.fillText('Tierra', X(s.rT[0] * 10) + 20, Y(s.rT[1] * 10) + 30);
+    g.fillStyle = tok('--tinta2'); g.fillText('+ centro de masas', 20, H - 20);
+    document.getElementById('or-t').textContent = num(s.t / 86400, 1) + ' días';
+    document.getElementById('or-T').textContent = s.T ? num(s.T / 86400, 2) + ' días' : '—';
+    document.getElementById('or-lect').textContent = 'Δt = ' + rd.value + ' h';
+  }
+  function bucle(ms) {
+    if (corre && activa(cv) && ms - ult > 30) {
+      ult = ms;
+      const dt = +rd.value * 3600, n = Math.max(1, Math.round(6 / +rd.value));
+      for (let i = 0; i < n; i++) { paso(dt); s.trL.push([s.rL[0], s.rL[1]]); s.trT.push([s.rT[0], s.rT[1]]); }
+      const max = Math.round(28 * 24 / +rd.value);
+      if (s.trL.length > max) { s.trL.splice(0, s.trL.length - max); s.trT.splice(0, s.trT.length - max); }
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  rd.addEventListener('input', reinicia);
+  document.getElementById('or-reset').addEventListener('click', reinicia);
+  bPlay.addEventListener('click', () => { corre = !corre; bPlay.textContent = corre ? 'Pausa' : 'Continuar'; });
+  reinicia(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
+(function () {
+  const dp = document.getElementById('dp-practica');
+  if (!dp) return;
+  const marcador = $('.pr-score', dp);
+  let aciertos = 0;
+  const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
+  const acierta = it => { if (!it.dataset.hecho) { it.dataset.hecho = '1'; aciertos++; marcador.textContent = aciertos; } };
+  $$('.pr-item', dp).forEach(it => {
+    $$('.pr-opc', it).forEach(b => b.addEventListener('click', () => {
+      const ok = b.dataset.o === it.dataset.ok;
+      $$('.pr-opc', it).forEach(o => o.classList.remove('ok', 'mal'));
+      b.classList.add(ok ? 'ok' : 'mal'); fb(it, ok); if (ok) acierta(it);
+    }));
+    const inp = $('.pr-in', it);
+    if (inp) {
+      const revisa = () => {
+        const v = parseFloat(inp.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+        const ok = Math.abs(v - +it.dataset.okNum) <= +it.dataset.tol;
+        inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)'; fb(it, ok); if (ok) acierta(it);
+      };
+      inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+      $$('.pr-btn', it).forEach(b => b.addEventListener('click', () => {
+        if (b.classList.contains('pr-verpista')) $('.pr-pista', it).classList.toggle('on'); else revisa();
+      }));
+    }
+  });
+})();
+
+/* ═══ RETO: COMPLETA LA TABLA ══════════════════════════════════════════ */
+(function () {
+  const dp = document.getElementById('dp-reto');
+  if (!dp) return;
+  const ins = $$('input[data-sol]', dp), fbk = document.getElementById('cz-fb'), sol = document.getElementById('cz-sol');
+  document.getElementById('cz-ok').addEventListener('click', () => {
+    let n = 0;
+    ins.forEach(i => {
+      const v = parseFloat(i.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+      const ok = Math.abs(v - +i.dataset.sol) <= 0.01;
+      i.classList.toggle('ok', ok); i.classList.toggle('mal', !ok); if (ok) n++;
+    });
+    fbk.textContent = n === ins.length ? '✓ ¡Perfecto! Has ejecutado el algoritmo como el ordenador.' : '✗ ' + n + ' de ' + ins.length + ' casillas correctas. Recuerda: primero p, luego x con el p nuevo.';
+    fbk.style.color = n === ins.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('cz-ver').addEventListener('click', () => { sol.style.display = sol.style.display === 'block' ? 'none' : 'block'; });
+  document.getElementById('cz-borrar').addEventListener('click', () => { ins.forEach(i => { i.value = ''; i.classList.remove('ok', 'mal'); }); fbk.textContent = ''; });
+})();
+
+</script>
+</body></html>
