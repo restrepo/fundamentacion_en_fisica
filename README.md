@@ -4,22 +4,19 @@ Lecciones interactivas generadas a partir del libro **Fundamentación en Física
 (*Temas de física a nivel algebraico*), cuyo código LaTeX (`main.tex`) y PDF
 (`main.pdf`) están en el repositorio original:
 
-➡️ **Repositorio original:** https://github.com/USUARIO/REPOSITORIO-ORIGINAL
+➡️ **Repositorio original:** [restrepo/fundamentacion_en_fisica](https://github.com/restrepo/fundamentacion_en_fisica)
 
 ## Ver las lecciones en línea
 
-Con GitHub Pages activado (ver abajo), el sitio queda en:
-
-```
-https://<usuario>.github.io/fundamentacion_en_fisica/
-```
+El sitio está publicado con GitHub Pages en
+**[restrepo.github.io/fundamentacion_en_fisica](https://restrepo.github.io/fundamentacion_en_fisica/)**.
 
 | Lección | Enlace directo |
 |---|---|
-| Capítulo 1 · Preliminares | `https://<usuario>.github.io/fundamentacion_en_fisica/lecciones/capitulo-1-preliminares.html` |
-| Capítulo 2 · Relatividad especial | `https://<usuario>.github.io/fundamentacion_en_fisica/lecciones/capitulo-2-relatividad-especial.html` |
-| Capítulo 3 · Dinámica newtoniana | `https://<usuario>.github.io/fundamentacion_en_fisica/lecciones/capitulo-3-dinamica-newtoniana.html` |
-| Capítulo 4 · Electromagnetismo | `https://<usuario>.github.io/fundamentacion_en_fisica/lecciones/capitulo-4-electromagnetismo.html` |
+| Capítulo 1 · Preliminares | [capitulo-1-preliminares.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-1-preliminares.html) |
+| Capítulo 2 · Relatividad especial | [capitulo-2-relatividad-especial.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-2-relatividad-especial.html) |
+| Capítulo 3 · Dinámica newtoniana | [capitulo-3-dinamica-newtoniana.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-3-dinamica-newtoniana.html) |
+| Capítulo 4 · Electromagnetismo | [capitulo-4-electromagnetismo.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-4-electromagnetismo.html) |
 
 Cada lección es **un único archivo HTML autocontenido** (MathJax y estilos en
 línea): también funciona descargado y abierto sin conexión.
@@ -102,7 +99,6 @@ skills/
   leccion-a-deck.skill              la misma skill, empaquetada para instalar en Claude
   actualizar-repositorio/           skill que arma el zip de actualización de este repositorio
   actualizar-repositorio.skill
-publicar.sh                         crea el repositorio y activa GitHub Pages con gh
 ```
 
 ## Regenerar una lección
@@ -140,22 +136,13 @@ lecciones, y entrega un zip con **solo** los archivos nuevos o modificados
 haya que borrar a mano. Para subirlo: *Add file → Upload files* y arrastrar el
 contenido del zip descomprimido.
 
-## Publicar en GitHub
+## Publicación
 
-**Con la terminal** (requiere [GitHub CLI](https://cli.github.com/) con sesión iniciada):
-
-```bash
-./publicar.sh https://github.com/<usuario>/<repositorio-original>
-```
-
-El script sustituye el enlace al repositorio original, crea el repositorio
-público `fundamentacion_en_fisica`, sube todo y activa GitHub Pages desde la
-rama `main` (carpeta raíz).
-
-**Desde la web:** crea un repositorio vacío `fundamentacion_en_fisica`,
-arrastra el contenido de esta carpeta a *Add file → Upload files*, y en
-*Settings → Pages* elige *Deploy from a branch → main → / (root)*. En uno o
-dos minutos el sitio aparece en la dirección indicada arriba.
+El sitio se publica con GitHub Pages desde la rama `main`, carpeta raíz
+(*Settings → Pages → Deploy from a branch → main → / (root)*), en
+<https://restrepo.github.io/fundamentacion_en_fisica/>. Cada vez que se sube un cambio, Pages lo vuelve a publicar en uno o dos
+minutos (pestaña *Actions*). Si el navegador muestra la versión anterior,
+recarga sin caché con Ctrl + Shift + R.
 
 > El nombre usa `fundamentacion_en_fisica` sin tildes: GitHub no admite
 > caracteres acentuados en los nombres de repositorio (los convierte en `-`).
