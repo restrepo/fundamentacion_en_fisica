@@ -142,6 +142,24 @@ dl.glosa dd{margin:0;font-size:29px}
 .envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
 .envio-nota{font-size:26px;color:var(--tinta2)}
 /* envio-formulario:css-fin */
+
+/* aceleración constante: columna compacta */
+#dp-acel .g2-60{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
+#dp-acel .ac-col > * + *{margin-top:10px}
+#dp-acel .ctrl{margin:4px 0}
+.ac-suma{margin:6px 0 0;font:600 30px/1.3 var(--font-body);text-align:center}
+
+/* lanzamiento con arrastre */
+#dp-arrastre .ar-col > * + *{margin-top:8px}
+#dp-arrastre .ctrl{margin:2px 0}
+.ar-tab{font-size:24px}
+#ar-pre .btn{font-size:24px;padding:8px 13px}
+#ar-pre{gap:8px}
+.ar-datos{margin-top:6px;font-size:24px;line-height:1.35;color:var(--tinta2)}
+.ar-datos .ar-k{margin-top:4px;color:var(--tinta)}
+.ar-tab th,.ar-tab td{padding:4px 10px}
+.ar-tab td:nth-child(2){color:var(--caso2-tx)}
+.ar-tab td:nth-child(3){color:var(--res);font-weight:700}
 </style></head>
 <body>
 <div id="escenario">
@@ -345,21 +363,23 @@ dl.glosa dd{margin:0;font-size:29px}
 </section>
 
 <!-- ═════════════ §3 · ACELERACIÓN CONSTANTE Y ENERGÍA ═════════════ -->
-<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-acel" data-label="Aceleración constante" data-speaker-notes="§ 3.3. Explorador: pendiente del gráfico v–t.">
+<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-acel" data-label="Aceleración constante" data-speaker-notes="§ 3.3. Explorador: la pendiente de la recta v–t es a; el área bajo ella es Δx = rectángulo v₀t (verde) + triángulo rayado ½(v − v₀)t = ½at² (ámbar), con cotas de base t y altura v − v₀ = at. ↓ revela 2 pasos. «Completar el rectángulo» muestra que el triángulo es la mitad de t·(v − v₀).">
   <p class="ceja">§ 3.3 · Aceleración constante</p>
-  <h2 class="titulo">La aceleración es la pendiente de la recta \(v\)–\(t\)</h2>
+  <h2 class="titulo">Pendiente y área de la recta \(v\)–\(t\)</h2>
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Velocidad frente al tiempo</span><span class="val" id="ac-lect"></span></div>
       <div id="ac-fig"></div>
     </figure>
-    <div class="pila">
-      \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{v - v_0}{t - t_0} \;\Longrightarrow\; v = v_0 + a\,(t - t_0). \]
-      <label class="ctrl"><span>Aceleración \(a\)</span><input type="range" id="ac-a" min="-2" max="2" step="0.1" value="1"><span class="v" id="ac-av"></span></label>
-      <label class="ctrl"><span>Velocidad \(v_0\)</span><input type="range" id="ac-v0" min="-2" max="4" step="0.1" value="1"><span class="v" id="ac-v0v"></span></label>
-      <div class="caja"><p style="margin:0">El área bajo la recta es el desplazamiento:
-        \[ x = x_0 + v_0 t + \tfrac12 a t^{2}. \]</p></div>
-      <p class="nota">El área sombreada del gráfico es \(\Delta x\) en el intervalo \([0, 4]\qty{}{s}\).</p>
+    <div class="pila ac-col">
+      \[ a = \dfrac{v - v_0}{t} \;\Longrightarrow\; v = v_0 + a t \quad (t_0 = 0). \]
+      <label class="ctrl"><span>Aceleración \(a\)</span><input type="range" id="ac-a" min="-2" max="2" step="0.1" value="1.5"><span class="v" id="ac-av"></span></label>
+      <label class="ctrl"><span>Velocidad \(v_0\)</span><input type="range" id="ac-v0" min="-2" max="4" step="0.1" value="2"><span class="v" id="ac-v0v"></span></label>
+      <label class="ctrl"><span>Tiempo \(t\)</span><input type="range" id="ac-t" min="0.5" max="4" step="0.1" value="3.5"><span class="v" id="ac-tv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" id="ac-completa">Completar el rectángulo \(t \times (v - v_0)\)</button></div>
+      <div class="caja c2 frag" style="padding:10px 22px">\[ \begin{aligned} \text{Triángulo} &= \tfrac12\,\text{base}\times\text{altura} = \casodos{\tfrac12\,(v - v_0)\,t} \\ &= \tfrac12\,(a t)\,t = \casodos{\tfrac12 a t^{2}} \end{aligned} \]</div>
+      <div class="kf frag" style="font-size:34px;padding:8px 22px">\[ \Delta x = \underbrace{\casouno{v_0\,t}}_{\text{rectángulo}} + \underbrace{\casodos{\tfrac12 a t^{2}}}_{\text{triángulo}} \]
+        <p class="ac-suma">\(\Delta x =\) <b id="ac-rec" style="color:var(--caso1)"></b> + <b id="ac-tri" style="color:var(--caso2-tx)"></b> = <b id="ac-dx"></b></p></div>
     </div>
   </div>
 </section>
@@ -393,6 +413,42 @@ dl.glosa dd{margin:0;font-size:29px}
       <label class="ctrl"><span>Paso \(\Delta t\)</span><input type="range" id="lv-dt" min="0.02" max="0.5" step="0.02" value="0.1"><span class="v" id="lv-dtv"></span></label>
       <div class="caja c2"><p style="margin:0">Solución analítica: \(y(t) = v_0 t - \tfrac12 g t^{2}\).</p></div>
       <p class="nota">Los puntos numéricos quedan ligeramente por debajo de la parábola: el error es proporcional a \(\Delta t\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-arrastre" data-label="Lanzamiento vertical con resistencia del aire" data-speaker-notes="§ 3.4. Ejemplo numérico con arrastre cuadrático F_D = k v|v|, k = ½ρC_D A con ρ = 1,2 kg/m³ y A = πd²/4 para cada objeto (bala 6,46 × 10⁻⁵ m², béisbol 4,30 × 10⁻³ m², ping-pong 1,26 × 10⁻³ m²). El algoritmo solo cambia la fuerza; la energía cinética perdida (≈ 87 % para la bala) se disipa en calor, sonido y turbulencia. Bala .38: H ≈ 887 m (sin aire 2862 m), regresa a ≈ 86,5 m/s (sin aire 236,8 m/s).">
+  <p class="ceja">§ 3.4 · Ejemplo numérico con resistencia del aire</p>
+  <h2 class="titulo">Un problema difícil, el mismo algoritmo: \(F = -mg - k\,v\abs{v}\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Altura \(y\) frente al tiempo \(t\)</span><span class="val" id="ar-lect"></span></div>
+      <div id="ar-fig"></div>
+      <div class="fila-btn" id="ar-pre" style="margin-top:6px"><button type="button" class="btn on" data-p="bala">Bala .38 al aire</button><button type="button" class="btn" data-p="beisbol">Pelota de béisbol</button><button type="button" class="btn" data-p="pingpong">Pelota de ping-pong</button><button type="button" class="btn" id="ar-reset" title="Bala .38, C_D = 0,30 y el paso inicial">↺ Por defecto</button></div>
+      <div class="ar-datos">
+        <div class="ar-dat" data-p="bala">\(m = 158\,\mathrm{gr} = \qty{10{,}24}{g}\), \(d = 0{,}357\,\mathrm{in} = \qty{9{,}07}{mm}\):
+          \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{9{,}07\times 10^{-3}}{m})^{2}}{4} \approx \qty{6{,}46\times 10^{-5}}{m^2}\)</div>
+        <div class="ar-dat" data-p="beisbol" style="display:none">\(m = \qty{145}{g}\), \(d = \qty{74}{mm}\):
+          \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{0{,}074}{m})^{2}}{4} \approx \qty{4{,}30\times 10^{-3}}{m^2}\)</div>
+        <div class="ar-dat" data-p="pingpong" style="display:none">\(m = \qty{2{,}7}{g}\), \(d = \qty{40}{mm}\):
+          \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{0{,}040}{m})^{2}}{4} \approx \qty{1{,}26\times 10^{-3}}{m^2}\)</div>
+        <div class="ar-k">\(\rho = \qty{1{,}2}{kg/m^3}\) (aire cerca del nivel del mar) · <span id="ar-kv"></span></div>
+      </div>
+    </figure>
+    <div class="pila ar-col">
+      <div class="kf" style="padding:4px 18px;font-size:32px">\[ \begin{gathered} F = -mg \mathbin{\casodos{-}} \casodos{k\,v\abs{v}}, \qquad k = \tfrac12\,\rho\,C_D A \\ p \leftarrow p + F\,\Delta t, \qquad y \leftarrow y + \tfrac{p}{m}\,\Delta t \end{gathered} \]</div>
+      <p style="margin:0;font-size:28px">Solo cambia <strong>una línea</strong>: la fuerza. El arrastre se opone a \(v\) y cambia de signo solo al empezar a caer. Reduce \(\Delta t\): lo numérico converge a lo analítico.</p>
+      <label class="ctrl"><span>Coeficiente \(C_D\)</span><input type="range" id="ar-cd" min="0" max="1.2" step="0.01" value="0.3"><span class="v" id="ar-cdv"></span></label>
+      <label class="ctrl"><span>Paso \(\Delta t\)</span><input type="range" id="ar-dt" min="-4" max="-1.3" step="0.1" value="-3.5"><span class="v" id="ar-dtv"></span></label>
+      <table class="tabla ar-tab">
+        <thead><tr><th></th><th>Sin aire</th><th>Numérico</th><th>Analítico</th></tr></thead>
+        <tbody>
+          <tr><td class="izq">Altura máxima \(H\)</td><td id="ar-h0"></td><td id="ar-hn"></td><td id="ar-ha"></td></tr>
+          <tr><td class="izq">Rapidez al volver \(v_f\)</td><td id="ar-v0"></td><td id="ar-vn"></td><td id="ar-va"></td></tr>
+          <tr><td class="izq">Subida / bajada</td><td id="ar-t0"></td><td id="ar-tn"></td><td id="ar-ta"></td></tr>
+        </tbody>
+      </table>
+      <div class="caja c2 frag" style="padding:6px 16px"><p style="margin:0;font-size:23px;line-height:1.35"><strong>Trabajo y energía.</strong> \(K_i = \tfrac12 m v_0^{2} \approx\) <b id="ar-ki"></b> y \(K_f = \tfrac12 m v_f^{2} \approx\) <b id="ar-kf"></b>. En la ida y vuelta la gravedad no hace trabajo neto (\(-mgH\) al subir, \(+mgH\) al bajar), así que \(W_{\text{arrastre}} = K_f - K_i \approx\) <b id="ar-kd"></b>. El algoritmo lo confirma sumando \(F_D\,\Delta y\) en cada paso: <b id="ar-w"></b> (<span id="ar-wsb"></span>). Es <strong>negativo en los dos tramos</strong> porque el arrastre siempre se opone al movimiento: es la energía que el proyectil entrega al aire y se <strong>disipa</strong> como calor, sonido y remolinos. Sin aire, \(W = 0\) y \(K_f = K_i\).</p></div>
     </div>
   </div>
 </section>
@@ -855,6 +911,100 @@ const T_OSC = 2 * Math.PI;
   const r = rango('lv-dt', pinta); pinta(r ? +r.value : 0.1);
 })();
 
+/* ═══ LANZAMIENTO VERTICAL CON RESISTENCIA DEL AIRE (arrastre cuadrático) ═ */
+(function () {
+  const host = document.getElementById('ar-fig');
+  if (!host) return;
+  const g = 9.8, rho = 1.2, rcd = document.getElementById('ar-cd'), rdt = document.getElementById('ar-dt');
+  /* datos típicos (skill lanzamiento-vertical-arrastre, references/datos_proyectiles.md) */
+  const PRE = {
+    bala: { v0: 236.8, m: 0.01024, d: 0.00907, cd: 0.30, nom: 'bala .38 Special, 158 gr, 777 ft/s' },
+    beisbol: { v0: 40, m: 0.145, d: 0.074, cd: 0.35, nom: 'béisbol, 145 g, 40 m/s' },
+    pingpong: { v0: 20, m: 0.0027, d: 0.040, cd: 0.47, nom: 'ping-pong, 2,7 g, 20 m/s' }
+  };
+  let P = PRE.bala;
+  /* el MISMO algoritmo de Euler-Cromer; solo cambia la fuerza */
+  function integra(k, dt) {
+    let t = 0, y = 0, p = P.m * P.v0, tsub = null, H = 0, pts = [[0, 0]], yA = 0, tA = 0, vA = P.v0;
+    let Wd = 0, Wsub = 0, Wg = 0;          /* trabajo del arrastre (total y de subida) y de la gravedad */
+    const paso = Math.max(1, Math.round(0.02 * 50 / (dt * 50)));
+    for (let n = 0; n < 2e6; n++) {
+      const v = p / P.m, Fd = -k * v * Math.abs(v), F = -P.m * g + Fd;
+      p += F * dt; yA = y; tA = t; vA = v;
+      const dy = (p / P.m) * dt, fr = y + dy < 0 && dy < 0 ? y / -dy : 1;   /* último paso: solo hasta y = 0 */
+      Wd += Fd * dy * fr; Wg += -P.m * g * dy * fr; if (tsub === null) Wsub += Fd * dy * fr;
+      y += dy; t += dt;
+      if (tsub === null && p <= 0) tsub = t;
+      if (y > H) H = y;
+      if (n % paso === 0) pts.push([t, y]);
+      if (y < 0) {                       /* interpolación lineal del regreso a y = 0 */
+        const f = yA / (yA - y), tf = tA + f * dt, vf = Math.abs(p / P.m);
+        pts.push([tf, 0]);
+        return { H: H, tsub: tsub, tf: tf, vf: vf, pts: pts, Wd: Wd, Wsub: Wsub, Wg: Wg };
+      }
+    }
+    return { H: H, tsub: tsub, tf: t, vf: Math.abs(p / P.m), pts: pts, Wd: Wd, Wsub: Wsub, Wg: Wg };
+  }
+  const f = (x, u) => x >= 1000 ? num(x, 0) + ' ' + u : x >= 100 ? num(x, 1) + ' ' + u : num(x, 2) + ' ' + u;
+  function pinta() {
+    const H0 = P.v0 * P.v0 / (2 * g), T0 = 2 * P.v0 / g;
+    /* Δt como fracción del vuelo sin aire: la misma escala sirve para una bala y una pelota */
+    const cd = +rcd.value, dt = T0 * Math.pow(10, +rdt.value), A = Math.PI * P.d * P.d / 4, k = 0.5 * rho * cd * A;
+    const num1 = integra(k, dt);
+    /* soluciones cerradas (modelo cuadrático) */
+    let an = null;
+    if (k > 0) {
+      const vt = Math.sqrt(P.m * g / k), Ha = vt * vt / (2 * g) * Math.log(1 + P.v0 * P.v0 / (vt * vt));
+      const ts = vt / g * Math.atan(P.v0 / vt), tb = vt / g * Math.acosh(Math.exp(g * Ha / (vt * vt)));
+      an = { vt: vt, H: Ha, vf: P.v0 * vt / Math.sqrt(P.v0 * P.v0 + vt * vt), ts: ts, tb: tb };
+    }
+    const Ax = ejes(host, { W: 1180, H: 540, x: [0, T0 * 1.04], y: [0, H0 * 1.1], xt: [0, T0 / 4, T0 / 2, 3 * T0 / 4, T0].map(x => +x.toFixed(2)), yt: [0, H0 / 4, H0 / 2, 3 * H0 / 4, H0].map(x => +x.toFixed(1)), fx: x => num(x, T0 < 10 ? 1 : 0), fy: x => num(x, H0 < 50 ? 1 : 0), xl: 'Tiempo *t* (s)', yl: 'Altura *y* (m)' });
+    const par = []; for (let i = 0; i <= 120; i++) { const t = T0 * i / 120; par.push([t, P.v0 * t - 0.5 * g * t * t]); }
+    polilinea(Ax, par, 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:12 8');
+    polilinea(Ax, num1.pts, 'stroke:var(--res);stroke-width:5');
+    nodo('circle', { cx: Ax.X(num1.tsub || 0), cy: Ax.Y(num1.H), r: 10, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, Ax.capa);
+    rotulo(Ax.capa, Ax.X(T0 * 0.5), Ax.Y(H0) - 14, 'sin aire', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:600' });
+    rotulo(Ax.capa, Ax.X(num1.tsub || 0) + 16, Ax.Y(num1.H) - 16, 'con aire', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:600;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    const s1 = (a, b) => num(a, a < 10 ? 2 : 1) + ' / ' + num(b, b < 10 ? 2 : 1) + ' s';
+    document.getElementById('ar-h0').textContent = f(H0, 'm');
+    document.getElementById('ar-hn').textContent = f(num1.H, 'm');
+    document.getElementById('ar-v0').textContent = f(P.v0, 'm/s');
+    document.getElementById('ar-vn').textContent = f(num1.vf, 'm/s');
+    document.getElementById('ar-t0').textContent = s1(T0 / 2, T0 / 2);
+    document.getElementById('ar-tn').textContent = s1(num1.tsub || 0, num1.tf - (num1.tsub || 0));
+    document.getElementById('ar-ha').textContent = an ? f(an.H, 'm') : '—';
+    document.getElementById('ar-va').textContent = an ? f(an.vf, 'm/s') : '—';
+    document.getElementById('ar-ta').textContent = an ? s1(an.ts, an.tb) : '—';
+    const Ki = 0.5 * P.m * P.v0 * P.v0, Kf = 0.5 * P.m * num1.vf * num1.vf, fJ = x => x >= 100 ? num(x, 0) + ' J' : x >= 10 ? num(x, 1) + ' J' : num(x, 2) + ' J';
+    document.getElementById('ar-ki').textContent = fJ(Ki);
+    document.getElementById('ar-kf').textContent = fJ(Kf);
+    const fW = x => (x < 0 ? '−' : '') + fJ(Math.abs(x));
+    document.getElementById('ar-kd').textContent = fW(Kf - Ki) + ' (' + num((Ki - Kf) / Ki * 100, 0) + ' % de Kᵢ)';
+    document.getElementById('ar-w').textContent = fW(num1.Wd);
+    document.getElementById('ar-wsb').textContent = 'subida ' + fW(num1.Wsub) + ', bajada ' + fW(num1.Wd - num1.Wsub);
+    document.getElementById('ar-cdv').textContent = num(cd, 2);
+    document.getElementById('ar-kv').innerHTML = '<i>k</i> = ½ <i>ρ C</i><sub>D</sub> <i>A</i> = ½ · 1,2 · ' + num(cd, 2) + ' · A ≈ ' + (k > 0 ? num(k / Math.pow(10, Math.floor(Math.log10(k))), 2) + ' × 10' + String(Math.floor(Math.log10(k))).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]) : '0') + ' kg/m';
+    document.getElementById('ar-dtv').textContent = (dt < 0.01 ? num(dt * 1000, 1) + ' ms' : num(dt, dt < 0.1 ? 3 : 2) + ' s');
+    document.getElementById('ar-dtv').title = '≈ ' + Math.round(num1.tf / dt) + ' pasos en todo el vuelo';
+    const err = an ? Math.abs(num1.H - an.H) / an.H * 100 : 0;
+    document.getElementById('ar-lect').textContent = an ? 'vₜ = ' + num(an.vt, 1) + ' m/s · error en H: ' + num(err, err < 1 ? 2 : 1) + ' %' : 'sin arrastre';
+    document.getElementById('ar-lect').title = P.nom;
+  }
+  $$('#ar-pre .btn[data-p]').forEach(b => b.addEventListener('click', () => {
+    P = PRE[b.dataset.p]; rcd.value = P.cd;
+    $$('#dp-arrastre .ar-dat').forEach(d => { d.style.display = d.dataset.p === b.dataset.p ? '' : 'none'; });
+    $$('#ar-pre .btn[data-p]').forEach(o => o.classList.toggle('on', o === b)); pinta();
+  }));
+  /* restablecer: caso, C_D y Δt iniciales */
+  const DEF = { p: 'bala', cd: rcd.value, dt: rdt.value };
+  document.getElementById('ar-reset').addEventListener('click', () => {
+    rdt.value = DEF.dt;
+    $('#ar-pre .btn[data-p="' + DEF.p + '"]').click();   /* fija el caso, sus datos y su C_D */
+    rcd.value = DEF.cd; pinta();
+  });
+  rcd.addEventListener('input', pinta); rdt.addEventListener('input', pinta); pinta();
+})();
+
 /* ═══ TABLA Δt = 1 s (interactiva) ════════════════════════════════════ */
 (function () {
   const host = document.getElementById('tb-fig');
@@ -1049,27 +1199,70 @@ const T_OSC = 2 * Math.PI;
   pinta();
 })();
 
-/* ═══ ACELERACIÓN CONSTANTE ════════════════════════════════════════════ */
+/* ═══ ACELERACIÓN CONSTANTE: pendiente y área (rectángulo + triángulo) ═ */
 (function () {
   const host = document.getElementById('ac-fig');
   if (!host) return;
-  const ra = document.getElementById('ac-a'), rv = document.getElementById('ac-v0');
+  const ra = document.getElementById('ac-a'), rv = document.getElementById('ac-v0'), rt = document.getElementById('ac-t'), bc = document.getElementById('ac-completa');
+  let completo = false;
+  const txt = (A, x, y, s, color, extra) => rotulo(A.capa, A.X(x), A.Y(y), s, Object.assign({ 'text-anchor': 'middle', 'font-size': 32, style: 'fill:' + color + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:7px' }, extra || {}));
+  /* cota con flechas en ambos extremos (en píxeles) */
+  function cota(g, x1, y1, x2, y2, color) {
+    const L = Math.hypot(x2 - x1, y2 - y1); if (L < 30) return;
+    flecha(g, (x1 + x2) / 2, (y1 + y2) / 2, x1, y1, color, 3);
+    flecha(g, (x1 + x2) / 2, (y1 + y2) / 2, x2, y2, color, 3);
+  }
+  function paso(r) { const b = [1, 2, 5, 10, 20]; for (const x of b) if (r / x <= 7) return x; return 50; }
   function pinta() {
-    const a = +ra.value, v0 = +rv.value, v = t => v0 + a * t;
-    const A = ejes(host, { W: 1180, H: 740, x: [0, 4.5], y: [-10, 12], xt: [0, 1, 2, 3, 4], yt: [-8, -4, 0, 4, 8, 12], xl: 'Tiempo *t* (s)', yl: 'Velocidad *v* (m/s)' });
-    const area = [[0, 0]]; for (let i = 0; i <= 40; i++) area.push([4 * i / 40, v(4 * i / 40)]); area.push([4, 0]);
-    nodo('polygon', { points: area.map(q => A.X(q[0]) + ',' + A.Y(q[1])).join(' '), style: 'fill:var(--res-50);stroke:none' }, A.capa);
-    polilinea(A, [[0, v(0)], [4.5, v(4.5)]], 'stroke:var(--res);stroke-width:5');
-    polilinea(A, [[1, v(1)], [3, v(1)], [3, v(3)]], 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:8 6');
-    rotulo(A.capa, A.X(2), A.Y(v(1)) + (a >= 0 ? 34 : -14), 'Δ*t* = 2 s', { 'text-anchor': 'middle', style: 'fill:var(--caso2);font-family:' + FMATH });
-    rotulo(A.capa, A.X(3) + 12, A.Y((v(1) + v(3)) / 2) + 8, 'Δ*v* = ' + num(2 * a, 1) + ' m/s', { style: 'fill:var(--caso2);font-family:' + FMATH });
-    [[1, v(1)], [3, v(3)]].forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: 9, style: 'fill:var(--res)' }, A.capa));
-    const dx = v0 * 4 + 0.5 * a * 16;
-    document.getElementById('ac-lect').textContent = 'a = ' + num(a, 1) + ' m/s² · Δx(0→4 s) = ' + num(dx, 1) + ' m';
+    const a = +ra.value, v0 = +rv.value, T = +rt.value, v = t => v0 + a * t, vT = v(T), tMax = 4.5;
+    /* escala vertical ajustada a la figura para que el triángulo se vea grande */
+    let lo = Math.min(0, v0, vT, v(tMax)), hi = Math.max(0, v0, vT, v(tMax));
+    const pad = 0.12 * (hi - lo) + 0.4; lo -= pad; hi += pad;
+    const st = paso(hi - lo), yt = []; for (let y = Math.ceil(lo / st) * st; y <= hi; y += st) yt.push(+y.toFixed(6));
+    const A = ejes(host, { W: 1180, H: 740, x: [0, tMax], y: [lo, hi], xt: [0, 1, 2, 3, 4], yt: yt, xl: 'Tiempo *t* (s)', yl: 'Velocidad *v* (m/s)' });
+    const P = pts => pts.map(q => A.X(q[0]) + ',' + A.Y(q[1])).join(' ');
+    /* rectángulo v0·t (verde) */
+    nodo('polygon', { points: P([[0, 0], [T, 0], [T, v0], [0, v0]]), style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:3' }, A.capa);
+    /* la otra mitad del rectángulo t × (v − v0) */
+    if (completo) nodo('polygon', { points: P([[0, v0], [0, vT], [T, vT]]), style: 'fill:none;stroke:var(--caso2);stroke-width:3;stroke-dasharray:10 8' }, A.capa);
+    /* triángulo ½(v − v0)t = ½at² (ámbar, con rayado para destacarlo) */
+    const pat = nodo('pattern', { id: 'ac-rayas', width: 18, height: 18, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' }, A.svg);
+    nodo('rect', { width: 18, height: 18, style: 'fill:var(--caso2-50)' }, pat);
+    nodo('line', { x1: 0, y1: 0, x2: 0, y2: 18, style: 'stroke:var(--caso2);stroke-width:5;opacity:.35' }, pat);
+    nodo('polygon', { points: P([[0, v0], [T, v0], [T, vT]]), style: 'fill:url(#ac-rayas);stroke:var(--caso2);stroke-width:4' }, A.capa);
+    /* recta v(t) y guías */
+    polilinea(A, [[0, v(0)], [tMax, v(tMax)]], 'stroke:var(--res);stroke-width:5');
+    polilinea(A, [[T, 0], [T, vT]], 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 6');
+    polilinea(A, [[0, vT], [T, vT]], 'stroke:var(--tinta2);stroke-width:1.5;stroke-dasharray:4 8');
+    const g = A.capa, alto = Math.abs(A.Y(v0) - A.Y(vT));
+    /* cota vertical: altura del triángulo v − v0 = at */
+    if (alto > 40) {
+      const xc = A.X(T) + 26;
+      cota(g, xc, A.Y(v0), xc, A.Y(vT), 'var(--caso2)');
+      rotulo(g, xc + 14, (A.Y(v0) + A.Y(vT)) / 2 - 8, 'altura *v* − *v*_0', { 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+      rotulo(g, xc + 14, (A.Y(v0) + A.Y(vT)) / 2 + 26, '= *at* = ' + num(a * T, 1) + ' m/s', { 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH });
+    }
+    /* cota horizontal: base del triángulo t (sobre la línea v0, por fuera del triángulo) */
+    const yb = A.Y(v0) + (a >= 0 ? 22 : -22);
+    cota(g, A.X(0), yb, A.X(T), yb, 'var(--caso2)');
+    rotulo(g, A.X(T / 2), yb + (a >= 0 ? 32 : -12), 'base *t* = ' + num(T, 1) + ' s', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--caso1-50);stroke-width:8px' });
+    /* rótulos de las áreas */
+    const rec = v0 * T, tri = 0.5 * a * T * T;
+    const baja = a * v0 < 0;            /* el triángulo se superpone al rectángulo: se resta */
+    if (Math.abs(A.Y(0) - A.Y(v0)) > 110) txt(A, baja ? T * 0.3 : T / 2, baja ? v0 * 0.35 : v0 / 2 - (v0 > 0 ? 0.05 : -0.05) * (hi - lo), 'rectángulo *v*_0*t* = ' + num(rec, 2) + ' m', 'var(--caso1)', { 'font-size': 28 });
+    if (alto > 60) txt(A, baja ? T * 0.66 : T * 0.62, v0 + a * T * (baja ? 0.72 : 0.3), '½(*v* − *v*_0)*t* = ½*at*² = ' + num(tri, 2) + ' m' + (baja ? ' (se resta)' : ''), 'var(--caso2)', { 'font-size': 28 });
+    if (completo && alto > 60) txt(A, T * 0.3, v0 + a * T * 0.78, 'la otra mitad (igual área)', 'var(--caso2)', { 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:600;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    [[0, v0], [T, vT]].forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: 10, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa));
+    document.getElementById('ac-rec').textContent = num(rec, 2) + ' m';
+    document.getElementById('ac-tri').textContent = num(tri, 2) + ' m';
+    document.getElementById('ac-dx').textContent = num(rec + tri, 2) + ' m';
+    document.getElementById('ac-lect').textContent = 'pendiente a = ' + num(a, 1) + ' m/s² · Δx = ' + num(rec + tri, 2) + ' m';
     document.getElementById('ac-av').textContent = num(a, 1) + ' m/s²';
     document.getElementById('ac-v0v').textContent = num(v0, 1) + ' m/s';
+    document.getElementById('ac-tv').textContent = num(T, 1) + ' s';
   }
-  ra.addEventListener('input', pinta); rv.addEventListener('input', pinta); pinta();
+  bc.addEventListener('click', () => { completo = !completo; bc.classList.toggle('on', completo); pinta(); });
+  [ra, rv, rt].forEach(x => x.addEventListener('input', pinta)); pinta();
 })();
 
 /* ═══ CONSERVACIÓN DE LA ENERGÍA ═══════════════════════════════════════ */
