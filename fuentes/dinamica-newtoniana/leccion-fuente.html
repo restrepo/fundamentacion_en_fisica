@@ -160,6 +160,26 @@ dl.glosa dd{margin:0;font-size:29px}
 .ar-tab th,.ar-tab td{padding:4px 10px}
 .ar-tab td:nth-child(2){color:var(--caso2-tx)}
 .ar-tab td:nth-child(3){color:var(--res);font-weight:700}
+
+/* órbita: momentum y centro de masas */
+#dp-orb-p .op-col > * + *,#dp-orb-cm .oc-col > * + *{margin-top:8px}
+#dp-orb-p .ctrl{margin:2px 0}
+#dp-orb-p .op-lec div{padding:6px 12px;font-size:22px}
+#dp-orb-p .op-lec b{font-size:28px}
+#dp-orb-p .svghd{margin-bottom:4px}
+#dp-orb-p .fila-btn .sub,#dp-orb-cm .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+#dp-orb-p .fila-btn,#dp-orb-cm .fila-btn{margin:0}
+#dp-orb-p .btn,#dp-orb-cm .btn{font-size:25px;padding:8px 14px}
+
+/* tres cuerpos */
+#dp-orb-sol .os-col > * + *{margin-top:8px}
+#dp-orb-sol .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+#dp-orb-sol .btn{font-size:25px;padding:8px 14px}
+#dp-orb-sol .lectura div{padding:6px 12px;font-size:21px}
+#dp-orb-sol .lectura b{font-size:28px}
+.os-ley{display:flex;gap:26px;font:600 22px/1 var(--font-body);margin-top:2px}
+.os-ley span::before{content:'';display:inline-block;width:28px;height:5px;margin-right:8px;vertical-align:middle}
+.os-ley .l-tl::before{background:var(--res)} .os-ley .l-s::before{background:var(--caso2)} .os-ley .l-t::before{background:var(--tinta)}
 </style></head>
 <body>
 <div id="escenario">
@@ -180,21 +200,25 @@ dl.glosa dd{margin:0;font-size:29px}
   <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden</p>
 </section>
 
-<section class="diapositiva" data-seccion="Leyes de Newton" data-label="Las leyes de Newton" data-speaker-notes="§ 3.1. ↓ revela 4 pasos. Pulse los términos subrayados para ver su definición.">
+<section class="diapositiva" data-seccion="Leyes de Newton" data-label="Las leyes de Newton" data-speaker-notes="§ 3.1. Con la ley de la fuerza escrita como F = Δp/Δt, la ley de inercia queda incluida: si F = 0, entonces Δp = 0. Bastan dos leyes: la de la fuerza y la de acción y reacción. Lo que conserva la inercia es su papel de definir los sistemas inerciales. ↓ revela 4 pasos. Pulse los términos subrayados para ver su definición.">
   <p class="ceja">§ 3.1 · Leyes de Newton</p>
-  <h2 class="titulo">Las tres leyes, escritas con la cantidad de movimiento</h2>
+  <h2 class="titulo">Dos leyes, escritas con la cantidad de movimiento</h2>
   <div class="g2-60">
     <ol class="leyes">
-      <li class="frag"><strong>Inercia.</strong> Si la fuerza neta es nula, la <span class="prop" data-pop="pop-p">cantidad de movimiento</span> no cambia: el objeto sigue en reposo o en movimiento rectilíneo uniforme.</li>
-      <li class="frag"><strong>Fuerza.</strong> La fuerza neta es la tasa de cambio de la cantidad de movimiento:
+      <li class="frag"><strong>Ley de la fuerza.</strong> La fuerza neta es la tasa de cambio de la <span class="prop" data-pop="pop-p">cantidad de movimiento</span>:
         \[ \vect{F} = \dfrac{\Delta\vect{p}}{\Delta t}, \qquad \Delta t = t_{\text{final}} - t_{\text{inicial}}, \qquad \Delta\vect{p} = \vect{p}_{\text{final}} - \vect{p}_{\text{inicial}}. \]</li>
-      <li class="frag"><strong>Acción y reacción.</strong> A toda fuerza que un objeto ejerce sobre otro le corresponde una fuerza de igual magnitud y sentido opuesto: \(\vect{F}_{12} = -\vect{F}_{21}\).</li>
+      <li class="frag"><strong>Ley de acción y reacción.</strong> A toda fuerza que un objeto ejerce sobre otro le corresponde una fuerza de igual magnitud y sentido opuesto: \(\vect{F}_{12} = -\vect{F}_{21}\).</li>
     </ol>
     <div class="pila">
+      <div class="caja c2 frag">
+        <h3>¿Y la ley de inercia? Ya está incluida</h3>
+        \[ \vect{F} = \vect{0} \;\Longrightarrow\; \Delta\vect{p} = \vect{F}\,\Delta t = \vect{0} \;\Longrightarrow\; \vect{p} = \text{cte.} \]
+        <p class="nota" style="margin:0">Sin fuerza neta, el objeto sigue en reposo o en movimiento rectilíneo uniforme: es un caso particular de la ley de la fuerza. Lo que conserva de su papel histórico es <strong>definir los sistemas inerciales</strong>, aquellos en los que vale \(\vect{F} = \Delta\vect{p}/\Delta t\).</p>
+      </div>
       <div class="caja frag">
         <h3>Cantidad de movimiento</h3>
         \[ \vect{p} = \gamma m \vect{v} \;\xrightarrow{\;\gamma \,\to\, 1\;}\; \vect{p} = m\vect{v} \]
-        <p class="nota">En el límite no relativista (\(\gamma = 1\)) y con masa constante, la segunda ley se reduce a \(\vect{F} = m\vect{a}\).</p>
+        <p class="nota">En el límite no relativista (\(\gamma = 1\)) y con masa constante, la ley de la fuerza se reduce a \(\vect{F} = m\vect{a}\).</p>
       </div>
     </div>
   </div>
@@ -227,7 +251,7 @@ dl.glosa dd{margin:0;font-size:29px}
   <h2 class="titulo">Un algoritmo que avanza la física en pasos \(\Delta t\)</h2>
   <div class="g2-40">
     <div class="pila">
-      <p class="frag">Despejamos el nuevo momento de la segunda ley:
+      <p class="frag">Despejamos el nuevo momento de la ley de la fuerza:
         \[ \Delta\vect{p} = \vect{p} - \vect{p}_0 = \vect{F}\,\Delta t \;\Longrightarrow\; \vect{p} = \vect{p}_0 + \vect{F}\,\Delta t. \]</p>
       <p class="frag">Con el momento <strong>ya actualizado</strong> movemos la partícula:
         \[ \vect{r} = \vect{r}_0 + \dfrac{\vect{p}}{m}\,\Delta t. \]</p>
@@ -393,7 +417,7 @@ dl.glosa dd{margin:0;font-size:29px}
       <div class="caja neutra frag"><h3>2 · Multiplicar por \(\tfrac12 m\)</h3>\[ \tfrac12 m v_f^{2} = \tfrac12 m v_i^{2} + m a\,\Delta x \]</div>
     </div>
     <div class="pila">
-      <div class="caja neutra frag"><h3>3 · Segunda ley, \(F = ma\)</h3>\[ \tfrac12 m v_f^{2} - \tfrac12 m v_i^{2} = F\,\Delta x \]</div>
+      <div class="caja neutra frag"><h3>3 · Ley de la fuerza, \(F = ma\)</h3>\[ \tfrac12 m v_f^{2} - \tfrac12 m v_i^{2} = F\,\Delta x \]</div>
       <div class="kf frag">\[ \Delta K = W, \qquad K = \tfrac12 m v^{2}, \qquad W = F\,\Delta x \]<p class="nota" style="margin:6px 0 0">El trabajo neto sobre un objeto es igual al cambio de su <span class="prop" data-pop="pop-trabajo">energía cinética</span>.</p></div>
     </div>
   </div>
@@ -476,7 +500,7 @@ dl.glosa dd{margin:0;font-size:29px}
   <h2 class="titulo">Un <span class="prop" data-pop="pop-aislado">sistema aislado</span> no puede cambiar su momento total</h2>
   <div class="g2">
     <div class="pila">
-      <p class="frag">Tercera ley: \(\vect{F}_{12} = -\vect{F}_{21}\). Con la segunda ley en cada partícula,
+      <p class="frag">Acción y reacción: \(\vect{F}_{12} = -\vect{F}_{21}\). Con la ley de la fuerza en cada partícula,
         \[ \dfrac{\Delta\vect{p}_2}{\Delta t} = -\dfrac{\Delta\vect{p}_1}{\Delta t} \;\Longrightarrow\; \Delta\vect{p}_1 + \Delta\vect{p}_2 = \vect{0}. \]</p>
       <p class="frag">Separando estados inicial y final:
         \[ \vect{p}_{1i} + \vect{p}_{2i} = \vect{p}_{1f} + \vect{p}_{2f} \;\Longrightarrow\; \vect{P}_{\text{total},i} = \vect{P}_{\text{total},f}. \]</p>
@@ -560,6 +584,71 @@ dl.glosa dd{margin:0;font-size:29px}
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orb-p" data-label="Momentum y acción y reacción en la órbita" data-speaker-notes="§ 3.9. Ley de acción y reacción en el código. Experimentos: (a) Tierra libre frente a Tierra fija (sin la reacción −FΔt): con la Tierra fija el momentum total oscila y el período cambia (≈ 27,3 d frente a ≈ 28,0 d); (b) el momentum total es constante para cualquier Δt porque +FΔt y −FΔt se aplican en el mismo paso, mientras que la energía oscila y peor con Δt grande. ↓ revela la conclusión.">
+  <p class="ceja">§ 3.9 · Momentum en la simulación</p>
+  <h2 class="titulo">Acción y reacción, programada: \(\vect{p}_T \leftarrow \vect{p}_T - \vect{F}_L\,\Delta t\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Órbita de la Luna durante dos meses</span><span class="val" id="op-lect"></span></div>
+      <canvas class="lienzo" id="op-cv" width="1000" height="640"></canvas>
+    </figure>
+    <div class="pila op-col">
+      <div class="fila-btn"><span class="sub">Tierra:</span><button type="button" class="btn on" data-tierra="libre">Libre (con reacción)</button><button type="button" class="btn" data-tierra="fija">Fija (sin reacción)</button></div>
+      <label class="ctrl"><span>Paso \(\Delta t\) [h]</span><input type="range" id="op-dt" min="1" max="24" step="1" value="1"><span class="v" id="op-dtv"></span></label>
+      <figure class="svgbox" style="margin:0;padding:8px 12px"><div class="svghd"><span>\(\abs{\vect{P}_{\text{total}}}\) en unidades de \(m_L v_0\)</span><span class="val" id="op-pl"></span></div><div id="op-p"></div></figure>
+      <figure class="svgbox" style="margin:0;padding:8px 12px"><div class="svghd"><span>Energía: \((E - E_0)/\abs{E_0}\)</span><span class="val" id="op-el"></span></div><div id="op-e"></div></figure>
+      <div class="lectura op-lec" style="grid-template-columns:1fr 1fr;margin-top:0"><div>Período medido<b id="op-T"></b></div><div>¿Quién sujeta a la Tierra?<b id="op-q"></b></div></div>
+      <div class="caja frag" style="padding:5px 14px"><p style="margin:0;font-size:23px"><strong>Momentum para validar, energía para medir.</strong> Con la Tierra libre, \(\vect{P}_{\text{total}}\) queda fijo en cero con <em>cualquier</em> \(\Delta t\): el código aplica \(+\vect{F}\,\Delta t\) y \(-\vect{F}\,\Delta t\) en el mismo paso, así que conserva el momentum por construcción. La energía, en cambio, oscila más cuanto mayor es \(\Delta t\): mide la precisión, como en el oscilador.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orb-cm" data-label="Centro de masas en la órbita" data-speaker-notes="§ 3.9. Experimentos: (a) si la Tierra arranca en reposo, P_total = m_L v_L y el centro de masas se desplaza a ≈ 13 m/s (≈ 200 000 km en seis meses): en el marco fijo la órbita se estira como un resorte y la flecha muestra V_CM; en el marco del CM el CM está quieto por definición, reaparece la elipse y la trayectoria del laboratorio queda en gris detrás; (b) el baricentro está a ≈ 4400–4700 km del centro de la Tierra, dentro de ella, y la Tierra lo rodea a ≈ 13 m/s: es el bamboleo que, medido por Doppler, revela exoplanetas. ↓ revela 2 pasos.">
+  <p class="ceja">§ 3.9 · Centro de masas en la simulación</p>
+  <h2 class="titulo">La física orbital vive en el marco del centro de masas</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Seis meses de órbita (bamboleo de la Tierra ×10)</span><span class="val" id="oc-lect"></span></div>
+      <canvas class="lienzo" id="oc-cv" width="1140" height="700"></canvas>
+    </figure>
+    <div class="pila oc-col">
+      <div class="fila-btn"><span class="sub">Al inicio:</span><button type="button" class="btn on" data-ini="cero">\(\vect{P}_{\text{total}} = \vect{0}\)</button><button type="button" class="btn" data-ini="reposo">Tierra en reposo</button></div>
+      <div class="fila-btn"><span class="sub">Marco:</span><button type="button" class="btn on" data-marco="fijo">Fijo (laboratorio)</button><button type="button" class="btn" data-marco="cm">Centro de masas</button></div>
+      \[ \vect{r}_{\text{CM}} = \dfrac{M_T\,\vect{r}_T + m_L\,\vect{r}_L}{M_T + m_L}, \qquad \vect{V}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_T + m_L} \]
+      <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0">
+        <div>\(V_{\text{CM}}\) medida en el laboratorio<b id="oc-v"></b></div><div>Deriva del CM en 6 meses (laboratorio)<b id="oc-d"></b></div>
+        <div>Baricentro al centro de la Tierra<b id="oc-b"></b></div><div>Rapidez de la Tierra alrededor del CM<b id="oc-w"></b></div>
+      </div>
+      <div class="caja frag" style="padding:6px 16px"><p style="margin:0;font-size:24px"><strong>El baricentro está dentro de la Tierra</strong> (su radio es de \(\qty{6371}{km}\)): la Tierra no está quieta, da una vuelta mensual a su alrededor a unos \(\qty{13}{m/s}\).</p></div>
+      <div class="caja c2 frag" style="padding:6px 16px"><p style="margin:0;font-size:24px"><strong>Así se descubren exoplanetas.</strong> Ese bamboleo, medido por efecto Doppler (capítulo 2), revela al compañero invisible: Júpiter mueve al Sol unos \(\qty{12{,}5}{m/s}\). Es el método de velocidad radial.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orb-sol" data-label="Tres cuerpos: el sistema aislado" data-speaker-notes="§ 3.9. Extensión: Sol, Tierra y Luna durante un año con el mismo algoritmo. P de Tierra+Luna no se conserva (el Sol es externo): gira 360° al año y su cambio coincide con el impulso del Sol. P de Sol+Tierra+Luna sí se conserva (sistema aislado). El Sol atrae a la Luna ≈ 2,2 veces más que la Tierra, pero para la órbita lunar solo cuenta la diferencia (marea, ≈ 1 %). ↓ revela 2 pasos.">
+  <p class="ceja">§ 3.9 · Extensión: entra el Sol</p>
+  <h2 class="titulo">¿Qué se conserva? Depende de qué llames «sistema»</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span id="ts-hd">Un año visto desde el Sol</span><span class="val" id="ts-lect"></span></div>
+      <canvas class="lienzo" id="ts-cv" width="1000" height="640"></canvas>
+      <div class="fila-btn" style="margin-top:6px"><span class="sub">Vista:</span><button type="button" class="btn on" data-vista="sol">Desde el Sol</button><button type="button" class="btn" data-vista="tierra">La Luna desde la Tierra</button></div>
+    </figure>
+    <div class="pila os-col">
+      <div class="kf" style="padding:4px 16px;font-size:30px">\[ \dfrac{\Delta\vect{P}_{TL}}{\Delta t} = \vect{F}_{S\to T} + \vect{F}_{S\to L} \neq \vect{0}, \qquad \vect{P}_S + \vect{P}_T + \vect{P}_L = \text{cte.} \]</div>
+      <figure class="svgbox" style="margin:0;padding:8px 12px"><div class="svghd"><span>Componente \(x\) del momentum \((10^{29}\,\mathrm{kg\,m/s})\)</span><span class="val" id="ts-pl"></span></div><div id="ts-p"></div>
+        <div class="os-ley"><span class="l-tl">Tierra + Luna</span><span class="l-s">Sol</span><span class="l-t">Sol + Tierra + Luna</span></div></figure>
+      <div class="lectura" style="grid-template-columns:1fr 1fr 1fr;margin-top:0">
+        <div>Impulso del Sol vs \(\Delta\vect{P}_{TL}\)<b id="ts-imp"></b></div>
+        <div>\(F_{S\to L}/F_{T\to L}\)<b id="ts-ratio"></b></div>
+        <div>Marea / \(F_{T\to L}\)<b id="ts-marea"></b></div>
+      </div>
+      <div class="caja frag" style="padding:5px 14px"><p style="margin:0;font-size:23px"><strong>Tierra + Luna no es un sistema aislado:</strong> su momentum gira una vuelta al año y cambia exactamente según el impulso del Sol. <strong>Sol + Tierra + Luna sí lo es:</strong> lo que pierde uno lo gana otro y el total no se mueve.</p></div>
+      <div class="caja c2 frag" style="padding:5px 14px"><p style="margin:0;font-size:23px">El Sol atrae a la Luna <strong>más que la Tierra</strong>, pero acelera a ambas casi igual: caen juntas hacia él. Para la órbita lunar solo cuenta la diferencia, la <strong>marea</strong>, del orden del 1 %: deforma y hace girar lentamente la elipse lunar.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- ═════════════ §6 · PRÁCTICA ═════════════ -->
 <section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica" data-speaker-notes="Cuatro preguntas; el marcador está en la ceja.">
   <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
@@ -584,7 +673,7 @@ dl.glosa dd{margin:0;font-size:29px}
         <div class="pr-fb" data-ok-txt="Sí: la primera bola se detiene y cede todo su momento." data-mal-txt="Sustituye m₁ = m₂ en v₁f = (m₁ − m₂)/(m₁ + m₂)·v₁i."></div>
       </div>
       <div class="pr-item" data-ok-num="12.566" data-tol="0.05">
-        <div class="pr-q">4. Período \(T = 2\pi\sqrt{m/k}\) con \(m = \qty{4}{kg}\) y \(k = \qty{1}{N/m}\). Escribe \(T\) en segundos y pulsa Enter.</div>
+        <div class="pr-q">4. Período \(T = 2\pi\sqrt{m/k}\) con \(m = \qty{4}{kg}\) y \(k = \qty{1}{N/m}\). Escribe \(T\) en segundos y presiona Enter.</div>
         <div class="fila-btn"><input class="pr-in" type="text" placeholder="T ="><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
         <div class="pr-pista">\(\sqrt{4/1} = 2\), así que \(T = 4\pi\).</div>
         <div class="pr-fb" data-ok-txt="Correcto: T = 4π ≈ 12,57 s." data-mal-txt="Aún no. Calcula √(m/k) y multiplica por 2π."></div>
@@ -595,7 +684,7 @@ dl.glosa dd{margin:0;font-size:29px}
 
 <section class="diapositiva" data-seccion="Práctica" id="dp-reto" data-label="Reto: completa la tabla" data-speaker-notes="Juego: el alumno completa dos pasos de Euler-Cromer con Δt = 0,5 s.">
   <p class="ceja">Reto</p>
-  <h2 class="titulo">Sé el ordenador: dos pasos con \(\Delta t = \qty{0{,}5}{s}\)</h2>
+  <h2 class="titulo">Sé el computador: dos pasos con \(\Delta t = \qty{0{,}5}{s}\)</h2>
   <div class="g2-40">
     <div class="pila">
       <p>Oscilador con \(m = \qty{1}{kg}\), \(k = \qty{1}{N/m}\), \(x_0 = \qty{1}{m}\), \(p_0 = 0\). Aplica
@@ -610,7 +699,7 @@ dl.glosa dd{margin:0;font-size:29px}
         <span>1</span><span>\(0{,}5\)</span><input type="text" data-sol="-0.5"><input type="text" data-sol="0.75">
         <span>2</span><span>\(1\)</span><input type="text" data-sol="-0.875"><input type="text" data-sol="0.3125">
       </div>
-      <div class="fila-btn" style="margin-top:22px"><button type="button" class="cz-btn cz-btn-p" id="cz-ok">Comprobar</button><button type="button" class="cz-btn" id="cz-ver">Ver solución</button><button type="button" class="cz-btn" id="cz-borrar">Borrar</button></div>
+      <div class="fila-btn" style="margin-top:22px"><button type="button" class="cz-btn cz-btn-p" id="cz-ok">Comprobar</button><button type="button" class="cz-btn" id="cz-ver">Ver solución</button><button type="button" class="cz-btn" id="cz-borrar">Borrar</button><button type="button" class="cz-btn" id="cz-auto" title="Escribe en cada casilla el valor correcto">✎ Llenar automáticamente</button></div>
       <div class="cz-fb" id="cz-fb"></div>
       <div class="cz-sol" id="cz-sol" style="display:none">
         \[ \begin{aligned} p_1 &= 0 - (1)(1)(0{,}5) = -0{,}5, & x_1 &= 1 + (-0{,}5)(0{,}5) = 0{,}75, \\ p_2 &= -0{,}5 - (0{,}75)(0{,}5) = -0{,}875, & x_2 &= 0{,}75 + (-0{,}875)(0{,}5) = 0{,}3125. \end{aligned} \]
@@ -624,7 +713,7 @@ dl.glosa dd{margin:0;font-size:29px}
   <h2 class="titulo">Términos del capítulo</h2>
   <dl class="glosa">
     <div><dt>Cantidad de movimiento</dt><dd>\(\vect{p} = \gamma m\vect{v}\); en el límite no relativista, \(\vect{p} = m\vect{v}\).</dd></div>
-    <div><dt>Segunda ley de Newton</dt><dd>La fuerza neta es la tasa de cambio del momento, \(\vect{F} = \Delta\vect{p}/\Delta t\).</dd></div>
+    <div><dt>Ley de la fuerza</dt><dd>\(\vect{F} = \Delta\vect{p}/\Delta t\); con \(\vect{F} = \vect{0}\) incluye la inercia: \(\vect{p}\) no cambia.</dd></div>
     <div><dt>Paso temporal \(\Delta t\)</dt><dd>Intervalo con el que el algoritmo avanza el reloj; controla la precisión.</dd></div>
     <div><dt>Euler-Cromer</dt><dd>Actualiza primero \(p\) con la fuerza y después \(x\) con el \(p\) nuevo; mantiene acotada la energía de las oscilaciones.</dd></div>
     <div><dt>Trabajo</dt><dd>\(W = F\,\Delta x\) para una fuerza constante en la dirección del movimiento; \(W = \Delta K\).</dd></div>
@@ -1473,6 +1562,224 @@ const T_OSC = 2 * Math.PI;
   reinicia(); requestAnimationFrame(bucle);
 })();
 
+/* ═══ ÓRBITA: MOMENTUM Y ACCIÓN Y REACCIÓN ════════════════════════════ */
+const ORB = { G: 6.67430e-11, MT: 5.972e24, mL: 7.342e22, rp: 363296440.0, vp: 1082.4 };
+/* Integra dos meses con Euler-Cromer. fija: sin la reacción −FΔt sobre la Tierra.
+   ini: 'cero' (P_total = 0) o 'reposo' (la Tierra arranca quieta). */
+function orbitaSim(dtH, fija, ini, dias) {
+  const { G, MT, mL, rp, vp } = ORB, M = MT + mL, dt = dtH * 3600, N = Math.ceil((dias || 56) * 24 / dtH);
+  let rL, rT, pL, pT;
+  if (fija) { rT = [0, 0]; rL = [rp, 0]; pL = [0, mL * vp]; pT = [0, 0]; }
+  else if (ini === 'reposo') { rL = [MT / M * rp, 0]; rT = [-mL / M * rp, 0]; pL = [0, mL * vp]; pT = [0, 0]; }
+  else { rL = [MT / M * rp, 0]; rT = [-mL / M * rp, 0]; pL = [0, mL * MT / M * vp]; pT = [0, -mL * MT / M * vp]; }
+  const H = { t: [], rL: [], rT: [], P: [], E: [], T: null };
+  let yPrev = 0, tt = 0;
+  for (let n = 0; n <= N; n++) {
+    const rx = rL[0] - rT[0], ry = rL[1] - rT[1], d = Math.hypot(rx, ry);
+    const K = (pL[0] ** 2 + pL[1] ** 2) / (2 * mL) + (pT[0] ** 2 + pT[1] ** 2) / (2 * MT);
+    H.t.push(tt); H.rL.push(rL.slice()); H.rT.push(rT.slice());
+    H.P.push([pL[0] + pT[0], pL[1] + pT[1]]); H.E.push(K - G * MT * mL / d);
+    if (yPrev < 0 && ry >= 0 && H.T === null) H.T = tt;
+    yPrev = ry;
+    const c = -G * MT * mL / (d * d * d), F = [c * rx, c * ry];
+    pL[0] += F[0] * dt; pL[1] += F[1] * dt;
+    if (!fija) { pT[0] -= F[0] * dt; pT[1] -= F[1] * dt; }
+    rL[0] += pL[0] / mL * dt; rL[1] += pL[1] / mL * dt;
+    rT[0] += pT[0] / MT * dt; rT[1] += pT[1] / MT * dt;
+    tt += dt;
+  }
+  return H;
+}
+/* dibuja trayectorias en un lienzo ajustando la escala a los puntos */
+function lienzoOrbita(cv, trazos, marcas) {
+  const g = cv.getContext('2d'), W = cv.width, Hh = cv.height;
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  trazos.forEach(tr => tr.pts.forEach(p => { x0 = Math.min(x0, p[0]); x1 = Math.max(x1, p[0]); y0 = Math.min(y0, p[1]); y1 = Math.max(y1, p[1]); }));
+  const e = 0.9 * Math.min(W / (x1 - x0), Hh / (y1 - y0)), cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+  const X = x => W / 2 + (x - cx) * e, Y = y => Hh / 2 - (y - cy) * e;
+  g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, Hh);
+  trazos.forEach(tr => {
+    g.strokeStyle = tok(tr.color); g.lineWidth = tr.w || 3; g.setLineDash(tr.dash || []);
+    g.beginPath(); tr.pts.forEach((p, i) => i ? g.lineTo(X(p[0]), Y(p[1])) : g.moveTo(X(p[0]), Y(p[1]))); g.stroke();
+  });
+  g.setLineDash([]);
+  (marcas || []).forEach(m => {
+    g.fillStyle = tok(m.color);
+    if (m.cruz) { g.strokeStyle = tok(m.color); g.lineWidth = 3; g.beginPath(); g.moveTo(X(m.p[0]) - 12, Y(m.p[1])); g.lineTo(X(m.p[0]) + 12, Y(m.p[1])); g.moveTo(X(m.p[0]), Y(m.p[1]) - 12); g.lineTo(X(m.p[0]), Y(m.p[1]) + 12); g.stroke(); }
+    else { g.beginPath(); g.arc(X(m.p[0]), Y(m.p[1]), m.r || 9, 0, 2 * Math.PI); g.fill(); }
+    if (m.flecha) {                       /* flecha en píxeles desde la marca */
+      const x0 = X(m.p[0]), y0 = Y(m.p[1]), x1 = x0 + m.flecha[0], y1 = y0 - m.flecha[1], an = Math.atan2(y1 - y0, x1 - x0);
+      g.strokeStyle = tok(m.color); g.lineWidth = 5; g.beginPath(); g.moveTo(x0, y0); g.lineTo(x1 - 14 * Math.cos(an), y1 - 14 * Math.sin(an)); g.stroke();
+      g.beginPath(); g.moveTo(x1, y1); g.lineTo(x1 - 24 * Math.cos(an - 0.4), y1 - 24 * Math.sin(an - 0.4)); g.lineTo(x1 - 24 * Math.cos(an + 0.4), y1 - 24 * Math.sin(an + 0.4)); g.closePath(); g.fill();
+      if (m.ftxt) { g.font = '700 24px ' + FTXT; g.fillText(m.ftxt, x1 + 10, y1 + 6); }
+    }
+    if (m.txt) { g.font = '600 24px ' + FTXT; g.textAlign = m.izq ? 'right' : 'left'; g.fillText(m.txt, X(m.p[0]) + (m.izq ? -16 : 16), Y(m.p[1]) + (m.izq ? 30 : -12)); g.textAlign = 'left'; }
+  });
+}
+(function () {
+  const cv = document.getElementById('op-cv');
+  if (!cv) return;
+  const rdt = document.getElementById('op-dt');
+  let fija = false, H = null, k = 0, ult = 0;
+  function pinta() {
+    H = orbitaSim(+rdt.value, fija, 'cero'); k = 0;
+    const P0 = ORB.mL * ORB.vp, E0 = H.E[0], dias = H.t.map(t => t / 86400);
+    const Pn = H.P.map(p => Math.hypot(p[0], p[1]) / P0), En = H.E.map(e => (e - E0) / Math.abs(E0));
+    const pMax = Math.max(...Pn), eMax = Math.max(1e-6, ...En.map(Math.abs));
+    const A1 = ejes(document.getElementById('op-p'), { W: 1100, H: 190, x: [0, 56], y: [0, fija ? Math.max(0.1, pMax * 1.1) : 1], xt: [0, 14, 28, 42, 56], yt: fija ? [0, +(pMax / 2).toFixed(2), +pMax.toFixed(2)] : [0, 0.5, 1], fy: v => num(v, 2), m: { l: 90, r: 20, t: 12, b: 44 } });
+    polilinea(A1, dias.map((d, i) => [d, Pn[i]]), 'stroke:var(--res);stroke-width:4');
+    const lim = Math.max(0.001, eMax * 1.15);
+    const A2 = ejes(document.getElementById('op-e'), { W: 1100, H: 190, x: [0, 56], y: [-lim, lim], xt: [0, 14, 28, 42, 56], yt: [-lim, 0, lim].map(v => +v.toPrecision(2)), fy: v => num(v * 100, lim < 0.01 ? 2 : 1) + ' %', m: { l: 110, r: 20, t: 12, b: 44 } });
+    polilinea(A2, dias.map((d, i) => [d, En[i]]), 'stroke:var(--caso2);stroke-width:3');
+    document.getElementById('op-pl').textContent = 'máx. ' + (pMax < 1e-9 ? '< 10⁻⁹' : num(pMax, 3));
+    document.getElementById('op-el').textContent = 'máx. ±' + num(eMax * 100, eMax < 1e-3 ? 3 : 2) + ' %';
+    document.getElementById('op-T').textContent = H.T ? num(H.T / 86400, 2) + ' días' : '—';
+    document.getElementById('op-q').textContent = fija ? 'una fuerza externa' : 'nadie: P se conserva';
+    document.getElementById('op-dtv').textContent = rdt.value + ' h';
+    document.getElementById('op-lect').textContent = fija ? 'Tierra fija: la órbita se agranda y el período crece' : 'Tierra libre';
+    dibuja();
+  }
+  function dibuja() {
+    const tr = [{ pts: H.rL, color: '--res', w: 3 }], mk = [{ p: H.rL[k], color: '--res', txt: 'Luna' }, { p: H.rT[k], color: '--caso1', r: 14, txt: 'Tierra' }];
+    lienzoOrbita(cv, tr, mk);
+  }
+  function bucle(ms) {
+    if (H && activa(cv) && ms - ult > 30) { ult = ms; k = (k + Math.max(1, Math.round(4 / +rdt.value))) % H.t.length; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  $$('#dp-orb-p .btn[data-tierra]').forEach(b => b.addEventListener('click', () => {
+    fija = b.dataset.tierra === 'fija'; $$('#dp-orb-p .btn[data-tierra]').forEach(o => o.classList.toggle('on', o === b)); pinta();
+  }));
+  rdt.addEventListener('input', pinta); pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ÓRBITA: CENTRO DE MASAS ══════════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('oc-cv');
+  if (!cv) return;
+  const DIAS = 180;                         /* seis meses: la deriva del CM se ve a simple vista */
+  let ini = 'cero', marco = 'fijo', H = null, k = 0, ult = 0, V = 0;
+  const { MT, mL } = ORB, M = MT + mL;
+  const cm = (a, b) => [(MT * b[0] + mL * a[0]) / M, (MT * b[1] + mL * a[1]) / M];
+  function pinta() {
+    H = orbitaSim(1, false, ini, DIAS); k = 0;
+    const C = H.rL.map((a, i) => cm(a, H.rT[i]));
+    V = Math.hypot(H.P[0][0], H.P[0][1]) / M;
+    const deriva = Math.hypot(C[C.length - 1][0] - C[0][0], C[C.length - 1][1] - C[0][1]);
+    const dB = H.rT.map((t, i) => Math.hypot(t[0] - C[i][0], t[1] - C[i][1])), vT = [];
+    for (let i = 1; i < H.t.length; i++) vT.push(Math.hypot(H.rT[i][0] - C[i][0] - (H.rT[i - 1][0] - C[i - 1][0]), H.rT[i][1] - C[i][1] - (H.rT[i - 1][1] - C[i - 1][1])) / (H.t[i] - H.t[i - 1]));
+    document.getElementById('oc-v').textContent = num(V, 1) + ' m/s';
+    document.getElementById('oc-d').textContent = deriva < 1 ? '0 km' : num(deriva / 1000, 0) + ' km (' + num(deriva / ORB.rp * 100, 0) + ' % del radio)';
+    document.getElementById('oc-b').textContent = num(Math.min(...dB) / 1000, 0) + '–' + num(Math.max(...dB) / 1000, 0) + ' km';
+    document.getElementById('oc-w').textContent = num(vT.reduce((a, b) => a + b, 0) / vT.length, 1) + ' m/s';
+    H.C = C; rotula(); dibuja();
+  }
+  function rotula() {
+    const lect = marco === 'cm'
+      ? (ini === 'cero' ? 'marco del CM: coincide con el laboratorio (P = 0)' : 'marco del CM: aquí el CM está quieto por definición')
+      : (ini === 'cero' ? 'laboratorio · P = 0: el CM no se mueve' : 'laboratorio · el CM se arrastra con V_CM');
+    document.getElementById('oc-lect').textContent = lect;
+  }
+  function dibuja() {
+    const C = H.C, rel = marco === 'cm';
+    const f = (p, i) => rel ? [p[0] - C[i][0], p[1] - C[i][1]] : p;
+    const tierra = i => { const c = C[i], t = H.rT[i]; return [c[0] + 10 * (t[0] - c[0]), c[1] + 10 * (t[1] - c[1])]; };   /* bamboleo ×10 */
+    const lunaLab = H.rL, terrLab = H.rT.map((_, i) => tierra(i));
+    const luna = lunaLab.map(f), terr = terrLab.map(f), cms = C.map(f);
+    const trazos = [];
+    /* en el marco del CM, la trayectoria del laboratorio queda detrás en gris tenue */
+    if (rel && V > 0.01) trazos.push({ pts: lunaLab, color: '--linea', w: 2 }, { pts: C, color: '--linea', w: 4, dash: [10, 6] });
+    trazos.push({ pts: luna, color: '--res', w: 3 }, { pts: terr, color: '--caso1', w: 3 }, { pts: cms, color: '--caso2', w: 5, dash: [10, 6] });
+    const mCM = { p: cms[k], color: '--caso2', cruz: true, txt: rel && V > 0.01 ? 'CM (quieto en este marco)' : 'CM' };
+    if (!rel && V > 0.01) { mCM.flecha = [0, 110]; mCM.ftxt = 'V_CM = ' + num(V, 1) + ' m/s'; }   /* P_total inicial apunta en +y */
+    const marcas = [{ p: luna[k], color: '--res', txt: 'Luna' }, { p: terr[k], color: '--caso1', r: 14, txt: 'Tierra' }, mCM];
+    if (rel && V > 0.01) marcas.push({ p: C[k], color: '--tinta2', r: 6, txt: 'CM en el laboratorio', izq: true });
+    lienzoOrbita(cv, trazos, marcas);
+  }
+  function bucle(ms) {
+    if (H && activa(cv) && ms - ult > 30) { ult = ms; k = (k + 8) % H.t.length; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  $$('#dp-orb-cm .btn[data-ini]').forEach(b => b.addEventListener('click', () => { ini = b.dataset.ini; $$('#dp-orb-cm .btn[data-ini]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  $$('#dp-orb-cm .btn[data-marco]').forEach(b => b.addEventListener('click', () => { marco = b.dataset.marco; $$('#dp-orb-cm .btn[data-marco]').forEach(o => o.classList.toggle('on', o === b)); rotula(); dibuja(); }));
+  pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ÓRBITA: TRES CUERPOS, EL SISTEMA AISLADO ═══════════════════════ */
+(function () {
+  const cv = document.getElementById('ts-cv');
+  if (!cv) return;
+  const G = ORB.G, MS = 1.98847e30, MT = ORB.MT, mL = ORB.mL, d = 1.496e11, rp = ORB.rp, vp = ORB.vp, M = MT + mL;
+  const dt = 3600, N = Math.round(365.25 * 24);
+  /* el mismo Euler-Cromer, ahora con tres pares de fuerzas; P_total = 0 al inicio */
+  const V = Math.sqrt(G * (MS + M) / d);
+  const r = { S: [0, 0], T: [d - mL / M * rp, 0], L: [d + MT / M * rp, 0] }, m = { S: MS, T: MT, L: mL };
+  const p = { T: [0, MT * (V - mL / M * vp)], L: [0, mL * (V + MT / M * vp)] };
+  p.S = [-(p.T[0] + p.L[0]), -(p.T[1] + p.L[1])];
+  const H = { t: [], S: [], T: [], L: [], PTL: [], PS: [], P: [], rat: [], mar: [] };
+  let imp = [0, 0];
+  const PTL0 = [p.T[0] + p.L[0], p.T[1] + p.L[1]];
+  for (let n = 0; n <= N; n++) {
+    const F = { S: [0, 0], T: [0, 0], L: [0, 0] }, par = {};
+    [['S', 'T'], ['S', 'L'], ['T', 'L']].forEach(([a, b]) => {
+      const dx = r[b][0] - r[a][0], dy = r[b][1] - r[a][1], dd = Math.hypot(dx, dy), c = G * m[a] * m[b] / (dd * dd * dd);
+      F[a][0] += c * dx; F[a][1] += c * dy; F[b][0] -= c * dx; F[b][1] -= c * dy;
+      par[a + b] = [c * dx, c * dy];                     /* fuerza de b sobre a: +; de a sobre b: − */
+    });
+    if (n % 12 === 0) {
+      H.t.push(n * dt / 86400); H.S.push(r.S.slice()); H.T.push(r.T.slice()); H.L.push(r.L.slice());
+      H.PTL.push(p.T[0] + p.L[0]); H.PS.push(p.S[0]); H.P.push(p.S[0] + p.T[0] + p.L[0]);
+      const fSL = Math.hypot(...par.SL), fTL = Math.hypot(...par.TL);
+      /* marea: diferencia entre la aceleración del Sol sobre la Luna y sobre la Tierra */
+      const aL = [-par.SL[0] / mL, -par.SL[1] / mL], aT = [-par.ST[0] / MT, -par.ST[1] / MT];
+      H.rat.push(fSL / fTL); H.mar.push(Math.hypot(aL[0] - aT[0], aL[1] - aT[1]) / (fTL / mL));
+    }
+    if (n === N) break;
+    /* impulso externo sobre Tierra + Luna: la fuerza del Sol */
+    imp[0] += (-par.ST[0] - par.SL[0]) * dt; imp[1] += (-par.ST[1] - par.SL[1]) * dt;
+    ['S', 'T', 'L'].forEach(k => { p[k][0] += F[k][0] * dt; p[k][1] += F[k][1] * dt; });
+    ['S', 'T', 'L'].forEach(k => { r[k][0] += p[k][0] / m[k] * dt; r[k][1] += p[k][1] / m[k] * dt; });
+  }
+  const dPTL = [p.T[0] + p.L[0] - PTL0[0], p.T[1] + p.L[1] - PTL0[1]];
+  const errImp = Math.hypot(dPTL[0] - imp[0], dPTL[1] - imp[1]) / Math.hypot(...PTL0);
+  /* gráfica de las componentes x */
+  const E = 1e29, A = ejes(document.getElementById('ts-p'), { W: 1100, H: 300, x: [0, 365], y: [-2, 2], xt: [0, 91, 182, 274, 365], yt: [-2, -1, 0, 1, 2], fy: v => num(v, 0), xl: '*t* (días)', m: { l: 70, r: 20, t: 12, b: 64 } });
+  polilinea(A, H.t.map((t, i) => [t, H.PS[i] / E]), 'stroke:var(--caso2);stroke-width:4');
+  polilinea(A, H.t.map((t, i) => [t, H.PTL[i] / E]), 'stroke:var(--res);stroke-width:4');
+  polilinea(A, H.t.map((t, i) => [t, H.P[i] / E]), 'stroke:var(--tinta);stroke-width:5');
+  const Pmax = Math.max(...H.P.map(Math.abs)) / Math.hypot(...PTL0);
+  document.getElementById('ts-pl').textContent = 'total: ' + (Pmax < 1e-9 ? '< 10⁻⁹' : num(Pmax, 3)) + ' de |P_TL|';
+  document.getElementById('ts-imp').textContent = 'coinciden (' + (errImp < 1e-9 ? '< 10⁻⁹' : num(errImp, 2)) + ')';
+  const med = a => a.reduce((x, y) => x + y, 0) / a.length;
+  document.getElementById('ts-ratio').textContent = '≈ ' + num(med(H.rat), 2);
+  document.getElementById('ts-marea').textContent = '≈ ' + num(med(H.mar) * 100, 1) + ' %';
+  let vista = 'sol', k = 0, ult = 0;
+  function dibuja() {
+    if (vista === 'sol') {
+      const bar = H.T.map((t, i) => [(MT * t[0] + mL * H.L[i][0]) / M, (MT * t[1] + mL * H.L[i][1]) / M]);
+      const b = bar[k], ang = Math.atan2(H.PTL.length ? 1 : 0, 0);
+      /* flecha: dirección del momentum de Tierra + Luna (tangente a la órbita) */
+      const i2 = Math.min(bar.length - 1, k + 1), i1 = Math.max(0, k - 1), tx = bar[i2][0] - bar[i1][0], ty = bar[i2][1] - bar[i1][1], nn = Math.hypot(tx, ty) || 1;
+      lienzoOrbita(cv, [{ pts: bar, color: '--res', w: 3 }], [
+        { p: H.S[k], color: '--caso2', r: 22, txt: 'Sol' },
+        { p: b, color: '--res', r: 11, txt: 'Tierra + Luna', flecha: [110 * tx / nn, 110 * ty / nn], ftxt: 'P_TL' }]);
+      document.getElementById('ts-hd').textContent = 'Un año visto desde el Sol';
+      document.getElementById('ts-lect').textContent = 'día ' + Math.round(H.t[k]) + ' · P_TL gira con la órbita';
+    } else {
+      const rel = H.L.map((l, i) => [l[0] - H.T[i][0], l[1] - H.T[i][1]]);
+      lienzoOrbita(cv, [{ pts: rel, color: '--res', w: 1.5 }], [{ p: [0, 0], color: '--caso1', r: 16, txt: 'Tierra' }, { p: rel[k], color: '--res', txt: 'Luna' }]);
+      document.getElementById('ts-hd').textContent = 'La Luna vista desde la Tierra durante un año';
+      document.getElementById('ts-lect').textContent = 'la marea del Sol deforma y gira la elipse';
+    }
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 40) { ult = ms; k = (k + 1) % H.t.length; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  $$('#dp-orb-sol .btn[data-vista]').forEach(b => b.addEventListener('click', () => { vista = b.dataset.vista; $$('#dp-orb-sol .btn[data-vista]').forEach(o => o.classList.toggle('on', o === b)); dibuja(); }));
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
 /* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
 (function () {
   const dp = document.getElementById('dp-practica');
@@ -1514,10 +1821,16 @@ const T_OSC = 2 * Math.PI;
       const ok = Math.abs(v - +i.dataset.sol) <= 0.01;
       i.classList.toggle('ok', ok); i.classList.toggle('mal', !ok); if (ok) n++;
     });
-    fbk.textContent = n === ins.length ? '✓ ¡Perfecto! Has ejecutado el algoritmo como el ordenador.' : '✗ ' + n + ' de ' + ins.length + ' casillas correctas. Recuerda: primero p, luego x con el p nuevo.';
+    fbk.textContent = n === ins.length ? '✓ ¡Perfecto! Has ejecutado el algoritmo como el computador.' : '✗ ' + n + ' de ' + ins.length + ' casillas correctas. Recuerda: primero p, luego x con el p nuevo.';
     fbk.style.color = n === ins.length ? 'var(--res)' : 'var(--mal)';
   });
   document.getElementById('cz-ver').addEventListener('click', () => { sol.style.display = sol.style.display === 'block' ? 'none' : 'block'; });
+  document.getElementById('cz-auto').addEventListener('click', () => {
+    ins.forEach(i => { i.value = String(+i.dataset.sol).replace('.', ',').replace('-', '−'); });
+    document.getElementById('cz-ok').click();            /* comprueba y marca en azul */
+    fbk.textContent = '✎ Casillas llenadas automáticamente con los valores correctos. Intenta Borrar y resolverlo tú.';
+    fbk.style.color = 'var(--res)';
+  });
   document.getElementById('cz-borrar').addEventListener('click', () => { ins.forEach(i => { i.value = ''; i.classList.remove('ok', 'mal'); }); fbk.textContent = ''; });
 })();
 
