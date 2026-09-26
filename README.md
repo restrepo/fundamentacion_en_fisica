@@ -99,6 +99,8 @@ skills/
   leccion-a-deck.skill              la misma skill, empaquetada para instalar en Claude
   actualizar-repositorio/           skill que arma el zip de actualización de este repositorio
   actualizar-repositorio.skill
+  boton-formulario/                 skill que agrega a una diapositiva el botón de captura y envío a un formulario de Google
+  boton-formulario.skill
 ```
 
 ## Regenerar una lección
