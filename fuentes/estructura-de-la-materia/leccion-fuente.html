@@ -182,6 +182,21 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .fo-reglas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
 .fo-regla{text-align:center;font:600 20px/1.2 var(--font-body);color:var(--tinta2)}
 .fo-regla svg{max-height:90px}
+/* ── Modelo estándar interactivo ── */
+#me-fig .me-c rect{transition:opacity .25s, stroke-width .25s}
+#me-fig .me-c:hover rect{filter:brightness(1.06)}
+#me-fig svg.me-higgs .me-c{opacity:.18}
+#me-fig svg.me-higgs .me-c.me-masa{opacity:1}
+#me-fig svg.me-higgs .me-c.me-masa rect{stroke:var(--res)!important;stroke-width:6!important}
+#me-fig svg.me-higgs .me-c[data-k="H"]{opacity:1}
+.me-pop{position:absolute;z-index:40;width:560px;padding:20px 26px;font-size:26px;line-height:1.35}
+.me-pop h4{margin:0 34px 8px 0;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.me-pop table{border-collapse:collapse;width:100%}
+.me-pop th{text-align:left;font-weight:600;color:var(--tinta2);padding:3px 14px 3px 0;white-space:nowrap;vertical-align:top}
+.me-pop td{padding:3px 0}
+.me-pop .me-rol{margin:0 0 8px;font-size:25px}
+.me-pop .me-h{margin:10px 0 0;font-size:24px;font-weight:600}
+.me-pop .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
 /* ── Frase clave y mapa de escala ── */
 section.diapositiva > .clave{position:absolute;left:770px;right:170px;bottom:22px;margin:0;font:italic 500 25px/1.2 var(--font-body);color:var(--tinta2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 section.diapositiva > .clave::before{content:'Idea clave · ';font-style:normal;font-weight:700;color:var(--res)}
@@ -1346,19 +1361,23 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <p class="clave">El muón es un electrón pesado que se desintegra en 2 microsegundos.</p>
 </section>
 
-<section class="diapositiva" data-seccion="Débil" id="dp-me" data-label="Modelo estándar">
+<section class="diapositiva compacta" data-seccion="Débil" id="dp-me" data-label="Modelo estándar">
   <p class="ceja">§ 0.10 · Resumen</p>
   <h2 class="titulo">El modelo estándar de las partículas elementales</h2>
-  <div class="g2-60">
-    <img class="foto" style="--fh:660px" src="img/modelo-estandar.webp" alt="Tabla del modelo estándar: leptones, quarks, bosones de gauge y el Higgs">
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.9fr) minmax(0,1fr)">
+    <figure class="svgbox me-caja" style="margin:0;position:relative">
+      <div class="svghd"><span>Toca una partícula · toca el Higgs</span><span class="val" id="me-lect">toca una partícula</span></div>
+      <div id="me-fig" style="max-width:1130px;margin:0 auto"></div>
+      <div class="me-pop popover" id="me-pop" hidden></div>
+    </figure>
     <ul class="lista chico">
       <li class="frag"><strong>Leptones</strong> (\(e, \mu, \tau\) y sus neutrinos): sin color.</li>
-      <li class="frag"><strong>Quarks</strong> (\(u, d, c, s, t, b\)): con color; forman hadrones.</li>
-      <li class="frag"><strong>Campos de radiación</strong>: \(\gamma\) (electromagnético), \(Z\) y \(W\) (débil), \(G\) (gluones, fuerte).</li>
-      <li class="frag"><strong>Higgs</strong> (\(H\)): descubierto en el LHC en 2012; da masa a las partículas elementales, pero no explica el 99 % de la masa del protón.</li>
+      <li class="frag"><strong>Quarks</strong> (\(u, d, c, s, t, b\)): cada uno en tres colores (las copias de detrás); forman hadrones.</li>
+      <li class="frag"><strong>Campos de radiación</strong>: \(\gamma\) (electromagnético), \(Z\) y \(W^{\pm}\) (débil), y los 8 gluones \(G\) (fuerte).</li>
+      <li class="frag"><strong>Higgs</strong> (\(H\)): descubierto en el LHC en 2012; da masa a las partículas elementales (tócalo), pero no explica el 99 % de la masa del protón.</li>
     </ul>
   </div>
-  <p class="clave">Doce partículas de materia, cuatro campos de radiación y el Higgs.</p>
+  <p class="clave">Doce partículas de materia, los campos de radiación y el Higgs.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-xicc" data-label="Protón doblemente encantado">
@@ -3183,6 +3202,153 @@ function burbuja(g, a, b, sab, esc) {
       const t = document.createElement('span'); t.textContent = p[0]; d.appendChild(t);
     });
   }
+})();
+
+/* ═══ MODELO ESTÁNDAR INTERACTIVO ═════════════════════════════════════
+   Cuadrícula como la de la presentación: leptones (arriba), quarks
+   (abajo, con dos copias de color detrás, hacia la izquierda), bosones
+   (γ, Z, W con 2 copias y G con 8 copias hacia la derecha) y el Higgs.
+   Clic en una casilla → ventana con sus propiedades; clic en el Higgs →
+   resalta las partículas que adquieren masa por su interacción con él. */
+(function () {
+  const host = document.getElementById('me-fig');
+  if (!host) return;
+  const caja = host.parentNode, pop = document.getElementById('me-pop');
+  const C = 140, G = 8, X0 = 110, Y0 = 20, DQ = -26, DB = 24;
+  const W_ = 1080, H_ = 660;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W_ + ' ' + H_, class: 'fig', style: 'overflow:visible' }, host);
+  const X = i => X0 + i * (C + G), Y = j => Y0 + j * (C + G);
+  const INT = { f: 'fuerte', e: 'electromagnética', d: 'débil' };
+  /* datos: símbolo (con subíndice tras «_»), nombre, masa, carga, espín, interacciones, descubrimiento, masa por el Higgs */
+  const P = {
+    e:   { s: 'e', n: 'Electrón', m: '0,511 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1897 (J. J. Thomson)', h: 1 },
+    mu:  { s: 'μ', n: 'Muón', m: '105,7 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1936 (rayos cósmicos)', h: 1 },
+    tau: { s: 'τ', n: 'Tau', m: '1777 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1975 (SLAC)', h: 1 },
+    ve:  { s: 'ν_e', n: 'Neutrino electrónico', m: 'menos de 0,45 eV/c² (KATRIN)', q: '0', sp: '½', i: 'd', a: '1956 (Cowan y Reines, reactor)', h: 0 },
+    vm:  { s: 'ν_μ', n: 'Neutrino muónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '1962 (Brookhaven)', h: 0 },
+    vt:  { s: 'ν_τ', n: 'Neutrino tauónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '2000 (DONUT, Fermilab)', h: 0 },
+    u:   { s: 'u', n: 'Quark arriba (up)', m: '2,2 MeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
+    c:   { s: 'c', n: 'Quark encanto (charm)', m: '1,27 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1974 (SLAC y Brookhaven)', h: 1 },
+    t:   { s: 't', n: 'Quark cima (top)', m: '172,6 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1995 (Fermilab)', h: 1 },
+    d:   { s: 'd', n: 'Quark abajo (down)', m: '4,7 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
+    s:   { s: 's', n: 'Quark extraño (strange)', m: '93 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC); extrañeza en 1947', h: 1 },
+    b:   { s: 'b', n: 'Quark fondo (bottom)', m: '4,18 GeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1977 (Fermilab)', h: 1 },
+    g:   { s: 'γ', n: 'Fotón', m: '0', q: '0', sp: '1', i: 'e', a: '1905 (Einstein); 1923 (Compton)', h: 0, rol: 'transporta la interacción electromagnética' },
+    Z:   { s: 'Z', n: 'Bosón Z⁰', m: '91,19 GeV/c²', q: '0', sp: '1', i: 'd', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil sin cambiar la carga' },
+    W:   { s: 'W', n: 'Bosón W', m: '80,37 GeV/c²', q: '±1', sp: '1', i: 'ed', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil y cambia el sabor' },
+    G:   { s: 'G', n: 'Gluón', m: '0', q: '0', sp: '1', i: 'f', a: '1979 (DESY)', h: 0, rol: 'transporta la interacción fuerte; lleva color y anticolor' },
+    H:   { s: 'H', n: 'Bosón de Higgs', m: '125,2 GeV/c²', q: '0', sp: '0', i: 'd', a: '2012 (CERN: ATLAS y CMS)', h: 1 } };
+  const REJ = [['e', 'mu', 'tau'], ['ve', 'vm', 'vt'], ['u', 'c', 't'], ['d', 's', 'b']];
+  const QCOL = { r: ['rojo', 'rgb(246,196,196)', 'rgb(200,60,60)'], g: ['verde', 'rgb(200,236,200)', 'rgb(40,140,70)'], b: ['azul', 'rgb(200,210,246)', 'rgb(60,80,200)'] };
+  const GLU = [['r', 'g', 'rojo-antiverde'], ['r', 'b', 'rojo-antiazul'], ['g', 'r', 'verde-antirrojo'], ['g', 'b', 'verde-antiazul'],
+               ['b', 'r', 'azul-antirrojo'], ['b', 'g', 'azul-antiverde'], ['n1', '', '(rr̄ − gḡ)/√2'], ['n2', '', '(rr̄ + gḡ − 2bb̄)/√6']];
+  const cajas = {};           /* clave → lista de <g> (capas) */
+  const texto = (g, x, y, s, tam, col) => {
+    const t = nodo('text', { x: x, y: y, 'text-anchor': 'middle', 'font-size': tam, style: 'fill:' + col + ';font-family:' + FMATH + ';font-style:' + (/^[a-zA-Z]/.test(s) ? 'italic' : 'normal') + ';pointer-events:none' }, g);
+    const [a, b] = s.split('_'); nodo('tspan', { txt: a }, t);
+    if (b) nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '60%', txt: b }, t);
+    return t;
+  };
+  function casilla(clave, x, y, relleno, borde, tinta, extra) {
+    const g = nodo('g', { class: 'me-c', 'data-k': clave, style: 'cursor:pointer' }, svg);
+    nodo('rect', { x: x, y: y, width: C, height: C, rx: 6, style: 'fill:' + relleno + ';stroke:' + borde + ';stroke-width:2.5' + (extra || '') }, g);
+    (cajas[clave] = cajas[clave] || []).push(g);
+    return g;
+  }
+  /* quarks: dos capas de color detrás (azul y roja), la verde al frente */
+  ['r', 'b'].forEach((col, k) => {
+    const dx = DQ * (2 - k);
+    REJ.slice(2).forEach((fila, j) => fila.forEach((q, i) => {
+      const g = casilla(q, X(i) + dx, Y(j + 2), QCOL[col][1], QCOL[col][2]);
+      g.dataset.capa = col;
+    }));
+  });
+  /* leptones y quarks al frente */
+  REJ.forEach((fila, j) => fila.forEach((q, i) => {
+    const lep = j < 2, g = casilla(q, X(i), Y(j), lep ? 'rgb(214,212,246)' : QCOL.g[1], lep ? 'rgb(120,110,200)' : QCOL.g[2]);
+    if (!lep) g.dataset.capa = 'g';
+    texto(g, X(i) + C / 2, Y(j) + C / 2 + 24, P[q].s, 68, lep ? 'rgb(40,30,90)' : 'rgb(20,110,50)');
+  }));
+  /* bosones: capas hacia la derecha (de la más lejana a la frontal) */
+  const OR = 'rgb(247,166,72)', ORB = 'rgb(200,110,20)', ORT = 'rgb(120,40,0)';
+  const capasB = { W: [['−', 'W⁻']], G: GLU.slice(1).reverse() };
+  ['W', 'G'].forEach(k => {
+    const j = k === 'W' ? 2 : 3, L = capasB[k];
+    L.forEach((c, idx) => {
+      const n = L.length - idx, x = X(3) + DB * n, g = casilla(k, x, Y(j), OR, ORB);
+      g.dataset.capa = k === 'W' ? 'W-' : String(GLU.length - 1 - idx + 0);
+      if (k === 'W') nodo('text', { x: x + C - 11, y: Y(j) + 30, 'text-anchor': 'middle', 'font-size': 20, style: 'fill:' + ORT + ';font-weight:700;pointer-events:none;font-family:' + FTXT, txt: '−' }, g);
+      else {
+        const c1 = c[0], c2 = c[1];
+        if (QCOL[c1]) { nodo('circle', { cx: x + C - 12, cy: Y(j) + 22, r: 7, style: 'fill:' + QCOL[c1][2] }, g); nodo('circle', { cx: x + C - 12, cy: Y(j) + 42, r: 6, style: 'fill:#fff;stroke:' + QCOL[c2][2] + ';stroke-width:3' }, g); }
+        else ['r', 'g', 'b'].forEach((cc, m) => nodo('circle', { cx: x + C - 12, cy: Y(j) + 18 + 14 * m, r: 5, style: 'fill:' + QCOL[cc][2] + ';opacity:.8' }, g));
+      }
+    });
+  });
+  [['g', 0], ['Z', 1], ['W', 2], ['G', 3]].forEach(b => {
+    const g = casilla(b[0], X(3), Y(b[1]), OR, ORB);
+    if (b[0] === 'W') g.dataset.capa = 'W+';
+    if (b[0] === 'G') { g.dataset.capa = '0'; nodo('circle', { cx: X(3) + C - 18, cy: Y(3) + 22, r: 8, style: 'fill:' + QCOL.r[2] }, g); nodo('circle', { cx: X(3) + C - 18, cy: Y(3) + 44, r: 7, style: 'fill:#fff;stroke:' + QCOL.g[2] + ';stroke-width:3' }, g); }
+    texto(g, X(3) + C / 2, Y(b[1]) + C / 2 + 24, P[b[0]].s + (b[0] === 'W' ? '⁺' : ''), 68, ORT);
+  });
+  const xH = X(4) + DB * 7 + 26;
+  const gH = casilla('H', xH, Y(3), 'rgb(252,230,200)', 'rgb(130,30,20)', null, ';stroke-dasharray:12 8;stroke-width:4');
+  texto(gH, xH + C / 2, Y(3) + C / 2 + 24, 'H', 68, 'rgb(130,30,20)');
+  /* rótulos de grupo */
+  const rot = (x, y, t, rotar) => nodo('text', { x: x, y: y, 'text-anchor': 'middle', 'font-size': 24, transform: rotar ? 'rotate(-90 ' + x + ' ' + y + ')' : '', style: 'fill:var(--tinta2);font-weight:700;letter-spacing:.06em;font-family:' + FTXT, txt: t }, svg);
+  rot(28, Y(1), 'LEPTONES', true); rot(28, Y(3), 'QUARKS', true);
+  rot(X(3) + C / 2 + 60, Y0 + 4 * (C + G) + 24, 'RADIACIÓN'); rot(xH + C / 2, Y(3) - 16, 'HIGGS');
+  ['1.ª', '2.ª', '3.ª'].forEach((t, i) => rot(X(i) + C / 2, Y0 + 4 * (C + G) + 24, t + ' fam.'));
+
+  /* ── ventana de propiedades ── */
+  let higgs = false;
+  function cierra() { pop.hidden = true; }
+  function nombreCapa(k, capa) {
+    if (['u', 'c', 't', 'd', 's', 'b'].indexOf(k) >= 0) return 'color ' + QCOL[capa][0];
+    if (k === 'W') return capa === 'W-' ? 'W⁻, carga −1' : 'W⁺, carga +1';
+    if (k === 'G') return 'gluón ' + GLU[+capa][2] + ' (' + (+capa + 1) + ' de 8)';
+    return '';
+  }
+  function abre(k, capa, g) {
+    const p = P[k], cl = nombreCapa(k, capa);
+    const fil = [['Masa', p.m], ['Carga eléctrica', p.q], ['Espín', p.sp], ['Interacciones', p.i.split('').map(c => INT[c]).join(', ')], ['Descubierta', p.a]];
+    if (['u', 'c', 't', 'd', 's', 'b'].indexOf(k) >= 0) fil.splice(3, 0, ['Color', 'rojo, verde o azul (3 copias)']);
+    if (k === 'G') fil.splice(3, 0, ['Color', 'un color y un anticolor (8 copias)']);
+    if (k === 'W') fil.splice(3, 0, ['Copias', 'W⁺ y W⁻']);
+    let h = '<button type="button" class="cerrar" aria-label="Cerrar">×</button><h4>' + p.n + (cl ? ' · <span style="font-weight:600">' + cl + '</span>' : '') + '</h4>';
+    if (p.rol) h += '<p class="me-rol">' + p.rol.charAt(0).toUpperCase() + p.rol.slice(1) + '.</p>';
+    h += '<table>' + fil.map(f => '<tr><th>' + f[0] + '</th><td>' + f[1] + '</td></tr>').join('') + '</table>';
+    h += '<p class="me-h">' + (k === 'H' ? 'Toca el Higgs de nuevo para quitar el resaltado.'
+      : p.h ? '✓ Adquiere su masa por la interacción con el Higgs.'
+      : k.charAt(0) === 'v' ? '✗ No la obtiene del Higgs en el modelo estándar: el origen de su pequeña masa es una pregunta abierta.'
+      : '✗ Sin masa: no interactúa con el Higgs.') + '</p>';
+    pop.innerHTML = h; pop.style.width = k === 'H' ? '460px' : ''; pop.hidden = false;
+    pop.querySelector('.cerrar').addEventListener('click', cierra);
+    /* posición junto a la casilla, en px del lienzo */
+    const k_ = host.offsetWidth / W_, r = g.querySelector('rect'), x = (+r.getAttribute('x') + C) * k_ + host.offsetLeft, y = +r.getAttribute('y') * k_ + host.offsetTop;
+    const ancho = pop.offsetWidth, alto = pop.offsetHeight;
+    let px = x + 14; if (px + ancho > caja.offsetWidth - 10) px = (+r.getAttribute('x')) * k_ + host.offsetLeft - ancho - 14;
+    if (k === 'H') { pop.style.left = (caja.offsetWidth - ancho - 10) + 'px'; pop.style.top = '56px'; return; }   /* no tapar lo resaltado */
+    pop.style.left = Math.max(10, px) + 'px';
+    pop.style.top = Math.max(10, Math.min(y, caja.offsetHeight - alto - 10)) + 'px';
+  }
+  function resaltaHiggs(on) {
+    higgs = on;
+    svg.classList.toggle('me-higgs', on);
+    Object.keys(cajas).forEach(k => cajas[k].forEach(g => g.classList.toggle('me-masa', on && P[k].h === 1)));
+    document.getElementById('me-lect').textContent = on ? 'resaltadas: adquieren masa por el Higgs' : 'toca una partícula';
+  }
+  svg.addEventListener('click', ev => {
+    const g = ev.target.closest('.me-c');
+    if (!g) { cierra(); return; }
+    const k = g.dataset.k;
+    if (k === 'H') resaltaHiggs(!higgs);
+    abre(k, g.dataset.capa, g);
+    ev.stopPropagation();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cierra(); });
+  document.addEventListener('slidechange', () => { cierra(); resaltaHiggs(false); });
+  caja.addEventListener('click', ev => { if (!ev.target.closest('.me-pop') && !ev.target.closest('.me-c')) cierra(); });
 })();
 
 </script>
