@@ -178,6 +178,25 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .de-pasos .paso .op{font:600 26px/1 var(--font-body);color:var(--caso2)}
 .de-pasos .paso.fin{color:var(--res);font-weight:700}
 
+/* ── Reglas de Feynman de la QCD (leyenda de las fotos) ── */
+.fo-reglas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.fo-regla{text-align:center;font:600 20px/1.2 var(--font-body);color:var(--tinta2)}
+.fo-regla svg{max-height:90px}
+/* ── Modelo estándar interactivo ── */
+#me-fig .me-c rect{transition:opacity .25s, stroke-width .25s}
+#me-fig .me-c:hover rect{filter:brightness(1.06)}
+#me-fig svg.me-higgs .me-c{opacity:.18}
+#me-fig svg.me-higgs .me-c.me-masa{opacity:1}
+#me-fig svg.me-higgs .me-c.me-masa rect{stroke:var(--res)!important;stroke-width:6!important}
+#me-fig svg.me-higgs .me-c[data-k="H"]{opacity:1}
+.me-pop{position:absolute;z-index:40;width:560px;padding:20px 26px;font-size:26px;line-height:1.35}
+.me-pop h4{margin:0 34px 8px 0;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.me-pop table{border-collapse:collapse;width:100%}
+.me-pop th{text-align:left;font-weight:600;color:var(--tinta2);padding:3px 14px 3px 0;white-space:nowrap;vertical-align:top}
+.me-pop td{padding:3px 0}
+.me-pop .me-rol{margin:0 0 8px;font-size:25px}
+.me-pop .me-h{margin:10px 0 0;font-size:24px;font-weight:600}
+.me-pop .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
 /* ── Frase clave y mapa de escala ── */
 section.diapositiva > .clave{position:absolute;left:770px;right:170px;bottom:22px;margin:0;font:italic 500 25px/1.2 var(--font-body);color:var(--tinta2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 section.diapositiva > .clave::before{content:'Idea clave · ';font-style:normal;font-weight:700;color:var(--res)}
@@ -1134,10 +1153,119 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
     <div class="pila">
       <div class="caja"><p class="chico" style="margin:0">El protón pesa unas diez veces lo que un pión (\(m_\pi \approx \qty{140}{MeV/c^{2}}\)): su masa la fija la energía del «mar» de gluones y pares quark-antiquark.</p></div>
       <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>Construye tu protón:</strong> <a class="enl" href="https://bit.ly/miproton" target="_blank" rel="noopener">bit.ly/miproton</a></p></div>
-      <figure class="fg frag"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:300px" src="img/netflix-3body.webp" alt="Escena de una serie de Netflix"></a><figcaption>Escena de una serie de Netflix sobre el protón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
     </div>
   </div>
   <p class="clave">Dentro del protón hay un mar de gluones y pares quark-antiquark.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-camiseta" data-label="Reglas que caben en una camiseta">
+  <p class="ceja">§ 0.9 · El protón por dentro</p>
+  <h2 class="titulo">Reglas que caben en una camiseta…</h2>
+  <div class="kf" style="font-size:46px">\[ \mathcal{L}_{\text{QCD}} = -\tfrac14\, G^{a}_{\mu\nu} G^{a\,\mu\nu} + \sum_{q} \bar q\,\big(i\gamma^{\mu} D_{\mu} - m_q\big)\, q \]</div>
+  <div class="g2" style="margin-top:18px">
+    <div class="pila">
+      <p class="nota">No hace falta entender los símbolos <span class="prop" data-pop="pop-qcd">(qué dice cada parte)</span>: el punto es que toda la interacción fuerte cabe en una línea.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Ingredientes:</strong> seis masas de quarks y una sola constante de acoplamiento. Nada más.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">En la tienda del CERN venden tazas con la ecuación completa del modelo estándar. La del protón es solo una parte.</p></div>
+    </div>
+    <div class="pila">
+      <p class="chico frag"><strong>…y un protón que no cabe en ninguna computadora.</strong></p>
+      <table class="tabla frag"><tr><th style="text-align:left">Año</th><th style="text-align:left">Hito</th></tr>
+        <tr><td class="izq">1973</td><td class="izq">Se escribe la teoría (QCD). Nobel 2004.</td></tr>
+        <tr><td class="izq">1974</td><td class="izq">Wilson propone calcularla con computadoras (QCD en red), pero no alcanzan.</td></tr>
+        <tr><td class="izq">2008</td><td class="izq">Supercomputadoras obtienen la masa del protón con un error del 2 %.</td></tr></table>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Treinta y cinco años para ir de una línea de reglas a un solo número del protón: así de complicado es el objeto que producen.</p></div>
+    </div>
+  </div>
+  <p class="clave">Reglas simplísimas producen el objeto más complicado que conocemos.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-fotos" data-label="Fotografías de un protón">
+  <p class="ceja">§ 0.9 · El protón por dentro</p>
+  <h2 class="titulo">Fotografías de un protón: nunca salen dos iguales</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cada foto muestra una configuración posible</span><span class="val" id="fo-lect"></span></div>
+      <div id="fo-fig" style="max-width:520px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="fo-foto">📷 Tomar una foto</button><button type="button" class="btn" id="fo-diez">Tomar 10</button><button type="button" class="btn" id="fo-borrar">Empezar de nuevo</button></div>
+      <label class="ctrl"><span>Energía de la sonda</span><input type="range" id="fo-r" min="0" max="3" step="1" value="1"><span class="v" id="fo-rv"></span></label>
+    </figure>
+    <div class="pila">
+      <div class="lectura l1"><div>Esta foto · fotos tomadas / distintas: <b style="display:inline;font-size:26px" id="fo-cuenta"></b><b class="peq" id="fo-conf" style="font-size:26px"></b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Cada foto combina cuatro reglas de Feynman de la QCD, sin líneas sueltas. Las combinaciones posibles <strong>no tienen límite</strong>.</p><div class="fo-reglas" id="fo-reglas"></div></div>
+            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
+    </div>
+  </div>
+  <p class="clave">El protón es una superposición de infinitas configuraciones a la vez.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
+  <p class="ceja">§ 0.9 · Superposición cuántica</p>
+  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
+      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
+      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
+    </div>
+  </div>
+  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
+  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
+  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
+      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
+    </div>
+  </div>
+  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-sofon" data-label="El sofón de «El problema de los tres cuerpos»">
+  <p class="ceja">§ 0.9 · Ciencia ficción</p>
+  <h2 class="titulo">«El problema de los tres cuerpos»: el sofón</h2>
+  <div class="g2">
+    <figure class="fg"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:480px" src="img/netflix-3body.webp" alt="Escena de la serie «El problema de los tres cuerpos» de Netflix"></a><figcaption>Escena de la serie de Netflix en la que se explica el sofón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
+    <div class="pila">
+      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas de las diapositivas anteriores.</p>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Por qué es imposible</strong>, entre otras razones:</p>
+        <ul class="lista chico" style="margin-top:8px">
+          <li>El entrelazamiento no transmite información: los resultados son al azar (teorema de no comunicación).</li>
+          <li>Un protón no se «despliega»: su estructura la fija la interacción fuerte y no se puede reprogramar.</li>
+        </ul></div>
+      <p class="chico frag">Pero la pregunta de fondo es real: ¿qué hay dentro de un protón? Es de las más difíciles de la física.</p>
+    </div>
+  </div>
+  <p class="clave">La ficción exagera, pero parte de preguntas reales sobre el protón.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-proton-abierto" data-label="Lo que aún no entendemos del protón">
+  <p class="ceja">§ 0.9 · Preguntas abiertas</p>
+  <h2 class="titulo">Lo que aún no entendemos del protón</h2>
+  <div class="g2">
+    <div class="caja frag"><h3>¿De dónde sale su espín?</h3><p class="chico" style="margin:0">Se esperaba que lo dieran los quarks, pero aportan solo cerca de un 30 % (la «crisis del espín», 1987). El resto: gluones y movimiento orbital.</p></div>
+    <div class="caja c1 frag"><h3>¿Por qué los quarks no escapan?</h3><p class="chico" style="margin:0">Nunca se ha visto un quark aislado (confinamiento). La pregunta matemática de fondo es uno de los siete Problemas del Milenio, con premio de un millón de dólares.</p></div>
+    <div class="caja c2 frag"><h3>¿Qué tamaño tiene?</h3><p class="chico" style="margin:0">En 2010, el hidrógeno con un muón dio un radio de 0,84 fm, más pequeño que el aceptado. Las medidas más recientes apoyan ese valor.</p></div>
+    <div class="caja frag"><h3>¿Es eterno?</h3><p class="chico" style="margin:0">Algunas teorías predicen que se desintegra. Super-Kamiokande lo busca: si ocurre, su vida media supera \(10^{34}\) años.</p></div>
+  </div>
+  <p class="chico frag" style="margin-top:18px">El Colisionador Electrón-Ión (EIC), en construcción en Brookhaven (EE. UU.), se diseñó para «fotografiar» los gluones del protón.</p>
+  <p class="clave">Aún no sabemos del todo cómo funciona el protón.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-lhc" data-label="El LHC">
@@ -1233,19 +1361,23 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <p class="clave">El muón es un electrón pesado que se desintegra en 2 microsegundos.</p>
 </section>
 
-<section class="diapositiva" data-seccion="Débil" id="dp-me" data-label="Modelo estándar">
+<section class="diapositiva compacta" data-seccion="Débil" id="dp-me" data-label="Modelo estándar">
   <p class="ceja">§ 0.10 · Resumen</p>
   <h2 class="titulo">El modelo estándar de las partículas elementales</h2>
-  <div class="g2-60">
-    <img class="foto" style="--fh:660px" src="img/modelo-estandar.webp" alt="Tabla del modelo estándar: leptones, quarks, bosones de gauge y el Higgs">
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.9fr) minmax(0,1fr)">
+    <figure class="svgbox me-caja" style="margin:0;position:relative">
+      <div class="svghd"><span>Toca una partícula · toca el Higgs</span><span class="val" id="me-lect">toca una partícula</span></div>
+      <div id="me-fig" style="max-width:1130px;margin:0 auto"></div>
+      <div class="me-pop popover" id="me-pop" hidden></div>
+    </figure>
     <ul class="lista chico">
       <li class="frag"><strong>Leptones</strong> (\(e, \mu, \tau\) y sus neutrinos): sin color.</li>
-      <li class="frag"><strong>Quarks</strong> (\(u, d, c, s, t, b\)): con color; forman hadrones.</li>
-      <li class="frag"><strong>Campos de radiación</strong>: \(\gamma\) (electromagnético), \(Z\) y \(W\) (débil), \(G\) (gluones, fuerte).</li>
-      <li class="frag"><strong>Higgs</strong> (\(H\)): descubierto en el LHC en 2012; da masa a las partículas elementales, pero no explica el 99 % de la masa del protón.</li>
+      <li class="frag"><strong>Quarks</strong> (\(u, d, c, s, t, b\)): cada uno en tres colores (las copias de detrás); forman hadrones.</li>
+      <li class="frag"><strong>Campos de radiación</strong>: \(\gamma\) (electromagnético), \(Z\) y \(W^{\pm}\) (débil), y los 8 gluones \(G\) (fuerte).</li>
+      <li class="frag"><strong>Higgs</strong> (\(H\)): descubierto en el LHC en 2012; da masa a las partículas elementales (tócalo), pero no explica el 99 % de la masa del protón.</li>
     </ul>
   </div>
-  <p class="clave">Doce partículas de materia, cuatro campos de radiación y el Higgs.</p>
+  <p class="clave">Doce partículas de materia, los campos de radiación y el Higgs.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-xicc" data-label="Protón doblemente encantado">
@@ -1575,6 +1707,9 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
 <div class="pop-src" id="pop-lazos" style="display:none"><h4>La serie de la QED</h4><p>\(\dfrac{g}{2} - 1 = \sum_n A_n \Big(\dfrac{\alpha}{\pi}\Big)^{n}\), con \(A_1 = \tfrac12\), \(A_2 \approx -0{,}328\), \(A_3 \approx 1{,}181\), \(A_4 \approx -1{,}912\), \(A_5 \approx 6{,}74\) y \(\alpha^{-1} = 137{,}035\,999\,2\). El término de cinco lazos requirió calcular 12 672 diagramas.</p></div>
 <div class="pop-src" id="pop-osc" style="display:none"><h4>Probabilidad de oscilación</h4><p>Con dos sabores, \(P(\nu_\mu\to\nu_\tau) = \sin^{2}2\theta\,\sin^{2}\!\big(1{,}27\,\Delta m^{2} L/E\big)\), con \(\Delta m^{2} = \qty{2{,}5\times 10^{-3}}{eV^2}\) (diferencia de masas al cuadrado), \(L\) en km y \(E\) en GeV. Si los neutrinos no tuvieran masa, \(\Delta m^{2} = 0\) y no oscilarían.</p></div>
 <div class="pop-src" id="pop-isospin" style="display:none"><h4>Isospín débil</h4><p>La interacción débil agrupa las partículas en parejas: \((u, d)\) y \((\nu_e, e)\). El \(W\) convierte el miembro de arriba en el de abajo y viceversa, cambiando la carga en una unidad, como un «espín» que apunta arriba o abajo. Por eso un \(d\) se vuelve \(u\) y aparece un par \(e^{-}\bar\nu_e\).</p></div>
+<div class="pop-src" id="pop-qcd" style="display:none"><h4>La ecuación de la interacción fuerte</h4><p>\(G^{a}_{\mu\nu}\): el campo de los ocho gluones (\(a = 1, \ldots, 8\)); el primer término es su energía e incluye que los gluones interactúan entre sí. \(q\): los campos de los seis quarks (\(u, d, s, c, t, b\)), cada uno en tres colores, con masas \(m_q\). \(D_\mu\) contiene el acoplamiento de los quarks con los gluones, con una sola constante \(g_s\).</p></div>
+<div class="pop-src" id="pop-necker" style="display:none"><h4>¿En qué falla la analogía?</h4><p>En el cubo de Necker solo hay dos lecturas y la «superposición» ocurre en nuestra mente. En un sistema cuántico cada posibilidad tiene una amplitud, un número complejo, y las amplitudes pueden <strong>interferir</strong>: sumarse o cancelarse, como las ondas. Eso no tiene equivalente en el cubo.</p></div>
+<div class="pop-src" id="pop-bell" style="display:none"><h4>¿Cómo se sabe que no son instrucciones?</h4><p>Dos cubos que ya «supieran» desde el principio qué mostrar también coincidirían siempre. La diferencia aparece al mirarlos de formas distintas (por ejemplo, midiendo la polarización de dos fotones con ángulos distintos): la mecánica cuántica predice más coincidencias de las que permite cualquier plan de instrucciones escritas de antemano (Bell, 1964), y los experimentos lo confirman.</p></div>
 <div class="pop-src" id="pop-exc" style="display:none"><h4>Excitación de un campo</h4><p>En su estado de mínima energía (el vacío) un campo solo tiene fluctuaciones. Si recibe energía, la toma en paquetes discretos, cuantos. Un paquete localizado viaja como una unidad: eso es lo que llamamos partícula.</p></div>
 <div class="pop-src" id="pop-rep" style="display:none"><h4>Representación irreducible</h4><p>Wigner (1939): una partícula se clasifica por cómo se transforma bajo las simetrías del espacio-tiempo (traslaciones, rotaciones, cambios de velocidad). Lo que no cambia son sus etiquetas: la masa y el espín.</p></div>
 <div class="pop-src" id="pop-fer" style="display:none"><h4>Fermiones</h4><p>Partículas de espín semientero (\(\tfrac12\), \(\tfrac32\)…): electrones, protones, neutrones, neutrinos. Obedecen el principio de exclusión. Los de espín entero, como el fotón, son bosones y sí pueden acumularse en un mismo estado.</p></div>
@@ -2828,6 +2963,392 @@ function zonaEM(l) {                       /* l en metros */
     txt(s, 30, 44, 18, 'Fermilab'); txt(s, 500, 212, 18, 'argón líquido, 1,5 km bajo tierra', { 'text-anchor': 'end' }); txt(s, 260, 124, 20, '1300 km', { 'text-anchor': 'middle' });
     txt(s, 500, 44, 18, 'Dakota del Sur', { 'text-anchor': 'end' });
   }
+})();
+
+/* ═══ CUBO DE NECKER: dibujo con tres estados ═════════════════════════ */
+function cuboNecker(host) {
+  const svg = nodo('svg', { viewBox: '0 0 520 460', class: 'fig' }, host);
+  const g = nodo('g', {}, svg);
+  const x = 90, y = 170, s = 230, d = 110;
+  const A = [[x, y + s], [x + s, y + s], [x + s, y], [x, y]], B = A.map(p => [p[0] + d, p[1] - d]);
+  const aristas = [[A[0], A[1]], [A[1], A[2]], [A[2], A[3]], [A[3], A[0]], [B[0], B[1]], [B[1], B[2]], [B[2], B[3]], [B[3], B[0]], [A[0], B[0]], [A[1], B[1]], [A[2], B[2]], [A[3], B[3]]];
+  const oculta = { sale: [[B[0], B[1]], [B[0], B[3]], [B[0], A[0]]], entra: [[A[2], A[1]], [A[2], A[3]], [A[2], B[2]]] };
+  const igual = (e, f) => (e[0] === f[0] && e[1] === f[1]) || (e[0] === f[1] && e[1] === f[0]);
+  const rot = nodo('text', { x: 260, y: 448, 'text-anchor': 'middle', 'font-size': 30, style: 'font-weight:700;font-family:' + FTXT }, svg);
+  function pinta(est) {
+    g.innerHTML = '';
+    if (est) {
+      const cara = est === 'sale' ? A : B;
+      nodo('polygon', { points: cara.map(p => p.join(',')).join(' '), style: 'fill:var(--res-50);opacity:.9' }, g);
+    }
+    aristas.forEach(e => {
+      const esc = est && oculta[est].some(f => igual(e, f));
+      nodo('line', { x1: e[0][0], y1: e[0][1], x2: e[1][0], y2: e[1][1], style: 'stroke:var(' + (esc ? '--proy' : '--tinta') + ');stroke-width:' + (esc ? 3 : 6) + ';stroke-linecap:round' + (esc ? ';stroke-dasharray:10 9' : '') }, g);
+    });
+    rot.textContent = est === 'sale' ? 'sale' : est === 'entra' ? 'entra' : 'sale y entra (superposición)';
+    rot.style.fill = est ? 'var(--res)' : 'var(--tinta2)';
+  }
+  /* parpadeo entre las dos lecturas antes de quedar en una */
+  function colapsa(est, listo) {
+    let k = 0;
+    const paso = () => { if (k < 7) { pinta(k % 2 ? 'entra' : 'sale'); k++; setTimeout(paso, 70); } else { pinta(est); if (listo) listo(); } };
+    paso();
+  }
+  pinta(null);
+  return { pinta: pinta, colapsa: colapsa };
+}
+const alAzar = () => (Math.random() < 0.5 ? 'sale' : 'entra');
+
+(function () {
+  const host = document.getElementById('ne-fig');
+  if (!host) return;
+  const c = cuboNecker(host);
+  let ns = 0, ne = 0;
+  const cuenta = () => { document.getElementById('ne-s').textContent = ns; document.getElementById('ne-e').textContent = ne; };
+  document.getElementById('ne-medir').addEventListener('click', () => {
+    const r = alAzar(); c.colapsa(r, () => { if (r === 'sale') ns++; else ne++; cuenta(); document.getElementById('ne-lect').textContent = 'medido: ' + r; });
+  });
+  document.getElementById('ne-cien').addEventListener('click', () => {
+    let r = 'sale'; for (let k = 0; k < 100; k++) { r = alAzar(); if (r === 'sale') ns++; else ne++; }
+    c.pinta(r); cuenta(); document.getElementById('ne-lect').textContent = 'cerca de mitad y mitad';
+  });
+  document.getElementById('ne-sup').addEventListener('click', () => { c.pinta(null); document.getElementById('ne-lect').textContent = 'superposición'; });
+  document.getElementById('ne-lect').textContent = 'superposición';
+})();
+
+(function () {
+  const ha = document.getElementById('en-a'), hb = document.getElementById('en-b');
+  if (!ha) return;
+  const a = cuboNecker(ha), b = cuboNecker(hb);
+  let pares = 0, iguales = 0, sa = 0, ea = 0, medido = false;
+  const cuenta = () => {
+    document.getElementById('en-ig').textContent = iguales + ' de ' + pares;
+    document.getElementById('en-ab').textContent = sa + ' / ' + ea;
+  };
+  const nuevo = () => { a.pinta(null); b.pinta(null); medido = false; document.getElementById('en-lect').textContent = 'par entrelazado, sin medir'; };
+  document.getElementById('en-mira').addEventListener('click', () => {
+    if (medido) nuevo();
+    const r = alAzar(); medido = true;
+    a.colapsa(r, () => { b.pinta(r); pares++; iguales++; if (r === 'sale') sa++; else ea++; cuenta(); document.getElementById('en-lect').textContent = 'A ' + r + ' ⇒ B ' + r; });
+  });
+  document.getElementById('en-par').addEventListener('click', nuevo);
+  document.getElementById('en-cien').addEventListener('click', () => {
+    let r = 'sale'; for (let k = 0; k < 100; k++) { r = alAzar(); pares++; iguales++; if (r === 'sale') sa++; else ea++; }
+    a.pinta(r); b.pinta(r); medido = true; cuenta(); document.getElementById('en-lect').textContent = '100 % de coincidencias';
+  });
+  nuevo();
+})();
+
+/* ═══ FOTOGRAFÍAS DE UN PROTÓN ════════════════════════════════════════
+   Cada foto es un diagrama de vacío de la QCD, sin patas externas:
+   · de cada quark de valencia (u, u, d) sale exactamente un gluón;
+   · los gluones se unen en vértices de 3 (T) o de 4 (F) gluones;
+   · un gluón puede abrirse en un par quark-antiquark y cerrarse (P).
+   Grafo: nodos V (grado 1), T (3), F (4), P (2); aristas = gluones. Se
+   arma un árbol que conecta todo y los extremos libres restantes se
+   emparejan al azar, sin lazos sobre un mismo nodo. */
+const Q_COL = { r: 'rgb(214,40,40)', g: 'rgb(30,150,70)', b: 'rgb(40,80,220)' };
+const Q_MAR = 'rgb(46,170,120)', Q_ANTI = 'rgb(110,95,200)';
+function muelle(g, p, q, opts) {
+  const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy) || 1, n = Math.max(3, Math.round(L / (opts && opts.paso || 13)));
+  const ux = -dy / L, uy = dx / L, tx = dx / L, ty = dy / L, A = opts && opts.amp || 8, pts = [];
+  for (let k = 0; k <= n * 10; k++) {
+    const t = k / (n * 10), a = 2 * Math.PI * n * t, env = Math.min(1, t * n, (1 - t) * n);
+    pts.push((p[0] + dx * t + env * (ux * A * Math.sin(a) - tx * A * 0.9 * (Math.cos(a) - 1) * 0.5)).toFixed(1) + ',' + (p[1] + dy * t + env * (uy * A * Math.sin(a) - ty * A * 0.9 * (Math.cos(a) - 1) * 0.5)).toFixed(1));
+  }
+  nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:' + (opts && opts.col || 'var(--tinta)') + ';stroke-width:' + (opts && opts.w || 2.6) + ';stroke-linejoin:round' }, g);
+}
+/* burbuja de polarización del vacío: dos arcos finos con el quark y el antiquark */
+function burbuja(g, a, b, sab, esc) {
+  const e = esc || 1, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, h = 15 * e;
+  [1, -1].forEach(s => nodo('path', { d: 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' Q ' + (mx + s * 2 * h * nx).toFixed(1) + ' ' + (my + s * 2 * h * ny).toFixed(1) + ' ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1), style: 'fill:none;stroke:var(--tinta);stroke-width:1.6' }, g));
+  [[1, Q_MAR, sab], [-1, Q_ANTI, sab + '̄']].forEach(c => {
+    const x = mx + c[0] * h * nx, y = my + c[0] * h * ny;
+    nodo('circle', { cx: x, cy: y, r: 11 * e, style: 'fill:' + c[1] + ';stroke:var(--papel);stroke-width:2' }, g);
+    if (sab) nodo('text', { x: x, y: y + 5 * e, 'text-anchor': 'middle', 'font-size': 14 * e, style: 'fill:#fff;font-weight:700;pointer-events:none;font-family:' + FTXT, txt: c[2] }, g);
+  });
+}
+(function () {
+  const host = document.getElementById('fo-fig');
+  if (!host) return;
+  const NIV = ['baja', 'media', 'alta', 'muy alta'];
+  const PAR = [{ t: 0, f: 0, p: 0 }, { t: 1.2, f: 0.8, p: 1.2 }, { t: 3.5, f: 2, p: 3 }, { t: 6.5, f: 3.5, p: 6 }];
+  const rr = document.getElementById('fo-r');
+  const svg = nodo('svg', { viewBox: '60 20 520 520', class: 'fig' }, host);
+  const cx = 320, cy = 280, RP = 255;
+  const vistas = new Set(); let fotos = 0;
+  const poisson = l => { let k = 0, p = 1; const L = Math.exp(-l); do { k++; p *= Math.random(); } while (p > L); return k - 1; };
+  const mezcla = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const sabor = res => { const u = Math.random(); return u < 0.4 ? 'u' : u < 0.8 ? 'd' : (res === 3 && u > 0.95) ? 'c' : 's'; };
+
+  /* grafo: devuelve { nodos:[{tipo}], aristas:[[i,j]] } o null si hay que repetir */
+  function grafo(T, F, P) {
+    const nodos = [], gr = { V: 1, T: 3, F: 4, P: 2 };
+    const fondo = mezcla([].concat(Array(T).fill('T'), Array(F).fill('F')));
+    const medio = Array(P).fill('P');
+    const orden = [fondo[0]].concat(mezcla(fondo.slice(1).concat(medio)), ['V', 'V', 'V']);
+    orden.forEach(t => nodos.push({ tipo: t, libres: gr[t] }));
+    const aristas = [];
+    for (let i = 1; i < nodos.length; i++) {
+      const cand = []; for (let j = 0; j < i; j++) if (nodos[j].libres > 0) cand.push(j);
+      if (!cand.length) return null;
+      const j = cand[Math.floor(Math.random() * cand.length)];
+      aristas.push([j, i]); nodos[j].libres--; nodos[i].libres--;
+    }
+    const cabos = []; nodos.forEach((n, i) => { for (let k = 0; k < n.libres; k++) cabos.push(i); });
+    for (let intento = 0; intento < 60; intento++) {
+      mezcla(cabos); let ok = true; const extra = [];
+      for (let k = 0; k < cabos.length; k += 2) {
+        const a = cabos[k], b = cabos[k + 1];
+        if (a === b) { ok = false; break; }
+        if ((nodos[a].tipo === 'P' || nodos[b].tipo === 'P') && aristas.concat(extra).some(e => (e[0] === a && e[1] === b) || (e[0] === b && e[1] === a))) { ok = false; break; }
+        extra.push([a, b]);
+      }
+      if (ok) return { nodos: nodos, aristas: aristas.concat(extra) };
+    }
+    return null;
+  }
+
+  /* disposición por fuerzas (Fruchterman–Reingold) dentro del círculo */
+  function disponer(G) {
+    const N = G.nodos.length, K = 0.95 * Math.sqrt(Math.PI * 205 * 205 / N);
+    const pos = G.nodos.map(() => { const a = Math.random() * 2 * Math.PI, r = 40 + Math.random() * 160; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
+    const IT = 500;
+    for (let it = 0; it < IT; it++) {
+      const d = pos.map(() => [0, 0]), temp = 45 * (1 - it / IT) + 0.5;
+      for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+        const dx = pos[i][0] - pos[j][0], dy = pos[i][1] - pos[j][1], r = Math.max(Math.hypot(dx, dy), 4);
+        const f = K * K / r * (G.nodos[i].tipo === 'V' && G.nodos[j].tipo === 'V' ? 2.5 : 1);
+        d[i][0] += f * dx / r; d[i][1] += f * dy / r; d[j][0] -= f * dx / r; d[j][1] -= f * dy / r;
+      }
+      G.aristas.forEach(e => {
+        const dx = pos[e[0]][0] - pos[e[1]][0], dy = pos[e[0]][1] - pos[e[1]][1], r = Math.max(Math.hypot(dx, dy), 4), f = r * r / K;
+        d[e[0]][0] -= f * dx / r; d[e[0]][1] -= f * dy / r; d[e[1]][0] += f * dx / r; d[e[1]][1] += f * dy / r;
+      });
+      for (let i = 0; i < N; i++) {
+        d[i][0] -= 0.9 * (pos[i][0] - cx); d[i][1] -= 0.9 * (pos[i][1] - cy);   /* gravedad suave hacia el centro */
+        const m = Math.hypot(d[i][0], d[i][1]) || 1, s_ = Math.min(m, temp);
+        pos[i][0] += d[i][0] / m * s_; pos[i][1] += d[i][1] / m * s_;
+        const R = G.nodos[i].tipo === 'V' ? 200 : 212, dx = pos[i][0] - cx, dy = pos[i][1] - cy, r = Math.hypot(dx, dy);
+        if (r > R) { pos[i][0] = cx + dx * R / r; pos[i][1] = cy + dy * R / r; }
+      }
+    }
+    return pos;
+  }
+
+  function foto() {
+    const res = +rr.value, q = PAR[res];
+    let G = null, T, F, P;
+    for (let k = 0; k < 40 && !G; k++) { T = 2 * poisson(q.t / 2) + 1; F = poisson(q.f); P = poisson(q.p); G = grafo(T, F, P); }
+    if (!G) return;
+    const pos = disponer(G), sab = G.nodos.map(n => n.tipo === 'P' ? sabor(res) : '');
+    svg.innerHTML = '';
+    const def = nodo('defs', {}, svg), gr = nodo('radialGradient', { id: 'fo-grad', cx: '38%', cy: '35%', r: '70%' }, def);
+    nodo('stop', { offset: '0%', style: 'stop-color:var(--papel)' }, gr); nodo('stop', { offset: '100%', style: 'stop-color:var(--caso2-50)' }, gr);
+    nodo('circle', { cx: cx, cy: cy, r: RP, style: 'fill:url(#fo-grad);stroke:var(--caso2);stroke-width:3' }, svg);
+    const g = nodo('g', {}, svg);
+    /* extremos de cada burbuja: uno hacia cada vecino */
+    const extremo = {};
+    G.nodos.forEach((n, i) => {
+      if (n.tipo !== 'P') return;
+      const vec = G.aristas.filter(e => e[0] === i || e[1] === i).map(e => e[0] === i ? e[1] : e[0]);
+      const a = pos[vec[0]], b = pos[vec[1]], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, s = 30;
+      extremo[i + ':' + vec[0]] = [pos[i][0] - s * dx / L, pos[i][1] - s * dy / L];
+      extremo[i + ':' + vec[1]] = [pos[i][0] + s * dx / L, pos[i][1] + s * dy / L];
+      n.lente = [extremo[i + ':' + vec[0]], extremo[i + ':' + vec[1]]];
+    });
+    const punta = (i, j) => G.nodos[i].tipo === 'P' ? extremo[i + ':' + j] : pos[i];
+    G.aristas.forEach(e => muelle(g, punta(e[0], e[1]), punta(e[1], e[0]), { amp: 9, paso: 13, w: 3 }));
+    G.nodos.forEach((n, i) => { if (n.tipo === 'P') burbuja(g, n.lente[0], n.lente[1], sab[i], 1.35); });
+    G.nodos.forEach((n, i) => { if (n.tipo === 'T' || n.tipo === 'F') nodo('circle', { cx: pos[i][0], cy: pos[i][1], r: 3.5, style: 'fill:var(--tinta)' }, g); });
+    const cols = mezcla(['r', 'g', 'b']), letras = ['u', 'u', 'd']; let k = 0;
+    G.nodos.forEach((n, i) => {
+      if (n.tipo !== 'V') return;
+      nodo('circle', { cx: pos[i][0], cy: pos[i][1], r: 26, style: 'fill:' + Q_COL[cols[k]] + ';stroke:var(--papel);stroke-width:3' }, g);
+      nodo('text', { x: pos[i][0], y: pos[i][1] + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: letras[k] }, g);
+      k++;
+    });
+    const pares = sab.filter(Boolean).sort(), ng = G.aristas.length;
+    const firma = G.aristas.map(e => [G.nodos[e[0]].tipo, G.nodos[e[1]].tipo].sort().join('')).sort().join(',');
+    vistas.add(T + '|' + F + '|' + pares.join('') + '|' + firma); fotos++;
+    const trozos = ['uud'];
+    trozos.push(ng + (ng === 1 ? ' gluón' : ' gluones'));
+    trozos.push(T + (T === 1 ? ' vértice' : ' vértices') + ' de 3 gluones');
+    if (F) trozos.push(F + ' de 4');
+    if (P) trozos.push(P + (P === 1 ? ' par' : ' pares') + ' (' + pares.map(f => f + f + '̄').join(', ') + ')');
+    document.getElementById('fo-conf').textContent = trozos.join(' · ');
+    document.getElementById('fo-cuenta').textContent = fotos + ' / ' + vistas.size;
+    document.getElementById('fo-lect').textContent = 'resolución ' + NIV[res];
+  }
+  const borrar = () => { vistas.clear(); fotos = 0; foto(); };
+  document.getElementById('fo-foto').addEventListener('click', foto);
+  document.getElementById('fo-diez').addEventListener('click', () => { for (let k = 0; k < 10; k++) foto(); });
+  document.getElementById('fo-borrar').addEventListener('click', borrar);
+  rr.addEventListener('input', () => { document.getElementById('fo-rv').textContent = NIV[+rr.value]; borrar(); });
+  document.getElementById('fo-rv').textContent = NIV[+rr.value];
+  foto();
+
+  /* leyenda: las reglas de Feynman que se combinan */
+  const ley = document.getElementById('fo-reglas');
+  if (ley) {
+    const piezas = [
+      ['quark de valencia', s => { muelle(s, [52, 50], [150, 50], { amp: 7, paso: 11 }); nodo('circle', { cx: 40, cy: 50, r: 20, style: 'fill:' + Q_COL.r }, s); nodo('text', { x: 40, y: 58, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: 'u' }, s); }],
+      ['3 gluones', s => { [[20, 90], [150, 90], [85, 10]].forEach(p => muelle(s, [85, 60], p, { amp: 6, paso: 10 })); nodo('circle', { cx: 85, cy: 60, r: 4, style: 'fill:var(--tinta)' }, s); }],
+      ['4 gluones', s => { [[20, 12], [150, 12], [20, 92], [150, 92]].forEach(p => muelle(s, [85, 52], p, { amp: 6, paso: 10 })); nodo('circle', { cx: 85, cy: 52, r: 4, style: 'fill:var(--tinta)' }, s); }],
+      ['par quark-antiquark', s => { muelle(s, [4, 52], [50, 52], { amp: 6, paso: 10 }); muelle(s, [120, 52], [166, 52], { amp: 6, paso: 10 }); burbuja(s, [50, 52], [120, 52], 'u', 1); }]];
+    piezas.forEach(p => {
+      const d = document.createElement('div'); d.className = 'fo-regla'; ley.appendChild(d);
+      const s = nodo('svg', { viewBox: '0 0 170 104', class: 'fig' }, d); p[1](s);
+      const t = document.createElement('span'); t.textContent = p[0]; d.appendChild(t);
+    });
+  }
+})();
+
+/* ═══ MODELO ESTÁNDAR INTERACTIVO ═════════════════════════════════════
+   Cuadrícula como la de la presentación: leptones (arriba), quarks
+   (abajo, con dos copias de color detrás, hacia la izquierda), bosones
+   (γ, Z, W con 2 copias y G con 8 copias hacia la derecha) y el Higgs.
+   Clic en una casilla → ventana con sus propiedades; clic en el Higgs →
+   resalta las partículas que adquieren masa por su interacción con él. */
+(function () {
+  const host = document.getElementById('me-fig');
+  if (!host) return;
+  const caja = host.parentNode, pop = document.getElementById('me-pop');
+  const C = 140, G = 8, X0 = 110, Y0 = 20, DQ = -26, DB = 24;
+  const W_ = 1080, H_ = 660;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W_ + ' ' + H_, class: 'fig', style: 'overflow:visible' }, host);
+  const X = i => X0 + i * (C + G), Y = j => Y0 + j * (C + G);
+  const INT = { f: 'fuerte', e: 'electromagnética', d: 'débil' };
+  /* datos: símbolo (con subíndice tras «_»), nombre, masa, carga, espín, interacciones, descubrimiento, masa por el Higgs */
+  const P = {
+    e:   { s: 'e', n: 'Electrón', m: '0,511 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1897 (J. J. Thomson)', h: 1 },
+    mu:  { s: 'μ', n: 'Muón', m: '105,7 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1936 (rayos cósmicos)', h: 1 },
+    tau: { s: 'τ', n: 'Tau', m: '1777 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1975 (SLAC)', h: 1 },
+    ve:  { s: 'ν_e', n: 'Neutrino electrónico', m: 'menos de 0,45 eV/c² (KATRIN)', q: '0', sp: '½', i: 'd', a: '1956 (Cowan y Reines, reactor)', h: 0 },
+    vm:  { s: 'ν_μ', n: 'Neutrino muónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '1962 (Brookhaven)', h: 0 },
+    vt:  { s: 'ν_τ', n: 'Neutrino tauónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '2000 (DONUT, Fermilab)', h: 0 },
+    u:   { s: 'u', n: 'Quark arriba (up)', m: '2,2 MeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
+    c:   { s: 'c', n: 'Quark encanto (charm)', m: '1,27 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1974 (SLAC y Brookhaven)', h: 1 },
+    t:   { s: 't', n: 'Quark cima (top)', m: '172,6 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1995 (Fermilab)', h: 1 },
+    d:   { s: 'd', n: 'Quark abajo (down)', m: '4,7 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
+    s:   { s: 's', n: 'Quark extraño (strange)', m: '93 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC); extrañeza en 1947', h: 1 },
+    b:   { s: 'b', n: 'Quark fondo (bottom)', m: '4,18 GeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1977 (Fermilab)', h: 1 },
+    g:   { s: 'γ', n: 'Fotón', m: '0', q: '0', sp: '1', i: 'e', a: '1905 (Einstein); 1923 (Compton)', h: 0, rol: 'transporta la interacción electromagnética' },
+    Z:   { s: 'Z', n: 'Bosón Z⁰', m: '91,19 GeV/c²', q: '0', sp: '1', i: 'd', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil sin cambiar la carga' },
+    W:   { s: 'W', n: 'Bosón W', m: '80,37 GeV/c²', q: '±1', sp: '1', i: 'ed', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil y cambia el sabor' },
+    G:   { s: 'G', n: 'Gluón', m: '0', q: '0', sp: '1', i: 'f', a: '1979 (DESY)', h: 0, rol: 'transporta la interacción fuerte; lleva color y anticolor' },
+    H:   { s: 'H', n: 'Bosón de Higgs', m: '125,2 GeV/c²', q: '0', sp: '0', i: 'd', a: '2012 (CERN: ATLAS y CMS)', h: 1 } };
+  const REJ = [['e', 'mu', 'tau'], ['ve', 'vm', 'vt'], ['u', 'c', 't'], ['d', 's', 'b']];
+  const QCOL = { r: ['rojo', 'rgb(246,196,196)', 'rgb(200,60,60)'], g: ['verde', 'rgb(200,236,200)', 'rgb(40,140,70)'], b: ['azul', 'rgb(200,210,246)', 'rgb(60,80,200)'] };
+  const GLU = [['r', 'g', 'rojo-antiverde'], ['r', 'b', 'rojo-antiazul'], ['g', 'r', 'verde-antirrojo'], ['g', 'b', 'verde-antiazul'],
+               ['b', 'r', 'azul-antirrojo'], ['b', 'g', 'azul-antiverde'], ['n1', '', '(rr̄ − gḡ)/√2'], ['n2', '', '(rr̄ + gḡ − 2bb̄)/√6']];
+  const cajas = {};           /* clave → lista de <g> (capas) */
+  const texto = (g, x, y, s, tam, col) => {
+    const t = nodo('text', { x: x, y: y, 'text-anchor': 'middle', 'font-size': tam, style: 'fill:' + col + ';font-family:' + FMATH + ';font-style:' + (/^[a-zA-Z]/.test(s) ? 'italic' : 'normal') + ';pointer-events:none' }, g);
+    const [a, b] = s.split('_'); nodo('tspan', { txt: a }, t);
+    if (b) nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '60%', txt: b }, t);
+    return t;
+  };
+  function casilla(clave, x, y, relleno, borde, tinta, extra) {
+    const g = nodo('g', { class: 'me-c', 'data-k': clave, style: 'cursor:pointer' }, svg);
+    nodo('rect', { x: x, y: y, width: C, height: C, rx: 6, style: 'fill:' + relleno + ';stroke:' + borde + ';stroke-width:2.5' + (extra || '') }, g);
+    (cajas[clave] = cajas[clave] || []).push(g);
+    return g;
+  }
+  /* quarks: dos capas de color detrás (azul y roja), la verde al frente */
+  ['r', 'b'].forEach((col, k) => {
+    const dx = DQ * (2 - k);
+    REJ.slice(2).forEach((fila, j) => fila.forEach((q, i) => {
+      const g = casilla(q, X(i) + dx, Y(j + 2), QCOL[col][1], QCOL[col][2]);
+      g.dataset.capa = col;
+    }));
+  });
+  /* leptones y quarks al frente */
+  REJ.forEach((fila, j) => fila.forEach((q, i) => {
+    const lep = j < 2, g = casilla(q, X(i), Y(j), lep ? 'rgb(214,212,246)' : QCOL.g[1], lep ? 'rgb(120,110,200)' : QCOL.g[2]);
+    if (!lep) g.dataset.capa = 'g';
+    texto(g, X(i) + C / 2, Y(j) + C / 2 + 24, P[q].s, 68, lep ? 'rgb(40,30,90)' : 'rgb(20,110,50)');
+  }));
+  /* bosones: capas hacia la derecha (de la más lejana a la frontal) */
+  const OR = 'rgb(247,166,72)', ORB = 'rgb(200,110,20)', ORT = 'rgb(120,40,0)';
+  const capasB = { W: [['−', 'W⁻']], G: GLU.slice(1).reverse() };
+  ['W', 'G'].forEach(k => {
+    const j = k === 'W' ? 2 : 3, L = capasB[k];
+    L.forEach((c, idx) => {
+      const n = L.length - idx, x = X(3) + DB * n, g = casilla(k, x, Y(j), OR, ORB);
+      g.dataset.capa = k === 'W' ? 'W-' : String(GLU.length - 1 - idx + 0);
+      if (k === 'W') nodo('text', { x: x + C - 11, y: Y(j) + 30, 'text-anchor': 'middle', 'font-size': 20, style: 'fill:' + ORT + ';font-weight:700;pointer-events:none;font-family:' + FTXT, txt: '−' }, g);
+      else {
+        const c1 = c[0], c2 = c[1];
+        if (QCOL[c1]) { nodo('circle', { cx: x + C - 12, cy: Y(j) + 22, r: 7, style: 'fill:' + QCOL[c1][2] }, g); nodo('circle', { cx: x + C - 12, cy: Y(j) + 42, r: 6, style: 'fill:#fff;stroke:' + QCOL[c2][2] + ';stroke-width:3' }, g); }
+        else ['r', 'g', 'b'].forEach((cc, m) => nodo('circle', { cx: x + C - 12, cy: Y(j) + 18 + 14 * m, r: 5, style: 'fill:' + QCOL[cc][2] + ';opacity:.8' }, g));
+      }
+    });
+  });
+  [['g', 0], ['Z', 1], ['W', 2], ['G', 3]].forEach(b => {
+    const g = casilla(b[0], X(3), Y(b[1]), OR, ORB);
+    if (b[0] === 'W') g.dataset.capa = 'W+';
+    if (b[0] === 'G') { g.dataset.capa = '0'; nodo('circle', { cx: X(3) + C - 18, cy: Y(3) + 22, r: 8, style: 'fill:' + QCOL.r[2] }, g); nodo('circle', { cx: X(3) + C - 18, cy: Y(3) + 44, r: 7, style: 'fill:#fff;stroke:' + QCOL.g[2] + ';stroke-width:3' }, g); }
+    texto(g, X(3) + C / 2, Y(b[1]) + C / 2 + 24, P[b[0]].s + (b[0] === 'W' ? '⁺' : ''), 68, ORT);
+  });
+  const xH = X(4) + DB * 7 + 26;
+  const gH = casilla('H', xH, Y(3), 'rgb(252,230,200)', 'rgb(130,30,20)', null, ';stroke-dasharray:12 8;stroke-width:4');
+  texto(gH, xH + C / 2, Y(3) + C / 2 + 24, 'H', 68, 'rgb(130,30,20)');
+  /* rótulos de grupo */
+  const rot = (x, y, t, rotar) => nodo('text', { x: x, y: y, 'text-anchor': 'middle', 'font-size': 24, transform: rotar ? 'rotate(-90 ' + x + ' ' + y + ')' : '', style: 'fill:var(--tinta2);font-weight:700;letter-spacing:.06em;font-family:' + FTXT, txt: t }, svg);
+  rot(28, Y(1), 'LEPTONES', true); rot(28, Y(3), 'QUARKS', true);
+  rot(X(3) + C / 2 + 60, Y0 + 4 * (C + G) + 24, 'RADIACIÓN'); rot(xH + C / 2, Y(3) - 16, 'HIGGS');
+  ['1.ª', '2.ª', '3.ª'].forEach((t, i) => rot(X(i) + C / 2, Y0 + 4 * (C + G) + 24, t + ' fam.'));
+
+  /* ── ventana de propiedades ── */
+  let higgs = false;
+  function cierra() { pop.hidden = true; }
+  function nombreCapa(k, capa) {
+    if (['u', 'c', 't', 'd', 's', 'b'].indexOf(k) >= 0) return 'color ' + QCOL[capa][0];
+    if (k === 'W') return capa === 'W-' ? 'W⁻, carga −1' : 'W⁺, carga +1';
+    if (k === 'G') return 'gluón ' + GLU[+capa][2] + ' (' + (+capa + 1) + ' de 8)';
+    return '';
+  }
+  function abre(k, capa, g) {
+    const p = P[k], cl = nombreCapa(k, capa);
+    const fil = [['Masa', p.m], ['Carga eléctrica', p.q], ['Espín', p.sp], ['Interacciones', p.i.split('').map(c => INT[c]).join(', ')], ['Descubierta', p.a]];
+    if (['u', 'c', 't', 'd', 's', 'b'].indexOf(k) >= 0) fil.splice(3, 0, ['Color', 'rojo, verde o azul (3 copias)']);
+    if (k === 'G') fil.splice(3, 0, ['Color', 'un color y un anticolor (8 copias)']);
+    if (k === 'W') fil.splice(3, 0, ['Copias', 'W⁺ y W⁻']);
+    let h = '<button type="button" class="cerrar" aria-label="Cerrar">×</button><h4>' + p.n + (cl ? ' · <span style="font-weight:600">' + cl + '</span>' : '') + '</h4>';
+    if (p.rol) h += '<p class="me-rol">' + p.rol.charAt(0).toUpperCase() + p.rol.slice(1) + '.</p>';
+    h += '<table>' + fil.map(f => '<tr><th>' + f[0] + '</th><td>' + f[1] + '</td></tr>').join('') + '</table>';
+    h += '<p class="me-h">' + (k === 'H' ? 'Toca el Higgs de nuevo para quitar el resaltado.'
+      : p.h ? '✓ Adquiere su masa por la interacción con el Higgs.'
+      : k.charAt(0) === 'v' ? '✗ No la obtiene del Higgs en el modelo estándar: el origen de su pequeña masa es una pregunta abierta.'
+      : '✗ Sin masa: no interactúa con el Higgs.') + '</p>';
+    pop.innerHTML = h; pop.style.width = k === 'H' ? '460px' : ''; pop.hidden = false;
+    pop.querySelector('.cerrar').addEventListener('click', cierra);
+    /* posición junto a la casilla, en px del lienzo */
+    const k_ = host.offsetWidth / W_, r = g.querySelector('rect'), x = (+r.getAttribute('x') + C) * k_ + host.offsetLeft, y = +r.getAttribute('y') * k_ + host.offsetTop;
+    const ancho = pop.offsetWidth, alto = pop.offsetHeight;
+    let px = x + 14; if (px + ancho > caja.offsetWidth - 10) px = (+r.getAttribute('x')) * k_ + host.offsetLeft - ancho - 14;
+    if (k === 'H') { pop.style.left = (caja.offsetWidth - ancho - 10) + 'px'; pop.style.top = '56px'; return; }   /* no tapar lo resaltado */
+    pop.style.left = Math.max(10, px) + 'px';
+    pop.style.top = Math.max(10, Math.min(y, caja.offsetHeight - alto - 10)) + 'px';
+  }
+  function resaltaHiggs(on) {
+    higgs = on;
+    svg.classList.toggle('me-higgs', on);
+    Object.keys(cajas).forEach(k => cajas[k].forEach(g => g.classList.toggle('me-masa', on && P[k].h === 1)));
+    document.getElementById('me-lect').textContent = on ? 'resaltadas: adquieren masa por el Higgs' : 'toca una partícula';
+  }
+  svg.addEventListener('click', ev => {
+    const g = ev.target.closest('.me-c');
+    if (!g) { cierra(); return; }
+    const k = g.dataset.k;
+    if (k === 'H') resaltaHiggs(!higgs);
+    abre(k, g.dataset.capa, g);
+    ev.stopPropagation();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cierra(); });
+  document.addEventListener('slidechange', () => { cierra(); resaltaHiggs(false); });
+  caja.addEventListener('click', ev => { if (!ev.target.closest('.me-pop') && !ev.target.closest('.me-c')) cierra(); });
 })();
 
 </script>
