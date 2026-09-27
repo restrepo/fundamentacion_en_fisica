@@ -28,9 +28,10 @@ superior por secciones · clic en el contador para saltar a un número.
 
 ### Capítulo 0 · Estructura de la materia
 
-69 diapositivas en doce bloques, a partir de las presentaciones del curso
-(con sus imágenes): el universo (escalas, historia térmica, líneas de
-Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
+73 diapositivas en doce bloques, a partir de las presentaciones del curso
+(con sus imágenes): el universo (escalas, historia térmica, expansión con
+la ley de Hubble, materia oscura con curvas de rotación, energía oscura y
+el contenido del universo, líneas de Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
 Meissner, campos complejos, oscilaciones de neutrinos, el fotón en el Sol);
 átomos y dispersión; detectores de neutrinos; antimateria (AMS-02 y la
 estimación de positrones); interacción (campos cuánticos, intercambio,
@@ -40,7 +41,7 @@ luz (conversor de energía del fotón, transiciones del hidrógeno); unidades
 naturales); quarks (escala nuclear, el fotón como carga-anticarga, masa emergente, un constructor de
 bariones con espín, color y Pauli, gluones, hadrones y el LHC); interacción
 débil (espectro beta de dos y tres cuerpos, $W$ y $Z$, muón, modelo estándar
-y el $\Xi_{cc}^{+}$); álgebra (preámbulo matemático con frutas: paréntesis,
+y el $\Xi_{cc}^{+}$, y las preguntas abiertas); álgebra (preámbulo matemático con frutas: paréntesis,
 $(a+b)^2$ como áreas, simplificación, recíproco, propiedad distributiva y un
 despeje de variables paso a paso); y práctica: reto, tres cuestionarios y
 dos glosarios.
