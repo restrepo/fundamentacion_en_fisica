@@ -178,6 +178,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .de-pasos .paso .op{font:600 26px/1 var(--font-body);color:var(--caso2)}
 .de-pasos .paso.fin{color:var(--res);font-weight:700}
 
+/* ── Reglas de Feynman de la QCD (leyenda de las fotos) ── */
+.fo-reglas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
+.fo-regla{text-align:center;font:600 20px/1.2 var(--font-body);color:var(--tinta2)}
+.fo-regla svg{max-height:90px}
 /* ── Frase clave y mapa de escala ── */
 section.diapositiva > .clave{position:absolute;left:770px;right:170px;bottom:22px;margin:0;font:italic 500 25px/1.2 var(--font-body);color:var(--tinta2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 section.diapositiva > .clave::before{content:'Idea clave · ';font-style:normal;font-weight:700;color:var(--res)}
@@ -1167,15 +1171,14 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Cada foto muestra una configuración posible</span><span class="val" id="fo-lect"></span></div>
-      <div id="fo-fig" style="max-width:640px;margin:0 auto"></div>
+      <div id="fo-fig" style="max-width:520px;margin:0 auto"></div>
       <div class="fila-btn"><button type="button" class="btn prim" id="fo-foto">📷 Tomar una foto</button><button type="button" class="btn" id="fo-diez">Tomar 10</button><button type="button" class="btn" id="fo-borrar">Empezar de nuevo</button></div>
       <label class="ctrl"><span>Energía de la sonda</span><input type="range" id="fo-r" min="0" max="3" step="1" value="1"><span class="v" id="fo-rv"></span></label>
     </figure>
     <div class="pila">
-      <div class="lectura l1"><div>Esta foto<b class="peq" id="fo-conf"></b></div><div>Fotos tomadas · configuraciones distintas<b id="fo-cuenta"></b></div></div>
-      <div class="caja frag"><p class="chico" style="margin:0">Además de los tres quarks \(uud\), cada foto encuentra un número distinto de gluones y de pares quark-antiquark. El número de configuraciones posibles <strong>no tiene límite</strong>.</p></div>
-      <div class="caja c2 frag"><p class="chico" style="margin:0">Con más energía la foto tiene más resolución (como en la dispersión) y aparecen más gluones y pares: lo que «vemos» depende de cómo miramos.</p></div>
-      <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez.</strong> Eso es una superposición cuántica.</p></div>
+      <div class="lectura l1"><div>Esta foto · fotos tomadas / distintas: <b style="display:inline;font-size:26px" id="fo-cuenta"></b><b class="peq" id="fo-conf" style="font-size:26px"></b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Cada foto combina cuatro reglas de Feynman de la QCD, sin líneas sueltas. Las combinaciones posibles <strong>no tienen límite</strong>.</p><div class="fo-reglas" id="fo-reglas"></div></div>
+            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
     </div>
   </div>
   <p class="clave">El protón es una superposición de infinitas configuraciones a la vez.</p>
@@ -3017,50 +3020,145 @@ const alAzar = () => (Math.random() < 0.5 ? 'sale' : 'entra');
   nuevo();
 })();
 
-/* ═══ FOTOGRAFÍAS DE UN PROTÓN ════════════════════════════════════════ */
+/* ═══ FOTOGRAFÍAS DE UN PROTÓN ════════════════════════════════════════
+   Cada foto es un diagrama de vacío de la QCD, sin patas externas:
+   · de cada quark de valencia (u, u, d) sale exactamente un gluón;
+   · los gluones se unen en vértices de 3 (T) o de 4 (F) gluones;
+   · un gluón puede abrirse en un par quark-antiquark y cerrarse (P).
+   Grafo: nodos V (grado 1), T (3), F (4), P (2); aristas = gluones. Se
+   arma un árbol que conecta todo y los extremos libres restantes se
+   emparejan al azar, sin lazos sobre un mismo nodo. */
+const Q_COL = { r: 'rgb(214,40,40)', g: 'rgb(30,150,70)', b: 'rgb(40,80,220)' };
+const Q_MAR = 'rgb(46,170,120)', Q_ANTI = 'rgb(110,95,200)';
+function muelle(g, p, q, opts) {
+  const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy) || 1, n = Math.max(3, Math.round(L / (opts && opts.paso || 13)));
+  const ux = -dy / L, uy = dx / L, tx = dx / L, ty = dy / L, A = opts && opts.amp || 8, pts = [];
+  for (let k = 0; k <= n * 10; k++) {
+    const t = k / (n * 10), a = 2 * Math.PI * n * t, env = Math.min(1, t * n, (1 - t) * n);
+    pts.push((p[0] + dx * t + env * (ux * A * Math.sin(a) - tx * A * 0.9 * (Math.cos(a) - 1) * 0.5)).toFixed(1) + ',' + (p[1] + dy * t + env * (uy * A * Math.sin(a) - ty * A * 0.9 * (Math.cos(a) - 1) * 0.5)).toFixed(1));
+  }
+  nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:' + (opts && opts.col || 'var(--tinta)') + ';stroke-width:' + (opts && opts.w || 2.6) + ';stroke-linejoin:round' }, g);
+}
+/* burbuja de polarización del vacío: dos arcos finos con el quark y el antiquark */
+function burbuja(g, a, b, sab, esc) {
+  const e = esc || 1, mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2, dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, nx = -dy / L, ny = dx / L, h = 15 * e;
+  [1, -1].forEach(s => nodo('path', { d: 'M ' + a[0].toFixed(1) + ' ' + a[1].toFixed(1) + ' Q ' + (mx + s * 2 * h * nx).toFixed(1) + ' ' + (my + s * 2 * h * ny).toFixed(1) + ' ' + b[0].toFixed(1) + ' ' + b[1].toFixed(1), style: 'fill:none;stroke:var(--tinta);stroke-width:1.6' }, g));
+  [[1, Q_MAR, sab], [-1, Q_ANTI, sab + '̄']].forEach(c => {
+    const x = mx + c[0] * h * nx, y = my + c[0] * h * ny;
+    nodo('circle', { cx: x, cy: y, r: 11 * e, style: 'fill:' + c[1] + ';stroke:var(--papel);stroke-width:2' }, g);
+    if (sab) nodo('text', { x: x, y: y + 5 * e, 'text-anchor': 'middle', 'font-size': 14 * e, style: 'fill:#fff;font-weight:700;pointer-events:none;font-family:' + FTXT, txt: c[2] }, g);
+  });
+}
 (function () {
   const host = document.getElementById('fo-fig');
   if (!host) return;
-  const COL = { r: 'rgb(214,40,40)', g: 'rgb(30,150,70)', b: 'rgb(40,80,220)' };
-  const NIV = ['baja', 'media', 'alta', 'muy alta'], LG = [0, 2, 6, 12], LP = [0, 1, 3, 6];
+  const NIV = ['baja', 'media', 'alta', 'muy alta'];
+  const PAR = [{ t: 0, f: 0, p: 0 }, { t: 1.2, f: 0.8, p: 1.2 }, { t: 3.5, f: 2, p: 3 }, { t: 6.5, f: 3.5, p: 6 }];
   const rr = document.getElementById('fo-r');
-  const svg = nodo('svg', { viewBox: '0 0 640 560', class: 'fig' }, host);
-  const cx = 320, cy = 280, RP = 250;
+  const svg = nodo('svg', { viewBox: '60 20 520 520', class: 'fig' }, host);
+  const cx = 320, cy = 280, RP = 255;
   const vistas = new Set(); let fotos = 0;
   const poisson = l => { let k = 0, p = 1; const L = Math.exp(-l); do { k++; p *= Math.random(); } while (p > L); return k - 1; };
-  const punto = () => { for (;;) { const x = (Math.random() * 2 - 1) * 200, y = (Math.random() * 2 - 1) * 200; if (x * x + y * y < 200 * 200) return [cx + x, cy + y]; } };
-  const sabor = () => { const u = Math.random(), res = +rr.value; return u < 0.4 ? 'u' : u < 0.8 ? 'd' : (res === 3 && u > 0.95) ? 'c' : 's'; };
-  function resorte(g, p, q) {
-    const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy), n = Math.max(4, Math.round(L / 14)), ux = -dy / L, uy = dx / L, pts = [];
-    for (let k = 0; k <= n * 6; k++) { const t = k / (n * 6), a = 2 * Math.PI * n * t, w = 7 * Math.sin(a); pts.push((p[0] + dx * t + ux * w + dx / L * 5 * Math.cos(a)).toFixed(1) + ',' + (p[1] + dy * t + uy * w + dy / L * 5 * Math.cos(a)).toFixed(1)); }
-    nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:var(--tinta2);stroke-width:2.5' }, g);
-  }
-  function foto() {
-    const res = +rr.value, ng = poisson(LG[res]), np = poisson(LP[res]);
-    svg.innerHTML = '';
-    nodo('circle', { cx: cx, cy: cy, r: RP, style: 'fill:var(--res-50);stroke:var(--res);stroke-width:3' }, svg);
-    const g = nodo('g', {}, svg);
-    for (let k = 0; k < ng; k++) resorte(g, punto(), punto());
-    const cols = ['r', 'g', 'b'].sort(() => Math.random() - 0.5), pares = [];
-    for (let k = 0; k < np; k++) {
-      const f = sabor(), c = 'rgb'[Math.floor(Math.random() * 3)], p = punto(), q = [p[0] + 34, p[1] + 10];
-      pares.push(f);
-      nodo('circle', { cx: p[0], cy: p[1], r: 13, style: 'fill:' + COL[c] }, g);
-      nodo('circle', { cx: q[0], cy: q[1], r: 13, style: 'fill:var(--papel);stroke:' + COL[c] + ';stroke-width:4' }, g);
-      nodo('text', { x: p[0], y: p[1] + 6, 'text-anchor': 'middle', 'font-size': 17, style: 'fill:#fff;font-weight:700;font-family:' + FTXT, txt: f }, g);
-      nodo('text', { x: q[0], y: q[1] + 6, 'text-anchor': 'middle', 'font-size': 17, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT, txt: f + '̄' }, g);
+  const mezcla = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const sabor = res => { const u = Math.random(); return u < 0.4 ? 'u' : u < 0.8 ? 'd' : (res === 3 && u > 0.95) ? 'c' : 's'; };
+
+  /* grafo: devuelve { nodos:[{tipo}], aristas:[[i,j]] } o null si hay que repetir */
+  function grafo(T, F, P) {
+    const nodos = [], gr = { V: 1, T: 3, F: 4, P: 2 };
+    const fondo = mezcla([].concat(Array(T).fill('T'), Array(F).fill('F')));
+    const medio = Array(P).fill('P');
+    const orden = [fondo[0]].concat(mezcla(fondo.slice(1).concat(medio)), ['V', 'V', 'V']);
+    orden.forEach(t => nodos.push({ tipo: t, libres: gr[t] }));
+    const aristas = [];
+    for (let i = 1; i < nodos.length; i++) {
+      const cand = []; for (let j = 0; j < i; j++) if (nodos[j].libres > 0) cand.push(j);
+      if (!cand.length) return null;
+      const j = cand[Math.floor(Math.random() * cand.length)];
+      aristas.push([j, i]); nodos[j].libres--; nodos[i].libres--;
     }
-    ['u', 'u', 'd'].forEach((f, k) => {
-      const p = punto();
-      nodo('circle', { cx: p[0], cy: p[1], r: 30, style: 'fill:' + COL[cols[k]] + ';stroke:var(--papel);stroke-width:3' }, g);
-      nodo('text', { x: p[0], y: p[1] + 11, 'text-anchor': 'middle', 'font-size': 32, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: f }, g);
+    const cabos = []; nodos.forEach((n, i) => { for (let k = 0; k < n.libres; k++) cabos.push(i); });
+    for (let intento = 0; intento < 60; intento++) {
+      mezcla(cabos); let ok = true; const extra = [];
+      for (let k = 0; k < cabos.length; k += 2) {
+        const a = cabos[k], b = cabos[k + 1];
+        if (a === b) { ok = false; break; }
+        if ((nodos[a].tipo === 'P' || nodos[b].tipo === 'P') && aristas.concat(extra).some(e => (e[0] === a && e[1] === b) || (e[0] === b && e[1] === a))) { ok = false; break; }
+        extra.push([a, b]);
+      }
+      if (ok) return { nodos: nodos, aristas: aristas.concat(extra) };
+    }
+    return null;
+  }
+
+  /* disposición por fuerzas (Fruchterman–Reingold) dentro del círculo */
+  function disponer(G) {
+    const N = G.nodos.length, K = 0.95 * Math.sqrt(Math.PI * 205 * 205 / N);
+    const pos = G.nodos.map(() => { const a = Math.random() * 2 * Math.PI, r = 40 + Math.random() * 160; return [cx + r * Math.cos(a), cy + r * Math.sin(a)]; });
+    const IT = 500;
+    for (let it = 0; it < IT; it++) {
+      const d = pos.map(() => [0, 0]), temp = 45 * (1 - it / IT) + 0.5;
+      for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+        const dx = pos[i][0] - pos[j][0], dy = pos[i][1] - pos[j][1], r = Math.max(Math.hypot(dx, dy), 4);
+        const f = K * K / r * (G.nodos[i].tipo === 'V' && G.nodos[j].tipo === 'V' ? 2.5 : 1);
+        d[i][0] += f * dx / r; d[i][1] += f * dy / r; d[j][0] -= f * dx / r; d[j][1] -= f * dy / r;
+      }
+      G.aristas.forEach(e => {
+        const dx = pos[e[0]][0] - pos[e[1]][0], dy = pos[e[0]][1] - pos[e[1]][1], r = Math.max(Math.hypot(dx, dy), 4), f = r * r / K;
+        d[e[0]][0] -= f * dx / r; d[e[0]][1] -= f * dy / r; d[e[1]][0] += f * dx / r; d[e[1]][1] += f * dy / r;
+      });
+      for (let i = 0; i < N; i++) {
+        d[i][0] -= 0.9 * (pos[i][0] - cx); d[i][1] -= 0.9 * (pos[i][1] - cy);   /* gravedad suave hacia el centro */
+        const m = Math.hypot(d[i][0], d[i][1]) || 1, s_ = Math.min(m, temp);
+        pos[i][0] += d[i][0] / m * s_; pos[i][1] += d[i][1] / m * s_;
+        const R = G.nodos[i].tipo === 'V' ? 200 : 212, dx = pos[i][0] - cx, dy = pos[i][1] - cy, r = Math.hypot(dx, dy);
+        if (r > R) { pos[i][0] = cx + dx * R / r; pos[i][1] = cy + dy * R / r; }
+      }
+    }
+    return pos;
+  }
+
+  function foto() {
+    const res = +rr.value, q = PAR[res];
+    let G = null, T, F, P;
+    for (let k = 0; k < 40 && !G; k++) { T = 2 * poisson(q.t / 2) + 1; F = poisson(q.f); P = poisson(q.p); G = grafo(T, F, P); }
+    if (!G) return;
+    const pos = disponer(G), sab = G.nodos.map(n => n.tipo === 'P' ? sabor(res) : '');
+    svg.innerHTML = '';
+    const def = nodo('defs', {}, svg), gr = nodo('radialGradient', { id: 'fo-grad', cx: '38%', cy: '35%', r: '70%' }, def);
+    nodo('stop', { offset: '0%', style: 'stop-color:var(--papel)' }, gr); nodo('stop', { offset: '100%', style: 'stop-color:var(--caso2-50)' }, gr);
+    nodo('circle', { cx: cx, cy: cy, r: RP, style: 'fill:url(#fo-grad);stroke:var(--caso2);stroke-width:3' }, svg);
+    const g = nodo('g', {}, svg);
+    /* extremos de cada burbuja: uno hacia cada vecino */
+    const extremo = {};
+    G.nodos.forEach((n, i) => {
+      if (n.tipo !== 'P') return;
+      const vec = G.aristas.filter(e => e[0] === i || e[1] === i).map(e => e[0] === i ? e[1] : e[0]);
+      const a = pos[vec[0]], b = pos[vec[1]], dx = b[0] - a[0], dy = b[1] - a[1], L = Math.hypot(dx, dy) || 1, s = 30;
+      extremo[i + ':' + vec[0]] = [pos[i][0] - s * dx / L, pos[i][1] - s * dy / L];
+      extremo[i + ':' + vec[1]] = [pos[i][0] + s * dx / L, pos[i][1] + s * dy / L];
+      n.lente = [extremo[i + ':' + vec[0]], extremo[i + ':' + vec[1]]];
     });
-    pares.sort();
-    const clave = ng + '|' + pares.join('');
-    vistas.add(clave); fotos++;
-    const pl = pares.map(f => f + f + '̄');
-    document.getElementById('fo-conf').textContent = 'uud' + (ng ? ' + ' + ng + (ng === 1 ? ' gluón' : ' gluones') : '') + (np ? ' + ' + np + (np === 1 ? ' par (' : ' pares (') + pl.join(', ') + ')' : '');
-    document.getElementById('fo-cuenta').textContent = fotos + ' · ' + vistas.size;
+    const punta = (i, j) => G.nodos[i].tipo === 'P' ? extremo[i + ':' + j] : pos[i];
+    G.aristas.forEach(e => muelle(g, punta(e[0], e[1]), punta(e[1], e[0]), { amp: 9, paso: 13, w: 3 }));
+    G.nodos.forEach((n, i) => { if (n.tipo === 'P') burbuja(g, n.lente[0], n.lente[1], sab[i], 1.35); });
+    G.nodos.forEach((n, i) => { if (n.tipo === 'T' || n.tipo === 'F') nodo('circle', { cx: pos[i][0], cy: pos[i][1], r: 3.5, style: 'fill:var(--tinta)' }, g); });
+    const cols = mezcla(['r', 'g', 'b']), letras = ['u', 'u', 'd']; let k = 0;
+    G.nodos.forEach((n, i) => {
+      if (n.tipo !== 'V') return;
+      nodo('circle', { cx: pos[i][0], cy: pos[i][1], r: 26, style: 'fill:' + Q_COL[cols[k]] + ';stroke:var(--papel);stroke-width:3' }, g);
+      nodo('text', { x: pos[i][0], y: pos[i][1] + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: letras[k] }, g);
+      k++;
+    });
+    const pares = sab.filter(Boolean).sort(), ng = G.aristas.length;
+    const firma = G.aristas.map(e => [G.nodos[e[0]].tipo, G.nodos[e[1]].tipo].sort().join('')).sort().join(',');
+    vistas.add(T + '|' + F + '|' + pares.join('') + '|' + firma); fotos++;
+    const trozos = ['uud'];
+    trozos.push(ng + (ng === 1 ? ' gluón' : ' gluones'));
+    trozos.push(T + (T === 1 ? ' vértice' : ' vértices') + ' de 3 gluones');
+    if (F) trozos.push(F + ' de 4');
+    if (P) trozos.push(P + (P === 1 ? ' par' : ' pares') + ' (' + pares.map(f => f + f + '̄').join(', ') + ')');
+    document.getElementById('fo-conf').textContent = trozos.join(' · ');
+    document.getElementById('fo-cuenta').textContent = fotos + ' / ' + vistas.size;
     document.getElementById('fo-lect').textContent = 'resolución ' + NIV[res];
   }
   const borrar = () => { vistas.clear(); fotos = 0; foto(); };
@@ -3070,6 +3168,21 @@ const alAzar = () => (Math.random() < 0.5 ? 'sale' : 'entra');
   rr.addEventListener('input', () => { document.getElementById('fo-rv').textContent = NIV[+rr.value]; borrar(); });
   document.getElementById('fo-rv').textContent = NIV[+rr.value];
   foto();
+
+  /* leyenda: las reglas de Feynman que se combinan */
+  const ley = document.getElementById('fo-reglas');
+  if (ley) {
+    const piezas = [
+      ['quark de valencia', s => { muelle(s, [52, 50], [150, 50], { amp: 7, paso: 11 }); nodo('circle', { cx: 40, cy: 50, r: 20, style: 'fill:' + Q_COL.r }, s); nodo('text', { x: 40, y: 58, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: 'u' }, s); }],
+      ['3 gluones', s => { [[20, 90], [150, 90], [85, 10]].forEach(p => muelle(s, [85, 60], p, { amp: 6, paso: 10 })); nodo('circle', { cx: 85, cy: 60, r: 4, style: 'fill:var(--tinta)' }, s); }],
+      ['4 gluones', s => { [[20, 12], [150, 12], [20, 92], [150, 92]].forEach(p => muelle(s, [85, 52], p, { amp: 6, paso: 10 })); nodo('circle', { cx: 85, cy: 52, r: 4, style: 'fill:var(--tinta)' }, s); }],
+      ['par quark-antiquark', s => { muelle(s, [4, 52], [50, 52], { amp: 6, paso: 10 }); muelle(s, [120, 52], [166, 52], { amp: 6, paso: 10 }); burbuja(s, [50, 52], [120, 52], 'u', 1); }]];
+    piezas.forEach(p => {
+      const d = document.createElement('div'); d.className = 'fo-regla'; ley.appendChild(d);
+      const s = nodo('svg', { viewBox: '0 0 170 104', class: 'fig' }, d); p[1](s);
+      const t = document.createElement('span'); t.textContent = p[0]; d.appendChild(t);
+    });
+  }
 })();
 
 </script>
