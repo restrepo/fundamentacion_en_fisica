@@ -166,6 +166,23 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .dim .dim-ec mjx-container{font-size:110%}
 .prefijos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
+/* ── Preámbulo matemático: ecuaciones con frutas ── */
+.fr{height:120px;width:auto;vertical-align:middle}
+.ec-fr{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font:600 60px/1 var(--font-body);color:var(--tinta)}
+.fr-frac{display:inline-flex;flex-direction:column;align-items:center}
+.fr-frac > span{display:flex;align-items:center;gap:10px;padding:4px 12px;font:600 44px/1.1 var(--font-body)}
+.fr-frac > .fr-num{border-bottom:4px solid var(--tinta)}
+.op-caja{font:600 28px/1 var(--font-body);background:var(--primario-tinte);border:2px solid var(--linea);padding:34px 18px}
+.de-pasos{display:grid;gap:8px;font:500 44px/1.2 'STIX Two Text',Georgia,serif;min-height:340px;margin:6px 0 14px}
+.de-pasos .paso{display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:2px solid var(--linea);padding:4px 6px}
+.de-pasos .paso .op{font:600 26px/1 var(--font-body);color:var(--caso2)}
+.de-pasos .paso.fin{color:var(--res);font-weight:700}
+
+/* ── Frase clave y mapa de escala ── */
+section.diapositiva > .clave{position:absolute;left:770px;right:170px;bottom:22px;margin:0;font:italic 500 25px/1.2 var(--font-body);color:var(--tinta2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+section.diapositiva > .clave::before{content:'Idea clave · ';font-style:normal;font-weight:700;color:var(--res)}
+section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
+
 </style></head>
 <body>
 <div id="escenario">
@@ -204,6 +221,8 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       </figure>
     </div>
   </div>
+  <div class="mapa" data-e="26" data-t="universo observable"></div>
+  <p class="clave">La gravedad organiza el universo en planetas, estrellas, galaxias y cúmulos.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Universo" id="dp-esc" data-label="Escalas de la materia">
@@ -220,6 +239,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja frag"><p class="chico" style="margin:0">Arriba manda la gravedad; en átomos y moléculas, el electromagnetismo; dentro del núcleo, las fuerzas nucleares.</p></div>
     </div>
   </div>
+  <p class="clave">Del protón al universo observable hay 42 potencias de diez.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Universo" id="dp-hist" data-label="Historia del universo">
@@ -256,6 +276,65 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja c2 frag"><p class="chico" style="margin:0">Por cada protón hay del orden de mil millones de fotones y otros tantos neutrinos: la materia ordinaria es una minoría.</p></div>
     </div>
   </div>
+  <p class="clave">Al enfriarse, el universo formó núcleos, luego átomos y después estrellas.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Universo" id="dp-exp" data-label="El universo se expande">
+  <p class="ceja">§ 0.1 · Expansión</p>
+  <h2 class="titulo">El universo se expande</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Toca una galaxia para mirar desde ella</span><span class="val" id="ex-lect"></span></div>
+      <div id="ex-fig" style="cursor:pointer"></div>
+      <label class="ctrl"><span>Tiempo transcurrido</span><input type="range" id="ex-t" min="0" max="1" step="0.01" value="0.6"><span class="v" id="ex-tv"></span></label>
+    </figure>
+    <div class="pila">
+      <div class="caja"><p class="chico" style="margin:0"><strong>Hubble (1929):</strong> la luz de las galaxias lejanas llega corrida al rojo; cuanto más lejos, más rápido se alejan.</p></div>
+      <div class="kf frag">\[ v = H_0\, d, \qquad H_0 \approx 70\ \dfrac{\mathrm{km/s}}{\mathrm{Mpc}} \]</div>
+      <p class="nota frag">\(\qty{1}{Mpc}\) (megapársec) \(\approx 3{,}26\) millones de años luz.</p>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">No hay centro: desde <em>cualquier</em> galaxia se ve a las demás alejarse, como las pasas de un pan que se hornea.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Si todo se aleja, antes todo estuvo junto: \(1/H_0 \approx 14\,000\) millones de años, cerca de la edad del universo: 13 800 millones de años.</p></div>
+    </div>
+  </div>
+  <p class="clave">Todas las galaxias se alejan de todas: el espacio mismo se expande.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Universo" id="dp-mo" data-label="Materia oscura">
+  <p class="ceja">§ 0.1 · Materia oscura</p>
+  <h2 class="titulo">Las galaxias giran demasiado rápido: materia oscura</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Rapidez de las estrellas frente a su distancia al centro</span><span class="val" id="mo-lect"></span></div>
+      <div id="mo-fig"></div>
+      <label class="ctrl"><span>Halo de materia oscura</span><input type="range" id="mo-h" min="0" max="1" step="0.01" value="0"><span class="v" id="mo-hv"></span></label>
+      <p class="nota">Puntos: mediciones típicas de una galaxia espiral (esquemáticas). Línea punteada: solo la materia que vemos; línea azul: con el halo.</p>
+    </figure>
+    <div class="pila">
+      <p class="chico">Una estrella en órbita cumple \(v^{2} = G\,M(r)/r\). Si casi toda la masa estuviera en las estrellas y el gas que vemos, lejos del centro \(v\) debería caer como en el sistema solar.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Vera Rubin (años 70):</strong> la rapidez se queda constante. Hay unas cinco veces más masa de la que brilla.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Otras pistas: cúmulos de galaxias (Zwicky, 1933), lentes gravitacionales y el fondo cósmico de microondas. La materia oscura <strong>no emite luz</strong> y no está hecha de protones ni neutrones.</p></div>
+      <p class="chico frag">¿De qué está hecha? Nadie lo sabe todavía: es una de las grandes preguntas abiertas.</p>
+    </div>
+  </div>
+  <p class="clave">Las galaxias tienen unas cinco veces más masa de la que brilla.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Universo" id="dp-pastel" data-label="¿De qué está hecho el universo?">
+  <p class="ceja">§ 0.1 · Contenido del universo</p>
+  <h2 class="titulo">¿De qué está hecho el universo? Solo conocemos el 5 %</h2>
+  <div class="g2-40">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Toca cada parte</span><span class="val" id="pz-lect"></span></div>
+      <div id="pz-fig" style="cursor:pointer;max-width:600px;margin:0 auto"></div>
+    </figure>
+    <div class="pila">
+      <div class="caja c1"><p class="chico" style="margin:0" id="pz-txt"></p></div>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Energía oscura:</strong> en 1998 se descubrió, con supernovas lejanas, que la expansión del universo se está <em>acelerando</em> (Nobel 2011). Algo llena el espacio vacío y lo empuja.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Todo lo que vemos (estrellas, planetas, gas, nosotros) es menos del 5 %. Las estrellas solas son apenas un 0,5 %.</p></div>
+      <p class="nota frag">Valores del satélite Planck (2018), que midió el fondo cósmico de microondas.</p>
+    </div>
+  </div>
+  <p class="clave">Lo que conocemos es solo el 5 % del contenido del universo.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Universo" id="dp-fraun" data-label="Espectro solar">
@@ -273,6 +352,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="nota" id="fr-nota" style="min-height:2.9em;margin-top:8px"></p>
     </figure>
   </div>
+  <p class="clave">Las líneas oscuras del espectro revelan de qué están hechas las estrellas.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Universo" id="dp-og" data-label="Ondas gravitacionales">
@@ -288,8 +368,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <li class="frag"><strong>2017 · Estrellas de neutrones.</strong> Su fusión se ve también con luz: en esas explosiones se crean elementos pesados como el oro y el uranio.</li>
       <li class="frag"><strong>Púlsares como detectores.</strong> Estrellas de neutrones que giran como faros; pequeños retrasos en sus pulsos delatan ondas de periodo de años.</li>
       <li class="frag"><strong>LISA.</strong> Tres naves separadas 2,5 millones de kilómetros buscarán ondas de baja frecuencia desde el espacio.</li>
+      <li class="frag"><strong>Aquí:</strong> el Instituto de Física de la UdeA es miembro oficial de la colaboración <strong>LIGO</strong>.</li>
     </ul>
   </div>
+  <p class="clave">Las ondas gravitacionales son un nuevo mensajero: el espacio-tiempo vibra.</p>
 </section>
 
 <!-- ═════════════ §2 · CAMPOS ═════════════ -->
@@ -310,6 +392,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <img class="foto ancha frag" style="--fh:330px" src="img/particula-grupo.webp" alt="Una partícula es una representación irreducible de un grupo">
     </div>
   </div>
+  <p class="clave">Un campo llena el espacio; sus excitaciones son las partículas.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Campos" id="dp-sc" data-label="Superconductividad">
@@ -328,6 +411,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="nota">Temperaturas críticas: Al \(\qty{1{,}2}{K}\), Hg \(\qty{4{,}2}{K}\), Sn \(\qty{3{,}7}{K}\), Pb \(\qty{7{,}2}{K}\), \(\mathrm{YBa_2Cu_3O_7}\) \(\qty{92}{K}\) (¡por encima del nitrógeno líquido!).</p>
     </figure>
   </div>
+  <p class="clave">Bajo su temperatura crítica, un superconductor no tiene resistencia y expulsa el campo.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Campos" id="dp-sitio" data-label="Los campos ocupan sitio">
@@ -338,6 +422,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg frag"><img class="foto ancha" style="--fh:520px" src="img/efecto-meissner.webp" alt="Efecto Meissner: líneas de campo que rodean al superconductor"><figcaption>En el estado superconductor las líneas de campo magnético rodean la muestra.</figcaption></figure>
     <figure class="fg frag"><img class="foto ancha" style="--fh:520px" src="img/superconductor-campos.webp" alt="Un superconductor cambia la forma del campo de unos imanes"><figcaption>Un superconductor desplaza el campo de los imanes: el campo no puede estar donde está el superconductor. <a class="enl" href="https://www.youtube.com/watch?v=GHtAwQXVsuk" target="_blank" rel="noopener">Video</a></figcaption></figure>
   </div>
+  <p class="clave">El campo magnético no puede estar donde está el superconductor: los campos ocupan sitio.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Campos" id="dp-cx" data-label="Campos complejos">
@@ -351,10 +436,11 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Arrastra \(z\) sobre el círculo \(\abs{z} = 1\)</span><span class="val" id="cx-lect"></span></div>
-      <div id="cx-fig" class="arrastre" style="max-width:600px;margin:0 auto"></div>
+      <div id="cx-fig" class="arrastre" style="max-width:520px;margin:0 auto"></div>
       <div class="fila-btn"><button type="button" class="btn" id="cx-i">× \(i\)</button><button type="button" class="btn" id="cx-m">× \((-1)\)</button><span class="nota">Multiplicar por \(i\) gira un cuarto de vuelta: \(i \cdot i = -1\) es media vuelta.</span></div>
     </figure>
   </div>
+  <p class="clave">Los campos de la materia son complejos: multiplicar por i es girar un cuarto de vuelta.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Campos" id="dp-osc" data-label="Oscilaciones de neutrinos">
@@ -372,9 +458,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <label class="ctrl"><span>Distancia \(L\)</span><input type="range" id="os-L" min="0" max="4.11" step="0.001" value="2.47"><span class="v" id="os-Lv"></span></label>
       <label class="ctrl"><span>Energía \(E\)</span><input type="range" id="os-E" min="-1" max="2" step="0.001" value="-0.22"><span class="v" id="os-Ev"></span></label>
       <div class="fila-btn" id="os-pre"><button type="button" class="btn" data-l="295" data-e="0.6">T2K: 295 km</button><button type="button" class="btn" data-l="15" data-e="1">Desde arriba: 15 km</button><button type="button" class="btn" data-l="12700" data-e="1">Desde abajo: 12 700 km</button></div>
-      <p class="nota">\(P(\nu_\mu\to\nu_\tau) = \sin^{2}2\theta\,\sin^{2}\!\big(1{,}27\,\Delta m^{2} L/E\big)\), con \(\Delta m^{2} = \qty{2{,}5\times 10^{-3}}{eV^2}\), \(L\) en km y \(E\) en GeV.</p>
+      <p class="nota">La probabilidad de cambiar de sabor depende de la distancia recorrida dividida por la energía, \(L/E\). <span class="prop" data-pop="pop-osc">(la fórmula)</span></p>
     </figure>
   </div>
+  <p class="clave">Los neutrinos cambian de sabor al viajar: prueba de que tienen masa.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Campos" id="dp-num" data-label="Excitaciones en el universo observable">
@@ -396,6 +483,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja c1 frag"><p style="margin:0">El campo electromagnético y el de neutrinos tienen mucho en común: sus excitaciones viajan a (casi) la velocidad de la luz y llenan todo el universo.</p></div>
     </div>
   </div>
+  <p class="clave">Después de los fotones, los neutrinos son las partículas más numerosas.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Campos" id="dp-sol" data-label="El Sol: fotones y neutrinos">
@@ -422,6 +510,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       </div>
     </figure>
   </div>
+  <p class="clave">Un neutrino sale del Sol en 2 segundos; un fotón tarda miles de años.</p>
 </section>
 
 <!-- ═════════════ §3 · ÁTOMOS ═════════════ -->
@@ -443,6 +532,8 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja frag" style="margin-top:18px"><p class="chico" style="margin:0"><strong>El espacio subatómico es prácticamente vacío:</strong> el átomo de hidrógeno (\(\approx \qty{1{,}06\times 10^{-10}}{m}\)) es unas \(6\times 10^{4}\) veces más ancho que el protón (\(\approx \qty{1{,}7\times 10^{-15}}{m}\)); en volumen, \(\sim 10^{14}\) veces.</p></div>
     </figure>
   </div>
+  <div class="mapa" data-e="-10" data-t="átomo"></div>
+  <p class="clave">El átomo es casi todo vacío: el núcleo es una arveja en un estadio.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Átomos" id="dp-disp" data-label="Los campos interactúan">
@@ -462,6 +553,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="nota" id="di-nota" style="min-height:3em"></p>
     </figure>
   </div>
+  <p class="clave">Para ver algo más pequeño hace falta más energía.</p>
 </section>
 
 <!-- ═════════════ §4 · NEUTRINOS ═════════════ -->
@@ -478,6 +570,8 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="g2-img frag" style="grid-template-columns:1fr auto;gap:22px"><img class="foto" style="--fh:360px" src="img/neutrinos-atmosfericos.webp" alt="Evento de neutrino atmosférico en Super-Kamiokande"><p class="chico" style="margin:0;max-width:10em"><strong>≈ 3800</strong> neutrinos atmosféricos por año: cada punto es un fotomultiplicador que vio luz.</p></div>
     </div>
   </div>
+  <div class="mapa" data-e="7" data-t="la Tierra"></div>
+  <p class="clave">Un tanque de agua bajo una montaña descubrió que los neutrinos oscilan.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Neutrinos" id="dp-bajo" data-label="El Sol visto bajo tierra">
@@ -490,6 +584,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <figure class="fg frag"><img class="foto" style="--fh:380px" src="img/icecube-tierra.webp" alt="Probabilidad de que un neutrino atraviese la Tierra según su energía y dirección"><figcaption>Solo a energías altísimas (\(\gtrsim \qty{100}{TeV}\)) la Tierra se vuelve opaca a los neutrinos que la cruzan de lado a lado.</figcaption></figure>
     </div>
   </div>
+  <p class="clave">Los neutrinos atraviesan la Tierra: el Sol se «ve» de noche bajo tierra.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Neutrinos" id="dp-ic" data-label="IceCube">
@@ -502,6 +597,30 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja frag"><p class="chico" style="margin:0">Un neutrino que choca en el hielo produce partículas más rápidas que la luz en el hielo: emiten un cono de luz azul (radiación de Cherenkov) que los módulos registran.</p></div>
     </div>
   </div>
+  <p class="clave">Un kilómetro cúbico de hielo antártico sirve de detector de neutrinos.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Neutrinos" id="dp-dune" data-label="DUNE">
+  <p class="ceja">§ 0.4 · Detectores de neutrinos</p>
+  <h2 class="titulo">DUNE: neutrinos a 1300 km a través de la Tierra</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Un haz de neutrinos no necesita túnel</span><span class="val" id="du-lect"></span></div>
+      <div id="du-fig"></div>
+      <label class="ctrl"><span>Distancia en superficie</span><input type="range" id="du-L" min="100" max="12700" step="10" value="1300"><span class="v" id="du-Lv"></span></label>
+    </figure>
+    <div class="pila">
+      <div class="caja"><p class="chico" style="margin:0">Fermilab (Illinois) produce un haz de neutrinos que viaja en línea recta por dentro de la Tierra hasta Dakota del Sur, donde lo esperan detectores de argón líquido a 1,5 km bajo tierra.</p></div>
+      <div class="lectura l2"><div>Profundidad máxima del haz<b id="du-p"></b></div><div>Tiempo de viaje (a \(c\))<b id="du-t"></b></div></div>
+      <ul class="lista chico">
+        <li class="frag">¿Qué neutrino es el más pesado? (el orden de las masas)</li>
+        <li class="frag">¿Tratan igual los neutrinos a la materia y a la antimateria?</li>
+        <li class="frag">Neutrinos de supernovas en nuestra galaxia.</li>
+      </ul>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">El <strong>Instituto de Física de la UdeA</strong> es miembro oficial de la colaboración <strong>DUNE</strong>.</p></div>
+    </div>
+  </div>
+  <p class="clave">DUNE enviará neutrinos a 1300 km a través de la Tierra.</p>
 </section>
 
 <!-- ═════════════ §5 · ANTIMATERIA ═════════════ -->
@@ -520,6 +639,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <figure class="fg" style="text-align:center"><div class="rel" style="display:inline-block"><img class="foto" style="--fh:640px" src="img/muro-ondas.webp" alt="Muro ondulado que evoca el campo con excitaciones hacia arriba y hacia abajo"><span class="etiq" style="left:-40px;top:62%">\(e^{+}\)</span><span class="etiq" style="right:-40px;top:22%">\(e^{-}\)</span></div><figcaption style="text-align:left">Un muro ondulado: crestas y valles del mismo campo.</figcaption></figure>
   </div>
+  <p class="clave">Electrón y positrón son dos excitaciones del mismo campo.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Antimateria" id="dp-ams" data-label="AMS-02">
@@ -534,10 +654,11 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       </ul>
     </div>
     <div class="pila">
-      <img class="foto" style="--fh:500px" src="img/espectro-positrones.webp" alt="Espectro de positrones medido por AMS-02">
+      <figure class="fg"><img class="foto" style="--fh:460px" src="img/espectro-positrones.webp" alt="Espectro de positrones medido por AMS-02"><figcaption>Flujo de positrones frente a su energía: <em>diffuse term</em> = término difuso, <em>source term</em> = término fuente.</figcaption></figure>
       <div class="caja frag"><p class="chico" style="margin:0">Un <em>término difuso</em> (choques de rayos cósmicos) y un <em>término fuente</em> que se corta cerca de \(\qty{800}{GeV}\): ¿púlsares?, ¿materia oscura?</p></div>
     </div>
   </div>
+  <p class="clave">AMS-02 cuenta antimateria desde la Estación Espacial.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Antimateria" id="dp-est" data-label="Positrones en el universo">
@@ -557,6 +678,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div id="po-fig"></div>
     </figure>
   </div>
+  <p class="clave">Hay unos 10⁶⁸ positrones frente a 10⁸⁰ electrones: el universo es de materia.</p>
 </section>
 
 <!-- ═════════════ §6 · INTERACCIÓN ═════════════ -->
@@ -571,6 +693,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="chico frag">Dos excitaciones que se acercan interactúan; su energía puede pasar a otro campo y crear otra excitación. <a class="enl" href="https://x.com/martinmbauer" target="_blank" rel="noopener">@martinmbauer</a></p>
     </div>
   </div>
+  <p class="clave">Las excitaciones de los campos se mueven, chocan y crean excitaciones nuevas.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Interacción" id="dp-bote" data-label="Interacción por intercambio">
@@ -581,6 +704,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg frag"><img class="foto ancha" style="--fh:420px" src="img/botes-atraccion.webp" alt="Dos personas en botes se lanzan un bumerán y se acercan"><figcaption><strong>Atracción.</strong> Con un bumerán, que sale hacia atrás, los botes se acercan.</figcaption></figure>
   </div>
   <div class="caja frag" style="margin-top:22px"><p class="chico" style="margin:0">En teoría cuántica de campos dos electrones se repelen intercambiando fotones <em>virtuales</em>: excitaciones del campo electromagnético que no llegan a ser partículas libres. <a class="enl" href="https://doi.org/10.25368/2021.71" target="_blank" rel="noopener">doi:10.25368/2021.71</a></p></div>
+  <p class="clave">Las fuerzas son intercambio: lanzar un balón empuja los botes.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Interacción" id="dp-gfac" data-label="El factor g">
@@ -590,11 +714,12 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <div class="pila">
       <div class="g2-img" style="grid-template-columns:auto 1fr;gap:26px"><img class="foto sin-borde" style="--fh:190px" src="img/g-espira.webp" alt="Espira de corriente con su momento magnético"><div class="kf">\[ \text{momento magnético} = g\,\dfrac{q}{2m}\;\text{momento angular} \]</div></div>
       <div class="caja frag"><p class="chico" style="margin:0">Una carga que gira (una espira, un planeta cargado) tiene \(g_T = 1\). El espín del electrón no es un giro clásico: la ecuación de Dirac predice \(g_e = 2\).</p></div>
-      <div class="kf frag">\[ \alpha = \dfrac{e^{2}}{4\pi} \approx \dfrac{1}{137}, \qquad g_e = 2\Big(1 + \dfrac{\alpha}{2\pi} + \cdots\Big) \]</div>
-      <p class="chico frag">Medido: \(g_e = -2{,}002\,319\,304\,361\,18(27)\), el número más preciso de la física: la QED lo reproduce sumando diagramas.</p>
+      <div class="kf frag">\[ g_e \approx 2 \times 1{,}001\,159\,652\ldots \]</div>
+      <p class="chico frag">El pequeño exceso sobre 2 viene de correcciones cuánticas <span class="prop" data-pop="pop-alfa">(¿de dónde sale?)</span>. Medido, \(g_e = 2{,}002\,319\,304\,361\,18(27)\) (el signo menos de las tablas indica que el momento magnético del electrón apunta al revés de su espín): el número más preciso de la física, y la QED lo reproduce sumando diagramas.</p>
     </div>
-    <figure class="fg"><img class="foto ancha" style="--fh:420px" src="img/momento-angular.webp" alt="Momento angular total de la Tierra y de un electrón"><figcaption>Momento angular total \(\vect{J} = \vect{L} + \vect{S}\) de la Tierra (\(g_T = 1\)) y de un electrón (\(g_e = 2\)). Imágenes: Flaticon y Wikipedia.</figcaption></figure>
+    <figure class="fg"><img class="foto ancha" style="--fh:420px" src="img/momento-angular.webp" alt="Momento angular total de la Tierra y de un electrón"><figcaption>Momento angular total \(\vect{J} = \vect{L} + \vect{S}\) de la Tierra (\(g_T = 1\)) y de un electrón (\(g_e = 2\)). <span class="prop" data-pop="pop-grupos">¿SO(3) y SU(2)?</span> Imágenes: Flaticon y Wikipedia.</figcaption></figure>
   </div>
+  <p class="clave">El electrón es un imán dos veces más fuerte de lo que predice un giro clásico.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Interacción" id="dp-fey" data-label="Reglas de Feynman">
@@ -603,14 +728,15 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   <div class="g2-40">
     <div class="pila">
       <div class="g2-img" style="grid-template-columns:1fr auto"><img class="foto ancha sin-borde" style="--fh:300px" src="img/feynman-vertice.webp" alt="Vértice de la QED: un electrón emite un fotón"><img class="foto sin-borde" style="--fh:260px" src="img/bote-balon.webp" alt="Una persona en un bote lanza un balón"></div>
-      <div class="caja frag"><p class="chico" style="margin:0">Líneas rectas: <strong>campos de materia</strong> (electrón). Línea ondulada: <strong>campo de radiación</strong> (fotón, \(A^\mu\)). Cada vértice aporta un factor \(-ie\gamma^\mu\): la carga \(e\) mide la intensidad.</p></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Líneas rectas: <strong>campos de materia</strong> (electrón). Línea ondulada: <strong>campo de radiación</strong> (fotón). En cada vértice actúa la carga \(e\), que mide la intensidad de la interacción <span class="prop" data-pop="pop-vertice">(la regla exacta)</span>.</p></div>
     </div>
     <div class="pila">
       <img class="foto ancha" style="--fh:330px" src="img/feynman-configuraciones.webp" alt="El mismo vértice girado: emisión, absorción, aniquilación y creación">
       <div class="g3 frag" style="grid-template-columns:repeat(4,1fr);gap:14px;font-size:28px;text-align:center"><div class="caja neutra" style="padding:10px">Emisión</div><div class="caja neutra" style="padding:10px">Absorción</div><div class="caja c2" style="padding:10px">Aniquilación</div><div class="caja c1" style="padding:10px">Creación</div></div>
-      <div class="caja c2 frag"><p class="chico" style="margin:0">Girando el mismo vértice en el plano \(t\)–\(x\) salen los cuatro procesos. Las partículas (energía positiva, \(\psi \sim e^{-iEt}\)) avanzan en el tiempo; las antipartículas se leen como si fueran hacia atrás: \(e^{+iEt} = e^{-iE(-t)}\).</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Girando el mismo vértice en el plano \(t\)–\(x\) salen los cuatro procesos. Las partículas avanzan en el tiempo; las antipartículas se dibujan como partículas que van hacia atrás <span class="prop" data-pop="pop-fs">(¿por qué?)</span>.</p></div>
     </div>
   </div>
+  <p class="clave">Un solo vértice, girado, da emisión, absorción, aniquilación y creación.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Interacción" id="dp-fey2" data-label="Repulsión y aniquilación">
@@ -620,6 +746,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg"><img class="foto ancha" style="--fh:440px" src="img/feynman-repulsion.webp" alt="Diagramas de repulsión entre dos electrones"><figcaption>Repulsión electromagnética: los diagramas (a) y (b), según quién emite primero, se resumen en (c). Es la versión cuántica de los botes que se lanzan un balón.</figcaption></figure>
     <figure class="fg frag"><img class="foto ancha" style="--fh:440px" src="img/feynman-aniquilacion.webp" alt="Un electrón y un positrón se aniquilan en dos fotones"><figcaption>Aniquilación \(e^{-}e^{+} \to \gamma\gamma\): la conservación de la cantidad de movimiento obliga a producir (al menos) dos fotones.</figcaption></figure>
   </div>
+  <p class="clave">Los procesos se arman uniendo vértices.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Interacción" id="dp-lazos" data-label="El g del electrón lazo a lazo">
@@ -636,13 +763,14 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="fila-btn" id="g2-n"><button type="button" class="btn" data-n="0">Dirac</button><button type="button" class="btn" data-n="1">1 lazo</button><button type="button" class="btn" data-n="2">2 lazos</button><button type="button" class="btn" data-n="3">3 lazos</button><button type="button" class="btn" data-n="4">4 lazos</button><button type="button" class="btn on" data-n="5">5 lazos</button></div>
       <div class="lectura l1"><div>Teoría (QED)<b class="mono" id="g2-teo"></b></div><div>Experimento<b class="mono" id="g2-exp"></b></div></div>
       <p class="nota" id="g2-nota" style="margin-top:12px"></p>
-      <p class="nota">\(\dfrac{g}{2} - 1 = \sum_n A_n \Big(\dfrac{\alpha}{\pi}\Big)^{n}\), con \(A_1 = \tfrac12\), \(A_2 \approx -0{,}328\), \(A_3 \approx 1{,}181\), \(A_4 \approx -1{,}912\), \(A_5 \approx 6{,}74\) y \(\alpha^{-1} = 137{,}035\,999\,2\).</p>
+      <p class="nota"><span class="prop" data-pop="pop-lazos">Ver la serie de la QED y sus coeficientes</span></p>
     </figure>
   </div>
+  <p class="clave">Sumando diagramas, la teoría acierta 11 cifras del g del electrón.</p>
 </section>
 
 <!-- ═════════════ §7 · ÁTOMO Y LUZ ═════════════ -->
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-h" data-label="El átomo de hidrógeno">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-h" data-label="El átomo de hidrógeno">
   <p class="ceja">§ 0.7 · Átomo y luz</p>
   <h2 class="titulo">El átomo de hidrógeno absorbe y emite fotones</h2>
   <div class="g2-40">
@@ -651,14 +779,16 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <span class="etiq" style="left:32%;top:62%">protón</span><span class="etiq" style="left:62%;top:3%">electrón</span>
     </figure>
     <div class="pila">
-      <img class="foto ancha" style="--fh:330px" src="img/absorcion-emision.webp" alt="Absorción de un fotón: el electrón sube de nivel; emisión: el electrón baja">
+      <figure class="fg"><img class="foto ancha" style="--fh:300px" src="img/absorcion-emision.webp" alt="Absorción de un fotón: el electrón sube de nivel; emisión: el electrón baja"><figcaption>Izquierda: fotón absorbido, el electrón salta. Derecha: el electrón cae y emite un fotón.</figcaption></figure>
       <div class="caja frag"><p class="chico" style="margin:0">Absorbe un fotón y el electrón <em>salta</em> a un nivel superior; cae y emite un fotón con la diferencia exacta de energía.</p></div>
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Principio de exclusión de Pauli:</strong> dos <span class="prop" data-pop="pop-fer">fermiones</span> idénticos no pueden ocupar el mismo estado. Con espín ↑↓ caben dos electrones en \(n = 1\): el ion \(\mathrm{H^{-}}\).</p></div>
     </div>
   </div>
+  <div class="mapa" data-e="-7" data-t="luz visible"></div>
+  <p class="clave">Un átomo absorbe y emite fotones de energías exactas.</p>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-ev" data-label="Electronvoltio y energía del fotón">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-ev" data-label="Electronvoltio y energía del fotón">
   <p class="ceja">§ 0.7 · Unidades de energía</p>
   <h2 class="titulo">Electronvoltio y energía del fotón</h2>
   <div class="g2">
@@ -678,9 +808,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <table class="tabla chica frag" style="margin-top:18px"><tr><th class="izq" style="text-align:left">Prefijo</th><td>nano</td><td>micro</td><td>mili</td><td>centi</td><td>kilo</td><td>mega</td><td>giga</td><td>tera</td></tr><tr><th class="izq" style="text-align:left">Símbolo</th><td>n</td><td>μ</td><td>m</td><td>c</td><td>k</td><td>M</td><td>G</td><td>T</td></tr><tr><th class="izq" style="text-align:left">Factor</th><td>\(10^{-9}\)</td><td>\(10^{-6}\)</td><td>\(10^{-3}\)</td><td>\(10^{-2}\)</td><td>\(10^{3}\)</td><td>\(10^{6}\)</td><td>\(10^{9}\)</td><td>\(10^{12}\)</td></tr></table>
     </div>
   </div>
+  <p class="clave">El electronvoltio es la unidad natural de energía en el mundo atómico.</p>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-niv" data-label="Niveles del hidrógeno">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-niv" data-label="Niveles del hidrógeno">
   <p class="ceja">§ 0.7 · Niveles de energía</p>
   <h2 class="titulo">Niveles del hidrógeno: \(E_n = -\qty{13{,}6}{eV}/n^{2}\)</h2>
   <div class="g2-40">
@@ -701,9 +832,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       </figure>
     </div>
   </div>
+  <p class="clave">Cada salto entre niveles del hidrógeno produce un color preciso.</p>
 </section>
 
-<section class="diapositiva" data-seccion="Átomo y luz" id="dp-tpe" data-label="Tabla periódica de espectros">
+<section class="diapositiva" data-seccion="Luz" id="dp-tpe" data-label="Tabla periódica de espectros">
   <p class="ceja">§ 0.7 · Espectroscopía</p>
   <h2 class="titulo">Cada elemento tiene su código de barras</h2>
   <div class="g2-60">
@@ -714,6 +846,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja c2 frag"><p class="chico" style="margin:0">Y el mismo principio, con la transición más estable que conocemos, define hoy el segundo.</p></div>
     </div>
   </div>
+  <p class="clave">Cada elemento tiene su propio código de barras de luz.</p>
 </section>
 
 <!-- ═════════════ §8 · UNIDADES SI ═════════════ -->
@@ -730,9 +863,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <label class="ctrl"><span>\(\log_{10}(t/\mathrm{s})\)</span><input type="range" id="cs-t" min="-9" max="9.5" step="0.001" value="0"><span class="v" id="cs-tv"></span></label>
       <div class="lectura l2"><div>Duración<b id="cs-T"></b></div><div>Oscilaciones<b id="cs-N"></b></div></div>
       <div class="fila-btn" id="cs-pre" style="margin-top:14px"><button type="button" class="btn" data-t="1e-9">1 ns</button><button type="button" class="btn" data-t="1">1 s</button><button type="button" class="btn" data-t="86400">1 día</button><button type="button" class="btn" data-t="3.156e7">1 año</button></div>
-      <p class="nota">Las dos configuraciones del espín del electrón externo frente al del núcleo (\(F = 3\) y \(F = 4\)) difieren en \(h\,\Delta\nu_{\mathrm{Cs}} \approx \qty{3{,}8\times 10^{-5}}{eV}\): microondas.</p>
+      <p class="nota">Las dos orientaciones del espín del electrón externo respecto al del núcleo difieren en unos \(\qty{3{,}8\times 10^{-5}}{eV}\): la transición emite microondas.</p>
     </figure>
   </div>
+  <p class="clave">El segundo se define contando oscilaciones de un átomo de cesio.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Unidades" id="dp-si" data-label="Constantes del SI">
@@ -749,6 +883,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <figure class="fg frag"><img class="foto" style="--fh:420px" src="img/camiseta-constantes.webp" alt="Camiseta con las constantes del SI: Constants forever"><figcaption>«Desde el 20 de mayo de 2019: constantes para siempre». Valores en la <a class="enl" href="https://pdg.lbl.gov/2019/reviews/rpp2018-rev-phys-constants.pdf" target="_blank" rel="noopener">tabla del Particle Data Group</a>.</figcaption></figure>
   </div>
+  <p class="clave">Desde 2019 las unidades se definen fijando constantes de la naturaleza.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Unidades" id="dp-nat" data-label="Unidades naturales">
@@ -770,6 +905,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja c2 frag"><p class="chico" style="margin:0">Un atajo útil: \(\hbar c \approx \qty{197{,}3}{MeV\cdot fm}\), con \(\qty{1}{fm} = \qty{10^{-15}}{m}\), el tamaño de un protón.</p></div>
     </div>
   </div>
+  <p class="clave">Con ħ = c = 1, todo se mide en electronvoltios.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Unidades" id="dp-natc" data-label="Conversor a unidades naturales">
@@ -788,6 +924,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="nota" id="nc-nota" style="min-height:3em;margin-top:14px"></p>
     </figure>
   </div>
+  <p class="clave">Tiempos, distancias y masas se pueden expresar como energías.</p>
 </section>
 
 <!-- ═════════════ §9 · QUARKS ═════════════ -->
@@ -795,7 +932,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   <p class="ceja">§ 0.9 · Escala nuclear</p>
   <h2 class="titulo">Materia → cristal → átomo → núcleo → nucleón → quark</h2>
   <div class="g2-60">
-    <figure class="fg"><img class="foto" style="--fh:640px" src="img/escala-nuclear.webp" alt="Escalas de la materia: cristal, átomo, núcleo, nucleón y quark"><figcaption><a class="enl" href="https://www.forbes.com/sites/startswithabang/2019/04/27/ask-ethan-where-does-a-protons-mass-come-from/" target="_blank" rel="noopener">Fuente</a></figcaption></figure>
+    <figure class="fg"><img class="foto" style="--fh:620px" src="img/escala-nuclear.webp" alt="Escalas de la materia: cristal, átomo, núcleo, nucleón y quark"><figcaption>Matter = materia, crystal = cristal, atom = átomo, atomic nucleus = núcleo atómico, nucleon = nucleón. <a class="enl" href="https://www.forbes.com/sites/startswithabang/2019/04/27/ask-ethan-where-does-a-protons-mass-come-from/" target="_blank" rel="noopener">Fuente</a></figcaption></figure>
     <table class="tabla">
       <tr><th style="text-align:left">Nivel</th><th>Tamaño</th></tr>
       <tr><td class="izq">Cristal</td><td>\(\qty{10^{-9}}{m}\)</td></tr>
@@ -806,6 +943,8 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </table>
   </div>
   <p class="chico frag" style="margin-top:18px">La <strong>física nuclear</strong> estudia las propiedades de los núcleos y las interacciones dentro y entre ellos.</p>
+  <div class="mapa" data-e="-15" data-t="protón"></div>
+  <p class="clave">La física nuclear estudia lo que pasa a 10⁻¹⁵ m.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-int3" data-label="Tres efectos de la interacción">
@@ -817,9 +956,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja frag"><p class="chico" style="margin:0"><strong>Fuerza</strong> \(= \Delta\vect{p}/\Delta t\): el electrón y el protón del hidrógeno intercambian fotones.</p></div>
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Cambio</strong>: la interacción débil convierte un neutrón en protón (\(n \to p\,e^{-}\bar\nu\)).</p></div>
       <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>Masa emergente</strong>: casi toda la masa del protón es energía de interacción.</p></div>
-      <figure class="fg frag"><img class="foto" style="--fh:250px" src="img/cargas-interacciones.webp" alt="Las partículas poseen cargas que generan interacciones"><figcaption>Las partículas poseen cargas; las cargas generan y ordenan las interacciones. <a class="enl" href="https://iopscience.iop.org/article/10.1088/1742-6596/1287/1/012045/meta" target="_blank" rel="noopener">doi:10.1088/1742-6596/1287/1/012045</a></figcaption></figure>
+      <figure class="fg frag"><img class="foto" style="--fh:250px" src="img/cargas-interacciones.webp" alt="Las partículas poseen cargas que generan interacciones"><figcaption>Charges = cargas; elementary particles = partículas elementales; interactions = interacciones. Las partículas poseen cargas; las cargas generan y ordenan las interacciones. <a class="enl" href="https://iopscience.iop.org/article/10.1088/1742-6596/1287/1/012045/meta" target="_blank" rel="noopener">doi:10.1088/1742-6596/1287/1/012045</a></figcaption></figure>
     </div>
   </div>
+  <p class="clave">Una interacción produce fuerza, cambio o masa.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-fuerza" data-label="Interacción: fuerza">
@@ -829,13 +969,28 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <div class="pila">
       <img class="foto ancha sin-borde" style="--fh:190px" src="img/campos-materia-radiacion.webp" alt="Campos de materia (flecha) y campos de radiación (línea ondulada)">
       <div class="g2-img"><img class="foto ancha" style="--fh:260px" src="img/feynman-ep.webp" alt="Un electrón y un protón intercambian un fotón"><img class="foto ancha frag" style="--fh:260px" src="img/emision-absorcion.webp" alt="Emisión, absorción, aniquilación y creación"></div>
-      <div class="kf frag">\[ e^{-} \to e^{-iEt}, \qquad e^{+} \to e^{-iE(-t)} \]</div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Un positrón se puede dibujar como un electrón que viaja hacia atrás en el tiempo <span class="prop" data-pop="pop-fs">(¿por qué?)</span>.</p></div>
     </div>
     <div class="g2-img" style="align-items:start">
-      <figure class="fg frag"><img class="foto ancha" style="--fh:560px" src="img/carga-unica.webp" alt="Apunte: una sola carga emite un fotón neutro y cambia su cantidad de movimiento"><figcaption>Una sola carga: \(\Delta\vect{p}/\Delta t \ne 0\); el fotón es neutro y \((e^{-})^{*} = e^{+}\).</figcaption></figure>
+      <figure class="fg frag"><img class="foto ancha" style="--fh:560px" src="img/carga-unica.webp" alt="Apunte: una sola carga emite un fotón neutro y cambia su cantidad de movimiento"><figcaption><em>Single charge</em> = una sola carga: \(\Delta\vect{p}/\Delta t \ne 0\); el fotón es neutro y \((e^{-})^{*} = e^{+}\).</figcaption></figure>
       <div class="caja frag"><p class="chico" style="margin:0">Al emitir o absorber un fotón, el electrón cambia su cantidad de movimiento: eso es una fuerza. Dos electrones que intercambian fotones se repelen. <a class="enl" href="https://iopscience.iop.org/article/10.1088/1742-6596/1287/1/012045/meta" target="_blank" rel="noopener">Ref.</a></p></div>
     </div>
   </div>
+  <p class="clave">Emitir o absorber un fotón cambia la cantidad de movimiento: eso es una fuerza.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-fotcq" data-label="El fotón como carga-anticarga">
+  <p class="ceja">§ 0.9 · Interacción → fuerza</p>
+  <h2 class="titulo">El fotón como carga-anticarga</h2>
+  <div style="display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:40px;align-items:start">
+    <figure class="fg"><img class="foto" style="--fh:720px" src="img/foton-carga-unica.webp" alt="Apunte a mano: un electrón emite un fotón neutro; el fotón se dibuja con una línea de carga negativa que va y otra que vuelve, equivalente a una negativa y una positiva que avanzan"><figcaption><em>Single charge</em> = una sola carga.</figcaption></figure>
+    <div class="pila">
+      <p class="chico">El fotón se dibuja con <strong>dos líneas de carga</strong>: una \(-\) hacia el futuro y otra \(-\) de regreso. Una carga que va hacia atrás en el tiempo equivale a la opuesta hacia adelante, \((e^{-})^{*} = e^{+}\) (Feynman–Stückelberg): el fotón es un par \((-,+)\), <strong>neutro</strong>, pero con la información de la carga.</p>
+      <div class="caja frag"><p class="chico" style="margin:0">En cada vértice la carga se conserva. Quien absorbe el fotón cambia su cantidad de movimiento: \(\Delta\vect{p}/\Delta t \ne 0\).</p></div>
+    </div>
+    <figure class="fg frag"><img class="foto" style="--fh:600px" src="img/foton-ep.webp" alt="Apunte a mano: dispersión electrón-protón; las líneas de carga pasan por el fotón intercambiado"><figcaption>Dispersión \(e^{-}p\): el fotón intercambiado lleva el par de líneas de carga.</figcaption></figure>
+  </div>
+  <p class="clave">El fotón es neutro, pero lleva la información de la carga.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-cambio" data-label="Interacción: cambio">
@@ -849,6 +1004,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <img class="foto ancha frag" style="--fh:220px" src="img/intercambio-pion.webp" alt="Dos nucleones intercambian un pión neutro">
     </div>
   </div>
+  <p class="clave">Protón y neutrón son dos estados del mismo nucleón.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-mp" data-label="La masa del protón">
@@ -867,6 +1023,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>La masa tiene un equivalente en energía</strong> (\(E = mc^{2}\)): por eso en física de partículas las masas se dan en \(\mathrm{MeV}/c^{2}\) o \(\mathrm{GeV}/c^{2}\).</p></div>
     </div>
   </div>
+  <p class="clave">La masa del protón es de casi 1 GeV/c².</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-hvp" data-label="Átomo frente a protón">
@@ -884,6 +1041,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="nota" id="hp-nota" style="min-height:3em"></p>
     </figure>
   </div>
+  <p class="clave">La masa del átomo es la de sus partes; la del protón, casi toda interacción.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-bar" data-label="Constructor de bariones">
@@ -903,6 +1061,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="fila-btn" id="bq-pre"><button type="button" class="btn" data-p="p">Protón</button><button type="button" class="btn" data-p="n">Neutrón</button><button type="button" class="btn" data-p="D">\(\Delta^{++}\)</button><button type="button" class="btn" data-p="O">\(\Omega^{-}\)</button></div>
     </figure>
   </div>
+  <p class="clave">Tres quarks de colores distintos forman un barión neutro en color.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-color" data-label="Tres colores y ocho gluones">
@@ -914,14 +1073,19 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <img class="foto ancha frag" style="--fh:300px" src="img/vertices-gluones.webp" alt="Vértices de la QCD: quark-gluón y gluón-gluón">
     </div>
     <div class="pila">
-      <p class="chico">El gluón lleva un color y un anticolor: cambia el color del quark. A diferencia del fotón, los gluones tienen carga de color e interactúan entre sí.</p>
+      <p class="chico">El gluón lleva un color y un anticolor: cambia el color del quark.</p>
       <div class="pr-item" data-ok="c">
-        <div class="pr-q">¿Cuántos campos de radiación se requieren para transportar la información de la interacción de tres cargas con sus tres anticargas?</div>
+        <div class="pr-q" style="font-size:31px">¿Cuántos campos de radiación se requieren para transportar la información de la interacción de tres cargas con sus tres anticargas?</div>
         <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">Uno</button><button type="button" class="pr-opc" data-o="b">Tres</button><button type="button" class="pr-opc" data-o="c">Ocho</button><button type="button" class="pr-opc" data-o="d">No se sabe</button></div>
         <div class="pr-fb" data-ok-txt="¡Ocho gluones! 3 × 3 = 9 combinaciones color-anticolor, menos la combinación blanca (rr̄ + gḡ + bb̄), que no transporta color." data-mal-txt="Cuenta las combinaciones color-anticolor (3 × 3) y quita la que es neutra en color."></div>
       </div>
+      <table class="tabla chica frag aparece"><tr><th style="text-align:left">Interacción</th><th>Cargas</th><th>Campos de radiación</th></tr>
+        <tr><td class="izq">Electromagnética</td><td>1</td><td>\(1\times 1 = 1\): fotón</td></tr>
+        <tr><td class="izq">Fuerte (color)</td><td>3</td><td>\(3\times 3 - 1 = 8\) gluones</td></tr></table>
+      <div class="caja c1 frag aparece"><p class="chico" style="margin:0">La combinación neutra \(r\bar r + g\bar g + b\bar b\) que se descarta en la QCD es la que sobrevive como fotón en la QED. Con una sola línea de carga no hay cómo recombinar líneas: los fotones no interactúan entre sí; los gluones sí. <span class="prop" data-pop="pop-grupos">En lenguaje de grupos: U(1) y SU(3)</span></p></div>
     </div>
   </div>
+  <p class="clave">Tres colores dan ocho gluones; una sola carga da un fotón.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Quarks" id="dp-had" data-label="Hadrones">
@@ -932,6 +1096,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg frag"><img class="foto" style="--fh:520px" src="img/octeto-mesones.webp" alt="Octeto de mesones con quarks u, d, s"><figcaption><strong>Mesones:</strong> un quark y un antiquark de valencia (piones, kaones…).</figcaption></figure>
   </div>
   <p class="chico frag" style="margin-top:16px">El quark \(s\) (carga \(-\tfrac13\)) es como el quark \(d\) pero más pesado: cada fila hacia abajo agrega un \(s\).</p>
+  <p class="clave">Los hadrones son bariones (tres quarks) o mesones (quark y antiquark).</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-fuerte" data-label="De la interacción nuclear a la fuerte">
@@ -947,6 +1112,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       </div>
     </div>
   </div>
+  <p class="clave">La fuerza nuclear es un residuo de la interacción fuerte entre quarks.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Quarks" id="dp-99" data-label="99 % interacción">
@@ -957,6 +1123,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg frag"><img class="foto ancha" style="--fh:420px" src="img/masa-proton-1.webp" alt="Las masas de los quarks suman el 1 % de la masa del protón"><figcaption>\(m_u + m_u + m_d \approx \qty{10}{MeV/c^{2}} = 1\,\%\ m_p\).</figcaption></figure>
     <figure class="fg frag"><img class="foto ancha" style="--fh:420px" src="img/proton-estructura.webp" alt="Estructura interna del protón: quarks de valencia, gluones y pares quark-antiquark"><figcaption>Además de los tres quarks de valencia hay gluones y pares quark-antiquark. Fuente: desy.de</figcaption></figure>
   </div>
+  <p class="clave">La masa del protón es 99 % energía de interacción.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-mar" data-label="Construye tu protón">
@@ -970,6 +1137,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <figure class="fg frag"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:300px" src="img/netflix-3body.webp" alt="Escena de una serie de Netflix"></a><figcaption>Escena de una serie de Netflix sobre el protón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
     </div>
   </div>
+  <p class="clave">Dentro del protón hay un mar de gluones y pares quark-antiquark.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-lhc" data-label="El LHC">
@@ -979,9 +1147,11 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg"><img class="foto ancha" style="--fh:600px" src="img/lhc-subterraneo.webp" alt="El túnel del LHC bajo la región de Ginebra"><figcaption>El anillo del LHC, a unos 100 m de profundidad, cerca del lago Lemán.</figcaption></figure>
     <div class="pila">
       <img class="foto ancha frag" style="--fh:250px" src="img/lago-leman.webp" alt="Patos en el lago Lemán, en la superficie">
-      <figure class="fg frag"><img class="foto ancha" style="--fh:300px" src="img/detector-cms.webp" alt="Vista despiezada de un detector del LHC"><figcaption>Un detector del LHC despiezado (observa la persona, abajo, para la escala).</figcaption></figure>
+      <figure class="fg frag"><img class="foto ancha" style="--fh:260px" src="img/detector-cms.webp" alt="Vista despiezada del detector CMS del LHC"><figcaption>El detector CMS despiezado (observa la persona, abajo, para la escala).</figcaption></figure>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">El <strong>Instituto de Física de la UdeA</strong> es miembro oficial de la colaboración <strong>CMS</strong>.</p></div>
     </div>
   </div>
+  <p class="clave">En el LHC chocan protones a casi la velocidad de la luz.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-choq" data-label="Choques de protones">
@@ -997,6 +1167,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <img class="foto frag" style="--fh:520px" src="img/proton-mar.webp" alt="Cada protón es un mar de quarks y gluones">
   </div>
+  <p class="clave">Cuando chocan dos protones, chocan sus quarks y gluones.</p>
 </section>
 
 <!-- ═════════════ §10 · DÉBIL ═════════════ -->
@@ -1017,11 +1188,13 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <div class="g2-img frag" style="grid-template-columns:repeat(4,auto);justify-content:start;gap:16px"><img class="foto sin-borde" style="--fh:110px" src="img/caricatura-electron.webp" alt="Caricatura del electrón"><img class="foto sin-borde" style="--fh:110px" src="img/caricatura-neutrino.webp" alt="Caricatura del neutrino"><img class="foto sin-borde" style="--fh:110px" src="img/caricatura-zw.webp" alt="Caricatura de los bosones Z y W"><img class="foto" style="--fh:110px" src="img/espectro-bi210.webp" alt="Espectro beta medido del bismuto-210"></div>
     </figure>
   </div>
+  <div class="mapa" data-e="-18" data-t="interacción débil"></div>
+  <p class="clave">El espectro continuo de la desintegración beta reveló el neutrino.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-debil" data-label="Los bosones W y Z">
   <p class="ceja">§ 0.10 · Interacción débil</p>
-  <h2 class="titulo">Isospín débil y los bosones \(W\) y \(Z\)</h2>
+  <h2 class="titulo">La interacción débil: los bosones \(W\) y \(Z\)</h2>
   <div class="g2-40">
     <div class="pila">
       <img class="foto ancha" style="--fh:420px" src="img/debil-isospin.webp" alt="Doblete de quarks con isospín débil y los bosones Z0, W+ y W−">
@@ -1029,9 +1202,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <div class="pila">
       <img class="foto ancha frag" style="--fh:430px" src="img/desintegracion-neutron.webp" alt="Desintegración del neutrón: un quark d emite un W− que produce un electrón y un antineutrino">
-      <div class="caja frag"><p class="chico" style="margin:0">Como \(m_d - m_u \gt m_e\), un quark \(d\) del neutrón puede bajar a \(u\) emitiendo un \(W^{-}\), que se materializa en \(e^{-}\bar\nu_e\). La carga y el isospín débil totales se conservan.</p></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Como \(m_d - m_u \gt m_e\), un quark \(d\) del neutrón puede bajar a \(u\) emitiendo un \(W^{-}\), que se materializa en \(e^{-}\bar\nu_e\). La carga y el <span class="prop" data-pop="pop-isospin">isospín débil</span> totales se conservan.</p></div>
     </div>
   </div>
+  <p class="clave">La interacción débil cambia el sabor: convierte un quark d en u.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-c14" data-label="Carbono-14 y reactores">
@@ -1042,6 +1216,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     <figure class="fg frag"><img class="foto ancha" style="--fh:330px" src="img/espectro-c14.webp" alt="Espectro de energía del electrón en la desintegración del carbono-14"><figcaption>Espectro continuo del electrón hasta \(\qty{0{,}156}{MeV}\). <a class="enl" href="http://t2k-experiment.org/neutrinos" target="_blank" rel="noopener">t2k-experiment.org</a></figcaption></figure>
     <figure class="fg frag"><img class="foto ancha" style="--fh:330px" src="img/antineutrino-reactor.webp" alt="Un antineutrino de reactor choca con un protón y produce un positrón y un neutrón"><figcaption>Detección inversa: \(\bar\nu_e\,p \to e^{+}n\). Así se ven los antineutrinos de los reactores nucleares. <a class="enl" href="http://www.quantumdiaries.org/2011/11/09/first-double-chooz-neutrino-oscillation-result/" target="_blank" rel="noopener">Double Chooz</a></figcaption></figure>
   </div>
+  <p class="clave">La misma interacción débil data fósiles y deja ver neutrinos de reactores.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-muon" data-label="Desintegración del muón">
@@ -1055,6 +1230,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
     </div>
     <figure class="fg frag"><img class="foto" style="--fh:560px" src="img/espectro-muon.webp" alt="Espectro de energía del electrón en la desintegración del muón"><figcaption>Espectro del electrón (positrón) en la desintegración del muón: simulación y muones ligados a oxígeno.</figcaption></figure>
   </div>
+  <p class="clave">El muón es un electrón pesado que se desintegra en 2 microsegundos.</p>
 </section>
 
 <section class="diapositiva" data-seccion="Débil" id="dp-me" data-label="Modelo estándar">
@@ -1066,9 +1242,10 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <li class="frag"><strong>Leptones</strong> (\(e, \mu, \tau\) y sus neutrinos): sin color.</li>
       <li class="frag"><strong>Quarks</strong> (\(u, d, c, s, t, b\)): con color; forman hadrones.</li>
       <li class="frag"><strong>Campos de radiación</strong>: \(\gamma\) (electromagnético), \(Z\) y \(W\) (débil), \(G\) (gluones, fuerte).</li>
-      <li class="frag"><strong>Higgs</strong> (\(H\)): da masa a las partículas elementales, pero no explica el 99 % de la masa del protón.</li>
+      <li class="frag"><strong>Higgs</strong> (\(H\)): descubierto en el LHC en 2012; da masa a las partículas elementales, pero no explica el 99 % de la masa del protón.</li>
     </ul>
   </div>
+  <p class="clave">Doce partículas de materia, cuatro campos de radiación y el Higgs.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Débil" id="dp-xicc" data-label="Protón doblemente encantado">
@@ -1085,9 +1262,177 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
       <p class="chico frag">Falta por descubrir \(\Xi_{ccc}^{++}\) y todos los bariones con algún quark \(b\). <a class="enl" href="https://lhcb-outreach.web.cern.ch/2026/03/17/observation-of-the-doubly-charmed-heavy-proton-%ce%becc/" target="_blank" rel="noopener">LHCb, marzo de 2026</a></p>
     </div>
   </div>
+  <p class="clave">La familia del protón sigue creciendo: el Ξcc⁺ se observó en 2026.</p>
 </section>
 
-<!-- ═════════════ §11 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Débil" id="dp-abiertas" data-label="Lo que todavía no sabemos">
+  <p class="ceja">§ 0.10 · Preguntas abiertas</p>
+  <h2 class="titulo">Lo que todavía no sabemos</h2>
+  <div class="g3">
+    <div class="caja frag"><h3>¿Qué es la materia oscura?</h3><p class="chico" style="margin:0">Hay cinco veces más que materia ordinaria y no sabemos de qué campo es excitación.</p></div>
+    <div class="caja frag"><h3>¿Qué es la energía oscura?</h3><p class="chico" style="margin:0">Casi el 70 % del universo; acelera la expansión y no sabemos qué es.</p></div>
+    <div class="caja c1 frag"><h3>¿Cuánto pesa un neutrino?</h3><p class="chico" style="margin:0">Las oscilaciones prueban que tienen masa, pero su valor aún no se ha medido.</p></div>
+    <div class="caja c2 frag"><h3>¿Dónde está la antimateria?</h3><p class="chico" style="margin:0">El big bang debió producir tanta materia como antimateria. ¿Por qué quedó materia?</p></div>
+    <div class="caja frag"><h3>¿Gravedad cuántica?</h3><p class="chico" style="margin:0">La relatividad general y la teoría cuántica de campos aún no encajan en una sola teoría.</p></div>
+    <div class="caja c1 frag"><h3>¿Por qué tres familias?</h3><p class="chico" style="margin:0">Electrón, muón y tau son copias con masas muy distintas. ¿Por qué tres, y por qué esas masas?</p></div>
+  </div>
+  <p class="chico frag" style="margin-top:22px">Son preguntas de investigación de frontera, hoy. Los capítulos que siguen dan las herramientas para empezar el camino.</p>
+  <p class="clave">Las grandes preguntas siguen abiertas: ahí empieza la investigación.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Débil" id="dp-aqui" data-label="La frontera también se investiga aquí">
+  <p class="ceja">§ 0.10 · Instituto de Física · Universidad de Antioquia</p>
+  <h2 class="titulo">La frontera también se investiga aquí</h2>
+  <p class="chico">El <strong>Instituto de Física de la Universidad de Antioquia</strong> es miembro oficial de tres grandes colaboraciones internacionales:</p>
+  <div class="g3">
+    <div class="caja frag"><h3>CMS · LHC</h3><div id="aq-cms"></div><p class="chico" style="margin:0">Uno de los dos detectores que descubrieron el bosón de Higgs (2012). Busca materia oscura y física más allá del modelo estándar en los choques de protones.</p></div>
+    <div class="caja c2 frag"><h3>LIGO</h3><div id="aq-ligo"></div><p class="chico" style="margin:0">Interferómetros con brazos de 4 km que detectaron las primeras ondas gravitacionales (2015): fusiones de agujeros negros y de estrellas de neutrones.</p></div>
+    <div class="caja c1 frag"><h3>DUNE</h3><div id="aq-dune"></div><p class="chico" style="margin:0">Neutrinos a 1300 km a través de la Tierra: el orden de sus masas, la asimetría entre materia y antimateria y las supernovas.</p></div>
+  </div>
+  <p class="chico frag" style="margin-top:18px">Las preguntas abiertas de este capítulo no son solo de los libros: en el Instituto hay grupos que trabajan en ellas. Pregunta por ellos desde los primeros semestres.</p>
+  <p class="clave">En la UdeA se participa en CMS, LIGO y DUNE.</p>
+</section>
+
+<!-- ═════════════ §11 · PREÁMBULO MATEMÁTICO ═════════════ -->
+<section class="diapositiva" data-seccion="Álgebra" id="dp-pre" data-label="Preámbulo matemático">
+  <p class="ceja">§ 0.11 · Preámbulo matemático</p>
+  <h2 class="titulo">Preámbulo matemático: las herramientas del cálculo</h2>
+  <div class="g2">
+    <ol class="leyes">
+      <li class="frag">Fracciones.</li>
+      <li class="frag">Operaciones aritméticas. Factores de conversión.</li>
+      <li class="frag">Ecuaciones.</li>
+      <li class="frag">Despeje de variables.</li>
+      <li class="frag">Vectores (en el Capítulo 1 · Preliminares).</li>
+    </ol>
+    <div class="pila">
+      <div class="caja c2"><p style="margin:0">Para pasar de la descripción a los cálculos hacen falta pocas reglas, pero hay que usarlas siempre igual.</p></div>
+      <div class="g2-img frag" style="grid-template-columns:repeat(4,auto);justify-content:center;gap:24px"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><img class="fr" src="img/fruta-pera.webp" alt="pera"><img class="fr" src="img/fruta-mango.webp" alt="mango"><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <p class="chico frag">Truco de estas diapositivas: cada fruta representa una expresión cualquiera, tan complicada como se quiera. Las reglas no dependen de lo que haya dentro.</p>
+    </div>
+  </div>
+  <p class="clave">Unas pocas reglas de álgebra bastan, si se usan siempre igual.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-par" data-label="Manejo de paréntesis">
+  <p class="ceja">§ 0.11 · Manejo de paréntesis</p>
+  <h2 class="titulo">Los paréntesis cambian el significado</h2>
+  <div class="g2">
+    <div class="pila">
+      <table class="tabla"><tr><th style="text-align:left">En palabras</th><th>En símbolos</th></tr>
+        <tr><td class="izq">Tres quintos de mi edad hace dos años</td><td>\(\tfrac35\,(x - 2)\)</td></tr>
+        <tr class="frag"><td class="izq">Tres quintos de mi edad, más dos</td><td>\(\tfrac35\,x + 2\)</td></tr></table>
+      <figure class="fg frag"><img class="foto ancha sin-borde" style="--fh:250px" src="img/pemdas.webp" alt="Orden de las operaciones PEMDAS: paréntesis, exponentes, multiplicación y división, adición y sustracción"><figcaption>Orden de las operaciones: paréntesis, exponentes, multiplicación y división, adición y sustracción.</figcaption></figure>
+      <div class="caja c2 frag"><p style="margin:0">\(\{[(\) Es mejor que sobren y no que falten \()]\}\)</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Elige tu edad \(x\)</span><span class="val" id="pa-lect"></span></div>
+      <label class="ctrl"><span>Edad \(x\) (años)</span><input type="range" id="pa-x" min="2" max="80" step="1" value="12"><span class="v" id="pa-xv"></span></label>
+      <div class="lectura l2"><div>\(\tfrac35\,(x - 2)\)<b id="pa-a"></b></div><div>\(\tfrac35\,x + 2\)<b id="pa-b"></b></div></div>
+      <div id="pa-fig"></div>
+      <p class="nota">La diferencia no depende de \(x\): \(\big(\tfrac35 x + 2\big) - \tfrac35(x - 2) = 2 + \tfrac65 = 3{,}2\).</p>
+    </figure>
+  </div>
+  <p class="clave">Los paréntesis cambian el significado: «es mejor que sobren».</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-bin" data-label="El cuadrado de una suma">
+  <p class="ceja">§ 0.11 · Operaciones</p>
+  <h2 class="titulo">\((a + b)^{2} = a^{2} + b^{2} + 2ab\), visto como áreas</h2>
+  <div class="g2-40">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/binomio-cuadrado.webp" alt="Apunte a mano: un cuadrado de lado a más b dividido en a al cuadrado, b al cuadrado y dos rectángulos ab"></figure>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Mueve \(a\) y \(b\)</span><span class="val" id="bi-lect"></span></div>
+      <div class="g2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:center">
+        <div id="bi-fig"></div>
+        <div class="pila">
+          <label class="ctrl" style="grid-template-columns:1fr;gap:6px"><span>\(a\) = <b class="mono" id="bi-av"></b></span><input type="range" id="bi-a" min="1" max="9" step="1" value="3"></label>
+          <label class="ctrl" style="grid-template-columns:1fr;gap:6px"><span>\(b\) = <b class="mono" id="bi-bv"></b></span><input type="range" id="bi-b" min="1" max="9" step="1" value="2"></label>
+          <div class="lectura l1"><div>\((a + b)^{2}\)<b id="bi-t"></b></div><div>\(a^{2} + b^{2} + 2ab\)<b id="bi-s"></b></div><div>Error común: \(a^{2} + b^{2}\)<b id="bi-e"></b></div></div>
+        </div>
+      </div>
+    </figure>
+  </div>
+  <p class="clave">(a + b)² no es a² + b²: faltan los dos rectángulos 2ab.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-simp" data-label="Simplificación">
+  <p class="ceja">§ 0.11 · Fracciones</p>
+  <h2 class="titulo">Simplificar: solo en restas y divisiones puras</h2>
+  <div class="g2-60">
+    <div class="pila">
+      <div class="ec-fr"><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"><span>−</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>=</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> en \(\dfrac{\text{pera} + \text{manzana}}{\text{pera}}\) la pera <em>no</em> se cancela: el numerador es una suma, no un producto.</p></div>
+    </div>
+    <div class="pila">
+      <p class="chico frag">El objeto que se simplifica puede ser complicado; la regla es la misma:</p>
+      <div class="kf frag">\[ \underbrace{\sqrt[3]{\dfrac{3^{2n+4}\cdot 3^{-3n}}{3^{4n+4}\cdot 3^{n-1}}}}_{\text{mango}} + N - \underbrace{\sqrt[3]{\dfrac{3^{2n+4}\cdot 3^{-3n}}{3^{4n+4}\cdot 3^{n-1}}}}_{\text{mango}} = N \]</div>
+      <div class="kf frag">\[ \dfrac{\big(\sqrt[3]{\cdots}\big)\cdot M}{\sqrt[3]{\cdots}} = M \]</div>
+    </div>
+  </div>
+  <p class="clave">Solo se cancela lo que multiplica o divide a todo.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-simp2" data-label="Dividir una suma">
+  <p class="ceja">§ 0.11 · Fracciones</p>
+  <h2 class="titulo">Dividir una suma y restar fracciones de lo mismo</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>+</span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span></div>
+      <div class="ec-fr frag"><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+ 1</span></div>
+      <p class="chico frag">Cada término de la suma se divide por separado; la pera sola sobre la pera sí da 1.</p>
+    </div>
+    <div class="pila">
+      <div class="ec-fr frag"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>− ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>= ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <p class="chico frag">Con la manzana \(= \dfrac{v_0^{2}\sin^{2}\theta}{g}\), que aparece en el tiro parabólico:</p>
+      <div class="kf frag">\[ \dfrac{v_0^{2}\sin^{2}\theta}{g} - \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} \]\[ = \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} = \dfrac{v_0^{2}\sin^{2}\theta}{2g} \]</div>
+    </div>
+  </div>
+  <p class="clave">Una suma se divide término a término.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-rec" data-label="Recíproco y expandir">
+  <p class="ceja">§ 0.11 · Operaciones</p>
+  <h2 class="titulo">Recíproco y propiedad distributiva</h2>
+  <div class="g2">
+    <div class="pila">
+      <h3 style="margin:0">Recíproco</h3>
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">fruta</span><span>verdura</span></span></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span><span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">verdura</span><span>fruta</span></span></div>
+    </div>
+    <div class="pila">
+      <h3 style="margin:0">Expandir</h3>
+      <div class="ec-fr frag"><img class="fr" src="img/dientes.webp" alt="dientes"><span>(</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>)</span></div>
+      <div class="ec-fr frag"><span>=</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="caja frag"><p class="chico" style="margin:0">El factor de afuera actúa sobre <strong>ambos</strong> términos del paréntesis: \(k\,(a + b) = k\,a + k\,b\).</p></div>
+      <div class="kf frag">\[ \text{Recíproco:}\quad \Big(\dfrac{a}{b}\Big)^{-1} = \dfrac{b}{a} \]</div>
+    </div>
+  </div>
+  <p class="clave">El factor de afuera multiplica a cada término del paréntesis.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-desp" data-label="Despeje de variables">
+  <p class="ceja">§ 0.11 · Ecuaciones</p>
+  <h2 class="titulo">Despeje de variables: la misma operación a ambos lados</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <div class="ec-fr"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr frag"><span class="op-caja">operación</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span class="op-caja">operación</span></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">La misma operación, a ambos lados, mantiene la igualdad. Ejemplo: \(2x + 5 = 11 \;\xrightarrow{\;-5\;}\; 2x = 6 \;\xrightarrow{\;\times\frac12\;}\; x = 3\).</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Despeja \(x\) aplicando operaciones</span><span class="val" id="de-lect"></span></div>
+      <div id="de-pasos" class="de-pasos"></div>
+      <div class="fila-btn" id="de-ops"></div>
+      <div class="fila-btn"><button type="button" class="cz-btn" id="de-nueva">Nueva ecuación</button><button type="button" class="cz-btn" id="de-rein">Empezar de nuevo</button></div>
+      <p class="nota" id="de-nota" style="min-height:2.6em"></p>
+    </figure>
+  </div>
+  <p class="clave">La misma operación a ambos lados mantiene la igualdad.</p>
+</section>
+
+<!-- ═════════════ §12 · PRÁCTICA ═════════════ -->
 <section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: constantes y unidades">
   <p class="ceja">Reto <span class="score">Aciertos: <b id="si-score">0</b> / 6</span></p>
   <h2 class="titulo">¿Qué unidad del SI queda definida al fijar cada constante?</h2>
@@ -1160,6 +1505,39 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica3" data-label="Práctica III">
+  <p class="ceja">Práctica III <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Preámbulo matemático</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok-num="5" data-tol="0.001">
+        <div class="pr-q">1. Despeja \(x\) en \(3x - 4 = 11\).</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="x"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">Suma 4 a ambos lados y luego divide ambos lados entre 3.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 3x = 15 ⇒ x = 5." data-mal-txt="Primero +4 a ambos lados: 3x = 15."></div>
+      </div>
+      <div class="pr-item" data-ok-num="6" data-tol="0.001">
+        <div class="pr-q">2. Si tengo \(x = 12\) años, ¿cuánto es «tres quintos de mi edad hace dos años»?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="años"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(\tfrac35\,(x - 2)\): primero el paréntesis.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: (3/5)(12 − 2) = (3/5)(10) = 6." data-mal-txt="Resta primero: 12 − 2 = 10, y luego multiplica por 3/5."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">3. Con \(a = 3\) y \(b = 2\), \((a + b)^{2}\) vale…</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(13\)</button><button type="button" class="pr-opc" data-o="b">\(25\)</button><button type="button" class="pr-opc" data-o="c">\(10\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: 5² = 25 = 9 + 4 + 12. Con a² + b² = 13 faltan los dos rectángulos 2ab." data-mal-txt="Suma primero (paréntesis) y luego eleva al cuadrado."></div>
+      </div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">4. ¿Cuál simplificación es correcta?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\dfrac{a + b}{b} = a + 1\)</button><button type="button" class="pr-opc" data-o="b">\(\dfrac{a + b}{b} = \dfrac{a}{b} + 1\)</button><button type="button" class="pr-opc" data-o="c">\(\dfrac{a\,b}{b} = a\,b\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: cada término de la suma se divide entre b." data-mal-txt="Solo se cancela lo que multiplica a todo el numerador."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
   <p class="ceja">Glosario</p>
   <h2 class="titulo">Términos del capítulo</h2>
@@ -1190,20 +1568,13 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </dl>
 </section>
 
-<section class="diapositiva" data-seccion="Práctica" data-label="Lo que sigue">
-  <p class="ceja">Lo que sigue</p>
-  <h2 class="titulo">Preámbulo matemático</h2>
-  <div class="g2">
-    <ol class="leyes">
-      <li>Fracciones.</li>
-      <li>Operaciones aritméticas. Factores de conversión.</li>
-      <li>Ecuaciones.</li>
-      <li>Despeje de variables.</li>
-      <li>Vectores.</li>
-    </ol>
-    <div class="caja c2"><p style="margin:0">Las herramientas para pasar de la descripción a los cálculos: continúa con el <strong>Capítulo 1 · Preliminares</strong>.</p></div>
-  </div>
-</section>
+<div class="pop-src" id="pop-alfa" style="display:none"><h4>La constante de estructura fina</h4><p>La intensidad de la interacción electromagnética se mide con \(\alpha = \dfrac{e^{2}}{4\pi\varepsilon_0\hbar c} \approx \dfrac{1}{137}\). Schwinger (1948) calculó la primera corrección: \(g_e = 2\big(1 + \tfrac{\alpha}{2\pi} + \cdots\big)\); los puntos suspensivos son diagramas con más lazos.</p></div>
+<div class="pop-src" id="pop-grupos" style="display:none"><h4>Grupos de simetría</h4><p><strong>SO(3):</strong> las rotaciones ordinarias; un giro de 360° deja todo igual. <strong>SU(2):</strong> el espín del electrón necesita 720° para volver a su estado. <strong>U(1):</strong> cambiar la fase de un número complejo (el círculo \(\abs{z} = 1\)); es la simetría del electromagnetismo y da 1 campo, el fotón. <strong>SU(3):</strong> mezclar los tres colores; da \(3\times 3 - 1 = 8\) gluones.</p></div>
+<div class="pop-src" id="pop-vertice" style="display:none"><h4>La regla del vértice</h4><p>En la QED cada vértice aporta un factor \(-ie\gamma^{\mu}\): \(e\) es la carga y las matrices de Dirac \(\gamma^{\mu}\) conectan el espín del electrón con la polarización del fotón \(A^{\mu}\). La probabilidad es el cuadrado de la amplitud, así que cada par de vértices da un factor \(e^{2} \propto \alpha\).</p></div>
+<div class="pop-src" id="pop-fs" style="display:none"><h4>Antipartículas hacia atrás en el tiempo</h4><p>Una partícula de energía \(E\) oscila como \(\psi \sim e^{-iEt}\). La solución \(e^{+iEt} = e^{-iE(-t)}\) se lee como energía positiva con el tiempo invertido: es la antipartícula (Feynman–Stückelberg). Por eso el positrón se dibuja con la flecha hacia atrás: \((e^{-})^{*} = e^{+}\).</p></div>
+<div class="pop-src" id="pop-lazos" style="display:none"><h4>La serie de la QED</h4><p>\(\dfrac{g}{2} - 1 = \sum_n A_n \Big(\dfrac{\alpha}{\pi}\Big)^{n}\), con \(A_1 = \tfrac12\), \(A_2 \approx -0{,}328\), \(A_3 \approx 1{,}181\), \(A_4 \approx -1{,}912\), \(A_5 \approx 6{,}74\) y \(\alpha^{-1} = 137{,}035\,999\,2\). El término de cinco lazos requirió calcular 12 672 diagramas.</p></div>
+<div class="pop-src" id="pop-osc" style="display:none"><h4>Probabilidad de oscilación</h4><p>Con dos sabores, \(P(\nu_\mu\to\nu_\tau) = \sin^{2}2\theta\,\sin^{2}\!\big(1{,}27\,\Delta m^{2} L/E\big)\), con \(\Delta m^{2} = \qty{2{,}5\times 10^{-3}}{eV^2}\) (diferencia de masas al cuadrado), \(L\) en km y \(E\) en GeV. Si los neutrinos no tuvieran masa, \(\Delta m^{2} = 0\) y no oscilarían.</p></div>
+<div class="pop-src" id="pop-isospin" style="display:none"><h4>Isospín débil</h4><p>La interacción débil agrupa las partículas en parejas: \((u, d)\) y \((\nu_e, e)\). El \(W\) convierte el miembro de arriba en el de abajo y viceversa, cambiando la carga en una unidad, como un «espín» que apunta arriba o abajo. Por eso un \(d\) se vuelve \(u\) y aparece un par \(e^{-}\bar\nu_e\).</p></div>
 <div class="pop-src" id="pop-exc" style="display:none"><h4>Excitación de un campo</h4><p>En su estado de mínima energía (el vacío) un campo solo tiene fluctuaciones. Si recibe energía, la toma en paquetes discretos, cuantos. Un paquete localizado viaja como una unidad: eso es lo que llamamos partícula.</p></div>
 <div class="pop-src" id="pop-rep" style="display:none"><h4>Representación irreducible</h4><p>Wigner (1939): una partícula se clasifica por cómo se transforma bajo las simetrías del espacio-tiempo (traslaciones, rotaciones, cambios de velocidad). Lo que no cambia son sus etiquetas: la masa y el espín.</p></div>
 <div class="pop-src" id="pop-fer" style="display:none"><h4>Fermiones</h4><p>Partículas de espín semientero (\(\tfrac12\), \(\tfrac32\)…): electrones, protones, neutrones, neutrinos. Obedecen el principio de exclusión. Los de espín entero, como el fotón, son bosones y sí pueden acumularse en un mismo estado.</p></div>
@@ -2172,6 +2543,291 @@ function zonaEM(l) {                       /* l en metros */
     cuentas.fill(0); total = 0; pinta();
   });
   pinta();
+})();
+
+/* ═══ PARÉNTESIS: tres quintos de mi edad… ════════════════════════════ */
+(function () {
+  const r = document.getElementById('pa-x');
+  if (!r) return;
+  const host = document.getElementById('pa-fig');
+  const W = 1180, H = 260, x0 = 30, x1 = 1150, MAX = 52;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => x0 + v / MAX * (x1 - x0);
+  const ba = nodo('rect', { x: x0, y: 30, height: 70, style: 'fill:var(--res)' }, svg);
+  const bb = nodo('rect', { x: x0, y: 140, height: 70, style: 'fill:var(--caso2)' }, svg);
+  const ta = nodo('text', { y: 76, 'font-size': 30, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT }, svg);
+  const tb = nodo('text', { y: 186, 'font-size': 30, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT }, svg);
+  function pinta() {
+    const x = +r.value, a = 0.6 * (x - 2), b = 0.6 * x + 2;
+    ba.setAttribute('width', X(a) - x0); bb.setAttribute('width', X(b) - x0);
+    ta.setAttribute('x', X(a) + 12); tb.setAttribute('x', X(b) + 12);
+    ta.textContent = '3/5 (x − 2) = ' + num(a, 1); tb.textContent = '3/5 x + 2 = ' + num(b, 1);
+    document.getElementById('pa-xv').textContent = x;
+    document.getElementById('pa-a').textContent = num(a, 1);
+    document.getElementById('pa-b').textContent = num(b, 1);
+    document.getElementById('pa-lect').textContent = 'diferencia: ' + num(b - a, 1);
+  }
+  r.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ (a + b)² COMO ÁREAS ═════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('bi-fig');
+  if (!host) return;
+  const ra = document.getElementById('bi-a'), rb = document.getElementById('bi-b');
+  const W = 560, P = 40, L = 480;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + W, class: 'fig' }, host);
+  const g = nodo('g', {}, svg);
+  function pinta() {
+    const a = +ra.value, b = +rb.value, s = L / (a + b), A = a * s, B = b * s;
+    g.innerHTML = '';
+    const caja = (x, y, w, h, col, txt) => {
+      nodo('rect', { x: P + x, y: P + y, width: w, height: h, style: 'fill:var(' + col + ');stroke:var(--papel);stroke-width:3' }, g);
+      if (w > 60 && h > 40) nodo('text', { x: P + x + w / 2, y: P + y + h / 2 + 12, 'text-anchor': 'middle', 'font-size': Math.min(40, w / 3), style: 'fill:var(--papel);font-weight:700;font-family:' + FMATH, txt: txt }, g);
+    };
+    caja(0, B, A, A, '--res', 'a² = ' + a * a);
+    caja(A, 0, B, B, '--caso1', 'b² = ' + b * b);
+    caja(0, 0, A, B, '--caso2', 'ab = ' + a * b);
+    caja(A, B, B, A, '--caso2', 'ab = ' + a * b);
+    nodo('text', { x: P + A / 2, y: P - 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta2);font-style:italic;font-family:' + FMATH, txt: 'a' }, g);
+    nodo('text', { x: P + A + B / 2, y: P - 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta2);font-style:italic;font-family:' + FMATH, txt: 'b' }, g);
+    document.getElementById('bi-av').textContent = a; document.getElementById('bi-bv').textContent = b;
+    document.getElementById('bi-t').textContent = '(' + a + ' + ' + b + ')² = ' + (a + b) * (a + b);
+    document.getElementById('bi-s').textContent = a * a + ' + ' + b * b + ' + ' + 2 * a * b + ' = ' + (a * a + b * b + 2 * a * b);
+    document.getElementById('bi-e').textContent = (a * a + b * b) + ' ✗ (faltan ' + 2 * a * b + ')';
+    document.getElementById('bi-lect').textContent = 'lado a + b = ' + (a + b);
+  }
+  ra.addEventListener('input', pinta); rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DESPEJE DE VARIABLES: A x + B = C ═══════════════════════════════ */
+(function () {
+  const host = document.getElementById('de-pasos');
+  if (!host) return;
+  const mcd = (p, q) => { p = Math.abs(p); q = Math.abs(q); while (q) { [p, q] = [q, p % q]; } return p || 1; };
+  const fr = (n, d) => { if (d < 0) { n = -n; d = -d; } const k = mcd(n, d); return [n / k, d / k]; };
+  const txt = q => q[1] === 1 ? String(q[0]).replace('-', '−') : String(q[0]).replace('-', '−') + '/' + q[1];
+  const sum = (p, q) => fr(p[0] * q[1] + q[0] * p[1], p[1] * q[1]);
+  const div = (p, q) => fr(p[0] * q[1], p[1] * q[0]);
+  let A, B, C, pasos, orig;
+  const ec = () => {
+    const a = A[0] === 1 && A[1] === 1 ? '' : A[0] === -1 && A[1] === 1 ? '−' : txt(A);
+    const b = B[0] === 0 ? '' : (B[0] > 0 ? ' + ' + txt(B) : ' − ' + txt([-B[0], B[1]]));
+    return a + 'x' + b + ' = ' + txt(C);
+  };
+  function pinta() {
+    host.innerHTML = pasos.map((p, k) => '<div class="paso' + (k === pasos.length - 1 && B[0] === 0 && A[0] === A[1] ? ' fin' : '') + '"><span>' + p[0] + '</span><span class="op">' + p[1] + '</span></div>').join('');
+    const ops = document.getElementById('de-ops'), listo = B[0] === 0 && A[0] === A[1];
+    ops.innerHTML = listo ? '' : (B[0] !== 0 ? '<button type="button" class="btn" data-o="b">' + (B[0] > 0 ? '− ' + txt(B) : '+ ' + txt([-B[0], B[1]])) + ' a ambos lados</button>' : '')
+      + (A[0] !== A[1] ? '<button type="button" class="btn" data-o="a">÷ ' + txt(A) + ' a ambos lados</button>' : '');
+    document.getElementById('de-lect').textContent = listo ? '✓ despejada en ' + (pasos.length - 1) + ' pasos' : 'paso ' + pasos.length;
+    document.getElementById('de-nota').textContent = listo ? '¡Listo! Comprueba reemplazando x en la ecuación original.'
+      : (pasos.length === 1 ? 'Elige una operación. Ambas son válidas; restar primero evita fracciones.' : '');
+  }
+  function nueva(a, x, b) {
+    a = a || 2 + Math.floor(Math.random() * 7); x = x !== undefined ? x : Math.floor(Math.random() * 19) - 6; b = b !== undefined ? b : (Math.floor(Math.random() * 17) - 8 || 5);
+    orig = [a, x, b]; A = [a, 1]; B = [b, 1]; C = [a * x + b, 1]; pasos = [[ec(), '']]; pinta();
+  }
+  document.getElementById('de-ops').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.o === 'b') { const op = b.textContent.replace(' a ambos lados', ''); C = sum(C, [-B[0], B[1]]); B = [0, 1]; pasos.push([ec(), op]); }
+    else { const op = '÷ ' + txt(A); B = div(B, A); C = div(C, A); A = [1, 1]; pasos.push([ec(), op]); }
+    pinta();
+  });
+  document.getElementById('de-nueva').addEventListener('click', () => nueva());
+  document.getElementById('de-rein').addEventListener('click', () => nueva(...orig));
+  nueva(2, 3, 5);
+})();
+
+/* ═══ EXPANSIÓN: pan de pasas ═════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ex-fig');
+  if (!host) return;
+  const W = 1180, H = 560, rt = document.getElementById('ex-t');
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  let semilla = 7; const azar = () => { semilla = (semilla * 16807) % 2147483647; return semilla / 2147483647; };
+  const G = [];
+  for (let i = 0; i < 46; i++) G.push({ x: (azar() - 0.5) * 900, y: (azar() - 0.5) * 420, r: 5 + azar() * 6 });
+  let ref = 0; G.forEach((g, i) => { if (Math.hypot(g.x, g.y) < Math.hypot(G[ref].x, G[ref].y)) ref = i; });
+  const capa = nodo('g', {}, svg);
+  function pinta() {
+    const s = 1 + 0.55 * (+rt.value), R = G[ref], cx = W / 2 + R.x * 0.2, cy = H / 2 + R.y * 0.2;
+    capa.innerHTML = '';
+    const pos = g => [cx + s * (g.x - R.x), cy + s * (g.y - R.y)], pos0 = g => [cx + (g.x - R.x), cy + (g.y - R.y)];
+    G.forEach((g, i) => {
+      if (i === ref) return;
+      const a = pos0(g), b = pos(g);
+      nodo('circle', { cx: a[0], cy: a[1], r: g.r, style: 'fill:none;stroke:var(--proy);stroke-width:2' }, capa);
+      if (Math.hypot(b[0] - a[0], b[1] - a[1]) > 8) flecha(capa, a[0], a[1], b[0], b[1], tok('--caso2'), 3);
+    });
+    G.forEach((g, i) => {
+      const b = pos(g), c = nodo('circle', { cx: b[0], cy: b[1], r: i === ref ? 14 : g.r, style: 'fill:var(' + (i === ref ? '--res' : '--tinta') + ');cursor:pointer' }, capa);
+      c.addEventListener('click', () => { ref = i; pinta(); });
+    });
+    nodo('text', { x: cx, y: cy - 24, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--res);font-weight:700;font-family:' + FTXT, txt: 'tú' }, capa);
+    document.getElementById('ex-tv').textContent = '×' + num(s, 2);
+    document.getElementById('ex-lect').textContent = 'distancias ×' + num(s, 2) + ' · las más lejanas se alejan más';
+  }
+  rt.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ MATERIA OSCURA: curva de rotación ═══════════════════════════════ */
+(function () {
+  const host = document.getElementById('mo-fig');
+  if (!host) return;
+  const rh = document.getElementById('mo-h');
+  const A = ejes(host, { W: 1180, H: 500, x: [0, 30], y: [0, 300], xt: [0, 5, 10, 15, 20, 25, 30], yt: [0, 100, 200, 300],
+    xl: 'distancia al centro (kpc)', yl: 'rapidez (km/s)', m: { l: 100, r: 30, t: 20, b: 80 } });
+  /* esfera exponencial para la materia visible; halo pseudoisotérmico */
+  const vVis = r => { const x = r / 3; return 360 * Math.sqrt(Math.max(0, (1 - (1 + x) * Math.exp(-x)) / Math.max(r, 1e-6) * 3)); };
+  const vHalo = (r, f) => 190 * f * Math.sqrt(Math.max(0, 1 - (4 / r) * Math.atan(r / 4)));
+  const vTot = (r, f) => Math.sqrt(vVis(r) ** 2 + vHalo(r, f) ** 2);
+  const pts = []; for (let r = 1.5; r <= 29; r += 1.9) pts.push([r, vTot(r, 1) * (1 + 0.035 * Math.sin(3.1 * r))]);
+  const curvaVis = []; for (let r = 0.1; r <= 30; r += 0.2) curvaVis.push([r, vVis(r)]);
+  polilinea(A, curvaVis, 'stroke:var(--proy);stroke-width:4;stroke-dasharray:12 8');
+  pts.forEach(p => { nodo('line', { x1: A.X(p[0]), x2: A.X(p[0]), y1: A.Y(p[1] - 12), y2: A.Y(p[1] + 12), style: 'stroke:var(--tinta);stroke-width:2' }, A.capa); nodo('circle', { cx: A.X(p[0]), cy: A.Y(p[1]), r: 8, style: 'fill:var(--tinta)' }, A.capa); });
+  rotulo(A.capa, A.X(19), A.Y(95), 'materia visible', { style: 'fill:var(--tinta2);font-family:' + FTXT });
+  const g = nodo('g', {}, A.capa);
+  function pinta() {
+    const f = +rh.value; g.innerHTML = '';
+    const c = []; for (let r = 0.1; r <= 30; r += 0.2) c.push([r, vTot(r, f)]);
+    polilinea(A, c, 'stroke:var(--res);stroke-width:5', g);
+    let err = 0; pts.forEach(p => { err += Math.abs(vTot(p[0], f) - p[1]); }); err /= pts.length;
+    document.getElementById('mo-hv').textContent = num(100 * f, 0) + ' %';
+    document.getElementById('mo-lect').textContent = err < 12 ? '✓ el halo explica las mediciones' : 'desvío medio: ' + num(err, 0) + ' km/s';
+  }
+  rh.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CONTENIDO DEL UNIVERSO: pastel ══════════════════════════════════ */
+(function () {
+  const host = document.getElementById('pz-fig');
+  if (!host) return;
+  const P = [
+    { n: 'Energía oscura', v: 68.5, c: '--tinta2', t: 'Energía oscura (68,5 %): la energía del espacio vacío, que acelera la expansión. No sabemos qué es.' },
+    { n: 'Materia oscura', v: 26.6, c: '--tinta', t: 'Materia oscura (26,6 %): se nota por su gravedad (galaxias, cúmulos, lentes) pero no emite luz. No está hecha de protones ni neutrones.' },
+    { n: 'Materia ordinaria', v: 4.9, c: '--res', t: 'Materia ordinaria (4,9 %): protones, neutrones y electrones. La mayor parte es gas entre galaxias; las estrellas son apenas un 0,5 % del total.' }];
+  const W = 620, cx = 310, cy = 300, R = 250, r0 = 130;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' 600', class: 'fig' }, host);
+  let a0 = -Math.PI / 2, sel = 2;
+  const sec = P.map((p, k) => {
+    const a1 = a0 + 2 * Math.PI * p.v / 100, grande = a1 - a0 > Math.PI ? 1 : 0;
+    const q = (a, r) => (cx + r * Math.cos(a)).toFixed(1) + ' ' + (cy + r * Math.sin(a)).toFixed(1);
+    const d = 'M ' + q(a0, R) + ' A ' + R + ' ' + R + ' 0 ' + grande + ' 1 ' + q(a1, R) + ' L ' + q(a1, r0) + ' A ' + r0 + ' ' + r0 + ' 0 ' + grande + ' 0 ' + q(a0, r0) + ' Z';
+    const el = nodo('path', { d: d, style: 'fill:var(' + p.c + ');stroke:var(--papel);stroke-width:4;cursor:pointer' }, svg);
+    const am = (a0 + a1) / 2, rl = k === 2 ? R + 34 : (R + r0) / 2;
+    nodo('text', { x: cx + rl * Math.cos(am), y: cy + rl * Math.sin(am) + 12, 'text-anchor': k === 2 ? 'start' : 'middle', 'font-size': 34, style: 'font-weight:800;pointer-events:none;fill:' + (k === 2 ? 'var(--res)' : 'var(--papel)') + ';font-family:' + FTXT, txt: num(p.v, 1) + ' %' }, svg);
+    el.addEventListener('click', () => { sel = k; pinta(); });
+    a0 = a1; return el;
+  });
+  const centro = nodo('text', { x: cx, y: cy + 12, 'text-anchor': 'middle', 'font-size': 30, style: 'font-weight:700;pointer-events:none;fill:var(--tinta);font-family:' + FTXT }, svg);
+  function pinta() {
+    sec.forEach((el, k) => { el.style.opacity = k === sel ? 1 : 0.55; });
+    centro.textContent = P[sel].n;
+    document.getElementById('pz-txt').textContent = P[sel].t;
+    document.getElementById('pz-lect').textContent = P[sel].n.toLowerCase();
+  }
+  pinta();
+})();
+
+/* ═══ MAPA DE ESCALA («estamos aquí») ═════════════════════════════════ */
+(function () {
+  $$('.mapa[data-e]').forEach(host => {
+    const e = +host.dataset.e, W = 900, H = 34, x0 = 605, x1 = 795, X = v => x0 + (v + 18) / 45 * (x1 - x0);
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig', style: 'overflow:visible', 'aria-label': 'Escala: 10^' + e + ' metros' }, host);
+    nodo('text', { x: x0 - 10, y: 23, 'text-anchor': 'end', 'font-size': 18, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'quark' }, svg);
+    nodo('text', { x: x1 + 10, y: 23, 'font-size': 18, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'universo' }, svg);
+    nodo('line', { x1: x0, x2: x1, y1: 17, y2: 17, style: 'stroke:var(--proy);stroke-width:3' }, svg);
+    for (let v = -18; v <= 27; v += 9) nodo('line', { x1: X(v), x2: X(v), y1: 10, y2: 24, style: 'stroke:var(--proy);stroke-width:2' }, svg);
+    nodo('circle', { cx: X(e), cy: 17, r: 9, style: 'fill:var(--res)' }, svg);
+    nodo('text', { x: 535, y: 24, 'text-anchor': 'end', 'font-size': 21, style: 'fill:var(--res);font-weight:700;font-family:' + FTXT, txt: 'estamos aquí: 10' + sup(e) + ' m · ' + host.dataset.t }, svg);
+  });
+})();
+
+/* ═══ DUNE: un haz en línea recta por dentro de la Tierra ═════════════ */
+(function () {
+  const host = document.getElementById('du-fig');
+  if (!host) return;
+  const R = 6371, W = 1180, H = 560, rL = document.getElementById('du-L');
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const g = nodo('g', {}, svg);
+  function pinta() {
+    const L = +rL.value, th = L / R, prof = R * (1 - Math.cos(th / 2)), cuerda = 2 * R * Math.sin(th / 2);
+    g.innerHTML = '';
+    /* vista de la Tierra entera */
+    const cx = 250, cy = 290, r = 230;
+    nodo('circle', { cx: cx, cy: cy, r: r, style: 'fill:var(--res-50);stroke:var(--res);stroke-width:3' }, g);
+    const a = -Math.PI / 2 - th / 2, b = -Math.PI / 2 + th / 2, P = t => [cx + r * Math.cos(t), cy + r * Math.sin(t)];
+    const pa = P(a), pb = P(b);
+    nodo('line', { x1: pa[0], y1: pa[1], x2: pb[0], y2: pb[1], style: 'stroke:var(--caso2);stroke-width:5' }, g);
+    [pa, pb].forEach(p => nodo('circle', { cx: p[0], cy: p[1], r: 9, style: 'fill:var(--caso2)' }, g));
+    nodo('text', { x: cx, y: cy + 12, 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--res);font-weight:700;font-family:' + FTXT, txt: 'Tierra' }, g);
+    /* perfil ampliado: la profundidad escalada para que se vea */
+    const px0 = 560, px1 = 1150, py0 = 90, esc = 300 / Math.max(prof, 1);
+    nodo('text', { x: px0, y: 40, 'font-size': 24, style: 'fill:var(--tinta2);font-weight:700;font-family:' + FTXT, txt: 'Perfil (profundidad ampliada ×' + num(esc * (px1 - px0) / cuerda, 0) + ')' }, g);
+    const sup_ = [];
+    for (let k = 0; k <= 60; k++) { const u = k / 60, x = px0 + u * (px1 - px0), h = R * (Math.cos(th * (u - 0.5)) - Math.cos(th / 2)); sup_.push(x.toFixed(1) + ',' + (py0 + 300 - h * esc).toFixed(1)); }
+    nodo('polyline', { points: sup_.join(' '), style: 'fill:none;stroke:var(--caso1);stroke-width:4' }, g);
+    nodo('line', { x1: px0, x2: px1, y1: py0 + 300, y2: py0 + 300, style: 'stroke:var(--caso2);stroke-width:5' }, g);
+    const xm = (px0 + px1) / 2;
+    flecha(g, xm, py0 + 4, xm, py0 + 292, tok('--tinta2'), 3);
+    nodo('text', { x: xm + 14, y: py0 + 150, 'font-size': 26, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT, txt: num(prof, prof < 100 ? 1 : 0) + ' km' }, g);
+    const es = Math.abs(L - 1300) < 60;
+    nodo('text', { x: px0, y: py0 + 344, 'font-size': 24, style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT, txt: es ? 'Fermilab' : 'fuente' }, g);
+    nodo('text', { x: px1, y: py0 + 344, 'text-anchor': 'end', 'font-size': 24, style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT, txt: es ? 'SURF (Dakota del Sur)' : 'detector' }, g);
+    nodo('text', { x: xm, y: py0 + 386, 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'superficie (verde) y haz (ámbar)' }, g);
+    document.getElementById('du-Lv').textContent = num(L, 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' km';
+    document.getElementById('du-p').textContent = num(prof, prof < 100 ? 1 : 0) + ' km';
+    document.getElementById('du-t').textContent = num(cuerda / 299792.458 * 1000, 1) + ' ms';
+    document.getElementById('du-lect').textContent = es ? 'DUNE: Fermilab → Dakota del Sur' : 'cuerda de ' + num(cuerda, 0) + ' km';
+  }
+  rL.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ ILUSTRACIONES: CMS, LIGO, DUNE ══════════════════════════════════ */
+(function () {
+  const lienzo = (id, W, H) => { const h = document.getElementById(id); return h ? nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig', style: 'max-height:230px;margin:6px 0 12px' }, h) : null; };
+  const txt = (g, x, y, s, t, extra) => nodo('text', Object.assign({ x: x, y: y, 'font-size': s, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: t }, extra || {}), g);
+  /* CMS: corte transversal por capas */
+  let s = lienzo('aq-cms', 560, 240);
+  if (s) {
+    const cx = 170, cy = 120, capas = [[108, 84, '--res-100', 'muones'], [80, 76, '--tinta2', 'imán'], [74, 54, '--caso2-50', 'calorímetro hadrónico'], [52, 40, '--caso1-50', 'calorímetro electromagn.'], [38, 8, '--rejilla', 'trazador']];
+    capas.forEach(c => nodo('circle', { cx: cx, cy: cy, r: (c[0] + c[1]) / 2, style: 'fill:none;stroke:var(' + c[2] + ');stroke-width:' + (c[0] - c[1]) }, s));
+    for (let k = 0; k < 12; k++) { const a = k * Math.PI / 6; nodo('line', { x1: cx + 84 * Math.cos(a), y1: cy + 84 * Math.sin(a), x2: cx + 108 * Math.cos(a), y2: cy + 108 * Math.sin(a), style: 'stroke:var(--papel);stroke-width:4' }, s); }
+    [[0.5, 0.3, 118], [2.2, -0.25, 112], [3.7, 0.5, 64], [4.9, -0.2, 118], [1.4, 0.15, 118]].forEach(t => {
+      const a = t[0], L = t[2], c = [cx + L / 2 * Math.cos(a + t[1]), cy + L / 2 * Math.sin(a + t[1])];
+      nodo('path', { d: 'M ' + cx + ' ' + cy + ' Q ' + c[0].toFixed(1) + ' ' + c[1].toFixed(1) + ' ' + (cx + L * Math.cos(a)).toFixed(1) + ' ' + (cy + L * Math.sin(a)).toFixed(1), style: 'fill:none;stroke:var(--res);stroke-width:3' }, s);
+    });
+    nodo('circle', { cx: cx, cy: cy, r: 5, style: 'fill:var(--tinta)' }, s);
+    capas.forEach((c, k) => { nodo('rect', { x: 296, y: 28 + k * 40, width: 22, height: 22, style: 'fill:var(' + c[2] + ');stroke:var(--linea);stroke-width:1' }, s); txt(s, 326, 46 + k * 40, 18, c[3]); });
+  }
+  /* LIGO: interferómetro en L */
+  s = lienzo('aq-ligo', 520, 240);
+  if (s) {
+    const ox = 90, oy = 190, bx = ox + 60, by = oy;
+    nodo('rect', { x: 20, y: oy - 16, width: 60, height: 32, style: 'fill:var(--caso2)' }, s); txt(s, 22, oy + 44, 18, 'láser');
+    nodo('line', { x1: 80, y1: oy, x2: bx, y2: by, style: 'stroke:var(--res);stroke-width:4' }, s);
+    nodo('line', { x1: bx - 14, y1: by + 14, x2: bx + 14, y2: by - 14, style: 'stroke:var(--tinta);stroke-width:5' }, s);
+    nodo('line', { x1: bx, y1: by, x2: 470, y2: by, style: 'stroke:var(--res);stroke-width:4' }, s);
+    nodo('line', { x1: bx, y1: by, x2: bx, y2: 22, style: 'stroke:var(--res);stroke-width:4' }, s);
+    nodo('rect', { x: 470, y: by - 20, width: 10, height: 40, style: 'fill:var(--tinta)' }, s);
+    nodo('rect', { x: bx - 20, y: 12, width: 40, height: 10, style: 'fill:var(--tinta)' }, s);
+    nodo('line', { x1: bx, y1: by, x2: bx, y2: 232, style: 'stroke:var(--res);stroke-width:4;stroke-dasharray:6 5' }, s);
+    nodo('rect', { x: bx - 16, y: 226, width: 32, height: 12, style: 'fill:var(--caso1)' }, s); txt(s, bx + 24, 236, 18, 'detector de luz');
+    txt(s, 300, by - 12, 20, '4 km', { 'text-anchor': 'middle' }); txt(s, bx + 12, 110, 20, '4 km');
+    txt(s, 190, 48, 18, 'una onda gravitacional', {}); txt(s, 190, 70, 18, 'estira un brazo y encoge', {}); txt(s, 190, 92, 18, 'el otro: cambia la luz', {});
+  }
+  /* DUNE: haz a través de la Tierra */
+  s = lienzo('aq-dune', 520, 240);
+  if (s) {
+    nodo('path', { d: 'M 20 90 Q 260 40 500 90 L 500 240 L 20 240 Z', style: 'fill:var(--res-50);stroke:var(--caso1);stroke-width:3' }, s);
+    nodo('line', { x1: 60, y1: 84, x2: 460, y2: 84, style: 'stroke:var(--caso2);stroke-width:5' }, s);
+    nodo('rect', { x: 40, y: 64, width: 40, height: 22, style: 'fill:var(--tinta)' }, s);
+    nodo('rect', { x: 440, y: 150, width: 50, height: 40, style: 'fill:var(--caso1)' }, s);
+    nodo('line', { x1: 460, y1: 84, x2: 465, y2: 150, style: 'stroke:var(--caso2);stroke-width:4;stroke-dasharray:6 5' }, s);
+    txt(s, 30, 44, 18, 'Fermilab'); txt(s, 500, 212, 18, 'argón líquido, 1,5 km bajo tierra', { 'text-anchor': 'end' }); txt(s, 260, 124, 20, '1300 km', { 'text-anchor': 'middle' });
+    txt(s, 500, 44, 18, 'Dakota del Sur', { 'text-anchor': 'end' });
+  }
 })();
 
 </script>
