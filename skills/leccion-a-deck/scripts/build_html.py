@@ -19,6 +19,8 @@ Qué produce (ver references/autonomo.md):
   · El núcleo de la lección se sustituye por assets/nucleo-autonomo.js
     (clase-slides v1.3 adaptado: recorre diapositivas y pósteres, marca
     data-deck-active y emite 'slidechange' además de 'diapositiva').
+  · Las imágenes locales (<img src="img/…"> relativas a la fuente) se
+    incrustan como data: URI.
   · MathJax (tex-svg-full, sin autoload) y el sistema de diseño van en línea:
     el archivo funciona desde file:// y sin conexión (--mathjax cdn lo deja
     enlazado y reduce ~2,3 MB).
@@ -27,7 +29,7 @@ Entradas admitidas: una lección clase-slides (con su «NÚCLEO clase-slides»)
 o cualquier HTML cuyo <body> tenga <section class="diapositiva"
 data-seccion="…"> y sus scripts propios; si no trae núcleo, se añade.
 """
-import argparse, html, json, os, re, sys
+import argparse, base64, html, json, os, re, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(AQUI, '..', 'assets')
@@ -92,6 +94,22 @@ def a_texto(s):
     s = re.sub(r'\\\((.+?)\\\)|\\\[(.+?)\\\]', f, s, flags=re.S)
     s = re.sub(r'<[^>]+>', '', s)
     return re.sub(r'\s+', ' ', html.unescape(s)).strip()
+
+
+MIME = {'.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
+        '.webp': 'image/webp', '.svg': 'image/svg+xml'}
+def incrusta_imagenes(s, base):
+    """<img src="img/foto.webp"> relativo a la carpeta de la fuente → data: URI,
+    para que la salida siga siendo UN único archivo. Las URL absolutas
+    (http:, data:) se dejan tal cual."""
+    def f(m):
+        src = html.unescape(m.group(2))
+        if re.match(r'(?i)(data:|https?:|//)', src): return m.group(0)
+        ruta = os.path.normpath(os.path.join(base, src))
+        ext = os.path.splitext(ruta)[1].lower()
+        if ext not in MIME or not os.path.isfile(ruta): raise SystemExit('imagen no encontrada o de tipo no admitido: ' + src)
+        return m.group(1) + 'data:%s;base64,%s' % (MIME[ext], base64.b64encode(open(ruta, 'rb').read()).decode()) + m.group(3)
+    return re.sub(r'(<img\b[^>]*?\ssrc=")([^"]+)(")', f, s)
 
 
 def js_autonomo(scripts):
@@ -202,6 +220,8 @@ def main():
                       % (html.escape(grupos[-1][0], quote=True), html.escape(titulo.split('·')[0].split('.')[0].strip()), html.escape(credito)))
     diapos = marcado_html('\n\n'.join(salida))
     pops_html = marcado_html('\n'.join(pops))
+    base = os.path.dirname(os.path.abspath(a.leccion))
+    diapos, pops_html = incrusta_imagenes(diapos, base), incrusta_imagenes(pops_html, base)
 
     # MathJax: preámbulo semántico + paquete completo en línea (sin autoload)
     macros = {'abs': ['\\lvert #1\\rvert', 1], 'norm': ['\\lVert #1\\rVert', 1], 'R': '\\mathbb{R}',
