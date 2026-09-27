@@ -69,7 +69,8 @@
       if (cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
     esc.classList.toggle('sin-pasos', frags[i].length === 0 && dps[i].id !== 'dp-hero');
-    contador.textContent = (i + 1) + ' / ' + N;
+    contador.textContent = String(i + 1);          /* solo la diapositiva actual; el total va en data-total */
+    contador.dataset.total = N;
     lleno.style.width = ((i + 1) / N * 100) + '%';
     history.replaceState(null, '', '#/' + (i + 1));
     if (previo !== i) {

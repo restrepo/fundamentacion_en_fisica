@@ -13,7 +13,7 @@ de la lección en lugar de la de `<deck-stage>`.
 <div id="escenario">                 ← 19:9 adaptable, container-type:size
   header.barra  .marca · nav#menu (autogenerado por data-seccion) · #btn-fs ⛶
   #btn-ant ‹  #btn-sig ›  · .flecha.vert.arr/.aba a ambos lados (↑ ↓ pasos)
-  #contador «n / N» (clic → campo para saltar) · #recta (progreso + muescas)
+  #contador «n», solo la diapositiva actual (total en data-total; clic → campo para saltar) · #recta (progreso + muescas)
   p.credito · .giro (móvil en vertical)
   <div id="lienzo">                  ← ANCHO × ALTO fijo, escalado por escala.js
      section.diapositiva … · section.poster (con data-seccion) …

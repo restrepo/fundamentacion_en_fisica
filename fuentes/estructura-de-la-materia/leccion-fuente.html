@@ -3219,25 +3219,25 @@ function burbuja(g, a, b, sab, esc) {
   const svg = nodo('svg', { viewBox: '0 0 ' + W_ + ' ' + H_, class: 'fig', style: 'overflow:visible' }, host);
   const X = i => X0 + i * (C + G), Y = j => Y0 + j * (C + G);
   const INT = { f: 'fuerte', e: 'electromagnética', d: 'débil' };
-  /* datos: símbolo (con subíndice tras «_»), nombre, masa, carga, espín, interacciones, descubrimiento, masa por el Higgs */
+  /* datos: símbolo (con subíndice tras «_»), nombre, masa, carga, espín, interacciones, descubrimiento, Nobel por el descubrimiento, masa por el Higgs */
   const P = {
-    e:   { s: 'e', n: 'Electrón', m: '0,511 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1897 (J. J. Thomson)', h: 1 },
-    mu:  { s: 'μ', n: 'Muón', m: '105,7 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1936 (rayos cósmicos)', h: 1 },
-    tau: { s: 'τ', n: 'Tau', m: '1777 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1975 (SLAC)', h: 1 },
-    ve:  { s: 'ν_e', n: 'Neutrino electrónico', m: 'menos de 0,45 eV/c² (KATRIN)', q: '0', sp: '½', i: 'd', a: '1956 (Cowan y Reines, reactor)', h: 0 },
-    vm:  { s: 'ν_μ', n: 'Neutrino muónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '1962 (Brookhaven)', h: 0 },
-    vt:  { s: 'ν_τ', n: 'Neutrino tauónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '2000 (DONUT, Fermilab)', h: 0 },
-    u:   { s: 'u', n: 'Quark arriba (up)', m: '2,2 MeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
-    c:   { s: 'c', n: 'Quark encanto (charm)', m: '1,27 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1974 (SLAC y Brookhaven)', h: 1 },
-    t:   { s: 't', n: 'Quark cima (top)', m: '172,6 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1995 (Fermilab)', h: 1 },
-    d:   { s: 'd', n: 'Quark abajo (down)', m: '4,7 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC)', h: 1 },
-    s:   { s: 's', n: 'Quark extraño (strange)', m: '93 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC); extrañeza en 1947', h: 1 },
-    b:   { s: 'b', n: 'Quark fondo (bottom)', m: '4,18 GeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1977 (Fermilab)', h: 1 },
-    g:   { s: 'γ', n: 'Fotón', m: '0', q: '0', sp: '1', i: 'e', a: '1905 (Einstein); 1923 (Compton)', h: 0, rol: 'transporta la interacción electromagnética' },
-    Z:   { s: 'Z', n: 'Bosón Z⁰', m: '91,19 GeV/c²', q: '0', sp: '1', i: 'd', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil sin cambiar la carga' },
-    W:   { s: 'W', n: 'Bosón W', m: '80,37 GeV/c²', q: '±1', sp: '1', i: 'ed', a: '1983 (CERN)', h: 1, rol: 'transporta la interacción débil y cambia el sabor' },
-    G:   { s: 'G', n: 'Gluón', m: '0', q: '0', sp: '1', i: 'f', a: '1979 (DESY)', h: 0, rol: 'transporta la interacción fuerte; lleva color y anticolor' },
-    H:   { s: 'H', n: 'Bosón de Higgs', m: '125,2 GeV/c²', q: '0', sp: '0', i: 'd', a: '2012 (CERN: ATLAS y CMS)', h: 1 } };
+    e:   { s: 'e', n: 'Electrón', m: '0,511 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1897 (J. J. Thomson)', nb: 'Sí: 1906 (J. J. Thomson)', h: 1 },
+    mu:  { s: 'μ', n: 'Muón', m: '105,7 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1936 (rayos cósmicos)', nb: 'No', h: 1 },
+    tau: { s: 'τ', n: 'Tau', m: '1777 MeV/c²', q: '−1', sp: '½', i: 'ed', a: '1975 (SLAC)', nb: 'Sí: 1995 (M. Perl)', h: 1 },
+    ve:  { s: 'ν_e', n: 'Neutrino electrónico', m: 'menos de 0,45 eV/c² (KATRIN)', q: '0', sp: '½', i: 'd', a: '1956 (Cowan y Reines, reactor)', nb: 'Sí: 1995 (F. Reines)', h: 0 },
+    vm:  { s: 'ν_μ', n: 'Neutrino muónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '1962 (Brookhaven)', nb: 'Sí: 1988 (Lederman, Schwartz y Steinberger)', h: 0 },
+    vt:  { s: 'ν_τ', n: 'Neutrino tauónico', m: 'menos de 0,45 eV/c² (con las oscilaciones)', q: '0', sp: '½', i: 'd', a: '2000 (DONUT, Fermilab)', nb: 'No', h: 0 },
+    u:   { s: 'u', n: 'Quark arriba (up)', m: '2,2 MeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1968 (SLAC)', nb: 'Sí: 1990 (Friedman, Kendall y Taylor)', h: 1 },
+    c:   { s: 'c', n: 'Quark encanto (charm)', m: '1,27 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1974 (SLAC y Brookhaven)', nb: 'Sí: 1976 (B. Richter y S. Ting)', h: 1 },
+    t:   { s: 't', n: 'Quark cima (top)', m: '172,6 GeV/c²', q: '+⅔', sp: '½', i: 'fed', a: '1995 (Fermilab)', nb: 'No', h: 1 },
+    d:   { s: 'd', n: 'Quark abajo (down)', m: '4,7 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC)', nb: 'Sí: 1990 (Friedman, Kendall y Taylor)', h: 1 },
+    s:   { s: 's', n: 'Quark extraño (strange)', m: '93 MeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1968 (SLAC); extrañeza en 1947', nb: 'Sí: 1990 (Friedman, Kendall y Taylor)', h: 1 },
+    b:   { s: 'b', n: 'Quark fondo (bottom)', m: '4,18 GeV/c²', q: '−⅓', sp: '½', i: 'fed', a: '1977 (Fermilab)', nb: 'No (su predicción sí: Kobayashi y Maskawa, 2008)', h: 1 },
+    g:   { s: 'γ', n: 'Fotón', m: '0', q: '0', sp: '1', i: 'e', a: '1905 (Einstein); 1923 (Compton)', nb: 'Sí: 1921 (Einstein) y 1927 (Compton)', h: 0, rol: 'transporta la interacción electromagnética' },
+    Z:   { s: 'Z', n: 'Bosón Z⁰', m: '91,19 GeV/c²', q: '0', sp: '1', i: 'd', a: '1983 (CERN)', nb: 'Sí: 1984 (C. Rubbia y S. van der Meer)', h: 1, rol: 'transporta la interacción débil sin cambiar la carga' },
+    W:   { s: 'W', n: 'Bosón W', m: '80,37 GeV/c²', q: '±1', sp: '1', i: 'ed', a: '1983 (CERN)', nb: 'Sí: 1984 (C. Rubbia y S. van der Meer)', h: 1, rol: 'transporta la interacción débil y cambia el sabor' },
+    G:   { s: 'G', n: 'Gluón', m: '0', q: '0', sp: '1', i: 'f', a: '1979 (DESY)', nb: 'No (la teoría sí: Gross, Politzer y Wilczek, 2004)', h: 0, rol: 'transporta la interacción fuerte; lleva color y anticolor' },
+    H:   { s: 'H', n: 'Bosón de Higgs', m: '125,2 GeV/c²', q: '0', sp: '0', i: 'd', a: '2012 (CERN: ATLAS y CMS)', nb: 'Sí: 2013 (F. Englert y P. Higgs, por la predicción)', h: 1 } };
   const REJ = [['e', 'mu', 'tau'], ['ve', 'vm', 'vt'], ['u', 'c', 't'], ['d', 's', 'b']];
   const QCOL = { r: ['rojo', 'rgb(246,196,196)', 'rgb(200,60,60)'], g: ['verde', 'rgb(200,236,200)', 'rgb(40,140,70)'], b: ['azul', 'rgb(200,210,246)', 'rgb(60,80,200)'] };
   const GLU = [['r', 'g', 'rojo-antiverde'], ['r', 'b', 'rojo-antiazul'], ['g', 'r', 'verde-antirrojo'], ['g', 'b', 'verde-antiazul'],
@@ -3311,7 +3311,7 @@ function burbuja(g, a, b, sab, esc) {
   }
   function abre(k, capa, g) {
     const p = P[k], cl = nombreCapa(k, capa);
-    const fil = [['Masa', p.m], ['Carga eléctrica', p.q], ['Espín', p.sp], ['Interacciones', p.i.split('').map(c => INT[c]).join(', ')], ['Descubierta', p.a]];
+    const fil = [['Masa', p.m], ['Carga eléctrica', p.q], ['Espín', p.sp], ['Interacciones', p.i.split('').map(c => INT[c]).join(', ')], ['Descubierta', p.a], ['Premio Nobel', p.nb]];
     if (['u', 'c', 't', 'd', 's', 'b'].indexOf(k) >= 0) fil.splice(3, 0, ['Color', 'rojo, verde o azul (3 copias)']);
     if (k === 'G') fil.splice(3, 0, ['Color', 'un color y un anticolor (8 copias)']);
     if (k === 'W') fil.splice(3, 0, ['Copias', 'W⁺ y W⁻']);

@@ -51,7 +51,7 @@ Si el sistema trae `--color-accent-2` /
 superior con marca, menú de secciones autogenerado (subraya la actual; salta
 al inicio de cada sección, pósteres incluidos) y botón ⛶; flechas ‹ › a los
 lados; flechas ↑ ↓ de pasos a ambos lados, solo en diapositivas con pasos;
-contador «n / N» que abre un campo para saltar; recta de progreso con muescas
+contador con solo el número de la diapositiva actual («n», sin el total) que abre un campo para saltar; recta de progreso con muescas
 por sección; crédito abajo a la izquierda; aviso de giro en móvil vertical;
 atenuación del cromo en reposo; hash `#/n`; zoom de pellizco en pantalla
 completa. En los pósteres a campo de acento, crédito y contador pasan a claro.
