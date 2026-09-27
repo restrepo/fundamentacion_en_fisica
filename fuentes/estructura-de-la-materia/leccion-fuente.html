@@ -1134,10 +1134,120 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
     <div class="pila">
       <div class="caja"><p class="chico" style="margin:0">El protón pesa unas diez veces lo que un pión (\(m_\pi \approx \qty{140}{MeV/c^{2}}\)): su masa la fija la energía del «mar» de gluones y pares quark-antiquark.</p></div>
       <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>Construye tu protón:</strong> <a class="enl" href="https://bit.ly/miproton" target="_blank" rel="noopener">bit.ly/miproton</a></p></div>
-      <figure class="fg frag"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:300px" src="img/netflix-3body.webp" alt="Escena de una serie de Netflix"></a><figcaption>Escena de una serie de Netflix sobre el protón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
     </div>
   </div>
   <p class="clave">Dentro del protón hay un mar de gluones y pares quark-antiquark.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-camiseta" data-label="Reglas que caben en una camiseta">
+  <p class="ceja">§ 0.9 · El protón por dentro</p>
+  <h2 class="titulo">Reglas que caben en una camiseta…</h2>
+  <div class="kf" style="font-size:46px">\[ \mathcal{L}_{\text{QCD}} = -\tfrac14\, G^{a}_{\mu\nu} G^{a\,\mu\nu} + \sum_{q} \bar q\,\big(i\gamma^{\mu} D_{\mu} - m_q\big)\, q \]</div>
+  <div class="g2" style="margin-top:18px">
+    <div class="pila">
+      <p class="nota">No hace falta entender los símbolos <span class="prop" data-pop="pop-qcd">(qué dice cada parte)</span>: el punto es que toda la interacción fuerte cabe en una línea.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Ingredientes:</strong> seis masas de quarks y una sola constante de acoplamiento. Nada más.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">En la tienda del CERN venden tazas con la ecuación completa del modelo estándar. La del protón es solo una parte.</p></div>
+    </div>
+    <div class="pila">
+      <p class="chico frag"><strong>…y un protón que no cabe en ninguna computadora.</strong></p>
+      <table class="tabla frag"><tr><th style="text-align:left">Año</th><th style="text-align:left">Hito</th></tr>
+        <tr><td class="izq">1973</td><td class="izq">Se escribe la teoría (QCD). Nobel 2004.</td></tr>
+        <tr><td class="izq">1974</td><td class="izq">Wilson propone calcularla con computadoras (QCD en red), pero no alcanzan.</td></tr>
+        <tr><td class="izq">2008</td><td class="izq">Supercomputadoras obtienen la masa del protón con un error del 2 %.</td></tr></table>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Treinta y cinco años para ir de una línea de reglas a un solo número del protón: así de complicado es el objeto que producen.</p></div>
+    </div>
+  </div>
+  <p class="clave">Reglas simplísimas producen el objeto más complicado que conocemos.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-fotos" data-label="Fotografías de un protón">
+  <p class="ceja">§ 0.9 · El protón por dentro</p>
+  <h2 class="titulo">Fotografías de un protón: nunca salen dos iguales</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cada foto muestra una configuración posible</span><span class="val" id="fo-lect"></span></div>
+      <div id="fo-fig" style="max-width:640px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="fo-foto">📷 Tomar una foto</button><button type="button" class="btn" id="fo-diez">Tomar 10</button><button type="button" class="btn" id="fo-borrar">Empezar de nuevo</button></div>
+      <label class="ctrl"><span>Energía de la sonda</span><input type="range" id="fo-r" min="0" max="3" step="1" value="1"><span class="v" id="fo-rv"></span></label>
+    </figure>
+    <div class="pila">
+      <div class="lectura l1"><div>Esta foto<b class="peq" id="fo-conf"></b></div><div>Fotos tomadas · configuraciones distintas<b id="fo-cuenta"></b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Además de los tres quarks \(uud\), cada foto encuentra un número distinto de gluones y de pares quark-antiquark. El número de configuraciones posibles <strong>no tiene límite</strong>.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Con más energía la foto tiene más resolución (como en la dispersión) y aparecen más gluones y pares: lo que «vemos» depende de cómo miramos.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez.</strong> Eso es una superposición cuántica.</p></div>
+    </div>
+  </div>
+  <p class="clave">El protón es una superposición de infinitas configuraciones a la vez.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
+  <p class="ceja">§ 0.9 · Superposición cuántica</p>
+  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
+      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
+      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
+    </div>
+  </div>
+  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
+  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
+  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
+      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
+    </div>
+  </div>
+  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-sofon" data-label="El sofón de «El problema de los tres cuerpos»">
+  <p class="ceja">§ 0.9 · Ciencia ficción</p>
+  <h2 class="titulo">«El problema de los tres cuerpos»: el sofón</h2>
+  <div class="g2">
+    <figure class="fg"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:480px" src="img/netflix-3body.webp" alt="Escena de la serie «El problema de los tres cuerpos» de Netflix"></a><figcaption>Escena de la serie de Netflix en la que se explica el sofón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
+    <div class="pila">
+      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas de las diapositivas anteriores.</p>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Por qué es imposible</strong>, entre otras razones:</p>
+        <ul class="lista chico" style="margin-top:8px">
+          <li>El entrelazamiento no transmite información: los resultados son al azar (teorema de no comunicación).</li>
+          <li>Un protón no se «despliega»: su estructura la fija la interacción fuerte y no se puede reprogramar.</li>
+        </ul></div>
+      <p class="chico frag">Pero la pregunta de fondo es real: ¿qué hay dentro de un protón? Es de las más difíciles de la física.</p>
+    </div>
+  </div>
+  <p class="clave">La ficción exagera, pero parte de preguntas reales sobre el protón.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-proton-abierto" data-label="Lo que aún no entendemos del protón">
+  <p class="ceja">§ 0.9 · Preguntas abiertas</p>
+  <h2 class="titulo">Lo que aún no entendemos del protón</h2>
+  <div class="g2">
+    <div class="caja frag"><h3>¿De dónde sale su espín?</h3><p class="chico" style="margin:0">Se esperaba que lo dieran los quarks, pero aportan solo cerca de un 30 % (la «crisis del espín», 1987). El resto: gluones y movimiento orbital.</p></div>
+    <div class="caja c1 frag"><h3>¿Por qué los quarks no escapan?</h3><p class="chico" style="margin:0">Nunca se ha visto un quark aislado (confinamiento). La pregunta matemática de fondo es uno de los siete Problemas del Milenio, con premio de un millón de dólares.</p></div>
+    <div class="caja c2 frag"><h3>¿Qué tamaño tiene?</h3><p class="chico" style="margin:0">En 2010, el hidrógeno con un muón dio un radio de 0,84 fm, más pequeño que el aceptado. Las medidas más recientes apoyan ese valor.</p></div>
+    <div class="caja frag"><h3>¿Es eterno?</h3><p class="chico" style="margin:0">Algunas teorías predicen que se desintegra. Super-Kamiokande lo busca: si ocurre, su vida media supera \(10^{34}\) años.</p></div>
+  </div>
+  <p class="chico frag" style="margin-top:18px">El Colisionador Electrón-Ión (EIC), en construcción en Brookhaven (EE. UU.), se diseñó para «fotografiar» los gluones del protón.</p>
+  <p class="clave">Aún no sabemos del todo cómo funciona el protón.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-lhc" data-label="El LHC">
@@ -1575,6 +1685,9 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
 <div class="pop-src" id="pop-lazos" style="display:none"><h4>La serie de la QED</h4><p>\(\dfrac{g}{2} - 1 = \sum_n A_n \Big(\dfrac{\alpha}{\pi}\Big)^{n}\), con \(A_1 = \tfrac12\), \(A_2 \approx -0{,}328\), \(A_3 \approx 1{,}181\), \(A_4 \approx -1{,}912\), \(A_5 \approx 6{,}74\) y \(\alpha^{-1} = 137{,}035\,999\,2\). El término de cinco lazos requirió calcular 12 672 diagramas.</p></div>
 <div class="pop-src" id="pop-osc" style="display:none"><h4>Probabilidad de oscilación</h4><p>Con dos sabores, \(P(\nu_\mu\to\nu_\tau) = \sin^{2}2\theta\,\sin^{2}\!\big(1{,}27\,\Delta m^{2} L/E\big)\), con \(\Delta m^{2} = \qty{2{,}5\times 10^{-3}}{eV^2}\) (diferencia de masas al cuadrado), \(L\) en km y \(E\) en GeV. Si los neutrinos no tuvieran masa, \(\Delta m^{2} = 0\) y no oscilarían.</p></div>
 <div class="pop-src" id="pop-isospin" style="display:none"><h4>Isospín débil</h4><p>La interacción débil agrupa las partículas en parejas: \((u, d)\) y \((\nu_e, e)\). El \(W\) convierte el miembro de arriba en el de abajo y viceversa, cambiando la carga en una unidad, como un «espín» que apunta arriba o abajo. Por eso un \(d\) se vuelve \(u\) y aparece un par \(e^{-}\bar\nu_e\).</p></div>
+<div class="pop-src" id="pop-qcd" style="display:none"><h4>La ecuación de la interacción fuerte</h4><p>\(G^{a}_{\mu\nu}\): el campo de los ocho gluones (\(a = 1, \ldots, 8\)); el primer término es su energía e incluye que los gluones interactúan entre sí. \(q\): los campos de los seis quarks (\(u, d, s, c, t, b\)), cada uno en tres colores, con masas \(m_q\). \(D_\mu\) contiene el acoplamiento de los quarks con los gluones, con una sola constante \(g_s\).</p></div>
+<div class="pop-src" id="pop-necker" style="display:none"><h4>¿En qué falla la analogía?</h4><p>En el cubo de Necker solo hay dos lecturas y la «superposición» ocurre en nuestra mente. En un sistema cuántico cada posibilidad tiene una amplitud, un número complejo, y las amplitudes pueden <strong>interferir</strong>: sumarse o cancelarse, como las ondas. Eso no tiene equivalente en el cubo.</p></div>
+<div class="pop-src" id="pop-bell" style="display:none"><h4>¿Cómo se sabe que no son instrucciones?</h4><p>Dos cubos que ya «supieran» desde el principio qué mostrar también coincidirían siempre. La diferencia aparece al mirarlos de formas distintas (por ejemplo, midiendo la polarización de dos fotones con ángulos distintos): la mecánica cuántica predice más coincidencias de las que permite cualquier plan de instrucciones escritas de antemano (Bell, 1964), y los experimentos lo confirman.</p></div>
 <div class="pop-src" id="pop-exc" style="display:none"><h4>Excitación de un campo</h4><p>En su estado de mínima energía (el vacío) un campo solo tiene fluctuaciones. Si recibe energía, la toma en paquetes discretos, cuantos. Un paquete localizado viaja como una unidad: eso es lo que llamamos partícula.</p></div>
 <div class="pop-src" id="pop-rep" style="display:none"><h4>Representación irreducible</h4><p>Wigner (1939): una partícula se clasifica por cómo se transforma bajo las simetrías del espacio-tiempo (traslaciones, rotaciones, cambios de velocidad). Lo que no cambia son sus etiquetas: la masa y el espín.</p></div>
 <div class="pop-src" id="pop-fer" style="display:none"><h4>Fermiones</h4><p>Partículas de espín semientero (\(\tfrac12\), \(\tfrac32\)…): electrones, protones, neutrones, neutrinos. Obedecen el principio de exclusión. Los de espín entero, como el fotón, son bosones y sí pueden acumularse en un mismo estado.</p></div>
@@ -2828,6 +2941,135 @@ function zonaEM(l) {                       /* l en metros */
     txt(s, 30, 44, 18, 'Fermilab'); txt(s, 500, 212, 18, 'argón líquido, 1,5 km bajo tierra', { 'text-anchor': 'end' }); txt(s, 260, 124, 20, '1300 km', { 'text-anchor': 'middle' });
     txt(s, 500, 44, 18, 'Dakota del Sur', { 'text-anchor': 'end' });
   }
+})();
+
+/* ═══ CUBO DE NECKER: dibujo con tres estados ═════════════════════════ */
+function cuboNecker(host) {
+  const svg = nodo('svg', { viewBox: '0 0 520 460', class: 'fig' }, host);
+  const g = nodo('g', {}, svg);
+  const x = 90, y = 170, s = 230, d = 110;
+  const A = [[x, y + s], [x + s, y + s], [x + s, y], [x, y]], B = A.map(p => [p[0] + d, p[1] - d]);
+  const aristas = [[A[0], A[1]], [A[1], A[2]], [A[2], A[3]], [A[3], A[0]], [B[0], B[1]], [B[1], B[2]], [B[2], B[3]], [B[3], B[0]], [A[0], B[0]], [A[1], B[1]], [A[2], B[2]], [A[3], B[3]]];
+  const oculta = { sale: [[B[0], B[1]], [B[0], B[3]], [B[0], A[0]]], entra: [[A[2], A[1]], [A[2], A[3]], [A[2], B[2]]] };
+  const igual = (e, f) => (e[0] === f[0] && e[1] === f[1]) || (e[0] === f[1] && e[1] === f[0]);
+  const rot = nodo('text', { x: 260, y: 448, 'text-anchor': 'middle', 'font-size': 30, style: 'font-weight:700;font-family:' + FTXT }, svg);
+  function pinta(est) {
+    g.innerHTML = '';
+    if (est) {
+      const cara = est === 'sale' ? A : B;
+      nodo('polygon', { points: cara.map(p => p.join(',')).join(' '), style: 'fill:var(--res-50);opacity:.9' }, g);
+    }
+    aristas.forEach(e => {
+      const esc = est && oculta[est].some(f => igual(e, f));
+      nodo('line', { x1: e[0][0], y1: e[0][1], x2: e[1][0], y2: e[1][1], style: 'stroke:var(' + (esc ? '--proy' : '--tinta') + ');stroke-width:' + (esc ? 3 : 6) + ';stroke-linecap:round' + (esc ? ';stroke-dasharray:10 9' : '') }, g);
+    });
+    rot.textContent = est === 'sale' ? 'sale' : est === 'entra' ? 'entra' : 'sale y entra (superposición)';
+    rot.style.fill = est ? 'var(--res)' : 'var(--tinta2)';
+  }
+  /* parpadeo entre las dos lecturas antes de quedar en una */
+  function colapsa(est, listo) {
+    let k = 0;
+    const paso = () => { if (k < 7) { pinta(k % 2 ? 'entra' : 'sale'); k++; setTimeout(paso, 70); } else { pinta(est); if (listo) listo(); } };
+    paso();
+  }
+  pinta(null);
+  return { pinta: pinta, colapsa: colapsa };
+}
+const alAzar = () => (Math.random() < 0.5 ? 'sale' : 'entra');
+
+(function () {
+  const host = document.getElementById('ne-fig');
+  if (!host) return;
+  const c = cuboNecker(host);
+  let ns = 0, ne = 0;
+  const cuenta = () => { document.getElementById('ne-s').textContent = ns; document.getElementById('ne-e').textContent = ne; };
+  document.getElementById('ne-medir').addEventListener('click', () => {
+    const r = alAzar(); c.colapsa(r, () => { if (r === 'sale') ns++; else ne++; cuenta(); document.getElementById('ne-lect').textContent = 'medido: ' + r; });
+  });
+  document.getElementById('ne-cien').addEventListener('click', () => {
+    let r = 'sale'; for (let k = 0; k < 100; k++) { r = alAzar(); if (r === 'sale') ns++; else ne++; }
+    c.pinta(r); cuenta(); document.getElementById('ne-lect').textContent = 'cerca de mitad y mitad';
+  });
+  document.getElementById('ne-sup').addEventListener('click', () => { c.pinta(null); document.getElementById('ne-lect').textContent = 'superposición'; });
+  document.getElementById('ne-lect').textContent = 'superposición';
+})();
+
+(function () {
+  const ha = document.getElementById('en-a'), hb = document.getElementById('en-b');
+  if (!ha) return;
+  const a = cuboNecker(ha), b = cuboNecker(hb);
+  let pares = 0, iguales = 0, sa = 0, ea = 0, medido = false;
+  const cuenta = () => {
+    document.getElementById('en-ig').textContent = iguales + ' de ' + pares;
+    document.getElementById('en-ab').textContent = sa + ' / ' + ea;
+  };
+  const nuevo = () => { a.pinta(null); b.pinta(null); medido = false; document.getElementById('en-lect').textContent = 'par entrelazado, sin medir'; };
+  document.getElementById('en-mira').addEventListener('click', () => {
+    if (medido) nuevo();
+    const r = alAzar(); medido = true;
+    a.colapsa(r, () => { b.pinta(r); pares++; iguales++; if (r === 'sale') sa++; else ea++; cuenta(); document.getElementById('en-lect').textContent = 'A ' + r + ' ⇒ B ' + r; });
+  });
+  document.getElementById('en-par').addEventListener('click', nuevo);
+  document.getElementById('en-cien').addEventListener('click', () => {
+    let r = 'sale'; for (let k = 0; k < 100; k++) { r = alAzar(); pares++; iguales++; if (r === 'sale') sa++; else ea++; }
+    a.pinta(r); b.pinta(r); medido = true; cuenta(); document.getElementById('en-lect').textContent = '100 % de coincidencias';
+  });
+  nuevo();
+})();
+
+/* ═══ FOTOGRAFÍAS DE UN PROTÓN ════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('fo-fig');
+  if (!host) return;
+  const COL = { r: 'rgb(214,40,40)', g: 'rgb(30,150,70)', b: 'rgb(40,80,220)' };
+  const NIV = ['baja', 'media', 'alta', 'muy alta'], LG = [0, 2, 6, 12], LP = [0, 1, 3, 6];
+  const rr = document.getElementById('fo-r');
+  const svg = nodo('svg', { viewBox: '0 0 640 560', class: 'fig' }, host);
+  const cx = 320, cy = 280, RP = 250;
+  const vistas = new Set(); let fotos = 0;
+  const poisson = l => { let k = 0, p = 1; const L = Math.exp(-l); do { k++; p *= Math.random(); } while (p > L); return k - 1; };
+  const punto = () => { for (;;) { const x = (Math.random() * 2 - 1) * 200, y = (Math.random() * 2 - 1) * 200; if (x * x + y * y < 200 * 200) return [cx + x, cy + y]; } };
+  const sabor = () => { const u = Math.random(), res = +rr.value; return u < 0.4 ? 'u' : u < 0.8 ? 'd' : (res === 3 && u > 0.95) ? 'c' : 's'; };
+  function resorte(g, p, q) {
+    const dx = q[0] - p[0], dy = q[1] - p[1], L = Math.hypot(dx, dy), n = Math.max(4, Math.round(L / 14)), ux = -dy / L, uy = dx / L, pts = [];
+    for (let k = 0; k <= n * 6; k++) { const t = k / (n * 6), a = 2 * Math.PI * n * t, w = 7 * Math.sin(a); pts.push((p[0] + dx * t + ux * w + dx / L * 5 * Math.cos(a)).toFixed(1) + ',' + (p[1] + dy * t + uy * w + dy / L * 5 * Math.cos(a)).toFixed(1)); }
+    nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:var(--tinta2);stroke-width:2.5' }, g);
+  }
+  function foto() {
+    const res = +rr.value, ng = poisson(LG[res]), np = poisson(LP[res]);
+    svg.innerHTML = '';
+    nodo('circle', { cx: cx, cy: cy, r: RP, style: 'fill:var(--res-50);stroke:var(--res);stroke-width:3' }, svg);
+    const g = nodo('g', {}, svg);
+    for (let k = 0; k < ng; k++) resorte(g, punto(), punto());
+    const cols = ['r', 'g', 'b'].sort(() => Math.random() - 0.5), pares = [];
+    for (let k = 0; k < np; k++) {
+      const f = sabor(), c = 'rgb'[Math.floor(Math.random() * 3)], p = punto(), q = [p[0] + 34, p[1] + 10];
+      pares.push(f);
+      nodo('circle', { cx: p[0], cy: p[1], r: 13, style: 'fill:' + COL[c] }, g);
+      nodo('circle', { cx: q[0], cy: q[1], r: 13, style: 'fill:var(--papel);stroke:' + COL[c] + ';stroke-width:4' }, g);
+      nodo('text', { x: p[0], y: p[1] + 6, 'text-anchor': 'middle', 'font-size': 17, style: 'fill:#fff;font-weight:700;font-family:' + FTXT, txt: f }, g);
+      nodo('text', { x: q[0], y: q[1] + 6, 'text-anchor': 'middle', 'font-size': 17, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT, txt: f + '̄' }, g);
+    }
+    ['u', 'u', 'd'].forEach((f, k) => {
+      const p = punto();
+      nodo('circle', { cx: p[0], cy: p[1], r: 30, style: 'fill:' + COL[cols[k]] + ';stroke:var(--papel);stroke-width:3' }, g);
+      nodo('text', { x: p[0], y: p[1] + 11, 'text-anchor': 'middle', 'font-size': 32, style: 'fill:#fff;font-weight:800;font-family:' + FTXT, txt: f }, g);
+    });
+    pares.sort();
+    const clave = ng + '|' + pares.join('');
+    vistas.add(clave); fotos++;
+    const pl = pares.map(f => f + f + '̄');
+    document.getElementById('fo-conf').textContent = 'uud' + (ng ? ' + ' + ng + (ng === 1 ? ' gluón' : ' gluones') : '') + (np ? ' + ' + np + (np === 1 ? ' par (' : ' pares (') + pl.join(', ') + ')' : '');
+    document.getElementById('fo-cuenta').textContent = fotos + ' · ' + vistas.size;
+    document.getElementById('fo-lect').textContent = 'resolución ' + NIV[res];
+  }
+  const borrar = () => { vistas.clear(); fotos = 0; foto(); };
+  document.getElementById('fo-foto').addEventListener('click', foto);
+  document.getElementById('fo-diez').addEventListener('click', () => { for (let k = 0; k < 10; k++) foto(); });
+  document.getElementById('fo-borrar').addEventListener('click', borrar);
+  rr.addEventListener('input', () => { document.getElementById('fo-rv').textContent = NIV[+rr.value]; borrar(); });
+  document.getElementById('fo-rv').textContent = NIV[+rr.value];
+  foto();
 })();
 
 </script>

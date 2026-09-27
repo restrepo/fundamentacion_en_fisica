@@ -28,7 +28,7 @@ superior por secciones · clic en el contador para saltar a un número.
 
 ### Capítulo 0 · Estructura de la materia
 
-75 diapositivas en doce bloques, a partir de las presentaciones del curso
+81 diapositivas en doce bloques, a partir de las presentaciones del curso
 (con sus imágenes): el universo (escalas, historia térmica, expansión con
 la ley de Hubble, materia oscura con curvas de rotación, energía oscura y
 el contenido del universo, líneas de Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
@@ -40,7 +40,10 @@ factor $g$, reglas de Feynman y el $g$ del electrón calculado lazo a lazo);
 luz (conversor de energía del fotón, transiciones del hidrógeno); unidades
 (el cesio, las constantes del SI de 2019 y un conversor a unidades
 naturales); quarks (escala nuclear, el fotón como carga-anticarga, masa emergente, un constructor de
-bariones con espín, color y Pauli, gluones, hadrones y el LHC); interacción
+bariones con espín, color y Pauli, gluones, hadrones, «fotografías» de un
+protón, superposición y entrelazamiento con el cubo de Necker, el sofón de
+«El problema de los tres cuerpos», lo que aún no entendemos del protón y el
+LHC); interacción
 débil (espectro beta de dos y tres cuerpos, $W$ y $Z$, muón, modelo estándar
 y el $\Xi_{cc}^{+}$, las preguntas abiertas y la participación del Instituto de
 Física de la UdeA en CMS, LIGO y DUNE); álgebra (preámbulo matemático con frutas: paréntesis,
