@@ -13,11 +13,11 @@ El sitio está publicado con GitHub Pages en
 
 | Lección | Enlace directo |
 |---|---|
+| Capítulo 0 · Estructura de la materia | [capitulo-0-estructura-de-la-materia.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-0-estructura-de-la-materia.html) |
 | Capítulo 1 · Preliminares | [capitulo-1-preliminares.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-1-preliminares.html) |
 | Capítulo 2 · Relatividad especial | [capitulo-2-relatividad-especial.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-2-relatividad-especial.html) |
 | Capítulo 3 · Dinámica newtoniana | [capitulo-3-dinamica-newtoniana.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-3-dinamica-newtoniana.html) |
 | Capítulo 4 · Electromagnetismo | [capitulo-4-electromagnetismo.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-4-electromagnetismo.html) |
-| Capítulo 5 · Estructura de la materia | [capitulo-5-estructura-de-la-materia.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-5-estructura-de-la-materia.html) |
 
 Cada lección es **un único archivo HTML autocontenido** (MathJax y estilos en
 línea): también funciona descargado y abierto sin conexión.
@@ -25,6 +25,23 @@ línea): también funciona descargado y abierto sin conexión.
 **Navegación:** ← → o flechas laterales (diapositivas) · ↑ ↓ o flechas
 pequeñas (pasos) · espacio (todo en orden) · F o ⛶ (pantalla completa) · menú
 superior por secciones · clic en el contador para saltar a un número.
+
+### Capítulo 0 · Estructura de la materia
+
+61 diapositivas en once bloques, a partir de las presentaciones del curso
+(con sus imágenes): el universo (escalas, historia térmica, líneas de
+Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
+Meissner, campos complejos, oscilaciones de neutrinos, el fotón en el Sol);
+átomos y dispersión; detectores de neutrinos; antimateria (AMS-02 y la
+estimación de positrones); interacción (campos cuánticos, intercambio,
+factor $g$, reglas de Feynman y el $g$ del electrón calculado lazo a lazo);
+átomo y luz (conversor de energía del fotón, transiciones del hidrógeno);
+unidades (el cesio, las constantes del SI de 2019 y un conversor a unidades
+naturales); quarks (escala nuclear, fuerza, cambio y masa emergente, un
+constructor de bariones con espín, color y Pauli, gluones, hadrones, el 99 %
+de interacción en la masa del protón y el LHC); interacción débil (espectro
+beta de dos y tres cuerpos, $W$ y $Z$, carbono-14, muón, modelo estándar y el
+$\Xi_{cc}^{+}$); y práctica: reto, dos cuestionarios y dos glosarios.
 
 ### Capítulo 1 · Preliminares
 
@@ -73,44 +90,27 @@ derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,
 cuestionario, los 10 ejercicios con respuestas y glosario.
 
-### Capítulo 5 · Estructura de la materia
-
-32 diapositivas en nueve bloques, a partir de la presentación del curso (con
-sus imágenes): el universo (componentes, un explorador de escalas del protón
-al universo observable, historia térmica con línea de tiempo, líneas de
-Fraunhofer del espectro solar y ondas gravitacionales); campos
-(superconductividad con $R(T)$ y efecto Meissner, campos complejos con $z$
-arrastrable sobre el círculo unidad, oscilaciones de neutrinos, número de
-excitaciones en el universo y el camino aleatorio del fotón en el Sol);
-átomos (el átomo casi vacío y la energía necesaria para resolver un tamaño);
-detectores de neutrinos (Super-Kamiokande, IceCube); antimateria (electrón y
-positrón, AMS-02 y la estimación de positrones en el universo);
-interacción (campos cuánticos e intercambio); átomo y luz (conversor de
-energía del fotón y transiciones del hidrógeno); unidades del SI (el cesio y
-las constantes definitorias de 2019); y práctica: reto constante → unidad,
-cuestionario y glosario.
-
 ## Contenido del repositorio
 
 ```
 index.html                          página de inicio (GitHub Pages)
 .nojekyll                           publica los archivos tal cual, sin Jekyll
 lecciones/
+  capitulo-0-estructura-de-la-materia.html
   capitulo-1-preliminares.html
   capitulo-2-relatividad-especial.html
   capitulo-3-dinamica-newtoniana.html
   capitulo-4-electromagnetismo.html
-  capitulo-5-estructura-de-la-materia.html
 fuentes/
+  estructura-de-la-materia/
+    leccion-fuente.html             fuente del capítulo 0
+    img/                            imágenes de la presentación (WebP), incrustadas al generar
   preliminares/
     leccion-fuente.html             fuente del capítulo 1
   relatividad-especial/
     leccion-fuente.html             fuente del capítulo 2
   electromagnetismo/
     leccion-fuente.html             fuente del capítulo 4
-  estructura-de-la-materia/
-    leccion-fuente.html             fuente del capítulo 5
-    img/                            imágenes de la presentación (WebP), incrustadas al generar
   dinamica-newtoniana/
     leccion-fuente.html             fuente de la lección (entrada de la skill)
     oscilador-p5.js                 implementación p5.js original del ejemplo 3.2.1
