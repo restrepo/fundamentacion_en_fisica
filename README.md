@@ -28,20 +28,22 @@ superior por secciones · clic en el contador para saltar a un número.
 
 ### Capítulo 0 · Estructura de la materia
 
-61 diapositivas en once bloques, a partir de las presentaciones del curso
+68 diapositivas en doce bloques, a partir de las presentaciones del curso
 (con sus imágenes): el universo (escalas, historia térmica, líneas de
 Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
 Meissner, campos complejos, oscilaciones de neutrinos, el fotón en el Sol);
 átomos y dispersión; detectores de neutrinos; antimateria (AMS-02 y la
 estimación de positrones); interacción (campos cuánticos, intercambio,
 factor $g$, reglas de Feynman y el $g$ del electrón calculado lazo a lazo);
-átomo y luz (conversor de energía del fotón, transiciones del hidrógeno);
-unidades (el cesio, las constantes del SI de 2019 y un conversor a unidades
-naturales); quarks (escala nuclear, fuerza, cambio y masa emergente, un
-constructor de bariones con espín, color y Pauli, gluones, hadrones, el 99 %
-de interacción en la masa del protón y el LHC); interacción débil (espectro
-beta de dos y tres cuerpos, $W$ y $Z$, carbono-14, muón, modelo estándar y el
-$\Xi_{cc}^{+}$); y práctica: reto, dos cuestionarios y dos glosarios.
+luz (conversor de energía del fotón, transiciones del hidrógeno); unidades
+(el cesio, las constantes del SI de 2019 y un conversor a unidades
+naturales); quarks (escala nuclear, masa emergente, un constructor de
+bariones con espín, color y Pauli, gluones, hadrones y el LHC); interacción
+débil (espectro beta de dos y tres cuerpos, $W$ y $Z$, muón, modelo estándar
+y el $\Xi_{cc}^{+}$); álgebra (preámbulo matemático con frutas: paréntesis,
+$(a+b)^2$ como áreas, simplificación, recíproco, propiedad distributiva y un
+despeje de variables paso a paso); y práctica: reto, tres cuestionarios y
+dos glosarios.
 
 ### Capítulo 1 · Preliminares
 

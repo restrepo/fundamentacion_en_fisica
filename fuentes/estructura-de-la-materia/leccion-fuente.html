@@ -166,6 +166,18 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .dim .dim-ec mjx-container{font-size:110%}
 .prefijos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 
+/* ── Preámbulo matemático: ecuaciones con frutas ── */
+.fr{height:120px;width:auto;vertical-align:middle}
+.ec-fr{display:flex;align-items:center;flex-wrap:wrap;gap:14px;font:600 60px/1 var(--font-body);color:var(--tinta)}
+.fr-frac{display:inline-flex;flex-direction:column;align-items:center}
+.fr-frac > span{display:flex;align-items:center;gap:10px;padding:4px 12px;font:600 44px/1.1 var(--font-body)}
+.fr-frac > .fr-num{border-bottom:4px solid var(--tinta)}
+.op-caja{font:600 28px/1 var(--font-body);background:var(--primario-tinte);border:2px solid var(--linea);padding:34px 18px}
+.de-pasos{display:grid;gap:8px;font:500 44px/1.2 'STIX Two Text',Georgia,serif;min-height:340px;margin:6px 0 14px}
+.de-pasos .paso{display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:2px solid var(--linea);padding:4px 6px}
+.de-pasos .paso .op{font:600 26px/1 var(--font-body);color:var(--caso2)}
+.de-pasos .paso.fin{color:var(--res);font-weight:700}
+
 </style></head>
 <body>
 <div id="escenario">
@@ -642,7 +654,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 </section>
 
 <!-- ═════════════ §7 · ÁTOMO Y LUZ ═════════════ -->
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-h" data-label="El átomo de hidrógeno">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-h" data-label="El átomo de hidrógeno">
   <p class="ceja">§ 0.7 · Átomo y luz</p>
   <h2 class="titulo">El átomo de hidrógeno absorbe y emite fotones</h2>
   <div class="g2-40">
@@ -658,7 +670,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-ev" data-label="Electronvoltio y energía del fotón">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-ev" data-label="Electronvoltio y energía del fotón">
   <p class="ceja">§ 0.7 · Unidades de energía</p>
   <h2 class="titulo">Electronvoltio y energía del fotón</h2>
   <div class="g2">
@@ -680,7 +692,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-niv" data-label="Niveles del hidrógeno">
+<section class="diapositiva compacta" data-seccion="Luz" id="dp-niv" data-label="Niveles del hidrógeno">
   <p class="ceja">§ 0.7 · Niveles de energía</p>
   <h2 class="titulo">Niveles del hidrógeno: \(E_n = -\qty{13{,}6}{eV}/n^{2}\)</h2>
   <div class="g2-40">
@@ -703,7 +715,7 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
-<section class="diapositiva" data-seccion="Átomo y luz" id="dp-tpe" data-label="Tabla periódica de espectros">
+<section class="diapositiva" data-seccion="Luz" id="dp-tpe" data-label="Tabla periódica de espectros">
   <p class="ceja">§ 0.7 · Espectroscopía</p>
   <h2 class="titulo">Cada elemento tiene su código de barras</h2>
   <div class="g2-60">
@@ -1087,7 +1099,139 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
-<!-- ═════════════ §11 · PRÁCTICA ═════════════ -->
+<!-- ═════════════ §11 · PREÁMBULO MATEMÁTICO ═════════════ -->
+<section class="diapositiva" data-seccion="Álgebra" id="dp-pre" data-label="Preámbulo matemático">
+  <p class="ceja">§ 0.11 · Preámbulo matemático</p>
+  <h2 class="titulo">Preámbulo matemático: las herramientas del cálculo</h2>
+  <div class="g2">
+    <ol class="leyes">
+      <li class="frag">Fracciones.</li>
+      <li class="frag">Operaciones aritméticas. Factores de conversión.</li>
+      <li class="frag">Ecuaciones.</li>
+      <li class="frag">Despeje de variables.</li>
+      <li class="frag">Vectores (en el Capítulo 1 · Preliminares).</li>
+    </ol>
+    <div class="pila">
+      <div class="caja c2"><p style="margin:0">Para pasar de la descripción a los cálculos hacen falta pocas reglas, pero hay que usarlas siempre igual.</p></div>
+      <div class="g2-img frag" style="grid-template-columns:repeat(4,auto);justify-content:center;gap:24px"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><img class="fr" src="img/fruta-pera.webp" alt="pera"><img class="fr" src="img/fruta-mango.webp" alt="mango"><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <p class="chico frag">Truco de estas diapositivas: cada fruta representa una expresión cualquiera, tan complicada como se quiera. Las reglas no dependen de lo que haya dentro.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-par" data-label="Manejo de paréntesis">
+  <p class="ceja">§ 0.11 · Manejo de paréntesis</p>
+  <h2 class="titulo">Los paréntesis cambian el significado</h2>
+  <div class="g2">
+    <div class="pila">
+      <table class="tabla"><tr><th style="text-align:left">En palabras</th><th>En símbolos</th></tr>
+        <tr><td class="izq">Tres quintos de mi edad hace dos años</td><td>\(\tfrac35\,(x - 2)\)</td></tr>
+        <tr class="frag"><td class="izq">Tres quintos de mi edad, más dos</td><td>\(\tfrac35\,x + 2\)</td></tr></table>
+      <figure class="fg frag"><img class="foto ancha sin-borde" style="--fh:250px" src="img/pemdas.webp" alt="Orden de las operaciones PEMDAS: paréntesis, exponentes, multiplicación y división, adición y sustracción"><figcaption>Orden de las operaciones: paréntesis, exponentes, multiplicación y división, adición y sustracción.</figcaption></figure>
+      <div class="caja c2 frag"><p style="margin:0">\(\{[(\) Es mejor que sobren y no que falten \()]\}\)</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Elige tu edad \(x\)</span><span class="val" id="pa-lect"></span></div>
+      <label class="ctrl"><span>Edad \(x\) (años)</span><input type="range" id="pa-x" min="2" max="80" step="1" value="12"><span class="v" id="pa-xv"></span></label>
+      <div class="lectura l2"><div>\(\tfrac35\,(x - 2)\)<b id="pa-a"></b></div><div>\(\tfrac35\,x + 2\)<b id="pa-b"></b></div></div>
+      <div id="pa-fig"></div>
+      <p class="nota">La diferencia no depende de \(x\): \(\big(\tfrac35 x + 2\big) - \tfrac35(x - 2) = 2 + \tfrac65 = 3{,}2\).</p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-bin" data-label="El cuadrado de una suma">
+  <p class="ceja">§ 0.11 · Operaciones</p>
+  <h2 class="titulo">\((a + b)^{2} = a^{2} + b^{2} + 2ab\), visto como áreas</h2>
+  <div class="g2-40">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/binomio-cuadrado.webp" alt="Apunte a mano: un cuadrado de lado a más b dividido en a al cuadrado, b al cuadrado y dos rectángulos ab"></figure>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Mueve \(a\) y \(b\)</span><span class="val" id="bi-lect"></span></div>
+      <div class="g2" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:26px;align-items:center">
+        <div id="bi-fig"></div>
+        <div class="pila">
+          <label class="ctrl" style="grid-template-columns:1fr;gap:6px"><span>\(a\) = <b class="mono" id="bi-av"></b></span><input type="range" id="bi-a" min="1" max="9" step="1" value="3"></label>
+          <label class="ctrl" style="grid-template-columns:1fr;gap:6px"><span>\(b\) = <b class="mono" id="bi-bv"></b></span><input type="range" id="bi-b" min="1" max="9" step="1" value="2"></label>
+          <div class="lectura l1"><div>\((a + b)^{2}\)<b id="bi-t"></b></div><div>\(a^{2} + b^{2} + 2ab\)<b id="bi-s"></b></div><div>Error común: \(a^{2} + b^{2}\)<b id="bi-e"></b></div></div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-simp" data-label="Simplificación">
+  <p class="ceja">§ 0.11 · Fracciones</p>
+  <h2 class="titulo">Simplificar: solo en restas y divisiones puras</h2>
+  <div class="g2-60">
+    <div class="pila">
+      <div class="ec-fr"><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"><span>−</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>=</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> en \(\dfrac{\text{pera} + \text{manzana}}{\text{pera}}\) la pera <em>no</em> se cancela: el numerador es una suma, no un producto.</p></div>
+    </div>
+    <div class="pila">
+      <p class="chico frag">El objeto que se simplifica puede ser complicado; la regla es la misma:</p>
+      <div class="kf frag">\[ \underbrace{\sqrt[3]{\dfrac{3^{2n+4}\cdot 3^{-3n}}{3^{4n+4}\cdot 3^{n-1}}}}_{\text{mango}} + N - \underbrace{\sqrt[3]{\dfrac{3^{2n+4}\cdot 3^{-3n}}{3^{4n+4}\cdot 3^{n-1}}}}_{\text{mango}} = N \]</div>
+      <div class="kf frag">\[ \dfrac{\big(\sqrt[3]{\cdots}\big)\cdot M}{\sqrt[3]{\cdots}} = M \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-simp2" data-label="Dividir una suma">
+  <p class="ceja">§ 0.11 · Fracciones</p>
+  <h2 class="titulo">Dividir una suma y restar fracciones de lo mismo</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>+</span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span></div>
+      <div class="ec-fr frag"><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+ 1</span></div>
+      <p class="chico frag">Cada término de la suma se divide por separado; la pera sola sobre la pera sí da 1.</p>
+    </div>
+    <div class="pila">
+      <div class="ec-fr frag"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>− ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>= ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <p class="chico frag">Con la manzana \(= \dfrac{v_0^{2}\sin^{2}\theta}{g}\), que aparece en el tiro parabólico:</p>
+      <div class="kf frag">\[ \dfrac{v_0^{2}\sin^{2}\theta}{g} - \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} \]\[ = \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} = \dfrac{v_0^{2}\sin^{2}\theta}{2g} \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-rec" data-label="Recíproco y expandir">
+  <p class="ceja">§ 0.11 · Operaciones</p>
+  <h2 class="titulo">Recíproco y propiedad distributiva</h2>
+  <div class="g2">
+    <div class="pila">
+      <h3 style="margin:0">Recíproco</h3>
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">fruta</span><span>verdura</span></span></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span><span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">verdura</span><span>fruta</span></span></div>
+    </div>
+    <div class="pila">
+      <h3 style="margin:0">Expandir</h3>
+      <div class="ec-fr frag"><img class="fr" src="img/dientes.webp" alt="dientes"><span>(</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>)</span></div>
+      <div class="ec-fr frag"><span>=</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="caja frag"><p class="chico" style="margin:0">El factor de afuera actúa sobre <strong>ambos</strong> términos del paréntesis: \(k\,(a + b) = k\,a + k\,b\).</p></div>
+      <div class="kf frag">\[ \text{Recíproco:}\quad \Big(\dfrac{a}{b}\Big)^{-1} = \dfrac{b}{a} \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-desp" data-label="Despeje de variables">
+  <p class="ceja">§ 0.11 · Ecuaciones</p>
+  <h2 class="titulo">Despeje de variables: la misma operación a ambos lados</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <div class="ec-fr"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr frag"><span class="op-caja">operación</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span class="op-caja">operación</span></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">La misma operación, a ambos lados, mantiene la igualdad. Ejemplo: \(2x + 5 = 11 \;\xrightarrow{\;-5\;}\; 2x = 6 \;\xrightarrow{\;\times\frac12\;}\; x = 3\).</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Despeja \(x\) aplicando operaciones</span><span class="val" id="de-lect"></span></div>
+      <div id="de-pasos" class="de-pasos"></div>
+      <div class="fila-btn" id="de-ops"></div>
+      <div class="fila-btn"><button type="button" class="cz-btn" id="de-nueva">Nueva ecuación</button><button type="button" class="cz-btn" id="de-rein">Empezar de nuevo</button></div>
+      <p class="nota" id="de-nota" style="min-height:2.6em"></p>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════ §12 · PRÁCTICA ═════════════ -->
 <section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: constantes y unidades">
   <p class="ceja">Reto <span class="score">Aciertos: <b id="si-score">0</b> / 6</span></p>
   <h2 class="titulo">¿Qué unidad del SI queda definida al fijar cada constante?</h2>
@@ -1160,6 +1304,39 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica3" data-label="Práctica III">
+  <p class="ceja">Práctica III <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Preámbulo matemático</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok-num="5" data-tol="0.001">
+        <div class="pr-q">1. Despeja \(x\) en \(3x - 4 = 11\).</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="x"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">Suma 4 a ambos lados y luego divide ambos lados entre 3.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 3x = 15 ⇒ x = 5." data-mal-txt="Primero +4 a ambos lados: 3x = 15."></div>
+      </div>
+      <div class="pr-item" data-ok-num="6" data-tol="0.001">
+        <div class="pr-q">2. Si tengo \(x = 12\) años, ¿cuánto es «tres quintos de mi edad hace dos años»?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="años"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(\tfrac35\,(x - 2)\): primero el paréntesis.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: (3/5)(12 − 2) = (3/5)(10) = 6." data-mal-txt="Resta primero: 12 − 2 = 10, y luego multiplica por 3/5."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">3. Con \(a = 3\) y \(b = 2\), \((a + b)^{2}\) vale…</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(13\)</button><button type="button" class="pr-opc" data-o="b">\(25\)</button><button type="button" class="pr-opc" data-o="c">\(10\)</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: 5² = 25 = 9 + 4 + 12. Con a² + b² = 13 faltan los dos rectángulos 2ab." data-mal-txt="Suma primero (paréntesis) y luego eleva al cuadrado."></div>
+      </div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">4. ¿Cuál simplificación es correcta?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\dfrac{a + b}{b} = a + 1\)</button><button type="button" class="pr-opc" data-o="b">\(\dfrac{a + b}{b} = \dfrac{a}{b} + 1\)</button><button type="button" class="pr-opc" data-o="c">\(\dfrac{a\,b}{b} = a\,b\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: cada término de la suma se divide entre b." data-mal-txt="Solo se cancela lo que multiplica a todo el numerador."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
   <p class="ceja">Glosario</p>
   <h2 class="titulo">Términos del capítulo</h2>
@@ -1190,20 +1367,6 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
   </dl>
 </section>
 
-<section class="diapositiva" data-seccion="Práctica" data-label="Lo que sigue">
-  <p class="ceja">Lo que sigue</p>
-  <h2 class="titulo">Preámbulo matemático</h2>
-  <div class="g2">
-    <ol class="leyes">
-      <li>Fracciones.</li>
-      <li>Operaciones aritméticas. Factores de conversión.</li>
-      <li>Ecuaciones.</li>
-      <li>Despeje de variables.</li>
-      <li>Vectores.</li>
-    </ol>
-    <div class="caja c2"><p style="margin:0">Las herramientas para pasar de la descripción a los cálculos: continúa con el <strong>Capítulo 1 · Preliminares</strong>.</p></div>
-  </div>
-</section>
 <div class="pop-src" id="pop-exc" style="display:none"><h4>Excitación de un campo</h4><p>En su estado de mínima energía (el vacío) un campo solo tiene fluctuaciones. Si recibe energía, la toma en paquetes discretos, cuantos. Un paquete localizado viaja como una unidad: eso es lo que llamamos partícula.</p></div>
 <div class="pop-src" id="pop-rep" style="display:none"><h4>Representación irreducible</h4><p>Wigner (1939): una partícula se clasifica por cómo se transforma bajo las simetrías del espacio-tiempo (traslaciones, rotaciones, cambios de velocidad). Lo que no cambia son sus etiquetas: la masa y el espín.</p></div>
 <div class="pop-src" id="pop-fer" style="display:none"><h4>Fermiones</h4><p>Partículas de espín semientero (\(\tfrac12\), \(\tfrac32\)…): electrones, protones, neutrones, neutrinos. Obedecen el principio de exclusión. Los de espín entero, como el fotón, son bosones y sí pueden acumularse en un mismo estado.</p></div>
@@ -2172,6 +2335,100 @@ function zonaEM(l) {                       /* l en metros */
     cuentas.fill(0); total = 0; pinta();
   });
   pinta();
+})();
+
+/* ═══ PARÉNTESIS: tres quintos de mi edad… ════════════════════════════ */
+(function () {
+  const r = document.getElementById('pa-x');
+  if (!r) return;
+  const host = document.getElementById('pa-fig');
+  const W = 1180, H = 260, x0 = 30, x1 = 1150, MAX = 52;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => x0 + v / MAX * (x1 - x0);
+  const ba = nodo('rect', { x: x0, y: 30, height: 70, style: 'fill:var(--res)' }, svg);
+  const bb = nodo('rect', { x: x0, y: 140, height: 70, style: 'fill:var(--caso2)' }, svg);
+  const ta = nodo('text', { y: 76, 'font-size': 30, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT }, svg);
+  const tb = nodo('text', { y: 186, 'font-size': 30, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT }, svg);
+  function pinta() {
+    const x = +r.value, a = 0.6 * (x - 2), b = 0.6 * x + 2;
+    ba.setAttribute('width', X(a) - x0); bb.setAttribute('width', X(b) - x0);
+    ta.setAttribute('x', X(a) + 12); tb.setAttribute('x', X(b) + 12);
+    ta.textContent = '3/5 (x − 2) = ' + num(a, 1); tb.textContent = '3/5 x + 2 = ' + num(b, 1);
+    document.getElementById('pa-xv').textContent = x;
+    document.getElementById('pa-a').textContent = num(a, 1);
+    document.getElementById('pa-b').textContent = num(b, 1);
+    document.getElementById('pa-lect').textContent = 'diferencia: ' + num(b - a, 1);
+  }
+  r.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ (a + b)² COMO ÁREAS ═════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('bi-fig');
+  if (!host) return;
+  const ra = document.getElementById('bi-a'), rb = document.getElementById('bi-b');
+  const W = 560, P = 40, L = 480;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + W, class: 'fig' }, host);
+  const g = nodo('g', {}, svg);
+  function pinta() {
+    const a = +ra.value, b = +rb.value, s = L / (a + b), A = a * s, B = b * s;
+    g.innerHTML = '';
+    const caja = (x, y, w, h, col, txt) => {
+      nodo('rect', { x: P + x, y: P + y, width: w, height: h, style: 'fill:var(' + col + ');stroke:var(--papel);stroke-width:3' }, g);
+      if (w > 60 && h > 40) nodo('text', { x: P + x + w / 2, y: P + y + h / 2 + 12, 'text-anchor': 'middle', 'font-size': Math.min(40, w / 3), style: 'fill:var(--papel);font-weight:700;font-family:' + FMATH, txt: txt }, g);
+    };
+    caja(0, B, A, A, '--res', 'a² = ' + a * a);
+    caja(A, 0, B, B, '--caso1', 'b² = ' + b * b);
+    caja(0, 0, A, B, '--caso2', 'ab = ' + a * b);
+    caja(A, B, B, A, '--caso2', 'ab = ' + a * b);
+    nodo('text', { x: P + A / 2, y: P - 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta2);font-style:italic;font-family:' + FMATH, txt: 'a' }, g);
+    nodo('text', { x: P + A + B / 2, y: P - 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--tinta2);font-style:italic;font-family:' + FMATH, txt: 'b' }, g);
+    document.getElementById('bi-av').textContent = a; document.getElementById('bi-bv').textContent = b;
+    document.getElementById('bi-t').textContent = '(' + a + ' + ' + b + ')² = ' + (a + b) * (a + b);
+    document.getElementById('bi-s').textContent = a * a + ' + ' + b * b + ' + ' + 2 * a * b + ' = ' + (a * a + b * b + 2 * a * b);
+    document.getElementById('bi-e').textContent = (a * a + b * b) + ' ✗ (faltan ' + 2 * a * b + ')';
+    document.getElementById('bi-lect').textContent = 'lado a + b = ' + (a + b);
+  }
+  ra.addEventListener('input', pinta); rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DESPEJE DE VARIABLES: A x + B = C ═══════════════════════════════ */
+(function () {
+  const host = document.getElementById('de-pasos');
+  if (!host) return;
+  const mcd = (p, q) => { p = Math.abs(p); q = Math.abs(q); while (q) { [p, q] = [q, p % q]; } return p || 1; };
+  const fr = (n, d) => { if (d < 0) { n = -n; d = -d; } const k = mcd(n, d); return [n / k, d / k]; };
+  const txt = q => q[1] === 1 ? String(q[0]).replace('-', '−') : String(q[0]).replace('-', '−') + '/' + q[1];
+  const sum = (p, q) => fr(p[0] * q[1] + q[0] * p[1], p[1] * q[1]);
+  const div = (p, q) => fr(p[0] * q[1], p[1] * q[0]);
+  let A, B, C, pasos, orig;
+  const ec = () => {
+    const a = A[0] === 1 && A[1] === 1 ? '' : A[0] === -1 && A[1] === 1 ? '−' : txt(A);
+    const b = B[0] === 0 ? '' : (B[0] > 0 ? ' + ' + txt(B) : ' − ' + txt([-B[0], B[1]]));
+    return a + 'x' + b + ' = ' + txt(C);
+  };
+  function pinta() {
+    host.innerHTML = pasos.map((p, k) => '<div class="paso' + (k === pasos.length - 1 && B[0] === 0 && A[0] === A[1] ? ' fin' : '') + '"><span>' + p[0] + '</span><span class="op">' + p[1] + '</span></div>').join('');
+    const ops = document.getElementById('de-ops'), listo = B[0] === 0 && A[0] === A[1];
+    ops.innerHTML = listo ? '' : (B[0] !== 0 ? '<button type="button" class="btn" data-o="b">' + (B[0] > 0 ? '− ' + txt(B) : '+ ' + txt([-B[0], B[1]])) + ' a ambos lados</button>' : '')
+      + (A[0] !== A[1] ? '<button type="button" class="btn" data-o="a">÷ ' + txt(A) + ' a ambos lados</button>' : '');
+    document.getElementById('de-lect').textContent = listo ? '✓ despejada en ' + (pasos.length - 1) + ' pasos' : 'paso ' + pasos.length;
+    document.getElementById('de-nota').textContent = listo ? '¡Listo! Comprueba reemplazando x en la ecuación original.'
+      : (pasos.length === 1 ? 'Elige una operación. Ambas son válidas; restar primero evita fracciones.' : '');
+  }
+  function nueva(a, x, b) {
+    a = a || 2 + Math.floor(Math.random() * 7); x = x !== undefined ? x : Math.floor(Math.random() * 19) - 6; b = b !== undefined ? b : (Math.floor(Math.random() * 17) - 8 || 5);
+    orig = [a, x, b]; A = [a, 1]; B = [b, 1]; C = [a * x + b, 1]; pasos = [[ec(), '']]; pinta();
+  }
+  document.getElementById('de-ops').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    if (b.dataset.o === 'b') { const op = b.textContent.replace(' a ambos lados', ''); C = sum(C, [-B[0], B[1]]); B = [0, 1]; pasos.push([ec(), op]); }
+    else { const op = '÷ ' + txt(A); B = div(B, A); C = div(C, A); A = [1, 1]; pasos.push([ec(), op]); }
+    pinta();
+  });
+  document.getElementById('de-nueva').addEventListener('click', () => nueva());
+  document.getElementById('de-rein').addEventListener('click', () => nueva(...orig));
+  nueva(2, 3, 5);
 })();
 
 </script>
