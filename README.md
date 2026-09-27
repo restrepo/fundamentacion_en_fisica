@@ -28,20 +28,20 @@ superior por secciones · clic en el contador para saltar a un número.
 
 ### Capítulo 0 · Estructura de la materia
 
-32 diapositivas en nueve bloques, a partir de la presentación del curso (con
-sus imágenes): el universo (componentes, un explorador de escalas del protón
-al universo observable, historia térmica con línea de tiempo, líneas de
-Fraunhofer del espectro solar y ondas gravitacionales); campos
-(superconductividad con $R(T)$ y efecto Meissner, campos complejos con $z$
-arrastrable sobre el círculo unidad, oscilaciones de neutrinos, número de
-excitaciones en el universo y el camino aleatorio del fotón en el Sol);
-átomos (el átomo casi vacío y la energía necesaria para resolver un tamaño);
-detectores de neutrinos (Super-Kamiokande, IceCube); antimateria (electrón y
-positrón, AMS-02 y la estimación de positrones en el universo);
-interacción (campos cuánticos e intercambio); átomo y luz (conversor de
-energía del fotón y transiciones del hidrógeno); unidades del SI (el cesio y
-las constantes definitorias de 2019); y práctica: reto constante → unidad,
-cuestionario y glosario.
+61 diapositivas en once bloques, a partir de las presentaciones del curso
+(con sus imágenes): el universo (escalas, historia térmica, líneas de
+Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
+Meissner, campos complejos, oscilaciones de neutrinos, el fotón en el Sol);
+átomos y dispersión; detectores de neutrinos; antimateria (AMS-02 y la
+estimación de positrones); interacción (campos cuánticos, intercambio,
+factor $g$, reglas de Feynman y el $g$ del electrón calculado lazo a lazo);
+átomo y luz (conversor de energía del fotón, transiciones del hidrógeno);
+unidades (el cesio, las constantes del SI de 2019 y un conversor a unidades
+naturales); quarks (escala nuclear, fuerza, cambio y masa emergente, un
+constructor de bariones con espín, color y Pauli, gluones, hadrones, el 99 %
+de interacción en la masa del protón y el LHC); interacción débil (espectro
+beta de dos y tres cuerpos, $W$ y $Z$, carbono-14, muón, modelo estándar y el
+$\Xi_{cc}^{+}$); y práctica: reto, dos cuestionarios y dos glosarios.
 
 ### Capítulo 1 · Preliminares
 
