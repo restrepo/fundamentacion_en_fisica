@@ -26,8 +26,9 @@ async def main(archivo, out, chrome, con_red):
                    .filter(s=>!document.querySelector(s)),
           menu: [...document.querySelectorAll('#menu button')].map(b=>b.textContent),
           muescas: document.querySelectorAll('#recta .tick').length,
-          contador: document.getElementById('contador').textContent})""")
-        n = int(info['contador'].split('/')[1])
+          contador: document.getElementById('contador').textContent,
+          total: document.getElementById('contador').dataset.total})""")
+        n = int(info['total'])
         shots = []
         for i in range(n):
             await pg.wait_for_timeout(420)

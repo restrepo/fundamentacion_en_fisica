@@ -9,7 +9,7 @@
   pie.tabIndex = 0;
   function abre(){
     if (pie.querySelector('input')) return;
-    const total = (pie.textContent.split('/')[1] || '').trim();
+    const total = String(pie.dataset.total || (pie.textContent.split('/')[1] || '').trim());
     const prev = pie.innerHTML;
     const inp = document.createElement('input');
     inp.type = 'text'; inp.inputMode = 'numeric'; inp.className = 'pie-in';

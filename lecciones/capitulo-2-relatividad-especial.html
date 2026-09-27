@@ -1087,7 +1087,8 @@ function tok(nombre) {
       if (cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
     esc.classList.toggle('sin-pasos', frags[i].length === 0 && dps[i].id !== 'dp-hero');
-    contador.textContent = (i + 1) + ' / ' + N;
+    contador.textContent = String(i + 1);          /* solo la diapositiva actual; el total va en data-total */
+    contador.dataset.total = N;
     lleno.style.width = ((i + 1) / N * 100) + '%';
     history.replaceState(null, '', '#/' + (i + 1));
     if (previo !== i) {
@@ -1822,7 +1823,7 @@ const gam = b => 1 / Math.sqrt(1 - b * b);
   pie.tabIndex = 0;
   function abre(){
     if (pie.querySelector('input')) return;
-    const total = (pie.textContent.split('/')[1] || '').trim();
+    const total = String(pie.dataset.total || (pie.textContent.split('/')[1] || '').trim());
     const prev = pie.innerHTML;
     const inp = document.createElement('input');
     inp.type = 'text'; inp.inputMode = 'numeric'; inp.className = 'pie-in';
