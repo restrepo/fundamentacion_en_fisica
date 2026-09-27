@@ -26,6 +26,16 @@ fuente): `build_html.py` las incrusta como `data:` URI y la salida sigue
 siendo un único archivo. Conviértelas antes a WebP (≲ 1400 px de lado) para
 no inflar la lección; las URL `http(s):` se dejan tal cual (requieren red).
 
+**Crear imágenes nuevas.** No te limites a las figuras del material de
+entrada (repositorio LaTeX, PowerPoint, PDF…): cuando una idea se entienda
+mejor con un esquema, un diagrama, una gráfica o un explorador que la fuente
+no trae, créalo por tu cuenta, de preferencia como SVG generado en el JS de
+la lección con los colores del sistema, y redibuja las figuras de la fuente
+que lleguen con texto en otro idioma o mala resolución. Nada de figuras
+decorativas ni de imitaciones de fotos reales. Al entregar, di qué figuras
+son nuevas. Cómo extraer las de la fuente y cómo crear las nuevas:
+`references/imagenes.md`.
+
 **Crédito de autoría.** Todas las lecciones muestran, abajo a la izquierda y en
 el pie del póster de cierre, **«Diseño de material de estudio · W. Alexander
 Flórez»** (`CREDITO_POR_DEFECTO` en `scripts/build_deck.py`, que usan los dos
