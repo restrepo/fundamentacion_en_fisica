@@ -1,0 +1,1502 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>Estructura de la materia · Fundamentación en Física</title>
+<style>
+<style>
+:root{
+  --t-rotulo:25px; --t-peq:30px; --t-cuerpo:37px; --t-titulo:70px; --t-portada:150px;
+}
+/* ── Lección: Estructura de la materia (lienzo 2280 × 1080, unidades en px) ── */
+section.diapositiva{position:relative}
+section.diapositiva p{margin:0 0 14px}
+section.diapositiva .ceja{font:600 var(--t-rotulo)/1 var(--font-body);text-transform:uppercase;margin:0 0 6px}
+section.diapositiva .ceja .score{float:right;color:var(--tinta2);letter-spacing:.04em}
+section.diapositiva strong{font-weight:700}
+section.diapositiva .sub{color:var(--tinta2);font-size:var(--t-peq)}
+section.diapositiva .mono{font-variant-numeric:tabular-nums}
+
+/* rejillas */
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-60{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:44px;align-items:start}
+.g2-40{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:44px;align-items:start}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.pila > * + *{margin-top:18px}
+
+/* cajas */
+.caja{background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--res);padding:18px 26px}
+.caja.c1{border-left-color:var(--caso1)}
+.caja.c2{border-left-color:var(--caso2)}
+.caja.neutra{border-left-color:var(--borde)}
+  .caja h3{font-size:36px;margin:0 0 8px}
+.kf{border:2px solid var(--res);background:var(--res-50);padding:14px 26px;text-align:center;font-size:40px}
+.ec{text-align:center;margin:10px 0}
+.nota{font-size:var(--t-peq);color:var(--tinta2)}
+ol.leyes{margin:0;padding-left:1.3em}
+ol.leyes li{margin-bottom:16px}
+ul.lista{margin:0;padding-left:1.1em}
+ul.lista li{margin-bottom:10px}
+
+/* fragmentos (↓ ↑) */
+.frag{opacity:.0;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease}
+.frag.frag-on{opacity:1;transform:none}
+
+/* figuras */
+.svgbox{background:var(--panel);padding:14px 18px 16px}
+.svghd{font:700 var(--t-rotulo)/1.2 var(--font-body);color:var(--tinta2);margin:0 0 10px;display:flex;justify-content:space-between;gap:20px}
+.svghd #os-sub{text-transform:none;letter-spacing:0}
+.svghd .val{color:var(--res);text-transform:none;letter-spacing:0;font-variant-numeric:tabular-nums}
+.fig{display:block;width:100%;height:auto}
+.fig text{font-family:'STIX Two Text',Georgia,serif}
+canvas.lienzo{display:block;width:100%;height:auto;cursor:crosshair}
+
+/* controles */
+.ctrl{display:grid;grid-template-columns:270px 1fr 170px;align-items:center;gap:18px;margin:10px 0;font-size:var(--t-peq)}
+.ctrl .v{font:600 var(--t-peq)/1 var(--font-body);text-align:right;font-variant-numeric:tabular-nums;color:var(--res)}
+.ctrl input[type=range]{width:100%;height:30px;cursor:pointer}
+.fila-btn{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0}
+.btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;background:var(--panel);color:var(--tinta);border:2px solid var(--linea);cursor:pointer}
+.btn:hover{background:var(--primario-tinte)}
+.btn.on{border-color:var(--res);color:var(--res);background:var(--res-50)}
+.btn.prim{background:var(--res);color:var(--papel);border-color:var(--res)}
+.chk{display:inline-flex;align-items:center;gap:10px;font:600 var(--t-peq)/1 var(--font-body);cursor:pointer;margin-right:26px}
+.chk input{width:22px;height:22px;accent-color:var(--color-accent)}
+.chk.x{color:var(--res)} .chk.p{color:var(--caso1)} .chk.a{color:var(--caso2)} .chk.n{color:var(--tinta2)}
+.lectura{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:14px}
+.lectura div{background:var(--panel);border:2px solid var(--linea);padding:12px 16px;font-size:26px;color:var(--tinta2)}
+.lectura b{display:block;font:700 34px/1.25 var(--font-body);color:var(--tinta);font-variant-numeric:tabular-nums}
+
+/* tabla */
+table.tabla{border-collapse:collapse;width:100%;font-size:30px}
+table.tabla th,table.tabla td{border-bottom:2px solid var(--linea);padding:6px 14px;text-align:center}
+table.tabla th{font:700 25px/1.2 var(--font-body);color:var(--tinta2);border-bottom-color:var(--tinta)}
+table.tabla td.izq{text-align:left}
+table.tabla tr.frag td{background:var(--panel)}
+
+/* chips con ventana emergente */
+.prop{border-bottom:3px dotted var(--res);cursor:help;color:var(--tinta);font-weight:600}
+.prop:hover{background:var(--res-50)}
+.pop-src{display:none}
+.popover{position:absolute;z-index:40;max-width:860px;padding:24px 30px;font-size:31px;line-height:1.45}
+.popover h4{margin:0 0 8px;font:800 28px/1.2 var(--font-heading);color:var(--res)}
+.popover .cerrar{position:absolute;top:8px;right:12px;border:0;background:none;font-size:28px;cursor:pointer;color:var(--tinta2)}
+
+/* práctica */
+.pr-item{background:var(--panel);padding:16px 22px;margin-bottom:16px}
+.pr-q{font-weight:600;margin-bottom:10px}
+.pr-opcs{display:flex;flex-wrap:wrap;gap:12px}
+.pr-opc{font:500 var(--t-peq)/1.2 var(--font-body);padding:10px 18px;background:var(--papel);border:2px solid var(--linea);cursor:pointer;color:var(--tinta)}
+.pr-opc.ok{border-color:var(--ok);background:var(--res-50)}
+.pr-opc.mal{border-color:var(--mal);background:var(--mal-50)}
+.pr-fb{margin-top:10px;font-size:var(--t-peq);min-height:1.2em}
+.pr-fb.ok{color:var(--res)} .pr-fb.mal{color:var(--mal)}
+.pr-in{font-size:30px;padding:8px 12px;width:200px;border:2px solid var(--linea);background:var(--papel)}
+.pr-btn{font:600 var(--t-peq)/1 var(--font-body);padding:10px 18px;border:2px solid var(--linea);background:var(--papel);cursor:pointer;color:var(--tinta)}
+.pr-pista{display:none;margin-top:8px;font-size:var(--t-peq);color:var(--tinta2)}
+.pr-pista.on{display:block}
+
+/* reto */
+.cz-grid{display:grid;grid-template-columns:120px repeat(3,1fr);gap:16px 22px;align-items:center;font-size:34px}
+.cz-grid .h{font:700 28px/1.2 var(--font-body);color:var(--tinta2)}
+.cz-grid input{font:500 34px/1 'STIX Two Text',Georgia,serif;padding:8px 12px;border:2px solid var(--linea);background:var(--panel);width:100%;box-sizing:border-box}
+.cz-grid input.ok{border-color:var(--res);background:var(--res-50)}
+.cz-grid input.mal{border-color:var(--mal);background:var(--mal-50)}
+.cz-btn{font:600 var(--t-peq)/1 var(--font-body);padding:12px 22px;border:2px solid var(--linea);background:var(--panel);cursor:pointer;color:var(--tinta)}
+.cz-fb{margin-top:16px;font-size:var(--t-peq);min-height:1.3em}
+.cz-sol{display:none;margin-top:14px;background:var(--panel);padding:14px 20px;border:2px solid var(--linea)}
+.cz-sol.on{display:block}
+
+/* glosario */
+dl.glosa{display:grid;grid-template-columns:1fr 1fr;gap:18px 48px;margin:0}
+dl.glosa div{border-top:2px solid var(--linea);padding-top:10px}
+dl.glosa dt{font:800 34px/1.2 var(--font-heading);color:var(--res);margin-bottom:4px}
+dl.glosa dd{margin:0;font-size:29px}
+
+/* portada */
+.portada .pt-fig{width:720px}
+.portada .sub{font-size:36px;max-width:1250px}
+.ayuda{position:absolute;bottom:84px;font-size:22px;color:var(--tinta2)}
+.ayuda kbd{font:600 20px/1 var(--font-body);border:2px solid var(--linea);padding:3px 8px;margin:0 2px;background:var(--panel)}
+
+/* diagrama de flujo */
+.flujo .blq{transition:all .3s}
+
+/* ── Retos, arrastre y muestras (comunes con los capítulos anteriores) ── */
+.arrastre svg{cursor:grab;touch-action:none}
+.arrastre svg:active{cursor:grabbing}
+.dim-lista{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+.dim{display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--linea);padding:14px 20px;font-size:34px}
+.dim .dim-btns{display:flex;gap:10px}
+.dim .dim-exp{grid-column:1 / -1;font-size:26px;color:var(--tinta2);display:none}
+.dim.ok{border-left-color:var(--res)} .dim.mal{border-left-color:var(--mal)}
+.dim.ok .dim-exp,.dim.mal .dim-exp{display:block}
+.btn.sel{border-color:var(--tinta);background:var(--primario-tinte)}
+select.pr-in{font-family:var(--font-body)}
+
+.dim .dim-ec{font-size:30px;display:flex;align-items:center;gap:14px}
+.sw{display:inline-block;width:70px;height:40px;border:2px solid var(--linea)}
+
+/* ── Propio del capítulo 5 ── */
+.foto{display:block;width:auto;max-width:100%;height:auto;max-height:var(--fh,600px);margin:0 auto;object-fit:contain;border:2px solid var(--linea);background:var(--panel)}
+.foto.ancha{width:100%}
+.foto.sin-borde{border:0;background:none}
+figure.fg{margin:0}
+figure.fg figcaption{font-size:23px;line-height:1.35;color:var(--tinta2);margin-top:8px}
+a.enl{color:var(--res);text-decoration:none;border-bottom:2px solid var(--res-100)}
+a.enl:hover{border-bottom-color:var(--res)}
+.g2-img{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:center}
+.g3-img{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;align-items:start}
+.chico{font-size:31px}
+.chico p,.chico li{font-size:31px}
+.lista.chico li{margin-bottom:8px}
+.tl{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 16px}
+.etapa{display:none}
+.etapa.on{display:block}
+.etapa p{font-size:31px;margin-top:14px}
+.muestra{height:54px;border:2px solid var(--linea);margin-top:12px}
+.lectura.l1{grid-template-columns:1fr}
+.lectura.l2{grid-template-columns:1fr 1fr}
+.lectura.l3{grid-template-columns:repeat(3,1fr)}
+.lectura b.peq{font-size:29px}
+table.tabla.chica{font-size:27px}
+table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabular-nums}
+.etiq{position:absolute;font:700 30px/1 var(--font-body);color:var(--tinta);background:var(--panel);border:2px solid var(--tinta);padding:6px 12px}
+.rel{position:relative}
+.inline-img{height:64px;vertical-align:middle;margin-left:10px}
+.dim-lista.seis{grid-template-columns:1fr;gap:14px}
+.dim-lista.seis .dim{padding:10px 20px}
+.dim .dim-ec mjx-container{font-size:110%}
+.prefijos{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+
+</style></head>
+<body>
+<div id="escenario">
+<span class="marca">Estructura de la materia · Cap. 5</span>
+<p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>
+<!-- ═════════════ §1 · UNIVERSO ═════════════ -->
+<section class="diapositiva portada" data-seccion="Universo" data-label="Estructura de la materia">
+  <div>
+    <p class="ceja">Fundamentación en Física · Capítulo 5</p>
+    <h1>Estructura de la materia</h1>
+    <div class="regla"></div>
+    <p class="sub">De las galaxias a los campos cuánticos: de qué está hecho el universo, cómo lo sabemos y con qué constantes lo medimos.</p>
+    <p class="nota" style="margin-top:28px">Diego Restrepo · Instituto de Física · Universidad de Antioquia<br><a class="enl" href="https://bit.ly/estructuradelamateriaudea" target="_blank" rel="noopener">bit.ly/estructuradelamateriaudea</a></p>
+  </div>
+  <figure class="pt-fig svgbox" style="margin:0">
+    <div class="svghd"><span>Un campo y sus excitaciones</span><span class="val" id="hero-lect">cada montaña es una partícula</span></div>
+    <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
+  </figure>
+  <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+</section>
+
+<section class="diapositiva" data-seccion="Universo" id="dp-comp" data-label="Componentes del universo">
+  <p class="ceja">§ 5.1 · El universo</p>
+  <h2 class="titulo">Del cúmulo de galaxias al planeta</h2>
+  <div class="g2-60">
+    <figure class="fg">
+      <img class="foto" style="--fh:640px" src="img/componentes-universo.webp" alt="Diagrama de los componentes del universo: cúmulos de galaxias, galaxias, estrellas y planetas">
+      <figcaption>Componentes del universo, de los cúmulos galácticos a los planetas. <a class="enl" href="https://soclalluna.com/eso/4oeso-biologia-y-geologia/v-la-tierra-en-el-universo/estructura-y-composicion-del-universo/" target="_blank" rel="noopener">Fuente</a></figcaption>
+    </figure>
+    <div class="pila">
+      <div class="caja neutra"><p class="chico" style="margin:0"><strong>Aclaración.</strong> Esta parte del curso, hasta donde comienza relatividad, es informativa: varios de sus temas se desarrollan con detalle más adelante.</p></div>
+      <div class="caja frag"><p class="chico" style="margin:0">La gravedad liga planetas a estrellas, estrellas a galaxias y galaxias a cúmulos.</p></div>
+      <figure class="fg frag">
+        <img class="foto" style="--fh:330px" src="img/estructura-gran-escala.webp" alt="Mapa de la estructura a gran escala del universo">
+        <figcaption>A gran escala las galaxias trazan una red de filamentos, nodos y vacíos. <a class="enl" href="https://tuneldelaciencia.unam.mx/exposicion/estructura-del-universo" target="_blank" rel="noopener">Fuente</a></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Universo" id="dp-esc" data-label="Escalas de la materia">
+  <p class="ceja">§ 5.1 · Escalas</p>
+  <h2 class="titulo">Del protón al universo observable: 42 órdenes de magnitud</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Recorre la escala de longitudes</span><span class="val" id="esc-lect"></span></div>
+      <div id="esc-fig"></div>
+      <label class="ctrl"><span>\(\log_{10}(L/\mathrm{m})\)</span><input type="range" id="esc-l" min="-15" max="27" step="0.1" value="0.2"><span class="v" id="esc-lv"></span></label>
+    </figure>
+    <div class="pila">
+      <div class="lectura l1"><div>Longitud<b id="esc-L"></b></div><div>Lo más parecido<b id="esc-obj"></b></div><div>Protones puestos en fila<b id="esc-np"></b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Arriba manda la gravedad; en átomos y moléculas, el electromagnetismo; dentro del núcleo, las fuerzas nucleares.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Universo" id="dp-hist" data-label="Historia del universo">
+  <p class="ceja">§ 5.1 · Historia del universo</p>
+  <h2 class="titulo">Un universo que se enfría: núcleos, átomos y estrellas</h2>
+  <div class="g2-60">
+    <div>
+      <div class="tl" id="hi-tl"><button type="button" class="btn on" data-e="0">3 minutos</button><button type="button" class="btn" data-e="1">380 000 años</button><button type="button" class="btn" data-e="2">300 millones de años</button><button type="button" class="btn" data-e="3">Hoy</button></div>
+      <div class="etapa on">
+        <img class="foto ancha sin-borde" style="--fh:420px" src="img/nucleosintesis.webp" alt="Fusión de deuterio, helio-3 y helio-4">
+        <p><strong>Nucleosíntesis primordial.</strong> En los primeros minutos, protones y neutrones se fusionan en deuterio, helio-3 y helio-4: el universo queda con cerca de 75 % de hidrógeno y 25 % de helio en masa. <a class="enl" href="https://aether.lbl.gov/www/tour/elements/early/early_a.html" target="_blank" rel="noopener">Fuente</a></p>
+      </div>
+      <div class="etapa">
+        <div class="g2-img"><img class="foto" style="--fh:400px" src="img/recombinacion.webp" alt="Plasma de núcleos y electrones frente a átomos neutros"><img class="foto" style="--fh:400px" src="img/fondo-microondas.webp" alt="Mapa del fondo cósmico de microondas"></div>
+        <p><strong>Recombinación.</strong> A unos \(\qty{3000}{K}\) los electrones se ligan a los núcleos: el universo se vuelve transparente. Esa luz, estirada por la expansión, es hoy el fondo cósmico de microondas a \(\qty{2{,}725}{K}\). <a class="enl" href="https://writescience.wordpress.com/2014/03/27/behind-the-curtains-of-the-cosmos-1-inflation-and-the-microwave-background/" target="_blank" rel="noopener">Fuente</a></p>
+      </div>
+      <div class="etapa">
+        <img class="foto ancha" style="--fh:420px" src="img/primeras-estrellas.webp" alt="Las primeras estrellas">
+        <p><strong>Primeras estrellas.</strong> La gravedad junta el gas en nubes que se encienden; en su interior se fabrican carbono, oxígeno, hierro… <a class="enl" href="https://www.universetoday.com/articles/first-light-universe" target="_blank" rel="noopener">Fuente</a></p>
+      </div>
+      <div class="etapa">
+        <img class="foto ancha" style="--fh:420px" src="img/universo-en-el-tiempo.webp" alt="Línea de tiempo del universo">
+        <p><strong>Hoy,</strong> 13 800 millones de años después: galaxias por todas partes, y un Sol que se formó más de 9000 millones de años después del big bang. <a class="enl" href="https://science.nasa.gov/asset/webb/first-stars-timeline-of-the-universe/" target="_blank" rel="noopener">Fuente</a></p>
+      </div>
+    </div>
+    <div class="pila">
+      <table class="tabla">
+        <tr><th class="izq" style="text-align:left">Contenido del universo observable</th><th>Número</th></tr>
+        <tr><td class="izq">Protones</td><td>\(\sim 10^{80}\)</td></tr>
+        <tr><td class="izq">Electrones</td><td>\(\sim 10^{80}\)</td></tr>
+        <tr class="frag"><td class="izq">Fotones</td><td>\(\sim 10^{90}\)</td></tr>
+        <tr class="frag"><td class="izq">Neutrinos</td><td>\(\sim 10^{90}\)</td></tr>
+      </table>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Por cada protón hay del orden de mil millones de fotones y otros tantos neutrinos: la materia ordinaria es una minoría.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Universo" id="dp-fraun" data-label="Espectro solar">
+  <p class="ceja">§ 5.1 · Mensajeros: la luz</p>
+  <h2 class="titulo">Espectro solar: la huella de los elementos</h2>
+  <div class="g2-40">
+    <figure class="fg">
+      <img class="foto" style="--fh:590px" src="img/espectro-solar.webp" alt="Espectro solar de alta resolución con líneas oscuras">
+      <figcaption>Las líneas oscuras son luz absorbida por los elementos de la atmósfera solar. <a class="enl" href="https://scied.ucar.edu/image/sun-spectrum" target="_blank" rel="noopener">scied.ucar.edu</a></figcaption>
+    </figure>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Toca una línea o elige un elemento</span><span class="val" id="fr-lect"></span></div>
+      <div id="fr-fig"></div>
+      <div class="fila-btn" id="fr-btns"><button type="button" class="btn" data-el="H">Hidrógeno</button><button type="button" class="btn" data-el="Na">Sodio</button><button type="button" class="btn" data-el="Mg">Magnesio</button><button type="button" class="btn" data-el="Ca">Calcio</button><button type="button" class="btn" data-el="Fe">Hierro</button><button type="button" class="btn" data-el="O2">\(\mathrm{O_2}\) terrestre</button></div>
+      <p class="nota" id="fr-nota" style="min-height:2.9em;margin-top:8px"></p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Universo" id="dp-og" data-label="Ondas gravitacionales">
+  <p class="ceja">§ 5.1 · Mensajeros: el espacio-tiempo</p>
+  <h2 class="titulo">Un mensajero nuevo: las ondas gravitacionales</h2>
+  <div class="g2">
+    <figure class="fg">
+      <img class="foto" style="--fh:620px" src="img/ondas-gravitacionales.webp" alt="Concepción artística de LISA entre dos agujeros negros">
+      <figcaption>Concepción artística de LISA, un interferómetro en el espacio. <a class="enl" href="https://lisa.nasa.gov/" target="_blank" rel="noopener">lisa.nasa.gov</a></figcaption>
+    </figure>
+    <ul class="lista">
+      <li class="frag"><strong>2015 · Descubrimiento.</strong> LIGO registra la fusión de dos agujeros negros: el espacio-tiempo vibra y un interferómetro lo detecta.</li>
+      <li class="frag"><strong>2017 · Estrellas de neutrones.</strong> Su fusión se ve también con luz: en esas explosiones se crean elementos pesados como el oro y el uranio.</li>
+      <li class="frag"><strong>Púlsares como detectores.</strong> Estrellas de neutrones que giran como faros; pequeños retrasos en sus pulsos delatan ondas de periodo de años.</li>
+      <li class="frag"><strong>LISA.</strong> Tres naves separadas 2,5 millones de kilómetros buscarán ondas de baja frecuencia desde el espacio.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ═════════════ §2 · CAMPOS ═════════════ -->
+<section class="diapositiva" data-seccion="Campos" id="dp-campo" data-label="Qué es un campo">
+  <p class="ceja">§ 5.2 · Campos</p>
+  <h2 class="titulo">Campo: algo que ocupa sitio y transporta energía</h2>
+  <div class="g2">
+    <div class="pila">
+      <ol class="leyes">
+        <li class="frag">Ocupa sitio en el espacio.</li>
+        <li class="frag">Transporta energía y cantidad de movimiento.</li>
+        <li class="frag">Sus <span class="prop" data-pop="pop-exc">excitaciones</span> se comportan como partículas.</li>
+      </ol>
+      <div class="caja frag"><p class="chico" style="margin:0">«¿Qué es una partícula?» Dos respuestas modernas: una <em>excitación cuántica de un campo</em> y una <span class="prop" data-pop="pop-rep">representación irreducible de un grupo</span>. <a class="enl" href="https://www.quantamagazine.org/what-is-a-particle-20201112/" target="_blank" rel="noopener">Quanta Magazine</a></p></div>
+    </div>
+    <div class="pila">
+      <img class="foto ancha" style="--fh:330px" src="img/particula-excitacion.webp" alt="Una partícula es una excitación cuántica de un campo">
+      <img class="foto ancha frag" style="--fh:330px" src="img/particula-grupo.webp" alt="Una partícula es una representación irreducible de un grupo">
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Campos" id="dp-sc" data-label="Superconductividad">
+  <p class="ceja">§ 5.2 · Superconductividad</p>
+  <h2 class="titulo">Por debajo de \(T_c\): resistencia cero y campo expulsado</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Resistencia frente a temperatura</span><span class="val" id="sc-lect"></span></div>
+      <div class="fila-btn" id="sc-mat"><button type="button" class="btn" data-m="Al">Al</button><button type="button" class="btn on" data-m="Hg">Hg</button><button type="button" class="btn" data-m="Sn">Sn</button><button type="button" class="btn" data-m="Pb">Pb</button><button type="button" class="btn" data-m="YBCO">\(\mathrm{YBa_2Cu_3O_7}\)</button></div>
+      <div id="sc-fig"></div>
+      <label class="ctrl"><span>Temperatura \(T\)</span><input type="range" id="sc-T" min="0" max="10" step="0.05" value="6"><span class="v" id="sc-Tv"></span></label>
+    </figure>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Efecto Meissner</span><span class="val" id="sc-est"></span></div>
+      <div id="sc-mei" style="max-width:600px;margin:0 auto"></div>
+      <p class="nota">Temperaturas críticas: Al \(\qty{1{,}2}{K}\), Hg \(\qty{4{,}2}{K}\), Sn \(\qty{3{,}7}{K}\), Pb \(\qty{7{,}2}{K}\), \(\mathrm{YBa_2Cu_3O_7}\) \(\qty{92}{K}\) (¡por encima del nitrógeno líquido!).</p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Campos" id="dp-sitio" data-label="Los campos ocupan sitio">
+  <p class="ceja">§ 5.2 · Superconductividad</p>
+  <h2 class="titulo">Los campos ocupan sitio en el espacio</h2>
+  <div class="g3-img">
+    <figure class="fg"><img class="foto ancha" style="--fh:520px" src="img/superconductividad.webp" alt="Resistencia frente a temperatura y tabla de temperaturas críticas"><figcaption>Por debajo de la temperatura crítica la resistencia cae a cero.</figcaption></figure>
+    <figure class="fg frag"><img class="foto ancha" style="--fh:520px" src="img/efecto-meissner.webp" alt="Efecto Meissner: líneas de campo que rodean al superconductor"><figcaption>En el estado superconductor las líneas de campo magnético rodean la muestra.</figcaption></figure>
+    <figure class="fg frag"><img class="foto ancha" style="--fh:520px" src="img/superconductor-campos.webp" alt="Un superconductor cambia la forma del campo de unos imanes"><figcaption>Un superconductor desplaza el campo de los imanes: el campo no puede estar donde está el superconductor. <a class="enl" href="https://www.youtube.com/watch?v=GHtAwQXVsuk" target="_blank" rel="noopener">Video</a></figcaption></figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Campos" id="dp-cx" data-label="Campos complejos">
+  <p class="ceja">§ 5.2 · Campos de materia</p>
+  <h2 class="titulo">Los campos de la materia son complejos</h2>
+  <div class="g2-60">
+    <div class="pila">
+      <p class="chico">Así como el campo electromagnético tiene excitaciones de energía definida, los fotones, los demás objetos materiales se entienden hoy como excitaciones de campos específicos: literalmente <strong>campos complejos</strong> (en algunos límites sus excitaciones se describen como partículas).</p>
+      <div class="kf frag">\[ x^{2} = -1 \;\Longrightarrow\; x = i = \sqrt{-1}, \qquad i^{2} = -1 \]\[ z = a + i\,b = \abs{z}\,(\cos\vartheta + i\,\sin\vartheta) \]</div>
+      <img class="foto frag" style="--fh:300px" src="img/numeros-complejos.webp" alt="El círculo de radio 1 en el plano real R(2) y en el plano complejo U(1)">
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra \(z\) sobre el círculo \(\abs{z} = 1\)</span><span class="val" id="cx-lect"></span></div>
+      <div id="cx-fig" class="arrastre" style="max-width:600px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn" id="cx-i">× \(i\)</button><button type="button" class="btn" id="cx-m">× \((-1)\)</button><span class="nota">Multiplicar por \(i\) gira un cuarto de vuelta: \(i \cdot i = -1\) es media vuelta.</span></div>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Campos" id="dp-osc" data-label="Oscilaciones de neutrinos">
+  <p class="ceja">§ 5.2 · Los campos son cuánticos</p>
+  <h2 class="titulo">Oscilaciones de neutrinos: un campo siempre cuántico</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <img class="foto" style="--fh:360px" src="img/oscilaciones-neutrinos.webp" alt="Caricatura de un neutrino indeciso entre tres sabores">
+      <div class="caja frag"><p class="chico" style="margin:0">El campo de neutrino exhibe siempre su comportamiento cuántico (oscila entre sabores) y viaja prácticamente a la velocidad de la luz<img class="inline-img" src="img/enterprise-c.webp" alt="Nave a la velocidad de la luz">.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Aún no hay un experimento donde sus excitaciones se describan como partículas en reposo: su masa no se ha medido directamente.</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(P(\nu_\mu\to\nu_\mu)\) y \(P(\nu_\mu\to\nu_\tau)\) frente a \(L/E\)</span><span class="val" id="os-lect"></span></div>
+      <div id="os-fig"></div>
+      <label class="ctrl"><span>Distancia \(L\)</span><input type="range" id="os-L" min="0" max="4.11" step="0.001" value="2.47"><span class="v" id="os-Lv"></span></label>
+      <label class="ctrl"><span>Energía \(E\)</span><input type="range" id="os-E" min="-1" max="2" step="0.001" value="-0.22"><span class="v" id="os-Ev"></span></label>
+      <div class="fila-btn" id="os-pre"><button type="button" class="btn" data-l="295" data-e="0.6">T2K: 295 km</button><button type="button" class="btn" data-l="15" data-e="1">Desde arriba: 15 km</button><button type="button" class="btn" data-l="12700" data-e="1">Desde abajo: 12 700 km</button></div>
+      <p class="nota">\(P(\nu_\mu\to\nu_\tau) = \sin^{2}2\theta\,\sin^{2}\!\big(1{,}27\,\Delta m^{2} L/E\big)\), con \(\Delta m^{2} = \qty{2{,}5\times 10^{-3}}{eV^2}\), \(L\) en km y \(E\) en GeV.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Campos" id="dp-num" data-label="Excitaciones en el universo observable">
+  <p class="ceja">§ 5.2 · Universo observable</p>
+  <h2 class="titulo">¿Cuántas excitaciones hay de cada campo?</h2>
+  <div class="g2">
+    <div class="pila">
+      <table class="tabla">
+        <tr><th style="text-align:left">Campo</th><th>Número de excitaciones</th></tr>
+        <tr><td class="izq">Electromagnético (fotones)</td><td>\(10^{90}\)</td></tr>
+        <tr><td class="izq">De neutrino*</td><td>\(\lesssim 10^{90}\)</td></tr>
+        <tr><td class="izq">Bariónico (protones y neutrones)</td><td>\(10^{80}\)</td></tr>
+        <tr><td class="izq">Electrónico</td><td>\(10^{80}\)</td></tr>
+      </table>
+      <p class="nota">* La suma de las masas de todos los neutrinos del universo observable iguala aproximadamente la masa de todas sus estrellas.</p>
+    </div>
+    <div class="pila">
+      <div class="caja frag"><p style="margin:0">Los neutrinos son las partículas más numerosas después de los fotones, y mucho más numerosas que cualquier otro tipo de partícula.</p></div>
+      <div class="caja c1 frag"><p style="margin:0">El campo electromagnético y el de neutrinos tienen mucho en común: sus excitaciones viajan a (casi) la velocidad de la luz y llenan todo el universo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Campos" id="dp-sol" data-label="El Sol: fotones y neutrinos">
+  <p class="ceja">§ 5.2 · El Sol</p>
+  <h2 class="titulo">Del centro del Sol: 2 segundos o 100 000 años</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <img class="foto" style="--fh:330px" src="img/sol-neutrinos-fotones.webp" alt="Un fotón sale del Sol por un camino tortuoso; el neutrino sale en línea recta">
+      <table class="tabla chica">
+        <tr><th></th><th>Neutrinos</th><th>Fotones</th></tr>
+        <tr><td class="izq">Tiempo de escape</td><td>\(\qty{2}{s}\)</td><td>\(10\,000\) a \(170\,000\) años</td></tr>
+        <tr><td class="izq">Emitidos por segundo</td><td>\(2\times 10^{38}\)</td><td>\(10^{45}\)</td></tr>
+      </table>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Camino aleatorio del fotón (ámbar) y neutrino (verde)</span><span class="val" id="sol-lect"></span></div>
+      <div class="g2-60" style="gap:24px;align-items:center">
+        <canvas class="lienzo" id="sol-cv" width="620" height="560"></canvas>
+        <div class="pila">
+          <label class="ctrl" style="grid-template-columns:1fr;gap:6px"><span>Recorrido libre del fotón \(\ell\): <b class="mono" id="sol-lv"></b></span><input type="range" id="sol-l" min="-1" max="1" step="0.01" value="0"></label>
+          <div class="lectura l1"><div>Fotón: \(t \approx R^{2}/(\ell c)\)<b id="sol-tg"></b></div><div>Neutrino: \(t = R/c\)<b id="sol-tn"></b></div></div>
+          <p class="nota">\(R_\odot = \qty{6{,}96\times 10^{8}}{m}\). Tras \(N\) pasos al azar de longitud \(\ell\), el fotón se aleja solo \(\sqrt{N}\,\ell\).</p>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════ §3 · ÁTOMOS ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Átomos" id="dp-atom" data-label="Sustancias, moléculas y átomos">
+  <p class="ceja">§ 5.3 · Átomos</p>
+  <h2 class="titulo">Sustancias → moléculas → átomos</h2>
+  <div class="g2-60">
+    <div class="g2-img" style="gap:18px">
+      <figure class="fg"><img class="foto ancha" style="--fh:330px" src="img/molecula.webp" alt="Molécula orgánica en rotación"><figcaption>Una molécula: átomos unidos por enlaces.</figcaption></figure>
+      <figure class="fg"><img class="foto ancha" style="--fh:330px" src="img/agua.webp" alt="Molécula de agua"><figcaption>\(\mathrm{H_2O}\): dos hidrógenos y un oxígeno.</figcaption></figure>
+      <figure class="fg frag"><img class="foto ancha" style="--fh:300px" src="img/orbital-hidrogeno.webp" alt="Imagen del orbital de un átomo de hidrógeno"><figcaption>Orbital de un átomo de hidrógeno «fotografiado». <a class="enl" href="https://doi.org/10.1103/PhysRevLett.110.213001" target="_blank" rel="noopener">PRL 110, 213001</a></figcaption></figure>
+      <figure class="fg frag"><img class="foto ancha" style="--fh:300px" src="img/atomo-estadio.webp" alt="Si el átomo fuera un estadio, el núcleo sería una arveja"><figcaption>Si el átomo fuera un estadio, el núcleo sería una arveja.</figcaption></figure>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Si el núcleo fuera del tamaño de…</span><span class="val" id="at-lect"></span></div>
+      <div class="fila-btn" id="at-pre"><button type="button" class="btn" data-d="0.7">Arveja</button><button type="button" class="btn" data-d="1.5">Canica</button><button type="button" class="btn" data-d="22">Balón</button></div>
+      <label class="ctrl"><span>Diámetro del núcleo</span><input type="range" id="at-d" min="-1" max="2" step="0.001" value="-0.155"><span class="v" id="at-dv"></span></label>
+      <div class="lectura l2"><div>El átomo mediría<b id="at-D"></b></div><div>Canchas de fútbol<b id="at-c"></b></div></div>
+      <div class="caja frag" style="margin-top:18px"><p class="chico" style="margin:0"><strong>El espacio subatómico es prácticamente vacío:</strong> el átomo de hidrógeno (\(\approx \qty{1{,}06\times 10^{-10}}{m}\)) es unas \(6\times 10^{4}\) veces más ancho que el protón (\(\approx \qty{1{,}7\times 10^{-15}}{m}\)); en volumen, \(\sim 10^{14}\) veces.</p></div>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Átomos" id="dp-disp" data-label="Los campos interactúan">
+  <p class="ceja">§ 5.3 · Dispersión</p>
+  <h2 class="titulo">Los campos interactúan entre sí: así vemos por dentro</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="g2-img"><img class="foto ancha" style="--fh:380px" src="img/dispersion-h-he.webp" alt="Dispersión contra átomos de hidrógeno y helio"><img class="foto ancha" style="--fh:380px" src="img/balon-rayo.webp" alt="Un balón que recibe un rayo"></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Para «ver» algo de tamaño \(d\) hay que lanzarle una onda de longitud \(\lambda \lesssim d\): la excitación del campo sonda interactúa con los campos del blanco y sale desviada.</p></div>
+      <div class="kf frag">\[ E \approx \dfrac{hc}{\lambda}, \qquad hc \approx \qty{1240}{eV\cdot nm} \]</div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>¿Cuánta energía para resolver un tamaño \(d\)?</span><span class="val" id="di-lect"></span></div>
+      <label class="ctrl"><span>\(\log_{10}(d/\mathrm{m})\)</span><input type="range" id="di-d" min="-19" max="-9" step="0.001" value="-9.7"><span class="v" id="di-dv"></span></label>
+      <div class="lectura l2"><div>Tamaño \(d\)<b id="di-D"></b></div><div>Energía de la sonda<b id="di-E"></b></div></div>
+      <div class="fila-btn" id="di-pre" style="margin-top:16px"><button type="button" class="btn" data-d="2e-10">Átomo</button><button type="button" class="btn" data-d="2e-15">Núcleo</button><button type="button" class="btn" data-d="1e-16">Dentro del protón</button><button type="button" class="btn" data-d="1e-19">LHC</button></div>
+      <p class="nota" id="di-nota" style="min-height:3em"></p>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════ §4 · NEUTRINOS ═════════════ -->
+<section class="diapositiva" data-seccion="Neutrinos" id="dp-sk" data-label="Super-Kamiokande">
+  <p class="ceja">§ 5.4 · Detectores de neutrinos</p>
+  <h2 class="titulo">Super-Kamiokande: un tanque de agua bajo una montaña</h2>
+  <div class="g2">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/super-kamiokande.webp" alt="Interior del detector Super-Kamiokande"><figcaption>50 000 toneladas de agua pura vigiladas por más de 11 000 fotomultiplicadores.</figcaption></figure>
+    <div class="pila">
+      <ul class="lista chico">
+        <li class="frag">Sucesor de Kamiokande (<em>Kamioka Nucleon Decay Experiment</em>): busca la desintegración del protón.</li>
+        <li class="frag">Mide neutrinos atmosféricos y solares. En 1998 descubrió que los neutrinos oscilan (Nobel 2015).</li>
+      </ul>
+      <div class="g2-img frag" style="grid-template-columns:1fr auto;gap:22px"><img class="foto" style="--fh:360px" src="img/neutrinos-atmosfericos.webp" alt="Evento de neutrino atmosférico en Super-Kamiokande"><p class="chico" style="margin:0;max-width:10em"><strong>≈ 3800</strong> neutrinos atmosféricos por año: cada punto es un fotomultiplicador que vio luz.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Neutrinos" id="dp-bajo" data-label="El Sol visto bajo tierra">
+  <p class="ceja">§ 5.4 · Detectores de neutrinos</p>
+  <h2 class="titulo">¿El Sol visto bajo tierra? ¡Sí!</h2>
+  <div class="g2">
+    <figure class="fg"><img class="foto" style="--fh:520px" src="img/sol-bajo-tierra.webp" alt="Imagen del Sol hecha con neutrinos desde Super-Kamiokande"><figcaption>El Sol desde Super-Kamiokande, con neutrinos: 503 noches de exposición.</figcaption></figure>
+    <div class="pila">
+      <div class="caja frag"><p class="chico" style="margin:0">De noche la luz del Sol no llega al detector, pero sus neutrinos atraviesan la Tierra entera casi sin interactuar.</p></div>
+      <figure class="fg frag"><img class="foto" style="--fh:380px" src="img/icecube-tierra.webp" alt="Probabilidad de que un neutrino atraviese la Tierra según su energía y dirección"><figcaption>Solo a energías altísimas (\(\gtrsim \qty{100}{TeV}\)) la Tierra se vuelve opaca a los neutrinos que la cruzan de lado a lado.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Neutrinos" id="dp-ic" data-label="IceCube">
+  <p class="ceja">§ 5.4 · Detectores de neutrinos</p>
+  <h2 class="titulo">IceCube: un kilómetro cúbico de hielo en el Polo Sur</h2>
+  <div class="g2-60">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/icecube.webp" alt="Esquema del observatorio IceCube"><figcaption>86 cadenas con 5160 módulos ópticos, entre 1450 m y 2450 m de profundidad.</figcaption></figure>
+    <div class="pila">
+      <figure class="fg frag"><img class="foto ancha" style="--fh:360px" src="img/icecube-laboratorio.webp" alt="Laboratorio de IceCube en la Antártida"><figcaption>El laboratorio en la superficie del hielo.</figcaption></figure>
+      <div class="caja frag"><p class="chico" style="margin:0">Un neutrino que choca en el hielo produce partículas más rápidas que la luz en el hielo: emiten un cono de luz azul (radiación de Cherenkov) que los módulos registran.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §5 · ANTIMATERIA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Antimateria" id="dp-pos" data-label="Electrón y positrón">
+  <p class="ceja">§ 5.5 · Antimateria</p>
+  <h2 class="titulo">Un solo campo, dos excitaciones: electrón y positrón</h2>
+  <div class="g2-60">
+    <div class="pila">
+      <figure class="fg"><img class="foto ancha" style="--fh:270px" src="img/campo-electron.webp" alt="El campo del electrón con un electrón y un positrón"><figcaption>El campo del electrón: una excitación hacia abajo es un electrón; hacia arriba, un positrón.</figcaption></figure>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">\(E \leftrightarrow M\): con energía suficiente (\(E \ge 2m_e c^{2} \approx \qty{1{,}02}{MeV}\)) un fotón crea un par \(e^{-}e^{+}\); al encontrarse, el par se aniquila en fotones.</p></div>
+      <div class="pr-item" data-ok="c">
+        <div class="pr-q">Compare el número de electrones y positrones en el universo:</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">Más positrones</button><button type="button" class="pr-opc" data-o="b">Igual cantidad</button><button type="button" class="pr-opc" data-o="c">Más electrones</button><button type="button" class="pr-opc" data-o="d">No se sabe</button></div>
+        <div class="pr-fb" data-ok-txt="Así es: ~10⁸⁰ electrones frente a ~10⁶⁸ positrones. El universo está hecho de materia." data-mal-txt="Piensa: si hubiera tantos positrones como electrones, se aniquilarían y veríamos rayos gamma por todas partes."></div>
+      </div>
+    </div>
+    <figure class="fg" style="text-align:center"><div class="rel" style="display:inline-block"><img class="foto" style="--fh:640px" src="img/muro-ondas.webp" alt="Muro ondulado que evoca el campo con excitaciones hacia arriba y hacia abajo"><span class="etiq" style="left:-40px;top:62%">\(e^{+}\)</span><span class="etiq" style="right:-40px;top:22%">\(e^{-}\)</span></div><figcaption style="text-align:left">Un muro ondulado: crestas y valles del mismo campo.</figcaption></figure>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Antimateria" id="dp-ams" data-label="AMS-02">
+  <p class="ceja">§ 5.5 · Antimateria en el espacio</p>
+  <h2 class="titulo">AMS-02: contando positrones desde la Estación Espacial</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="g2-img"><img class="foto ancha" style="--fh:300px" src="img/ams02-estacion.webp" alt="AMS-02 montado en la Estación Espacial Internacional"><img class="foto ancha" style="--fh:300px" src="img/ams02.webp" alt="Esquema del detector AMS-02"></div>
+      <ul class="lista chico">
+        <li class="frag">Espectrómetro magnético en la Estación Espacial Internacional desde 2011.</li>
+        <li class="frag">Separa electrones de positrones por el sentido en que el imán curva su trayectoria.</li>
+      </ul>
+    </div>
+    <div class="pila">
+      <img class="foto" style="--fh:500px" src="img/espectro-positrones.webp" alt="Espectro de positrones medido por AMS-02">
+      <div class="caja frag"><p class="chico" style="margin:0">Un <em>término difuso</em> (choques de rayos cósmicos) y un <em>término fuente</em> que se corta cerca de \(\qty{800}{GeV}\): ¿púlsares?, ¿materia oscura?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Antimateria" id="dp-est" data-label="Positrones en el universo">
+  <p class="ceja">§ 5.5 · Orden de magnitud</p>
+  <h2 class="titulo">¿Cuántos positrones hay en el universo observable?</h2>
+  <div class="g2-40">
+    <div class="pila">
+      <p class="chico">La Vía Láctea produce unos \(10^{42}\) positrones por segundo (lo delata la línea de aniquilación de \(\qty{511}{keV}\)); en equilibrio con la aniquilación, en ella flotan \(N \sim 10^{56}\) a \(10^{57}\). Escalamos con el número de galaxias:</p>
+      <div class="kf">\[ N_{e^{+},\,\text{universo}} \approx N_{e^{+},\,\text{galaxia}} \times N_{\text{galaxias}} \]</div>
+      <p class="nota">\(10^{9}\) = mil millones; \(10^{11}\) = cien mil millones de galaxias.</p>
+      <div class="caja frag"><p class="chico" style="margin:0">\(10^{56\text{–}57} \times 10^{11\text{–}12} \approx 10^{67\text{–}69}\): del orden de \(10^{68}\), <strong>doce órdenes de magnitud menos</strong> que los electrones.</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Estimación en escala logarítmica</span><span class="val" id="po-lect"></span></div>
+      <label class="ctrl"><span>\(\log_{10} N_{e^{+},\,\text{galaxia}}\)</span><input type="range" id="po-g" min="55" max="58" step="0.1" value="56.5"><span class="v" id="po-gv"></span></label>
+      <label class="ctrl"><span>\(\log_{10} N_{\text{galaxias}}\)</span><input type="range" id="po-n" min="10.5" max="12.5" step="0.1" value="11.5"><span class="v" id="po-nv"></span></label>
+      <div id="po-fig"></div>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════════ §6 · INTERACCIÓN ═════════════ -->
+<section class="diapositiva" data-seccion="Interacción" id="dp-qf" data-label="Campos cuánticos">
+  <p class="ceja">§ 5.6 · Campos cuánticos</p>
+  <h2 class="titulo">Todo es campo: excitaciones que se mueven y chocan</h2>
+  <div class="g2-60">
+    <figure class="fg"><img class="foto" style="--fh:620px" src="img/campos-cuanticos.webp" alt="Infografía de campos cuánticos en dos dimensiones"><figcaption>Cada campo llena todo el espacio; en cada punto, un oscilador. <a class="enl" href="https://x.com/PhysInHistory" target="_blank" rel="noopener">@PhysInHistory</a></figcaption></figure>
+    <div class="pila">
+      <img class="foto ancha frag" style="--fh:250px" src="img/campos-excitaciones.webp" alt="Excitaciones de un campo que se desplazan y se dispersan">
+      <img class="foto ancha frag" style="--fh:190px" src="img/campos-colision.webp" alt="Dos excitaciones que chocan y crean otra en otro campo">
+      <p class="chico frag">Dos excitaciones que se acercan interactúan; su energía puede pasar a otro campo y crear otra excitación. <a class="enl" href="https://x.com/martinmbauer" target="_blank" rel="noopener">@martinmbauer</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Interacción" id="dp-bote" data-label="Interacción por intercambio">
+  <p class="ceja">§ 5.6 · Interacción por intercambio</p>
+  <h2 class="titulo">Fuerzas como intercambio: una analogía con botes</h2>
+  <div class="g2">
+    <figure class="fg"><img class="foto ancha" style="--fh:420px" src="img/botes-repulsion.webp" alt="Dos personas en botes se lanzan un balón y se separan"><figcaption><strong>Repulsión.</strong> Al lanzar y atrapar el balón, cada bote recibe un empujón hacia afuera.</figcaption></figure>
+    <figure class="fg frag"><img class="foto ancha" style="--fh:420px" src="img/botes-atraccion.webp" alt="Dos personas en botes se lanzan un bumerán y se acercan"><figcaption><strong>Atracción.</strong> Con un bumerán, que sale hacia atrás, los botes se acercan.</figcaption></figure>
+  </div>
+  <div class="caja frag" style="margin-top:22px"><p class="chico" style="margin:0">En teoría cuántica de campos dos electrones se repelen intercambiando fotones <em>virtuales</em>: excitaciones del campo electromagnético que no llegan a ser partículas libres. <a class="enl" href="https://doi.org/10.25368/2021.71" target="_blank" rel="noopener">doi:10.25368/2021.71</a></p></div>
+</section>
+
+<!-- ═════════════ §7 · ÁTOMO Y LUZ ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-h" data-label="El átomo de hidrógeno">
+  <p class="ceja">§ 5.7 · Átomo y luz</p>
+  <h2 class="titulo">El átomo de hidrógeno absorbe y emite fotones</h2>
+  <div class="g2-40">
+    <figure class="fg rel" style="width:620px;margin:0 auto">
+      <img class="foto sin-borde" style="--fh:620px" src="img/atomo-hidrogeno.webp" alt="Protón en el centro y electrón en órbita">
+      <span class="etiq" style="left:32%;top:62%">protón</span><span class="etiq" style="left:62%;top:3%">electrón</span>
+    </figure>
+    <div class="pila">
+      <img class="foto ancha" style="--fh:330px" src="img/absorcion-emision.webp" alt="Absorción de un fotón: el electrón sube de nivel; emisión: el electrón baja">
+      <div class="caja frag"><p class="chico" style="margin:0">Absorbe un fotón y el electrón <em>salta</em> a un nivel superior; cae y emite un fotón con la diferencia exacta de energía.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Principio de exclusión de Pauli:</strong> dos <span class="prop" data-pop="pop-fer">fermiones</span> idénticos no pueden ocupar el mismo estado. Con espín ↑↓ caben dos electrones en \(n = 1\): el ion \(\mathrm{H^{-}}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-ev" data-label="Electronvoltio y energía del fotón">
+  <p class="ceja">§ 5.7 · Unidades de energía</p>
+  <h2 class="titulo">Electronvoltio y energía del fotón</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="kf">\[ \qty{1}{eV} = \qty{1{,}602\,18\times 10^{-19}}{J} \]\[ 1 = \dfrac{\qty{1}{eV}}{\qty{1{,}602\,18\times 10^{-19}}{J}} \quad\text{(factor de conversión)} \]</div>
+      <div class="kf frag">\[ \Delta E = h f = \dfrac{hc}{\lambda} \]</div>
+      <p class="nota frag">\(h = \qty{6{,}626\times 10^{-34}}{J\,s} = \qty{4{,}14\times 10^{-15}}{eV\,s}\) (constante de Planck), \(c = \qty{3{,}00\times 10^{8}}{m/s}\), \(f\) la frecuencia y \(\lambda\) la longitud de onda del fotón.</p>
+    </div>
+    <div class="pila">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Conversor de energía del fotón</span><span class="val" id="ev-lect"></span></div>
+      <label class="ctrl"><span>\(\log_{10}(E/\mathrm{eV})\)</span><input type="range" id="ev-E" min="-6" max="9" step="0.001" value="0.35"><span class="v" id="ev-Ev"></span></label>
+      <div class="lectura"><div>Energía<b id="ev-eV"></b></div><div>En julios<b id="ev-J"></b></div><div>Frecuencia<b id="ev-f"></b></div><div>Longitud de onda<b id="ev-l"></b></div></div>
+      <div class="muestra" id="ev-color"></div>
+      <div class="fila-btn" id="ev-pre" style="margin-top:14px"><button type="button" class="btn" data-e="1e-5">Wi-Fi</button><button type="button" class="btn" data-e="1.9">Luz roja</button><button type="button" class="btn" data-e="10.2">Lyman α</button><button type="button" class="btn" data-e="511000">Aniquilación \(e^{-}e^{+}\)</button></div>
+    </figure>
+      <table class="tabla chica frag" style="margin-top:18px"><tr><th class="izq" style="text-align:left">Prefijo</th><td>nano</td><td>micro</td><td>mili</td><td>centi</td><td>kilo</td><td>mega</td><td>giga</td><td>tera</td></tr><tr><th class="izq" style="text-align:left">Símbolo</th><td>n</td><td>μ</td><td>m</td><td>c</td><td>k</td><td>M</td><td>G</td><td>T</td></tr><tr><th class="izq" style="text-align:left">Factor</th><td>\(10^{-9}\)</td><td>\(10^{-6}\)</td><td>\(10^{-3}\)</td><td>\(10^{-2}\)</td><td>\(10^{3}\)</td><td>\(10^{6}\)</td><td>\(10^{9}\)</td><td>\(10^{12}\)</td></tr></table>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Átomo y luz" id="dp-niv" data-label="Niveles del hidrógeno">
+  <p class="ceja">§ 5.7 · Niveles de energía</p>
+  <h2 class="titulo">Niveles del hidrógeno: \(E_n = -\qty{13{,}6}{eV}/n^{2}\)</h2>
+  <div class="g2-40">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/niveles-hidrogeno.webp" alt="Diagrama de niveles del hidrógeno con las series de Lyman, Balmer y Paschen"><figcaption>De \(n = 2\) a \(n = 1\): \(\abs{\Delta E} = \qty{10{,}2}{eV}\), \(f = \qty{2{,}47\times 10^{15}}{Hz}\) (ultravioleta). De \(n = 3\) a \(n = 2\): \(\qty{1{,}9}{eV}\), \(f \approx \qty{4{,}6\times 10^{14}}{Hz}\) (rojo).</figcaption></figure>
+    <div class="pila">
+      <figure class="svgbox" style="margin:0">
+        <div class="svghd"><span>Elige la transición</span><span class="val" id="ni-lect"></span></div>
+        <div style="display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start">
+          <div id="ni-fig"></div>
+          <div>
+            <p class="nota" style="margin:0 0 6px">Nivel inicial</p><div class="fila-btn" id="ni-i"><button type="button" class="btn" data-n="2">2</button><button type="button" class="btn on" data-n="3">3</button><button type="button" class="btn" data-n="4">4</button><button type="button" class="btn" data-n="5">5</button><button type="button" class="btn" data-n="6">6</button></div>
+            <p class="nota" style="margin:10px 0 6px">Nivel final</p><div class="fila-btn" id="ni-f"><button type="button" class="btn" data-n="1">1</button><button type="button" class="btn on" data-n="2">2</button><button type="button" class="btn" data-n="3">3</button></div>
+            <div class="muestra" id="ni-color"></div>
+            <img class="foto frag" style="--fh:230px;margin:16px 0 0" src="img/colores-visible.webp" alt="Tabla de colores, longitudes de onda, frecuencias y energías del visible">
+          </div>
+        </div>
+        <div class="lectura l3"><div>\(\abs{\Delta E}\)<b id="ni-E"></b></div><div>\(f = \abs{\Delta E}/h\)<b id="ni-fq"></b></div><div>\(\lambda\)<b id="ni-l"></b></div></div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Átomo y luz" id="dp-tpe" data-label="Tabla periódica de espectros">
+  <p class="ceja">§ 5.7 · Espectroscopía</p>
+  <h2 class="titulo">Cada elemento tiene su código de barras</h2>
+  <div class="g2-60">
+    <figure class="fg"><img class="foto" style="--fh:640px" src="img/tabla-espectros.webp" alt="Tabla periódica en la que cada elemento muestra su espectro de emisión"><figcaption>Tabla periódica de espectros. <a class="enl" href="https://store.fieldtestedsystems.com/products/periodic-table-of-spectra" target="_blank" rel="noopener">Fuente</a></figcaption></figure>
+    <div class="pila">
+      <div class="caja frag"><p class="chico" style="margin:0">Los niveles de cada átomo son únicos; también lo son las líneas que emite o absorbe.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Así se lee la composición de las estrellas sin ir a ellas; el helio se descubrió en el espectro del Sol (1868) antes que en la Tierra.</p></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0">Y el mismo principio, con la transición más estable que conocemos, define hoy el segundo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════ §8 · UNIDADES SI ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Unidades SI" id="dp-cs" data-label="El segundo y el cesio">
+  <p class="ceja">§ 5.8 · Sistema Internacional</p>
+  <h2 class="titulo">El segundo: una transición del átomo de cesio</h2>
+  <div class="g2">
+    <div class="pila">
+      <img class="foto ancha" style="--fh:360px" src="img/cesio-hiperfino.webp" alt="Desdoblamiento hiperfino del estado fundamental del cesio-133">
+      <div class="kf frag">\[ \Delta\nu_{\mathrm{Cs}} = \qty{9\,192\,631\,770}{Hz} \]\[ \qty{1}{s} = \dfrac{9\,192\,631\,770}{\Delta\nu_{\mathrm{Cs}}} \]</div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>¿Cuántas oscilaciones del cesio?</span><span class="val" id="cs-lect"></span></div>
+      <label class="ctrl"><span>\(\log_{10}(t/\mathrm{s})\)</span><input type="range" id="cs-t" min="-9" max="9.5" step="0.001" value="0"><span class="v" id="cs-tv"></span></label>
+      <div class="lectura l2"><div>Duración<b id="cs-T"></b></div><div>Oscilaciones<b id="cs-N"></b></div></div>
+      <div class="fila-btn" id="cs-pre" style="margin-top:14px"><button type="button" class="btn" data-t="1e-9">1 ns</button><button type="button" class="btn" data-t="1">1 s</button><button type="button" class="btn" data-t="86400">1 día</button><button type="button" class="btn" data-t="3.156e7">1 año</button></div>
+      <p class="nota">Las dos configuraciones del espín del electrón externo frente al del núcleo (\(F = 3\) y \(F = 4\)) difieren en \(h\,\Delta\nu_{\mathrm{Cs}} \approx \qty{3{,}8\times 10^{-5}}{eV}\): microondas.</p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Unidades SI" id="dp-si" data-label="Constantes del SI">
+  <p class="ceja">§ 5.8 · Sistema Internacional</p>
+  <h2 class="titulo">Desde 2019, las unidades se definen fijando constantes</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="kf">\[ \begin{aligned} \Delta\nu_{\mathrm{Cs}} &= \qty{9\,192\,631\,770}{Hz}\\ c &= \qty{299\,792\,458}{m/s}\\ h &= \qty{6{,}626\,070\,15\times 10^{-34}}{J\,s}\\ e &= \qty{1{,}602\,176\,634\times 10^{-19}}{C}\\ k &= \qty{1{,}380\,649\times 10^{-23}}{J/K}\\ N_{\mathrm{A}} &= \qty{6{,}022\,140\,76\times 10^{23}}{mol^{-1}} \end{aligned} \]</div>
+      <ul class="lista chico">
+        <li class="frag"><strong>Segundo:</strong> se fija \(\Delta\nu_{\mathrm{Cs}}\), en Hz \(= \mathrm{s^{-1}}\).</li>
+        <li class="frag"><strong>Metro:</strong> se fija \(c\), en \(\mathrm{m\,s^{-1}}\); el segundo ya está definido.</li>
+        <li class="frag"><strong>Kilogramo:</strong> se fija \(h\), en \(\mathrm{J\,s} = \mathrm{kg\,m^{2}\,s^{-1}}\); metro y segundo ya están definidos.</li>
+      </ul>
+    </div>
+    <figure class="fg frag"><img class="foto" style="--fh:420px" src="img/camiseta-constantes.webp" alt="Camiseta con las constantes del SI: Constants forever"><figcaption>«Desde el 20 de mayo de 2019: constantes para siempre». Valores en la <a class="enl" href="https://pdg.lbl.gov/2019/reviews/rpp2018-rev-phys-constants.pdf" target="_blank" rel="noopener">tabla del Particle Data Group</a>.</figcaption></figure>
+  </div>
+</section>
+
+<!-- ═════════════ §9 · PRÁCTICA ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-reto" data-label="Reto: constantes y unidades">
+  <p class="ceja">Reto <span class="score">Aciertos: <b id="si-score">0</b> / 6</span></p>
+  <h2 class="titulo">¿Qué unidad del SI queda definida al fijar cada constante?</h2>
+  <div id="si-lista" class="dim-lista seis"></div>
+  <div class="fila-btn" style="margin-top:14px"><button type="button" class="cz-btn cz-btn-p" id="si-ok">Comprobar</button><button type="button" class="cz-btn" id="si-borrar">Empezar de nuevo</button><span class="cz-fb" id="si-fb"></span></div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" id="dp-practica" data-label="Práctica">
+  <p class="ceja">Práctica <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Comprueba lo aprendido</h2>
+  <div class="g2">
+    <div>
+      <div class="pr-item" data-ok-num="2.48" data-tol="0.03">
+        <div class="pr-q">1. Energía, en eV, de un fotón verde de \(\qty{500}{nm}\). Enter para comprobar.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="eV"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(E = hc/\lambda\) con \(hc \approx \qty{1240}{eV\cdot nm}\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 1240/500 ≈ 2,48 eV." data-mal-txt="Divide 1240 eV·nm entre la longitud de onda en nm."></div>
+      </div>
+      <div class="pr-item" data-ok="a">
+        <div class="pr-q">2. ¿Cuánto tarda un neutrino en salir del Sol (\(R_\odot = \qty{6{,}96\times 10^{8}}{m}\))?</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{2{,}3}{s}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{8{,}3}{min}\)</button><button type="button" class="pr-opc" data-o="c">\(10\,000\) años</button></div>
+        <div class="pr-fb" data-ok-txt="Sí: R/c = 6,96 × 10⁸ / 3 × 10⁸ ≈ 2,3 s; no se desvía." data-mal-txt="El neutrino casi no interactúa: sale en línea recta a (casi) la velocidad de la luz."></div>
+      </div>
+    </div>
+    <div>
+      <div class="pr-item" data-ok="b">
+        <div class="pr-q">3. Si el núcleo del hidrógeno fuera una arveja de \(\qty{0{,}7}{cm}\), el átomo mediría unos…</div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{4}{m}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{440}{m}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{44}{km}\)</button></div>
+        <div class="pr-fb" data-ok-txt="Exacto: 0,7 cm × 6,3 × 10⁴ ≈ 440 m, unas cuatro canchas de fútbol." data-mal-txt="El átomo es unas 6 × 10⁴ veces más ancho que su núcleo."></div>
+      </div>
+      <div class="pr-item" data-ok-num="68" data-tol="0.6">
+        <div class="pr-q">4. Con \(10^{56}\) positrones por galaxia y \(10^{12}\) galaxias, ¿qué exponente \(n\) da \(N_{e^{+}} \sim 10^{n}\)?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="n"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">Al multiplicar potencias de 10, los exponentes se suman.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 56 + 12 = 68, es decir, N ~ 10⁶⁸." data-mal-txt="Suma los exponentes: 10ᵃ × 10ᵇ = 10ᵃ⁺ᵇ."></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario">
+  <p class="ceja">Glosario</p>
+  <h2 class="titulo">Términos del capítulo</h2>
+  <dl class="glosa">
+    <div><dt>Campo</dt><dd>Algo que ocupa sitio en el espacio, transporta energía y cantidad de movimiento, y cuyas excitaciones se comportan como partículas.</dd></div>
+    <div><dt>Excitación</dt><dd>Paquete de energía de un campo; si está localizado viaja como una partícula (fotón, electrón, neutrino…).</dd></div>
+    <div><dt>Superconductor</dt><dd>Material sin resistencia por debajo de su temperatura crítica \(T_c\), que expulsa el campo magnético (efecto Meissner).</dd></div>
+    <div><dt>Neutrino</dt><dd>Excitación casi sin masa y sin carga; oscila entre sabores y atraviesa la Tierra casi sin interactuar.</dd></div>
+    <div><dt>Positrón</dt><dd>La antipartícula del electrón: misma masa, carga \(+e\). Con un electrón se aniquila en fotones.</dd></div>
+    <div><dt>Electronvoltio</dt><dd>Energía que gana un electrón al atravesar \(\qty{1}{V}\): \(\qty{1}{eV} = \qty{1{,}602\times 10^{-19}}{J}\).</dd></div>
+    <div><dt>Principio de exclusión</dt><dd>Dos fermiones idénticos no pueden ocupar el mismo estado cuántico.</dd></div>
+    <div><dt>Transición hiperfina</dt><dd>Del cesio-133: \(\Delta\nu_{\mathrm{Cs}} = \qty{9\,192\,631\,770}{Hz}\), que define el segundo.</dd></div>
+  </dl>
+</section>
+
+<div class="pop-src" id="pop-exc" style="display:none"><h4>Excitación de un campo</h4><p>En su estado de mínima energía (el vacío) un campo solo tiene fluctuaciones. Si recibe energía, la toma en paquetes discretos, cuantos. Un paquete localizado viaja como una unidad: eso es lo que llamamos partícula.</p></div>
+<div class="pop-src" id="pop-rep" style="display:none"><h4>Representación irreducible</h4><p>Wigner (1939): una partícula se clasifica por cómo se transforma bajo las simetrías del espacio-tiempo (traslaciones, rotaciones, cambios de velocidad). Lo que no cambia son sus etiquetas: la masa y el espín.</p></div>
+<div class="pop-src" id="pop-fer" style="display:none"><h4>Fermiones</h4><p>Partículas de espín semientero (\(\tfrac12\), \(\tfrac32\)…): electrones, protones, neutrones, neutrinos. Obedecen el principio de exclusión. Los de espín entero, como el fotón, son bosones y sí pueden acumularse en un mismo estado.</p></div>
+</div>
+<script>
+/* ═══ UTILIDADES ═══════════════════════════════════════════════════════ */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const NS = 'http://www.w3.org/2000/svg';
+/* Número con coma decimal y signo menos tipográfico (texto, no TeX). */
+const num = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', ','); return (x < 0 && Number(s.replace(',', '.')) !== 0 ? '−' : '') + s; };
+const activa = el => { const d = el && el.closest('section'); return !!(d && d.hasAttribute('data-deck-active')); };
+const FMATH = "'STIX Two Text',Georgia,serif";
+const FTXT = 'Archivo,system-ui,sans-serif';
+
+function nodo(tag, at, padre) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in at) {
+    if (k === 'txt') e.textContent = at[k];
+    else if (k === 'html') e.innerHTML = at[k];
+    else e.setAttribute(k, at[k]);
+  }
+  if (padre) padre.appendChild(e);
+  return e;
+}
+/* Rótulo con variables en cursiva: «*x* (m)» → x en cursiva. */
+function rotulo(g, x, y, s, extra) {
+  const t = nodo('text', Object.assign({ x: x, y: y, 'font-size': 28, style: 'fill:var(--tinta2);font-family:' + FMATH }, extra || {}), g);
+  /* *v* cursiva · !v! vector (negrita cursiva) · _sub subíndice */
+  s.split(/(\*[^*]+\*|![^!]+!|_[A-Za-z0-9]+)/).forEach(tr => {
+    if (!tr) return;
+    if (tr[0] === '*') nodo('tspan', { 'font-style': 'italic', txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '!') nodo('tspan', { 'font-style': 'italic', 'font-weight': 700, txt: tr.slice(1, -1) }, t);
+    else if (tr[0] === '_') { nodo('tspan', { 'baseline-shift': 'sub', 'font-size': '70%', 'font-style': /^[a-z]$/.test(tr.slice(1)) ? 'italic' : 'normal', txt: tr.slice(1) }, t); nodo('tspan', { txt: '\u200a' }, t); }
+    else nodo('tspan', { txt: tr }, t);
+  });
+  return t;
+}
+/* Ejes cartesianos en SVG con rejilla y marcas. */
+function ejes(host, o) {
+  host.innerHTML = '';
+  const W = o.W, H = o.H, m = o.m || { l: 96, r: 24, t: 20, b: 76 };
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  const X = v => m.l + (v - o.x[0]) / (o.x[1] - o.x[0]) * (W - m.l - m.r);
+  const Y = v => H - m.b - (v - o.y[0]) / (o.y[1] - o.y[0]) * (H - m.t - m.b);
+  const fondo = nodo('g', {}, svg);
+  (o.xt || []).forEach(v => {
+    nodo('line', { x1: X(v), x2: X(v), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: X(v), y: H - m.b + 34, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fx ? o.fx(v) : num(v, 0) }, fondo);
+  });
+  (o.yt || []).forEach(v => {
+    nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(v), y2: Y(v), style: 'stroke:var(--rejilla);stroke-width:2' }, fondo);
+    nodo('text', { x: m.l - 12, y: Y(v) + 9, 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: o.fy ? o.fy(v) : num(v, 0) }, fondo);
+  });
+  if (o.y[0] < 0 && o.y[1] > 0) nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[0]), y1: Y(o.y[0]), y2: Y(o.y[1]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  nodo('line', { x1: X(o.x[0]), x2: X(o.x[1]), y1: Y(o.y[0]), y2: Y(o.y[0]), style: 'stroke:var(--tinta);stroke-width:2.5' }, fondo);
+  if (o.xl) rotulo(fondo, (m.l + W - m.r) / 2, H - 8, o.xl, { 'text-anchor': 'middle' });
+  if (o.yl) rotulo(fondo, 24, (m.t + H - m.b) / 2, o.yl, { 'text-anchor': 'middle', transform: 'rotate(-90 24 ' + (m.t + H - m.b) / 2 + ')' });
+  const capa = nodo('g', {}, svg);
+  return { svg: svg, X: X, Y: Y, capa: capa, W: W, H: H, m: m };
+}
+const polilinea = (A, pts, estilo, g) => nodo('polyline', { points: pts.map(p => A.X(p[0]).toFixed(1) + ',' + A.Y(p[1]).toFixed(1)).join(' '), style: 'fill:none;' + estilo }, g || A.capa);
+function flecha(g, x1, y1, x2, y2, color, grosor) {
+  const w = grosor || 5, a = Math.atan2(y2 - y1, x2 - x1), L = Math.hypot(x2 - x1, y2 - y1), c = Math.min(22, L * 0.45);
+  const bx = x2 - c * Math.cos(a), by = y2 - c * Math.sin(a);
+  nodo('line', { x1: x1, y1: y1, x2: bx, y2: by, style: 'stroke:' + color + ';stroke-width:' + w + ';stroke-linecap:round' }, g);
+  if (L > 2) nodo('polygon', { points: [[x2, y2], [bx + c * 0.5 * Math.sin(a), by - c * 0.5 * Math.cos(a)], [bx - c * 0.5 * Math.sin(a), by + c * 0.5 * Math.cos(a)]].map(p => p.join(',')).join(' '), style: 'fill:' + color }, g);
+}
+function rango(id, alCambiar) {
+  const r = document.getElementById(id);
+  if (!r) return null;
+  r.addEventListener('input', () => alCambiar(+r.value));
+  return r;
+}
+
+
+/* ═══ VENTANAS EMERGENTES ══════════════════════════════════════════════ */
+(function () {
+  let pop = null;
+  const cerrar = () => { if (pop) { pop.remove(); pop = null; } };
+  document.addEventListener('click', ev => {
+    const chip = ev.target instanceof Element ? ev.target.closest('.prop') : null;
+    if (!chip) { if (pop && !(ev.target instanceof Element && ev.target.closest('.popover'))) cerrar(); return; }
+    ev.stopPropagation();
+    cerrar();
+    const src = document.getElementById(chip.dataset.pop);
+    const dp = chip.closest('section');
+    if (!src || !dp) return;
+    pop = document.createElement('div');
+    pop.className = 'popover';
+    pop.innerHTML = '<button type="button" class="cerrar" aria-label="Cerrar">×</button>' + src.innerHTML;
+    pop.querySelector('.cerrar').addEventListener('click', cerrar);
+    dp.appendChild(pop);
+    const R = dp.getBoundingClientRect(), c = chip.getBoundingClientRect(), s = R.width / dp.offsetWidth;
+    let x = (c.left - R.left) / s, y = (c.bottom - R.top) / s + 14;
+    x = Math.min(x, dp.offsetWidth - pop.offsetWidth - 40);
+    if (y + pop.offsetHeight > dp.offsetHeight - 40) y = (c.top - R.top) / s - pop.offsetHeight - 14;
+    pop.style.left = Math.max(40, x) + 'px';
+    pop.style.top = Math.max(40, y) + 'px';
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('slidechange', cerrar);
+})();
+
+
+
+
+/* TeX dinámico: se compone con MathJax cuando el documento ya está listo. */
+let colaMJ = Promise.resolve();
+function texVivo(el, tex) {
+  if (el.__tex === tex) return;
+  el.__tex = tex;
+  el.textContent = '\\[' + tex + '\\]';
+  if (document.documentElement.dataset.mathjax !== 'ok' || !window.MathJax || !MathJax.typesetPromise) return;
+  colaMJ = colaMJ.then(() => MathJax.typesetPromise([el])).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+}
+const tx = (x, d) => { const s = Math.abs(x).toFixed(d).replace('.', '{,}'); return (x < 0 && +Math.abs(x).toFixed(d) !== 0 ? '-' : '') + s; };
+function cientTex(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const ms = m.toFixed(cifras || 3).replace(/\.?0+$/, '').replace('.', '{,}');
+  return (e >= -2 && e <= 3) ? tx(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : ms + '\\times 10^{' + e + '}';
+}
+function cientTxt(v, cifras) {
+  if (v === 0) return '0';
+  const e = Math.floor(Math.log10(Math.abs(v))), m = v / Math.pow(10, e);
+  const sup = String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  const mt = num(m, cifras || 3).replace(/,?0+$/, '');
+  return (e >= -2 && e <= 3) ? num(v, Math.max(0, (cifras || 3) - Math.max(0, e))) : mt + ' × 10' + sup;
+}
+
+
+
+
+/* longitud de onda (nm) → color aproximado */
+function colorLambda(l) {
+  let r = 0, g = 0, b = 0;
+  if (l >= 380 && l < 440) { r = (440 - l) / 60; b = 1; } else if (l >= 440 && l < 490) { g = (l - 440) / 50; b = 1; }
+  else if (l >= 490 && l < 510) { g = 1; b = (510 - l) / 20; } else if (l >= 510 && l < 580) { r = (l - 510) / 70; g = 1; }
+  else if (l >= 580 && l < 645) { r = 1; g = (645 - l) / 65; } else if (l >= 645 && l <= 750) { r = 1; }
+  else return l < 380 ? '#7C6FB0' : '#8C5A4A';
+  const f = x => Math.round(255 * Math.pow(x, 0.8));
+  return 'rgb(' + f(r) + ',' + f(g) + ',' + f(b) + ')';
+}
+
+/* ═══ PRÁCTICA (cualquier diapositiva con .pr-item) ═══════════════════ */
+(function () {
+  $$('section.diapositiva').forEach(dp => {
+    const items = $$('.pr-item', dp);
+    if (!items.length) return;
+    const marcador = $('.pr-score', dp);
+    let aciertos = 0;
+    const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
+    const acierta = it => { if (!it.dataset.hecho) { it.dataset.hecho = '1'; aciertos++; if (marcador) marcador.textContent = aciertos; } };
+    items.forEach(it => {
+      $$('.pr-opc', it).forEach(b => b.addEventListener('click', () => {
+        const ok = b.dataset.o === it.dataset.ok;
+        $$('.pr-opc', it).forEach(o => o.classList.remove('ok', 'mal'));
+        b.classList.add(ok ? 'ok' : 'mal'); fb(it, ok); if (ok) acierta(it);
+      }));
+      const inp = $('.pr-in', it);
+      if (inp) {
+        const revisa = () => {
+          const v = parseFloat(inp.value.replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+          const ok = Math.abs(v - +it.dataset.okNum) <= +it.dataset.tol;
+          inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)'; fb(it, ok); if (ok) acierta(it);
+        };
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+        $$('.pr-btn', it).forEach(b => b.addEventListener('click', () => {
+          if (b.classList.contains('pr-verpista')) $('.pr-pista', it).classList.toggle('on'); else revisa();
+        }));
+      }
+    });
+  });
+})();
+
+/* ═══ CONSTANTES Y FORMATOS ═══════════════════════════════════════════ */
+const C_LUZ = 2.998e8, HC_EVNM = 1239.84, H_EVS = 4.135667696e-15, E_C = 1.602176634e-19, ANIO = 3.156e7;
+const sup = e => String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+/* 1,23 keV, 45,6 nm… */
+function conPrefijo(v, u, d) {
+  const p = [[1e12, 'T'], [1e9, 'G'], [1e6, 'M'], [1e3, 'k'], [1, ''], [1e-3, 'm'], [1e-6, 'μ'], [1e-9, 'n'], [1e-12, 'p'], [1e-15, 'f']];
+  const a = Math.abs(v);
+  if (a >= 1e15 || a < 1e-15) return cientTxt(v, 3) + ' ' + u;
+  let q = p[p.length - 1];
+  for (const x of p) if (a >= x[0] * 0.9995) { q = x; break; }
+  const w = v / q[0];
+  return num(w, d === undefined ? (w >= 100 ? 0 : w >= 10 ? 1 : 2) : d) + ' ' + q[1] + u;
+}
+/* Unir botones de una fila: marca .on y llama a f(boton). */
+function filaBotones(host, f) {
+  if (!host) return;
+  host.addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    $$('button', host).forEach(o => o.classList.toggle('on', o === b));
+    f(b);
+  });
+}
+/* 12589 → «12 589» */
+const miles = (x, d) => num(x, d || 0).replace(/^(\d+)/, m => m.replace(/\B(?=(\d{3})+(?!\d))/g, ' '));
+const quitaOn = host => host && $$('button', host).forEach(o => o.classList.remove('on'));
+
+/* ═══ PORTADA: un campo con excitaciones que viajan ═══════════════════ */
+(function () {
+  const cv = document.getElementById('hero-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const NX = 40, NZ = 22;
+  const P = (x, z, h) => [W / 2 + 290 * x - 60 * z, 350 - 140 * z - 150 * h];
+  const pk = [{ x: -1.4, z: -0.3, v: 0.3, a: 0.6, w: 0.05, nom: 'partícula' }, { x: 0.9, z: 0.45, v: -0.2, a: 0.42, w: 0.04, nom: 'otra partícula' }];
+  const altura = (x, z, t) => {
+    let s = 0.03 * Math.sin(5 * x + 1.7 * t) * Math.sin(4 * z - 1.1 * t) + 0.02 * Math.sin(7 * x - 2.3 * t + 3 * z);
+    pk.forEach(p => { const dx = x - p.x, dz = z - p.z; s += p.a * Math.exp(-(dx * dx + dz * dz) / p.w); });
+    return s;
+  };
+  let t = 0, ult = 0;
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const cRes = tok('--res'), cProy = tok('--proy');
+    const Hm = [];
+    for (let j = 0; j <= NZ; j++) {
+      const z = 1 - 2 * j / NZ, fila = [];
+      for (let i = 0; i <= NX; i++) { const x = -1 + 2 * i / NX; fila.push([x, z, altura(x, z, t)]); }
+      Hm.push(fila);
+    }
+    g.lineWidth = 2;
+    const seg = (a, b) => {
+      const pa = P(a[0], a[1], a[2]), pb = P(b[0], b[1], b[2]), h = (a[2] + b[2]) / 2;
+      g.strokeStyle = h > 0.12 ? cRes : cProy; g.globalAlpha = h > 0.12 ? 1 : 0.75;
+      g.beginPath(); g.moveTo(pa[0], pa[1]); g.lineTo(pb[0], pb[1]); g.stroke();
+    };
+    for (let j = 0; j <= NZ; j++) for (let i = 0; i <= NX; i++) {
+      if (i < NX) seg(Hm[j][i], Hm[j][i + 1]);
+      if (j < NZ) seg(Hm[j][i], Hm[j + 1][i]);
+    }
+    g.globalAlpha = 1;
+    g.font = '600 26px ' + FTXT; g.textAlign = 'center'; g.fillStyle = tok('--tinta');
+    pk.forEach(p => {
+      if (p.x < -0.9 || p.x > 0.9) return;
+      const q = P(p.x, p.z, p.a + 0.1);
+      g.fillText(p.nom, q[0], q[1]);
+    });
+    g.textAlign = 'left';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 33) {
+      const dt = Math.min(0.05, (ms - ult) / 1000); ult = ms; t += dt;
+      pk.forEach(p => { p.x += p.v * dt; if (p.x > 1.5) p.x = -1.5; if (p.x < -1.5) p.x = 1.5; });
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ESCALAS: del protón al universo observable ══════════════════════ */
+(function () {
+  const host = document.getElementById('esc-fig');
+  if (!host) return;
+  const OB = [[1.7e-15, 'protón'], [1.5e-14, 'núcleo de uranio'], [1.06e-10, 'átomo de hidrógeno'], [1e-7, 'virus'], [8e-6, 'glóbulo rojo'],
+    [8e-5, 'grosor de un cabello'], [5e-3, 'hormiga'], [1.7, 'persona'], [8.8e3, 'monte Everest'], [1.27e7, 'Tierra'], [1.39e9, 'Sol'],
+    [1.5e11, 'distancia Tierra–Sol'], [9e12, 'órbita de Neptuno'], [9.46e15, 'año luz'], [1e21, 'Vía Láctea'], [1e23, 'Grupo Local'],
+    [5e24, 'supercúmulo Laniakea'], [8.8e26, 'universo observable']];
+  const W = 1180, H = 470, x0 = 60, x1 = 1130, Y = 350;
+  const X = e => x0 + (e + 15) / 42 * (x1 - x0);
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  nodo('line', { x1: x0, x2: x1, y1: Y, y2: Y, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+  for (let e = -15; e <= 27; e += 3) {
+    nodo('line', { x1: X(e), x2: X(e), y1: Y, y2: Y + 12, style: 'stroke:var(--tinta);stroke-width:2.5' }, svg);
+    nodo('text', { x: X(e), y: Y + 46, 'text-anchor': 'middle', 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: '10' + sup(e) }, svg);
+  }
+  nodo('text', { x: (x0 + x1) / 2, y: Y + 96, 'text-anchor': 'middle', 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'longitud (m)' }, svg);
+  const marcas = OB.map(o => {
+    const e = Math.log10(o[0]), gx = X(e);
+    const c = nodo('circle', { cx: gx, cy: Y, r: 7, style: 'fill:var(--proy)' }, svg);
+    const t = nodo('text', { x: gx + 4, y: Y - 20, 'font-size': 21, transform: 'rotate(-60 ' + (gx + 4) + ' ' + (Y - 20) + ')', style: 'fill:var(--tinta2);font-family:' + FTXT, txt: o[1] }, svg);
+    return { e: e, c: c, t: t, o: o };
+  });
+  const cur = nodo('g', {}, svg);
+  const lin = nodo('line', { y1: 30, y2: Y + 14, style: 'stroke:var(--res);stroke-width:3;stroke-dasharray:8 6' }, cur);
+  const tri = nodo('polygon', { style: 'fill:var(--res)' }, cur);
+  const r = document.getElementById('esc-l');
+  function pinta() {
+    const e = +r.value, gx = X(e);
+    lin.setAttribute('x1', gx); lin.setAttribute('x2', gx);
+    tri.setAttribute('points', [[gx, Y + 14], [gx - 12, Y + 34], [gx + 12, Y + 34]].map(p => p.join(',')).join(' '));
+    let k = 0; marcas.forEach((m, i) => { if (Math.abs(m.e - e) < Math.abs(marcas[k].e - e)) k = i; });
+    marcas.forEach((m, i) => {
+      m.c.setAttribute('r', i === k ? 12 : 7); m.c.style.fill = i === k ? 'var(--res)' : 'var(--proy)';
+      m.t.style.fill = i === k ? 'var(--res)' : 'var(--tinta2)'; m.t.style.fontWeight = i === k ? 700 : 400;
+    });
+    const L = Math.pow(10, e), m = marcas[k];
+    document.getElementById('esc-lv').textContent = num(e, 1);
+    document.getElementById('esc-L').textContent = cientTxt(L, 2) + ' m';
+    document.getElementById('esc-obj').textContent = m.o[1] + ' (' + cientTxt(m.o[0], 2) + ' m)';
+    document.getElementById('esc-np').textContent = cientTxt(L / 1.7e-15, 2);
+    document.getElementById('esc-lect').textContent = 'L = 10' + sup(Math.round(e)) + ' m';
+  }
+  r.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ HISTORIA DEL UNIVERSO: etapas ═══════════════════════════════════ */
+(function () {
+  const tl = document.getElementById('hi-tl');
+  if (!tl) return;
+  const et = $$('.etapa', tl.parentNode);
+  filaBotones(tl, b => et.forEach((e, k) => e.classList.toggle('on', k === +b.dataset.e)));
+})();
+
+/* ═══ ESPECTRO SOLAR: líneas de Fraunhofer ════════════════════════════ */
+(function () {
+  const host = document.getElementById('fr-fig');
+  if (!host) return;
+  const LIN = [
+    { l: 656.3, n: 'C (Hα)', el: 'H' }, { l: 486.1, n: 'F (Hβ)', el: 'H' }, { l: 434.0, n: 'Hγ', el: 'H' }, { l: 410.2, n: 'h (Hδ)', el: 'H' },
+    { l: 589.0, n: 'D₂', el: 'Na' }, { l: 589.6, n: 'D₁', el: 'Na' },
+    { l: 518.4, n: 'b₁', el: 'Mg' }, { l: 517.3, n: 'b₂', el: 'Mg' }, { l: 516.7, n: 'b₄', el: 'Mg' },
+    { l: 393.4, n: 'K', el: 'Ca' }, { l: 396.8, n: 'H', el: 'Ca' },
+    { l: 527.0, n: 'E₂', el: 'Fe' }, { l: 438.4, n: 'd', el: 'Fe' }, { l: 430.8, n: 'G', el: 'Fe' }, { l: 495.8, n: '', el: 'Fe' },
+    { l: 686.7, n: 'B', el: 'O2' }, { l: 759.4, n: 'A', el: 'O2' }];
+  const NOM = { H: 'hidrógeno', Na: 'sodio', Mg: 'magnesio', Ca: 'calcio ionizado', Fe: 'hierro', O2: 'oxígeno de la atmósfera terrestre' };
+  const NOTA = {
+    H: 'Serie de Balmer: el electrón del hidrógeno salta desde n = 2. La línea C (656,3 nm) es la Hα roja.',
+    Na: 'El doblete amarillo del sodio: el mismo color de las lámparas de sodio del alumbrado público.',
+    Mg: 'El triplete b del magnesio, en el verde.',
+    Ca: 'Las líneas H y K del calcio ionizado, las más intensas del espectro solar, casi en el ultravioleta.',
+    Fe: 'El hierro deja cientos de líneas; la banda G mezcla hierro y la molécula CH.',
+    O2: 'Las bandas A y B no son del Sol: las produce el oxígeno de nuestra propia atmósfera.' };
+  const W = 1180, H = 330, x0 = 40, x1 = 1140, l0 = 380, l1 = 770, y0 = 30, y1 = 190;
+  const X = l => x0 + (l - l0) / (l1 - l0) * (x1 - x0);
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig', style: 'cursor:pointer' }, host);
+  for (let l = l0; l < l1; l += 1) nodo('rect', { x: X(l), y: y0, width: X(l + 1) - X(l) + 0.6, height: y1 - y0, style: 'fill:' + (l > 750 ? 'rgb(70,12,12)' : colorLambda(l + 0.5)) }, svg);
+  LIN.forEach(q => { q.r = nodo('rect', { x: X(q.l) - 1.5, y: y0, width: 3, height: y1 - y0, style: 'fill:rgb(12,10,8)' }, svg); });
+  for (let l = 400; l <= 750; l += 50) {
+    nodo('line', { x1: X(l), x2: X(l), y1: y1, y2: y1 + 10, style: 'stroke:var(--tinta);stroke-width:2' }, svg);
+    nodo('text', { x: X(l), y: y1 + 40, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: l + ' nm' }, svg);
+  }
+  const capa = nodo('g', {}, svg);
+  const btns = document.getElementById('fr-btns'), lect = document.getElementById('fr-lect'), nota = document.getElementById('fr-nota');
+  function marca(lista) {
+    capa.innerHTML = '';
+    lista.forEach((q, k) => {
+      const gx = X(q.l);
+      nodo('polygon', { points: [[gx, y1 + 52], [gx - 11, y1 + 74], [gx + 11, y1 + 74]].map(p => p.join(',')).join(' '), style: 'fill:var(--res)' }, capa);
+      if (q.n) nodo('text', { x: gx, y: y1 + 104 + (k % 2) * 28, 'text-anchor': 'middle', 'font-size': 23, style: 'fill:var(--res);font-weight:700;font-family:' + FTXT, txt: q.n }, capa);
+    });
+    LIN.forEach(q => { q.r.style.fill = lista.indexOf(q) >= 0 ? tok('--res') : 'rgb(12,10,8)'; q.r.setAttribute('width', lista.indexOf(q) >= 0 ? 5 : 3); });
+  }
+  function elige(el) {
+    const lista = LIN.filter(q => q.el === el);
+    marca(lista);
+    lect.textContent = NOM[el];
+    nota.textContent = NOTA[el] + ' λ = ' + lista.map(q => num(q.l, 1)).join(', ') + ' nm.';
+  }
+  filaBotones(btns, b => elige(b.dataset.el));
+  svg.addEventListener('click', ev => {
+    const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    const l = l0 + (p.x - x0) / (x1 - x0) * (l1 - l0);
+    let q = LIN[0]; LIN.forEach(z => { if (Math.abs(z.l - l) < Math.abs(q.l - l)) q = z; });
+    if (Math.abs(q.l - l) > 10) { lect.textContent = 'λ ≈ ' + num(l, 0) + ' nm · sin línea'; return; }
+    quitaOn(btns); marca([q]);
+    lect.textContent = 'λ = ' + num(q.l, 1) + ' nm · E = ' + num(HC_EVNM / q.l, 2) + ' eV';
+    nota.textContent = 'Línea ' + (q.n || 'de Fraunhofer') + ' del ' + NOM[q.el] + '. ' + NOTA[q.el];
+  });
+  elige('H'); $('button[data-el="H"]', btns).classList.add('on');
+})();
+
+/* ═══ SUPERCONDUCTIVIDAD: R(T) y efecto Meissner ══════════════════════ */
+(function () {
+  const host = document.getElementById('sc-fig'), mei = document.getElementById('sc-mei');
+  if (!host) return;
+  const MAT = { Al: 1.2, Hg: 4.2, Sn: 3.7, Pb: 7.2, YBCO: 92 };
+  const NOMBRE = { Al: 'Al', Hg: 'Hg', Sn: 'Sn', Pb: 'Pb', YBCO: 'YBa₂Cu₃O₇' };
+  const r = document.getElementById('sc-T');
+  let m = 'Hg', Tc = 4.2, Tmax = 10, A = null, pto = null;
+  const R = T => T < Tc ? 0 : 0.15 + 0.85 * Math.pow(T / Tmax, 2);
+  function ejesR() {
+    Tmax = Tc > 20 ? 150 : 10;
+    const paso = Tmax > 20 ? 25 : 2, xt = [];
+    for (let v = 0; v <= Tmax; v += paso) xt.push(v);
+    A = ejes(host, { W: 1180, H: 560, x: [0, Tmax], y: [0, 1.1], xt: xt, yt: [0, 0.5, 1], xl: '*T* (K)', yl: '*R* (relativa)',
+      fy: v => num(v, 1), m: { l: 110, r: 30, t: 20, b: 80 } });
+    const pts = [];
+    for (let k = 0; k <= 400; k++) { const T = Tmax * k / 400; if (T >= Tc && pts.length && pts[pts.length - 1][1] === 0) pts.push([Tc, 0]); pts.push([T, R(T)]); }
+    polilinea(A, pts, 'stroke:var(--res);stroke-width:5');
+    nodo('line', { x1: A.X(Tc), x2: A.X(Tc), y1: A.Y(0), y2: A.Y(1.1), style: 'stroke:var(--caso2);stroke-width:2.5;stroke-dasharray:8 6' }, A.capa);
+    rotulo(A.capa, A.X(Tc) + 10, A.Y(1.02), '*T*_c = ' + num(Tc, 1) + ' K', { style: 'fill:var(--caso2);font-family:' + FMATH });
+    pto = nodo('circle', { r: 13, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4' }, A.capa);
+    r.max = Tmax; r.step = Tmax / 400;
+  }
+  /* efecto Meissner: líneas verticales que rodean el disco si T < Tc */
+  const W = 560, H = 560, cx = 280, cy = 300, rd = 120;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, mei);
+  const gl = nodo('g', {}, svg), gd = nodo('g', {}, svg);
+  nodo('rect', { x: cx - rd, y: cy - 22, width: 2 * rd, height: 44, style: 'fill:var(--res-50);stroke:var(--tinta);stroke-width:2.5' }, gd);
+  nodo('ellipse', { cx: cx, cy: cy + 22, rx: rd, ry: 30, style: 'fill:var(--res-50);stroke:var(--tinta);stroke-width:2.5' }, gd);
+  nodo('rect', { x: cx - rd + 1.5, y: cy - 22, width: 2 * rd - 3, height: 44, style: 'fill:var(--res-50)' }, gd);
+  nodo('ellipse', { cx: cx, cy: cy - 22, rx: rd, ry: 30, style: 'fill:var(--res-100);stroke:var(--tinta);stroke-width:2.5' }, gd);
+  const est = nodo('text', { x: cx, y: H - 12, 'text-anchor': 'middle', 'font-size': 28, style: 'font-weight:700;font-family:' + FTXT }, svg);
+  let sc = null;
+  function lineas(dentro) {
+    if (sc === dentro) return; sc = dentro;
+    gl.innerHTML = '';
+    [-230, -184, -138, -92, -46, 46, 92, 138, 184, 230].forEach(x0 => {
+      const pts = [];
+      for (let y = 30; y <= 520; y += 8) {
+        let x = x0;
+        if (dentro) {
+          const s = Math.sign(x0), a = Math.abs(x0), destino = a < rd + 6 ? rd + 18 + 0.45 * a : a + 30 * (rd / a);
+          x = x0 + s * (destino - a) * Math.exp(-Math.pow((y - cy) / 95, 2));
+        }
+        pts.push(cx + x + ',' + y);
+      }
+      nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:var(--caso1);stroke-width:4' }, gl);
+      flecha(gl, cx + x0, 70, cx + x0, 42, tok('--caso1'), 4);
+    });
+    svg.insertBefore(gl, dentro ? gd : est);   /* estado normal: el campo atraviesa la muestra */
+    est.textContent = dentro ? 'T < Tc: superconductor' : 'T > Tc: estado normal';
+    est.style.fill = dentro ? 'var(--res)' : 'var(--tinta2)';
+  }
+  function pinta() {
+    const T = +r.value;
+    pto.setAttribute('cx', A.X(T)); pto.setAttribute('cy', A.Y(R(T)));
+    document.getElementById('sc-Tv').textContent = num(T, Tmax > 20 ? 0 : 1) + ' K';
+    document.getElementById('sc-lect').textContent = NOMBRE[m] + ' · R = ' + (T < Tc ? '0' : num(R(T), 2) + ' R(Tmáx)');
+    document.getElementById('sc-est').textContent = T < Tc ? 'B expulsado' : 'B atraviesa la muestra';
+    lineas(T < Tc);
+  }
+  filaBotones(document.getElementById('sc-mat'), b => { m = b.dataset.m; Tc = MAT[m]; ejesR(); r.value = Math.min(Tmax, 1.4 * Tc); pinta(); });
+  r.addEventListener('input', pinta);
+  ejesR(); r.value = 6; pinta();
+})();
+
+/* ═══ NÚMEROS COMPLEJOS: z sobre el círculo unidad ════════════════════ */
+(function () {
+  const host = document.getElementById('cx-fig');
+  if (!host) return;
+  const W = 640, H = 600, cx = 320, cy = 300, R = 230;
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig', style: 'touch-action:none' }, host);
+  nodo('line', { x1: 30, x2: W - 30, y1: cy, y2: cy, style: 'stroke:var(--tinta);stroke-width:2.5' }, svg);
+  nodo('line', { x1: cx, x2: cx, y1: 20, y2: H - 20, style: 'stroke:var(--tinta);stroke-width:2.5' }, svg);
+  nodo('circle', { cx: cx, cy: cy, r: R, style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
+  rotulo(svg, W - 50, cy - 14, '*a*');
+  rotulo(svg, cx + 12, 44, '*ib*');
+  [[1, 0, '1'], [-1, 0, '−1'], [0, 1, '*i*'], [0, -1, '−*i*']].forEach(q => rotulo(svg, cx + q[0] * R + (q[0] ? (q[0] > 0 ? 8 : -46) : 10), cy - q[1] * R + (q[1] ? (q[1] > 0 ? -10 : 32) : 30), q[2]));
+  const g = nodo('g', {}, svg);
+  let th = 45, anim = null;
+  function pinta() {
+    g.innerHTML = '';
+    const t = th * Math.PI / 180, a = Math.cos(t), b = Math.sin(t), px = cx + R * a, py = cy - R * b;
+    nodo('line', { x1: px, x2: px, y1: py, y2: cy, style: 'stroke:var(--caso1);stroke-width:3;stroke-dasharray:8 6' }, g);
+    nodo('line', { x1: px, x2: cx, y1: py, y2: py, style: 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:8 6' }, g);
+    const ra = 60, grande = (((th % 360) + 360) % 360) > 180 ? 1 : 0, tt = ((th % 360) + 360) % 360 * Math.PI / 180;
+    if (tt > 0.01) nodo('path', { d: 'M ' + (cx + ra) + ' ' + cy + ' A ' + ra + ' ' + ra + ' 0 ' + grande + ' 0 ' + (cx + ra * Math.cos(tt)) + ' ' + (cy - ra * Math.sin(tt)), style: 'fill:none;stroke:var(--tinta2);stroke-width:2.5' }, g);
+    rotulo(g, cx + 72 * Math.cos(tt / 2) - 8, cy - 72 * Math.sin(tt / 2) + 8, '*ϑ*');
+    flecha(g, cx, cy, px, py, tok('--res'), 6);
+    nodo('circle', { cx: px, cy: py, r: 16, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4;cursor:grab' }, g);
+    rotulo(g, px + (a >= 0 ? 20 : -60), py + (b >= 0 ? -18 : 40), '*z*', { style: 'fill:var(--res);font-weight:700;font-family:' + FMATH });
+    const s = x => (Math.abs(x) < 0.005 ? 0 : x);
+    document.getElementById('cx-lect').textContent = 'z = ' + num(s(a), 2) + (s(b) < 0 ? ' − ' : ' + ') + num(Math.abs(s(b)), 2) + ' i · θ = ' + num(((th % 360) + 360) % 360, 0) + '°';
+  }
+  let arrastrando = false;
+  const angulo = ev => { const pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse()); return Math.atan2(cy - p.y, p.x - cx) * 180 / Math.PI; };
+  svg.addEventListener('pointerdown', ev => { arrastrando = true; svg.setPointerCapture(ev.pointerId); th = angulo(ev); pinta(); });
+  svg.addEventListener('pointermove', ev => { if (arrastrando) { th = angulo(ev); pinta(); } });
+  ['pointerup', 'pointercancel'].forEach(t => svg.addEventListener(t, () => { arrastrando = false; }));
+  const gira = d => {
+    if (anim) cancelAnimationFrame(anim);
+    const a0 = th, t0 = performance.now();
+    const paso = ms => { const u = Math.min(1, (ms - t0) / 450); th = a0 + d * (1 - Math.pow(1 - u, 3)); pinta(); if (u < 1) anim = requestAnimationFrame(paso); else th = ((th % 360) + 360) % 360; };
+    anim = requestAnimationFrame(paso);
+  };
+  document.getElementById('cx-i').addEventListener('click', () => gira(90));
+  document.getElementById('cx-m').addEventListener('click', () => gira(180));
+  pinta();
+})();
+
+/* ═══ OSCILACIONES DE NEUTRINOS ═══════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('os-fig');
+  if (!host) return;
+  const DM2 = 2.5e-3, S22 = 1;
+  const Pmt = le => S22 * Math.pow(Math.sin(1.27 * DM2 * le), 2);
+  const A = ejes(host, { W: 1180, H: 470, x: [0, 5], y: [0, 1], xt: [0, 1, 2, 3, 4, 5], yt: [0, 0.5, 1], fx: v => v ? '10' + sup(v) : '1', fy: v => num(v, 1),
+    xl: '*L*/*E* (km/GeV)', yl: 'probabilidad', m: { l: 100, r: 30, t: 20, b: 80 } });
+  const p1 = [], p2 = [];
+  /* promedio sobre una resolución de ±10 % en L/E: a L/E grande la oscilación se ve como su valor medio */
+  const Pmed = le => { let s = 0; for (let q = -30; q <= 30; q++) s += Pmt(le * (1 + 0.1 * q / 30)); return s / 61; };
+  for (let k = 0; k <= 1200; k++) { const u = 5 * k / 1200, le = Math.pow(10, u), p = Pmed(le); p1.push([u, 1 - p]); p2.push([u, p]); }
+  polilinea(A, p2, 'stroke:var(--caso2);stroke-width:3');
+  polilinea(A, p1, 'stroke:var(--res);stroke-width:3.5');
+  nodo('text', { x: A.X(0.15), y: A.Y(0.9), 'font-size': 27, style: 'fill:var(--res);font-weight:700;font-family:' + FTXT, txt: 'νμ sobrevive' }, A.capa);
+  nodo('text', { x: A.X(0.15), y: A.Y(0.08), 'font-size': 27, style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT, txt: 'aparece ντ' }, A.capa);
+  const lin = nodo('line', { y1: A.Y(0), y2: A.Y(1), style: 'stroke:var(--tinta);stroke-width:2.5;stroke-dasharray:8 6' }, A.capa);
+  const pto = nodo('circle', { r: 13, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4' }, A.capa);
+  const rL = document.getElementById('os-L'), rE = document.getElementById('os-E');
+  function pinta() {
+    const L = Math.pow(10, +rL.value), E = Math.pow(10, +rE.value), le = L / E, u = Math.log10(le), p = Pmt(le);
+    const x = A.X(Math.max(0, Math.min(5, u)));
+    lin.setAttribute('x1', x); lin.setAttribute('x2', x);
+    pto.setAttribute('cx', x); pto.setAttribute('cy', A.Y(1 - Pmed(le)));
+    document.getElementById('os-Lv').textContent = (L < 10 ? num(L, 1) : miles(L)) + ' km';
+    document.getElementById('os-Ev').textContent = num(E, E < 10 ? 2 : 0) + ' GeV';
+    document.getElementById('os-lect').textContent = 'L/E = ' + (le < 10 ? num(le, 1) : miles(le)) + ' km/GeV · sobrevive el ' + num(100 * (1 - Pmed(le)), 0) + ' %';
+  }
+  rL.addEventListener('input', pinta); rE.addEventListener('input', pinta);
+  filaBotones(document.getElementById('os-pre'), b => { rL.value = Math.log10(+b.dataset.l); rE.value = Math.log10(+b.dataset.e); pinta(); });
+  [rL, rE].forEach(x => x.addEventListener('input', () => quitaOn(document.getElementById('os-pre'))));
+  pinta();
+})();
+
+/* ═══ EL SOL: camino aleatorio del fotón frente al neutrino ═══════════ */
+(function () {
+  const cv = document.getElementById('sol-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, cx = W / 2, cy = H / 2, R = 250, RSOL = 6.96e8;
+  const r = document.getElementById('sol-l');
+  let camino = [[cx, cy]], nu = null, escapes = 0, pausa = 0, ult = 0;
+  const paso = () => 4 + 7 * (+r.value + 1);
+  function lee() {
+    const l = Math.pow(10, +r.value) * 1e-3, t = RSOL * RSOL / (l * C_LUZ) / ANIO;
+    document.getElementById('sol-lv').textContent = num(Math.pow(10, +r.value), 2) + ' mm';
+    document.getElementById('sol-tg').textContent = '≈ ' + miles(t > 1e4 ? Math.round(t / 1000) * 1000 : t) + ' años';
+    document.getElementById('sol-tn').textContent = num(RSOL / C_LUZ, 1) + ' s';
+  }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    g.fillStyle = tok('--caso2-50'); g.strokeStyle = tok('--caso2'); g.lineWidth = 3;
+    g.beginPath(); g.arc(cx, cy, R, 0, 2 * Math.PI); g.fill(); g.stroke();
+    g.fillStyle = tok('--caso2'); g.globalAlpha = 0.25; g.beginPath(); g.arc(cx, cy, 55, 0, 2 * Math.PI); g.fill(); g.globalAlpha = 1;
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 1.6; g.beginPath();
+    camino.forEach((p, k) => k ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke();
+    const q = camino[camino.length - 1];
+    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(q[0], q[1], 9, 0, 2 * Math.PI); g.fill();
+    if (nu) {
+      g.strokeStyle = tok('--caso1'); g.lineWidth = 5; g.globalAlpha = Math.max(0, 1 - nu.edad / 60);
+      g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + nu.d * Math.cos(nu.a), cy + nu.d * Math.sin(nu.a)); g.stroke(); g.globalAlpha = 1;
+    }
+    g.fillStyle = tok('--tinta'); g.font = '600 24px ' + FTXT;
+    g.fillText('pasos: ' + (camino.length - 1), 16, 30);
+    g.fillText('escapes: ' + escapes, 16, 60);
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) {
+      ult = ms;
+      if (pausa > 0) pausa--;
+      else {
+        const s = paso();
+        for (let k = 0; k < 6; k++) {
+          const q = camino[camino.length - 1], a = Math.random() * 2 * Math.PI, n = [q[0] + s * Math.cos(a), q[1] + s * Math.sin(a)];
+          camino.push(n);
+          if (Math.hypot(n[0] - cx, n[1] - cy) > R) { escapes++; pausa = 25; break; }
+        }
+        if (camino.length > 6000) { camino = [[cx, cy]]; }
+      }
+      if (pausa === 1) camino = [[cx, cy]];
+      if (!nu || nu.edad > 70) nu = { a: Math.random() * 2 * Math.PI, d: 0, edad: 0 };
+      nu.d = Math.min(R + 40, nu.d + 60); nu.edad++;
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  r.addEventListener('input', () => { lee(); camino = [[cx, cy]]; });
+  lee(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ÁTOMO VACÍO: si el núcleo fuera… ════════════════════════════════ */
+(function () {
+  const r = document.getElementById('at-d');
+  if (!r) return;
+  const RAZON = 1.06e-10 / 1.7e-15;
+  function pinta() {
+    const d = Math.pow(10, +r.value), D = d * RAZON / 100;
+    document.getElementById('at-dv').textContent = num(d, d < 10 ? 1 : 0) + ' cm';
+    document.getElementById('at-D').textContent = D >= 1000 ? num(D / 1000, 1) + ' km' : num(D, 0) + ' m';
+    document.getElementById('at-c').textContent = num(D / 105, D / 105 < 10 ? 1 : 0);
+    document.getElementById('at-lect').textContent = 'átomo / núcleo ≈ ' + num(RAZON / 1000, 0) + ' 000';
+  }
+  r.addEventListener('input', () => { quitaOn(document.getElementById('at-pre')); pinta(); });
+  filaBotones(document.getElementById('at-pre'), b => { r.value = Math.log10(+b.dataset.d); pinta(); });
+  pinta();
+})();
+
+/* ═══ DISPERSIÓN: energía para resolver un tamaño d ═══════════════════ */
+(function () {
+  const r = document.getElementById('di-d');
+  if (!r) return;
+  const REF = [[2e-10, 'Átomo: rayos X de unos keV bastan (difracción de cristales).'],
+    [2e-15, 'Núcleo: cientos de MeV. Rutherford (1911) lo descubrió con partículas α desviadas por una lámina de oro.'],
+    [1e-16, 'Dentro del protón: electrones de ~10 GeV revelaron los quarks (SLAC, 1968).'],
+    [1e-19, 'El LHC, con colisiones de 13 TeV, explora distancias de ~10⁻¹⁹ m.']];
+  function pinta() {
+    const d = Math.pow(10, +r.value), E = HC_EVNM * 1e-9 / d;
+    document.getElementById('di-dv').textContent = num(+r.value, 1);
+    document.getElementById('di-D').textContent = conPrefijo(d, 'm');
+    document.getElementById('di-E').textContent = conPrefijo(E, 'eV');
+    let k = 0; REF.forEach((q, i) => { if (Math.abs(Math.log10(q[0] / d)) < Math.abs(Math.log10(REF[k][0] / d))) k = i; });
+    document.getElementById('di-nota').textContent = REF[k][1];
+    document.getElementById('di-lect').textContent = 'λ ≈ ' + conPrefijo(d, 'm');
+  }
+  r.addEventListener('input', () => { quitaOn(document.getElementById('di-pre')); pinta(); });
+  filaBotones(document.getElementById('di-pre'), b => { r.value = Math.log10(+b.dataset.d); pinta(); });
+  pinta();
+})();
+
+/* ═══ POSITRONES: estimación de orden de magnitud ═════════════════════ */
+(function () {
+  const host = document.getElementById('po-fig');
+  if (!host) return;
+  const rg = document.getElementById('po-g'), rn = document.getElementById('po-n');
+  const W = 1180, H = 420, x0 = 250, x1 = 1140, e0 = 60, e1 = 92;
+  const X = e => x0 + (e - e0) / (e1 - e0) * (x1 - x0);
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  for (let e = 60; e <= 90; e += 5) {
+    nodo('line', { x1: X(e), x2: X(e), y1: 20, y2: H - 60, style: 'stroke:var(--rejilla);stroke-width:2' }, svg);
+    nodo('text', { x: X(e), y: H - 24, 'text-anchor': 'middle', 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: '10' + sup(e) }, svg);
+  }
+  const FIL = [['electrones', 80, '--caso1'], ['protones', 80, '--caso1'], ['fotones', 90, '--tinta2'], ['positrones', 68, '--res']];
+  const barras = FIL.map((f, k) => {
+    const y = 30 + k * 84;
+    nodo('text', { x: x0 - 16, y: y + 44, 'text-anchor': 'end', 'font-size': 29, style: 'fill:var(--tinta);font-family:' + FTXT, txt: f[0] }, svg);
+    const b = nodo('rect', { x: x0, y: y + 12, height: 50, style: 'fill:var(--' + f[2].slice(2) + ')' }, svg);
+    const t = nodo('text', { y: y + 47, 'font-size': 27, style: 'font-weight:700;fill:var(--tinta);font-family:' + FMATH }, svg);
+    return { b: b, t: t, f: f };
+  });
+  function pinta() {
+    const a = +rg.value, n = +rn.value, e = a + n;
+    barras[3].f[1] = e;
+    barras.forEach(q => { const w = X(q.f[1]) - x0; q.b.setAttribute('width', Math.max(0, w)); q.t.setAttribute('x', x0 + w + 12); q.t.textContent = '~10' + sup(Math.round(q.f[1])); });
+    document.getElementById('po-gv').textContent = num(a, 1);
+    document.getElementById('po-nv').textContent = num(n, 1);
+    document.getElementById('po-lect').textContent = 'N ≈ 10' + sup(Math.round(e)) + ' · 10' + sup(Math.round(80 - e)) + ' veces menos que los electrones';
+  }
+  rg.addEventListener('input', pinta); rn.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CONVERSOR DE ENERGÍA DEL FOTÓN ══════════════════════════════════ */
+function zonaEM(l) {                       /* l en metros */
+  return l > 1 ? 'radio' : l > 1e-3 ? 'microondas' : l > 750e-9 ? 'infrarrojo' : l >= 380e-9 ? 'visible' : l > 10e-9 ? 'ultravioleta' : l > 1e-11 ? 'rayos X' : 'rayos gamma';
+}
+(function () {
+  const r = document.getElementById('ev-E');
+  if (!r) return;
+  function pinta() {
+    const E = Math.pow(10, +r.value), f = E / H_EVS, l = HC_EVNM * 1e-9 / E, z = zonaEM(l);
+    document.getElementById('ev-Ev').textContent = num(+r.value, 2);
+    document.getElementById('ev-eV').textContent = conPrefijo(E, 'eV');
+    document.getElementById('ev-J').textContent = cientTxt(E * E_C, 3) + ' J';
+    document.getElementById('ev-f').textContent = conPrefijo(f, 'Hz');
+    document.getElementById('ev-l').textContent = conPrefijo(l, 'm');
+    document.getElementById('ev-lect').textContent = z;
+    const c = document.getElementById('ev-color');
+    c.style.background = z === 'visible' ? colorLambda(l * 1e9) : 'repeating-linear-gradient(45deg, var(--panel) 0 14px, var(--rejilla) 14px 28px)';
+  }
+  r.addEventListener('input', () => { quitaOn(document.getElementById('ev-pre')); pinta(); });
+  filaBotones(document.getElementById('ev-pre'), b => { r.value = Math.log10(+b.dataset.e); pinta(); });
+  pinta();
+})();
+
+/* ═══ NIVELES DEL HIDRÓGENO: transiciones ═════════════════════════════ */
+(function () {
+  const host = document.getElementById('ni-fig');
+  if (!host) return;
+  const W = 440, H = 600, y0 = 40, y1 = 560, En = n => -13.6057 / (n * n);
+  const Y = E => y0 + (E / -14) * (y1 - y0);
+  const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+  for (let n = 1; n <= 6; n++) {
+    nodo('line', { x1: 150, x2: 420, y1: Y(En(n)), y2: Y(En(n)), style: 'stroke:var(--tinta);stroke-width:' + (n === 1 ? 4 : 2.5) }, svg);
+    if (n <= 4) nodo('text', { x: 140, y: Y(En(n)) + 9, 'text-anchor': 'end', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: num(En(n), 2) + ' eV' }, svg);
+    if (n <= 3 || n === 6) nodo('text', { x: 426, y: Y(En(n)) + (n === 6 ? -6 : 9), 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: n === 6 ? '…' : 'n=' + n }, svg);
+  }
+  nodo('line', { x1: 150, x2: 420, y1: Y(0), y2: Y(0), style: 'stroke:var(--proy);stroke-width:2;stroke-dasharray:8 6' }, svg);
+  nodo('text', { x: 140, y: Y(0) + 9, 'text-anchor': 'end', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: '0 eV' }, svg);
+  const capa = nodo('g', {}, svg);
+  let ni = 3, nf = 2;
+  function pinta() {
+    capa.innerHTML = '';
+    const ok = ni > nf;
+    if (ok) {
+      const dE = En(ni) - En(nf), l = HC_EVNM / dE, col = l >= 380 && l <= 750 ? colorLambda(l) : tok('--tinta');
+      flecha(capa, 285, Y(En(ni)), 285, Y(En(nf)), col, 7);
+      document.getElementById('ni-E').textContent = num(dE, 2) + ' eV';
+      document.getElementById('ni-fq').textContent = cientTxt(dE / H_EVS, 3) + ' Hz';
+      document.getElementById('ni-l').textContent = num(l, 1) + ' nm';
+      document.getElementById('ni-lect').textContent = (nf === 1 ? 'Lyman' : nf === 2 ? 'Balmer' : 'Paschen') + ' · ' + zonaEM(l * 1e-9);
+      document.getElementById('ni-color').style.background = l >= 380 && l <= 750 ? col : 'repeating-linear-gradient(45deg, var(--panel) 0 14px, var(--rejilla) 14px 28px)';
+    } else {
+      ['ni-E', 'ni-fq', 'ni-l'].forEach(id => { document.getElementById(id).textContent = '—'; });
+      document.getElementById('ni-lect').textContent = 'para emitir, el nivel inicial debe ser mayor';
+      document.getElementById('ni-color').style.background = 'var(--panel)';
+    }
+  }
+  filaBotones(document.getElementById('ni-i'), b => { ni = +b.dataset.n; pinta(); });
+  filaBotones(document.getElementById('ni-f'), b => { nf = +b.dataset.n; pinta(); });
+  pinta();
+})();
+
+/* ═══ CESIO: oscilaciones en una duración ═════════════════════════════ */
+(function () {
+  const r = document.getElementById('cs-t');
+  if (!r) return;
+  const NU = 9192631770;
+  const dur = t => t < 1 ? conPrefijo(t, 's') : t < 3600 ? num(t, t < 10 ? 2 : 0) + ' s' : t < 86400 * 0.99 ? num(t / 3600, 1) + ' h' : t < 3.156e7 * 2 ? num(t / 86400, 1) + ' días' : num(t / 3.156e7, 1) + ' años';
+  function pinta() {
+    const t = Math.pow(10, +r.value), N = t * NU;
+    document.getElementById('cs-tv').textContent = num(+r.value, 1);
+    document.getElementById('cs-T').textContent = dur(t);
+    document.getElementById('cs-N').textContent = N < 1e4 ? num(N, 1) : cientTxt(N, 4);
+    document.getElementById('cs-lect').textContent = 'Δν = 9 192 631 770 Hz';
+  }
+  r.addEventListener('input', () => { quitaOn(document.getElementById('cs-pre')); pinta(); });
+  filaBotones(document.getElementById('cs-pre'), b => { r.value = Math.log10(+b.dataset.t); pinta(); });
+  pinta();
+})();
+
+/* ═══ RETO: constante → unidad del SI ═════════════════════════════════ */
+(function () {
+  const host = document.getElementById('si-lista');
+  if (!host) return;
+  const L = [['\\(\\Delta\\nu_{\\mathrm{Cs}} = \\qty{9\\,192\\,631\\,770}{Hz}\\)', 's', 'La frecuencia del cesio fija el segundo: 1 s = 9 192 631 770 / Δν.'],
+    ['\\(c = \\qty{299\\,792\\,458}{m/s}\\)', 'm', 'Con el segundo ya definido, fijar c define el metro: la distancia que la luz recorre en 1/299 792 458 s.'],
+    ['\\(h = \\qty{6{,}626\\,070\\,15\\times 10^{-34}}{J\\,s}\\)', 'kg', 'J s = kg m² s⁻¹: con metro y segundo definidos, h fija el kilogramo.'],
+    ['\\(e = \\qty{1{,}602\\,176\\,634\\times 10^{-19}}{C}\\)', 'A', 'C = A s: la carga del electrón fija el amperio.'],
+    ['\\(k = \\qty{1{,}380\\,649\\times 10^{-23}}{J/K}\\)', 'K', 'La constante de Boltzmann fija el kelvin.'],
+    ['\\(N_{\\mathrm{A}} = \\qty{6{,}022\\,140\\,76\\times 10^{23}}{mol^{-1}}\\)', 'mol', 'Un mol tiene exactamente N_A entidades.']];
+  const U = ['s', 'm', 'kg', 'A', 'K', 'mol'];
+  host.innerHTML = L.map(q => '<div class="dim" data-ok="' + q[1] + '" data-exp="' + q[2] + '"><span class="dim-ec">' + q[0] + '</span><div class="dim-btns">' + U.map(u => '<button type="button" class="btn" data-r="' + u + '">' + u + '</button>').join('') + '</div><div class="dim-exp"></div></div>').join('');
+  const items = $$('.dim', host), fb = document.getElementById('si-fb'), marc = document.getElementById('si-score');
+  items.forEach(it => $('.dim-btns', it).addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    it.dataset.resp = b.dataset.r; $$('.dim-btns button', it).forEach(o => o.classList.toggle('sel', o === b)); it.classList.remove('ok', 'mal');
+  }));
+  document.getElementById('si-ok').addEventListener('click', () => {
+    let n = 0, faltan = 0;
+    items.forEach(it => {
+      if (!it.dataset.resp) { faltan++; return; }
+      const ok = it.dataset.resp === it.dataset.ok; if (ok) n++;
+      it.classList.toggle('ok', ok); it.classList.toggle('mal', !ok);
+      $('.dim-exp', it).textContent = (ok ? '✓ ' : '✗ ') + it.dataset.exp;
+    });
+    marc.textContent = n;
+    fb.textContent = faltan ? 'Te faltan ' + faltan + '.' : (n === items.length ? '✓ ¡Perfecto! Siete constantes, siete unidades (la séptima, la eficacia luminosa, fija la candela).' : '✗ ' + n + ' de ' + items.length + '. Pista: mira las unidades de cada constante.');
+    fb.style.color = !faltan && n === items.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('si-borrar').addEventListener('click', () => { items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); }); marc.textContent = '0'; fb.textContent = ''; });
+})();
+
+</script>
+</body></html>

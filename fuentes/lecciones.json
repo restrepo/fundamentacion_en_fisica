@@ -18,5 +18,10 @@
     "fuente": "fuentes/electromagnetismo/leccion-fuente.html",
     "salida": "lecciones/capitulo-4-electromagnetismo.html",
     "ds": "fuentes/_ds/fundamentacion"
+  },
+  {
+    "fuente": "fuentes/estructura-de-la-materia/leccion-fuente.html",
+    "salida": "lecciones/capitulo-5-estructura-de-la-materia.html",
+    "ds": "fuentes/_ds/fundamentacion"
   }
 ]

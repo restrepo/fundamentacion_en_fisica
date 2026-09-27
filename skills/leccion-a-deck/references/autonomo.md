@@ -43,6 +43,8 @@ de la lección en lugar de la de `<deck-stage>`.
   ventana emergente original se queda en `#escenario`, como en la fuente.
 - Se descarta la «red de seguridad» del empaquetado original y se conserva el contador (salto a diapositiva).
 - `--mathjax cdn` enlaza MathJax en vez de incrustarlo (−2,3 MB, requiere red).
+- Las `<img src="…">` con ruta relativa (a la carpeta de la fuente) se
+  incrustan como `data:` URI; el script se detiene si falta un archivo.
 
 ## Lecciones que no son clase-slides
 

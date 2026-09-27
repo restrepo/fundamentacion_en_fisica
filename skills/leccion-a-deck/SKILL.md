@@ -20,6 +20,12 @@ Opciones: `--ancho/--alto` (2280×1080), `--sin-posters`, `--sin-cierre`,
 `--mathjax cdn` (enlaza MathJax en vez de incrustarlo), `--marca` (por
 defecto, la de la lección), `--credito TEXTO` o `--credito-leccion`.
 
+**Imágenes.** Una fuente puede traer fotos o figuras como archivos junto a
+ella (`<img class="foto" src="img/x.webp">`, ruta relativa a la carpeta de la
+fuente): `build_html.py` las incrusta como `data:` URI y la salida sigue
+siendo un único archivo. Conviértelas antes a WebP (≲ 1400 px de lado) para
+no inflar la lección; las URL `http(s):` se dejan tal cual (requieren red).
+
 **Crédito de autoría.** Todas las lecciones muestran, abajo a la izquierda y en
 el pie del póster de cierre, **«Diseño de material de estudio · W. Alexander
 Flórez»** (`CREDITO_POR_DEFECTO` en `scripts/build_deck.py`, que usan los dos

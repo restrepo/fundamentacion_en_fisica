@@ -17,6 +17,7 @@ El sitio está publicado con GitHub Pages en
 | Capítulo 2 · Relatividad especial | [capitulo-2-relatividad-especial.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-2-relatividad-especial.html) |
 | Capítulo 3 · Dinámica newtoniana | [capitulo-3-dinamica-newtoniana.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-3-dinamica-newtoniana.html) |
 | Capítulo 4 · Electromagnetismo | [capitulo-4-electromagnetismo.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-4-electromagnetismo.html) |
+| Capítulo 5 · Estructura de la materia | [capitulo-5-estructura-de-la-materia.html](https://restrepo.github.io/fundamentacion_en_fisica/lecciones/capitulo-5-estructura-de-la-materia.html) |
 
 Cada lección es **un único archivo HTML autocontenido** (MathJax y estilos en
 línea): también funciona descargado y abierto sin conexión.
@@ -72,6 +73,23 @@ derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,
 cuestionario, los 10 ejercicios con respuestas y glosario.
 
+### Capítulo 5 · Estructura de la materia
+
+32 diapositivas en nueve bloques, a partir de la presentación del curso (con
+sus imágenes): el universo (componentes, un explorador de escalas del protón
+al universo observable, historia térmica con línea de tiempo, líneas de
+Fraunhofer del espectro solar y ondas gravitacionales); campos
+(superconductividad con $R(T)$ y efecto Meissner, campos complejos con $z$
+arrastrable sobre el círculo unidad, oscilaciones de neutrinos, número de
+excitaciones en el universo y el camino aleatorio del fotón en el Sol);
+átomos (el átomo casi vacío y la energía necesaria para resolver un tamaño);
+detectores de neutrinos (Super-Kamiokande, IceCube); antimateria (electrón y
+positrón, AMS-02 y la estimación de positrones en el universo);
+interacción (campos cuánticos e intercambio); átomo y luz (conversor de
+energía del fotón y transiciones del hidrógeno); unidades del SI (el cesio y
+las constantes definitorias de 2019); y práctica: reto constante → unidad,
+cuestionario y glosario.
+
 ## Contenido del repositorio
 
 ```
@@ -82,6 +100,7 @@ lecciones/
   capitulo-2-relatividad-especial.html
   capitulo-3-dinamica-newtoniana.html
   capitulo-4-electromagnetismo.html
+  capitulo-5-estructura-de-la-materia.html
 fuentes/
   preliminares/
     leccion-fuente.html             fuente del capítulo 1
@@ -89,6 +108,9 @@ fuentes/
     leccion-fuente.html             fuente del capítulo 2
   electromagnetismo/
     leccion-fuente.html             fuente del capítulo 4
+  estructura-de-la-materia/
+    leccion-fuente.html             fuente del capítulo 5
+    img/                            imágenes de la presentación (WebP), incrustadas al generar
   dinamica-newtoniana/
     leccion-fuente.html             fuente de la lección (entrada de la skill)
     oscilador-p5.js                 implementación p5.js original del ejemplo 3.2.1
