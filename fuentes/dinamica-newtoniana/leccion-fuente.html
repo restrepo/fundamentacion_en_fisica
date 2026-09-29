@@ -191,6 +191,8 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-caida .ctrl,#dp-parab .ctrl,#dp-indep .ctrl{margin:2px 0}
 #dp-parab .pb-ctl,#dp-caida .cl-ctl{margin:4px 0}
 #dp-parab .caja{font-size:27px}
+.pb-arr svg{cursor:grab;touch-action:none}
+.pb-arr svg:active{cursor:grabbing}
 #dp-indep .lectura div{padding:6px 12px;font-size:21px}
 #dp-indep .lectura b{font-size:28px}
 
@@ -205,6 +207,21 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-aniq .lectura div,#dp-granada .lectura div{padding:6px 12px;font-size:21px}
 #dp-aniq .lectura b,#dp-granada .lectura b{font-size:27px}
 #an-msg.mal{border-left-color:var(--mal);background:var(--mal-50)}
+
+/* ecuación de la trayectoria */
+#dp-tray .tr-col > * + *{margin-top:8px}
+#dp-tray .caja{padding:6px 16px;font-size:28px}
+#dp-tray .caja h3{font-size:26px;margin:0}
+#dp-tray .ctrl{margin:2px 0}
+#dp-tray .tr-ctl{margin:4px 0}
+
+/* energía en el tiro parabólico */
+#dp-energia-parab .ep-col > * + *{margin-top:8px}
+#dp-energia-parab .caja{padding:4px 14px;font-size:26px}
+#dp-energia-parab .caja h3{font-size:25px;margin:0}
+#dp-energia-parab .ctrl{margin:2px 0}
+#dp-energia-parab .ep-ctl{margin:4px 0}
+#dp-energia-parab .btn{font-size:24px;padding:8px 13px}
 </style></head>
 <body>
 <div id="escenario">
@@ -503,28 +520,6 @@ dl.glosa dd{margin:0;font-size:29px}
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-parab" data-label="Movimiento parabólico" data-speaker-notes="§ 3.5. Movimiento parabólico: en x no hay fuerza (velocidad constante v₀cosθ) y en y es la caída libre con v₀sinθ. Tiempo de subida, altura máxima, tiempo de vuelo, alcance v₀²sin2θ/g con máximo en 45°, y ángulos complementarios con el mismo alcance. ↓ revela 3 pasos.">
-  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
-  <h2 class="titulo">Dos movimientos a la vez: uniforme en \(x\), caída libre en \(y\)</h2>
-  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Trayectoria \(y\) frente a \(x\)</span><span class="val" id="pb-lect"></span></div>
-      <div id="pb-fig"></div>
-      <label class="ctrl pb-ctl"><span>Rapidez \(v_0\)</span><input type="range" id="pb-v0" min="5" max="30" step="0.5" value="20"><span class="v" id="pb-v0v"></span></label>
-      <label class="ctrl pb-ctl"><span>Ángulo \(\theta\)</span><input type="range" id="pb-th" min="5" max="85" step="1" value="30"><span class="v" id="pb-thv"></span></label>
-      <div class="fila-btn pb-ctl"><label class="chk a"><input type="checkbox" id="pb-comp">Ángulo complementario \(90^\circ - \theta\)</label><label class="chk p"><input type="checkbox" id="pb-45">\(45^\circ\)</label></div>
-    </figure>
-    <div class="pila pb-col">
-      <div class="kf" style="padding:4px 16px;font-size:31px">\[ \begin{aligned} x(t) &= (v_0\cos\theta)\,t & a_x &= 0 \\ y(t) &= (v_0\sin\theta)\,t - \tfrac12 g t^{2} & a_y &= -g \end{aligned} \]</div>
-      <div class="caja neutra frag" style="padding:4px 14px">En \(y\), caída libre con \(v_{0y} = v_0\sin\theta\):
-        \[ \casouno{t_s = \tfrac{v_0\sin\theta}{g}}, \quad \resalta{H = \tfrac{v_0^{2}\sin^{2}\theta}{2g}}, \quad \casodos{t_v = \tfrac{2 v_0\sin\theta}{g}}. \]</div>
-      <div class="caja neutra frag" style="padding:4px 14px">En \(x\), velocidad constante durante todo el vuelo:
-        \[ R = (v_0\cos\theta)\,t_v = \tfrac{2 v_0^{2}\sin\theta\cos\theta}{g} = \tfrac{v_0^{2}\sin 2\theta}{g}. \]</div>
-      <div class="kf frag" style="padding:4px 14px;font-size:29px">\[ R_{\text{máx}} = \tfrac{v_0^{2}}{g} \ \text{ en } \theta = 45^\circ; \qquad y = x\tan\theta - \tfrac{g\,x^{2}}{2 v_0^{2}\cos^{2}\theta} \]<p class="nota" style="margin:0">Como \(\sin 2\theta = \sin(180^\circ - 2\theta)\), \(\theta\) y \(90^\circ - \theta\) dan el mismo alcance. Eliminando \(t\) sale una parábola.</p></div>
-    </div>
-  </div>
-</section>
-
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-indep" data-label="Actividad: movimientos independientes" data-speaker-notes="§ 3.5. Actividad: tres objetos salen a la vez. El proyectil (v₀ con ángulo θ), una pelota lanzada verticalmente con la misma v₀y y un carrito que avanza con v₀x. La pelota vertical siempre está a la misma altura que el proyectil, y el carrito debajo de él. Primero se pide predecir cuál llega antes al suelo.">
   <p class="ceja">§ 3.5 · Actividad: independencia de los movimientos</p>
   <h2 class="titulo">El movimiento en \(y\) no se entera del movimiento en \(x\)</h2>
@@ -543,6 +538,78 @@ dl.glosa dd{margin:0;font-size:29px}
         <div>Altura del proyectil<b id="in-yp"></b></div><div>Altura de la pelota vertical<b id="in-yv"></b></div><div>\(x\) del proyectil y del carrito<b id="in-x"></b></div>
       </div>
       <div class="cz-fb" id="in-fb" style="margin-top:0"></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-parab" data-label="Movimiento parabólico" data-speaker-notes="§ 3.5. Movimiento parabólico: en x no hay fuerza (velocidad constante v₀cosθ) y en y es la caída libre con v₀sinθ. Tiempo de subida, altura máxima, tiempo de vuelo, alcance v₀²sin2θ/g con máximo en 45°, y ángulos complementarios con el mismo alcance. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
+  <h2 class="titulo">Dos movimientos a la vez: uniforme en \(x\), caída libre en \(y\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Trayectoria \(y\) frente a \(x\) · arrastra el punto</span><span class="val" id="pb-lect"></span></div>
+      <div id="pb-fig" class="pb-arr"></div>
+      <label class="ctrl pb-ctl"><span>Rapidez \(v_0\)</span><input type="range" id="pb-v0" min="5" max="30" step="0.5" value="20"><span class="v" id="pb-v0v"></span></label>
+      <label class="ctrl pb-ctl"><span>Ángulo \(\theta\)</span><input type="range" id="pb-th" min="5" max="85" step="1" value="30"><span class="v" id="pb-thv"></span></label>
+      <div class="fila-btn pb-ctl"><label class="chk a"><input type="checkbox" id="pb-comp">Ángulo complementario \(90^\circ - \theta\)</label><label class="chk p"><input type="checkbox" id="pb-45">\(45^\circ\)</label></div>
+    </figure>
+    <div class="pila pb-col">
+      <div class="kf" style="padding:4px 16px;font-size:31px">\[ \begin{aligned} x(t) &= (v_0\cos\theta)\,t & a_x &= 0 \\ y(t) &= (v_0\sin\theta)\,t - \tfrac12 g t^{2} & a_y &= -g \end{aligned} \]</div>
+      <div class="caja neutra frag" style="padding:4px 14px">En \(y\), caída libre con \(v_{0y} = v_0\sin\theta\):
+        \[ \casouno{t_s = \tfrac{v_0\sin\theta}{g}}, \quad \resalta{H = \tfrac{v_0^{2}\sin^{2}\theta}{2g}}, \quad \casodos{t_v = \tfrac{2 v_0\sin\theta}{g}}. \]</div>
+      <div class="caja neutra frag" style="padding:4px 14px">En \(x\), velocidad constante durante todo el vuelo:
+        \[ R = (v_0\cos\theta)\,t_v = \tfrac{2 v_0^{2}\sin\theta\cos\theta}{g} = \tfrac{v_0^{2}\sin 2\theta}{g}. \]</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:29px">\[ R_{\text{máx}} = \tfrac{v_0^{2}}{g} \ \text{ en } \theta = 45^\circ; \qquad y = x\tan\theta - \tfrac{g\,x^{2}}{2 v_0^{2}\cos^{2}\theta} \]<p class="nota" style="margin:0">Como \(\sin 2\theta = \sin(180^\circ - 2\theta)\), \(\theta\) y \(90^\circ - \theta\) dan el mismo alcance. Eliminando \(t\) sale una parábola.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-tray" data-label="La ecuación de la trayectoria es una parábola" data-speaker-notes="§ 3.5. Eliminando t se obtiene y = x tanθ − g x²/(2v₀²cos²θ): una función cuadrática y = A x − B x² con B > 0, es decir, una parábola que abre hacia abajo. Completando el cuadrado aparece el vértice (R/2, H). Interpretación física: la recta y = x tanθ es el camino sin gravedad; la caída por debajo de ella es ½gt² y, como x ∝ t, crece como x² (1 : 4 : 9 : 16). ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
+  <h2 class="titulo">¿Por qué la trayectoria es una parábola?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Recta sin gravedad menos la caída \(\tfrac12 g t^{2}\)</span><span class="val" id="tr-lect"></span></div>
+      <div id="tr-fig"></div>
+      <label class="ctrl tr-ctl"><span>Rapidez \(v_0\)</span><input type="range" id="tr-v0" min="8" max="30" step="0.5" value="20"><span class="v" id="tr-v0v"></span></label>
+      <label class="ctrl tr-ctl"><span>Ángulo \(\theta\)</span><input type="range" id="tr-th" min="10" max="80" step="1" value="40"><span class="v" id="tr-thv"></span></label>
+      <div class="fila-btn tr-ctl"><label class="chk a"><input type="checkbox" id="tr-caidas">Caídas cada \(\Delta t\) igual</label><label class="chk p"><input type="checkbox" id="tr-vert">Vértice y simetría</label></div>
+    </figure>
+    <div class="pila tr-col">
+      <div class="caja neutra frag"><h3>1 · Eliminar el tiempo</h3>
+        \[ x = (v_0\cos\theta)\,t \;\Longrightarrow\; t = \dfrac{x}{v_0\cos\theta} \]
+        \[ y = (v_0\sin\theta)\,\dfrac{x}{v_0\cos\theta} - \dfrac12\,g\left(\dfrac{x}{v_0\cos\theta}\right)^{2} = x\tan\theta - \dfrac{g\,x^{2}}{2 v_0^{2}\cos^{2}\theta} \]</div>
+      <div class="caja neutra frag"><h3>2 · Es una función cuadrática en \(x\)</h3>
+        \[ y = \resalta{A}\,x - \casodos{B}\,x^{2}, \qquad \resalta{A = \tan\theta}, \qquad \casodos{B = \tfrac{g}{2 v_0^{2}\cos^{2}\theta}} > 0 \]
+        <p class="nota" style="margin:0">Toda \(y = a x^{2} + b x + c\) con \(a \neq 0\) es una parábola; aquí \(a = -B \lt 0\): abre hacia abajo.</p></div>
+      <div class="kf frag" style="padding:4px 14px;font-size:30px">\[ y = H - B\,\Big(x - \tfrac{R}{2}\Big)^{2}, \qquad H = \dfrac{A^{2}}{4B}, \quad \dfrac{R}{2} = \dfrac{A}{2B} \]
+        <p class="nota" style="margin:0">Completando el cuadrado aparece el <strong>vértice</strong> \((R/2,\,H)\): la parábola es simétrica respecto a \(x = R/2\) y corta el suelo en \(x = 0\) y \(x = R\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-energia-parab" data-label="Energía en el movimiento parabólico" data-speaker-notes="§ 3.5. Conservación de la energía en el tiro parabólico: E = K + U constante. K se separa en K_x = ½m v₀²cos²θ, que no cambia, y K_y, que se intercambia con U. En la cima K = K_x ≠ 0, de donde sale H = v₀²sin²θ/(2g). La rapidez a una altura y, v = √(v₀² − 2gy), no depende del ángulo. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
+  <h2 class="titulo">La energía también se conserva en el tiro parabólico</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra el punto o lánzalo · \(m = \qty{1}{kg}\)</span><span class="val" id="ep-lect"></span></div>
+      <div id="ep-fig" class="pb-arr"></div>
+      <label class="ctrl ep-ctl"><span>Rapidez \(v_0\)</span><input type="range" id="ep-v0" min="8" max="25" step="0.5" value="18"><span class="v" id="ep-v0v"></span></label>
+      <label class="ctrl ep-ctl"><span>Ángulo \(\theta\)</span><input type="range" id="ep-th" min="10" max="85" step="1" value="50"><span class="v" id="ep-thv"></span></label>
+      <div class="fila-btn ep-ctl"><button type="button" class="btn prim" id="ep-play">▶ Lanzar</button><label class="chk n"><input type="checkbox" id="ep-sep">Separar \(K = K_x + K_y\)</label></div>
+    </figure>
+    <div class="pila ep-col">
+      <div class="kf" style="padding:4px 14px;font-size:30px">\[ E = \underbrace{\tfrac12 m v^{2}}_{K} + \underbrace{m g y}_{U} = \tfrac12 m v_0^{2} = \text{cte.} \]</div>
+      <div class="caja neutra frag"><h3>1 · Solo la parte vertical se intercambia</h3>
+        \[ K = \casouno{\tfrac12 m v_x^{2}} + \casodos{\tfrac12 m v_y^{2}}, \qquad v_x = v_0\cos\theta \ \text{no cambia} \]
+        <p class="nota" style="margin:0">Solo \(K_y\) se convierte en \(U\) al subir y vuelve al bajar.</p></div>
+      <div class="caja neutra frag"><h3>2 · La altura máxima, por energía</h3>
+        \[ \tfrac12 m v_0^{2} = \casouno{\tfrac12 m v_0^{2}\cos^{2}\theta} + m g H \;\Longrightarrow\; \resalta{H = \dfrac{v_0^{2}\sin^{2}\theta}{2g}} \]
+        <p class="nota" style="margin:0">En la cima \(K \neq 0\): el objeto sigue moviéndose en \(x\).</p></div>
+      <div class="caja c2 frag"><h3>3 · La rapidez depende solo de la altura</h3>
+        \[ v(y) = \sqrt{v_0^{2} - 2 g y} \]
+        <p class="nota" style="margin:0">No depende del ángulo; al volver al suelo, \(v = v_0\).</p></div>
     </div>
   </div>
 </section>
@@ -1191,6 +1258,7 @@ const T_OSC = 2 * Math.PI;
   const host = document.getElementById('pb-fig');
   if (!host) return;
   const g = 9.8, rv = document.getElementById('pb-v0'), rt = document.getElementById('pb-th'), cC = document.getElementById('pb-comp'), c45 = document.getElementById('pb-45');
+  let fr = 0.2, ult = null, arr = false;             /* posición del vector: fracción del tiempo de vuelo */
   const tray = (v0, th) => { const r = th * Math.PI / 180, tv = 2 * v0 * Math.sin(r) / g, p = []; for (let i = 0; i <= 120; i++) { const t = tv * i / 120; p.push([v0 * Math.cos(r) * t, v0 * Math.sin(r) * t - 0.5 * g * t * t]); } return p; };
   function pinta() {
     const v0 = +rv.value, th = +rt.value, r = th * Math.PI / 180;
@@ -1208,16 +1276,144 @@ const T_OSC = 2 * Math.PI;
     rotulo(g2, A.X(xs) + 12, A.Y(H) - 12, '*H* = ' + num(H, 1) + ' m', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
     const yb = A.Y(0) - 20; flecha(g2, A.X(R / 2), yb, A.X(0), yb, 'var(--tinta)', 3); flecha(g2, A.X(R / 2), yb, A.X(R), yb, 'var(--tinta)', 3);
     rotulo(g2, A.X(R / 2), yb - 10, '*R* = ' + num(R, 1) + ' m', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
-    /* vector velocidad inicial y sus componentes */
-    const L = 0.18 * X, vx = L * Math.cos(r), vy = L * Math.sin(r);
-    flecha(g2, A.X(0), A.Y(0), A.X(vx), A.Y(0), 'var(--caso1)', 4); flecha(g2, A.X(0), A.Y(0), A.X(0), A.Y(vy), 'var(--caso2)', 4);
-    flecha(g2, A.X(0), A.Y(0), A.X(vx), A.Y(vy), 'var(--res)', 5);
+    /* vector velocidad en un punto de la trayectoria: se arrastra a lo largo de ella */
+    const tp = fr * tv, px = v0 * Math.cos(r) * tp, py = v0 * Math.sin(r) * tp - 0.5 * g * tp * tp;
+    const vxp = v0 * Math.cos(r), vyp = v0 * Math.sin(r) - g * tp, k = 0.18 * X / v0;      /* metros de dibujo por m/s */
+    polilinea(A, [[px, 0], [px, py]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:4 6');
+    polilinea(A, [[0, py], [px, py]], 'stroke:var(--proy);stroke-width:2;stroke-dasharray:4 6');
+    flecha(g2, A.X(px), A.Y(py), A.X(px + k * vxp), A.Y(py), 'var(--caso1)', 4);
+    if (Math.abs(vyp) > 0.05) flecha(g2, A.X(px), A.Y(py), A.X(px), A.Y(py + k * vyp), 'var(--caso2)', 4);
+    flecha(g2, A.X(px), A.Y(py), A.X(px + k * vxp), A.Y(py + k * vyp), 'var(--res)', 5);
+    nodo('circle', { cx: A.X(px), cy: A.Y(py), r: 13, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4;cursor:grab' }, g2);
+    const der = px < X * 0.55, ex = der ? 18 : -18, anc = der ? 'start' : 'end', dy = vyp >= 0 ? 44 : -84;
+    rotulo(g2, A.X(px) + ex, A.Y(py) + dy, '(*x*; *y*) = (' + num(px, 1) + '; ' + num(py, 1) + ') m', { 'text-anchor': anc, 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:7px' });
+    rotulo(g2, A.X(px) + ex, A.Y(py) + dy + 30, '!v! = (' + num(vxp, 1) + '; ' + num(vyp, 1) + ') m/s', { 'text-anchor': anc, 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:7px' });
+    ult = { A: A, X: X, v0x: v0 * Math.cos(r), tv: tv };
     document.getElementById('pb-v0v').textContent = num(v0, 1) + ' m/s';
     document.getElementById('pb-thv').textContent = th + '°';
-    document.getElementById('pb-lect').textContent = 'tₛ = ' + num(ts, 2) + ' s · tᵥ = ' + num(tv, 2) + ' s · R = ' + num(R, 1) + ' m (máx. ' + num(Rmax, 1) + ' m)';
+    document.getElementById('pb-lect').textContent = 't = ' + num(tp, 2) + ' s · tₛ = ' + num(ts, 2) + ' s · tᵥ = ' + num(tv, 2) + ' s · R = ' + num(R, 1) + ' m';
   }
+  /* arrastre del punto a lo largo de la trayectoria: la x del puntero fija el instante */
+  const aT = ev => {
+    const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse()), A = ult.A;
+    const x = (p.x - A.m.l) / (A.W - A.m.l - A.m.r) * ult.X;
+    return Math.max(0, Math.min(1, x / ult.v0x / ult.tv));
+  };
+  host.addEventListener('pointerdown', ev => { if (!ult) return; arr = true; host.setPointerCapture(ev.pointerId); fr = aT(ev); pinta(); ev.preventDefault(); });
+  host.addEventListener('pointermove', ev => { if (arr) { fr = aT(ev); pinta(); } });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
   [rv, rt].forEach(x => x.addEventListener('input', pinta)); [cC, c45].forEach(x => x.addEventListener('change', pinta));
   cC.checked = true; pinta();
+})();
+
+/* ═══ ECUACIÓN DE LA TRAYECTORIA: POR QUÉ ES UNA PARÁBOLA ══════════════ */
+(function () {
+  const host = document.getElementById('tr-fig');
+  if (!host) return;
+  const g = 9.8, R_ = id => document.getElementById(id), rv = R_('tr-v0'), rt = R_('tr-th'), cC = R_('tr-caidas'), cV = R_('tr-vert');
+  cC.checked = true;
+  function pinta() {
+    const v0 = +rv.value, th = +rt.value * Math.PI / 180, A = Math.tan(th), B = g / (2 * v0 * v0 * Math.cos(th) ** 2);
+    const R = A / B, H = A * A / (4 * B), tv = 2 * v0 * Math.sin(th) / g;
+    const X = Math.max(R * 1.08, 10), Y = Math.max(H * 1.9, A * X * 0.55, 5);
+    const paso = X > 60 ? 20 : X > 30 ? 10 : X > 12 ? 5 : 2, xt = [], yt = [];
+    for (let x = 0; x <= X; x += paso) xt.push(x); for (let y = 0; y <= Y; y += paso) yt.push(y);
+    const Ax = ejes(host, { W: 1180, H: 560, x: [0, X], y: [0, Y], xt: xt, yt: yt, xl: '*x* (m)', yl: '*y* (m)' });
+    const clip = nodo('clipPath', { id: 'tr-clip' }, Ax.svg);
+    nodo('rect', { x: Ax.m.l, y: Ax.m.t, width: Ax.W - Ax.m.l - Ax.m.r, height: Ax.H - Ax.m.t - Ax.m.b }, clip);
+    Ax.capa.setAttribute('clip-path', 'url(#tr-clip)');
+    /* recta sin gravedad y = x tanθ */
+    polilinea(Ax, [[0, 0], [X, A * X]], 'stroke:var(--res);stroke-width:3;stroke-dasharray:10 7');
+    /* parábola */
+    const pts = []; for (let i = 0; i <= 160; i++) { const x = R * i / 160; pts.push([x, A * x - B * x * x]); }
+    polilinea(Ax, pts, 'stroke:var(--tinta);stroke-width:5');
+    const g2 = Ax.capa;
+    rotulo(g2, Ax.X(Math.min(X * 0.62, (Y * 0.9) / A)) + 12, Ax.Y(A * Math.min(X * 0.62, (Y * 0.9) / A)) + 6, 'sin gravedad: *y* = *x* tan *θ*', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* caídas en intervalos de tiempo iguales: 1 : 4 : 9 : 16 … */
+    if (cC.checked) {
+      const n = 5, dt = tv / n;
+      for (let k = 1; k <= n; k++) {
+        const t = k * dt, x = v0 * Math.cos(th) * t, yl = A * x, yp = A * x - B * x * x, c = 0.5 * g * t * t;
+        if (yl > Y * 1.2) break;
+        nodo('line', { x1: Ax.X(x), x2: Ax.X(x), y1: Ax.Y(yl), y2: Ax.Y(yp), style: 'stroke:var(--caso2);stroke-width:4' }, g2);
+        nodo('circle', { cx: Ax.X(x), cy: Ax.Y(yp), r: 8, style: 'fill:var(--tinta);stroke:var(--panel);stroke-width:2' }, g2);
+        rotulo(g2, Ax.X(x) + 8, Ax.Y((yl + yp) / 2) + 8, num(c, 1) + ' m (' + (k * k) + ')', { 'font-size': 22, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px' });
+      }
+    }
+    if (cV.checked) {
+      polilinea(Ax, [[R / 2, 0], [R / 2, H]], 'stroke:var(--caso1);stroke-width:3;stroke-dasharray:6 6');
+      nodo('circle', { cx: Ax.X(R / 2), cy: Ax.Y(H), r: 11, style: 'fill:var(--caso1);stroke:var(--panel);stroke-width:3' }, g2);
+      rotulo(g2, Ax.X(R / 2) + 14, Ax.Y(H) - 14, 'vértice (*R*/2, *H*)', { 'font-size': 24, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+      [[0, 0], [R, 0]].forEach(q => nodo('circle', { cx: Ax.X(q[0]), cy: Ax.Y(q[1]), r: 9, style: 'fill:var(--caso1)' }, g2));
+    }
+    R_('tr-v0v').textContent = num(v0, 1) + ' m/s'; R_('tr-thv').textContent = rt.value + '°';
+    R_('tr-lect').textContent = 'A = ' + num(A, 3) + ' · B = ' + num(B, 4) + ' m⁻¹ · vértice (' + num(R / 2, 1) + '; ' + num(H, 1) + ') m';
+  }
+  [rv, rt].forEach(x => x.addEventListener('input', pinta)); [cC, cV].forEach(x => x.addEventListener('change', pinta)); pinta();
+})();
+
+/* ═══ ENERGÍA EN EL MOVIMIENTO PARABÓLICO ═══════════════════════════════ */
+(function () {
+  const host = document.getElementById('ep-fig');
+  if (!host) return;
+  const g = 9.8, m = 1, R_ = id => document.getElementById(id), rv = R_('ep-v0'), rt = R_('ep-th'), cs = R_('ep-sep'), bp = R_('ep-play');
+  let fr = 0.3, ult = null, arr = false, corre = false, tAnt = 0;
+  function pinta() {
+    const v0 = +rv.value, th = +rt.value * Math.PI / 180, c = Math.cos(th), sn = Math.sin(th);
+    const tv = 2 * v0 * sn / g, R = v0 * v0 * Math.sin(2 * th) / g, H = v0 * v0 * sn * sn / (2 * g), E = 0.5 * m * v0 * v0;
+    const tp = fr * tv, x = v0 * c * tp, y = v0 * sn * tp - 0.5 * g * tp * tp, vx = v0 * c, vy = v0 * sn - g * tp;
+    const K = 0.5 * m * (vx * vx + vy * vy), Kx = 0.5 * m * vx * vx, Ky = 0.5 * m * vy * vy, U = m * g * y;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 560', class: 'fig' }, host);
+    /* trayectoria (izquierda, escala fija para comparar ángulos) */
+    const Xm = v0 * v0 / g * 1.05, Ym = v0 * v0 / (2 * g) * 1.1, ox = 60, oy = 500, e = Math.min(700 / Xm, 440 / Ym);   /* escala de este v₀: compara ángulos */
+    const X = u => ox + u * e, Y = u => oy - u * e;
+    nodo('line', { x1: ox - 20, x2: ox + 720, y1: oy, y2: oy, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    const pts = []; for (let i = 0; i <= 120; i++) { const t = tv * i / 120; pts.push(X(v0 * c * t).toFixed(1) + ',' + Y(v0 * sn * t - 0.5 * g * t * t).toFixed(1)); }
+    nodo('polyline', { points: pts.join(' '), style: 'fill:none;stroke:var(--res);stroke-width:4' }, svg);
+    nodo('line', { x1: ox - 20, x2: ox + 720, y1: Y(H), y2: Y(H), style: 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    rotulo(svg, ox + 700, Y(H) - 8, '*H* = ' + num(H, 1) + ' m', { 'text-anchor': 'end', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FMATH });
+    nodo('line', { x1: X(x), x2: X(x), y1: oy, y2: Y(y), style: 'stroke:var(--caso2);stroke-width:2;stroke-dasharray:4 6' }, svg);
+    const kv = 7;
+    flecha(svg, X(x), Y(y), X(x) + kv * vx, Y(y) - kv * vy, 'var(--res)', 4);
+    nodo('circle', { cx: X(x), cy: Y(y), r: 13, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4;cursor:grab' }, svg);
+    rotulo(svg, X(x) + 16, Y(y) + 36, '*y* = ' + num(y, 1) + ' m · *v* = ' + num(Math.hypot(vx, vy), 1) + ' m/s', { 'font-size': 23, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* barras de energía (derecha) */
+    const bx = 850, bw = 70, base = 500, esc = 420 / E, gap = 20;
+    const barras = cs.checked ? [['*K*_x', Kx, 'var(--caso1)'], ['*K*_y', Ky, 'var(--caso2)'], ['*U*', U, 'var(--tinta2)'], ['*E*', E, 'var(--res)']] : [['*K*', K, 'var(--caso1)'], ['*U*', U, 'var(--tinta2)'], ['*E*', E, 'var(--res)']];
+    const w = cs.checked ? 60 : bw;
+    barras.forEach((b, k) => {
+      const x0 = bx + k * (w + gap), h = b[1] * esc;
+      nodo('rect', { x: x0, y: base - h, width: w, height: h, style: 'fill:' + b[2] }, svg);
+      rotulo(svg, x0 + w / 2, base + 30, b[0], { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' });
+      rotulo(svg, x0 + w / 2, base - h - 10, num(b[1], 0) + ' J', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--tinta);font-family:' + FMATH });
+    });
+    nodo('line', { x1: bx - 10, x2: bx + barras.length * (w + gap), y1: base, y2: base, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    if (cs.checked) nodo('line', { x1: bx - 10, x2: bx + barras.length * (w + gap), y1: base - Kx * esc, y2: base - Kx * esc, style: 'stroke:var(--caso1);stroke-width:2;stroke-dasharray:5 5' }, svg);
+    R_('ep-v0v').textContent = num(v0, 1) + ' m/s'; R_('ep-thv').textContent = rt.value + '°';
+    R_('ep-lect').textContent = 'K + U = ' + num(K + U, 1) + ' J · Kₓ = ' + num(Kx, 1) + ' J (constante)';
+    ult = { ox: ox, e: e, vx: vx, tv: tv };
+  }
+  const aT = ev => {
+    const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    const p = pt.matrixTransform(svg.getScreenCTM().inverse());
+    return Math.max(0, Math.min(1, (p.x - ult.ox) / ult.e / ult.vx / ult.tv));
+  };
+  host.addEventListener('pointerdown', ev => { if (!ult) return; corre = false; bp.textContent = '▶ Lanzar'; arr = true; host.setPointerCapture(ev.pointerId); fr = aT(ev); pinta(); ev.preventDefault(); });
+  host.addEventListener('pointermove', ev => { if (arr) { fr = aT(ev); pinta(); } });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
+  bp.addEventListener('click', () => { if (!corre && fr >= 1) fr = 0; corre = !corre; bp.textContent = corre ? '❚❚ Pausa' : '▶ Lanzar'; });
+  function bucle(ms) {
+    if (corre && activa(host)) {
+      const dt = tAnt ? Math.min(0.05, (ms - tAnt) / 1000) : 0; fr += dt * 0.7 / ult.tv;
+      if (fr >= 1) { fr = 1; corre = false; bp.textContent = '▶ Lanzar'; }
+      pinta();
+    }
+    tAnt = ms; requestAnimationFrame(bucle);
+  }
+  [rv, rt].forEach(x => x.addEventListener('input', pinta)); cs.addEventListener('change', pinta);
+  pinta(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ACTIVIDAD: INDEPENDENCIA DE LOS MOVIMIENTOS EN x Y y ═══════════════ */
