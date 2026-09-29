@@ -190,6 +190,27 @@ dl.glosa dd{margin:0;font-size:29px}
 .os-ley{display:flex;gap:26px;font:600 22px/1 var(--font-body);margin-top:2px}
 .os-ley span::before{content:'';display:inline-block;width:28px;height:5px;margin-right:8px;vertical-align:middle}
 .os-ley .l-tl::before{background:var(--res)} .os-ley .l-s::before{background:var(--caso2)} .os-ley .l-t::before{background:var(--tinta)}
+#dp-caida .cl-col > * + *,#dp-parab .pb-col > * + *,#dp-indep .in-col > * + *{margin-top:8px}
+#dp-caida .caja h3{font-size:25px;margin:0}
+#dp-caida .caja{font-size:30px}
+#dp-caida .caja{padding:6px 16px}
+#dp-caida .btn,#dp-indep .btn{font-size:24px;padding:8px 13px}
+#dp-caida .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+#dp-caida .ctrl,#dp-parab .ctrl,#dp-indep .ctrl{margin:2px 0}
+#dp-parab .pb-ctl,#dp-caida .cl-ctl{margin:4px 0}
+#dp-parab .caja{font-size:27px}
+#dp-indep .lectura div{padding:6px 12px;font-size:21px}
+#dp-indep .lectura b{font-size:28px}
+#dp-marco-cm .mc-col > * + *,#dp-aniq .an-col > * + *,#dp-granada .gr-col > * + *{margin-top:8px}
+#dp-marco-cm .caja{padding:6px 16px;font-size:28px}
+#dp-marco-cm .caja h3{font-size:26px;margin:0}
+#dp-marco-cm .ctrl,#dp-aniq .ctrl,#dp-granada .ctrl{margin:2px 0}
+#dp-marco-cm .mc-ctl,#dp-aniq .an-ctl{margin:4px 0}
+#dp-marco-cm .btn,#dp-aniq .btn,#dp-granada .btn{font-size:24px;padding:8px 13px}
+#dp-marco-cm .fila-btn .sub,#dp-aniq .fila-btn .sub,#dp-granada .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+#dp-aniq .lectura div,#dp-granada .lectura div{padding:6px 12px;font-size:21px}
+#dp-aniq .lectura b,#dp-granada .lectura b{font-size:27px}
+#an-msg.mal{border-left-color:var(--mal);background:var(--mal-50)}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -800,7 +821,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <section class="poster" data-seccion="Aceleración constante y energía" data-label="§ 3 · Aceleración constante y energía" data-speaker-notes="Separador: Aceleración constante y energía. 4 diapositivas.">
   <div class="p-num">§ 3</div>
   <h2 class="p-tit">Aceleración constante y energía</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Pendiente y área de la recta v–t</span><span>Del v² cinemático al teorema del trabajo y la energía</span><span>Lanzamiento vertical: fuerza constante F = -mg</span><span>Un problema difícil, el mismo algoritmo: F = -mg - k v|v|</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Pendiente y área de la recta v–t</span><span>Del v² cinemático al teorema del trabajo y la energía</span><span>Lanzamiento vertical: fuerza constante F = -mg</span><span>Lo que pierde la energía cinética lo gana la potencial</span></div>
 </section>
 
 
@@ -858,8 +879,89 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-arrastre" data-label="Lanzamiento vertical con resistencia del aire" data-speaker-notes="§ 3.4. Ejemplo numérico con arrastre cuadrático F_D = k v|v|, k = ½ρC_D A con ρ = 1,2 kg/m³ y A = πd²/4 para cada objeto (bala 6,46 × 10⁻⁵ m², béisbol 4,30 × 10⁻³ m², ping-pong 1,26 × 10⁻³ m²). El algoritmo solo cambia la fuerza; la energía cinética perdida (≈ 87 % para la bala) se disipa en calor, sonido y turbulencia. Bala .38: H ≈ 887 m (sin aire 2862 m), regresa a ≈ 86,5 m/s (sin aire 236,8 m/s).">
-  <p class="ceja">§ 3.4 · Ejemplo numérico con resistencia del aire</p>
+<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-conserva" data-label="Conservación de la energía" data-speaker-notes="§ 3.5. Explorador: K y U durante el lanzamiento vertical.">
+  <p class="ceja">§ 3.5 · Conservación de la energía</p>
+  <h2 class="titulo">Lo que pierde la energía cinética lo gana la potencial</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Lanzamiento vertical · \(m = \qty{1}{kg}\), \(v_0 = \qty{10}{m/s}\)</span><span class="val" id="ce-lect"></span></div>
+      <div id="ce-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Con \(W = -mgh\) en el teorema del trabajo y la energía:</p>
+      \[ \tfrac12 m v_0^{2} = \tfrac12 m v^{2} + mgh \;\Longrightarrow\; E_{\text{total}} = K + E_{\text{pot}} = \text{cte.} \]
+      <label class="ctrl"><span>Tiempo \(t\)</span><input type="range" id="ce-t" min="0" max="2" step="0.02" value="0.5"><span class="v" id="ce-tv"></span></label>
+      <p class="nota">La igualdad vale para toda fuerza conservativa: aquellas cuyo trabajo solo transforma energía mecánica.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-caida" data-label="Caída libre: altura máxima y tiempos" data-speaker-notes="§ 3.5. Resultados analíticos del lanzamiento vertical (aceleración constante −g): tiempo de subida v₀/g, altura máxima v₀²/(2g) y tiempo de vuelo 2v₀/g; regresa con la misma rapidez v₀. ↓ revela 3 pasos. Explorador: v₀ y la gravedad de la Tierra, la Luna o Marte.">
+  <p class="ceja">§ 3.5 · Caída libre: resultados analíticos</p>
+  <h2 class="titulo">Altura máxima, tiempo de subida y tiempo de vuelo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Altura \(y\) frente al tiempo \(t\)</span><span class="val" id="cl-lect"></span></div>
+      <div id="cl-fig"></div>
+      <div class="fila-btn cl-ctl" style="margin-top:6px"><span class="sub">Gravedad:</span><button type="button" class="btn on" data-g="9.8">Tierra, \(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="btn" data-g="3.71">Marte, \(\qty{3{,}71}{m/s^2}\)</button><button type="button" class="btn" data-g="1.62">Luna, \(\qty{1{,}62}{m/s^2}\)</button></div>
+      <label class="ctrl cl-ctl"><span>Velocidad inicial \(v_0\)</span><input type="range" id="cl-v0" min="2" max="30" step="0.5" value="10"><span class="v" id="cl-v0v"></span></label>
+    </figure>
+    <div class="pila cl-col">
+      <p style="margin:0">Con aceleración constante \(-g\) desde \(y_0 = 0\):
+        \[ v(t) = v_0 - g t, \qquad y(t) = v_0 t - \tfrac12 g t^{2}. \]</p>
+      <div class="caja neutra frag"><h3>Subida: termina cuando \(v = 0\)</h3>\[ 0 = v_0 - g\,t_s \;\Longrightarrow\; \casouno{t_s = \tfrac{v_0}{g}} \]</div>
+      <div class="caja neutra frag"><h3>Altura máxima: \(y(t_s)\) · igual que con energía, \(\tfrac12 m v_0^{2} = m g H\)</h3>\[ H = v_0\,\tfrac{v_0}{g} - \tfrac12\,g\left(\tfrac{v_0}{g}\right)^{2} \;\Longrightarrow\; \resalta{H = \tfrac{v_0^{2}}{2g}} \]</div>
+      <div class="caja neutra frag"><h3>Vuelo: vuelve a \(y = 0\) · sube y baja en el mismo tiempo</h3>\[ t\left(v_0 - \tfrac12 g t\right) = 0 \;\Longrightarrow\; \casodos{t_v = \tfrac{2 v_0}{g} = 2\,t_s} \]<p class="nota" style="margin:0">Y regresa con la misma rapidez \(v_0\) con que salió.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-parab" data-label="Movimiento parabólico" data-speaker-notes="§ 3.5. Movimiento parabólico: en x no hay fuerza (velocidad constante v₀cosθ) y en y es la caída libre con v₀sinθ. Tiempo de subida, altura máxima, tiempo de vuelo, alcance v₀²sin2θ/g con máximo en 45°, y ángulos complementarios con el mismo alcance. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
+  <h2 class="titulo">Dos movimientos a la vez: uniforme en \(x\), caída libre en \(y\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Trayectoria \(y\) frente a \(x\)</span><span class="val" id="pb-lect"></span></div>
+      <div id="pb-fig"></div>
+      <label class="ctrl pb-ctl"><span>Rapidez \(v_0\)</span><input type="range" id="pb-v0" min="5" max="30" step="0.5" value="20"><span class="v" id="pb-v0v"></span></label>
+      <label class="ctrl pb-ctl"><span>Ángulo \(\theta\)</span><input type="range" id="pb-th" min="5" max="85" step="1" value="30"><span class="v" id="pb-thv"></span></label>
+      <div class="fila-btn pb-ctl"><label class="chk a"><input type="checkbox" id="pb-comp">Ángulo complementario \(90^\circ - \theta\)</label><label class="chk p"><input type="checkbox" id="pb-45">\(45^\circ\)</label></div>
+    </figure>
+    <div class="pila pb-col">
+      <div class="kf" style="padding:4px 16px;font-size:31px">\[ \begin{aligned} x(t) &= (v_0\cos\theta)\,t & a_x &= 0 \\ y(t) &= (v_0\sin\theta)\,t - \tfrac12 g t^{2} & a_y &= -g \end{aligned} \]</div>
+      <div class="caja neutra frag" style="padding:4px 14px">En \(y\), caída libre con \(v_{0y} = v_0\sin\theta\):
+        \[ \casouno{t_s = \tfrac{v_0\sin\theta}{g}}, \quad \resalta{H = \tfrac{v_0^{2}\sin^{2}\theta}{2g}}, \quad \casodos{t_v = \tfrac{2 v_0\sin\theta}{g}}. \]</div>
+      <div class="caja neutra frag" style="padding:4px 14px">En \(x\), velocidad constante durante todo el vuelo:
+        \[ R = (v_0\cos\theta)\,t_v = \tfrac{2 v_0^{2}\sin\theta\cos\theta}{g} = \tfrac{v_0^{2}\sin 2\theta}{g}. \]</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:29px">\[ R_{\text{máx}} = \tfrac{v_0^{2}}{g} \ \text{ en } \theta = 45^\circ; \qquad y = x\tan\theta - \tfrac{g\,x^{2}}{2 v_0^{2}\cos^{2}\theta} \]<p class="nota" style="margin:0">Como \(\sin 2\theta = \sin(180^\circ - 2\theta)\), \(\theta\) y \(90^\circ - \theta\) dan el mismo alcance. Eliminando \(t\) sale una parábola.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-indep" data-label="Actividad: movimientos independientes" data-speaker-notes="§ 3.5. Actividad: tres objetos salen a la vez. El proyectil (v₀ con ángulo θ), una pelota lanzada verticalmente con la misma v₀y y un carrito que avanza con v₀x. La pelota vertical siempre está a la misma altura que el proyectil, y el carrito debajo de él. Primero se pide predecir cuál llega antes al suelo.">
+  <p class="ceja">§ 3.5 · Actividad: independencia de los movimientos</p>
+  <h2 class="titulo">El movimiento en \(y\) no se entera del movimiento en \(x\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Salen a la vez: proyectil, pelota vertical y carrito</span><span class="val" id="in-lect"></span></div>
+      <canvas class="lienzo" id="in-cv" width="1240" height="700"></canvas>
+    </figure>
+    <div class="pila in-col">
+      <div class="caja c2" style="padding:6px 16px"><p style="margin:0"><strong>Predice primero.</strong> La pelota vertical sale con la misma \(v_{0y}\) que el proyectil. ¿Cuál llega antes al suelo?</p>
+        <div class="fila-btn" id="in-pred" style="margin-top:6px"><button type="button" class="btn" data-r="p">El proyectil</button><button type="button" class="btn" data-r="v">La pelota vertical</button><button type="button" class="btn" data-r="i">Al mismo tiempo</button></div></div>
+      <label class="ctrl"><span>Rapidez \(v_0\)</span><input type="range" id="in-v0" min="8" max="25" step="0.5" value="18"><span class="v" id="in-v0v"></span></label>
+      <label class="ctrl"><span>Ángulo \(\theta\)</span><input type="range" id="in-th" min="15" max="80" step="1" value="55"><span class="v" id="in-thv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn prim" id="in-play">▶ Lanzar</button><button type="button" class="btn" id="in-reset">↺ Reiniciar</button><label class="chk n"><input type="checkbox" id="in-estela">Estela cada \(\qty{0{,}2}{s}\)</label></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr 1fr;margin-top:0">
+        <div>Altura del proyectil<b id="in-yp"></b></div><div>Altura de la pelota vertical<b id="in-yv"></b></div><div>\(x\) del proyectil y del carrito<b id="in-x"></b></div>
+      </div>
+      <div class="cz-fb" id="in-fb" style="margin-top:0"></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-arrastre" data-label="Lanzamiento vertical con resistencia del aire" data-speaker-notes="§ 3.5. Ejemplo numérico con arrastre cuadrático F_D = k v|v|, k = ½ρC_D A con ρ = 1,2 kg/m³ y A = πd²/4 para cada objeto (bala 6,46 × 10⁻⁵ m², béisbol 4,30 × 10⁻³ m², ping-pong 1,26 × 10⁻³ m²). El algoritmo solo cambia la fuerza; la energía cinética perdida (≈ 87 % para la bala) se disipa en calor, sonido y turbulencia. Bala .38: H ≈ 887 m (sin aire 2862 m), regresa a ≈ 86,5 m/s (sin aire 236,8 m/s).">
+  <p class="ceja">§ 3.5 · Ejemplo numérico con resistencia del aire</p>
   <h2 class="titulo">Un problema difícil, el mismo algoritmo: \(F = -mg - k\,v\abs{v}\)</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
     <figure class="svgbox" style="margin:0">
@@ -894,31 +996,14 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva" data-seccion="Aceleración constante y energía" id="dp-conserva" data-label="Conservación de la energía" data-speaker-notes="§ 3.5. Explorador: K y U durante el lanzamiento vertical.">
-  <p class="ceja">§ 3.5 · Conservación de la energía</p>
-  <h2 class="titulo">Lo que pierde la energía cinética lo gana la potencial</h2>
-  <div class="g2-60">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Lanzamiento vertical · \(m = \qty{1}{kg}\), \(v_0 = \qty{10}{m/s}\)</span><span class="val" id="ce-lect"></span></div>
-      <div id="ce-fig"></div>
-    </figure>
-    <div class="pila">
-      <p>Con \(W = -mgh\) en el teorema del trabajo y la energía:</p>
-      \[ \tfrac12 m v_0^{2} = \tfrac12 m v^{2} + mgh \;\Longrightarrow\; E_{\text{total}} = K + E_{\text{pot}} = \text{cte.} \]
-      <label class="ctrl"><span>Tiempo \(t\)</span><input type="range" id="ce-t" min="0" max="2" step="0.02" value="0.5"><span class="v" id="ce-tv"></span></label>
-      <p class="nota">La igualdad vale para toda fuerza conservativa: aquellas cuyo trabajo solo transforma energía mecánica.</p>
-    </div>
-  </div>
-</section>
-
-<section class="poster" data-seccion="Cantidad de movimiento" data-label="§ 4 · Cantidad de movimiento" data-speaker-notes="Separador: Cantidad de movimiento. 2 diapositivas.">
+<section class="poster" data-seccion="Cantidad de movimiento" data-label="§ 4 · Cantidad de movimiento" data-speaker-notes="Separador: Cantidad de movimiento. 4 diapositivas.">
   <div class="p-num">§ 4</div>
   <h2 class="p-tit">Cantidad de movimiento</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(2,1fr)"><span>Un sistema aislado no puede cambiar su momento total</span><span>Colisión elástica: el blanco m₂ está en reposo</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Un sistema aislado no puede cambiar su momento total</span><span>Desde el centro de masas, el momentum total es cero</span><span>Colisión elástica: el blanco m₂ está en reposo</span><span>Aniquilación electrón-positrón: ¿por qué dos fotones?</span></div>
 </section>
 
 
-<section class="diapositiva" data-seccion="Cantidad de movimiento" data-label="Conservación de la cantidad de movimiento" data-speaker-notes="§ 3.6. ↓ revela 4 pasos de la derivación.">
+<section class="diapositiva" data-seccion="Cantidad de movimiento" data-label="Conservación de la cantidad de movimiento" data-speaker-notes="§ 3.6. ↓ revela 4 pasos de la derivación. M_total es la suma de todas las masas; v_CM = P_total/M_total.">
   <p class="ceja">§ 3.6 · Conservación de la cantidad de movimiento</p>
   <h2 class="titulo">Un <span class="prop" data-pop="pop-aislado">sistema aislado</span> no puede cambiar su momento total</h2>
   <div class="g2">
@@ -930,8 +1015,34 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     </div>
     <div class="pila">
       <div class="caja frag"><h3>Centro de masas</h3>
-        \[ \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}}, \qquad \vect{r}_{\text{CM}} = \dfrac{m_1\vect{r}_1 + m_2\vect{r}_2 + \dots + m_N\vect{r}_N}{M_{\text{total}}}. \]</div>
+        \[ M_{\text{total}} = m_1 + m_2 + \dots + m_N, \qquad \vect{P}_{\text{total}} = \vect{p}_1 + \vect{p}_2 + \dots + \vect{p}_N \]
+        \[ \vect{r}_{\text{CM}} = \dfrac{m_1\vect{r}_1 + m_2\vect{r}_2 + \dots + m_N\vect{r}_N}{M_{\text{total}}}, \qquad \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}}. \]</div>
       <div class="kf frag">\[ \vect{F}_{\text{neta, ext}} = \dfrac{\Delta\vect{P}_{\text{total}}}{\Delta t} = M_{\text{total}}\,\vect{a}_{\text{CM}} \]</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-marco-cm" data-label="Momentum total en el marco del centro de masas" data-speaker-notes="§ 3.6. Demostración: visto desde un observador que viaja con el centro de masas, v′ᵢ = vᵢ − v_CM y P′ = P − M_total v_CM = 0, en todo instante y para cualquier sistema. Si el sistema es aislado, v_CM es constante y ese marco es inercial. ↓ revela 3 pasos. Explorador: dos carritos.">
+  <p class="ceja">§ 3.6 · Marco del centro de masas</p>
+  <h2 class="titulo">Desde el centro de masas, el momentum total es cero</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Dos carritos: momentos individuales y total</span><span class="val" id="mc-lect"></span></div>
+      <div id="mc-fig"></div>
+      <div class="fila-btn mc-ctl"><span class="sub">Marco:</span><button type="button" class="btn on" data-marco="lab">Laboratorio</button><button type="button" class="btn" data-marco="cm">Centro de masas</button></div>
+      <label class="ctrl mc-ctl"><span>\(m_1\) [kg]</span><input type="range" id="mc-m1" min="0.5" max="5" step="0.5" value="3"><span class="v" id="mc-m1v"></span></label>
+      <label class="ctrl mc-ctl"><span>\(v_1\) [m/s]</span><input type="range" id="mc-v1" min="-4" max="4" step="0.5" value="2"><span class="v" id="mc-v1v"></span></label>
+      <label class="ctrl mc-ctl"><span>\(m_2\) [kg]</span><input type="range" id="mc-m2" min="0.5" max="5" step="0.5" value="1"><span class="v" id="mc-m2v"></span></label>
+      <label class="ctrl mc-ctl"><span>\(v_2\) [m/s]</span><input type="range" id="mc-v2" min="-4" max="4" step="0.5" value="-1"><span class="v" id="mc-v2v"></span></label>
+    </figure>
+    <div class="pila mc-col">
+      <div class="caja neutra frag"><h3>1 · Velocidades vistas desde el CM</h3>
+        Un observador que viaja con el centro de masas ve a cada partícula con
+        \[ \vect{v}\,'_i = \vect{v}_i - \vect{v}_{\text{CM}}. \]</div>
+      <div class="caja neutra frag"><h3>2 · Momentum total en ese marco</h3>
+        \[ \vect{P}\,' = \sum_i m_i\,\vect{v}\,'_i = \sum_i m_i\,\vect{v}_i - \Big(\sum_i m_i\Big)\vect{v}_{\text{CM}} = \vect{P}_{\text{total}} - M_{\text{total}}\,\vect{v}_{\text{CM}}. \]</div>
+      <div class="kf frag">\[ \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}} \;\Longrightarrow\; \vect{P}\,' = \vect{P}_{\text{total}} - \vect{P}_{\text{total}} = \vect{0} \]
+        <p class="nota" style="margin:0">Vale en <strong>todo instante y para cualquier sistema</strong>, por la sola definición del centro de masas. Si además el sistema es aislado, \(\vect{v}_{\text{CM}}\) es constante y ese marco es inercial: el más cómodo para estudiar choques, explosiones y órbitas.</p></div>
     </div>
   </div>
 </section>
@@ -949,6 +1060,46 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <label class="ctrl"><span>Razón \(m_1/m_2\)</span><input type="range" id="ch-r" min="-2" max="2" step="0.05" value="0"><span class="v" id="ch-rv"></span></label>
       <div class="fila-btn"><button type="button" class="btn" data-r="0">Masas iguales</button><button type="button" class="btn" data-r="2">\(m_1 \gg m_2\)</button><button type="button" class="btn" data-r="-2">\(m_1 \ll m_2\)</button></div>
       <p class="nota">Deslizador en escala logarítmica: de \(m_1/m_2 = 0{,}01\) a \(100\).</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-aniq" data-label="Aniquilación electrón-positrón" data-speaker-notes="§ 3.6. En el marco del CM el par tiene P = 0. Un solo fotón llevaría p = E/c ≠ 0: imposible. Con dos fotones en sentidos opuestos, cada uno con E = γ m_e c² (511 keV en reposo), se conservan momentum y energía. Aplicación: la tomografía PET detecta los dos fotones de 511 keV en coincidencia.">
+  <p class="ceja">§ 3.6 · Colisiones con partículas elementales</p>
+  <h2 class="titulo">Aniquilación electrón-positrón: ¿por qué dos fotones?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Marco del centro de masas del par</span><span class="val" id="an-lect"></span></div>
+      <canvas class="lienzo" id="an-cv" width="1180" height="500"></canvas>
+      <div class="fila-btn an-ctl"><span class="sub">Producto:</span><button type="button" class="btn" data-n="1">Un fotón</button><button type="button" class="btn on" data-n="2">Dos fotones</button><button type="button" class="btn prim" id="an-play">▶ Aniquilar</button></div>
+      <label class="ctrl an-ctl"><span>Dirección \(\varphi\)</span><input type="range" id="an-phi" min="0" max="180" step="5" value="30"><span class="v" id="an-phiv"></span></label>
+      <label class="ctrl an-ctl"><span>Rapidez \(\beta\) de cada una</span><input type="range" id="an-b" min="0" max="0.9" step="0.05" value="0.3"><span class="v" id="an-bv"></span></label>
+    </figure>
+    <div class="pila an-col">
+      <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0"><div>Antes: \(\vect{P}\) y \(E\)<b id="an-antes"></b></div><div>Después: \(\vect{P}\) y \(E\)<b id="an-desp"></b></div></div>
+      <div class="caja" id="an-msg" style="padding:6px 16px"><p style="margin:0" id="an-msgp"></p></div>
+      <div class="caja neutra frag" style="padding:6px 16px"><p style="margin:0">Antes del choque, en el marco del CM, \(\vect{P} = \vect{0}\). Un fotón siempre se mueve a \(c\) y lleva \(p = E/c \neq 0\): con uno solo, <strong>el momentum no se conservaría</strong>.</p></div>
+      <div class="kf frag" style="padding:4px 16px;font-size:30px">\[ \vect{p}_{\gamma 1} = -\vect{p}_{\gamma 2}, \qquad E_{\gamma} = \gamma\,m_e c^{2} \;\xrightarrow{\;\beta\,\to\,0\;}\; \qty{511}{keV} \]<p class="nota" style="margin:0">Así funciona la tomografía por emisión de positrones (PET): los detectores registran dos fotones de 511 keV en coincidencia y en direcciones opuestas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-granada" data-label="Explosión de una granada en vuelo" data-speaker-notes="§ 3.6. La explosión solo involucra fuerzas internas: el momentum total no cambia en el instante de la explosión y, como la única fuerza externa es el peso M g, el centro de masas de los fragmentos sigue la misma parábola que la granada, hasta que el primer fragmento toca el suelo (entonces el suelo ejerce una fuerza externa).">
+  <p class="ceja">§ 3.6 · Explosiones</p>
+  <h2 class="titulo">La granada explota; su centro de masas sigue la parábola</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.45fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Trayectorias de los fragmentos y del centro de masas</span><span class="val" id="gr-lect"></span></div>
+      <canvas class="lienzo" id="gr-cv" width="1240" height="700"></canvas>
+    </figure>
+    <div class="pila gr-col">
+      <div class="fila-btn"><span class="sub">Fragmentos:</span><button type="button" class="btn on" data-f="2">Dos</button><button type="button" class="btn" data-f="3">Tres</button><button type="button" class="btn" data-f="4">Cuatro</button></div>
+      <label class="ctrl"><span>Explota en \(t / t_v\)</span><input type="range" id="gr-te" min="0.15" max="0.85" step="0.05" value="0.5"><span class="v" id="gr-tev"></span></label>
+      <label class="ctrl"><span>Masas \(m_1 : m_{\text{resto}}\)</span><input type="range" id="gr-r" min="1" max="4" step="0.5" value="2"><span class="v" id="gr-rv"></span></label>
+      <label class="ctrl"><span>Impulso de la explosión</span><input type="range" id="gr-q" min="0" max="30" step="1" value="12"><span class="v" id="gr-qv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn prim" id="gr-play">▶ Lanzar</button><button type="button" class="btn" id="gr-reset">↺ Reiniciar</button></div>
+      <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0"><div>\(\vect{P}\) justo antes<b id="gr-pa"></b></div><div>\(\vect{P}\) justo después<b id="gr-pd"></b></div></div>
+      <div class="caja" style="padding:6px 16px"><p style="margin:0;font-size:25px">La explosión solo tiene <strong>fuerzas internas</strong>: no cambia \(\vect{P}_{\text{total}}\). Después, la única fuerza externa sigue siendo el peso, \(M_{\text{total}}\,\vect{g} = M_{\text{total}}\,\vect{a}_{\text{CM}}\): el CM continúa la parábola <strong>hasta que el primer fragmento toca el suelo</strong>, que entonces ejerce una fuerza externa.</p></div>
     </div>
   </div>
 </section>
@@ -1684,6 +1835,143 @@ const T_OSC = 2 * Math.PI;
   const r = rango('lv-dt', pinta); pinta(r ? +r.value : 0.1);
 })();
 
+/* ═══ CAÍDA LIBRE: ALTURA MÁXIMA Y TIEMPOS ═════════════════════════════ */
+(function () {
+  const host = document.getElementById('cl-fig');
+  if (!host) return;
+  const rv = document.getElementById('cl-v0');
+  let g = 9.8;
+  function pinta() {
+    const v0 = +rv.value, ts = v0 / g, H = v0 * v0 / (2 * g), tv = 2 * ts;
+    const X = Math.max(2.2, tv * 1.08), Y = Math.max(5, H * 1.2);
+    const pasoX = X > 20 ? 5 : X > 8 ? 2 : X > 4 ? 1 : 0.5, pasoY = Y > 200 ? 50 : Y > 80 ? 20 : Y > 30 ? 10 : Y > 12 ? 5 : 1;
+    const xt = [], yt = []; for (let x = 0; x <= X; x += pasoX) xt.push(+x.toFixed(2)); for (let y = 0; y <= Y; y += pasoY) yt.push(y);
+    const A = ejes(host, { W: 1180, H: 600, x: [0, X], y: [0, Y], xt: xt, yt: yt, fx: v => num(v, pasoX < 1 ? 1 : 0), fy: v => num(v, 0), xl: 'Tiempo *t* (s)', yl: 'Altura *y* (m)' });
+    const pts = []; for (let i = 0; i <= 160; i++) { const t = tv * i / 160; pts.push([t, v0 * t - 0.5 * g * t * t]); }
+    polilinea(A, pts, 'stroke:var(--res);stroke-width:5');
+    polilinea(A, [[0, H], [ts, H]], 'stroke:var(--res);stroke-width:2.5;stroke-dasharray:8 6');
+    polilinea(A, [[ts, 0], [ts, H]], 'stroke:var(--caso1);stroke-width:2.5;stroke-dasharray:8 6');
+    const g2 = A.capa, yb = A.Y(0) - 22;
+    flecha(g2, A.X(ts / 2), yb, A.X(0), yb, 'var(--caso1)', 3); flecha(g2, A.X(ts / 2), yb, A.X(ts), yb, 'var(--caso1)', 3);
+    rotulo(g2, A.X(ts / 2), yb - 12, '*t*_s = ' + num(ts, 2) + ' s', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700' });
+    const yb2 = A.Y(0) - 70;
+    flecha(g2, A.X(tv / 2), yb2, A.X(0), yb2, 'var(--caso2)', 3); flecha(g2, A.X(tv / 2), yb2, A.X(tv), yb2, 'var(--caso2)', 3);
+    rotulo(g2, A.X(tv * 0.72), yb2 - 12, '*t*_v = ' + num(tv, 2) + ' s', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(g2, A.X(ts) + 14, A.Y(H) - 14, '*H* = ' + num(H, 2) + ' m', { 'font-size': 28, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    [[0, 0], [ts, H], [tv, 0]].forEach(q => nodo('circle', { cx: A.X(q[0]), cy: A.Y(q[1]), r: 10, style: 'fill:var(--res);stroke:var(--panel);stroke-width:3' }, A.capa));
+    document.getElementById('cl-v0v').textContent = num(v0, 1) + ' m/s';
+    document.getElementById('cl-lect').textContent = 'tₛ = ' + num(ts, 2) + ' s · H = ' + num(H, 2) + ' m · tᵥ = ' + num(tv, 2) + ' s';
+  }
+  $$('#dp-caida .btn[data-g]').forEach(b => b.addEventListener('click', () => { g = +b.dataset.g; $$('#dp-caida .btn[data-g]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  rv.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ MOVIMIENTO PARABÓLICO ════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('pb-fig');
+  if (!host) return;
+  const g = 9.8, rv = document.getElementById('pb-v0'), rt = document.getElementById('pb-th'), cC = document.getElementById('pb-comp'), c45 = document.getElementById('pb-45');
+  const tray = (v0, th) => { const r = th * Math.PI / 180, tv = 2 * v0 * Math.sin(r) / g, p = []; for (let i = 0; i <= 120; i++) { const t = tv * i / 120; p.push([v0 * Math.cos(r) * t, v0 * Math.sin(r) * t - 0.5 * g * t * t]); } return p; };
+  function pinta() {
+    const v0 = +rv.value, th = +rt.value, r = th * Math.PI / 180;
+    const ts = v0 * Math.sin(r) / g, H = v0 * v0 * Math.sin(r) ** 2 / (2 * g), tv = 2 * ts, R = v0 * v0 * Math.sin(2 * r) / g, Rmax = v0 * v0 / g;
+    const X = Rmax * 1.08, Y = Math.max(v0 * v0 / (2 * g) * 1.12, X * 0.55 * 0.5);
+    const paso = X > 60 ? 20 : X > 30 ? 10 : X > 12 ? 5 : 2, xt = [], yt = [];
+    for (let x = 0; x <= X; x += paso) xt.push(x); for (let y = 0; y <= Y; y += paso) yt.push(y);
+    const A = ejes(host, { W: 1180, H: 540, x: [0, X], y: [0, Y], xt: xt, yt: yt, xl: '*x* (m)', yl: '*y* (m)' });
+    if (c45.checked) polilinea(A, tray(v0, 45), 'stroke:var(--caso1);stroke-width:3;stroke-dasharray:10 7');
+    if (cC.checked && th !== 45) polilinea(A, tray(v0, 90 - th), 'stroke:var(--caso2);stroke-width:3;stroke-dasharray:10 7');
+    polilinea(A, tray(v0, th), 'stroke:var(--res);stroke-width:5');
+    const xs = v0 * Math.cos(r) * ts;
+    polilinea(A, [[xs, 0], [xs, H]], 'stroke:var(--res);stroke-width:2;stroke-dasharray:6 6');
+    const g2 = A.capa;
+    rotulo(g2, A.X(xs) + 12, A.Y(H) - 12, '*H* = ' + num(H, 1) + ' m', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    const yb = A.Y(0) - 20; flecha(g2, A.X(R / 2), yb, A.X(0), yb, 'var(--tinta)', 3); flecha(g2, A.X(R / 2), yb, A.X(R), yb, 'var(--tinta)', 3);
+    rotulo(g2, A.X(R / 2), yb - 10, '*R* = ' + num(R, 1) + ' m', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* vector velocidad inicial y sus componentes */
+    const L = 0.18 * X, vx = L * Math.cos(r), vy = L * Math.sin(r);
+    flecha(g2, A.X(0), A.Y(0), A.X(vx), A.Y(0), 'var(--caso1)', 4); flecha(g2, A.X(0), A.Y(0), A.X(0), A.Y(vy), 'var(--caso2)', 4);
+    flecha(g2, A.X(0), A.Y(0), A.X(vx), A.Y(vy), 'var(--res)', 5);
+    document.getElementById('pb-v0v').textContent = num(v0, 1) + ' m/s';
+    document.getElementById('pb-thv').textContent = th + '°';
+    document.getElementById('pb-lect').textContent = 'tₛ = ' + num(ts, 2) + ' s · tᵥ = ' + num(tv, 2) + ' s · R = ' + num(R, 1) + ' m (máx. ' + num(Rmax, 1) + ' m)';
+  }
+  [rv, rt].forEach(x => x.addEventListener('input', pinta)); [cC, c45].forEach(x => x.addEventListener('change', pinta));
+  cC.checked = true; pinta();
+})();
+
+/* ═══ ACTIVIDAD: INDEPENDENCIA DE LOS MOVIMIENTOS EN x Y y ═══════════════ */
+(function () {
+  const cv = document.getElementById('in-cv');
+  if (!cv) return;
+  const g = 9.8, gc = cv.getContext('2d'), W = cv.width, Hc = cv.height;
+  const rv = document.getElementById('in-v0'), rt = document.getElementById('in-th'), ce = document.getElementById('in-estela'), fb = document.getElementById('in-fb');
+  let t = 0, corre = false, ult = 0, pred = null, fin = false;
+  const datos = () => { const v0 = +rv.value, r = +rt.value * Math.PI / 180; return { v0x: v0 * Math.cos(r), v0y: v0 * Math.sin(r), tv: 2 * v0 * Math.sin(r) / g }; };
+  function dibuja() {
+    const d = datos(), vmax = 25, Xm = vmax * vmax / g * 1.02, Ym = vmax * vmax / (2 * g) * 1.05;
+    const m = { l: 170, r: 30, t: 30, b: 90 }, e = Math.min((W - m.l - m.r) / Xm, (Hc - m.t - m.b) / Ym);
+    const X = x => m.l + x * e, Y = y => Hc - m.b - y * e, xV = 70;           /* la pelota vertical va a la izquierda */
+    gc.fillStyle = tok('--panel'); gc.fillRect(0, 0, W, Hc);
+    gc.strokeStyle = tok('--tinta'); gc.lineWidth = 3; gc.beginPath(); gc.moveTo(20, Y(0)); gc.lineTo(W - 20, Y(0)); gc.stroke();
+    /* trayectoria completa tenue */
+    gc.strokeStyle = tok('--rejilla'); gc.lineWidth = 3; gc.beginPath();
+    for (let i = 0; i <= 100; i++) { const tt = d.tv * i / 100, x = d.v0x * tt, y = d.v0y * tt - 0.5 * g * tt * tt; i ? gc.lineTo(X(x), Y(y)) : gc.moveTo(X(x), Y(y)); }
+    gc.stroke();
+    const yN = tt => Math.max(0, d.v0y * tt - 0.5 * g * tt * tt), tt = Math.min(t, d.tv);
+    /* estela estroboscópica */
+    if (ce.checked) for (let s = 0; s <= tt + 1e-9; s += 0.2) {
+      gc.fillStyle = tok('--res'); gc.globalAlpha = 0.35; gc.beginPath(); gc.arc(X(d.v0x * s), Y(yN(s)), 9, 0, 7); gc.fill();
+      gc.fillStyle = tok('--caso2'); gc.beginPath(); gc.arc(xV, Y(yN(s)), 9, 0, 7); gc.fill();
+      gc.fillStyle = tok('--caso1'); gc.beginPath(); gc.arc(X(d.v0x * s), Y(0) + 30, 7, 0, 7); gc.fill(); gc.globalAlpha = 1;
+      gc.strokeStyle = tok('--proy'); gc.lineWidth = 1; gc.setLineDash([4, 6]); gc.beginPath(); gc.moveTo(xV, Y(yN(s))); gc.lineTo(X(d.v0x * s), Y(yN(s))); gc.stroke(); gc.setLineDash([]);
+    }
+    const xp = d.v0x * tt, yp = yN(tt);
+    /* guías: misma altura (horizontal) y misma x (vertical) */
+    gc.strokeStyle = tok('--caso2'); gc.lineWidth = 2.5; gc.setLineDash([10, 8]); gc.beginPath(); gc.moveTo(xV, Y(yp)); gc.lineTo(X(xp), Y(yp)); gc.stroke();
+    gc.strokeStyle = tok('--caso1'); gc.beginPath(); gc.moveTo(X(xp), Y(yp)); gc.lineTo(X(xp), Y(0) + 30); gc.stroke(); gc.setLineDash([]);
+    /* objetos */
+    gc.fillStyle = tok('--caso2'); gc.beginPath(); gc.arc(xV, Y(yp), 18, 0, 7); gc.fill();
+    gc.fillStyle = tok('--res'); gc.beginPath(); gc.arc(X(xp), Y(yp), 18, 0, 7); gc.fill();
+    gc.fillStyle = tok('--caso1'); gc.fillRect(X(xp) - 28, Y(0) + 18, 56, 24); gc.beginPath(); gc.arc(X(xp) - 16, Y(0) + 46, 7, 0, 7); gc.arc(X(xp) + 16, Y(0) + 46, 7, 0, 7); gc.fill();
+    gc.font = '600 24px ' + FTXT; gc.textAlign = 'center';
+    gc.fillStyle = tok('--caso2'); gc.fillText('vertical', xV, Y(0) + 72);
+    gc.fillStyle = tok('--caso1'); gc.fillText('carrito', X(xp), Y(0) + 76);
+    gc.fillStyle = tok('--res'); gc.fillText('proyectil', X(xp), Y(yp) - 28); gc.textAlign = 'left';
+    gc.fillStyle = tok('--tinta2'); gc.font = '22px ' + FMATH; gc.fillText('t = ' + num(tt, 2) + ' s', W - 160, 44);
+    document.getElementById('in-yp').textContent = num(yp, 2) + ' m';
+    document.getElementById('in-yv').textContent = num(yp, 2) + ' m';
+    document.getElementById('in-x').textContent = num(xp, 2) + ' m';
+    document.getElementById('in-v0v').textContent = num(+rv.value, 1) + ' m/s';
+    document.getElementById('in-thv').textContent = rt.value + '°';
+    document.getElementById('in-lect').textContent = 'v₀ₓ = ' + num(d.v0x, 2) + ' m/s · v₀ᵧ = ' + num(d.v0y, 2) + ' m/s';
+  }
+  function termina() {
+    const d = datos(); fin = true; corre = false;
+    const ok = pred === 'i';
+    fb.innerHTML = (pred ? (ok ? '✓ ¡Bien predicho! ' : '✗ No era esa. ') : '') + 'Llegan <strong>al mismo tiempo</strong>, a ' + num(d.tv, 2) + ' s: el movimiento en \\(y\\) depende solo de \\(v_{0y}\\) y de \\(g\\). El carrito, con velocidad constante \\(v_{0x}\\), siempre está justo debajo del proyectil.';
+    fb.style.color = !pred || ok ? 'var(--res)' : 'var(--mal)';
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([fb]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+    document.getElementById('in-play').textContent = '▶ Lanzar';
+  }
+  function bucle(ms) {
+    if (corre && activa(cv)) {
+      const dt = ult ? Math.min(0.05, (ms - ult) / 1000) : 0; t += dt * 0.8;       /* un poco más lento que la realidad */
+      if (t >= datos().tv) { t = datos().tv; dibuja(); termina(); } else dibuja();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  const reinicia = () => { t = 0; corre = false; fin = false; fb.textContent = ''; document.getElementById('in-play').textContent = '▶ Lanzar'; dibuja(); };
+  document.getElementById('in-play').addEventListener('click', () => {
+    if (fin) { t = 0; fin = false; fb.textContent = ''; }
+    corre = !corre; document.getElementById('in-play').textContent = corre ? '❚❚ Pausa' : '▶ Continuar';
+  });
+  document.getElementById('in-reset').addEventListener('click', reinicia);
+  $$('#in-pred .btn').forEach(b => b.addEventListener('click', () => { pred = b.dataset.r; $$('#in-pred .btn').forEach(o => o.classList.toggle('on', o === b)); }));
+  [rv, rt].forEach(x => x.addEventListener('input', reinicia)); ce.addEventListener('change', dibuja);
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
 /* ═══ LANZAMIENTO VERTICAL CON RESISTENCIA DEL AIRE (arrastre cuadrático) ═ */
 (function () {
   const host = document.getElementById('ar-fig');
@@ -2069,6 +2357,45 @@ const T_OSC = 2 * Math.PI;
   rt.addEventListener('input', pinta); pinta();
 })();
 
+/* ═══ MARCO DEL CENTRO DE MASAS: P' = 0 ════════════════════════════════ */
+(function () {
+  const host = document.getElementById('mc-fig');
+  if (!host) return;
+  const R = id => document.getElementById(id), rm1 = R('mc-m1'), rv1 = R('mc-v1'), rm2 = R('mc-m2'), rv2 = R('mc-v2');
+  let marco = 'lab';
+  function pinta() {
+    const m1 = +rm1.value, v1 = +rv1.value, m2 = +rm2.value, v2 = +rv2.value, M = m1 + m2, P = m1 * v1 + m2 * v2, vcm = P / M;
+    const u1 = marco === 'cm' ? v1 - vcm : v1, u2 = marco === 'cm' ? v2 - vcm : v2, p1 = m1 * u1, p2 = m2 * u2, Pt = p1 + p2;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 470', class: 'fig' }, host);
+    /* carritos con flechas de velocidad */
+    const carro = (x, m, u, col, txt) => {
+      const w = 60 + 22 * m;
+      nodo('rect', { x: x - w / 2, y: 90, width: w, height: 60, rx: 6, style: 'fill:' + col }, svg);
+      nodo('circle', { cx: x - w / 3, cy: 158, r: 11, style: 'fill:var(--tinta)' }, svg); nodo('circle', { cx: x + w / 3, cy: 158, r: 11, style: 'fill:var(--tinta)' }, svg);
+      rotulo(svg, x, 130, txt, { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+      if (Math.abs(u) > 0.01) flecha(svg, x, 60, x + 38 * u, 60, col, 5);
+      rotulo(svg, x, 36, (marco === 'cm' ? '*v*′ = ' : '*v* = ') + num(u, 2) + ' m/s', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:' + col + ';font-family:' + FMATH });
+    };
+    nodo('line', { x1: 30, x2: 1150, y1: 170, y2: 170, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    carro(360, m1, u1, 'var(--caso1)', '*m*₁'); carro(820, m2, u2, 'var(--caso2)', '*m*₂');
+    /* barras de momentum: p1, p2 y total */
+    const y0 = 230, E = 22, cx = 590;
+    nodo('line', { x1: cx, x2: cx, y1: y0 - 10, y2: y0 + 220, style: 'stroke:var(--proy);stroke-width:2' }, svg);
+    [['*p*₁', p1, 'var(--caso1)', 0], ['*p*₂', p2, 'var(--caso2)', 1], [marco === 'cm' ? '*P*′' : '*P*', Pt, 'var(--res)', 2]].forEach(b => {
+      const y = y0 + 20 + b[3] * 70, w = b[1] * E;
+      if (Math.abs(w) > 0.5) nodo('rect', { x: Math.min(cx, cx + w), y: y, width: Math.abs(w), height: 40, style: 'fill:' + b[2] }, svg);
+      rotulo(svg, 60, y + 30, b[0], { 'font-size': 30, style: 'fill:' + b[2] + ';font-family:' + FMATH + ';font-weight:700' });
+      rotulo(svg, 1120, y + 30, num(b[1], 2) + ' kg·m/s', { 'text-anchor': 'end', 'font-size': 26, style: 'fill:' + b[2] + ';font-family:' + FMATH });
+    });
+    R('mc-m1v').textContent = num(m1, 1) + ' kg'; R('mc-v1v').textContent = num(v1, 1) + ' m/s';
+    R('mc-m2v').textContent = num(m2, 1) + ' kg'; R('mc-v2v').textContent = num(v2, 1) + ' m/s';
+    R('mc-lect').textContent = 'v_CM = ' + num(vcm, 2) + ' m/s · ' + (marco === 'cm' ? "P′ = " + num(Math.abs(Pt) < 1e-12 ? 0 : Pt, 2) : 'P = ' + num(Pt, 2)) + ' kg·m/s';
+  }
+  $$('#dp-marco-cm .btn[data-marco]').forEach(b => b.addEventListener('click', () => { marco = b.dataset.marco; $$('#dp-marco-cm .btn[data-marco]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  [rm1, rv1, rm2, rv2].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
 /* ═══ COLISIÓN ELÁSTICA ════════════════════════════════════════════════ */
 (function () {
   const host = document.getElementById('ch-fig');
@@ -2105,6 +2432,172 @@ const T_OSC = 2 * Math.PI;
   rr.addEventListener('input', pinta);
   $$('#dp-choque .btn[data-r]').forEach(b => b.addEventListener('click', () => { rr.value = b.dataset.r; pinta(); }));
   pinta();
+})();
+
+/* ═══ ANIQUILACIÓN ELECTRÓN-POSITRÓN ══════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('an-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, cx = W / 2, cy = H / 2 - 10, R = id => document.getElementById(id);
+  const rphi = R('an-phi'), rb = R('an-b'), MEC2 = 511;          /* keV */
+  let nf = 2, s = 0, corre = false, ult = 0;
+  function datos() {
+    const b = +rb.value, ga = 1 / Math.sqrt(1 - b * b), E = 2 * ga * MEC2;
+    return { b: b, ga: ga, E: E };
+  }
+  function lecturas() {
+    const d = datos(), phi = +rphi.value;
+    R('an-phiv').textContent = phi + '°'; R('an-bv').textContent = num(d.b, 2);
+    R('an-antes').textContent = 'P = 0 · E = ' + num(d.E, 0) + ' keV';
+    const msg = R('an-msg'), p = R('an-msgp');
+    if (nf === 1) {
+      R('an-desp').textContent = 'P = ' + num(d.E, 0) + ' keV/c ≠ 0';
+      p.innerHTML = '✗ <strong>Imposible.</strong> Un fotón de ' + num(d.E, 0) + ' keV llevaría un momentum de ' + num(d.E, 0) + ' keV/c en la dirección φ, pero antes era cero. No existe ninguna dirección que lo evite.';
+      msg.className = 'caja mal';
+    } else {
+      R('an-desp').textContent = 'P = 0 · E = ' + num(d.E, 0) + ' keV';
+      p.innerHTML = '✓ Dos fotones de ' + num(d.E / 2, 0) + ' keV en sentidos <strong>opuestos</strong>: sus momentos se cancelan y la energía se conserva. La dirección φ es libre, pero el segundo fotón siempre sale a φ + 180°.';
+      msg.className = 'caja';
+    }
+    R('an-lect').textContent = 'γ = ' + num(d.ga, 3) + ' · cada partícula: ' + num(d.ga * MEC2, 0) + ' keV';
+  }
+  function fotón(ang, L, E) {
+    const x2 = cx + L * Math.cos(ang), y2 = cy - L * Math.sin(ang);
+    g.strokeStyle = tok('--caso2'); g.lineWidth = 4; g.beginPath();
+    for (let i = 0; i <= 60; i++) {
+      const f = i / 60, x = cx + f * (x2 - cx), y = cy + f * (y2 - cy), o = 10 * Math.sin(f * 30);
+      const px = x - o * Math.sin(ang), py = y - o * Math.cos(ang);
+      i ? g.lineTo(px, py) : g.moveTo(px, py);
+    }
+    g.stroke();
+    g.fillStyle = tok('--caso2'); g.font = 'italic 700 30px ' + FMATH; g.fillText('γ', x2 + 10 * Math.cos(ang) - 8, y2 - 14 * Math.sin(ang) + 8);
+  }
+  function dibuja() {
+    const d = datos(), phi = +rphi.value * Math.PI / 180;
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, H);
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 1.5; g.beginPath(); g.moveTo(40, cy); g.lineTo(W - 40, cy); g.stroke();
+    const f = Math.min(1, s / 0.5), dist = 420 * (1 - f);                /* acercamiento */
+    if (s < 0.5) {
+      [['e⁻', -1, '--res'], ['e⁺', 1, '--caso1']].forEach(q => {
+        const x = cx + q[1] * dist;
+        g.fillStyle = tok(q[2]); g.beginPath(); g.arc(x, cy, 26, 0, 7); g.fill();
+        g.fillStyle = tok('--papel'); g.font = '700 28px ' + FMATH; g.textAlign = 'center'; g.fillText(q[0], x, cy + 10); g.textAlign = 'left';
+        g.strokeStyle = tok(q[2]); g.lineWidth = 5; g.beginPath(); g.moveTo(x - q[1] * 40, cy - 50); g.lineTo(x - q[1] * (40 + 90 * d.b + 20), cy - 50); g.stroke();
+      });
+    } else {
+      const f2 = Math.min(1, (s - 0.5) / 0.5), L = 60 + 380 * f2;
+      if (s < 0.62) { g.fillStyle = tok('--caso2'); g.globalAlpha = 1 - (s - 0.5) / 0.12; g.beginPath(); g.arc(cx, cy, 60, 0, 7); g.fill(); g.globalAlpha = 1; }
+      fotón(phi, L, d.E); if (nf === 2) fotón(phi + Math.PI, L, d.E / 2);
+      if (nf === 1 && f2 >= 1) {
+        g.strokeStyle = tok('--mal'); g.lineWidth = 8; g.beginPath(); g.moveTo(cx - 70, cy - 70); g.lineTo(cx + 70, cy + 70); g.moveTo(cx + 70, cy - 70); g.lineTo(cx - 70, cy + 70); g.stroke();
+      }
+    }
+    g.fillStyle = tok('--tinta2'); g.font = '22px ' + FTXT; g.fillText(s < 0.5 ? 'antes: P = 0 (se acercan con velocidades opuestas)' : (nf === 2 ? 'después: dos fotones opuestos, P = 0' : 'después: un fotón, P ≠ 0 — no ocurre'), 40, H - 24);
+  }
+  function bucle(ms) {
+    if (corre && activa(cv)) { s += ult ? Math.min(0.05, (ms - ult) / 1000) * 0.5 : 0; if (s >= 1) { s = 1; corre = false; R('an-play').textContent = '▶ Repetir'; } dibuja(); }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  $$('#dp-aniq .btn[data-n]').forEach(b => b.addEventListener('click', () => { nf = +b.dataset.n; $$('#dp-aniq .btn[data-n]').forEach(o => o.classList.toggle('on', o === b)); lecturas(); dibuja(); }));
+  R('an-play').addEventListener('click', () => { s = 0; corre = true; R('an-play').textContent = '▶ Aniquilar'; });
+  [rphi, rb].forEach(x => x.addEventListener('input', () => { lecturas(); dibuja(); }));
+  s = 1; lecturas(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ EXPLOSIÓN DE UNA GRANADA EN VUELO ══════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('gr-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, Hc = cv.height, R = id => document.getElementById(id), G = 9.8;
+  const v0 = 20, th = 55 * Math.PI / 180, vx0 = v0 * Math.cos(th), vy0 = v0 * Math.sin(th), tv = 2 * vy0 / G, M = 3;
+  const rte = R('gr-te'), rr = R('gr-r'), rq = R('gr-q');
+  let nf = 2, t = 0, corre = false, ult = 0;
+  /* fragmentos justo después de la explosión: momentos internos que suman cero */
+  function fragmentos() {
+    const te = +rte.value * tv, r = +rr.value, q = +rq.value, pos = [vx0 * te, vy0 * te - 0.5 * G * te * te], vcm = [vx0, vy0 - G * te];
+    let ms, us;
+    if (nf === 2) {                       /* a lo largo de una dirección a 60° */
+      ms = [M * r / (r + 1), M / (r + 1)]; const a = 60 * Math.PI / 180, e = [Math.cos(a), Math.sin(a)];
+      us = [[q / ms[0] * e[0], q / ms[0] * e[1]], [-q / ms[1] * e[0], -q / ms[1] * e[1]]];
+    } else if (nf === 3) {                /* tres momentos iguales a 120° */
+      ms = [M * r / (r + 2), M / (r + 2), M / (r + 2)];
+      us = [90, 210, 330].map((d, i) => { const a = d * Math.PI / 180; return [q / ms[i] * Math.cos(a), q / ms[i] * Math.sin(a)]; });
+    } else {                              /* cuatro momentos iguales a 90° */
+      ms = [M * r / (r + 3), M / (r + 3), M / (r + 3), M / (r + 3)];
+      us = [45, 135, 225, 315].map((d, i) => { const a = d * Math.PI / 180; return [q / ms[i] * Math.cos(a), q / ms[i] * Math.sin(a)]; });
+    }
+    return { te: te, pos: pos, ms: ms, vs: us.map(u => [vcm[0] + u[0], vcm[1] + u[1]]), vcm: vcm };
+  }
+  function estado(tt, F) {
+    if (tt <= F.te) return { pts: [[vx0 * tt, vy0 * tt - 0.5 * G * tt * tt]], cm: [vx0 * tt, vy0 * tt - 0.5 * G * tt * tt], suelo: false };
+    const dt = tt - F.te; let suelo = false;
+    const pts = F.vs.map(v => {
+      let y = F.pos[1] + v[1] * dt - 0.5 * G * dt * dt, x = F.pos[0] + v[0] * dt;
+      if (y <= 0) {                      /* se detiene en el suelo */
+        suelo = true; const a = 0.5 * G, b = -v[1], c = -F.pos[1], tg = (-b + Math.sqrt(b * b - 4 * a * c)) / (2 * a);
+        x = F.pos[0] + v[0] * tg; y = 0;
+      }
+      return [x, y];
+    });
+    const cm = [0, 1].map(k => pts.reduce((s, p, i) => s + F.ms[i] * p[k], 0) / M);
+    return { pts: pts, cm: cm, suelo: suelo };
+  }
+  function dibuja() {
+    const F = fragmentos(), Xm = v0 * v0 / G * 1.6, Ym = vy0 * vy0 / (2 * G) * 1.9;
+    const m = { l: 60, r: 30, t: 30, b: 60 }, e = Math.min((W - m.l - m.r) / Xm, (Hc - m.t - m.b) / Ym);
+    const X = x => m.l + (x + 0.15 * Xm) * e * 0.87, Y = y => Hc - m.b - y * e;
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, Hc);
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.beginPath(); g.moveTo(10, Y(0)); g.lineTo(W - 10, Y(0)); g.stroke();
+    /* parábola original completa (referencia) */
+    g.strokeStyle = tok('--rejilla'); g.lineWidth = 4; g.setLineDash([12, 8]); g.beginPath();
+    for (let i = 0; i <= 120; i++) { const tt = tv * i / 120; const x = vx0 * tt, y = vy0 * tt - 0.5 * G * tt * tt; i ? g.lineTo(X(x), Y(y)) : g.moveTo(X(x), Y(y)); }
+    g.stroke(); g.setLineDash([]);
+    /* trayectorias hasta t */
+    const cols = ['--caso1', '--caso2', '--res', '--mal'], tt = t;
+    const N = 160, tr = F.vs.map(() => []), cmTr = []; let tSuelo = null;
+    for (let i = 0; i <= N; i++) {
+      const ti = tt * i / N, E = estado(ti, F);
+      if (ti > F.te) E.pts.forEach((p, k) => tr[k].push(p));
+      if (!E.suelo) cmTr.push(E.cm); else if (tSuelo === null) tSuelo = ti;
+    }
+    /* granada antes de explotar */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 4; g.beginPath();
+    for (let i = 0; i <= 60; i++) { const ti = Math.min(tt, F.te) * i / 60; const x = vx0 * ti, y = vy0 * ti - 0.5 * G * ti * ti; i ? g.lineTo(X(x), Y(y)) : g.moveTo(X(x), Y(y)); }
+    g.stroke();
+    tr.forEach((pts, k) => { if (pts.length < 2) return; g.strokeStyle = tok(cols[k]); g.lineWidth = 4; g.beginPath(); pts.forEach((p, i) => i ? g.lineTo(X(p[0]), Y(p[1])) : g.moveTo(X(p[0]), Y(p[1]))); g.stroke(); });
+    if (cmTr.length > 1 && tt > F.te) { g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.setLineDash([6, 6]); g.beginPath(); cmTr.forEach((p, i) => i ? g.lineTo(X(p[0]), Y(p[1])) : g.moveTo(X(p[0]), Y(p[1]))); g.stroke(); g.setLineDash([]); }
+    const E = estado(tt, F);
+    if (tt <= F.te) { g.fillStyle = tok('--tinta'); g.beginPath(); g.arc(X(E.pts[0][0]), Y(E.pts[0][1]), 14, 0, 7); g.fill(); }
+    else {
+      if (tt - F.te < 0.25) { g.fillStyle = tok('--caso2'); g.globalAlpha = 0.5; g.beginPath(); g.arc(X(F.pos[0]), Y(F.pos[1]), 40, 0, 7); g.fill(); g.globalAlpha = 1; }
+      E.pts.forEach((p, k) => { g.fillStyle = tok(cols[k]); g.beginPath(); g.arc(X(p[0]), Y(p[1]), 8 + 5 * F.ms[k], 0, 7); g.fill(); });
+      if (!E.suelo) { g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.beginPath(); g.moveTo(X(E.cm[0]) - 14, Y(E.cm[1])); g.lineTo(X(E.cm[0]) + 14, Y(E.cm[1])); g.moveTo(X(E.cm[0]), Y(E.cm[1]) - 14); g.lineTo(X(E.cm[0]), Y(E.cm[1]) + 14); g.stroke(); g.fillStyle = tok('--tinta'); g.font = '600 22px ' + FTXT; g.fillText('CM', X(E.cm[0]) + 16, Y(E.cm[1]) - 10); }
+    }
+    g.fillStyle = tok('--tinta2'); g.font = '22px ' + FTXT;
+    g.fillText(tSuelo !== null ? 'Un fragmento tocó el suelo: desde ahí actúa una fuerza externa y el CM deja la parábola' : 'Discontinua gris: parábola de la granada sin explotar · discontinua negra: CM de los fragmentos', 20, 34);
+    const Pa = [M * vx0, M * (vy0 - G * F.te)], Pd = [0, 1].map(k => F.vs.reduce((s, v, i) => s + F.ms[i] * v[k], 0));
+    R('gr-pa').textContent = '(' + num(Pa[0], 1) + '; ' + num(Pa[1], 1) + ') kg·m/s';
+    R('gr-pd').textContent = '(' + num(Pd[0], 1) + '; ' + num(Pd[1], 1) + ') kg·m/s';
+    R('gr-tev').textContent = num(+rte.value, 2); R('gr-rv').textContent = num(+rr.value, 1) + ' : 1';
+    R('gr-qv').textContent = num(+rq.value, 0) + ' kg·m/s';
+    R('gr-lect').textContent = 'M = 3 kg · v₀ = 20 m/s a 55° · t = ' + num(tt, 2) + ' s';
+  }
+  function bucle(ms) {
+    if (corre && activa(cv)) {
+      t += ult ? Math.min(0.05, (ms - ult) / 1000) * 0.7 : 0;
+      const F = fragmentos(); let todos = true;
+      if (t > F.te) { const dt = t - F.te; todos = F.vs.every(v => F.pos[1] + v[1] * dt - 0.5 * G * dt * dt <= 0); } else todos = false;
+      if (todos || t > 4 * tv) { corre = false; R('gr-play').textContent = '▶ Lanzar'; }
+      dibuja();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  const reinicia = () => { t = 0; corre = false; R('gr-play').textContent = '▶ Lanzar'; dibuja(); };
+  R('gr-play').addEventListener('click', () => { if (!corre && t > 0 && R('gr-play').textContent.indexOf('Lanzar') >= 0) t = 0; corre = !corre; R('gr-play').textContent = corre ? '❚❚ Pausa' : '▶ Continuar'; });
+  R('gr-reset').addEventListener('click', reinicia);
+  $$('#dp-granada .btn[data-f]').forEach(b => b.addEventListener('click', () => { nf = +b.dataset.f; $$('#dp-granada .btn[data-f]').forEach(o => o.classList.toggle('on', o === b)); dibuja(); }));
+  [rte, rr, rq].forEach(x => x.addEventListener('input', dibuja));
+  t = tv * 1.2; dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ BLOQUE CON FRICCIÓN ══════════════════════════════════════════════ */
