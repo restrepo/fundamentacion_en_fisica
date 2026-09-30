@@ -56,6 +56,16 @@ por sección; crédito abajo a la izquierda; aviso de giro en móvil vertical;
 atenuación del cromo en reposo; hash `#/n`; zoom de pellizco en pantalla
 completa. En los pósteres a campo de acento, crédito y contador pasan a claro.
 
+**Visor de imágenes:** toda lección generada incluye `assets/visor-img.css` y
+`assets/visor-img.js`. Al hacer clic en una imagen de una diapositiva, se abre
+una capa a pantalla completa, fuera del lienzo escalado, con la imagen a toda
+la altura disponible y su pie de figura (o su `alt`). Se cierra con clic,
+Escape, Enter o ✕, y mientras está abierta las flechas no cambian de
+diapositiva. No se aplica a imágenes dentro de un enlace (conservan el
+enlace), a las de clase `sin-visor` o `inline-img` ni a las de menos de 110 px
+de ancho en la diapositiva (iconos). `--sin-visor` lo desactiva para toda la lección; no hace
+falta programarlo en la fuente.
+
 **Pasos dentro de la diapositiva (↓ ↑), como en el diseño original:** los
 pasos pendientes se ven **atenuados** (opacidad 0,25) y se revelan al 100 %
 en su turno, con las flechas verticales o sus botones. Lo impone `cromo.css`

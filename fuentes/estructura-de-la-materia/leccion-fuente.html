@@ -202,6 +202,20 @@ section.diapositiva > .clave{position:absolute;left:770px;right:170px;bottom:22p
 section.diapositiva > .clave::before{content:'Idea clave · ';font-style:normal;font-weight:700;color:var(--res)}
 section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
 
+
+/* ampliación de los cubos entrelazados: ocupa toda la diapositiva */
+.en-cubos{cursor:zoom-in}
+.ampl-fondo{position:absolute;inset:0;z-index:60;background:var(--papel);display:flex;flex-direction:column;padding:40px 60px 80px}
+.ampl-fondo .ampl-hd{display:flex;justify-content:space-between;align-items:center;gap:30px}
+.ampl-fondo .ampl-hd h3{margin:0;font:800 50px/1.15 var(--font-heading);color:var(--tinta)}
+.ampl-fondo .ampl-x{border:2px solid var(--linea);background:var(--panel);font:600 30px/1 var(--font-body);padding:10px 20px;cursor:pointer;color:var(--tinta)}
+.ampl-fondo .ampl-cont{flex:1;min-height:0;display:flex;align-items:center;justify-content:center}
+.ampl-fondo .en-cubos{cursor:default;width:100%;max-width:1900px}
+.ampl-fondo .en-cubos svg{max-height:700px}
+.ampl-fondo .en-cubos .nota{font-size:34px}
+.ampl-fondo .fila-btn{justify-content:center}
+.ampl-fondo .fila-btn .btn{font-size:32px;padding:14px 26px}
+
 </style></head>
 <body>
 <div id="escenario">
@@ -1224,8 +1238,8 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <div class="g2">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
-      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button></div>
+      <div class="en-cubos" id="en-cubos" title="Clic para ampliar" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button><button type="button" class="btn" id="en-ampl">⛶ Ampliar</button></div>
     </figure>
     <div class="pila">
       <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
@@ -1439,7 +1453,7 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
     </ol>
     <div class="pila">
       <div class="caja c2"><p style="margin:0">Para pasar de la descripción a los cálculos hacen falta pocas reglas, pero hay que usarlas siempre igual.</p></div>
-      <div class="g2-img frag" style="grid-template-columns:repeat(4,auto);justify-content:center;gap:24px"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><img class="fr" src="img/fruta-pera.webp" alt="pera"><img class="fr" src="img/fruta-mango.webp" alt="mango"><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <div class="g2-img frag" style="grid-template-columns:repeat(4,auto);justify-content:center;gap:24px"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"><img class="fr sin-visor" src="img/fruta-mango.webp" alt="mango"><img class="fr sin-visor" src="img/fruta-naranja.webp" alt="naranja"></div>
       <p class="chico frag">Truco de estas diapositivas: cada fruta representa una expresión cualquiera, tan complicada como se quiera. Las reglas no dependen de lo que haya dentro.</p>
     </div>
   </div>
@@ -1493,8 +1507,8 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <h2 class="titulo">Simplificar: solo en restas y divisiones puras</h2>
   <div class="g2-60">
     <div class="pila">
-      <div class="ec-fr"><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"><span>−</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>=</span><img class="fr" src="img/fruta-naranja.webp" alt="naranja"></div>
-      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr"><img class="fr sin-visor" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr sin-visor" src="img/fruta-naranja.webp" alt="naranja"><span>−</span><img class="fr sin-visor" src="img/fruta-mango.webp" alt="mango"><span>=</span><img class="fr sin-visor" src="img/fruta-naranja.webp" alt="naranja"></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"><span>·</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></div>
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> en \(\dfrac{\text{pera} + \text{manzana}}{\text{pera}}\) la pera <em>no</em> se cancela: el numerador es una suma, no un producto.</p></div>
     </div>
     <div class="pila">
@@ -1511,12 +1525,12 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <h2 class="titulo">Dividir una suma y restar fracciones de lo mismo</h2>
   <div class="g2">
     <div class="pila">
-      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>+</span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span></div>
-      <div class="ec-fr frag"><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/fruta-pera.webp" alt="pera"></span></span><span>+ 1</span></div>
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>+</span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span></span><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span></span><span>+</span><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span><span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span></span></div>
+      <div class="ec-fr frag"><span>=</span><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr sin-visor" src="img/fruta-pera.webp" alt="pera"></span></span><span>+ 1</span></div>
       <p class="chico frag">Cada término de la suma se divide por separado; la pera sola sobre la pera sí da 1.</p>
     </div>
     <div class="pila">
-      <div class="ec-fr frag"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>− ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>= ½</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr frag"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>− ½</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>= ½</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></div>
       <p class="chico frag">Con la manzana \(= \dfrac{v_0^{2}\sin^{2}\theta}{g}\), que aparece en el tiro parabólico:</p>
       <div class="kf frag">\[ \dfrac{v_0^{2}\sin^{2}\theta}{g} - \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} \]\[ = \dfrac12\,\dfrac{v_0^{2}\sin^{2}\theta}{g} = \dfrac{v_0^{2}\sin^{2}\theta}{2g} \]</div>
     </div>
@@ -1530,13 +1544,13 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <div class="g2">
     <div class="pila">
       <h3 style="margin:0">Recíproco</h3>
-      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">fruta</span><span>verdura</span></span></div>
-      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr" src="img/verdura-zanahoria.webp" alt="zanahoria"></span><span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">verdura</span><span>fruta</span></span></div>
+      <div class="ec-fr"><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span><span><img class="fr sin-visor" src="img/verdura-zanahoria.webp" alt="zanahoria"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">fruta</span><span>verdura</span></span></div>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><img class="fr sin-visor" src="img/verdura-zanahoria.webp" alt="zanahoria"></span><span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>=</span><span class="fr-frac"><span class="fr-num">verdura</span><span>fruta</span></span></div>
     </div>
     <div class="pila">
       <h3 style="margin:0">Expandir</h3>
-      <div class="ec-fr frag"><img class="fr" src="img/dientes.webp" alt="dientes"><span>(</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>)</span></div>
-      <div class="ec-fr frag"><span>=</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr frag"><img class="fr sin-visor" src="img/dientes.webp" alt="dientes"><span>(</span><img class="fr sin-visor" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>)</span></div>
+      <div class="ec-fr frag"><span>=</span><img class="fr sin-visor" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr sin-visor" src="img/fruta-mango.webp" alt="mango"><span>+</span><img class="fr sin-visor" src="img/dientes.webp" alt="dientes"><span>·</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></div>
       <div class="caja frag"><p class="chico" style="margin:0">El factor de afuera actúa sobre <strong>ambos</strong> términos del paréntesis: \(k\,(a + b) = k\,a + k\,b\).</p></div>
       <div class="kf frag">\[ \text{Recíproco:}\quad \Big(\dfrac{a}{b}\Big)^{-1} = \dfrac{b}{a} \]</div>
     </div>
@@ -1549,8 +1563,8 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <h2 class="titulo">Despeje de variables: la misma operación a ambos lados</h2>
   <div class="g2-40">
     <div class="pila">
-      <div class="ec-fr"><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"></div>
-      <div class="ec-fr frag"><span class="op-caja">operación</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr" src="img/fruta-manzana.webp" alt="manzana"><span class="op-caja">operación</span></div>
+      <div class="ec-fr"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <div class="ec-fr frag"><span class="op-caja">operación</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>=</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span class="op-caja">operación</span></div>
       <div class="caja c2 frag"><p class="chico" style="margin:0">La misma operación, a ambos lados, mantiene la igualdad. Ejemplo: \(2x + 5 = 11 \;\xrightarrow{\;-5\;}\; 2x = 6 \;\xrightarrow{\;\times\frac12\;}\; x = 3\).</p></div>
     </div>
     <figure class="svgbox" style="margin:0">
@@ -3039,6 +3053,37 @@ const alAzar = () => (Math.random() < 0.5 ? 'sale' : 'entra');
   nuevo();
 })();
 
+/* ═══ AMPLIAR LOS CUBOS ENTRELAZADOS A TODA LA DIAPOSITIVA ════════════════
+   Mueve (no copia) los cubos y sus botones a una capa que cubre la
+   diapositiva: el estado y los botones siguen funcionando igual. */
+(function () {
+  const cubos = document.getElementById('en-cubos'), btn = document.getElementById('en-ampl');
+  if (!cubos || !btn) return;
+  const dp = cubos.closest('section'), fila = btn.closest('.fila-btn');
+  const marca1 = document.createComment('cubos'), marca2 = document.createComment('botones');
+  let capa = null;
+  function abre() {
+    if (capa) return;
+    capa = document.createElement('div'); capa.className = 'ampl-fondo'; capa.setAttribute('role', 'dialog'); capa.setAttribute('aria-modal', 'true');
+    capa.innerHTML = '<div class="ampl-hd"><h3>Observa los cubos antes de decidir: ¿sale o entra?</h3><button type="button" class="ampl-x" aria-label="Cerrar">✕ Cerrar</button></div><div class="ampl-cont"></div>';
+    cubos.parentNode.insertBefore(marca1, cubos); fila.parentNode.insertBefore(marca2, fila);
+    capa.querySelector('.ampl-cont').appendChild(cubos); capa.appendChild(fila);
+    btn.textContent = '⤡ Reducir';
+    capa.querySelector('.ampl-x').addEventListener('click', cierra);
+    dp.appendChild(capa);
+  }
+  function cierra() {
+    if (!capa) return;
+    marca1.parentNode.insertBefore(cubos, marca1); marca1.remove();
+    marca2.parentNode.insertBefore(fila, marca2); marca2.remove();
+    capa.remove(); capa = null; btn.textContent = '⛶ Ampliar';
+  }
+  cubos.addEventListener('click', () => { if (!capa) abre(); });
+  btn.addEventListener('click', () => (capa ? cierra() : abre()));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && capa) cierra(); });
+  document.addEventListener('slidechange', cierra);
+})();
+
 /* ═══ FOTOGRAFÍAS DE UN PROTÓN ════════════════════════════════════════
    Cada foto es un diagrama de vacío de la QCD, sin patas externas:
    · de cada quark de valencia (u, u, d) sale exactamente un gluón;
@@ -3350,6 +3395,7 @@ function burbuja(g, a, b, sab, esc) {
   document.addEventListener('slidechange', () => { cierra(); resaltaHiggs(false); });
   caja.addEventListener('click', ev => { if (!ev.target.closest('.me-pop') && !ev.target.closest('.me-c')) cierra(); });
 })();
+
 
 </script>
 </body></html>

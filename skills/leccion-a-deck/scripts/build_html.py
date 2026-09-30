@@ -5,7 +5,7 @@ autocontenido, con la navegación y el cromo originales de clase-slides.
 Uso:
   python build_html.py LECCION.html --ds RUTA/_ds/<sistema> --out SALIDA.html
          [--ancho 2280 --alto 1080] [--sin-posters] [--sin-cierre]
-         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO | --credito-leccion]
+         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO | --credito-leccion] [--sin-visor]
 
 Qué produce (ver references/autonomo.md):
   · #escenario 19:9 adaptable con el cromo de clase-slides: barra (marca, menú
@@ -146,6 +146,7 @@ def main():
     ap.add_argument('--mathjax', choices=['inline', 'cdn'], default='inline')
     ap.add_argument('--marca'); ap.add_argument('--credito')
     ap.add_argument('--credito-leccion', action='store_true', help='usar el crédito que trae la lección fuente')
+    ap.add_argument('--sin-visor', action='store_true', help='no incluir el visor de imágenes a pantalla completa')
     a = ap.parse_args()
 
     src = leer(a.leccion)
@@ -187,6 +188,7 @@ def main():
             .replace('%%PADX%%', '%dpx' % padx).replace('%%COLS%%', '4'))
     cromo = leer(os.path.join(ASSETS, 'cromo.css')).replace('%%ANCHO%%', str(a.ancho)).replace('%%ALTO%%', str(a.alto))
     css_total = ds_css + '\n\n' + css + '\n\n' + capa + '\n\n' + cromo
+    if not a.sin_visor: css_total += '\n\n' + leer(os.path.join(ASSETS, 'visor-img.css'))
 
     # cuerpo: diapositivas, fuentes de ventanas emergentes y scripts
     cuerpo = src[src.find('<body'):]
@@ -240,7 +242,8 @@ def main():
     tok = ("function tok(nombre) {\n  const v = getComputedStyle(document.documentElement).getPropertyValue(nombre).trim();\n"
            "  return v || '#201e1d';\n}")
     escala = leer(os.path.join(ASSETS, 'escala.js')).replace('%%ANCHO%%', str(a.ancho))
-    js = '\n\n'.join([tok, escala, js_autonomo(scripts), 'window.__leccionTypeset();'])
+    visor = '' if a.sin_visor else leer(os.path.join(ASSETS, 'visor-img.js'))
+    js = '\n\n'.join([tok, escala, js_autonomo(scripts), visor, 'window.__leccionTypeset();'])
     for t in (css_total, diapos, pops_html, mj_cfg):
         if '</script' in t.lower(): raise SystemExit('contenido con </script>')
 

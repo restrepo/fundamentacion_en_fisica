@@ -222,6 +222,24 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-energia-parab .ctrl{margin:2px 0}
 #dp-energia-parab .ep-ctl{margin:4px 0}
 #dp-energia-parab .btn{font-size:24px;padding:8px 13px}
+
+/* recuadro del trabajo: resumen que abre el detalle */
+#dp-arrastre .ar-trab.prop{border-bottom:2px solid var(--linea);font-weight:400;color:var(--tinta);cursor:pointer}
+#dp-arrastre .ar-trab.prop:hover{background:var(--res-50)}
+#dp-arrastre .ar-mas{display:block;margin-top:2px;font-size:22px;color:var(--res);font-weight:600}
+#dp-arrastre .popover{max-width:1000px;font-size:27px}
+
+/* r_CM clicable con su demostración */
+.rcm-pop{display:block;border-bottom:2px dashed var(--res-borde, var(--res));font-weight:400;color:var(--tinta);cursor:pointer;border-radius:6px}
+.rcm-pop:hover{background:var(--res-50)}
+.rcm-mas{display:block;text-align:right;font-size:22px;color:var(--res);font-weight:600;margin-top:-6px}
+
+/* demostración de r_CM y balanza */
+#dp-rcm .rc-col > * + *{margin-top:8px}
+#dp-rcm .caja{padding:4px 14px;font-size:26px}
+#dp-rcm .caja h3{font-size:25px;margin:0}
+#dp-rcm .ctrl{margin:2px 0}
+#dp-rcm .btn{font-size:24px;padding:8px 13px}
 </style></head>
 <body>
 <div id="escenario">
@@ -614,21 +632,21 @@ dl.glosa dd{margin:0;font-size:29px}
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-arrastre" data-label="Lanzamiento vertical con resistencia del aire" data-speaker-notes="§ 3.5. Ejemplo numérico con arrastre cuadrático F_D = k v|v|, k = ½ρC_D A con ρ = 1,2 kg/m³ y A = πd²/4 para cada objeto (bala 6,46 × 10⁻⁵ m², béisbol 4,30 × 10⁻³ m², ping-pong 1,26 × 10⁻³ m²). El algoritmo solo cambia la fuerza; la energía cinética perdida (≈ 87 % para la bala) se disipa en calor, sonido y turbulencia. Bala .38: H ≈ 887 m (sin aire 2862 m), regresa a ≈ 86,5 m/s (sin aire 236,8 m/s).">
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-arrastre" data-label="Lanzamiento vertical con resistencia del aire" data-speaker-notes="§ 3.5. Ejemplo numérico con arrastre cuadrático F_D = k v|v|, k = ½ρC_D A con ρ = 1,2 kg/m³ y A = πd²/4 para cada objeto (bala 6,46 × 10⁻⁵ m², béisbol 4,30 × 10⁻³ m², balón de fútbol 3,80 × 10⁻² m²). El algoritmo solo cambia la fuerza; la energía cinética perdida (≈ 87 % para la bala) se disipa en calor, sonido y turbulencia. Bala .38: H ≈ 887 m (sin aire 2862 m), regresa a ≈ 86,5 m/s (sin aire 236,8 m/s).">
   <p class="ceja">§ 3.5 · Ejemplo numérico con resistencia del aire</p>
   <h2 class="titulo">Un problema difícil, el mismo algoritmo: \(F = -mg - k\,v\abs{v}\)</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Altura \(y\) frente al tiempo \(t\)</span><span class="val" id="ar-lect"></span></div>
       <div id="ar-fig"></div>
-      <div class="fila-btn" id="ar-pre" style="margin-top:6px"><button type="button" class="btn on" data-p="bala">Bala .38 al aire</button><button type="button" class="btn" data-p="beisbol">Pelota de béisbol</button><button type="button" class="btn" data-p="pingpong">Pelota de ping-pong</button><button type="button" class="btn" id="ar-reset" title="Bala .38, C_D = 0,30 y el paso inicial">↺ Por defecto</button></div>
+      <div class="fila-btn" id="ar-pre" style="margin-top:6px"><button type="button" class="btn on" data-p="bala">Bala .38 al aire</button><button type="button" class="btn" data-p="beisbol">Pelota de béisbol</button><button type="button" class="btn" data-p="futbol">Balón de fútbol</button><button type="button" class="btn" id="ar-reset" title="Bala .38, C_D = 0,30 y el paso inicial">↺ Por defecto</button></div>
       <div class="ar-datos">
         <div class="ar-dat" data-p="bala">\(m = 158\,\mathrm{gr} = \qty{10{,}24}{g}\), \(d = 0{,}357\,\mathrm{in} = \qty{9{,}07}{mm}\):
           \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{9{,}07\times 10^{-3}}{m})^{2}}{4} \approx \qty{6{,}46\times 10^{-5}}{m^2}\)</div>
         <div class="ar-dat" data-p="beisbol" style="display:none">\(m = \qty{145}{g}\), \(d = \qty{74}{mm}\):
           \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{0{,}074}{m})^{2}}{4} \approx \qty{4{,}30\times 10^{-3}}{m^2}\)</div>
-        <div class="ar-dat" data-p="pingpong" style="display:none">\(m = \qty{2{,}7}{g}\), \(d = \qty{40}{mm}\):
-          \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{0{,}040}{m})^{2}}{4} \approx \qty{1{,}26\times 10^{-3}}{m^2}\)</div>
+        <div class="ar-dat" data-p="futbol" style="display:none">\(m = \qty{430}{g}\), \(d = \qty{22}{cm}\):
+          \(A = \dfrac{\pi d^{2}}{4} = \dfrac{\pi\,(\qty{0{,}22}{m})^{2}}{4} \approx \qty{3{,}80\times 10^{-2}}{m^2}\)</div>
         <div class="ar-k">\(\rho = \qty{1{,}2}{kg/m^3}\) (aire cerca del nivel del mar) · <span id="ar-kv"></span></div>
       </div>
     </figure>
@@ -645,17 +663,19 @@ dl.glosa dd{margin:0;font-size:29px}
           <tr><td class="izq">Subida / bajada</td><td id="ar-t0"></td><td id="ar-tn"></td><td id="ar-ta"></td></tr>
         </tbody>
       </table>
-      <div class="caja c2 frag" style="padding:6px 16px"><p style="margin:0;font-size:23px;line-height:1.35"><strong>Trabajo y energía.</strong> \(K_i = \tfrac12 m v_0^{2} \approx\) <b id="ar-ki"></b> y \(K_f = \tfrac12 m v_f^{2} \approx\) <b id="ar-kf"></b>. En la ida y vuelta la gravedad no hace trabajo neto (\(-mgH\) al subir, \(+mgH\) al bajar), así que \(W_{\text{arrastre}} = K_f - K_i \approx\) <b id="ar-kd"></b>. El algoritmo lo confirma sumando \(F_D\,\Delta y\) en cada paso: <b id="ar-w"></b> (<span id="ar-wsb"></span>). Es <strong>negativo en los dos tramos</strong> porque el arrastre siempre se opone al movimiento: es la energía que el proyectil entrega al aire y se <strong>disipa</strong> como calor, sonido y remolinos. Sin aire, \(W = 0\) y \(K_f = K_i\).</p></div>
+      <div class="caja c2 frag prop ar-trab" data-pop="pop-trabajo-arrastre" role="button" tabindex="0" style="padding:6px 16px"><p style="margin:0;font-size:26px"><strong>Trabajo y energía.</strong> El arrastre hace un trabajo \(W \approx\) <b id="ar-wc"></b>: se disipa el <b id="ar-pc"></b> de la energía cinética inicial. <span class="ar-mas">ⓘ Clic para ver el detalle</span></p></div>
+      <div class="pop-src" id="pop-trabajo-arrastre" style="display:none"><h4>Trabajo del arrastre y energía disipada</h4><p style="margin:0">\(K_i = \tfrac12 m v_0^{2} \approx\) <b id="ar-ki"></b> y \(K_f = \tfrac12 m v_f^{2} \approx\) <b id="ar-kf"></b>. En la ida y vuelta la gravedad no hace trabajo neto (\(-mgH\) al subir, \(+mgH\) al bajar), así que \(W_{\text{arrastre}} = K_f - K_i \approx\) <b id="ar-kd"></b>. El algoritmo lo confirma sumando \(F_D\,\Delta y\) en cada paso: <b id="ar-w"></b> (<span id="ar-wsb"></span>). Es <strong>negativo en los dos tramos</strong> porque el arrastre siempre se opone al movimiento: es la energía que el objeto entrega al aire y se <strong>disipa</strong> como calor, sonido y remolinos. Sin aire, \(W = 0\) y \(K_f = K_i\).</p></div>
     </div>
   </div>
 </section>
 
 <!-- ═════════════ §4 · CANTIDAD DE MOVIMIENTO ═════════════ -->
-<section class="diapositiva" data-seccion="Cantidad de movimiento" data-label="Conservación de la cantidad de movimiento" data-speaker-notes="§ 3.6. ↓ revela 4 pasos de la derivación. M_total es la suma de todas las masas; v_CM = P_total/M_total.">
+<section class="diapositiva compacta" data-seccion="Cantidad de movimiento" data-label="Conservación de la cantidad de movimiento" data-speaker-notes="§ 3.6. Diagrama: dos cuerpos antes, durante y después de chocar dentro de un sistema aislado; las fuerzas internas son iguales y opuestas y la barra de P_total no cambia. ↓ revela 4 pasos de la derivación. M_total es la suma de todas las masas; v_CM = P_total/M_total.">
   <p class="ceja">§ 3.6 · Conservación de la cantidad de movimiento</p>
   <h2 class="titulo">Un <span class="prop" data-pop="pop-aislado">sistema aislado</span> no puede cambiar su momento total</h2>
   <div class="g2">
     <div class="pila">
+      <figure class="svgbox" style="margin:0;padding:8px 12px"><div class="svghd"><span>Choque dentro de un sistema aislado</span><span class="val">\(\vect{P}_{\text{total}}\) no cambia</span></div><div id="cm-diag"></div></figure>
       <p class="frag">Acción y reacción: \(\vect{F}_{12} = -\vect{F}_{21}\). Con la ley de la fuerza en cada partícula,
         \[ \dfrac{\Delta\vect{p}_2}{\Delta t} = -\dfrac{\Delta\vect{p}_1}{\Delta t} \;\Longrightarrow\; \Delta\vect{p}_1 + \Delta\vect{p}_2 = \vect{0}. \]</p>
       <p class="frag">Separando estados inicial y final:
@@ -664,11 +684,38 @@ dl.glosa dd{margin:0;font-size:29px}
     <div class="pila">
       <div class="caja frag"><h3>Centro de masas</h3>
         \[ M_{\text{total}} = m_1 + m_2 + \dots + m_N, \qquad \vect{P}_{\text{total}} = \vect{p}_1 + \vect{p}_2 + \dots + \vect{p}_N \]
-        \[ \vect{r}_{\text{CM}} = \dfrac{m_1\vect{r}_1 + m_2\vect{r}_2 + \dots + m_N\vect{r}_N}{M_{\text{total}}}, \qquad \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}}. \]</div>
+        <div class="rcm-pop" data-ir="dp-rcm" role="link" tabindex="0" title="Ir a la demostración">\[ \vect{r}_{\text{CM}} = \dfrac{m_1\vect{r}_1 + m_2\vect{r}_2 + \dots + m_N\vect{r}_N}{M_{\text{total}}}, \qquad \vect{v}_{\text{CM}} = \dfrac{\vect{P}_{\text{total}}}{M_{\text{total}}}. \]<span class="rcm-mas">ⓘ De dónde sale \(\vect{r}_{\text{CM}}\): diapositiva siguiente →</span></div></div>
       <div class="kf frag">\[ \vect{F}_{\text{neta, ext}} = \dfrac{\Delta\vect{P}_{\text{total}}}{\Delta t} = M_{\text{total}}\,\vect{a}_{\text{CM}} \]</div>
     </div>
   </div>
 </section>
+
+<section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-rcm" data-label="De dónde sale el centro de masas" data-speaker-notes="§ 3.6. Demostración de r_CM: se busca un punto con M v_CM = P; escribiendo P con posiciones y masas constantes, r_CM = Σ mᵢ rᵢ / M. Comprobación con dos masas sobre una recta: el CM es el punto de equilibrio de la barra, m₁d₁ = m₂d₂. ↓ revela 4 pasos. Explorador: arrastra las masas o cambia sus valores.">
+  <p class="ceja">§ 3.6 · Centro de masas</p>
+  <h2 class="titulo">¿De dónde sale \(\vect{r}_{\text{CM}}\)?</h2>
+  <div class="g2" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+    <div class="pila rc-col">
+      <div class="caja neutra frag"><h3>1 · Lo que se busca</h3>Un punto que se mueva como una sola partícula con toda la masa y todo el momentum:
+        \[ M_{\text{total}}\,\vect{v}_{\text{CM}} = \vect{P}_{\text{total}}. \]</div>
+      <div class="caja neutra frag"><h3>2 · Momentum total con posiciones</h3>Con masas constantes, \(\vect{p}_i = m_i\,\Delta\vect{r}_i/\Delta t\):
+        \[ \vect{P}_{\text{total}} = \sum_i m_i\,\dfrac{\Delta\vect{r}_i}{\Delta t} = \dfrac{\Delta\big(\sum_i m_i\vect{r}_i\big)}{\Delta t}. \]</div>
+      <div class="caja neutra frag"><h3>3 · Igualar</h3>Con \(\vect{v}_{\text{CM}} = \Delta\vect{r}_{\text{CM}}/\Delta t\) y la constante elegida para que con una partícula \(\vect{r}_{\text{CM}} = \vect{r}_1\):
+        \[ \dfrac{\Delta\big(M_{\text{total}}\,\vect{r}_{\text{CM}}\big)}{\Delta t} = \dfrac{\Delta\big(\sum_i m_i\vect{r}_i\big)}{\Delta t} \;\Longrightarrow\; \resalta{\vect{r}_{\text{CM}} = \dfrac{\sum_i m_i\vect{r}_i}{M_{\text{total}}}}. \]</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:29px">\[ \vect{F}_{\text{neta, ext}} = \dfrac{\Delta\vect{P}_{\text{total}}}{\Delta t} = M_{\text{total}}\,\vect{a}_{\text{CM}} \]</div>
+    </div>
+    <div class="pila rc-col">
+      <figure class="svgbox" style="margin:0">
+        <div class="svghd"><span>Comprobación: dos masas sobre una recta · arrastra las masas</span><span class="val" id="rc-lect"></span></div>
+        <div id="rc-fig" class="pb-arr"></div>
+      </figure>
+      <label class="ctrl"><span>\(m_1\) [kg]</span><input type="range" id="rc-m1" min="0.5" max="6" step="0.5" value="3"><span class="v" id="rc-m1v"></span></label>
+      <label class="ctrl"><span>\(m_2\) [kg]</span><input type="range" id="rc-m2" min="0.5" max="6" step="0.5" value="1"><span class="v" id="rc-m2v"></span></label>
+      <div class="fila-btn"><button type="button" class="btn" id="rc-iguales">Masas iguales</button></div>
+      <p class="nota" style="margin:0">\(x_{\text{CM}} = \dfrac{m_1 x_1 + m_2 x_2}{m_1 + m_2}\): con masas iguales es el punto medio; en general es el punto de equilibrio de la barra, donde \(m_1 d_1 = m_2 d_2\).</p>
+    </div>
+  </div>
+</section>
+
 
 <section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-marco-cm" data-label="Momentum total en el marco del centro de masas" data-speaker-notes="§ 3.6. Demostración: visto desde un observador que viaja con el centro de masas, v′ᵢ = vᵢ − v_CM y P′ = P − M_total v_CM = 0, en todo instante y para cualquier sistema. Si el sistema es aislado, v_CM es constante y ese marco es inercial. ↓ revela 3 pasos. Explorador: dos carritos.">
   <p class="ceja">§ 3.6 · Marco del centro de masas</p>
@@ -1078,6 +1125,7 @@ const T_OSC = 2 * Math.PI;
     pop.style.top = Math.max(40, y) + 'px';
   });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') cerrar(); });
+  document.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && e.target instanceof Element && e.target.classList.contains('prop') && e.target.getAttribute('role') === 'button') { e.preventDefault(); e.target.click(); } });
   document.addEventListener('slidechange', cerrar);
 })();
 
@@ -1497,7 +1545,7 @@ const T_OSC = 2 * Math.PI;
   const PRE = {
     bala: { v0: 236.8, m: 0.01024, d: 0.00907, cd: 0.30, nom: 'bala .38 Special, 158 gr, 777 ft/s' },
     beisbol: { v0: 40, m: 0.145, d: 0.074, cd: 0.35, nom: 'béisbol, 145 g, 40 m/s' },
-    pingpong: { v0: 20, m: 0.0027, d: 0.040, cd: 0.47, nom: 'ping-pong, 2,7 g, 20 m/s' }
+    futbol: { v0: 25, m: 0.43, d: 0.22, cd: 0.25, nom: 'balón de fútbol, 430 g, 25 m/s' }
   };
   let P = PRE.bala;
   /* el MISMO algoritmo de Euler-Cromer; solo cambia la fuerza */
@@ -1558,6 +1606,8 @@ const T_OSC = 2 * Math.PI;
     const fW = x => (x < 0 ? '−' : '') + fJ(Math.abs(x));
     document.getElementById('ar-kd').textContent = fW(Kf - Ki) + ' (' + num((Ki - Kf) / Ki * 100, 0) + ' % de Kᵢ)';
     document.getElementById('ar-w').textContent = fW(num1.Wd);
+    document.getElementById('ar-wc').textContent = fW(Kf - Ki);
+    document.getElementById('ar-pc').textContent = num((Ki - Kf) / Ki * 100, 0) + ' %';
     document.getElementById('ar-wsb').textContent = 'subida ' + fW(num1.Wsub) + ', bajada ' + fW(num1.Wd - num1.Wsub);
     document.getElementById('ar-cdv').textContent = num(cd, 2);
     document.getElementById('ar-kv').innerHTML = '<i>k</i> = ½ <i>ρ C</i><sub>D</sub> <i>A</i> = ½ · 1,2 · ' + num(cd, 2) + ' · A ≈ ' + (k > 0 ? num(k / Math.pow(10, Math.floor(Math.log10(k))), 2) + ' × 10' + String(Math.floor(Math.log10(k))).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]) : '0') + ' kg/m';
@@ -1871,6 +1921,96 @@ const T_OSC = 2 * Math.PI;
     document.getElementById('ce-tv').textContent = num(t, 2) + ' s';
   }
   rt.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DIAGRAMA: CHOQUE DENTRO DE UN SISTEMA AISLADO ════════════════════ */
+(function () {
+  const host = document.getElementById('cm-diag');
+  if (!host) return;
+  /* m₁ = 2 kg a 3 m/s y m₂ = 1 kg a −2 m/s; tras el choque, 0,5 m/s y 3 m/s: P = 4 kg·m/s siempre */
+  const panel = [
+    { t: 'Antes', p1: 6, p2: -2 },
+    { t: 'Durante: fuerzas internas', p1: null, p2: null },
+    { t: 'Después', p1: 1, p2: 3 }
+  ];
+  const svg = nodo('svg', { viewBox: '0 0 1100 360', class: 'fig' }, host), E = 19;
+  panel.forEach((q, k) => {
+    const x0 = 20 + k * 360, cx = x0 + 170;
+    nodo('rect', { x: x0, y: 40, width: 340, height: 186, rx: 10, style: 'fill:none;stroke:var(--proy);stroke-width:2.5;stroke-dasharray:10 7' }, svg);
+    rotulo(svg, cx, 28, q.t, { 'text-anchor': 'middle', 'font-size': 29, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+    const a = cx - (q.p1 === null ? 26 : 70), b = cx + (q.p1 === null ? 22 : 70);
+    nodo('circle', { cx: a, cy: 136, r: 32, style: 'fill:var(--caso1)' }, svg);
+    nodo('circle', { cx: b, cy: 136, r: 24, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, a, 146, '*m*₁', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, b, 144, '*m*₂', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    if (q.p1 === null) {
+      flecha(svg, a - 20, 80, a - 90, 80, 'var(--mal)', 5); flecha(svg, b + 20, 80, b + 90, 80, 'var(--mal)', 5);
+      rotulo(svg, a - 55, 68, '!F!₂₁', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--mal);font-family:' + FMATH });
+      rotulo(svg, b + 55, 68, '!F!₁₂', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--mal);font-family:' + FMATH });
+      rotulo(svg, cx, 190, '!F!₁₂ = −!F!₂₁', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--mal);font-family:' + FMATH + ';font-weight:700' });
+    } else {
+      flecha(svg, a, 84, a + E * q.p1, 84, 'var(--caso1)', 5); flecha(svg, b, 190, b + E * q.p2, 190, 'var(--caso2)', 5);
+      rotulo(svg, a + Math.max(E * q.p1 / 2, 20), 70, '!p!₁ = ' + q.p1, { 'text-anchor': 'middle', 'font-size': 27, style: 'fill:var(--caso1);font-family:' + FMATH });
+      rotulo(svg, b + E * q.p2 / 2, 218, '!p!₂ = ' + (q.p2 < 0 ? '−' : '') + Math.abs(q.p2), { 'text-anchor': 'middle', 'font-size': 27, style: 'fill:var(--caso2);font-family:' + FMATH });
+    }
+    /* barra del momentum total: igual en los tres paneles */
+    nodo('rect', { x: cx - 2 * E, y: 250, width: 4 * E, height: 28, style: 'fill:var(--res)' }, svg);
+    rotulo(svg, cx, 310, '!P!_total = 4 kg·m/s', { 'text-anchor': 'middle', 'font-size': 27, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+  });
+  rotulo(svg, 550, 350, 'Sin fuerzas externas (recuadro discontinuo): las internas se cancelan por pares', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+})();
+
+/* ═══ CENTRO DE MASAS DE DOS MASAS SOBRE UNA RECTA (balanza) ═══════════ */
+(function () {
+  const host = document.getElementById('rc-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rm1 = R_('rc-m1'), rm2 = R_('rc-m2');
+  let x1 = 1, x2 = 9, arr = null;
+  const W = 1100, H = 470, x0 = 70, esc = 96;                     /* 0–10 m sobre la barra */
+  const X = x => x0 + x * esc;
+  function pinta() {
+    const m1 = +rm1.value, m2 = +rm2.value, M = m1 + m2, xc = (m1 * x1 + m2 * x2) / M, d1 = Math.abs(xc - x1), d2 = Math.abs(x2 - xc);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host), yb = 250;
+    nodo('line', { x1: X(0), x2: X(10), y1: yb + 120, y2: yb + 120, style: 'stroke:var(--tinta2);stroke-width:2' }, svg);
+    for (let k = 0; k <= 10; k++) {
+      nodo('line', { x1: X(k), x2: X(k), y1: yb + 112, y2: yb + 128, style: 'stroke:var(--tinta2);stroke-width:2' }, svg);
+      rotulo(svg, X(k), yb + 156, String(k), { 'text-anchor': 'middle', 'font-size': 22 });
+    }
+    rotulo(svg, X(10) + 14, yb + 126, '*x* (m)', { 'font-size': 22 });
+    nodo('rect', { x: X(0), y: yb - 8, width: 10 * esc, height: 16, rx: 4, style: 'fill:var(--linea)' }, svg);
+    nodo('polygon', { points: [[X(xc), yb + 10], [X(xc) - 32, yb + 70], [X(xc) + 32, yb + 70]].map(p => p.join(',')).join(' '), style: 'fill:var(--res)' }, svg);
+    rotulo(svg, X(xc), yb + 98, '*x*_CM = ' + num(xc, 2) + ' m', { 'text-anchor': 'middle', 'font-size': 25, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    [[x1, m1, 'var(--caso1)', '*m*₁'], [x2, m2, 'var(--caso2)', '*m*₂']].forEach(q => {
+      const sz = 34 + 12 * q[1];
+      nodo('rect', { x: X(q[0]) - sz / 2, y: yb - 8 - sz, width: sz, height: sz, rx: 6, style: 'fill:' + q[2] + ';cursor:grab' }, svg);
+      rotulo(svg, X(q[0]), yb - 8 - sz / 2 + 9, q[3], { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    });
+    const yd = 70;
+    if (d1 > 0.05) { flecha(svg, (X(x1) + X(xc)) / 2, yd, X(x1), yd, 'var(--caso1)', 3); flecha(svg, (X(x1) + X(xc)) / 2, yd, X(xc), yd, 'var(--caso1)', 3); }
+    if (d2 > 0.05) { flecha(svg, (X(x2) + X(xc)) / 2, yd, X(x2), yd, 'var(--caso2)', 3); flecha(svg, (X(x2) + X(xc)) / 2, yd, X(xc), yd, 'var(--caso2)', 3); }
+    rotulo(svg, (X(x1) + X(xc)) / 2, yd - 14, '*d*₁ = ' + num(d1, 2), { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, (X(x2) + X(xc)) / 2, yd - 14, '*d*₂ = ' + num(d2, 2), { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+    [x1, x2].forEach(x => nodo('line', { x1: X(x), x2: X(x), y1: yd, y2: yb - 60, style: 'stroke:var(--proy);stroke-width:1.5;stroke-dasharray:4 6' }, svg));
+    nodo('line', { x1: X(xc), x2: X(xc), y1: yd, y2: yb - 10, style: 'stroke:var(--res);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    R_('rc-m1v').textContent = num(m1, 1) + ' kg'; R_('rc-m2v').textContent = num(m2, 1) + ' kg';
+    R_('rc-lect').textContent = 'm₁d₁ = ' + num(m1 * d1, 2) + ' = m₂d₂ = ' + num(m2 * d2, 2) + ' kg·m';
+  }
+  const aX = ev => { const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse()); return Math.max(0, Math.min(10, Math.round((p.x - x0) / esc * 4) / 4)); };
+  host.addEventListener('pointerdown', ev => { const x = aX(ev); arr = Math.abs(x - x1) <= Math.abs(x - x2) ? 1 : 2; host.setPointerCapture(ev.pointerId); if (arr === 1) x1 = Math.min(x, x2 - 0.5); else x2 = Math.max(x, x1 + 0.5); pinta(); ev.preventDefault(); });
+  host.addEventListener('pointermove', ev => { if (!arr) return; const x = aX(ev); if (arr === 1) x1 = Math.min(x, x2 - 0.5); else x2 = Math.max(x, x1 + 0.5); pinta(); });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = null; }));
+  R_('rc-iguales').addEventListener('click', () => { rm2.value = rm1.value; pinta(); });
+  [rm1, rm2].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
+/* enlaces a otra diapositiva: data-ir="id-de-la-diapositiva" */
+(function () {
+  $$('[data-ir]').forEach(el => {
+    const ir = () => { const d = document.getElementById(el.dataset.ir); if (!d) return; const k = $$('#lienzo > section').indexOf(d); if (k >= 0) location.hash = '#/' + (k + 1); };
+    el.addEventListener('click', ir);
+    el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); ir(); } });
+  });
 })();
 
 /* ═══ MARCO DEL CENTRO DE MASAS: P' = 0 ════════════════════════════════ */

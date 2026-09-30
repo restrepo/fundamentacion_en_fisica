@@ -60,3 +60,11 @@ Toda figura nueva pasa por lo mismo que el resto de la lección: sin
 revisión a ojo en la hoja de contactos. Para figuras generadas al azar (por
 ejemplo, configuraciones de un sistema), comprueba en cientos de casos que
 cumplen sus reglas.
+
+## Visor a pantalla completa
+
+`build_html.py` añade a toda lección un visor: clic en una imagen → capa a
+pantalla completa con la imagen a toda la altura disponible y su pie de
+figura. No hay que programarlo en la fuente. Para excluir una imagen, dale la
+clase `sin-visor` (o envuélvela en un enlace si debe llevar a otro sitio);
+para desactivarlo en toda la lección, `--sin-visor`.

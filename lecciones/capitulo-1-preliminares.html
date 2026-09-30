@@ -451,6 +451,17 @@ body{background:var(--lienzo);display:flex;align-items:center;justify-content:ce
 #lienzo .frag.aparece.frag-on{visibility:visible;opacity:1}
 @media print{ #lienzo .frag,#lienzo .frag.aparece{opacity:1;visibility:visible} }
 
+
+/* visor-img: clic en una imagen de la diapositiva → la imagen a toda la
+   altura de la pantalla (capa fija, fuera del lienzo escalado). */
+section.diapositiva img:not(.sin-visor):not(.inline-img){cursor:zoom-in}
+section.diapositiva a img{cursor:pointer}
+.visor-img{position:fixed;inset:0;z-index:2147483000;background:rgba(15,15,20,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:14px 20px 12px;cursor:zoom-out}
+.visor-img img{max-width:96vw;max-height:calc(100vh - 80px);width:auto;height:auto;object-fit:contain;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.5);cursor:zoom-out}
+.visor-img .visor-pie{max-width:90vw;color:#eee;font:16px/1.35 system-ui,sans-serif;text-align:center}
+.visor-img .visor-x{position:fixed;top:12px;right:16px;border:0;border-radius:6px;background:rgba(255,255,255,.14);color:#fff;font:600 16px/1 system-ui,sans-serif;padding:9px 14px;cursor:pointer}
+.visor-img .visor-x:hover{background:rgba(255,255,255,.28)}
+
 </style>
 <script>
 window.MathJax = {
@@ -1866,6 +1877,50 @@ function cientTxt(v, cifras) {
   }
   pie.addEventListener('click', abre);
   pie.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); e.stopPropagation(); abre(); } });
+})();
+
+
+/* ═══ VISOR DE IMÁGENES (leccion-a-deck) ═════════════════════════════════
+   Clic en una imagen de cualquier diapositiva → capa que ocupa la pantalla
+   completa, fuera del lienzo escalado, con la imagen a toda la altura
+   disponible y su pie de figura. Se cierra con clic, Escape, Enter o ✕.
+   Excluidas: imágenes dentro de un enlace (conservan el enlace), las de
+   clase .sin-visor o .inline-img y las de menos de 110 px de ancho en la
+   diapositiva (iconos dentro del texto o de una ecuación). */
+(function () {
+  if (window.__visorImg) return;
+  window.__visorImg = true;
+  let capa = null;
+  const valida = img => img && !img.closest('a') && !img.classList.contains('sin-visor') && !img.classList.contains('inline-img')
+    && !img.closest('.sin-visor') && img.offsetWidth >= 110;          /* en px del lienzo: excluye iconos */
+  function cierra() { if (capa) { capa.remove(); capa = null; } }
+  function abre(img) {
+    cierra();
+    const fig = img.closest('figure'), pie = fig && fig.querySelector('figcaption');
+    capa = document.createElement('div'); capa.className = 'visor-img';
+    capa.setAttribute('role', 'dialog'); capa.setAttribute('aria-modal', 'true'); capa.setAttribute('aria-label', img.alt || 'Imagen ampliada');
+    const im = document.createElement('img'); im.src = img.currentSrc || img.src; im.alt = img.alt || '';
+    const x = document.createElement('button'); x.type = 'button'; x.className = 'visor-x'; x.textContent = '✕ Cerrar (Esc)';
+    capa.appendChild(x); capa.appendChild(im);
+    const texto = (pie && pie.textContent.trim()) || img.alt || '';
+    if (texto) { const p = document.createElement('div'); p.className = 'visor-pie'; p.textContent = texto; capa.appendChild(p); }
+    capa.addEventListener('click', cierra);
+    (document.fullscreenElement || document.body).appendChild(capa);
+    x.focus({ preventScroll: true });
+  }
+  document.addEventListener('click', ev => {
+    const img = ev.target && ev.target.closest && ev.target.closest('section.diapositiva img');
+    if (!valida(img)) return;
+    ev.preventDefault(); ev.stopPropagation(); abre(img);
+  }, true);
+  /* mientras está abierto, las teclas no mueven la presentación */
+  document.addEventListener('keydown', ev => {
+    if (!capa) return;
+    ev.stopPropagation();
+    if (ev.key === 'Escape' || ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); cierra(); }
+  }, true);
+  document.addEventListener('slidechange', cierra);
+  document.addEventListener('fullscreenchange', cierra);
 })();
 
 

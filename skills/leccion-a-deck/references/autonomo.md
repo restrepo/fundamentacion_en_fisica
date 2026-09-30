@@ -31,6 +31,7 @@ de la lección en lugar de la de `<deck-stage>`.
 | `cromo.css` | Pasos ↓ ↑ con el modelo original: pendientes **atenuados** al 25 % y al 100 % en su turno; `.frag.aparece` (respuestas) oculto hasta su turno. Medidas del cromo original en `cqh`/`cqw` del escenario; colores por rol. Oculta ↑ ↓ con `#escenario.sin-pasos`, atenúa con `.quieto`, aclara crédito y contador en pósteres (`.en-poster`). |
 | `escala.js` | Escala `#lienzo` al ancho del escenario (ResizeObserver) y marca `.en-poster`. |
 | `nucleo-autonomo.js` | Núcleo clase-slides v1.3: menú, recta, contador, flechas, teclado (← → diapositiva; ↓ ↑ pasos; espacio todo en orden; Inicio/Fin; F pantalla completa), hash `#/n`, atenuación en reposo, zoom de pellizco en pantalla completa. Adaptado para recorrer `#lienzo > section` (diapositivas **y** pósteres), poner `data-deck-active` y emitir `slidechange` además de `diapositiva`. |
+| `visor-img.css`, `visor-img.js` | Visor de imágenes a pantalla completa (clic en una imagen); `--sin-visor` lo omite. |
 | `contador.js` | Clic en el contador → número + Enter. Se añade si la lección no lo trae. |
 | `mathjax-tex-svg-full.js` | MathJax 3.2.2 completo. El `full` es obligatorio al ir en línea: el componente normal carga `\boldsymbol`, `\color`… por *autoload* desde la URL del script, que no existe. |
 
