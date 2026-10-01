@@ -270,6 +270,24 @@ dl.glosa dd{margin:0;font-size:29px}
 .imp-tab{font-size:26px;margin:4px 0}
 .imp-tab th,.imp-tab td{padding:4px 18px;text-align:center}
 .imp-tab th.izq{text-align:left}
+
+/* práctica conceptual (preguntas del PowerPoint de práctica) */
+.pc-slide .pc-col > * + *{margin-top:10px}
+.pc-slide .pr-q{font-size:30px}
+.pc-slide .pr-opcs{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.pc-slide .pr-opc{text-align:left;font-size:27px}
+.pc-slide .pc-q + .pc-q{margin-top:12px;padding-top:10px;border-top:2px solid var(--linea)}
+#pc-caja .pr-q{font-size:25px}
+#pc-caja .pr-opc{font-size:23px;padding:5px 12px}
+#pc-caja .pr-opcs{flex-direction:row;flex-wrap:wrap;gap:6px}
+.pc-fb{font:600 26px/1.3 var(--font-body);min-height:0}
+.pc-fb.ok{color:var(--res)} .pc-fb.mal{color:var(--mal)}
+.pc-exp{background:var(--res-50);border-left:8px solid var(--res);padding:8px 16px;font-size:26px}
+.pc-pista{background:var(--caso2-50);border-left:8px solid var(--caso2);padding:8px 16px;font-size:26px}
+.pc-slide .btn{font-size:24px;padding:8px 14px}
+.pc-slide a.btn{text-decoration:none;display:inline-block}
+.pc-simtxt{font:600 24px var(--font-body);color:var(--res);margin-left:10px}
+.pc-figura .ctrl{margin:6px 12px}
 </style></head>
 <body>
 <div id="escenario">
@@ -1056,6 +1074,225 @@ dl.glosa dd{margin:0;font-size:29px}
       <div class="cz-sol" id="cz-sol" style="display:none">
         \[ \begin{aligned} p_1 &= 0 - (1)(1)(0{,}5) = -0{,}5, & x_1 &= 1 + (-0{,}5)(0{,}5) = 0{,}75, \\ p_2 &= -0{,}5 - (0{,}75)(0{,}5) = -0{,}875, & x_2 &= 0{,}75 + (-0{,}875)(0{,}5) = 0{,}3125. \end{aligned} \]
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 15 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 1 / 15</p>
+  <h2 class="titulo">¿Cambia la aceleración si lo lanzas hacia abajo?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="abajo"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Si dejas caer un objeto sin resistencia del aire, acelera hacia abajo a \(\qty{9{,}8}{m/s^2}\). Si en lugar de eso lo <strong>lanzas</strong> hacia abajo, su aceleración después de soltarlo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">menor que \(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="c">mayor que \(\qty{9{,}8}{m/s^2}\)</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Una vez suelto, la única fuerza es el peso \(m g\): \(a = F/m = g\), sin importar la velocidad inicial. Lanzarlo cambia \(v_0\), no la aceleración; en una gráfica \(v\)–\(t\) las dos rectas son <strong>paralelas</strong> (misma pendiente).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Después de soltarlo, ¿qué fuerzas actúan sobre el objeto? ¿Depende alguna de su velocidad?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 15 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 2 / 15</p>
+  <h2 class="titulo">En el punto más alto</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cima"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Lanzas una pelota verticalmente hacia arriba. En el punto más alto, la pelota tiene:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">velocidad y aceleración cero</button><button type="button" class="pr-opc" data-o="b">velocidad distinta de cero, pero aceleración cero</button><button type="button" class="pr-opc" data-o="c">aceleración distinta de cero, pero velocidad cero</button><button type="button" class="pr-opc" data-o="d">velocidad y aceleración distintas de cero</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En la cima la velocidad es cero (cambia de sentido), pero la gravedad sigue actuando: \(a = -g\) en todo momento. Si la aceleración fuera cero, la pelota se quedaría flotando.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Si la aceleración fuera cero en la cima, ¿volvería a bajar la pelota?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 15 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 3 / 15</p>
+  <h2 class="titulo">Dos pelotas desde un acantilado</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="acantilado"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Desde el borde de un acantilado se lanza una pelota verticalmente hacia arriba y otra hacia abajo, con la misma rapidez inicial. Sin resistencia del aire, la que llega al suelo con <strong>mayor rapidez</strong> es la lanzada:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">hacia arriba</button><button type="button" class="pr-opc" data-o="b">hacia abajo</button><button type="button" class="pr-opc" data-o="c">ninguna: ambas llegan con la misma rapidez</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Al bajar, la pelota lanzada hacia arriba pasa por el borde con velocidad \(-v_0\): desde ahí hace lo mismo que la otra. Por energía: \(\tfrac12 m v^{2} = \tfrac12 m v_0^{2} + m g h\), igual para ambas. Solo cambia el tiempo de vuelo.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Sigue a la pelota lanzada hacia arriba: ¿con qué velocidad vuelve a pasar por el borde del acantilado?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 15 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 4 / 15</p>
+  <h2 class="titulo">Subir o bajar: ¿qué tarda más con aire?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piedra"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Se lanza una piedra hacia arriba. Además de la gravedad, la frena la resistencia del aire. El tiempo que tarda en subir hasta el punto más alto es ____ el tiempo que tarda en regresar desde la cima a su posición original.</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">mayor que</button><button type="button" class="pr-opc" data-o="b">igual a</button><button type="button" class="pr-opc" data-o="c">menor que</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Al subir, peso y arrastre apuntan hacia abajo y se suman: frena rápido. Al bajar, el arrastre se opone al peso: acelera menos y llega más lenta. Recorre la misma altura más despacio, así que la bajada tarda más: \(t_{\text{sub}} \lt t_{\text{baj}}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Compara las fuerzas al subir y al bajar: ¿suman o se restan la gravedad y el arrastre?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-barcos" data-label="Práctica conceptual: ¿Qué barco es alcanzado primero?" data-speaker-notes="Pregunta conceptual 5 de 15 (diapositiva 2 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 5 / 15</p>
+  <h2 class="titulo">¿Qué barco es alcanzado primero?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="barcos"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Disparar</button><span class="pc-simtxt"></span></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Un barco de guerra dispara simultáneamente dos proyectiles a dos barcos enemigos, A y B, siguiendo las trayectorias parabólicas de la figura. ¿Qué barco es alcanzado primero?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">B</button><button type="button" class="pr-opc" data-o="d">se necesita más información</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El tiempo de vuelo es el doble del tiempo de caída desde la altura máxima: \(t_v = 2\sqrt{2H/g}\). El proyectil hacia A sube más, así que tarda más. B es alcanzado primero aunque esté más lejos: su proyectil va más rápido en \(x\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 El tiempo de vuelo depende solo del movimiento vertical. ¿Cuál proyectil sube más alto?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 6 de 15 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 6 / 15</p>
+  <h2 class="titulo">Montaña rusa: rapidez y aceleración</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="montana"></div><label class="ctrl"><span>Posición del carro</span><input type="range" class="pc-pos" min="0" max="100" step="1" value="15"><span class="v pc-posv"></span></label></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un carro baja por la vía de la figura. A medida que avanza más allá del punto mostrado, ¿qué sucede con su rapidez y con su aceleración en la dirección del movimiento?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">ambas disminuyen</button><button type="button" class="pr-opc" data-o="b">la rapidez disminuye, pero la aceleración aumenta</button><button type="button" class="pr-opc" data-o="c">ambas permanecen constantes</button><button type="button" class="pr-opc" data-o="d">la rapidez aumenta, pero la aceleración disminuye</button><button type="button" class="pr-opc" data-o="e">ambas aumentan</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La altura siempre disminuye, así que la rapidez aumenta: \(v = \sqrt{2g\,(h_0 - h)}\). Pero la vía se aplana: la inclinación \(\alpha\) disminuye y con ella la aceleración tangencial \(a = g\sin\alpha\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 La aceleración a lo largo de la vía es \(g\sin\alpha\). ¿Qué le pasa a la inclinación \(\alpha\) más abajo?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 7 de 15 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 7 / 15</p>
+  <h2 class="titulo">Dos canicas desde el techo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="canicas"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Dos canicas, una con el doble de masa que la otra, se dejan caer desde el techo de un edificio. Justo antes de golpear el suelo, la más pesada tiene:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la misma energía cinética que la ligera</button><button type="button" class="pr-opc" data-o="b">el doble de energía cinética</button><button type="button" class="pr-opc" data-o="c">la mitad de energía cinética</button><button type="button" class="pr-opc" data-o="d">cuatro veces más energía cinética</button><button type="button" class="pr-opc" data-o="e">imposible de determinar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Ambas caen con la misma aceleración y llegan con la misma rapidez \(v = \sqrt{2gh}\). Como \(K = \tfrac12 m v^{2} = m g h\), la de doble masa tiene el <strong>doble</strong> de energía cinética.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Las dos llegan con la misma rapidez. ¿De qué depende entonces \(K = \tfrac12 m v^{2}\)?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 8 de 15 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 8 / 15</p>
+  <h2 class="titulo">Para llegar con el doble de rapidez</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="rampa"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un bloque en reposo se desliza por una rampa sin fricción y llega abajo con rapidez \(v\). Para llegar con rapidez \(2v\), ¿cuántas veces más alta debe ser la nueva rampa?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">1</button><button type="button" class="pr-opc" data-o="b">2</button><button type="button" class="pr-opc" data-o="c">3</button><button type="button" class="pr-opc" data-o="d">4</button><button type="button" class="pr-opc" data-o="e">5</button><button type="button" class="pr-opc" data-o="f">6</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(m g h = \tfrac12 m v^{2}\Rightarrow h \propto v^{2}\). Doblar la rapidez cuadruplica la energía cinética, así que la altura debe ser <strong>4 veces</strong> mayor.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 La energía cinética ganada es igual a la potencial perdida, \(mgh\). ¿Cómo depende \(K\) de \(v\)?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 9 de 15 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 9 / 15</p>
+  <h2 class="titulo">El alimentador de la bolera</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bolera"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">El mecanismo de una bolera empuja las bolas por una rampa de \(\qty{1{,}0}{m}\) que las sube \(\qty{0{,}5}{m}\). ¿Aproximadamente cuánta fuerza debe ejercer sobre una bola de \(\qty{5{,}0}{kg}\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{200}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{50}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{25}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{5{,}0}{N}\)</button><button type="button" class="pr-opc" data-o="e">imposible de determinar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Subiéndola a rapidez constante, \(F\,d = m g h\): \(F = \dfrac{(\qty{5}{kg})(\qty{9{,}8}{m/s^2})(\qty{0{,}5}{m})}{\qty{1{,}0}{m}} \approx \qty{25}{N}\). Es lo mismo que \(m g \sin 30^\circ\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Usa el trabajo: la fuerza a lo largo de la rampa por la distancia debe igualar la energía potencial ganada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 10 de 15 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 10 / 15</p>
+  <h2 class="titulo">Dos caminos a la cima</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bici"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Dos caminos llevan de la base a la cima de una colina; uno es el doble de largo que el otro. Comparada con la fuerza promedio \(F_{\text{corta}}\) en el camino corto, la fuerza promedio en el camino largo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F_{\text{corta}}/4\)</button><button type="button" class="pr-opc" data-o="b">\(F_{\text{corta}}/3\)</button><button type="button" class="pr-opc" data-o="c">\(F_{\text{corta}}/2\)</button><button type="button" class="pr-opc" data-o="d">\(F_{\text{corta}}\)</button><button type="button" class="pr-opc" data-o="e">indeterminada: depende del tiempo</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En ambos caminos el trabajo es el mismo, \(W = m g h\). Con \(W = F\,d\): \(F_{\text{larga}}\,(2d) = F_{\text{corta}}\,d\Rightarrow F_{\text{larga}} = F_{\text{corta}}/2\). Menos fuerza, más distancia.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 La energía potencial ganada es la misma por los dos caminos. ¿Cómo se reparte en el camino largo?</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 11 de 15 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 11 / 15</p>
+  <h2 class="titulo">Subir un piano con poleas</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piano"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="e"><div class="pr-q">Un transportista sube un piano de \(\qty{100}{kg}\) a velocidad constante con el sistema de poleas sin fricción de la figura. ¿Con cuánta fuerza tira de la cuerda? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{2000}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{1500}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{1000}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{750}{N}\)</button><button type="button" class="pr-opc" data-o="e">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="f">\(\qty{200}{N}\)</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Dos tramos de cuerda sostienen la polea del piano, cada uno con tensión \(T\): \(2T = m g\Rightarrow T = \dfrac{(\qty{100}{kg})(\qty{10}{m/s^2})}{2} = \qty{500}{N}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Cuenta cuántos tramos de cuerda sostienen la polea móvil unida al piano. La tensión es la misma en toda la cuerda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 12 de 15 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 12 / 15</p>
+  <h2 class="titulo">Subirse a sí mismo con poleas</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="plataforma"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Una persona de \(\qty{50}{kg}\) está de pie sobre una plataforma de \(\qty{25}{kg}\) y tira de la cuerda del sistema de la figura. Si sube a velocidad constante, ¿con cuánta fuerza tira? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{750}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{625}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{250}{N}\)</button><button type="button" class="pr-opc" data-o="e">\(\qty{75}{N}\)</button><button type="button" class="pr-opc" data-o="f">\(\qty{50}{N}\)</button><button type="button" class="pr-opc" data-o="g">imposible de determinar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Sobre el sistema persona + plataforma tiran hacia arriba <strong>tres</strong> tramos: dos en la polea de la plataforma y el que agarra la persona. \(3T = (\qty{75}{kg})(\qty{10}{m/s^2})\Rightarrow T = \qty{250}{N}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Toma como sistema la persona más la plataforma. ¿Cuántos tramos de cuerda tiran de ese sistema hacia arriba? Incluye el que sostiene la persona.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 13 de 15 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 13 / 15</p>
+  <h2 class="titulo">Tirar de una caja: ¿qué sistema?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="caja"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">1. Una persona tira de una caja a velocidad constante. Si el sistema es la Tierra más la caja, la fuerza externa neta sobre el sistema:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">es cero porque el sistema está aislado</button><button type="button" class="pr-opc" data-o="b">es distinta de cero porque el sistema no está aislado</button><button type="button" class="pr-opc" data-o="c">es cero aunque el sistema no está aislado</button><button type="button" class="pr-opc" data-o="d">es distinta de cero aunque el sistema está aislado</button><button type="button" class="pr-opc" data-o="e">ninguna de las anteriores</button></div><div class="pc-exp" style="display:none"><p style="margin:0">No está aislado: la persona empuja la caja hacia adelante y la Tierra hacia atrás (con los pies). Pero la caja va a velocidad constante y la Tierra no se mueve: la fuerza externa neta es cero.</p></div></div><div class="pc-q" data-ok="a"><div class="pr-q">2. La fuerza neta que ejerce la persona sobre el sistema (Tierra + caja) es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">cero</button><button type="button" class="pr-opc" data-o="b">distinta de cero</button></div><div class="pc-exp" style="display:none"><p style="margin:0">La persona tira de la caja hacia adelante y empuja la Tierra hacia atrás con fuerzas de igual magnitud: suman cero.</p></div></div><div class="pc-q" data-ok="b"><div class="pr-q">3. El trabajo que hace la persona sobre el sistema es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">cero</button><button type="button" class="pr-opc" data-o="b">distinto de cero</button></div><div class="pc-exp" style="display:none"><p style="margin:0">La Tierra no se desplaza, así que sobre ella el trabajo es cero; la caja sí se desplaza: el trabajo total es distinto de cero (se disipa en la fricción con el piso).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 14 de 15 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 14 / 15</p>
+  <h2 class="titulo">Trabajo con vectores: el dron de reparto</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="dron"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok-num="138" data-tol="0.5"><div class="pr-q">Un dron de reparto soporta un viento constante \(\vect{F} = (8\,\hat{\imath} - 6\,\hat{\jmath} + 5\,\hat{k})\qty{}{N}\) y se mueve en línea recta desde \(A = (2, 10, 5)\qty{}{m}\) hasta \(B = (7, 2, 15)\qty{}{m}\). ¿Cuánto trabajo hace el viento? Escribe el resultado en julios y presiona Enter.</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="J"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\Delta\vect{r} = (5, -8, 10)\qty{}{m}\). \(W = (8)(5) + (-6)(-8) + (5)(10) = 40 + 48 + 50 = \qty{138}{J}\). Solo importan los puntos inicial y final, porque la fuerza es constante.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Calcula \(\Delta\vect{r} = B - A\) y luego \(W = \vect{F}\cdot\Delta\vect{r} = F_x\Delta x + F_y\Delta y + F_z\Delta z\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canon" data-label="Práctica: el cañón de Newton" data-speaker-notes="Práctica 15 de 15 (diapositiva 6 del PowerPoint, que enlazaba simulaciones de Trinket; Trinket cerró). Cañón de Newton integrado con el mismo algoritmo: velocidad orbital ≈ 7,9 km/s y de escape ≈ 11,2 km/s. Enlace al cuaderno gravedad.ipynb en Colab.">
+  <p class="ceja">Práctica conceptual 15 / 15</p>
+  <h2 class="titulo">El cañón de Newton: velocidad orbital y de escape</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Disparo horizontal desde lo alto de una montaña</span><span class="val" id="cn-lect"></span></div>
+      <canvas class="lienzo" id="cn-cv" width="1120" height="640"></canvas>
+      <label class="ctrl"><span>Rapidez del disparo</span><input type="range" id="cn-v" min="3" max="12" step="0.1" value="6"><span class="v" id="cn-vv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
+    </figure>
+    <div class="pila pc-col">
+      <p style="margin:0">Con el mismo algoritmo de la órbita Tierra–Luna, la bala obedece \(\vect{F} = -G\,M_T\,m\,\vect{r}/r^{3}\). Ensaya distintas rapideces y encuentra los dos umbrales.</p>
+      <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">1. ¿Con qué rapidez mínima (en km/s) la bala da la vuelta a la Tierra sin caer?</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
+        <div class="pc-exp" style="display:none"><p style="margin:0">Órbita circular: la gravedad es la fuerza centrípeta, \(\dfrac{G M_T m}{R^{2}} = \dfrac{m v^{2}}{R}\Rightarrow v_{\text{orb}} = \sqrt{\dfrac{G M_T}{R}} \approx \qty{7{,}9}{km/s}\).</p></div></div>
+      <div class="pc-q" data-ok-num="11.2" data-tol="0.2"><div class="pr-q">2. ¿Y la rapidez mínima (en km/s) para escapar de la Tierra?</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
+        <div class="pc-exp" style="display:none"><p style="margin:0">Escapar: \(E = \tfrac12 m v^{2} - \dfrac{G M_T m}{R} \ge 0\Rightarrow v_{\text{esc}} = \sqrt{\dfrac{2 G M_T}{R}} = \sqrt{2}\,v_{\text{orb}} \approx \qty{11{,}2}{km/s}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button><a class="btn" href="https://colab.research.google.com/drive/1QK7xAYEgQcU3TP7SJtPEcoAToBYHeJ2-?usp=sharing" target="_blank" rel="noopener">Cuaderno gravedad.ipynb (Colab) ↗</a></div>
     </div>
   </div>
 </section>
@@ -2874,6 +3111,286 @@ function lienzoOrbita(cv, trazos, marcas) {
       }));
     }
   });
+})();
+
+/* ═══ PRÁCTICA CONCEPTUAL: preguntas, figuras y simulaciones ═══════════ */
+(function () {
+  const g = 9.8;
+  const lee = v => parseFloat(String(v).replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+  /* lógica común de las preguntas */
+  $$('section.pc-slide').forEach(sl => {
+    const qs = $$('.pc-q', sl);
+    const muestra = q => { const e = $('.pc-exp', q); if (e) e.style.display = ''; };
+    qs.forEach(q => {
+      const fb = $('.pc-fb', q);
+      $$('.pr-opc', q).forEach(b => b.addEventListener('click', () => {
+        const ok = b.dataset.o === q.dataset.ok;
+        $$('.pr-opc', q).forEach(o => o.classList.remove('ok', 'mal'));
+        b.classList.add(ok ? 'ok' : 'mal');
+        if (fb) { fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal'); fb.textContent = ok ? '✓ ¡Correcto!' : '✗ Aún no. Prueba otra opción o pide una pista.'; }
+        if (ok) muestra(q);
+      }));
+      const inp = $('.pc-in', q);
+      if (inp) {
+        const revisa = () => {
+          const ok = Math.abs(lee(inp.value) - +q.dataset.okNum) <= +q.dataset.tol;
+          inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)';
+          fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal'); fb.textContent = ok ? '✓ ¡Correcto!' : '✗ Aún no. Revisa el cálculo o pide una pista.';
+          if (ok) muestra(q);
+        };
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+        $('.pc-comprobar', q).addEventListener('click', revisa);
+      }
+    });
+    const vp = $('.pc-verpista', sl), ve = $('.pc-verexp', sl), pi = $('.pc-pista', sl);
+    if (vp && pi) vp.addEventListener('click', () => { pi.style.display = pi.style.display === 'none' ? '' : 'none'; });
+    if (ve) ve.addEventListener('click', () => qs.forEach(muestra));
+  });
+
+  /* ── utilidades de dibujo ── */
+  const lienzo = (host, W, H) => { host.innerHTML = ''; return nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host); };
+  const tx = (svg, x, y, s, o) => rotulo(svg, x, y, s, Object.assign({ 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FTXT }, o || {}));
+  const mt = (svg, x, y, s, col, o) => rotulo(svg, x, y, s, Object.assign({ 'font-size': 28, style: 'fill:' + (col || 'var(--tinta)') + ';font-family:' + FMATH + ';font-weight:700' }, o || {}));
+  const rect = (svg, x, y, w, h, est, rx) => nodo('rect', { x: x, y: y, width: w, height: h, rx: rx || 0, style: est }, svg);
+  const circ = (svg, x, y, r, est) => nodo('circle', { cx: x, cy: y, r: r, style: est }, svg);
+  const lin = (svg, x1, y1, x2, y2, est) => nodo('line', { x1: x1, y1: y1, x2: x2, y2: y2, style: est }, svg);
+  const camino = (svg, d, est) => nodo('path', { d: d, style: est }, svg);
+  const persona = (svg, x, y, s, brazo) => {          /* figura de palitos; (x, y) = pies */
+    s = s || 1; const e = 'stroke:var(--tinta);stroke-width:' + 4 * s + ';stroke-linecap:round;fill:none';
+    circ(svg, x, y - 74 * s, 10 * s, 'fill:var(--tinta)');
+    lin(svg, x, y - 64 * s, x, y - 30 * s, e); lin(svg, x, y - 30 * s, x - 10 * s, y, e); lin(svg, x, y - 30 * s, x + 10 * s, y, e);
+    if (brazo) lin(svg, x, y - 56 * s, brazo[0], brazo[1], e); else { lin(svg, x, y - 56 * s, x - 14 * s, y - 40 * s, e); lin(svg, x, y - 56 * s, x + 14 * s, y - 40 * s, e); }
+  };
+  const polea = (svg, x, y, r) => { circ(svg, x, y, r, 'fill:var(--panel);stroke:var(--tinta);stroke-width:4'); circ(svg, x, y, 4, 'fill:var(--tinta)'); };
+  const techo = (svg, x1, x2, y) => { rect(svg, x1, y - 16, x2 - x1, 16, 'fill:var(--linea)'); lin(svg, x1, y, x2, y, 'stroke:var(--tinta);stroke-width:3'); };
+  const suelo = (svg, x1, x2, y) => lin(svg, x1, y, x2, y, 'stroke:var(--tinta);stroke-width:3');
+
+  const FIG = {
+    abajo(h) {
+      const svg = lienzo(h, 1000, 560); suelo(svg, 60, 940, 500);
+      [[300, 'se deja caer', 0], [700, 'se lanza hacia abajo', 1]].forEach(([x, t, l]) => {
+        persona(svg, x - 70, 230, 1.3, [x - 10, 150]); rect(svg, x - 160, 230, 180, 270, 'fill:var(--linea);opacity:.5');
+        circ(svg, x, 170, 18, 'fill:var(--res)');
+        if (l) flecha(svg, x + 40, 160, x + 40, 260, 'var(--caso2)', 5);
+        if (l) mt(svg, x + 52, 220, '!v!₀', 'var(--caso2)');
+        tx(svg, x - 40, 545, t, { 'text-anchor': 'middle' });
+      });
+      mt(svg, 500, 60, '¿Qué aceleración tiene cada una después de soltarla?', 'var(--tinta2)', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    cima(h) {
+      const svg = lienzo(h, 1000, 560); suelo(svg, 60, 940, 520);
+      lin(svg, 500, 500, 500, 120, 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 8');
+      [[460, 1], [380, 0.7], [300, 0.45], [220, 0.2]].forEach(([y, a]) => circ(svg, 500, y, 14, 'fill:var(--res);opacity:' + a));
+      circ(svg, 500, 120, 22, 'fill:var(--res)'); persona(svg, 440, 520, 1.3, [496, 470]);
+      mt(svg, 540, 112, 'punto más alto: ¿*v*? ¿*a*?', 'var(--tinta)', { 'font-size': 28 });
+    },
+    acantilado(h, sl) {
+      const svg = lienzo(h, 1000, 600), H = 20, v0 = 10, ys = 470, esc = 16, yt = ys - H * esc;
+      const dib = (t) => {
+        svg.innerHTML = '';
+        rect(svg, 60, yt, 330, ys - yt, 'fill:var(--linea)'); suelo(svg, 60, 960, ys);
+        persona(svg, 330, yt, 1.1);
+        mt(svg, 120, yt + 160, '*h* = 20 m', 'var(--tinta2)', { 'font-size': 26 });
+        const yA = (t) => Math.max(0, H + v0 * t - 0.5 * g * t * t), yB = (t) => Math.max(0, H - v0 * t - 0.5 * g * t * t);
+        const vA = (t) => yA(t) > 0 ? v0 - g * t : -Math.sqrt(v0 * v0 + 2 * g * H), vB = (t) => yB(t) > 0 ? -v0 - g * t : -Math.sqrt(v0 * v0 + 2 * g * H);
+        [[500, yA, vA, 'lanzada hacia arriba', 'var(--caso1)'], [780, yB, vB, 'lanzada hacia abajo', 'var(--caso2)']].forEach(([x, yf, vf, t2, col]) => {
+          circ(svg, x, ys - yf(t) * esc, 14, 'fill:' + col);
+          tx(svg, x, 512, t2, { 'text-anchor': 'middle', 'font-size': 22 });
+          if (t > 0) mt(svg, x, ys - yf(t) * esc - 24, '|*v*| = ' + num(Math.abs(vf(t)), 1) + ' m/s', col, { 'font-size': 22, 'text-anchor': 'middle' });
+        });
+        if (t === 0) { flecha(svg, 520, yt - 10, 520, yt - 90, 'var(--caso1)', 4); flecha(svg, 800, yt - 10, 800, yt + 70, 'var(--caso2)', 4); mt(svg, 530, yt - 60, '!v!₀', 'var(--caso1)'); mt(svg, 810, yt + 40, '!v!₀', 'var(--caso2)'); }
+      };
+      dib(0);
+      const b = $('.pc-sim', sl), st = $('.pc-simtxt', sl); let t = 0, ult = 0, corre = false;
+      const tA = (v0 + Math.sqrt(v0 * v0 + 2 * g * H)) / g;
+      b.addEventListener('click', () => { t = 0; corre = true; });
+      (function bucle(ms) { if (corre && activa(h)) { t += ult ? Math.min(0.05, (ms - ult) / 1000) : 0; if (t >= tA) { t = tA; corre = false; st.textContent = 'Ambas llegan a ' + num(Math.sqrt(v0 * v0 + 2 * g * H), 1) + ' m/s'; } dib(t); } ult = ms; requestAnimationFrame(bucle); })(0);
+    },
+    piedra(h, sl) {
+      const st = $('.pc-simtxt', sl), b = $('.pc-sim', sl);
+      /* subida y bajada con arrastre cuadrático: vt = 20 m/s, v0 = 20 m/s */
+      const v0 = 20, vt = 20, k = g / (vt * vt);
+      let t = 0, y = 0, v = v0, ts = null; const pts = [[0, 0]], dt = 0.002;
+      while (t < 20) { const a = -g - k * v * Math.abs(v); v += a * dt; y += v * dt; t += dt; if (ts === null && v <= 0) ts = t; if (y < 0) break; pts.push([t, y]); }
+      const tv = t, H = Math.max(...pts.map(p => p[1]));
+      const dib = (ver) => {
+        const A = ejes(h, { W: 1000, H: 560, x: [0, 5], y: [0, H * 1.25], xt: [0, 1, 2, 3, 4, 5], yt: [0, 5, 10, 15], xl: '*t* (s)', yl: '*y* (m)' });
+        if (!ver) { rotulo(A.capa, A.X(2.5), A.Y(H * 0.6), 'Pulsa «Simular» después de responder', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT }); return; }
+        polilinea(A, pts.filter((p, i) => i % 10 === 0), 'stroke:var(--res);stroke-width:5');
+        const g2 = A.capa, yb = A.Y(0) - 24;
+        flecha(g2, A.X(ts / 2), yb, A.X(0), yb, 'var(--caso1)', 3); flecha(g2, A.X(ts / 2), yb, A.X(ts), yb, 'var(--caso1)', 3);
+        flecha(g2, A.X((ts + tv) / 2), yb, A.X(ts), yb, 'var(--caso2)', 3); flecha(g2, A.X((ts + tv) / 2), yb, A.X(tv), yb, 'var(--caso2)', 3);
+        rotulo(g2, A.X(ts / 2), yb - 12, 'subida ' + num(ts, 2) + ' s', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+        rotulo(g2, A.X((ts + tv) / 2), yb - 12, 'bajada ' + num(tv - ts, 2) + ' s', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+      };
+      dib(false);
+      b.addEventListener('click', () => { dib(true); st.textContent = 'v₀ = 20 m/s, rapidez terminal 20 m/s: la bajada tarda más'; });
+    },
+    barcos(h, sl) {
+      const svg = lienzo(h, 1100, 560), y0 = 470, xs = 140, g2 = 9.8;
+      const tir = [{ X: 480, H: 340, col: 'var(--caso2)', n: 'A' }, { X: 940, H: 190, col: 'var(--caso1)', n: 'B' }];
+      tir.forEach(p => { p.T = 2 * Math.sqrt(2 * p.H / g2); p.vx = (p.X - xs) / p.T; p.vy = g2 * p.T / 2; });
+      const dib = (t) => {
+        svg.innerHTML = '';
+        rect(svg, 0, y0, 1100, 90, 'fill:var(--caso1-50)'); suelo(svg, 0, 1100, y0);
+        camino(svg, 'M 40 ' + (y0 - 4) + ' L 220 ' + (y0 - 4) + ' L 200 ' + (y0 + 18) + ' L 60 ' + (y0 + 18) + ' Z', 'fill:var(--tinta2)');
+        rect(svg, 110, y0 - 34, 50, 30, 'fill:var(--tinta2)'); lin(svg, 160, y0 - 24, 190, y0 - 44, 'stroke:var(--tinta2);stroke-width:6');
+        tir.forEach(p => {
+          camino(svg, 'M ' + (p.X - 40) + ' ' + (y0 - 2) + ' L ' + (p.X + 40) + ' ' + (y0 - 2) + ' L ' + (p.X + 30) + ' ' + (y0 + 12) + ' L ' + (p.X - 30) + ' ' + (y0 + 12) + ' Z', 'fill:var(--tinta)');
+          mt(svg, p.X + 44, y0 - 10, p.n, 'var(--tinta)', { 'font-size': 34 });
+          const ps = []; for (let i = 0; i <= 60; i++) { const s = p.T * i / 60; ps.push((xs + p.vx * s).toFixed(1) + ',' + (y0 - (p.vy * s - g2 * s * s / 2)).toFixed(1)); }
+          nodo('polyline', { points: ps.join(' '), style: 'fill:none;stroke:' + p.col + ';stroke-width:3;stroke-dasharray:10 8' }, svg);
+          if (t > 0) { const s = Math.min(t, p.T); circ(svg, xs + p.vx * s, y0 - (p.vy * s - g2 * s * s / 2), 9, 'fill:' + p.col); if (t >= p.T) mt(svg, p.X - 30, y0 - 50, '¡' + num(p.T, 1) + ' s!', p.col, { 'font-size': 26 }); }
+        });
+      };
+      dib(0);
+      const b = $('.pc-sim', sl), st = $('.pc-simtxt', sl); let t = 0, ult = 0, corre = false;
+      b.addEventListener('click', () => { t = 0; corre = true; st.textContent = ''; });
+      (function bucle(ms) { if (corre && activa(h)) { t += ult ? Math.min(0.05, (ms - ult) / 1000) * 4 : 0; const T = Math.max(...tir.map(p => p.T)); if (t >= T) { t = T; corre = false; st.textContent = 'Primero B (' + num(tir[1].T, 1) + ' s), luego A (' + num(tir[0].T, 1) + ' s)'; } dib(t); } ult = ms; requestAnimationFrame(bucle); })(0);
+    },
+    montana(h, sl) {
+      const rp = $('.pc-pos', sl), rv = $('.pc-posv', sl);
+      const Hh = 30, Lx = 60, y = x => Hh * Math.exp(-x / 18) , dy = x => -Hh / 18 * Math.exp(-x / 18);
+      const dib = () => {
+        const x = 8 + 0.6 * +rp.value * 0.8, al = Math.atan(-dy(x)), a = g * Math.sin(al), v = Math.sqrt(2 * g * (y(8) - y(x)) + 1);
+        const A = ejes(h, { W: 1000, H: 560, x: [0, Lx], y: [0, 35], xt: [0, 20, 40, 60], yt: [0, 10, 20, 30], xl: '*x* (m)', yl: 'altura (m)' });
+        const ps = []; for (let i = 0; i <= 120; i++) { const u = 8 + (Lx - 8) * i / 120; ps.push([u, y(u)]); }
+        nodo('polygon', { points: [[8, 0]].concat(ps).concat([[Lx, 0]]).map(p => A.X(p[0]) + ',' + A.Y(p[1])).join(' '), style: 'fill:var(--linea);opacity:.6' }, A.capa);
+        polilinea(A, ps, 'stroke:var(--tinta);stroke-width:4');
+        const X = A.X(x), Y = A.Y(y(x)), ux = Math.cos(al), uy = Math.sin(al), k = 9;
+        nodo('rect', { x: X - 18, y: Y - 30, width: 36, height: 30, rx: 4, transform: 'rotate(' + (al * 180 / Math.PI).toFixed(1) + ' ' + X + ' ' + Y + ')', style: 'fill:var(--res)' }, A.capa);
+        flecha(A.capa, X, Y - 40, X + k * a * ux * 6, Y - 40 + k * a * uy * 6, 'var(--caso2)', 5);
+        rotulo(A.capa, X + 60, Y - 70, '*a* = *g* sen *α* = ' + num(a, 1) + ' m/s²', { 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+        rotulo(A.capa, X + 60, Y - 40, '*v* = ' + num(v, 1) + ' m/s', { 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+        rv.textContent = 'α = ' + num(al * 180 / Math.PI, 0) + '°';
+      };
+      rp.addEventListener('input', dib); dib();
+    },
+    canicas(h) {
+      const svg = lienzo(h, 1000, 560); suelo(svg, 60, 940, 520);
+      rect(svg, 200, 120, 260, 400, 'fill:var(--linea);opacity:.6'); lin(svg, 200, 120, 460, 120, 'stroke:var(--tinta);stroke-width:4');
+      circ(svg, 540, 110, 16, 'fill:var(--caso1)'); circ(svg, 680, 110, 22, 'fill:var(--caso2)');
+      mt(svg, 540, 80, '*m*', 'var(--caso1)', { 'text-anchor': 'middle' }); mt(svg, 680, 80, '2*m*', 'var(--caso2)', { 'text-anchor': 'middle' });
+      [540, 680].forEach(x => lin(svg, x, 140, x, 500, 'stroke:var(--proy);stroke-width:2;stroke-dasharray:6 8'));
+      mt(svg, 760, 330, '*h*', 'var(--tinta2)'); lin(svg, 740, 110, 740, 520, 'stroke:var(--tinta2);stroke-width:2');
+    },
+    rampa(h) {
+      const svg = lienzo(h, 1000, 560); suelo(svg, 40, 960, 500);
+      camino(svg, 'M 80 500 L 80 380 L 380 500 Z', 'fill:var(--linea)'); camino(svg, 'M 520 500 L 520 80 L 900 500 Z', 'fill:var(--linea);opacity:.55');
+      rect(svg, 84, 352, 30, 26, 'fill:var(--res)', 3); rect(svg, 524, 52, 30, 26, 'fill:var(--res)', 3);
+      mt(svg, 40, 450, '*h*', 'var(--tinta)'); mt(svg, 470, 300, '¿?·*h*', 'var(--tinta)', { 'text-anchor': 'end' });
+      flecha(svg, 390, 486, 460, 486, 'var(--caso2)', 4); mt(svg, 400, 470, '*v*', 'var(--caso2)');
+      flecha(svg, 910, 486, 990, 486, 'var(--caso2)', 4); mt(svg, 916, 470, '2*v*', 'var(--caso2)');
+    },
+    bolera(h) {
+      const svg = lienzo(h, 1000, 560), x0 = 140, y0 = 470, L = 640, a = Math.PI / 6, x1 = x0 + L * Math.cos(a), y1 = y0 - L * Math.sin(a);
+      suelo(svg, 60, 960, y0); camino(svg, 'M ' + x0 + ' ' + y0 + ' L ' + x1 + ' ' + y1 + ' L ' + x1 + ' ' + y0 + ' Z', 'fill:var(--linea)');
+      const bx = x0 + 0.45 * L * Math.cos(a) - 26 * Math.sin(a), by = y0 - 0.45 * L * Math.sin(a) - 26 * Math.cos(a);
+      circ(svg, bx, by, 26, 'fill:var(--tinta)'); flecha(svg, bx, by, bx + 140 * Math.cos(a), by - 140 * Math.sin(a), 'var(--res)', 6); mt(svg, bx + 70, by - 90, '!F!', 'var(--res)');
+      mt(svg, x0 + 0.78 * (x1 - x0) + 10, y0 - 0.78 * (y0 - y1) + 44, '1,0 m', 'var(--tinta2)', { 'font-size': 26 });
+      lin(svg, x1 + 30, y0, x1 + 30, y1, 'stroke:var(--tinta2);stroke-width:2'); mt(svg, x1 + 40, (y0 + y1) / 2, '0,5 m', 'var(--tinta2)', { 'font-size': 26 });
+      mt(svg, bx - 30, by + 70, '5,0 kg', 'var(--tinta)', { 'font-size': 24 });
+    },
+    bici(h) {
+      const svg = lienzo(h, 1000, 560); suelo(svg, 40, 960, 500);
+      camino(svg, 'M 80 500 L 500 140 L 920 500 Z', 'fill:var(--linea);opacity:.6');
+      lin(svg, 140, 500, 500, 140, 'stroke:var(--caso1);stroke-width:5');
+      camino(svg, 'M 860 500 Q 960 420 760 380 Q 560 340 700 270 Q 820 210 500 140', 'fill:none;stroke:var(--caso2);stroke-width:5;stroke-dasharray:12 6');
+      mt(svg, 240, 300, 'corto: *d*', 'var(--caso1)'); mt(svg, 760, 300, 'largo: 2*d*', 'var(--caso2)');
+      lin(svg, 500, 140, 500, 500, 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:4 6'); mt(svg, 510, 330, '*h*', 'var(--tinta2)');
+      circ(svg, 500, 130, 10, 'fill:var(--res)'); tx(svg, 520, 120, 'cima', { 'font-size': 22 });
+    },
+    piano(h) {
+      const svg = lienzo(h, 1000, 600); techo(svg, 200, 800, 60); suelo(svg, 100, 900, 560);
+      const r = 34, xm = 420, ym = 300, xf = xm + 2 * r, yf = 110;
+      polea(svg, xf, yf, r); polea(svg, xm, ym, r);
+      const e = 'stroke:var(--tinta);stroke-width:4';
+      lin(svg, xm - r, 60, xm - r, ym, e); lin(svg, xm + r, ym, xm + r, yf, e); lin(svg, xf + r, yf, xf + r, 470, e);
+      camino(svg, 'M ' + (xm - r) + ' ' + ym + ' A ' + r + ' ' + r + ' 0 0 0 ' + (xm + r) + ' ' + ym, 'fill:none;' + e);
+      camino(svg, 'M ' + (xf - r) + ' ' + yf + ' A ' + r + ' ' + r + ' 0 0 1 ' + (xf + r) + ' ' + yf, 'fill:none;' + e);
+      lin(svg, xm, ym + r, xm, 400, e); rect(svg, xm - 140, 400, 220, 40, 'fill:var(--tinta)', 6); lin(svg, xm - 120, 440, xm - 120, 480, 'stroke:var(--tinta);stroke-width:6'); lin(svg, xm + 60, 440, xm + 60, 480, 'stroke:var(--tinta);stroke-width:6');
+      mt(svg, xm - 240, 430, '100 kg', 'var(--tinta)', { 'font-size': 26 });
+      persona(svg, xf + r + 14, 560, 1.3, [xf + r, 470]); mt(svg, xf + r + 34, 450, '!F! ?', 'var(--res)');
+    },
+    plataforma(h) {
+      const svg = lienzo(h, 1000, 600); techo(svg, 200, 800, 60); suelo(svg, 100, 900, 570);
+      const r = 34, xm = 440, ym = 330, xf = xm + 2 * r, yf = 110, e = 'stroke:var(--tinta);stroke-width:4';
+      polea(svg, xf, yf, r); polea(svg, xm, ym, r);
+      lin(svg, xm - r, 60, xm - r, ym, e); lin(svg, xm + r, ym, xm + r, yf, e); lin(svg, xf + r, yf, xf + r, 400, e);
+      camino(svg, 'M ' + (xm - r) + ' ' + ym + ' A ' + r + ' ' + r + ' 0 0 0 ' + (xm + r) + ' ' + ym, 'fill:none;' + e);
+      camino(svg, 'M ' + (xf - r) + ' ' + yf + ' A ' + r + ' ' + r + ' 0 0 1 ' + (xf + r) + ' ' + yf, 'fill:none;' + e);
+      lin(svg, xm, ym + r, xm, 480, e); rect(svg, 330, 480, 400, 22, 'fill:var(--caso2)', 4);
+      persona(svg, xf + r + 14, 480, 1.25, [xf + r, 400]);
+      mt(svg, 250, 500, '25 kg', 'var(--caso2)', { 'font-size': 24 }); mt(svg, xf + r + 40, 340, '50 kg', 'var(--tinta)', { 'font-size': 24 });
+    },
+    caja(h) {
+      const svg = lienzo(h, 1000, 560);
+      rect(svg, 60, 120, 640, 380, 'fill:var(--linea);opacity:.5;stroke:var(--tinta2);stroke-width:3;stroke-dasharray:12 8', 22);
+      tx(svg, 380, 100, 'sistema = Tierra + caja', { 'text-anchor': 'middle' });
+      lin(svg, 60, 320, 940, 320, 'stroke:var(--tinta);stroke-width:3'); tx(svg, 380, 430, 'Tierra', { 'text-anchor': 'middle', 'font-size': 30 });
+      rect(svg, 400, 220, 160, 100, 'fill:var(--panel);stroke:var(--tinta);stroke-width:4', 4); rect(svg, 200, 220, 160, 100, 'fill:none;stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 6', 4);
+      flecha(svg, 430, 200, 540, 200, 'var(--res)', 5); mt(svg, 470, 186, '!v!', 'var(--res)');
+      lin(svg, 560, 270, 820, 250, 'stroke:var(--tinta);stroke-width:3'); persona(svg, 850, 320, 1.3, [822, 250]);
+    },
+    dron(h) {
+      const svg = lienzo(h, 1000, 560), O = [300, 430], E = 18;
+      const P2 = (x, y, z) => [O[0] + E * x - 0.6 * E * y, O[1] - E * z + 0.45 * E * y];
+      const ax = [[[16, 0, 0], '*x*'], [[0, 12, 0], '*y*'], [[0, 0, 20], '*z*']];
+      ax.forEach(([p, n]) => { const q = P2(...p); flecha(svg, O[0], O[1], q[0], q[1], 'var(--tinta2)', 3); mt(svg, q[0] + (p[1] ? -28 : 8), q[1] + (p[1] ? 4 : -6), n, 'var(--tinta2)', { 'font-size': 26 }); });
+      const A = P2(2, 10, 5), B = P2(7, 2, 15);
+      circ(svg, A[0], A[1], 10, 'fill:var(--caso1)'); circ(svg, B[0], B[1], 10, 'fill:var(--caso2)');
+      flecha(svg, A[0], A[1], B[0], B[1], 'var(--res)', 5);
+      mt(svg, A[0] - 20, A[1] + 34, '*A* (2, 10, 5)', 'var(--caso1)', { 'text-anchor': 'end', 'font-size': 24 });
+      mt(svg, B[0] + 16, B[1] - 10, '*B* (7, 2, 15)', 'var(--caso2)', { 'font-size': 24 });
+      const F = [8, -6, 5], C = [700, 330], q = P2(...F);
+      flecha(svg, C[0], C[1], C[0] + (q[0] - O[0]) * 0.9, C[1] + (q[1] - O[1]) * 0.9, 'var(--mal)', 6);
+      mt(svg, C[0] - 20, C[1] + 40, '!F! (viento)', 'var(--mal)', { 'font-size': 26 });
+      mt(svg, (A[0] + B[0]) / 2 + 14, (A[1] + B[1]) / 2 + 30, 'Δ!r!', 'var(--res)');
+    }
+  };
+  $$('.pc-fig').forEach(hst => { const f = FIG[hst.dataset.fig]; if (f) f(hst, hst.closest('section')); });
+
+  /* ── cañón de Newton ── */
+  const cv = document.getElementById('cn-cv');
+  if (cv) {
+    const gc = cv.getContext('2d'), W = cv.width, Hc = cv.height, GM = 3.986e14, R = 6.371e6, H0 = 5e4, MPX = 70, rv = document.getElementById('cn-v');
+    let tray = [], k = 0, corre = false, ult = 0, estado = '';
+    const sim = v => {
+      let x = 0, y = R + H0, vx = v * 1000, vy = 0, t = 0; const pts = [[x, y]], dt = 5;
+      estado = 'vuelve a la superficie';
+      for (let n = 0; n < 40000; n++) {
+        const r = Math.hypot(x, y), a = -GM / (r * r * r);
+        vx += a * x * dt; vy += a * y * dt; x += vx * dt; y += vy * dt; t += dt;
+        if (n % 6 === 0) pts.push([x, y]);
+        if (Math.hypot(x, y) < R) { estado = 'cae a tierra'; break; }
+        if (Math.hypot(x, y) > 6 * R) { estado = 'escapa'; break; }
+        if (n > 50 && Math.abs(Math.atan2(x, y)) < 0.02 && x > -1 && y > 0 && t > 1000) { estado = 'órbita cerrada'; break; }
+      }
+      return pts;
+    };
+    const dib = () => {
+      const Rp = Math.min(W, Hc) / 2 - MPX - 40, e = Rp / R, cx = W / 2, cy = Hc / 2 + 30;   /* espacio arriba para la montaña */
+      /* radio dibujado: entre la superficie y la cima (50 km) se exagera hasta la altura de la montaña;
+         más arriba, escala real. Así la bala sale de la cima y aterriza en el suelo. */
+      const rd = r => r <= R + H0 ? Rp + MPX * Math.max(0, r - R) / H0 : Rp + MPX + (r - R - H0) * e;
+      const XY = p => { const r = Math.hypot(p[0], p[1]), f = rd(r) / r; return [cx + p[0] * f, cy - p[1] * f]; };
+      gc.fillStyle = tok('--panel'); gc.fillRect(0, 0, W, Hc);
+      gc.fillStyle = tok('--caso1-50'); gc.beginPath(); gc.arc(cx, cy, Rp, 0, 7); gc.fill();
+      gc.strokeStyle = tok('--caso1'); gc.lineWidth = 3; gc.stroke();
+      /* montaña con la cima en el punto de disparo */
+      gc.fillStyle = tok('--tinta2'); gc.beginPath(); gc.moveTo(cx - 48, cy - Rp + 6); gc.lineTo(cx, cy - Rp - MPX); gc.lineTo(cx + 48, cy - Rp + 6); gc.closePath(); gc.fill();
+      gc.strokeStyle = tok('--res'); gc.lineWidth = 3; gc.beginPath();
+      tray.slice(0, k + 1).forEach((p, i) => { const q = XY(p); i ? gc.lineTo(q[0], q[1]) : gc.moveTo(q[0], q[1]); }); gc.stroke();
+      const p = tray.length ? tray[Math.min(k, tray.length - 1)] : [0, R + H0], q = XY(p);
+      gc.fillStyle = tok('--res'); gc.beginPath(); gc.arc(q[0], q[1], 8, 0, 7); gc.fill();
+      gc.fillStyle = tok('--tinta2'); gc.font = '20px ' + FTXT; gc.fillText('montaña y alturas cercanas exageradas', 16, Hc - 16);
+    };
+    const lect = () => { document.getElementById('cn-vv').textContent = num(+rv.value, 1) + ' km/s'; document.getElementById('cn-lect').textContent = corre || k === 0 ? 'v = ' + num(+rv.value, 1) + ' km/s' : 'v = ' + num(+rv.value, 1) + ' km/s · ' + estado; };
+    document.getElementById('cn-play').addEventListener('click', () => { tray = sim(+rv.value); k = 0; corre = true; lect(); });
+    rv.addEventListener('input', () => { corre = false; tray = []; k = 0; lect(); dib(); });
+    (function bucle(ms) { if (corre && activa(cv) && ms - ult > 16) { ult = ms; k += 4; if (k >= tray.length - 1) { k = tray.length - 1; corre = false; lect(); } dib(); } requestAnimationFrame(bucle); })(0);
+    lect(); dib();
+  }
 })();
 
 /* ═══ RETO: COMPLETA LA TABLA ══════════════════════════════════════════ */
