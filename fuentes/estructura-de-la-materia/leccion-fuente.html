@@ -980,6 +980,44 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <p class="clave">La física nuclear estudia lo que pasa a 10⁻¹⁵ m.</p>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
+  <p class="ceja">§ 0.9 · Superposición cuántica</p>
+  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
+      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
+      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
+    </div>
+  </div>
+  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
+  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
+  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
+      <div class="en-cubos" id="en-cubos" title="Clic para ampliar" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button><button type="button" class="btn" id="en-ampl">⛶ Ampliar</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
+      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
+    </div>
+  </div>
+  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-int3" data-label="Tres efectos de la interacción">
   <p class="ceja">§ 0.9 · Interacciones</p>
   <h2 class="titulo">La interacción produce fuerza, cambio y masa</h2>
@@ -1207,48 +1245,10 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
     <div class="pila">
       <div class="lectura l1"><div>Esta foto · fotos tomadas / distintas: <b style="display:inline;font-size:26px" id="fo-cuenta"></b><b class="peq" id="fo-conf" style="font-size:26px"></b></div></div>
       <div class="caja frag"><p class="chico" style="margin:0">Cada foto combina cuatro reglas de Feynman de la QCD, sin líneas sueltas. Las combinaciones posibles <strong>no tienen límite</strong>.</p><div class="fo-reglas" id="fo-reglas"></div></div>
-            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
+            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica, como el cubo de Necker). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
     </div>
   </div>
   <p class="clave">El protón es una superposición de infinitas configuraciones a la vez.</p>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
-  <p class="ceja">§ 0.9 · Superposición cuántica</p>
-  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
-  <div class="g2">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
-      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
-      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
-    </figure>
-    <div class="pila">
-      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
-      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
-      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
-      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
-    </div>
-  </div>
-  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
-  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
-  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
-  <div class="g2">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
-      <div class="en-cubos" id="en-cubos" title="Clic para ampliar" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
-      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button><button type="button" class="btn" id="en-ampl">⛶ Ampliar</button></div>
-    </figure>
-    <div class="pila">
-      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
-      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
-      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
-      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
-    </div>
-  </div>
-  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-sofon" data-label="El sofón de «El problema de los tres cuerpos»">
@@ -1257,7 +1257,7 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
   <div class="g2">
     <figure class="fg"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:480px" src="img/netflix-3body.webp" alt="Escena de la serie «El problema de los tres cuerpos» de Netflix"></a><figcaption>Escena de la serie de Netflix en la que se explica el sofón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
     <div class="pila">
-      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas de las diapositivas anteriores.</p>
+      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas vistas con los cubos: superposición y entrelazamiento.</p>
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Por qué es imposible</strong>, entre otras razones:</p>
         <ul class="lista chico" style="margin-top:8px">
           <li>El entrelazamiento no transmite información: los resultados son al azar (teorema de no comunicación).</li>

@@ -240,6 +240,26 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-rcm .caja h3{font-size:25px;margin:0}
 #dp-rcm .ctrl{margin:2px 0}
 #dp-rcm .btn{font-size:24px;padding:8px 13px}
+
+/* plano inclinado de Galileo */
+#dp-galileo .gl-col > * + *{margin-top:8px}
+#dp-galileo .caja{padding:4px 14px;font-size:26px}
+#dp-galileo .caja h3{font-size:25px;margin:0}
+#dp-galileo .ctrl{margin:2px 0}
+#dp-galileo .gl-ctl{margin:4px 0}
+#dp-galileo .btn{font-size:24px;padding:8px 13px}
+#dp-galileo .lectura div{padding:6px 12px;font-size:21px}
+#dp-galileo .lectura b{font-size:28px}
+
+/* el tirador y el mono */
+#dp-mono .mn-col > * + *{margin-top:8px}
+#dp-mono .caja{padding:4px 14px;font-size:26px}
+#dp-mono .caja h3{font-size:25px;margin:0}
+#dp-mono .ctrl{margin:2px 0}
+#dp-mono .mn-ctl{margin:4px 0}
+#dp-mono .btn{font-size:24px;padding:8px 13px}
+#dp-mono .lectura div{padding:6px 12px;font-size:21px}
+#dp-mono .lectura b{font-size:27px}
 </style></head>
 <body>
 <div id="escenario">
@@ -582,6 +602,27 @@ dl.glosa dd{margin:0;font-size:29px}
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-mono" data-label="El tirador y el mono" data-speaker-notes="§ 3.5. El tirador apunta directo al mono; el mono se suelta en el instante del disparo. Sin gravedad la bala seguiría la línea de mira; con gravedad, bala y mono caen lo mismo, ½gt², en el mismo tiempo: la bala acierta, sea cual sea su rapidez (si llega antes de que el mono toque el suelo). ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico</p>
+  <h2 class="titulo">El tirador y el mono: apuntar directo siempre acierta</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Disparo en el instante en que el mono se suelta</span><span class="val" id="mn-lect"></span></div>
+      <canvas class="lienzo" id="mn-cv" width="1240" height="640"></canvas>
+      <div class="fila-btn mn-ctl"><button type="button" class="btn prim" id="mn-play">▶ Disparar</button><button type="button" class="btn" id="mn-reset">↺ Reiniciar</button><label class="chk a"><input type="checkbox" id="mn-suelta" checked>El mono se suelta</label><label class="chk n"><input type="checkbox" id="mn-estela" checked>Caídas cada \(\Delta t\)</label></div>
+    </figure>
+    <div class="pila mn-col">
+      <label class="ctrl"><span>Rapidez de la bala \(v_0\)</span><input type="range" id="mn-v0" min="8" max="40" step="1" value="22"><span class="v" id="mn-v0v"></span></label>
+      <label class="ctrl"><span>Distancia al árbol \(D\)</span><input type="range" id="mn-d" min="10" max="40" step="1" value="25"><span class="v" id="mn-dv"></span></label>
+      <label class="ctrl"><span>Altura del mono \(H\)</span><input type="range" id="mn-h" min="5" max="20" step="1" value="12"><span class="v" id="mn-hv"></span></label>
+      <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0"><div>Tiempo hasta el árbol<b id="mn-t"></b></div><div>Caída común \(\tfrac12 g t^{2}\)<b id="mn-c"></b></div></div>
+      <div class="caja neutra frag"><h3>1 · Apuntar al mono</h3>La línea de mira es \(y = x\tan\theta\) con \(\tan\theta = H/D\). Sin gravedad, la bala la seguiría y llegaría al punto donde estaba el mono.</div>
+      <div class="caja neutra frag"><h3>2 · Los dos caen lo mismo</h3>Con gravedad, en el mismo tiempo \(t\) la bala queda \(\tfrac12 g t^{2}\) por debajo de la línea de mira y el mono cae \(\tfrac12 g t^{2}\) desde la rama.</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:28px">\[ t = \dfrac{D}{v_0\cos\theta}: \qquad y_{\text{bala}} = y_{\text{mono}} = H - \tfrac12 g t^{2} \]<p class="nota" style="margin:0">Se encuentran con cualquier \(v_0\), siempre que la bala llegue antes de que el mono toque el suelo: \(\tfrac12 g t^{2} \lt H\).</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-tray" data-label="La ecuación de la trayectoria es una parábola" data-speaker-notes="§ 3.5. Eliminando t se obtiene y = x tanθ − g x²/(2v₀²cos²θ): una función cuadrática y = A x − B x² con B > 0, es decir, una parábola que abre hacia abajo. Completando el cuadrado aparece el vértice (R/2, H). Interpretación física: la recta y = x tanθ es el camino sin gravedad; la caída por debajo de ella es ½gt² y, como x ∝ t, crece como x² (1 : 4 : 9 : 16). ↓ revela 3 pasos.">
   <p class="ceja">§ 3.5 · Movimiento parabólico</p>
   <h2 class="titulo">¿Por qué la trayectoria es una parábola?</h2>
@@ -800,6 +841,29 @@ dl.glosa dd{margin:0;font-size:29px}
 </section>
 
 <!-- ═════════════ §5 · FUERZAS EN ACCIÓN ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-galileo" data-label="El plano inclinado de Galileo" data-speaker-notes="§ 3.7. Plano inclinado sin fricción de 6 m, como el de Galileo (unos 12 codos): a = g sin θ. En caída vertical los 6 m duran 1,1 s; con unos pocos grados, entre 4 y 8 s. Así Galileo (hacia 1604) pudo medir el movimiento con relojes de agua y descubrir que la distancia crece como t²: en tiempos iguales recorre distancias en razón 1 : 3 : 5 : 7. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.7 · El plano inclinado</p>
+  <h2 class="titulo">Galileo «diluye» la gravedad para poder medirla</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Plano de \(\qty{6}{m}\), como el de Galileo · marcas cada \(\Delta t\) igual</span><span class="val" id="gl-lect"></span></div>
+      <div id="gl-fig"></div>
+      <label class="ctrl gl-ctl"><span>Inclinación \(\theta\)</span><input type="range" id="gl-th" min="1" max="90" step="1" value="5"><span class="v" id="gl-thv"></span></label>
+      <div class="fila-btn gl-ctl"><button type="button" class="btn prim" id="gl-play">▶ Soltar</button><button type="button" class="btn" data-th="90">Caída libre (90°)</button><button type="button" class="btn" data-th="5">5°</button><button type="button" class="btn" data-th="2">2°</button><button type="button" class="btn" data-th="1">1°</button></div>
+    </figure>
+    <div class="pila gl-col">
+      <div class="lectura" style="grid-template-columns:1fr 1fr 1fr;margin-top:0">
+        <div>Aceleración \(a = g\sin\theta\)<b id="gl-a"></b></div><div>Duración del recorrido<b id="gl-t"></b></div><div>Cronómetro<b id="gl-c"></b></div>
+      </div>
+      <div class="caja neutra frag"><h3>1 · La gravedad, «diluida»</h3>Sobre el plano solo actúa la componente del peso paralela a él:
+        \[ a = g\sin\theta, \qquad t = \sqrt{\dfrac{2L}{g\sin\theta}}. \]
+        Con \(L = \qty{6}{m}\), en caída vertical el recorrido dura \(\qty{1{,}1}{s}\); con \(2^\circ\), unos \(\qty{5{,}9}{s}\).</div>
+      <div class="caja neutra frag"><h3>2 · Lo que midió: distancias 1 : 3 : 5 : 7</h3>En intervalos de tiempo iguales, las distancias recorridas crecen como los números impares, de modo que la distancia total crece como \(t^{2}\): \(d = \tfrac12 a t^{2}\).</div>
+      <div class="caja c2 frag"><h3>3 · Relojes de agua y pulso</h3>Hacia 1604 no había cronómetros: en una canaleta de madera de unos 12 codos (cerca de \(\qty{6}{m}\)), Galileo pesaba el agua que salía de un recipiente mientras rodaba una esfera. Una caída de un segundo era imposible de medir así; un movimiento de varios segundos, sí. Al inclinar el plano, la física no cambia, solo se vuelve <strong>medible</strong>.</div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-friccion" data-label="Bloque con fricción y fuerza inclinada" data-speaker-notes="§ 3.7. Explorador: diagrama de cuerpo libre y aceleración en función de θ y μ_k.">
   <p class="ceja">§ 3.7 · Diagrama de cuerpo libre</p>
   <h2 class="titulo">Tirar en ángulo reduce la fricción… y la fuerza útil</h2>
@@ -1353,6 +1417,86 @@ const T_OSC = 2 * Math.PI;
   ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
   [rv, rt].forEach(x => x.addEventListener('input', pinta)); [cC, c45].forEach(x => x.addEventListener('change', pinta));
   cC.checked = true; pinta();
+})();
+
+/* ═══ EL TIRADOR Y EL MONO ═══════════════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('mn-cv');
+  if (!cv) return;
+  const g = 9.8, gc = cv.getContext('2d'), W = cv.width, Hc = cv.height, R_ = id => document.getElementById(id);
+  const rv = R_('mn-v0'), rd = R_('mn-d'), rh = R_('mn-h'), cS = R_('mn-suelta'), cE = R_('mn-estela'), bp = R_('mn-play');
+  let t = 0, corre = false, ult = 0, fin = false;
+  const datos = () => {
+    const v0 = +rv.value, D = +rd.value, H = +rh.value, th = Math.atan2(H, D), vx = v0 * Math.cos(th), vy = v0 * Math.sin(th);
+    const tA = D / vx, tS = Math.sqrt(2 * H / g), tB = 2 * vy / g;      /* llegada al árbol · mono en el suelo · bala en el suelo */
+    return { v0, D, H, th, vx, vy, tA, tS, tB, tEnd: Math.min(tA, tS, tB) };
+  };
+  function mono(x, y, e) {
+    const piel = tok('--caso2'), cara = tok('--papel');
+    gc.fillStyle = piel;
+    gc.beginPath(); gc.arc(x, y + 6 * e, 11 * e, 0, 7); gc.fill();                       /* cuerpo */
+    gc.beginPath(); gc.arc(x, y - 10 * e, 8 * e, 0, 7); gc.fill();                       /* cabeza */
+    gc.fillStyle = cara; gc.beginPath(); gc.arc(x, y - 8 * e, 5 * e, 0, 7); gc.fill();
+    gc.strokeStyle = piel; gc.lineWidth = 3 * e; gc.beginPath(); gc.moveTo(x - 9 * e, y - 2 * e); gc.lineTo(x - 14 * e, y - 22 * e); gc.moveTo(x + 9 * e, y - 2 * e); gc.lineTo(x + 14 * e, y - 22 * e); gc.stroke();
+  }
+  function dibuja() {
+    const d = datos(), m = { l: 70, r: 40, t: 40, b: 60 };
+    const e = Math.min((W - m.l - m.r) / (d.D + 5), (Hc - m.t - m.b) / (d.H + 5)), X = x => m.l + x * e, Y = y => Hc - m.b - y * e;
+    gc.fillStyle = tok('--panel'); gc.fillRect(0, 0, W, Hc);
+    gc.strokeStyle = tok('--tinta'); gc.lineWidth = 3; gc.beginPath(); gc.moveTo(10, Y(0)); gc.lineTo(W - 10, Y(0)); gc.stroke();
+    /* árbol y rama */
+    gc.fillStyle = tok('--tinta2'); gc.fillRect(X(d.D) + 18, Y(d.H + 3), 16, Y(0) - Y(d.H + 3));
+    gc.strokeStyle = tok('--tinta2'); gc.lineWidth = 7; gc.beginPath(); gc.moveTo(X(d.D) + 20, Y(d.H) - 26); gc.lineTo(X(d.D) - 30, Y(d.H) - 26); gc.stroke();
+    gc.fillStyle = 'rgba(80,140,80,.35)'; gc.beginPath(); gc.arc(X(d.D) + 26, Y(d.H + 3), 60, 0, 7); gc.fill();
+    /* tirador */
+    gc.fillStyle = tok('--tinta'); gc.fillRect(X(0) - 12, Y(0) - 30, 24, 30);
+    gc.strokeStyle = tok('--tinta'); gc.lineWidth = 6; gc.beginPath(); gc.moveTo(X(0), Y(0) - 18); gc.lineTo(X(0) + 40 * Math.cos(d.th), Y(0) - 18 - 40 * Math.sin(d.th)); gc.stroke();
+    /* línea de mira */
+    gc.strokeStyle = tok('--res'); gc.lineWidth = 2; gc.setLineDash([10, 8]); gc.beginPath(); gc.moveTo(X(0), Y(0)); gc.lineTo(X(d.D), Y(d.H)); gc.stroke(); gc.setLineDash([]);
+    const tEnd = d.tEnd, tt = Math.min(t, tEnd);
+    const yb = s => d.vy * s - 0.5 * g * s * s, ym = s => cS.checked ? d.H - 0.5 * g * s * s : d.H;
+    /* estela: posición de la bala y del mono cada Δt, con la caída ½gt² bajo la línea de mira */
+    if (cE.checked) {
+      const n = 6, dt = tEnd / n;
+      for (let k = 1; k <= n && k * dt <= tt + 1e-9; k++) {
+        const s = k * dt, xb = d.vx * s, yl = d.vy * s;
+        gc.strokeStyle = tok('--caso2'); gc.lineWidth = 3; gc.beginPath(); gc.moveTo(X(xb), Y(yl)); gc.lineTo(X(xb), Y(yb(s))); gc.stroke();
+        gc.fillStyle = tok('--res'); gc.globalAlpha = 0.4; gc.beginPath(); gc.arc(X(xb), Y(yb(s)), 6, 0, 7); gc.fill();
+        if (cS.checked) { gc.strokeStyle = tok('--caso2'); gc.globalAlpha = 1; gc.beginPath(); gc.moveTo(X(d.D) - 46, Y(d.H)); gc.lineTo(X(d.D) - 46, Y(ym(s))); gc.stroke(); gc.globalAlpha = 0.4; gc.fillStyle = tok('--caso2'); gc.beginPath(); gc.arc(X(d.D), Y(ym(s)), 6, 0, 7); gc.fill(); }
+        gc.globalAlpha = 1;
+      }
+    }
+    /* trayectoria de la bala hasta ahora */
+    gc.strokeStyle = tok('--res'); gc.lineWidth = 4; gc.beginPath();
+    for (let i = 0; i <= 80; i++) { const s = tt * i / 80; i ? gc.lineTo(X(d.vx * s), Y(yb(s))) : gc.moveTo(X(0), Y(0)); }
+    gc.stroke();
+    mono(X(d.D), Y(ym(tt)), 1.4);
+    gc.fillStyle = tok('--res'); gc.beginPath(); gc.arc(X(d.vx * tt), Y(yb(tt)), 7, 0, 7); gc.fill();
+    if (fin) {
+      const acierta = cS.checked && d.tA <= d.tS && d.tA <= d.tB;
+      gc.font = '700 34px ' + FTXT; gc.fillStyle = acierta ? tok('--res') : tok('--mal');
+      gc.fillText(acierta ? '¡Acierta!' : (!cS.checked ? 'Pasa por debajo: el mono no cayó' : (d.tB < d.tA ? 'La bala cae al suelo antes del árbol: aumenta v₀' : 'El mono tocó el suelo antes: aumenta v₀')), 30, 44);
+    }
+    gc.fillStyle = tok('--tinta2'); gc.font = '22px ' + FMATH; gc.fillText('t = ' + num(tt, 2) + ' s', W - 150, 34);
+    R_('mn-v0v').textContent = d.v0 + ' m/s'; R_('mn-dv').textContent = d.D + ' m'; R_('mn-hv').textContent = d.H + ' m';
+    R_('mn-t').textContent = num(d.tA, 2) + ' s';
+    R_('mn-c').textContent = d.tA <= Math.min(d.tS, d.tB) ? num(0.5 * g * d.tA * d.tA, 2) + ' m' : 'más de ' + d.H + ' m (llega tarde)';
+    R_('mn-lect').textContent = 'θ = ' + num(d.th * 180 / Math.PI, 1) + '° · encuentro a ' + (d.tA <= Math.min(d.tS, d.tB) ? num(d.H - 0.5 * g * d.tA * d.tA, 2) + ' m de altura' : 'ninguno');
+  }
+  function bucle(ms) {
+    if (corre && activa(cv)) {
+      t += ult ? Math.min(0.05, (ms - ult) / 1000) * 0.6 : 0;
+      const d = datos(), tEnd = d.tEnd;
+      if (t >= tEnd) { t = tEnd; corre = false; fin = true; bp.textContent = '▶ Disparar'; }
+      dibuja();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  const reinicia = () => { t = 0; corre = false; fin = false; bp.textContent = '▶ Disparar'; dibuja(); };
+  bp.addEventListener('click', () => { t = 0; fin = false; corre = true; bp.textContent = '… en vuelo'; });
+  R_('mn-reset').addEventListener('click', reinicia);
+  [rv, rd, rh].forEach(x => x.addEventListener('input', reinicia)); [cS, cE].forEach(x => x.addEventListener('change', reinicia));
+  dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ECUACIÓN DE LA TRAYECTORIA: POR QUÉ ES UNA PARÁBOLA ══════════════ */
@@ -2254,6 +2398,66 @@ const T_OSC = 2 * Math.PI;
   $$('#dp-granada .btn[data-f]').forEach(b => b.addEventListener('click', () => { nf = +b.dataset.f; $$('#dp-granada .btn[data-f]').forEach(o => o.classList.toggle('on', o === b)); dibuja(); }));
   [rte, rr, rq].forEach(x => x.addEventListener('input', dibuja));
   t = tv * 1.2; dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ PLANO INCLINADO DE GALILEO ═══════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('gl-fig');
+  if (!host) return;
+  const g = 9.8, L = 6, R_ = id => document.getElementById(id), rt = R_('gl-th'), bp = R_('gl-play');
+  let t = 0, corre = false, ult = 0;
+  function pinta() {
+    const th = +rt.value * Math.PI / 180, a = g * Math.sin(th), T = Math.sqrt(2 * L / a), tt = Math.min(t, T);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 560', class: 'fig' }, host);
+    /* plano: extremo inferior fijo; la escala se ajusta para que quepa con cualquier ángulo */
+    const P = Math.min(800, 360 / Math.max(Math.sin(th), 1e-3)), xb = 1080, yb = 480, xt = xb - P * Math.cos(th), yt = yb - P * Math.sin(th);
+    const ux = Math.cos(th), uy = Math.sin(th), nx = uy, ny = -ux;             /* dirección del plano y normal hacia arriba */
+    nodo('polygon', { points: [[xt, yt], [xb, yb], [xt, yb]].map(p => p.join(',')).join(' '), style: 'fill:var(--linea);opacity:.55' }, svg);
+    nodo('line', { x1: xt, y1: yt, x2: xb, y2: yb, style: 'stroke:var(--tinta);stroke-width:5' }, svg);
+    nodo('line', { x1: 40, x2: 1150, y1: yb, y2: yb, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    if (th < 1.5) {
+      nodo('path', { d: 'M ' + (xb - 110) + ' ' + yb + ' A 110 110 0 0 1 ' + (xb - 110 * Math.cos(th)) + ' ' + (yb - 110 * Math.sin(th)), style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
+      rotulo(svg, xb - 140, yb - 12, '*θ*', { 'text-anchor': 'end', 'font-size': 28 });
+    }
+    /* marcas cada cuarto del tiempo total: distancias 1 : 3 : 5 : 7 */
+    for (let k = 1; k <= 4; k++) {
+      const d = (k / 4) ** 2, x = xt + P * d * ux, y = yt + P * d * uy;
+      nodo('line', { x1: x + 14 * nx, y1: y + 14 * ny, x2: x + 50 * nx, y2: y + 50 * ny, style: 'stroke:var(--caso2);stroke-width:4' }, svg);
+      const dm = (((k - 1) / 4) ** 2 + d) / 2, xm = xt + P * dm * ux + 70 * nx, ym = yt + P * dm * uy + 70 * ny;
+      rotulo(svg, xm, ym + 10, String(2 * k - 1), { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    }
+    /* bloque sobre el plano */
+    const sd = Math.min(1, (tt / T) ** 2), bx = xt + P * sd * ux, by = yt + P * sd * uy, w = 56, h = 40;
+    const gB = nodo('g', { transform: 'translate(' + bx.toFixed(1) + ',' + by.toFixed(1) + ') rotate(' + (th * 180 / Math.PI).toFixed(2) + ')' }, svg);
+    nodo('rect', { x: -w / 2, y: -h, width: w, height: h, rx: 4, style: 'fill:var(--res)' }, gB);
+    rotulo(svg, th > 1.2 ? xb - 40 : (xt + xb) / 2, th > 1.2 ? (yt + yb) / 2 : yb + 38, '*L* = 6 m', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FMATH });
+    /* comparación de aceleraciones: g frente a a = g sin θ */
+    const B = 420, x0 = 60, y0 = 40;
+    nodo('rect', { x: x0, y: y0, width: B, height: 22, style: 'fill:var(--linea)' }, svg);
+    nodo('rect', { x: x0, y: y0 + 34, width: Math.max(2, B * Math.sin(th)), height: 22, style: 'fill:var(--res)' }, svg);
+    rotulo(svg, x0 + B + 12, y0 + 18, '*g* = 9,8 m/s²', { 'font-size': 23, style: 'fill:var(--tinta2);font-family:' + FMATH });
+    rotulo(svg, x0 + Math.max(2, B * Math.sin(th)) + 12, y0 + 52, '*a* = ' + num(a, 2) + ' m/s²', { 'font-size': 23, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, x0, y0 + 90, 'Cifras ámbar: distancias en cada cuarto del tiempo (×37,5 cm)', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    R_('gl-thv').textContent = rt.value + '°';
+    R_('gl-a').textContent = num(a, 2) + ' m/s²';
+    R_('gl-t').textContent = num(T, 2) + ' s';
+    R_('gl-c').textContent = num(tt, 2) + ' s';
+    R_('gl-lect').textContent = 'a/g = ' + num(Math.sin(th), 3) + ' · ' + num(T / Math.sqrt(2 * L / g), 1) + '× más lento que en caída libre';
+  }
+  function bucle(ms) {
+    if (corre && activa(host)) {
+      t += ult ? Math.min(0.05, (ms - ult) / 1000) : 0;
+      const T = Math.sqrt(2 * L / (g * Math.sin(+rt.value * Math.PI / 180)));
+      if (t >= T) { t = T; corre = false; bp.textContent = '▶ Soltar'; }
+      pinta();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  bp.addEventListener('click', () => { t = 0; corre = true; bp.textContent = '… bajando'; });
+  $$('#dp-galileo .btn[data-th]').forEach(b => b.addEventListener('click', () => { rt.value = b.dataset.th; t = 0; corre = false; bp.textContent = '▶ Soltar'; pinta(); }));
+  rt.addEventListener('input', () => { t = 0; corre = false; bp.textContent = '▶ Soltar'; pinta(); });
+  pinta(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ BLOQUE CON FRICCIÓN ══════════════════════════════════════════════ */

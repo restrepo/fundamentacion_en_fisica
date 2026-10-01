@@ -1420,7 +1420,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <section class="poster" data-seccion="Quarks" data-label="§ 9 · Quarks" data-speaker-notes="Separador: Quarks. 4 diapositivas.">
   <div class="p-num">§ 9</div>
   <h2 class="p-tit">Quarks</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Materia → cristal → átomo → núcleo → nucleón → quark</span><span>La interacción produce fuerza, cambio y masa</span><span>Fuerza = Δp/Δt: intercambio de un campo de radiación</span><span>El fotón como carga-anticarga</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Materia → cristal → átomo → núcleo → nucleón → quark</span><span>¿El cubo sale o entra? Las dos cosas… hasta que lo miras</span><span>Dos cubos entrelazados: si uno sale, el otro también</span><span>La interacción produce fuerza, cambio y masa</span></div>
 </section>
 
 
@@ -1441,6 +1441,44 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <p class="chico frag" style="margin-top:18px">La <strong>física nuclear</strong> estudia las propiedades de los núcleos y las interacciones dentro y entre ellos.</p>
   <div class="mapa" data-e="-15" data-t="protón"></div>
   <p class="clave">La física nuclear estudia lo que pasa a 10⁻¹⁵ m.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
+  <p class="ceja">§ 0.9 · Superposición cuántica</p>
+  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
+      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
+      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
+      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
+      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
+    </div>
+  </div>
+  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
+  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
+  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
+  <div class="g2">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
+      <div class="en-cubos" id="en-cubos" title="Clic para ampliar" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
+      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button><button type="button" class="btn" id="en-ampl">⛶ Ampliar</button></div>
+    </figure>
+    <div class="pila">
+      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
+      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
+      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
+    </div>
+  </div>
+  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-int3" data-label="Tres efectos de la interacción">
@@ -1670,48 +1708,10 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <div class="pila">
       <div class="lectura l1"><div>Esta foto · fotos tomadas / distintas: <b style="display:inline;font-size:26px" id="fo-cuenta"></b><b class="peq" id="fo-conf" style="font-size:26px"></b></div></div>
       <div class="caja frag"><p class="chico" style="margin:0">Cada foto combina cuatro reglas de Feynman de la QCD, sin líneas sueltas. Las combinaciones posibles <strong>no tienen límite</strong>.</p><div class="fo-reglas" id="fo-reglas"></div></div>
-            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
+            <div class="caja c1 frag"><p class="chico" style="margin:0"><strong>El protón no es ninguna de estas fotos: es todas a la vez</strong> (superposición cuántica, como el cubo de Necker). Con más energía hay más resolución y aparecen más gluones y pares.</p></div>
     </div>
   </div>
   <p class="clave">El protón es una superposición de infinitas configuraciones a la vez.</p>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Quarks" id="dp-necker" data-label="Superposición: el cubo de Necker">
-  <p class="ceja">§ 0.9 · Superposición cuántica</p>
-  <h2 class="titulo">¿El cubo sale o entra? Las dos cosas… hasta que lo miras</h2>
-  <div class="g2">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Cubo de Necker</span><span class="val" id="ne-lect"></span></div>
-      <div id="ne-fig" style="max-width:520px;margin:0 auto"></div>
-      <div class="fila-btn"><button type="button" class="btn prim" id="ne-medir">👁 Mirar (medir)</button><button type="button" class="btn" id="ne-cien">Mirar 100 veces</button><button type="button" class="btn" id="ne-sup">Volver a la superposición</button></div>
-    </figure>
-    <div class="pila">
-      <p class="chico">El dibujo es plano y ambiguo: tu cerebro lo resuelve como un cubo que <strong>sale</strong> (cara de abajo a la izquierda al frente) o que <strong>entra</strong>. Mientras no decides, el dibujo contiene las dos posibilidades.</p>
-      <div class="caja frag"><p class="chico" style="margin:0"><strong>Superposición:</strong> un sistema cuántico está en varias posibilidades a la vez. Al <em>medir</em> aparece una sola, al azar, con probabilidades que la teoría sí predice.</p></div>
-      <div class="lectura l2 frag"><div>Salió «sale»<b id="ne-s">0</b></div><div>Salió «entra»<b id="ne-e">0</b></div></div>
-      <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Ojo:</strong> es una analogía. La superposición cuántica es más rica <span class="prop" data-pop="pop-necker">(¿en qué falla?)</span>.</p></div>
-    </div>
-  </div>
-  <p class="clave">Antes de medir, varias posibilidades a la vez; al medir, una sola al azar.</p>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Quarks" id="dp-entrel" data-label="Entrelazamiento: dos cubos">
-  <p class="ceja">§ 0.9 · Entrelazamiento cuántico</p>
-  <h2 class="titulo">Dos cubos entrelazados: si uno sale, el otro también</h2>
-  <div class="g2">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Un par de cubos preparado junto</span><span class="val" id="en-lect"></span></div>
-      <div class="en-cubos" id="en-cubos" title="Clic para ampliar" style="display:grid;grid-template-columns:1fr 1fr;gap:20px"><div><p class="nota" style="text-align:center;margin:0">Cubo A (aquí)</p><div id="en-a"></div></div><div><p class="nota" style="text-align:center;margin:0">Cubo B (a años luz)</p><div id="en-b"></div></div></div>
-      <div class="fila-btn"><button type="button" class="btn prim" id="en-mira">👁 Mirar el cubo A</button><button type="button" class="btn" id="en-par">Nuevo par</button><button type="button" class="btn" id="en-cien">100 pares</button><button type="button" class="btn" id="en-ampl">⛶ Ampliar</button></div>
-    </figure>
-    <div class="pila">
-      <p class="chico">Dos sistemas <strong>entrelazados</strong> forman una sola superposición: «ambos salen» + «ambos entran». Al mirar uno, el otro queda definido de inmediato, esté donde esté.</p>
-      <div class="lectura l2 frag"><div>Pares iguales<b id="en-ig">0</b></div><div>Resultados de A: sale / entra<b id="en-ab">0 / 0</b></div></div>
-      <div class="caja frag"><p class="chico" style="margin:0">Las coincidencias son del 100 %, pero el resultado de A es <strong>al azar</strong>: quien mira A no puede escoger qué ve, así que no puede enviar un mensaje a B. El entrelazamiento no permite comunicarse más rápido que la luz.</p></div>
-      <div class="caja c1 frag"><p class="chico" style="margin:0">Einstein lo llamó «acción fantasmal a distancia». Los experimentos le dieron la razón a la mecánica cuántica <span class="prop" data-pop="pop-bell">(¿cómo se sabe?)</span>: Nobel de Física 2022 (Aspect, Clauser y Zeilinger).</p></div>
-    </div>
-  </div>
-  <p class="clave">Entrelazados coinciden siempre, pero al azar: no sirven para enviar mensajes.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Quarks" id="dp-sofon" data-label="El sofón de «El problema de los tres cuerpos»">
@@ -1720,7 +1720,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <div class="g2">
     <figure class="fg"><a href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener"><img class="foto ancha" style="--fh:480px" src="data:image/webp;base64,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" alt="Escena de la serie «El problema de los tres cuerpos» de Netflix"></a><figcaption>Escena de la serie de Netflix en la que se explica el sofón (con subtítulos en español): <a class="enl" href="https://www.youtube.com/watch?v=caxiX38DK68" target="_blank" rel="noopener">YouTube</a></figcaption></figure>
     <div class="pila">
-      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas de las diapositivas anteriores.</p>
+      <p class="chico">En la serie, una civilización lejana «despliega» un protón, lo convierte en una supercomputadora y usa pares entrelazados para comunicarse al instante: el <strong>sofón</strong>. Mira el video buscando las dos ideas vistas con los cubos: superposición y entrelazamiento.</p>
       <div class="caja c2 frag"><p class="chico" style="margin:0"><strong>Por qué es imposible</strong>, entre otras razones:</p>
         <ul class="lista chico" style="margin-top:8px">
           <li>El entrelazamiento no transmite información: los resultados son al azar (teorema de no comunicación).</li>
