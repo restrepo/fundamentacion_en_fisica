@@ -4,7 +4,7 @@ Lecciones interactivas generadas a partir del libro **Fundamentación en Física
 (*Temas de física a nivel algebraico*), cuyo código LaTeX (`main.tex`) y PDF
 (`main.pdf`) están en el repositorio original:
 
-➡️ **Repositorio original:** [restrepo/fundamentacion_en_fisica](https://github.com/restrepo/fundamentacion_en_fisica)
+➡️ **Repositorio original:** [restrepo/Derivaci-n-de-las-transformaciones-de-Lorentz](https://github.com/restrepo/Derivaci-n-de-las-transformaciones-de-Lorentz)
 
 ## Ver las lecciones en línea
 

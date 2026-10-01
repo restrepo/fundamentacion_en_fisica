@@ -286,6 +286,14 @@ dl.glosa dd{margin:0;font-size:29px}
 .gl-dcl-txt{font-size:27px;line-height:1.35}
 .gl-dcl-txt .lectura div{padding:6px 12px;font-size:21px}
 .gl-dcl-txt .lectura b{font-size:27px}
+.gform-btn{background:#673ab7;color:var(--panel);font:600 1rem system-ui,sans-serif;border:0;border-radius:6px;padding:.8em 1.5em;cursor:pointer}
+.gform-btn:hover{background:#512da8}
+section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px;border-radius:6px}
+.gform-btn:focus-visible,.gform-cerrar:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+#gform-dialog{width:min(700px,95vw);height:90vh;max-height:none;padding:0;border:0;border-radius:10px;overflow:hidden}
+#gform-dialog::backdrop{background:rgba(20,10,40,.6)}
+#gform-dialog iframe{width:100%;height:100%;border:0;display:block}
+.gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:var(--panel);box-shadow:0 1px 4px color-mix(in srgb, var(--color-text) 30%, transparent);font-size:1.1rem;cursor:pointer}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1051,6 +1059,27 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide" data-seccion="Aceleración constante y energía" id="pc-barcos" data-label="¿Qué barco es alcanzado primero?" data-speaker-notes="§ 3.5. Pregunta conceptual (diapositiva 2 del PowerPoint de práctica): el tiempo de vuelo depende solo del movimiento vertical. Explicación alternativa con el ángulo de lanzamiento: con la misma rapidez, t = 2v₀ sin θ / g, y el disparo a A sale con mayor ángulo.",>
+  <p class="ceja">§ 3.5 · Movimiento parabólico · Pregunta</p>
+  <h2 class="titulo">¿Qué barco es alcanzado primero?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="barcos"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Disparar</button><span class="pc-simtxt"></span></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Un barco de guerra dispara simultáneamente dos proyectiles a dos barcos enemigos, A y B, siguiendo las trayectorias parabólicas de la figura. ¿Qué barco es alcanzado primero?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">B</button><button type="button" class="pr-opc" data-o="d">se necesita más información</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El tiempo de vuelo es el doble del tiempo de caída desde la altura máxima: \(t_v = 2\sqrt{2H/g}\). El proyectil hacia A sube más, así que tarda más. B es alcanzado primero aunque esté más lejos: su proyectil va más rápido en \(x\).</p><p style="margin:6px 0 0"><strong>Otra mirada: el ángulo de lanzamiento.</strong> Si el cañón dispara los dos proyectiles con la misma rapidez \(v_0\), \(t_v = \dfrac{2v_0\sin\theta}{g}\). El disparo a A sale con un ángulo mayor (\(\theta_A \gt \theta_B\)), así que \(\sin\theta_A \gt \sin\theta_B\) y tarda más. Es el caso de los ángulos complementarios: el tiro alto y el tiro bajo pueden llegar lejos, pero el alto siempre tarda más.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button><button type="button" class="gform-btn" data-gform-open>📝 Responder el formulario</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 El tiempo de vuelo depende solo del movimiento vertical. ¿Cuál proyectil sube más alto?</p></div>
+    </div>
+  </div>
+  <!-- gform-popup:start -->
+<dialog id="gform-dialog" aria-label="Formulario: ¿qué barco es alcanzado primero?">
+  <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+  <iframe data-src="https://docs.google.com/forms/d/e/1FAIpQLScYi8R2oW9m1_9KUZrbnvlWCIYJMlIIewT4Jo4aMMT2NYkcHQ/viewform?embedded=true" title="Formulario: ¿qué barco es alcanzado primero?" loading="lazy">Cargando…</iframe>
+</dialog>
+
+<!-- gform-popup:end -->
+</section>
+
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-mono" data-label="El tirador y el mono" data-speaker-notes="§ 3.5. El tirador apunta directo al mono; el mono se suelta en el instante del disparo. Sin gravedad la bala seguiría la línea de mira; con gravedad, como los movimientos en x y en y de la bala son independientes, bala y mono caen lo mismo, ½gt², en el mismo tiempo: la bala acierta, sea cual sea su rapidez (si llega antes de que el mono toque el suelo). ↓ revela 3 pasos.">
   <p class="ceja">§ 3.5 · Movimiento parabólico</p>
   <h2 class="titulo">El tirador y el mono: apuntar directo siempre acierta</h2>
@@ -1536,8 +1565,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 15 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 1 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 14 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 1 / 14</p>
   <h2 class="titulo">¿Cambia la aceleración si lo lanzas hacia abajo?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="abajo"></div></figure>
@@ -1550,8 +1579,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 15 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 2 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 14 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 2 / 14</p>
   <h2 class="titulo">En el punto más alto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cima"></div></figure>
@@ -1564,8 +1593,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 15 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 3 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 14 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 3 / 14</p>
   <h2 class="titulo">Dos pelotas desde un acantilado</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="acantilado"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
@@ -1578,8 +1607,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 15 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 4 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 14 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 4 / 14</p>
   <h2 class="titulo">Subir o bajar: ¿qué tarda más con aire?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piedra"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
@@ -1592,22 +1621,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-barcos" data-label="Práctica conceptual: ¿Qué barco es alcanzado primero?" data-speaker-notes="Pregunta conceptual 5 de 15 (diapositiva 2 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 5 / 15</p>
-  <h2 class="titulo">¿Qué barco es alcanzado primero?</h2>
-  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
-    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="barcos"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Disparar</button><span class="pc-simtxt"></span></div></figure>
-    <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Un barco de guerra dispara simultáneamente dos proyectiles a dos barcos enemigos, A y B, siguiendo las trayectorias parabólicas de la figura. ¿Qué barco es alcanzado primero?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">B</button><button type="button" class="pr-opc" data-o="d">se necesita más información</button></div>
-        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El tiempo de vuelo es el doble del tiempo de caída desde la altura máxima: \(t_v = 2\sqrt{2H/g}\). El proyectil hacia A sube más, así que tarda más. B es alcanzado primero aunque esté más lejos: su proyectil va más rápido en \(x\).</p></div></div>
-      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
-      <div class="pc-pista" style="display:none"><p style="margin:0">💡 El tiempo de vuelo depende solo del movimiento vertical. ¿Cuál proyectil sube más alto?</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 6 de 15 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 6 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 5 de 14 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 5 / 14</p>
   <h2 class="titulo">Montaña rusa: rapidez y aceleración</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="montana"></div><label class="ctrl"><span>Posición del carro</span><input type="range" class="pc-pos" min="0" max="100" step="1" value="15"><span class="v pc-posv"></span></label></figure>
@@ -1620,8 +1635,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 7 de 15 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 7 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 6 de 14 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 6 / 14</p>
   <h2 class="titulo">Dos canicas desde el techo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="canicas"></div></figure>
@@ -1634,8 +1649,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 8 de 15 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 8 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 7 de 14 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 7 / 14</p>
   <h2 class="titulo">Para llegar con el doble de rapidez</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="rampa"></div></figure>
@@ -1648,8 +1663,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 9 de 15 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 9 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 8 de 14 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 8 / 14</p>
   <h2 class="titulo">El alimentador de la bolera</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bolera"></div></figure>
@@ -1662,8 +1677,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 10 de 15 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 10 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 9 de 14 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 9 / 14</p>
   <h2 class="titulo">Dos caminos a la cima</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bici"></div></figure>
@@ -1676,8 +1691,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 11 de 15 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 11 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 10 de 14 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 10 / 14</p>
   <h2 class="titulo">Subir un piano con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piano"></div></figure>
@@ -1690,8 +1705,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 12 de 15 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 12 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 11 de 14 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 11 / 14</p>
   <h2 class="titulo">Subirse a sí mismo con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="plataforma"></div></figure>
@@ -1704,8 +1719,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 13 de 15 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 13 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 12 de 14 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 12 / 14</p>
   <h2 class="titulo">Tirar de una caja: ¿qué sistema?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="caja"></div></figure>
@@ -1717,8 +1732,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 14 de 15 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 14 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 13 de 14 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 13 / 14</p>
   <h2 class="titulo">Trabajo con vectores: el dron de reparto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="dron"></div></figure>
@@ -1732,8 +1747,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canon" data-label="Práctica: el cañón de Newton" data-speaker-notes="Práctica 15 de 15 (diapositiva 6 del PowerPoint, que enlazaba simulaciones de Trinket; Trinket cerró). Cañón de Newton integrado con el mismo algoritmo: velocidad orbital ≈ 7,9 km/s y de escape ≈ 11,2 km/s. Enlace al cuaderno gravedad.ipynb en Colab.">
-  <p class="ceja">Práctica conceptual 15 / 15</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canon" data-label="Práctica: el cañón de Newton" data-speaker-notes="Práctica 14 de 14 (diapositiva 6 del PowerPoint, que enlazaba simulaciones de Trinket; Trinket cerró). Cañón de Newton integrado con el mismo algoritmo: velocidad orbital ≈ 7,9 km/s y de escape ≈ 11,2 km/s. Enlace al cuaderno gravedad.ipynb en Colab.">
+  <p class="ceja">Práctica conceptual 14 / 14</p>
   <h2 class="titulo">El cañón de Newton: velocidad orbital y de escape</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
     <figure class="svgbox" style="margin:0">
@@ -2035,6 +2050,22 @@ function tok(nombre) {
   despierta();
 })();
 
+
+
+
+(function () {
+  var d = document.getElementById('gform-dialog');
+  var f = d.querySelector('iframe');
+  document.querySelectorAll('[data-gform-open]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      if (!f.src) f.src = f.dataset.src;
+      d.showModal();
+    });
+  });
+  d.querySelector('.gform-cerrar').addEventListener('click', function () { d.close(); });
+  d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+  document.addEventListener('slidechange', function () { if (d.open) d.close(); });
+})();
 
 
 
@@ -4017,6 +4048,10 @@ function lienzoOrbita(cv, trazos, marcas) {
           const ps = []; for (let i = 0; i <= 60; i++) { const s = p.T * i / 60; ps.push((xs + p.vx * s).toFixed(1) + ',' + (y0 - (p.vy * s - g2 * s * s / 2)).toFixed(1)); }
           nodo('polyline', { points: ps.join(' '), style: 'fill:none;stroke:' + p.col + ';stroke-width:3;stroke-dasharray:10 8' }, svg);
           if (t > 0) { const s = Math.min(t, p.T); circ(svg, xs + p.vx * s, y0 - (p.vy * s - g2 * s * s / 2), 9, 'fill:' + p.col); if (t >= p.T) mt(svg, p.X - 30, y0 - 50, '¡' + num(p.T, 1) + ' s!', p.col, { 'font-size': 26 }); }
+          /* ángulo de lanzamiento */
+          const th = Math.atan2(p.vy, p.vx), rr = p.n === 'A' ? 90 : 170;
+          nodo('path', { d: 'M ' + (xs + rr) + ' ' + y0 + ' A ' + rr + ' ' + rr + ' 0 0 0 ' + (xs + rr * Math.cos(th)) + ' ' + (y0 - rr * Math.sin(th)), style: 'fill:none;stroke:' + p.col + ';stroke-width:3' }, svg);
+          const fa = p.n === 'A' ? 0.78 : 0.35; mt(svg, xs + (rr + 14) * Math.cos(th * fa), y0 - (rr + 14) * Math.sin(th * fa), '*θ*_' + p.n + ' = ' + num(th * 180 / Math.PI, 0) + '°', p.col, { 'font-size': 22 });
         });
       };
       dib(0);
