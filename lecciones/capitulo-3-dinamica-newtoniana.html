@@ -245,13 +245,21 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-galileo .lectura div{padding:6px 12px;font-size:21px}
 #dp-galileo .lectura b{font-size:28px}
 #dp-mono .mn-col > * + *{margin-top:8px}
-#dp-mono .caja{padding:4px 14px;font-size:26px}
+#dp-mono .caja{padding:4px 14px;font-size:25px}
 #dp-mono .caja h3{font-size:25px;margin:0}
 #dp-mono .ctrl{margin:2px 0}
 #dp-mono .mn-ctl{margin:4px 0}
 #dp-mono .btn{font-size:24px;padding:8px 13px}
 #dp-mono .lectura div{padding:6px 12px;font-size:21px}
 #dp-mono .lectura b{font-size:27px}
+#dp-galileo .gl-impares.prop{border-bottom:2px solid var(--linea);font-weight:400;color:var(--tinta);cursor:pointer}
+#dp-galileo .gl-impares.prop:hover{background:var(--res-50)}
+#dp-galileo .gl-mas{display:block;margin-top:2px;font-size:22px;color:var(--res);font-weight:600}
+.popover:has(.pop-imp){max-width:1150px;width:1150px}
+.pop-imp{font-size:26px;line-height:1.35}
+.imp-tab{font-size:26px;margin:4px 0}
+.imp-tab th,.imp-tab td{padding:4px 18px;text-align:center}
+.imp-tab th.izq{text-align:left}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1012,7 +1020,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-mono" data-label="El tirador y el mono" data-speaker-notes="§ 3.5. El tirador apunta directo al mono; el mono se suelta en el instante del disparo. Sin gravedad la bala seguiría la línea de mira; con gravedad, bala y mono caen lo mismo, ½gt², en el mismo tiempo: la bala acierta, sea cual sea su rapidez (si llega antes de que el mono toque el suelo). ↓ revela 3 pasos.">
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-mono" data-label="El tirador y el mono" data-speaker-notes="§ 3.5. El tirador apunta directo al mono; el mono se suelta en el instante del disparo. Sin gravedad la bala seguiría la línea de mira; con gravedad, como los movimientos en x y en y de la bala son independientes, bala y mono caen lo mismo, ½gt², en el mismo tiempo: la bala acierta, sea cual sea su rapidez (si llega antes de que el mono toque el suelo). ↓ revela 3 pasos.">
   <p class="ceja">§ 3.5 · Movimiento parabólico</p>
   <h2 class="titulo">El tirador y el mono: apuntar directo siempre acierta</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)">
@@ -1027,7 +1035,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <label class="ctrl"><span>Altura del mono \(H\)</span><input type="range" id="mn-h" min="5" max="20" step="1" value="12"><span class="v" id="mn-hv"></span></label>
       <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0"><div>Tiempo hasta el árbol<b id="mn-t"></b></div><div>Caída común \(\tfrac12 g t^{2}\)<b id="mn-c"></b></div></div>
       <div class="caja neutra frag"><h3>1 · Apuntar al mono</h3>La línea de mira es \(y = x\tan\theta\) con \(\tan\theta = H/D\). Sin gravedad, la bala la seguiría y llegaría al punto donde estaba el mono.</div>
-      <div class="caja neutra frag"><h3>2 · Los dos caen lo mismo</h3>Con gravedad, en el mismo tiempo \(t\) la bala queda \(\tfrac12 g t^{2}\) por debajo de la línea de mira y el mono cae \(\tfrac12 g t^{2}\) desde la rama.</div>
+      <div class="caja c2 frag"><h3>2 · Movimientos independientes: los dos caen lo mismo</h3>El movimiento de la bala en \(x\) no afecta su movimiento en \(y\): en la vertical es un cuerpo en caída libre, <strong>igual que el mono</strong>. En el mismo tiempo \(t\), la bala queda \(\tfrac12 g t^{2}\) bajo la línea de mira y el mono cae \(\tfrac12 g t^{2}\) desde la rama: <strong>la misma distancia</strong>.</div>
       <div class="kf frag" style="padding:4px 14px;font-size:28px">\[ t = \dfrac{D}{v_0\cos\theta}: \qquad y_{\text{bala}} = y_{\text{mono}} = H - \tfrac12 g t^{2} \]<p class="nota" style="margin:0">Se encuentran con cualquier \(v_0\), siempre que la bala llegue antes de que el mono toque el suelo: \(\tfrac12 g t^{2} \lt H\).</p></div>
     </div>
   </div>
@@ -1279,7 +1287,16 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <div class="caja neutra frag"><h3>1 · La gravedad, «diluida»</h3>Sobre el plano solo actúa la componente del peso paralela a él:
         \[ a = g\sin\theta, \qquad t = \sqrt{\dfrac{2L}{g\sin\theta}}. \]
         Con \(L = \qty{6}{m}\), en caída vertical el recorrido dura \(\qty{1{,}1}{s}\); con \(2^\circ\), unos \(\qty{5{,}9}{s}\).</div>
-      <div class="caja neutra frag"><h3>2 · Lo que midió: distancias 1 : 3 : 5 : 7</h3>En intervalos de tiempo iguales, las distancias recorridas crecen como los números impares, de modo que la distancia total crece como \(t^{2}\): \(d = \tfrac12 a t^{2}\).</div>
+      <div class="caja neutra frag prop gl-impares" data-pop="pop-impares" role="button" tabindex="0"><h3>2 · Lo que midió: distancias 1 : 3 : 5 : 7</h3>En intervalos de tiempo iguales, las distancias recorridas crecen como los números impares, de modo que la distancia total crece como \(t^{2}\): \(d = \tfrac12 a t^{2}\). <span class="gl-mas">ⓘ Clic: ¿de dónde salen 1, 3, 5, 7?</span></div>
+      <div class="pop-src" id="pop-impares" style="display:none"><div class="pop-imp"><h4>De \(d = \tfrac12 a t^{2}\) a los números impares</h4>
+        <p style="margin:0 0 6px">Con \(d = \tfrac12 a t^{2}\), la distancia total crece como \(t^{2}\). Midiendo el tiempo en intervalos iguales \(\tau\) y la distancia en unidades de \(d_1 = \tfrac12 a\tau^{2}\) (lo recorrido en el primer intervalo):</p>
+        <table class="tabla imp-tab"><tbody>
+          <tr><th class="izq">Tiempo</th><td>\(\tau\)</td><td>\(2\tau\)</td><td>\(3\tau\)</td><td>\(4\tau\)</td></tr>
+          <tr><th class="izq">Distancia total</th><td>\(1\)</td><td>\(4\)</td><td>\(9\)</td><td>\(16\)</td></tr>
+          <tr><th class="izq">Tramo del intervalo</th><td>\(\resalta{1}\)</td><td>\(\resalta{3}\)</td><td>\(\resalta{5}\)</td><td>\(\resalta{7}\)</td></tr>
+        </tbody></table>
+        <p style="margin:6px 0">Cada tramo es la diferencia entre dos cuadrados seguidos. Y al revés, <strong>los impares suman cuadrados</strong>: \(1 = 1\), \(1 + 3 = 4\), \(1 + 3 + 5 = 9\), \(1 + 3 + 5 + 7 = 16\).</p>
+        <p style="margin:0"><strong>En el plano de \(\qty{6}{m}\)</strong> con cuatro intervalos, \(16\,d_1 = \qty{6}{m}\), así que \(d_1 = \qty{37{,}5}{cm}\) y los tramos miden 37,5; 112,5; 187,5 y 262,5 cm. La razón 1 : 3 : 5 : 7 no depende de la inclinación: solo cambia \(\tau\). Galileo la enunció así en los <em>Discorsi</em> (1638).</p></div></div>
       <div class="caja c2 frag"><h3>3 · Relojes de agua y pulso</h3>Hacia 1604 no había cronómetros: en una canaleta de madera de unos 12 codos (cerca de \(\qty{6}{m}\)), Galileo pesaba el agua que salía de un recipiente mientras rodaba una esfera. Una caída de un segundo era imposible de medir así; un movimiento de varios segundos, sí. Al inclinar el plano, la física no cambia, solo se vuelve <strong>medible</strong>.</div>
     </div>
   </div>
@@ -1497,6 +1514,15 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 
   </div>
 <div class="pop-src" id="pop-trabajo-arrastre" style="display:none"><h4>Trabajo del arrastre y energía disipada</h4><p style="margin:0">\(K_i = \tfrac12 m v_0^{2} \approx\) <b id="ar-ki"></b> y \(K_f = \tfrac12 m v_f^{2} \approx\) <b id="ar-kf"></b>. En la ida y vuelta la gravedad no hace trabajo neto (\(-mgH\) al subir, \(+mgH\) al bajar), así que \(W_{\text{arrastre}} = K_f - K_i \approx\) <b id="ar-kd"></b>. El algoritmo lo confirma sumando \(F_D\,\Delta y\) en cada paso: <b id="ar-w"></b> (<span id="ar-wsb"></span>). Es <strong>negativo en los dos tramos</strong> porque el arrastre siempre se opone al movimiento: es la energía que el objeto entrega al aire y se <strong>disipa</strong> como calor, sonido y remolinos. Sin aire, \(W = 0\) y \(K_f = K_i\).</p></div>
+<div class="pop-src" id="pop-impares" style="display:none"><div class="pop-imp"><h4>De \(d = \tfrac12 a t^{2}\) a los números impares</h4>
+        <p style="margin:0 0 6px">Con \(d = \tfrac12 a t^{2}\), la distancia total crece como \(t^{2}\). Midiendo el tiempo en intervalos iguales \(\tau\) y la distancia en unidades de \(d_1 = \tfrac12 a\tau^{2}\) (lo recorrido en el primer intervalo):</p>
+        <table class="tabla imp-tab"><tbody>
+          <tr><th class="izq">Tiempo</th><td>\(\tau\)</td><td>\(2\tau\)</td><td>\(3\tau\)</td><td>\(4\tau\)</td></tr>
+          <tr><th class="izq">Distancia total</th><td>\(1\)</td><td>\(4\)</td><td>\(9\)</td><td>\(16\)</td></tr>
+          <tr><th class="izq">Tramo del intervalo</th><td>\(\resalta{1}\)</td><td>\(\resalta{3}\)</td><td>\(\resalta{5}\)</td><td>\(\resalta{7}\)</td></tr>
+        </tbody></table>
+        <p style="margin:6px 0">Cada tramo es la diferencia entre dos cuadrados seguidos. Y al revés, <strong>los impares suman cuadrados</strong>: \(1 = 1\), \(1 + 3 = 4\), \(1 + 3 + 5 = 9\), \(1 + 3 + 5 + 7 = 16\).</p>
+        <p style="margin:0"><strong>En el plano de \(\qty{6}{m}\)</strong> con cuatro intervalos, \(16\,d_1 = \qty{6}{m}\), así que \(d_1 = \qty{37{,}5}{cm}\) y los tramos miden 37,5; 112,5; 187,5 y 262,5 cm. La razón 1 : 3 : 5 : 7 no depende de la inclinación: solo cambia \(\tau\). Galileo la enunció así en los <em>Discorsi</em> (1638).</p></div></div>
 <div class="pop-src" style="display:none" id="pop-p"><h4>Cantidad de movimiento</h4><p>Medida de la inercia en movimiento: \(\vect{p} = \gamma m\vect{v}\). Es un vector con la dirección de la velocidad; en el SI se mide en \(\mathrm{kg\cdot m/s}\).</p></div>
 <div class="pop-src" style="display:none" id="pop-ec"><h4>Euler-Cromer</h4><p>Variante del método de Euler en la que la posición se actualiza con el momento recién calculado: \(p_{n+1} = p_n + F(x_n)\,\Delta t\), \(x_{n+1} = x_n + (p_{n+1}/m)\,\Delta t\). Es un integrador simpléctico.</p></div>
 <div class="pop-src" style="display:none" id="pop-hooke"><h4>Ley de Hooke</h4><p>Un resorte ideal ejerce \(F = -kx\): proporcional al desplazamiento \(x\) desde el equilibrio y opuesta a él. La constante \(k\) se mide en \(\mathrm{N/m}\).</p></div>
@@ -2147,6 +2173,17 @@ const T_OSC = 2 * Math.PI;
     gc.strokeStyle = tok('--res'); gc.lineWidth = 4; gc.beginPath();
     for (let i = 0; i <= 80; i++) { const s = tt * i / 80; i ? gc.lineTo(X(d.vx * s), Y(yb(s))) : gc.moveTo(X(0), Y(0)); }
     gc.stroke();
+    /* la misma caída en el instante actual: bajo la línea de mira (bala) y bajo la rama (mono) */
+    if (tt > 0.05 && cS.checked) {
+      const c = 0.5 * g * tt * tt, xb = d.vx * tt, cota = (x, y0, y1) => {
+        gc.strokeStyle = tok('--caso2'); gc.fillStyle = tok('--caso2'); gc.lineWidth = 4;
+        gc.beginPath(); gc.moveTo(x, y0); gc.lineTo(x, y1); gc.stroke();
+        [[y0, 1], [y1, -1]].forEach(q => { gc.beginPath(); gc.moveTo(x, q[0]); gc.lineTo(x - 8, q[0] + 14 * q[1]); gc.lineTo(x + 8, q[0] + 14 * q[1]); gc.closePath(); gc.fill(); });
+      };
+      if (Y(yb(tt)) - Y(d.vy * tt) > 30) { cota(X(xb) + 22, Y(d.vy * tt), Y(yb(tt))); cota(X(d.D) - 46, Y(d.H), Y(ym(tt))); }
+      gc.font = '700 24px ' + FMATH; gc.fillStyle = tok('--caso2');
+      gc.fillText('misma caída ½gt² = ' + num(c, 2) + ' m', 30, 80);
+    }
     mono(X(d.D), Y(ym(tt)), 1.4);
     gc.fillStyle = tok('--res'); gc.beginPath(); gc.arc(X(d.vx * tt), Y(yb(tt)), 7, 0, 7); gc.fill();
     if (fin) {
