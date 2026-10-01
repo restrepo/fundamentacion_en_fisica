@@ -56,6 +56,14 @@ por sección; crédito abajo a la izquierda; aviso de giro en móvil vertical;
 atenuación del cromo en reposo; hash `#/n`; zoom de pellizco en pantalla
 completa. En los pósteres a campo de acento, crédito y contador pasan a claro.
 
+**Selección múltiple numerada:** en toda lección, las opciones de cada grupo
+`.pr-opcs` (botones `.pr-opc`) se numeran solas 1, 2, 3… con un contador CSS
+de `assets/capa-ds.css`. En la fuente se escriben **sin** número ni letra
+(«menor que 9,8 m/s²», no «1. menor que…» ni «a) …»); si una opción es en sí un
+número, conviene darle unidad o palabra («4 veces», no «4») para que no se lea
+«4. 4». El atributo `data-o` sigue siendo la clave interna de la respuesta y
+no se muestra.
+
 **Visor de imágenes:** toda lección generada incluye `assets/visor-img.css` y
 `assets/visor-img.js`. Al hacer clic en una imagen de una diapositiva, se abre
 una capa a pantalla completa, fuera del lienzo escalado, con la imagen a toda

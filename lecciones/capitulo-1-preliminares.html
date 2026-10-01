@@ -302,6 +302,11 @@ section.diapositiva .pr-btn:active,
 section.diapositiva .cz-btn:active,
 section.diapositiva .anim-btn:active,
 section.diapositiva .pr-opc:active{background:color-mix(in srgb, var(--color-text) 14%, transparent)}
+/* ── Selección múltiple: opciones numeradas 1, 2, 3… en cada grupo .pr-opcs ── */
+section.diapositiva .pr-opcs{counter-reset:pr-opc}
+section.diapositiva .pr-opcs .pr-opc{counter-increment:pr-opc}
+section.diapositiva .pr-opcs .pr-opc::before{content:counter(pr-opc) ".";display:inline-block;min-width:1.7em;margin-right:.35em;font-weight:800;color:var(--color-accent);text-align:right}
+section.diapositiva .pr-opcs .pr-opc.ok::before,section.diapositiva .pr-opcs .pr-opc.mal::before{color:inherit}
 section.diapositiva :focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
 section.diapositiva input[type=range]{accent-color:var(--color-accent)}
 section.diapositiva .pa-fila.pa-activa .pa-num,
@@ -925,7 +930,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       </div>
       <div class="pr-item" data-ok="b">
         <div class="pr-q">2. \(\vect{u} = (4, -2)\) y \(\vect{v} = (3, 5)\). ¿Cuánto vale \(\vect{u}\cdot\vect{v}\)?</div>
-        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\((12, -10)\)</button><button type="button" class="pr-opc" data-o="b">\(2\)</button><button type="button" class="pr-opc" data-o="c">\(22\)</button></div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\vect{u}\cdot\vect{v} = (12, -10)\)</button><button type="button" class="pr-opc" data-o="b">\(\vect{u}\cdot\vect{v} = 2\)</button><button type="button" class="pr-opc" data-o="c">\(\vect{u}\cdot\vect{v} = 22\)</button></div>
         <div class="pr-fb" data-ok-txt="Sí: (4)(3) + (−2)(5) = 12 − 10 = 2. Es un número, no un vector." data-mal-txt="El producto escalar es un número: u_x v_x + u_y v_y."></div>
       </div>
     </div>

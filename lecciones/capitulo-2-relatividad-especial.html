@@ -303,6 +303,11 @@ section.diapositiva .pr-btn:active,
 section.diapositiva .cz-btn:active,
 section.diapositiva .anim-btn:active,
 section.diapositiva .pr-opc:active{background:color-mix(in srgb, var(--color-text) 14%, transparent)}
+/* ── Selección múltiple: opciones numeradas 1, 2, 3… en cada grupo .pr-opcs ── */
+section.diapositiva .pr-opcs{counter-reset:pr-opc}
+section.diapositiva .pr-opcs .pr-opc{counter-increment:pr-opc}
+section.diapositiva .pr-opcs .pr-opc::before{content:counter(pr-opc) ".";display:inline-block;min-width:1.7em;margin-right:.35em;font-weight:800;color:var(--color-accent);text-align:right}
+section.diapositiva .pr-opcs .pr-opc.ok::before,section.diapositiva .pr-opcs .pr-opc.mal::before{color:inherit}
 section.diapositiva :focus-visible{outline:2px solid var(--color-accent);outline-offset:2px}
 section.diapositiva input[type=range]{accent-color:var(--color-accent)}
 section.diapositiva .pa-fila.pa-activa .pa-num,
@@ -928,7 +933,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       </div>
       <div class="pr-item" data-ok="a">
         <div class="pr-q">2. ¿Cuánto vale \(\gamma\) para \(v = 0{,}6c\)?</div>
-        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(1{,}25\)</button><button type="button" class="pr-opc" data-o="b">\(0{,}8\)</button><button type="button" class="pr-opc" data-o="c">\(1{,}6\)</button></div>
+        <div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\gamma = 1{,}25\)</button><button type="button" class="pr-opc" data-o="b">\(\gamma = 0{,}8\)</button><button type="button" class="pr-opc" data-o="c">\(\gamma = 1{,}6\)</button></div>
         <div class="pr-fb" data-ok-txt="Sí: √(1 − 0,36) = 0,8 y 1/0,8 = 1,25." data-mal-txt="γ = 1/√(1 − β²) y siempre es mayor o igual que 1."></div>
       </div>
     </div>
