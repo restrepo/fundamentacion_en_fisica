@@ -4051,7 +4051,7 @@ function lienzoOrbita(cv, trazos, marcas) {
       return pts;
     };
     const dib = () => {
-      const Rp = Math.min(W, Hc) / 2 - MPX - 40, e = Rp / R, cx = W / 2, cy = Hc / 2 + 30;   /* espacio arriba para la montaña */
+      const Rp = Math.min(W, Hc) / 2 - MPX - 50, e = Rp / R, cx = W / 2, cy = Hc / 2 + 6;    /* cabe la órbita completa con la montaña arriba */
       /* radio dibujado: entre la superficie y la cima (50 km) se exagera hasta la altura de la montaña;
          más arriba, escala real. Así la bala sale de la cima y aterriza en el suelo. */
       const rd = r => r <= R + H0 ? Rp + MPX * Math.max(0, r - R) / H0 : Rp + MPX + (r - R - H0) * e;
