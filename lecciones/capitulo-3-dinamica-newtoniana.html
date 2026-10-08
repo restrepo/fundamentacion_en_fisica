@@ -290,9 +290,16 @@ dl.glosa dd{margin:0;font-size:29px}
 .gform-btn:hover{background:#512da8}
 section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px;border-radius:6px}
 .gform-btn:focus-visible,.gform-cerrar:focus-visible{outline:3px solid currentColor;outline-offset:3px}
-#gform-dialog{width:min(700px,95vw);height:90vh;max-height:none;padding:0;border:0;border-radius:10px;overflow:hidden}
-#gform-dialog::backdrop{background:rgba(20,10,40,.6)}
-#gform-dialog iframe{width:100%;height:100%;border:0;display:block}
+#gform-dialog,.gform-dlg{width:min(700px,95vw);height:90vh;max-height:none;padding:0;border:0;border-radius:10px;overflow:hidden}
+#gform-dialog::backdrop,.gform-dlg::backdrop{background:rgba(20,10,40,.6)}
+#gform-dialog iframe,.gform-dlg iframe{width:100%;height:100%;border:0;display:block}
+.ac-pasos{background:var(--caso1-50);border-left:8px solid var(--caso1);padding:6px 14px;font-size:23px;line-height:1.4;margin-top:6px}
+.ac-pasos ol{margin:0;padding-left:1.3em}
+.ac-slide .pr-q{font-size:27px}
+.ac-slide .pr-opc{font-size:25px;padding:6px 12px}
+.ac-slide .pc-exp{font-size:24px}
+.ac-slide .pc-pista{font-size:24px}
+.ac-slide .pc-col:has(.pc-exp:not([style*="none"])) .ac-pasos,.ac-slide .pc-col:has(.pc-pista:not([style*="none"])) .ac-pasos{display:none}
 .gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:var(--panel);box-shadow:0 1px 4px color-mix(in srgb, var(--color-text) 30%, transparent);font-size:1.1rem;cursor:pointer}
 #dp-metodo .mt-col > * + *,#dp-newton-grav .ng-col > * + *{margin-top:8px}
 #dp-metodo .caja{padding:4px 14px;font-size:25px}
@@ -331,8 +338,9 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
 .mt-mas{font-size:21px;color:var(--res);font-weight:600}
 #mt-sol .gl-dcl-txt{font-size:26px;line-height:1.4}
 #mt-sol .gl-dcl-g{gap:50px}
-#dp-epot .ug-pasoclic{cursor:pointer}
-#dp-epot .ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
+.ug-pasoclic{cursor:pointer}
+.ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
+#lu-v .gl-dcl-txt,#cg-in .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-w .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-h .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-h-lect b{color:var(--res)}
@@ -1525,13 +1533,33 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
           <p style="margin:0 0 6px"><strong>2 · Triángulo de velocidades.</strong> Cada velocidad es perpendicular a su radio y mide lo mismo, \(v\). Al girar el radio \(\Delta\theta\), la velocidad gira el mismo \(\Delta\theta\). Puestas desde un origen común, su base es \(\abs{\Delta\vect{v}}\).</p>
           <p style="margin:0 0 6px"><strong>3 · Son semejantes.</strong> Los dos son isósceles con el mismo ángulo \(\Delta\theta\) entre lados iguales, así que sus lados son proporcionales:
             \[ \dfrac{\abs{\Delta\vect{v}}}{v} = \dfrac{\abs{\Delta\vect{r}}}{r}. \]</p>
-          <p style="margin:0"><strong>4 · Dividir por \(\Delta t\).</strong>
-            \[ a_c = \dfrac{\abs{\Delta\vect{v}}}{\Delta t} = \dfrac{v}{r}\,\dfrac{\abs{\Delta\vect{r}}}{\Delta t} = \dfrac{v}{r}\,v = \resalta{\dfrac{v^{2}}{r}}. \]
-            Al hacer \(\Delta\theta\) pequeño, \(\Delta\vect{v}\) apunta hacia el centro: por eso la aceleración es <strong>centrípeta</strong>.</p>
+          <p style="margin:0 0 6px"><strong>4 · Dividir por \(\Delta t\).</strong>
+            \[ a_c = \dfrac{\abs{\Delta\vect{v}}}{\Delta t} = \dfrac{v}{r}\,\dfrac{\abs{\Delta\vect{r}}}{\Delta t} = \dfrac{v}{r}\,v = \resalta{\dfrac{v^{2}}{r}}. \]</p>
+          <p style="margin:0"><strong>5 · Hacia el centro.</strong> Coloca \(\Delta\vect{v}\) en el <strong>punto medio del arco</strong> entre las dos posiciones: apunta exactamente al centro, sea cual sea \(\Delta\theta\). Allí \(\vect{v}_1\) y \(\vect{v}_2\) forman el mismo ángulo \(\Delta\theta/2\) con la tangente; en la resta sus componentes tangenciales se cancelan y solo queda la radial, hacia adentro. Al hacer \(\Delta\theta\) pequeño ese punto medio es la posición misma: la aceleración es <strong>centrípeta</strong>.</p>
         </div>
       </div>
     </div>
   </div>
+  <p class="puente">→ Actividad: ¿qué pasa si se rompe la cuerda?</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-cuerda" data-label="Actividad: se rompe la cuerda" data-speaker-notes="Actividad en parejas (instrucción entre pares, Mazur): predecir la trayectoria de una piedra que gira atada a una cuerda cuando la cuerda se rompe. Respuesta: 3 (C, recta y tangente). Error común: la trayectoria radial (A) o curva (B), como si quedara una «fuerza centrífuga» o un «impulso circular». Tiempo: 1 min individual + 2 min en parejas + segunda votación.">
+  <p class="ceja">§ 3.8 · Movimiento circular · Actividad en parejas</p>
+  <h2 class="titulo">Se rompe la cuerda: ¿qué camino sigue la piedra?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cuerda"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Una piedra atada a una cuerda gira en un círculo horizontal, en sentido antihorario, vista desde arriba. Justo cuando pasa por el punto \(P\), la cuerda se rompe. ¿Qué trayectoria sigue la piedra (vista desde arriba)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">A: recta, hacia afuera en la dirección del radio</button><button type="button" class="pr-opc" data-o="b">B: curva, sigue girando un poco y se abre</button><button type="button" class="pr-opc" data-o="c">C: recta, tangente a la circunferencia en \(P\)</button><button type="button" class="pr-opc" data-o="d">D: recta, en diagonal entre A y C</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Sin la cuerda no queda ninguna fuerza horizontal, así que la cantidad de movimiento ya no cambia: la piedra sigue con la <strong>velocidad que tenía en \(P\)</strong>, que es tangente a la circunferencia. Va en línea recta por C. La tensión era la que, a cada instante, desviaba la velocidad hacia el centro; no hay ninguna «fuerza centrífuga» que la empuje hacia afuera.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-cuerda">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Sin la cuerda, ¿qué fuerza horizontal queda sobre la piedra? Y sin fuerza, ¿cómo cambia su cantidad de movimiento?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-cuerda" class="gform-dlg" aria-label="Formulario: Actividad: se rompe la cuerda">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: se rompe la cuerda" loading="lazy">Cargando…</iframe>
+  </dialog>
   <p class="puente">→ ¿Y si lo que hace girar es la gravedad?</p>
 </section>
 
@@ -1546,7 +1574,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
     </figure>
     <div class="pila pc-col">
-      <p style="margin:0;font-size:26px">Cerca de la superficie, todo cae hacia el centro de la Tierra con la misma aceleración, \(g_0 = \qty{9{,}8}{m/s^2}\), sea cual sea su masa. La bala cae siempre; si va lo bastante rápido, <strong>cae al mismo ritmo con que la superficie se curva</strong> y nunca llega al suelo.</p>
+      <p style="margin:0;font-size:26px">Cerca de la superficie de la Tierra, cuyo radio es \(R_T = \qty{6371}{km}\), todo cae hacia su centro con la misma aceleración, \(g_0 = \qty{9{,}8}{m/s^2}\), sea cual sea su masa. La bala cae siempre; si va lo bastante rápido, <strong>cae al mismo ritmo con que la superficie se curva</strong> y nunca llega al suelo.</p>
       <div class="kf" style="padding:2px 14px;font-size:26px">\[ \underbrace{g_0}_{\text{caída libre}} = \underbrace{\dfrac{v^{2}}{R_T}}_{\text{centrípeta}} \;\Longrightarrow\; v_{\text{orb}} = \sqrt{g_0\,R_T} \]</div>
       <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">Ensaya en la simulación: ¿con qué rapidez mínima, en km/s, la bala da la vuelta a la Tierra sin caer?</div>
         <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
@@ -1568,7 +1596,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <label class="ctrl lu-ctl"><span>Hipótesis \(g \propto 1/r^{n}\)</span><input type="range" id="lu-n" min="0" max="3" step="0.25" value="1"><span class="v" id="lu-nv"></span></label>
     </figure>
     <div class="pila lu-col">
-      <div class="caja neutra frag"><h3>1 · La Luna es una bala de cañón</h3>Gira en una órbita casi circular de radio \(r_L = 3{,}84\times 10^{8}\,\mathrm{m}\) en \(T = 27{,}3\) días; su aceleración centrípeta es
+      <div class="caja neutra frag ug-pasoclic" id="lu-v-btn" role="button" tabindex="0" title="Ver el cálculo de v"><h3>1 · La Luna es una bala de cañón <span class="mt-mas">(ⓘ clic: cálculo de \(v\))</span></h3>Gira en una órbita casi circular de radio \(r_L = 3{,}84\times 10^{8}\,\mathrm{m}\) en \(T = 27{,}3\) días; su aceleración centrípeta es
         \[ a_L = \dfrac{v^{2}}{r_L} = \dfrac{4\pi^{2} r_L}{T^{2}} \approx 2{,}72\times 10^{-3}\,\mathrm{m/s^2} \,. \]</div>
       <div class="caja neutra frag"><h3>2 · Comparar con la manzana</h3>
         \[ \dfrac{g_0}{a_L} = \dfrac{9{,}8}{2{,}72\times 10^{-3}} \approx 3600 = 60^{2}, \qquad \dfrac{r_L}{R_T} \approx 60 \,. \]
@@ -1577,6 +1605,44 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
         <p class="nota" style="margin:0">Ensaya otros exponentes en el explorador: solo \(n = 2\) da lo que mide la Luna.</p></div>
     </div>
   </div>
+  <div class="gl-dcl-fondo" id="lu-v" style="display:none" role="dialog" aria-modal="true" aria-labelledby="lu-v-tit">
+    <div class="gl-dcl-caja" style="width:1500px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="lu-v-tit">¿Qué tan rápido va la Luna? Cálculo de \(v\) y de \(a_L\)</h3>
+      <div class="gl-dcl-txt">
+        <p style="margin:0 0 8px"><strong>1 · El período en segundos.</strong> La Luna da una vuelta completa alrededor de la Tierra en \(T = 27{,}3\) días:
+          \[ T = (27{,}3\ \text{días})\left(86\,400\ \dfrac{\text{s}}{\text{día}}\right) \approx 2{,}36\times 10^{6}\,\mathrm{s} \,. \]</p>
+        <p style="margin:0 0 8px"><strong>2 · La distancia de una vuelta.</strong> Es el perímetro de la órbita, de radio \(r_L = 3{,}84\times 10^{8}\,\mathrm{m}\):
+          \[ 2\pi r_L = 2\pi\,(3{,}84\times 10^{8}\,\mathrm{m}) \approx 2{,}41\times 10^{9}\,\mathrm{m} \,. \]</p>
+        <p style="margin:0 0 8px"><strong>3 · La rapidez.</strong> Distancia sobre tiempo:
+          \[ v = \dfrac{2\pi r_L}{T} \approx \dfrac{2{,}41\times 10^{9}\,\mathrm{m}}{2{,}36\times 10^{6}\,\mathrm{s}} \approx \resalta{1{,}02\times 10^{3}\,\mathrm{m/s}} \approx 3700\,\mathrm{km/h} \,. \]
+          Mucho menos que los \(\qty{7{,}9}{km/s}\) de la bala en órbita rasante: lejos de la Tierra basta ir más despacio.</p>
+        <p style="margin:0"><strong>4 · La aceleración centrípeta.</strong>
+          \[ a_L = \dfrac{v^{2}}{r_L} \approx \dfrac{(1{,}02\times 10^{3}\,\mathrm{m/s})^{2}}{3{,}84\times 10^{8}\,\mathrm{m}} \approx 2{,}72\times 10^{-3}\,\mathrm{m/s^2} \,. \]
+          Reemplazando \(v = 2\pi r_L/T\) se obtiene la misma expresión sin calcular \(v\): \(a_L = 4\pi^{2} r_L/T^{2}\).</p>
+      </div>
+    </div>
+  </div>
+  <p class="puente">→ Actividad: aplica la ley a un satélite</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-geo" data-label="Actividad: el satélite geoestacionario" data-speaker-notes="Actividad en parejas: aplicar la ley del inverso del cuadrado obtenida en la prueba de la Luna a un satélite geoestacionario, a 6,6 radios terrestres del centro. Respuesta: 2 (≈ 0,22 m/s²). Distractores: 1/r (1), 1/r³ (3) y «está en caída libre, luego g₀» (4). Comprobación independiente con T = 1 día: 4π²r/T² ≈ 0,224 m/s².">
+  <p class="ceja">§ 3.8 · Gravitación universal · Actividad en parejas</p>
+  <h2 class="titulo">Un satélite geoestacionario: ¿con qué aceleración cae?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="geo"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Un satélite geoestacionario da una vuelta en un día y está a \(r \approx 6{,}6\,R_T\) del centro de la Tierra. Con lo que aprendiste de la Luna, su aceleración hacia la Tierra es aproximadamente:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(9{,}8/6{,}6 \approx \qty{1{,}5}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="b">\(9{,}8/6{,}6^{2} \approx \qty{0{,}22}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="c">\(9{,}8/6{,}6^{3} \approx \qty{0{,}034}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{9{,}8}{m/s^2}\): está en caída libre, como todo lo que cae</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con \(g(r) = g_0\,(R_T/r)^{2}\): \(a = 9{,}8/6{,}6^{2} \approx \qty{0{,}22}{m/s^2}\). Sí está en caída libre, pero la caída libre a esa distancia es más débil que en la superficie.</p><p style="margin:6px 0 0"><strong>Compruébalo sin la ley:</strong> con \(r = 6{,}6 \times \qty{6371}{km} \approx 4{,}2\times 10^{7}\,\mathrm{m}\) y \(T \approx 8{,}6\times 10^{4}\,\mathrm{s}\), su aceleración centrípeta es \(4\pi^{2} r/T^{2} \approx \qty{0{,}22}{m/s^2}\). ¡Coinciden!</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-geo">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 La Luna, a 60 radios, cae \(60^{2}\) veces menos que la manzana. ¿Cuántas veces menos cae algo a 6,6 radios?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-geo" class="gform-dlg" aria-label="Formulario: Actividad: el satélite geoestacionario">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el satélite geoestacionario" loading="lazy">Cargando…</iframe>
+  </dialog>
   <p class="puente">→ ¿Por qué el inverso del <em>cuadrado</em>?</p>
 </section>
 
@@ -1616,7 +1682,27 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       </div>
     </div>
   </div>
-  <p class="puente">→ ¿Y dentro de la Tierra?</p>
+  <p class="puente">→ Actividad: ¿y dentro de la Tierra?</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-tunel" data-label="Actividad: el túnel a través de la Tierra" data-speaker-notes="Actividad en parejas, de predicción (antes de la diapositiva del campo dentro de la Tierra): campo a la mitad del camino al centro. Respuesta: 2 (4,9 m/s², g = g₀ r/R). Distractores: aplicar (r/R)² (1), suponer g constante (3) o aplicar 1/r² hacia adentro (4). La siguiente diapositiva confirma la predicción.">
+  <p class="ceja">§ 3.8 · Gravitación universal · Actividad en parejas</p>
+  <h2 class="titulo">Un túnel a través de la Tierra: ¿cuánto vale el campo adentro?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="tunel"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Imagina un túnel recto que atraviesa la Tierra por su centro (supón densidad uniforme). En el punto del túnel que está a la mitad del camino entre la superficie y el centro, \(r = R_T/2\), el campo gravitacional vale:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(9{,}8 \times (1/2)^{2} \approx \qty{2{,}45}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="b">\(9{,}8 \times 1/2 = \qty{4{,}9}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{9{,}8}{m/s^2}\), igual que en la superficie</button><button type="button" class="pr-opc" data-o="d">\(9{,}8 \times 2^{2} \approx \qty{39}{m/s^2}\): estás más cerca del centro</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Dentro de la esfera de radio \(R_T/2\) queda \((1/2)^{3} = 1/8\) de la masa, porque el volumen crece como \(r^{3}\); las capas de afuera no atraen. Entonces \(g = \dfrac{G\,(M_T/8)}{(R_T/2)^{2}} = \dfrac{1}{2}\,\dfrac{G M_T}{R_T^{2}} = \qty{4{,}9}{m/s^2}\). Dentro, el campo crece como \(r\); el \(1/r^{2}\) vale solo afuera.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-tunel">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Las líneas de campo que cruzan la esfera de radio \(R_T/2\) vienen solo de la masa que queda dentro de ella. ¿Qué fracción de la masa de la Tierra hay dentro de esa esfera?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-tunel" class="gform-dlg" aria-label="Formulario: Actividad: el túnel a través de la Tierra">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el túnel a través de la Tierra" loading="lazy">Cargando…</iframe>
+  </dialog>
+  <p class="puente">→ Comprobémoslo: el campo del centro de la Tierra a la Luna</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo" data-label="El campo gravitacional de la Tierra" data-speaker-notes="§ 3.8. El campo de la Tierra en todo el espacio: fuera decrece como 1/r² (lo que confirmó la Luna a 60 radios); dentro, con densidad uniforme, solo atrae la masa interior y el campo crece linealmente desde cero en el centro. ↓ revela 2 pasos.">
@@ -1633,12 +1719,53 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <div class="caja neutra frag"><h3>1 · Fuera de la Tierra: inverso del cuadrado</h3>
         \[ g(r) = g_0 \left(\dfrac{R}{r}\right)^{2} = \dfrac{G M_T}{r^{2}}, \qquad r \ge R \,. \]
         Es lo que midió la Luna: a \(60{,}3\,R\), \(g \approx 2{,}7\times 10^{-3}\,\mathrm{m/s^2}\). Explora la estación espacial y la órbita geoestacionaria.</div>
-      <div class="caja c2 frag"><h3>2 · Dentro: solo cuenta la masa interior</h3>Con densidad uniforme, a una distancia \(r\) solo atrae la masa de radio \(r\), que crece como \(r^{3}\):
+      <div class="caja c2 frag ug-pasoclic" id="cg-in-btn" role="button" tabindex="0" title="Ver la demostración"><h3>2 · Dentro: solo cuenta la masa interior <span class="mt-mas">(ⓘ clic: demostración)</span></h3>Con densidad uniforme, a una distancia \(r\) solo atrae la masa de radio \(r\), que crece como \(r^{3}\):
         \[ g(r) = g_0\,\dfrac{r}{R}, \qquad r \le R. \]
         En el centro, \(g = 0\): la atracción se cancela en todas direcciones.</div>
     </div>
   </div>
-  <p class="puente">→ ¿Qué fuerza siente una masa en ese campo?</p>
+  <div class="gl-dcl-fondo" id="cg-in" style="display:none" role="dialog" aria-modal="true" aria-labelledby="cg-in-tit">
+    <div class="gl-dcl-caja" style="width:2000px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="cg-in-tit">Dentro de la Tierra: \(g(r) = g_0\,r/R\)</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+        <div><div id="cg-in-fig"></div>
+          <label class="ctrl"><span>Distancia al centro \(r/R\)</span><input type="range" id="cg-in-r" min="0.1" max="1" step="0.01" value="0.5"><span class="v" id="cg-in-rv"></span></label>
+          <p class="nota" id="cg-in-lect" style="margin:0"></p></div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>1 · Las capas de afuera no atraen.</strong> Divide la parte exterior en cáscaras delgadas. Desde un punto \(P\) dentro de una cáscara, un cono doble corta dos parches a distancias \(d_1\) y \(d_2\): sus áreas, y por tanto sus masas, son proporcionales a \(d_1^{2}\) y \(d_2^{2}\), y cada una atrae como \(1/d^{2}\). Las dos atracciones son iguales y opuestas: <strong>la cáscara no produce campo dentro de ella</strong>.</p>
+          <p style="margin:0 0 6px"><strong>2 · La masa interior, como si estuviera en el centro.</strong> Las líneas de campo de la masa \(M(r)\) que queda dentro de la esfera de radio \(r\) la cruzan todas, en número \(N = 4\pi G\,M(r)\):
+            \[ g(r) = \dfrac{N}{4\pi r^{2}} = \dfrac{G\,M(r)}{r^{2}} \,. \]</p>
+          <p style="margin:0 0 6px"><strong>3 · Densidad uniforme.</strong> La masa es proporcional al volumen, que crece como el cubo del radio:
+            \[ M(r) = M_T \left( \dfrac{r}{R} \right)^{3} \,. \]</p>
+          <p style="margin:0"><strong>4 · Juntar.</strong>
+            \[ g(r) = \dfrac{G M_T}{r^{2}}\,\dfrac{r^{3}}{R^{3}} = \dfrac{G M_T}{R^{2}}\,\dfrac{r}{R} = \resalta{g_0\,\dfrac{r}{R}} \,. \]
+            En la superficie, \(r = R\), vale \(g_0\); en el centro, cero.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p class="puente">→ Actividad: ¿qué fuerza siente cada cuerpo?</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-tl" data-label="Actividad: ¿quién atrae más?" data-speaker-notes="Actividad en parejas, de predicción (antes de la ley de gravitación como fuerza): fuerza de la Luna sobre la Tierra comparada con la de la Tierra sobre la Luna. Respuesta: 2 (F, acción y reacción). Error común: 1 (F/81, confundir fuerza con aceleración). Se conecta después con el centro de masas Tierra–Luna: aceleraciones en razón 1:81.">
+  <p class="ceja">§ 3.8 · Gravitación universal · Actividad en parejas</p>
+  <h2 class="titulo">La Tierra y la Luna: ¿quién atrae más a quién?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="tierraluna"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">La Tierra tiene unas 81 veces la masa de la Luna. Si la Tierra atrae a la Luna con una fuerza de magnitud \(F\), la Luna atrae a la Tierra con una fuerza de magnitud:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F/81\): la Luna tiene menos masa</button><button type="button" class="pr-opc" data-o="b">\(F\)</button><button type="button" class="pr-opc" data-o="c">\(81\,F\)</button><button type="button" class="pr-opc" data-o="d">cero: la Luna no atrae a la Tierra, solo la Tierra a la Luna</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Por la ley de acción y reacción las dos fuerzas tienen la <strong>misma magnitud</strong> \(F\) y sentidos opuestos. Lo que difiere es el efecto: la aceleración de la Tierra, \(F/M_T\), es 81 veces menor que la de la Luna, \(F/m_L\). Por eso la Tierra también se mueve, pero poco: ambas giran alrededor del centro de masas.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-tl">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Piensa en la ley de acción y reacción. ¿Qué es lo que sí es distinto para la Tierra y para la Luna: la fuerza o la aceleración?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-tl" class="gform-dlg" aria-label="Formulario: Actividad: ¿quién atrae más?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: ¿quién atrae más?" loading="lazy">Cargando…</iframe>
+  </dialog>
+  <p class="puente">→ Del campo a la fuerza: la ley de gravitación universal</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-newton-grav" data-label="La ley de gravitación universal" data-speaker-notes="§ 3.8. De campo a fuerza, en forma vectorial: F_M→m = m g_M(r) = −GMm r/r³ = −F_m→M, con r de M a m. Por acción y reacción la fuerza es simétrica en las dos masas: ley de gravitación universal (Principia, 1687). G la midió Cavendish en 1798. ↓ revela 3 pasos.">
@@ -2390,7 +2517,7 @@ function tok(nombre) {
 (function () {
   var d = document.getElementById('gform-dialog');
   var f = d.querySelector('iframe');
-  document.querySelectorAll('[data-gform-open]').forEach(function (b) {
+  document.querySelectorAll('[data-gform-open=""]').forEach(function (b) {
     b.addEventListener('click', function () {
       if (!f.src) f.src = f.dataset.src;
       d.showModal();
@@ -4070,7 +4197,15 @@ const T_OSC = 2 * Math.PI;
     /* Δv apunta hacia el centro cuando Δθ → 0 */
     R_('cp-dthv').textContent = rd.value + '°';
     const q1 = Math.hypot(P2[0] - P1[0], P2[1] - P1[1]) / r, q2 = Math.hypot(V2[0] - V1[0], V2[1] - V1[1]) / Lv;
-    R_('cp-tri-lect').textContent = '|Δr|/r = ' + num(q1, 3) + ' y |Δv|/v = ' + num(q2, 3) + ': la misma razón, 2 sin(Δθ/2). Δv apunta hacia el centro.';
+    /* Δv puesto en el punto medio del arco: apunta exactamente al centro */
+    const Mp = [C[0], C[1] - r], Ld = Math.max(46, q2 * L * 1.6);
+    nodo('line', { x1: Mp[0], y1: Mp[1], x2: C[0], y2: C[1], style: 'stroke:var(--mal);stroke-width:2;stroke-dasharray:7 6;opacity:.8' }, svg);
+    nodo('circle', { cx: C[0], cy: C[1], r: 7, style: 'fill:var(--mal)' }, svg);
+    flecha(svg, Mp[0], Mp[1], Mp[0], Mp[1] + Ld, 'var(--mal)', 5);
+    nodo('circle', { cx: Mp[0], cy: Mp[1], r: 7, style: 'fill:var(--panel);stroke:var(--mal);stroke-width:3' }, svg);
+    rotulo(svg, Mp[0] - 16, Mp[1] + Ld + 6, 'Δ!v! (en el punto medio)', Object.assign(est('var(--mal)'), { 'font-size': 22, 'text-anchor': 'end' }));
+    rotulo(svg, C[0] + 14, C[1] + 26, 'centro', Object.assign(est('var(--mal)'), { 'font-size': 20 }));
+    R_('cp-tri-lect').textContent = '|Δr|/r = ' + num(q1, 3) + ' y |Δv|/v = ' + num(q2, 3) + ': la misma razón, 2 sin(Δθ/2). Puesta en el punto medio del arco, Δv apunta al centro con cualquier Δθ.';
   }
   const abre = () => { dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
   const cierra = () => { modal.style.display = 'none'; };
@@ -4240,6 +4375,64 @@ const T_OSC = 2 * Math.PI;
   document.addEventListener('slidechange', cierra);
   eq.addEventListener('change', pinta);
   pinta();
+})();
+
+/* ═══ VENTANAS: CÁLCULO DE v DE LA LUNA Y CAMPO DENTRO DE LA TIERRA ════ */
+(function () {
+  const R_ = id => document.getElementById(id);
+  function enlaza(bid, mid, alAbrir) {
+    const btn = R_(bid), modal = R_(mid);
+    if (!btn || !modal) return;
+    const abre = () => { if (alAbrir) alAbrir(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+    const cierra = () => { modal.style.display = 'none'; };
+    btn.addEventListener('click', abre);
+    btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+    $('.gl-dcl-x', modal).addEventListener('click', cierra);
+    modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+    document.addEventListener('slidechange', cierra);
+  }
+  enlaza('lu-v-btn', 'lu-v');
+  /* campo interior: cáscaras exteriores y cono doble desde P */
+  const rr = R_('cg-in-r');
+  function dibuja() {
+    const host = R_('cg-in-fig'); if (!host) return;
+    const x = +rr.value, W = 900, H = 600, cx = 450, cy = 300, RR = 270, ri = RR * x;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const est = (c, f) => ({ 'font-size': f || 24, style: 'fill:' + c + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    nodo('circle', { cx: cx, cy: cy, r: RR, style: 'fill:var(--linea);opacity:.35;stroke:var(--tinta2);stroke-width:3' }, svg);
+    for (let k = 1; k <= 4; k++) { const rs = ri + (RR - ri) * k / 5; if (rs - ri > 6) nodo('circle', { cx: cx, cy: cy, r: rs, style: 'fill:none;stroke:var(--tinta2);stroke-width:1.5;stroke-dasharray:5 6;opacity:.7' }, svg); }
+    nodo('circle', { cx: cx, cy: cy, r: ri, style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:3' }, svg);
+    rotulo(svg, cx, cy + 8, '*M*(*r*)', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700' });
+    /* P sobre la esfera de radio r, a 30° */
+    const ang = Math.PI / 6, P = [cx + ri * Math.cos(ang), cy - ri * Math.sin(ang)];
+    /* cono doble desde P hacia la cáscara exterior (radio RR), eje con inclinación fija */
+    const eje = 0.35 * Math.PI, ab = 0.10;
+    const corta = (th) => { const dx = Math.cos(th), dy = -Math.sin(th), bx = P[0] - cx, by = P[1] - cy, B = bx * dx + by * dy, Cc = bx * bx + by * by - RR * RR; return Math.sqrt(B * B - Cc) - B; };
+    [[eje, 'var(--caso2)', '*d*₁'], [eje + Math.PI, 'var(--res)', '*d*₂']].forEach(([th, col, lab]) => {
+      const a1 = th - ab, a2 = th + ab, t1 = corta(a1), t2 = corta(a2), tm = corta(th);
+      const Q1 = [P[0] + t1 * Math.cos(a1), P[1] - t1 * Math.sin(a1)], Q2 = [P[0] + t2 * Math.cos(a2), P[1] - t2 * Math.sin(a2)];
+      nodo('polygon', { points: [P, Q1, Q2].map(q => q.join(',')).join(' '), style: 'fill:' + col + ';opacity:.22' }, svg);
+      nodo('line', { x1: P[0], y1: P[1], x2: Q1[0], y2: Q1[1], style: 'stroke:' + col + ';stroke-width:2' }, svg);
+      nodo('line', { x1: P[0], y1: P[1], x2: Q2[0], y2: Q2[1], style: 'stroke:' + col + ';stroke-width:2' }, svg);
+      nodo('line', { x1: Q1[0], y1: Q1[1], x2: Q2[0], y2: Q2[1], style: 'stroke:' + col + ';stroke-width:9;stroke-linecap:round' }, svg);
+      const Mx = P[0] + 0.55 * tm * Math.cos(th), My = P[1] - 0.55 * tm * Math.sin(th);
+      rotulo(svg, Mx + 12, My, lab, est(col));
+      const L = 70 * Math.min(1.6, Math.max(0.5, 1)), ux = Math.cos(th), uy = -Math.sin(th);
+      flecha(svg, P[0], P[1], P[0] + 62 * ux, P[1] + 62 * uy, col, 4);
+    });
+    nodo('circle', { cx: P[0], cy: P[1], r: 9, style: 'fill:var(--tinta)' }, svg);
+    rotulo(svg, P[0] + 14, P[1] + 30, '*P*', est('var(--tinta)'));
+    nodo('line', { x1: cx, y1: cy, x2: P[0], y2: P[1], style: 'stroke:var(--caso1);stroke-width:2;stroke-dasharray:6 5' }, svg);
+    rotulo(svg, (cx + P[0]) / 2 - 10, (cy + P[1]) / 2 - 12, '*r*', est('var(--caso1)'));
+    rotulo(svg, cx - RR * 0.72, cy - RR * 0.72 - 6, '*R*', est('var(--tinta2)'));
+    rotulo(svg, 20, H - 16, 'Los dos parches de la cáscara atraen a P con fuerzas iguales y opuestas', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    R_('cg-in-rv').textContent = num(x, 2);
+    R_('cg-in-lect').textContent = 'r = ' + num(x, 2) + ' R: masa interior = ' + num(100 * x * x * x, 1) + ' % de la Tierra · g = ' + num(9.8 * x, 2) + ' m/s² (en la superficie, 9,8).';
+  }
+  if (rr) rr.addEventListener('input', dibuja);
+  enlaza('cg-in-btn', 'cg-in', dibuja);
 })();
 
 /* ═══ CAMPO GRAVITACIONAL DE LA TIERRA: DEL CENTRO A MÁS ALLÁ DE LA LUNA ═ */
@@ -4746,6 +4939,19 @@ function lienzoOrbita(cv, trazos, marcas) {
   });
 })();
 
+/* ═══ FORMULARIOS DE LAS ACTIVIDADES (Google Forms en <dialog>) ═══════════ */
+(function () {
+  $$('[data-gform-open]').forEach(b => {
+    const id = b.getAttribute('data-gform-open'); if (!id) return;
+    const d = document.getElementById(id); if (!d) return;
+    const f = d.querySelector('iframe');
+    b.addEventListener('click', () => { if (!f.src) f.src = f.dataset.src; d.showModal(); });
+    d.querySelector('.gform-cerrar').addEventListener('click', () => d.close());
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });
+    document.addEventListener('slidechange', () => { if (d.open) d.close(); });
+  });
+})();
+
 /* ═══ PRÁCTICA CONCEPTUAL: preguntas, figuras y simulaciones ═══════════ */
 (function () {
   const g = 9.8;
@@ -4799,6 +5005,65 @@ function lienzoOrbita(cv, trazos, marcas) {
   const suelo = (svg, x1, x2, y) => lin(svg, x1, y, x2, y, 'stroke:var(--tinta);stroke-width:3');
 
   const FIG = {
+    /* ── actividades en parejas (§ 3.8) ── */
+    cuerda(h) {
+      const svg = lienzo(h, 640, 470), C = [250, 240], r = 150, P = [C[0] + r, C[1]];
+      circ(svg, C[0], C[1], r, 'fill:none;stroke:var(--linea);stroke-width:3;stroke-dasharray:9 7');
+      lin(svg, C[0], C[1], P[0], P[1], 'stroke:var(--tinta2);stroke-width:3');
+      circ(svg, C[0], C[1], 7, 'fill:var(--tinta)');
+      camino(svg, 'M ' + (C[0] + r * Math.cos(-0.9)) + ' ' + (C[1] - r * Math.sin(-0.9)) + ' A ' + r + ' ' + r + ' 0 0 0 ' + (C[0] + r * Math.cos(-0.25)) + ' ' + (C[1] - r * Math.sin(-0.25)), 'fill:none;stroke:var(--caso1);stroke-width:4');
+      flecha(svg, C[0] + r * Math.cos(-0.3), C[1] - r * Math.sin(-0.3), C[0] + r * Math.cos(-0.22), C[1] - r * Math.sin(-0.22), 'var(--caso1)', 4);
+      tx(svg, C[0] + r * Math.cos(-0.7) + 14, C[1] - r * Math.sin(-0.7) + 28, 'giro', { style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700', 'font-size': 22 });
+      const e = 'stroke:var(--res);stroke-width:4;fill:none;stroke-dasharray:12 7';
+      lin(svg, P[0], P[1], P[0] + 170, P[1], e); mt(svg, P[0] + 178, P[1] + 10, 'A', 'var(--res)');
+      camino(svg, 'M ' + P[0] + ' ' + P[1] + ' Q ' + (P[0] + 20) + ' ' + (P[1] - 140) + ' ' + (P[0] + 150) + ' ' + (P[1] - 170), e); mt(svg, P[0] + 156, P[1] - 172, 'B', 'var(--res)');
+      lin(svg, P[0], P[1], P[0], P[1] - 210, e); mt(svg, P[0] - 34, P[1] - 196, 'C', 'var(--res)');
+      lin(svg, P[0], P[1], P[0] + 150, P[1] - 150, e); mt(svg, P[0] + 160, P[1] - 120, 'D', 'var(--res)');
+      circ(svg, P[0], P[1], 13, 'fill:var(--caso2);stroke:var(--panel);stroke-width:3');
+      mt(svg, P[0] - 8, P[1] + 44, 'P');
+      tx(svg, 20, 455, 'vista desde arriba · la cuerda se rompe en P', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    geo(h) {
+      const svg = lienzo(h, 640, 470), C = [320, 235], R = 30, r = 6.6 * R;
+      circ(svg, C[0], C[1], r, 'fill:none;stroke:var(--linea);stroke-width:3;stroke-dasharray:9 7');
+      circ(svg, C[0], C[1], R, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:3');
+      tx(svg, C[0], C[1] + 6, 'Tierra', { 'text-anchor': 'middle', style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700', 'font-size': 15 });
+      const S = [C[0] + r * Math.cos(0.6), C[1] - r * Math.sin(0.6)];
+      lin(svg, C[0], C[1], S[0], S[1], 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5');
+      mt(svg, (C[0] + S[0]) / 2 - 70, (C[1] + S[1]) / 2 - 6, 'r ≈ 6,6 R', 'var(--tinta2)', { 'font-size': 24 });
+      rect(svg, S[0] - 16, S[1] - 9, 32, 18, 'fill:var(--tinta2)', 3);
+      lin(svg, S[0] - 38, S[1], S[0] + 38, S[1], 'stroke:var(--proy);stroke-width:6');
+      flecha(svg, S[0], S[1], S[0] - 60 * Math.cos(0.6), S[1] + 60 * Math.sin(0.6), 'var(--res)', 5);
+      mt(svg, S[0] + 30, S[1] + 40, 'a = ?', 'var(--res)', { 'font-size': 26 });
+      tx(svg, 20, 455, 'T = 1 día: siempre sobre el mismo punto del ecuador (no a escala)', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    tunel(h) {
+      const svg = lienzo(h, 640, 470), C = [320, 230], R = 190;
+      circ(svg, C[0], C[1], R, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4');
+      circ(svg, C[0], C[1], R / 2, 'fill:none;stroke:var(--caso1);stroke-width:2;stroke-dasharray:7 6');
+      rect(svg, C[0] - R - 6, C[1] - 13, 2 * R + 12, 26, 'fill:var(--panel);stroke:var(--tinta2);stroke-width:2');
+      circ(svg, C[0], C[1], 6, 'fill:var(--tinta)');
+      const Q = [C[0] + R / 2, C[1]];
+      circ(svg, Q[0], Q[1], 11, 'fill:var(--caso2)');
+      flecha(svg, Q[0] - 12, Q[1], Q[0] - 70, Q[1], 'var(--res)', 5);
+      mt(svg, Q[0] - 52, Q[1] - 26, 'g = ?', 'var(--res)', { 'font-size': 26 });
+      mt(svg, C[0] + R / 4 - 18, C[1] + 48, 'R/2', 'var(--tinta2)', { 'font-size': 24 });
+      mt(svg, C[0] + R - 20, C[1] - R + 26, 'R', 'var(--tinta2)', { 'font-size': 26 });
+      tx(svg, 20, 455, 'túnel por el centro · densidad uniforme', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    tierraluna(h) {
+      const svg = lienzo(h, 640, 470), T = [150, 220], L = [520, 220];
+      circ(svg, T[0], T[1], 86, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4');
+      circ(svg, L[0], L[1], 24, 'fill:var(--linea);stroke:var(--tinta2);stroke-width:3');
+      tx(svg, T[0], T[1] + 8, 'Tierra', { 'text-anchor': 'middle', style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700', 'font-size': 24 });
+      tx(svg, L[0], L[1] + 56, 'Luna', { 'text-anchor': 'middle', style: 'fill:var(--tinta2);font-family:' + FTXT + ';font-weight:700', 'font-size': 22 });
+      flecha(svg, L[0] - 28, L[1] - 18, L[0] - 160, L[1] - 18, 'var(--res)', 6);
+      mt(svg, L[0] - 150, L[1] - 34, 'F (Tierra → Luna)', 'var(--res)', { 'font-size': 23 });
+      flecha(svg, T[0] + 90, T[1] + 22, T[0] + 210, T[1] + 22, 'var(--caso2)', 6);
+      mt(svg, T[0] + 94, T[1] + 62, '? (Luna → Tierra)', 'var(--caso2)', { 'font-size': 23 });
+      tx(svg, 20, 455, 'M_T ≈ 81 m_L (no a escala)', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+
     abajo(h) {
       const svg = lienzo(h, 1000, 560); suelo(svg, 60, 940, 500);
       [[300, 'se deja caer', 0], [700, 'se lanza hacia abajo', 1]].forEach(([x, t, l]) => {
