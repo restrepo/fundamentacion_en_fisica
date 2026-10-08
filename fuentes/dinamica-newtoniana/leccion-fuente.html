@@ -310,6 +310,48 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 #gform-dialog::backdrop{background:rgba(20,10,40,.6)}
 #gform-dialog iframe{width:100%;height:100%;border:0;display:block}
 .gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);font-size:1.1rem;cursor:pointer}
+
+/* metodología, triángulos semejantes y gravitación de Newton */
+#dp-metodo .mt-col > * + *,#dp-newton-grav .ng-col > * + *{margin-top:8px}
+#dp-metodo .caja{padding:4px 14px;font-size:25px}
+#dp-newton-grav .caja{padding:3px 14px;font-size:23px}
+#dp-metodo .caja h3,#dp-newton-grav .caja h3{font-size:25px;margin:0}
+#dp-metodo .ctrl,#dp-newton-grav .ctrl{margin:2px 0}
+#dp-metodo .mt-ctl,#dp-newton-grav .ng-ctl{margin:3px 0}
+#dp-metodo .btn,#dp-newton-grav .btn{font-size:23px;padding:7px 12px}
+#dp-metodo .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+.mt-con{color:var(--caso1);font-weight:700} .mt-inc{color:var(--caso2);font-weight:700}
+.cp-semej{cursor:pointer;border-radius:6px;padding:4px 8px;margin:-4px -8px;border:2px dashed transparent}
+.cp-semej:hover{border-color:var(--res);background:var(--res-50)}
+.cp-mas{font-size:22px;color:var(--res);font-weight:600}
+
+/* campo, fuerza, energía potencial, escape y centro de masas Tierra–Luna */
+#dp-campo .cg-col > * + *,#dp-newton-grav .ng-col > * + *,#dp-epot .ug-col > * + *,#dp-escape .es-col > * + *,#dp-cm-tl .ct-col > * + *{margin-top:8px}
+#dp-campo .caja,#dp-newton-grav .caja,#dp-epot .caja,#dp-cm-tl .caja{padding:4px 14px;font-size:24px}
+#dp-campo .caja h3,#dp-newton-grav .caja h3,#dp-epot .caja h3,#dp-cm-tl .caja h3{font-size:24px;margin:0}
+#dp-campo .ctrl,#dp-newton-grav .ctrl,#dp-epot .ctrl,#dp-escape .ctrl,#dp-cm-tl .ctrl{margin:2px 0}
+#dp-campo .cg-ctl,#dp-newton-grav .ng-ctl,#dp-epot .ug-ctl,#dp-escape .es-ctl,#dp-cm-tl .ct-ctl{margin:4px 0}
+#dp-campo .btn,#dp-escape .btn,#dp-cm-tl .btn{font-size:22px;padding:7px 11px}
+.cg-dos{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+#dp-escape .pr-q{font-size:26px}
+#pc-canon .pr-q{font-size:25px}
+#pc-canon .pc-exp{font-size:23px}
+#pc-canon .pc-col > * + *{margin-top:6px}
+
+/* postulado del campo gravitacional */
+#dp-campo-u .gv-col > * + *{margin-top:8px}
+#dp-campo-u .caja{padding:4px 14px;font-size:25px}
+#dp-campo-u .caja h3{font-size:24px;margin:0}
+#dp-campo-u .gv-ctl{margin:4px 0}
+#dp-campo-u .btn{font-size:23px;padding:7px 12px}
+#dp-campo-u .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+
+/* solución detallada de la metodología */
+#dp-metodo .mt-sol{cursor:pointer}
+#dp-metodo .mt-sol:hover{outline:3px dashed var(--res);outline-offset:-4px}
+.mt-mas{font-size:21px;color:var(--res);font-weight:600}
+#mt-sol .gl-dcl-txt{font-size:26px;line-height:1.4}
+#mt-sol .gl-dcl-g{gap:50px}
 </style></head>
 <body>
 <div id="escenario">
@@ -978,6 +1020,56 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-metodo" data-label="Metodología para problemas de dinámica" data-speaker-notes="§ 3.7. Metodología en cuatro pasos con un único sistema de referencia: origen sobre la mesa, a la izquierda, x hacia la derecha e y hacia arriba. Una sola aceleración a para el sistema: a₁ₓ = a y a₂ᵧ = −a (y hacia arriba) o +a (y hacia abajo). El selector cambia los signos, no la física. Ejemplo: bloque sobre una mesa sin fricción unido a una masa que cuelga.">
+  <p class="ceja">§ 3.7 · Metodología</p>
+  <h2 class="titulo">Cómo resolver un problema de dinámica en cuatro pasos</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Ejemplo: bloque sobre la mesa y masa colgante (sin fricción)</span><span class="val" id="mt-lect"></span></div>
+      <div id="mt-fig"></div>
+      <div class="fila-btn mt-ctl"><span class="sub">Paso:</span><button type="button" class="btn" data-paso="1">1 · Ejes</button><button type="button" class="btn" data-paso="2">2 · Fuerzas</button><button type="button" class="btn" data-paso="3">3 · Ecuaciones</button><button type="button" class="btn on" data-paso="4">4 · Resolver</button></div>
+      <div class="fila-btn mt-ctl"><span class="sub">Eje \(y\) positivo:</span><button type="button" class="btn on" data-y="1">↑ hacia arriba</button><button type="button" class="btn" data-y="-1">↓ hacia abajo</button></div>
+      <label class="ctrl mt-ctl"><span>\(m_1\) (mesa)</span><input type="range" id="mt-m1" min="0.5" max="5" step="0.5" value="3"><span class="v" id="mt-m1v"></span></label>
+      <label class="ctrl mt-ctl"><span>\(m_2\) (colgante)</span><input type="range" id="mt-m2" min="0.5" max="5" step="0.5" value="1"><span class="v" id="mt-m2v"></span></label>
+    </figure>
+    <div class="pila mt-col">
+      <div class="caja neutra frag"><h3>1 · Establecer el origen y los ejes</h3>Un <strong>único</strong> sistema de referencia: origen \(O\) sobre la mesa, a la izquierda; eje \(x\) hacia la derecha y eje \(y\) <span class="mt-y1">hacia arriba</span><span class="mt-y2" style="display:none">hacia abajo</span>. Todas las componentes se miden en él.</div>
+      <div class="caja neutra frag"><h3>2 · Dibujar el diagrama de cuerpo libre</h3>\(m_1\): peso \(m_1 g\), normal \(N\), tensión \(T\). \(m_2\): peso \(m_2 g\) y tensión \(T\). La cuerda no se estira: los dos bloques tienen la misma aceleración \(a\) en magnitud, \(a_{1x} = a\) y
+        <span class="mt-y1">\(a_{2y} = -\,a\)</span><span class="mt-y2" style="display:none">\(a_{2y} = +\,a\)</span> (el bloque 2 baja).</div>
+      <div class="caja neutra frag"><h3>3 · Ecuaciones de movimiento por componentes</h3>
+        <div class="mt-y1">\[ \begin{aligned} m_1,\ x:&\quad T = m_1\,a \\ m_1,\ y:&\quad N - m_1 g = 0 \\ m_2,\ y:&\quad T - m_2 g = -\,m_2\,a \end{aligned} \]</div>
+        <div class="mt-y2" style="display:none">\[ \begin{aligned} m_1,\ x:&\quad T = m_1\,a \\ m_1,\ y:&\quad m_1 g - N = 0 \\ m_2,\ y:&\quad m_2 g - T = +\,m_2\,a \end{aligned} \]</div>
+        <p class="nota" style="margin:0">Conocidas: <span class="mt-con">\(m_1, m_2, g\)</span> · incógnitas: <span class="mt-inc">\(a, T, N\)</span>.</p></div>
+      <div class="kf frag mt-sol" id="mt-sol-btn" role="button" tabindex="0" title="Ver la solución detallada" style="padding:4px 14px;font-size:27px"><h3 style="margin:0;font-size:24px">4 · Resolver el sistema <span class="mt-mas">(ⓘ clic: solución detallada)</span></h3>\[ a = \dfrac{m_2\,g}{m_1 + m_2}, \quad T = \dfrac{m_1 m_2\,g}{m_1 + m_2}, \quad N = m_1 g \]
+        <p class="nota" style="margin:0">Combinando las dos ecuaciones que contienen \(T\) se elimina \(T\) y sale \(a\). <span class="mt-y1">Con \(y\) hacia arriba, \(a_{2y} = -a\):</span><span class="mt-y2" style="display:none">Con \(y\) hacia abajo, \(a_{2y} = +a\):</span> cambian los signos, no la física.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="mt-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="mt-sol-tit">
+    <div class="gl-dcl-caja" style="width:2080px;font-size:26px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="mt-sol-tit">Solución detallada del sistema (eje \(y\) hacia arriba)</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>Las tres ecuaciones</strong> (incógnitas \(a\), \(T\), \(N\)):
+            \[ \text{(1)}\ T = m_1 a, \qquad \text{(2)}\ N - m_1 g = 0, \qquad \text{(3)}\ T - m_2 g = -\,m_2 a. \]</p>
+          <p style="margin:0 0 6px"><strong>Paso A · La normal sale sola.</strong> De (2): \(\resalta{N = m_1 g}\). No interviene en las otras dos.</p>
+          <p style="margin:0 0 6px"><strong>Paso B · Eliminar \(T\).</strong> Se sustituye (1) en (3):
+            \[ \begin{aligned} m_1 a - m_2 g &= -\,m_2 a \\ m_1 a + m_2 a &= m_2 g \\ (m_1 + m_2)\,a &= m_2 g. \end{aligned} \]</p>
+          <p style="margin:0"><strong>Paso C · Despejar \(a\).</strong>
+            \[ \resalta{a = \dfrac{m_2}{m_1 + m_2}\,g}. \]</p>
+        </div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>Paso D · Volver a (1) por \(T\).</strong>
+            \[ T = m_1 a = \resalta{\dfrac{m_1 m_2}{m_1 + m_2}\,g}. \]</p>
+          <p style="margin:0 0 6px"><strong>Paso E · Comprobar.</strong> Unidades: \([a] = \mathrm{m/s^2}\) y \([T] = \mathrm{kg\,m/s^2} = \mathrm{N}\). Casos límite: si \(m_1 \to 0\), \(a \to g\) y \(T \to 0\) (caída libre); si \(m_2 \to 0\), \(a \to 0\). Además \(T \lt m_2 g\): el bloque colgante sí baja.</p>
+          <p style="margin:0 0 6px"><strong>Ejemplo</strong> con \(m_1 = \qty{3}{kg}\), \(m_2 = \qty{1}{kg}\), \(g = \qty{9{,}8}{m/s^2}\): \(a = \qty{2{,}45}{m/s^2}\), \(T = \qty{7{,}35}{N}\), \(N = \qty{29{,}4}{N}\).</p>
+          <p class="nota" style="margin:0">Con \(y\) hacia abajo, (2) y (3) cambian de signo, \(m_1 g - N = 0\) y \(m_2 g - T = m_2 a\), y los pasos dan el mismo resultado: en el paso B se suman (1) y (3).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-friccion" data-label="Bloque con fricción y fuerza inclinada" data-speaker-notes="§ 3.7. Explorador: diagrama de cuerpo libre y aceleración en función de θ y μ_k.">
   <p class="ceja">§ 3.7 · Diagrama de cuerpo libre</p>
   <h2 class="titulo">Tirar en ángulo reduce la fricción… y la fuerza útil</h2>
@@ -995,7 +1087,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-centripeta" data-label="Fuerza centrípeta" data-speaker-notes="§ 3.8. Explorador: aceleración centrípeta en función de v y r.">
+<section class="diapositiva" data-seccion="Fuerzas en acción" id="dp-centripeta" data-label="Fuerza centrípeta" data-speaker-notes="§ 3.8. Explorador: aceleración centrípeta en función de v y r. Clic en el párrafo de los triángulos: explicación gráfica de la semejanza entre el triángulo de posiciones y el de velocidades.">
   <p class="ceja">§ 3.8 · Movimiento circular</p>
   <h2 class="titulo">Fuerza centrípeta \(F_c = mv^{2}/r\)</h2>
   <div class="g2-60">
@@ -1004,11 +1096,177 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div id="cp-fig"></div>
     </figure>
     <div class="pila">
-      <p>Los triángulos de posición y de velocidad son semejantes:
+      <p id="cp-semej" class="cp-semej" role="button" tabindex="0" title="Ver la explicación gráfica">Los triángulos de posición y de velocidad son semejantes <span class="cp-mas">(ⓘ clic: explicación gráfica)</span>:
         \[ \dfrac{\abs{\Delta\vect{v}}}{v} = \dfrac{\abs{\Delta\vect{r}}}{r} \;\Longrightarrow\; a_c = \dfrac{v^{2}}{r}, \qquad F_c = m\,\dfrac{v^{2}}{r}. \]</p>
       <label class="ctrl"><span>Rapidez \(v\)</span><input type="range" id="cp-v" min="1" max="10" step="0.5" value="4"><span class="v" id="cp-vv"></span></label>
       <label class="ctrl"><span>Radio \(r\)</span><input type="range" id="cp-r" min="1" max="5" step="0.1" value="3"><span class="v" id="cp-rv"></span></label>
       <p class="nota">\(m = \qty{1}{kg}\). La fuerza centrípeta no es una fuerza nueva: es la resultante (tensión, gravedad, fricción…) que apunta al centro.</p>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="cp-tri" style="display:none" role="dialog" aria-modal="true" aria-labelledby="cp-tri-tit">
+    <div class="gl-dcl-caja">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="cp-tri-tit">Triángulos semejantes en el movimiento circular</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+        <div><div id="cp-tri-fig"></div>
+          <label class="ctrl"><span>Ángulo recorrido \(\Delta\theta\)</span><input type="range" id="cp-dth" min="4" max="80" step="1" value="40"><span class="v" id="cp-dthv"></span></label>
+          <p class="nota" id="cp-tri-lect" style="margin:0"></p></div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>1 · Triángulo de posiciones.</strong> \(\vect{r}_1\) y \(\vect{r}_2\) miden lo mismo, \(r\), y forman el ángulo \(\Delta\theta\). Su base es \(\abs{\Delta\vect{r}}\).</p>
+          <p style="margin:0 0 6px"><strong>2 · Triángulo de velocidades.</strong> Cada velocidad es perpendicular a su radio y mide lo mismo, \(v\). Al girar el radio \(\Delta\theta\), la velocidad gira el mismo \(\Delta\theta\). Puestas desde un origen común, su base es \(\abs{\Delta\vect{v}}\).</p>
+          <p style="margin:0 0 6px"><strong>3 · Son semejantes.</strong> Los dos son isósceles con el mismo ángulo \(\Delta\theta\) entre lados iguales, así que sus lados son proporcionales:
+            \[ \dfrac{\abs{\Delta\vect{v}}}{v} = \dfrac{\abs{\Delta\vect{r}}}{r}. \]</p>
+          <p style="margin:0"><strong>4 · Dividir por \(\Delta t\).</strong>
+            \[ a_c = \dfrac{\abs{\Delta\vect{v}}}{\Delta t} = \dfrac{v}{r}\,\dfrac{\abs{\Delta\vect{r}}}{\Delta t} = \dfrac{v}{r}\,v = \resalta{\dfrac{v^{2}}{r}}. \]
+            Al hacer \(\Delta\theta\) pequeño, \(\Delta\vect{v}\) apunta hacia el centro: por eso la aceleración es <strong>centrípeta</strong>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo-u" data-label="El campo gravitacional universal" data-speaker-notes="§ 3.8. Postulado: toda masa M crea a su alrededor un campo vectorial g(r) = −GM r/r³, dirigido hacia M. Una masa m en ese punto siente F = m g. En la superficie de la Tierra, g₀ = GM_T/R_T² ≈ 9,8 m/s². Explorador: arrastra la sonda; cambia el cuerpo. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">Postulado: toda masa crea un campo gravitacional</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Campo \(\vect{g}\) alrededor de un cuerpo · arrastra la sonda</span><span class="val" id="gv-lect"></span></div>
+      <div id="gv-fig" class="pb-arr"></div>
+      <div class="fila-btn gv-ctl"><span class="sub">Cuerpo:</span><button type="button" class="btn on" data-c="tierra">Tierra</button><button type="button" class="btn" data-c="luna">Luna</button><button type="button" class="btn" data-c="marte">Marte</button><button type="button" class="btn" data-c="jupiter">Júpiter</button></div>
+    </figure>
+    <div class="pila gv-col">
+      <div class="caja neutra frag"><h3>1 · El postulado</h3>Toda masa \(M\) crea a su alrededor un <strong>campo vectorial</strong>; a una distancia \(r\) de su centro,
+        \[ \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r}, \]
+        con \(\hat{\vect{r}}\) el vector unitario que apunta desde el centro de \(M\) hacia el punto.</div>
+      <div class="caja neutra frag"><h3>2 · Qué dice</h3>Apunta <strong>hacia</strong> \(M\) (signo menos), crece con \(M\) y decae como \(1/r^{2}\). Es universal: una masa \(m\) colocada allí siente \(\vect{F} = m\,\vect{g}\), sea una manzana o la Luna.</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:27px"><h3 style="margin:0;font-size:24px">3 · En la superficie de la Tierra</h3>\[ g_0 = \dfrac{G M_T}{R_T^{2}} = \dfrac{(6{,}674\times 10^{-11})(5{,}972\times 10^{24})}{(6{,}371\times 10^{6})^{2}}\,\mathrm{\dfrac{m}{s^{2}}} \approx \resalta{9{,}8\,\mathrm{m/s^2}} \]
+        <p class="nota" style="margin:0">Es la aceleración de caída libre que usamos desde la § 3.4: \(\vect{g} = -\,g_0\,\hat{\vect{y}}\) cerca del suelo.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="pc-canon" data-label="El cañón de Newton" data-speaker-notes="§ 3.8. El cañón de Newton conectado con el movimiento circular: el campo gravitacional g(r) = GM/r² da la aceleración centrípeta de la órbita, g(r) = v²/r, así que v_orb = √(GM/r) ≈ 7,9 km/s cerca de la superficie. Con más rapidez la órbita se alarga y, desde unos 11,2 km/s, la bala escapa: se explica más adelante con la energía potencial.">
+  <p class="ceja">§ 3.8 · Gravitación universal · Práctica</p>
+  <h2 class="titulo">El cañón de Newton: el campo hace de fuerza centrípeta</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Disparo horizontal desde lo alto de una montaña</span><span class="val" id="cn-lect"></span></div>
+      <canvas class="lienzo" id="cn-cv" width="1120" height="640"></canvas>
+      <label class="ctrl"><span>Rapidez del disparo</span><input type="range" id="cn-v" min="3" max="12" step="0.1" value="6"><span class="v" id="cn-vv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
+    </figure>
+    <div class="pila pc-col">
+      <p style="margin:0;font-size:26px">A una distancia \(r\) del centro, el <strong>campo gravitacional</strong> de la Tierra le da a la bala una aceleración hacia el centro, \(g(r) = G M_T/r^{2}\), sea cual sea su masa. La bala cae siempre; si va lo bastante rápido, <strong>cae al mismo ritmo con que la superficie se curva</strong>.</p>
+      <div class="kf" style="padding:2px 14px;font-size:26px">\[ \underbrace{g(r)}_{\text{campo}} = \underbrace{\dfrac{v^{2}}{r}}_{\text{centrípeta}} \;\Longrightarrow\; v_{\text{orb}} = \sqrt{g(r)\,r} = \sqrt{\dfrac{G M_T}{r}} \]</div>
+      <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">Ensaya en la simulación: ¿con qué rapidez mínima, en km/s, la bala da la vuelta a la Tierra sin caer?</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
+        <div class="pc-exp" style="display:none"><p style="margin:0">Cerca de la superficie, \(r \approx R = \qty{6371}{km}\) y \(g = \qty{9{,}8}{m/s^2}\): \(v_{\text{orb}} = \sqrt{(\qty{9{,}8}{m/s^2})(6{,}371\times 10^{6}\,\mathrm{m})} \approx \qty{7{,}9}{km/s}\). Es la aceleración centrípeta de la diapositiva anterior, \(a_c = v^{2}/r\), puesta por el campo.</p></div></div>
+      <p class="nota" style="margin:0">Con más rapidez la órbita se alarga, y desde unos \(\qty{11{,}2}{km/s}\) la bala ya no vuelve: lo explicaremos con la energía potencial gravitacional.</p>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button><a class="btn" href="https://colab.research.google.com/drive/1QK7xAYEgQcU3TP7SJtPEcoAToBYHeJ2-?usp=sharing" target="_blank" rel="noopener">Cuaderno gravedad.ipynb (Colab) ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo" data-label="El campo gravitacional de la Tierra" data-speaker-notes="§ 3.8. Campo gravitacional: fuerza por unidad de masa de una masa de prueba pequeña. Dentro de la Tierra (densidad uniforme) crece linealmente desde cero en el centro; fuera decrece como 1/r². La prueba de la Luna lo confirma a 60 radios terrestres. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">El campo gravitacional, del centro de la Tierra a la Luna</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(g(r)\): cerca (escala lineal) y lejos (escala logarítmica)</span><span class="val" id="cg-lect"></span></div>
+      <div class="cg-dos"><div id="cg-cerca"></div><div id="cg-lejos"></div></div>
+      <label class="ctrl cg-ctl"><span>Distancia al centro \(r\)</span><input type="range" id="cg-r" min="0" max="80" step="0.05" value="1"><span class="v" id="cg-rv"></span></label>
+      <div class="fila-btn cg-ctl"><button type="button" class="btn" data-r="0">Centro</button><button type="button" class="btn on" data-r="1">Superficie</button><button type="button" class="btn" data-r="1.063">Estación espacial</button><button type="button" class="btn" data-r="6.62">Geoestacionario</button><button type="button" class="btn" data-r="60.3">Luna</button></div>
+    </figure>
+    <div class="pila cg-col">
+      <div class="caja neutra frag"><h3>1 · Campo: fuerza por unidad de masa</h3>Con una <strong>masa de prueba</strong> \(m\) pequeña (que no mueve a la Tierra), el campo es \(\vect{g} = \vect{F}/m\): no depende de \(m\) y apunta hacia el centro. En la superficie, \(g_0 = \qty{9{,}8}{m/s^2}\).</div>
+      <div class="caja neutra frag"><h3>2 · Fuera de la Tierra: inverso del cuadrado</h3>
+        \[ g(r) = g_0 \left(\dfrac{R}{r}\right)^{2} = \dfrac{G M_T}{r^{2}}, \qquad r \ge R. \]
+        Prueba de la Luna: a \(60{,}3\,R\), \(g = 9{,}8/60{,}3^{2} \approx 2{,}70\times 10^{-3}\,\mathrm{m/s^2}\), y su aceleración centrípeta medida es \(4\pi^{2} r/T^{2} \approx 2{,}72\times 10^{-3}\,\mathrm{m/s^2}\).</div>
+      <div class="caja c2 frag"><h3>3 · Dentro: solo cuenta la masa interior</h3>Con densidad uniforme, a una distancia \(r\) solo atrae la masa de radio \(r\), que crece como \(r^{3}\):
+        \[ g(r) = g_0\,\dfrac{r}{R}, \qquad r \le R. \]
+        En el centro, \(g = 0\): la atracción se cancela en todas direcciones.</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-newton-grav" data-label="La ley de gravitación universal" data-speaker-notes="§ 3.8. De campo a fuerza, en forma vectorial: F_M→m = m g_M(r) = −GMm r/r³ = −F_m→M, con r de M a m. Por acción y reacción la fuerza es simétrica en las dos masas: ley de gravitación universal (Principia, 1687). G la midió Cavendish en 1798. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">Del campo a la fuerza: la ley de gravitación universal</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Dos masas se atraen con fuerzas iguales y opuestas</span><span class="val" id="ng-lect"></span></div>
+      <div id="ng-fig"></div>
+      <label class="ctrl ng-ctl"><span>Masa \(M\) [kg]</span><input type="range" id="ng-M" min="1" max="10" step="1" value="6"><span class="v" id="ng-Mv"></span></label>
+      <label class="ctrl ng-ctl"><span>Masa \(m\) [kg]</span><input type="range" id="ng-m" min="1" max="10" step="1" value="2"><span class="v" id="ng-mv"></span></label>
+      <label class="ctrl ng-ctl"><span>Distancia \(r\) [m]</span><input type="range" id="ng-r" min="0.5" max="3" step="0.05" value="1"><span class="v" id="ng-rv"></span></label>
+    </figure>
+    <div class="pila ng-col">
+      <div class="caja neutra frag"><h3>1 · La fuerza sobre una masa en un campo</h3>Con \(\vect{r}\) el vector que va de \(M\) a \(m\), la masa \(m\) en el campo de \(M\) siente
+        \[ \vect{F}_{M \to m} = m\,\vect{g}_M(\vect{r}) = -\,\dfrac{G M m}{r^{2}}\,\hat{\vect{r}}. \]</div>
+      <div class="caja neutra frag"><h3>2 · Acción y reacción: una sola ley</h3>\(m\) también crea su campo y atrae a \(M\) con una fuerza igual y opuesta:
+        \[ \resalta{\vect{F}_{M \to m} = -\,G\,\dfrac{M\,m}{r^{3}}\,\vect{r} = -\,\vect{F}_{m \to M}}, \qquad \abs{\vect{F}} = G\,\dfrac{M m}{r^{2}}. \]
+        Es la ley de gravitación universal que Newton publicó en los <em>Principia</em> (1687).</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:28px">\[ G = 6{,}674\times 10^{-11}\,\mathrm{N\,m^2/kg^2} \]<p class="nota" style="margin:0">\(G\) es tan pequeña que entre objetos cotidianos la fuerza es diminuta: la midió Cavendish en 1798 con una balanza de torsión. Con ella se «pesó» la Tierra: \(M_T = g_0 R^{2}/G \approx 6\times 10^{24}\,\mathrm{kg}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-epot" data-label="Energía potencial gravitacional" data-speaker-notes="§ 3.8. Energía potencial gravitacional U(r) = −GMm/r, con cero en el infinito; cerca de la superficie se reduce a mgh. Con la energía total E = K + U se ve hasta dónde sube un proyectil: si E < 0 hay punto de retorno; si E ≥ 0 no vuelve. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">Energía potencial gravitacional: un pozo de energía</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>\(U(r)\) y energía total de un lanzamiento vertical</span><span class="val" id="ug-lect"></span></div>
+      <div id="ug-fig"></div>
+      <label class="ctrl ug-ctl"><span>Rapidez de lanzamiento</span><input type="range" id="ug-v" min="1" max="13" step="0.1" value="8"><span class="v" id="ug-vv"></span></label>
+    </figure>
+    <div class="pila ug-col">
+      <div class="caja neutra frag"><h3>1 · Trabajo contra el campo</h3>Llevar \(m\) desde \(r\) hasta muy lejos cuesta un trabajo finito. Tomando \(U = 0\) en el infinito:
+        \[ U(r) = -\,\dfrac{G M_T\,m}{r}. \]
+        Es negativa: la masa está «atrapada» en un pozo.</div>
+      <div class="caja neutra frag"><h3>2 · Cerca de la superficie: \(mgh\)</h3>Para una altura \(h \ll R\):
+        \[ U(R + h) - U(R) \approx \dfrac{G M_T m}{R^{2}}\,h = m g_0 h. \]
+        La fórmula de siempre es el caso de alturas pequeñas.</div>
+      <div class="caja c2 frag"><h3>3 · Energía total y punto de retorno</h3>\(E = \tfrac12 m v^{2} - G M_T m/r\) se conserva. El proyectil sube hasta que \(U = E\). Si \(E \lt 0\), vuelve; si \(E \ge 0\), <strong>nunca vuelve</strong>.</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="dp-escape" data-label="Velocidad de escape" data-speaker-notes="§ 3.8. Velocidad de escape: E = 0, v_esc = √(2GM/R) = √2 v_orb. Comparación entre cuerpos; si v_esc alcanzara c, el cuerpo sería un agujero negro: radio de Schwarzschild 2GM/c² (la Tierra cabría en 9 mm).">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">Velocidad de escape: salir del pozo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Velocidad orbital y de escape en la superficie</span><span class="val" id="es-lect"></span></div>
+      <div id="es-fig"></div>
+      <div class="fila-btn es-ctl"><button type="button" class="btn on" data-c="tierra">Tierra</button><button type="button" class="btn" data-c="luna">Luna</button><button type="button" class="btn" data-c="marte">Marte</button><button type="button" class="btn" data-c="jupiter">Júpiter</button><button type="button" class="btn" data-c="sol">Sol</button></div>
+      <label class="ctrl es-ctl"><span>Comprimir el cuerpo: radio</span><input type="range" id="es-rf" min="-10" max="0" step="0.1" value="0"><span class="v" id="es-rfv"></span></label>
+    </figure>
+    <div class="pila es-col">
+      \[ E = \tfrac12 m v^{2} - \dfrac{G M m}{R} = 0 \;\Longrightarrow\; \resalta{v_{\text{esc}} = \sqrt{\dfrac{2 G M}{R}} = \sqrt{2}\;v_{\text{orb}}} \]
+      <div class="pc-q" data-ok-num="11.2" data-tol="0.2"><div class="pr-q">Con \(g_0 = \qty{9{,}8}{m/s^2}\) y \(R = \qty{6371}{km}\), ¿cuál es la velocidad de escape de la Tierra, en km/s? (Pista: \(G M_T = g_0 R^{2}\).)</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
+        <div class="pc-exp" style="display:none"><p style="margin:0">\(v_{\text{esc}} = \sqrt{2 g_0 R} = \sqrt{2\,(9{,}8)(6{,}371\times 10^{6})}\,\mathrm{m/s} \approx \qty{11{,}2}{km/s}\), es decir, \(\sqrt{2}\times\qty{7{,}9}{km/s}\). En el cañón de Newton, a partir de esa rapidez la bala ya no vuelve.</p></div></div>
+      <div class="caja c2" style="padding:4px 14px"><p style="margin:0;font-size:24px"><strong>No depende de la masa del proyectil</strong> ni de la dirección del lanzamiento (sin aire). Si un cuerpo se comprime hasta que \(v_{\text{esc}} = c\), ni la luz escapa: es un <strong>agujero negro</strong>, de radio \(R_s = 2GM/c^{2}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-cm-tl" data-label="El centro de masas Tierra–Luna" data-speaker-notes="Antes de la simulación: hasta aquí la masa de prueba era tan pequeña que el centro de masas coincidía con el centro de la Tierra. La Luna no es pequeña (1/81 de la Tierra): el sistema de coordenadas se pone en el centro de masas Tierra–Luna, a unos 4670 km del centro de la Tierra, y se trabaja con la posición relativa r. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.9 · Sistema de coordenadas</p>
+  <h2 class="titulo">El centro de masas Tierra–Luna: el nuevo origen</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Los dos cuerpos giran alrededor del centro de masas</span><span class="val" id="ct-lect"></span></div>
+      <canvas class="lienzo" id="ct-cv" width="1140" height="540"></canvas>
+      <label class="ctrl ct-ctl"><span>Razón de masas \(m/M\)</span><input type="range" id="ct-q" min="-3" max="0" step="0.01" value="-1.91"><span class="v" id="ct-qv"></span></label>
+      <div class="fila-btn ct-ctl"><button type="button" class="btn" data-q="-3">Masa de prueba (1/1000)</button><button type="button" class="btn on" data-q="-1.91">Luna (1/81)</button><button type="button" class="btn" data-q="0">Masas iguales</button></div>
+    </figure>
+    <div class="pila ct-col">
+      <div class="caja neutra frag"><h3>1 · Hasta ahora: masa de prueba</h3>Con \(m \ll M_T\), el centro de masas coincide con el centro de la Tierra: el origen allí y la Tierra quieta.</div>
+      <div class="caja neutra frag"><h3>2 · La Luna no es pequeña</h3>\(m_L/M_T \approx 1/81\): el origen va al <strong>centro de masas</strong>, que está a \(r\,m_L/(M_T + m_L) \approx \qty{4670}{km}\) del centro de la Tierra, dentro de ella.</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:27px">\[ \vect{r} = \vect{r}_L - \vect{r}_T, \qquad \vect{r}_T = -\dfrac{m_L}{M}\,\vect{r}, \qquad \vect{r}_L = \dfrac{M_T}{M}\,\vect{r} \]
+        <p class="nota" style="margin:0">Con \(M = M_T + m_L\) y \(\vect{P}_{\text{total}} = \vect{0}\) en ese marco: los dos cuerpos están siempre en lados opuestos del origen, como en la simulación que sigue.</p></div>
     </div>
   </div>
 </section>
@@ -1155,8 +1413,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 14 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 1 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 13 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 1 / 13</p>
   <h2 class="titulo">¿Cambia la aceleración si lo lanzas hacia abajo?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="abajo"></div></figure>
@@ -1169,8 +1427,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 14 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 2 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 13 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 2 / 13</p>
   <h2 class="titulo">En el punto más alto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cima"></div></figure>
@@ -1183,8 +1441,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 14 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 3 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 13 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 3 / 13</p>
   <h2 class="titulo">Dos pelotas desde un acantilado</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="acantilado"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
@@ -1197,8 +1455,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 14 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 4 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 13 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 4 / 13</p>
   <h2 class="titulo">Subir o bajar: ¿qué tarda más con aire?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piedra"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
@@ -1211,8 +1469,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 5 de 14 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 5 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 5 de 13 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 5 / 13</p>
   <h2 class="titulo">Montaña rusa: rapidez y aceleración</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="montana"></div><label class="ctrl"><span>Posición del carro</span><input type="range" class="pc-pos" min="0" max="100" step="1" value="15"><span class="v pc-posv"></span></label></figure>
@@ -1225,8 +1483,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 6 de 14 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 6 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 6 de 13 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 6 / 13</p>
   <h2 class="titulo">Dos canicas desde el techo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="canicas"></div></figure>
@@ -1239,8 +1497,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 7 de 14 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 7 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 7 de 13 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 7 / 13</p>
   <h2 class="titulo">Para llegar con el doble de rapidez</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="rampa"></div></figure>
@@ -1253,8 +1511,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 8 de 14 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 8 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 8 de 13 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 8 / 13</p>
   <h2 class="titulo">El alimentador de la bolera</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bolera"></div></figure>
@@ -1267,8 +1525,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 9 de 14 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 9 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 9 de 13 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 9 / 13</p>
   <h2 class="titulo">Dos caminos a la cima</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bici"></div></figure>
@@ -1281,8 +1539,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 10 de 14 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 10 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 10 de 13 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 10 / 13</p>
   <h2 class="titulo">Subir un piano con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piano"></div></figure>
@@ -1295,8 +1553,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 11 de 14 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 11 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 11 de 13 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 11 / 13</p>
   <h2 class="titulo">Subirse a sí mismo con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="plataforma"></div></figure>
@@ -1309,8 +1567,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 12 de 14 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 12 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 12 de 13 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 12 / 13</p>
   <h2 class="titulo">Tirar de una caja: ¿qué sistema?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="caja"></div></figure>
@@ -1322,8 +1580,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 13 de 14 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
-  <p class="ceja">Práctica conceptual 13 / 14</p>
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 13 de 13 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+  <p class="ceja">Práctica conceptual 13 / 13</p>
   <h2 class="titulo">Trabajo con vectores: el dron de reparto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="dron"></div></figure>
@@ -1333,29 +1591,6 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\Delta\vect{r} = (5, -8, 10)\qty{}{m}\). \(W = (8)(5) + (-6)(-8) + (5)(10) = 40 + 48 + 50 = \qty{138}{J}\). Solo importan los puntos inicial y final, porque la fuerza es constante.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Calcula \(\Delta\vect{r} = B - A\) y luego \(W = \vect{F}\cdot\Delta\vect{r} = F_x\Delta x + F_y\Delta y + F_z\Delta z\).</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canon" data-label="Práctica: el cañón de Newton" data-speaker-notes="Práctica 14 de 14 (diapositiva 6 del PowerPoint, que enlazaba simulaciones de Trinket; Trinket cerró). Cañón de Newton integrado con el mismo algoritmo: velocidad orbital ≈ 7,9 km/s y de escape ≈ 11,2 km/s. Enlace al cuaderno gravedad.ipynb en Colab.">
-  <p class="ceja">Práctica conceptual 14 / 14</p>
-  <h2 class="titulo">El cañón de Newton: velocidad orbital y de escape</h2>
-  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Disparo horizontal desde lo alto de una montaña</span><span class="val" id="cn-lect"></span></div>
-      <canvas class="lienzo" id="cn-cv" width="1120" height="640"></canvas>
-      <label class="ctrl"><span>Rapidez del disparo</span><input type="range" id="cn-v" min="3" max="12" step="0.1" value="6"><span class="v" id="cn-vv"></span></label>
-      <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
-    </figure>
-    <div class="pila pc-col">
-      <p style="margin:0">Con el mismo algoritmo de la órbita Tierra–Luna, la bala obedece \(\vect{F} = -G\,M_T\,m\,\vect{r}/r^{3}\). Ensaya distintas rapideces y encuentra los dos umbrales.</p>
-      <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">1. ¿Con qué rapidez mínima (en km/s) la bala da la vuelta a la Tierra sin caer?</div>
-        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
-        <div class="pc-exp" style="display:none"><p style="margin:0">Órbita circular: la gravedad es la fuerza centrípeta, \(\dfrac{G M_T m}{R^{2}} = \dfrac{m v^{2}}{R}\Rightarrow v_{\text{orb}} = \sqrt{\dfrac{G M_T}{R}} \approx \qty{7{,}9}{km/s}\).</p></div></div>
-      <div class="pc-q" data-ok-num="11.2" data-tol="0.2"><div class="pr-q">2. ¿Y la rapidez mínima (en km/s) para escapar de la Tierra?</div>
-        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
-        <div class="pc-exp" style="display:none"><p style="margin:0">Escapar: \(E = \tfrac12 m v^{2} - \dfrac{G M_T m}{R} \ge 0\Rightarrow v_{\text{esc}} = \sqrt{\dfrac{2 G M_T}{R}} = \sqrt{2}\,v_{\text{orb}} \approx \qty{11{,}2}{km/s}\).</p></div></div>
-      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button><a class="btn" href="https://colab.research.google.com/drive/1QK7xAYEgQcU3TP7SJtPEcoAToBYHeJ2-?usp=sharing" target="_blank" rel="noopener">Cuaderno gravedad.ipynb (Colab) ↗</a></div>
     </div>
   </div>
 </section>
@@ -2849,6 +3084,84 @@ const T_OSC = 2 * Math.PI;
   document.addEventListener('slidechange', cierra);
 })();
 
+/* ═══ METODOLOGÍA: UN ÚNICO SISTEMA DE REFERENCIA (y hacia arriba o hacia abajo) ═ */
+(function () {
+  const host = document.getElementById('mt-fig');
+  if (!host) return;
+  const g = 9.8, R_ = id => document.getElementById(id), r1 = R_('mt-m1'), r2 = R_('mt-m2'), sl = host.closest('section');
+  let paso = 4, sy = 1;                                                  /* sy = +1: y hacia arriba; −1: hacia abajo */
+  function pinta() {
+    const m1 = +r1.value, m2 = +r2.value, a = m2 * g / (m1 + m2), T = m1 * m2 * g / (m1 + m2), N = m1 * g;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1000 500', class: 'fig' }, host);
+    const yt = 230, xe = 640, R = 34;
+    const w1 = 150, h1 = 90, x1 = 300, y1 = yt - h1, yc = y1 + h1 / 2, cxp = xe + 30, cyp = yc + R;
+    nodo('rect', { x: 60, y: yt, width: xe - 60, height: 26, style: 'fill:var(--linea)' }, svg);
+    nodo('rect', { x: 90, y: yt + 26, width: 18, height: 240, style: 'fill:var(--linea)' }, svg);
+    nodo('rect', { x: xe - 50, y: yt + 26, width: 18, height: 240, style: 'fill:var(--linea)' }, svg);
+    nodo('line', { x1: xe, y1: yt, x2: cxp, y2: cyp, style: 'stroke:var(--tinta2);stroke-width:6' }, svg);
+    nodo('circle', { cx: cxp, cy: cyp, r: R, style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:4' }, svg);
+    const w2 = 90, h2 = 80, x2 = cxp + R - w2 / 2, y2 = 330;
+    nodo('line', { x1: x1 + w1, y1: yc, x2: cxp, y2: yc, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    nodo('line', { x1: cxp + R, y1: cyp, x2: cxp + R, y2: y2, style: 'stroke:var(--tinta);stroke-width:3' }, svg);
+    nodo('rect', { x: x1, y: y1, width: w1, height: h1, rx: 6, style: 'fill:var(--caso1)' }, svg);
+    nodo('rect', { x: x2, y: y2, width: w2, height: h2, rx: 6, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, x1 + w1 / 2, y1 + h1 / 2 + 10, '*m*₁', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, x2 + w2 / 2, y2 + h2 / 2 + 10, '*m*₂', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    const est = c => ({ 'font-size': 25, style: 'fill:' + c + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    if (paso >= 1) {                                                     /* un solo origen, sobre la mesa a la izquierda */
+      const O = [110, yt];
+      nodo('circle', { cx: O[0], cy: O[1], r: 9, style: 'fill:var(--tinta)' }, svg);
+      flecha(svg, O[0], O[1], O[0] + 150, O[1], 'var(--tinta)', 4);
+      flecha(svg, O[0], O[1], O[0], O[1] - 150 * sy, 'var(--tinta)', 4);
+      rotulo(svg, O[0] - 16, O[1] + 30, '*O*', Object.assign(est('var(--tinta)'), { 'text-anchor': 'end', 'font-size': 30 }));
+      rotulo(svg, O[0] + 160, O[1] - 10, '*x*', Object.assign(est('var(--tinta)'), { 'font-size': 30 }));
+      rotulo(svg, O[0] + 12, O[1] - 150 * sy + (sy > 0 ? 10 : 20), '*y*', Object.assign(est('var(--tinta)'), { 'font-size': 30 }));
+    }
+    if (paso >= 2) {                                                     /* fuerzas con su componente en el sistema elegido */
+      const c1 = [x1 + w1 / 2, yc], c2 = [x2 + w2 / 2, y2 + h2 / 2], sg = v => (v > 0 ? '+' : '−');
+      flecha(svg, c1[0] - 30, c1[1], c1[0] - 30, c1[1] + 120, 'var(--tinta)', 4);
+      rotulo(svg, c1[0] - 40, c1[1] + 130, (paso >= 3 ? sg(-sy) : '') + '*m*₁*g*', Object.assign(est('var(--tinta)'), { 'text-anchor': 'end' }));
+      flecha(svg, c1[0] + 40, c1[1], c1[0] + 40, c1[1] - 85, 'var(--res)', 4);
+      rotulo(svg, c1[0] + 50, c1[1] - 62, (paso >= 3 ? sg(sy) : '') + '*N*', est('var(--res)'));
+      flecha(svg, x1 + w1, yc + 22, x1 + w1 + 110, yc + 22, 'var(--mal)', 4);
+      rotulo(svg, x1 + w1 + 40, yc + 56, (paso >= 3 ? '+' : '') + '*T*', est('var(--mal)'));
+      flecha(svg, c2[0], c2[1], c2[0], c2[1] + 95, 'var(--tinta)', 4);
+      rotulo(svg, c2[0] + 10, c2[1] + 92, (paso >= 3 ? sg(-sy) : '') + '*m*₂*g*', est('var(--tinta)'));
+      flecha(svg, c2[0] + 60, y2, c2[0] + 60, y2 - 90, 'var(--mal)', 4);
+      rotulo(svg, c2[0] + 68, y2 - 50, (paso >= 3 ? sg(sy) : '') + '*T*', est('var(--mal)'));
+    }
+    if (paso >= 4) {
+      rotulo(svg, 60, 40, '*a* = ' + num(a, 2) + ' m/s² · *a*₁ₓ = +*a* · *a*₂ᵧ = ' + (sy > 0 ? '−' : '+') + '*a*', est('var(--res)'));
+      rotulo(svg, 60, 76, '*T* = ' + num(T, 2) + ' N · *N* = ' + num(N, 1) + ' N', est('var(--res)'));
+    }
+    R_('mt-m1v').textContent = num(m1, 1) + ' kg'; R_('mt-m2v').textContent = num(m2, 1) + ' kg';
+    R_('mt-lect').textContent = 'paso ' + paso + ' de 4 · y ' + (sy > 0 ? 'hacia arriba' : 'hacia abajo');
+  }
+  function cambiaY() {
+    $$('.mt-y1', sl).forEach(e => { e.style.display = sy > 0 ? '' : 'none'; });
+    $$('.mt-y2', sl).forEach(e => { e.style.display = sy > 0 ? 'none' : ''; });
+    pinta();
+  }
+  $$('#dp-metodo .btn[data-paso]').forEach(b => b.addEventListener('click', () => { paso = +b.dataset.paso; $$('#dp-metodo .btn[data-paso]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  $$('#dp-metodo .btn[data-y]').forEach(b => b.addEventListener('click', () => { sy = +b.dataset.y; $$('#dp-metodo .btn[data-y]').forEach(o => o.classList.toggle('on', o === b)); cambiaY(); }));
+  [r1, r2].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
+/* ═══ METODOLOGÍA: SOLUCIÓN DETALLADA (ventana emergente) ═════════════════ */
+(function () {
+  const btn = document.getElementById('mt-sol-btn'), modal = document.getElementById('mt-sol');
+  if (!btn || !modal) return;
+  const abre = () => { modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+})();
+
 /* ═══ BLOQUE CON FRICCIÓN ══════════════════════════════════════════════ */
 (function () {
   const host = document.getElementById('fr-fig');
@@ -2928,6 +3241,247 @@ const T_OSC = 2 * Math.PI;
     requestAnimationFrame(bucle);
   }
   rv.addEventListener('input', pinta); rr.addEventListener('input', pinta); pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ MOVIMIENTO CIRCULAR: TRIÁNGULOS SEMEJANTES (ventana emergente) ════ */
+(function () {
+  const disp = document.getElementById('cp-semej'), modal = document.getElementById('cp-tri');
+  if (!disp || !modal) return;
+  const R_ = id => document.getElementById(id), rd = R_('cp-dth');
+  function dibuja() {
+    const dth = +rd.value * Math.PI / 180, host = R_('cp-tri-fig'); host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1100 560', class: 'fig' }, host);
+    const est = c => ({ 'font-size': 28, style: 'fill:' + c + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* izquierda: posiciones */
+    const C = [260, 300], r = 210, a1 = Math.PI / 2 + dth / 2, a2 = Math.PI / 2 - dth / 2;
+    const P1 = [C[0] + r * Math.cos(a1), C[1] - r * Math.sin(a1)], P2 = [C[0] + r * Math.cos(a2), C[1] - r * Math.sin(a2)];
+    nodo('circle', { cx: C[0], cy: C[1], r: r, style: 'fill:none;stroke:var(--linea);stroke-width:3' }, svg);
+    nodo('polygon', { points: [C, P1, P2].map(p => p.join(',')).join(' '), style: 'fill:var(--caso1-50)' }, svg);
+    flecha(svg, C[0], C[1], P1[0], P1[1], 'var(--caso1)', 4); flecha(svg, C[0], C[1], P2[0], P2[1], 'var(--caso1)', 4);
+    flecha(svg, P1[0], P1[1], P2[0], P2[1], 'var(--res)', 4);
+    rotulo(svg, P1[0] - 50, (C[1] + P1[1]) / 2, '!r!₁', est('var(--caso1)'));
+    rotulo(svg, P2[0] + 14, (C[1] + P2[1]) / 2, '!r!₂', est('var(--caso1)'));
+    rotulo(svg, (P1[0] + P2[0]) / 2, P1[1] + 34, 'Δ!r!', Object.assign(est('var(--res)'), { 'text-anchor': 'middle' }));
+    nodo('path', { d: 'M ' + (C[0] + 60 * Math.cos(a1)) + ' ' + (C[1] - 60 * Math.sin(a1)) + ' A 60 60 0 0 1 ' + (C[0] + 60 * Math.cos(a2)) + ' ' + (C[1] - 60 * Math.sin(a2)), style: 'fill:none;stroke:var(--tinta);stroke-width:3' }, svg);
+    rotulo(svg, C[0], C[1] - 76, 'Δ*θ*', Object.assign(est('var(--tinta)'), { 'text-anchor': 'middle' }));
+    /* velocidades en P1 y P2: tangentes, de igual magnitud */
+    const L = 120, t1 = [Math.sin(a1), Math.cos(a1)], t2 = [Math.sin(a2), Math.cos(a2)];     /* sentido horario: de P1 a P2 */
+    flecha(svg, P1[0], P1[1], P1[0] + L * t1[0], P1[1] + L * t1[1], 'var(--caso2)', 4);
+    flecha(svg, P2[0], P2[1], P2[0] + L * t2[0], P2[1] + L * t2[1], 'var(--caso2)', 4);
+    rotulo(svg, P1[0] + L * t1[0] - 10, P1[1] + L * t1[1] - 14, '!v!₁', est('var(--caso2)'));
+    rotulo(svg, P2[0] + L * t2[0] + 4, P2[1] + L * t2[1] - 14, '!v!₂', est('var(--caso2)'));
+    rotulo(svg, C[0], 545, 'triángulo de posiciones: lados *r*, *r*, |Δ!r!|', Object.assign(est('var(--caso1)'), { 'text-anchor': 'middle', 'font-size': 23 }));
+    /* derecha: triángulo de velocidades con origen común */
+    const Q = [820, 330], Lv = 210, V1 = [Q[0] + Lv * t1[0], Q[1] + Lv * t1[1]], V2 = [Q[0] + Lv * t2[0], Q[1] + Lv * t2[1]];
+    nodo('polygon', { points: [Q, V1, V2].map(p => p.join(',')).join(' '), style: 'fill:var(--caso2-50)' }, svg);
+    flecha(svg, Q[0], Q[1], V1[0], V1[1], 'var(--caso2)', 4); flecha(svg, Q[0], Q[1], V2[0], V2[1], 'var(--caso2)', 4);
+    flecha(svg, V1[0], V1[1], V2[0], V2[1], 'var(--mal)', 4);
+    rotulo(svg, V1[0] - 12, V1[1] - 14, '!v!₁', Object.assign(est('var(--caso2)'), { 'text-anchor': 'end' }));
+    rotulo(svg, V2[0] + 12, V2[1] + 10, '!v!₂', est('var(--caso2)'));
+    rotulo(svg, (V1[0] + V2[0]) / 2 + 16, (V1[1] + V2[1]) / 2 + 8, 'Δ!v!', est('var(--mal)'));
+    const b1 = Math.atan2(-t1[1], t1[0]), b2 = Math.atan2(-t2[1], t2[0]);
+    nodo('path', { d: 'M ' + (Q[0] + 60 * Math.cos(b1)) + ' ' + (Q[1] - 60 * Math.sin(b1)) + ' A 60 60 0 0 1 ' + (Q[0] + 60 * Math.cos(b2)) + ' ' + (Q[1] - 60 * Math.sin(b2)), style: 'fill:none;stroke:var(--tinta);stroke-width:3' }, svg);
+    rotulo(svg, Q[0] + 80 * Math.cos((b1 + b2) / 2), Q[1] - 80 * Math.sin((b1 + b2) / 2) + 10, 'Δ*θ*', Object.assign(est('var(--tinta)'), { 'text-anchor': 'middle' }));
+    rotulo(svg, Q[0] - 60, 545, 'triángulo de velocidades: lados *v*, *v*, |Δ!v!|', Object.assign(est('var(--caso2)'), { 'text-anchor': 'middle', 'font-size': 23 }));
+    /* Δv apunta hacia el centro cuando Δθ → 0 */
+    R_('cp-dthv').textContent = rd.value + '°';
+    const q1 = Math.hypot(P2[0] - P1[0], P2[1] - P1[1]) / r, q2 = Math.hypot(V2[0] - V1[0], V2[1] - V1[1]) / Lv;
+    R_('cp-tri-lect').textContent = '|Δr|/r = ' + num(q1, 3) + ' y |Δv|/v = ' + num(q2, 3) + ': la misma razón, 2 sin(Δθ/2). Δv apunta hacia el centro.';
+  }
+  const abre = () => { dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  disp.addEventListener('click', abre);
+  disp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+  rd.addEventListener('input', dibuja);
+})();
+
+/* ═══ POSTULADO DEL CAMPO GRAVITACIONAL UNIVERSAL (mapa vectorial con sonda) ═ */
+(function () {
+  const host = document.getElementById('gv-fig');
+  if (!host) return;
+  const G = 6.674e-11, R_ = id => document.getElementById(id);
+  const C = { tierra: ['Tierra', 5.972e24, 6.371e6, '--caso1-50', '--caso1'], luna: ['Luna', 7.342e22, 1.737e6, '--linea', '--tinta2'], marte: ['Marte', 6.417e23, 3.39e6, '--caso2-50', '--caso2'], jupiter: ['Júpiter', 1.898e27, 6.991e7, '--caso2-50', '--caso2'] };
+  let k = 'tierra', P = [1.6, 0.9], arr = false;                       /* sonda, en radios del cuerpo */
+  const W = 1100, H = 620, cx = 550, cy = 310, esc = 110;               /* 1 radio = 110 px */
+  function pinta() {
+    const [n, M, R, fondo, borde] = C[k], g0 = G * M / (R * R);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* mapa de flechas: dirección hacia el centro, longitud según g (recortada) */
+    for (let i = -4; i <= 4; i++) for (let j = -2; j <= 2; j++) {
+      const x = i * 1.15, y = j * 1.15, r = Math.hypot(x, y);
+      if (r < 1.25) continue;
+      const L = Math.max(22, Math.min(70, 70 / (r * r) * 1.6)), ux = -x / r, uy = -y / r;   /* mínimo visible: la dirección siempre se ve */
+      const X = cx + x * esc, Y = cy - y * esc;
+      flecha(svg, X, Y, X + L * ux, Y - L * uy, 'var(--proy)', 2.5);
+    }
+    nodo('circle', { cx: cx, cy: cy, r: esc, style: 'fill:var(' + fondo + ');stroke:var(' + borde + ');stroke-width:4' }, svg);
+    rotulo(svg, cx, cy + 10, '*M*', { 'text-anchor': 'middle', 'font-size': 34, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, cx, cy + 46, n, { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT + ';font-weight:700' });
+    /* sonda */
+    let r = Math.hypot(P[0], P[1]); if (r < 1) { P = [P[0] / r, P[1] / r]; r = 1; }
+    const X = cx + P[0] * esc, Y = cy - P[1] * esc, g = g0 / (r * r), L = Math.min(180, 110 / (r * r) + 20);
+    nodo('line', { x1: cx, y1: cy, x2: X, y2: Y, style: 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    flecha(svg, cx, cy, cx + 0.55 * esc * P[0] / r, cy - 0.55 * esc * P[1] / r, 'var(--tinta2)', 3);
+    rotulo(svg, cx + 0.62 * esc * P[0] / r + 6, cy - 0.62 * esc * P[1] / r - 8, 'r̂', { 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH + ';font-weight:700' });
+    flecha(svg, X, Y, X - L * P[0] / r, Y + L * P[1] / r, 'var(--res)', 6);
+    nodo('circle', { cx: X, cy: Y, r: 12, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:4;cursor:grab' }, svg);
+    rotulo(svg, X + 18, Y - 18, '!g! = ' + num(g, 2) + ' m/s²', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:7px' });
+    rotulo(svg, X + 18, Y + 14, '*r* = ' + num(r, 2) + ' *R*', { 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    R_('gv-lect').textContent = n + ': g₀ = GM/R² = ' + num(g0, 2) + ' m/s² en la superficie';
+  }
+  const aP = ev => { const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; const p = pt.matrixTransform(svg.getScreenCTM().inverse()); return [Math.max(-4.8, Math.min(4.8, (p.x - cx) / esc)), Math.max(-2.6, Math.min(2.6, (cy - p.y) / esc))]; };
+  host.addEventListener('pointerdown', ev => { arr = true; host.setPointerCapture(ev.pointerId); P = aP(ev); pinta(); ev.preventDefault(); });
+  host.addEventListener('pointermove', ev => { if (arr) { P = aP(ev); pinta(); } });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
+  $$('#dp-campo-u .btn[data-c]').forEach(b => b.addEventListener('click', () => { k = b.dataset.c; $$('#dp-campo-u .btn[data-c]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  pinta();
+})();
+
+/* ═══ CAMPO GRAVITACIONAL DE LA TIERRA: DEL CENTRO A MÁS ALLÁ DE LA LUNA ═ */
+(function () {
+  const hc = document.getElementById('cg-cerca'), hl = document.getElementById('cg-lejos');
+  if (!hc) return;
+  const g0 = 9.8, R_ = id => document.getElementById(id), rr = R_('cg-r');
+  const g = x => x <= 1 ? g0 * x : g0 / (x * x);                       /* x = r/R */
+  const aLuna = 4 * Math.PI * Math.PI * 3.844e8 / Math.pow(27.32 * 86400, 2), xL = 3.844e8 / 6.371e6;
+  const sup = n => '10' + String(n).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  function pinta() {
+    const x = +rr.value, gx = g(x);
+    /* cerca: 0–4 R, lineal */
+    const A = ejes(hc, { W: 640, H: 520, x: [0, 4], y: [0, 11], xt: [0, 1, 2, 3, 4], yt: [0, 2, 4, 6, 8, 10], xl: '*r*/*R*', yl: '*g* (m/s²)', m: { l: 80, r: 16, t: 20, b: 60 } });
+    nodo('rect', { x: A.X(0), y: A.Y(11), width: A.X(1) - A.X(0), height: A.Y(0) - A.Y(11), style: 'fill:var(--caso1-50)' }, A.capa);
+    rotulo(A.capa, A.X(0.5), A.Y(10.3), 'Tierra', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+    const p1 = []; for (let i = 0; i <= 200; i++) { const u = 4 * i / 200; p1.push([u, g(u)]); }
+    polilinea(A, p1, 'stroke:var(--res);stroke-width:4');
+    rotulo(A.capa, A.X(0.42), A.Y(6.2), '∝ *r*', { 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(A.capa, A.X(1.9), A.Y(3.6), '∝ 1/*r*²', { 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    if (x <= 4) { nodo('circle', { cx: A.X(x), cy: A.Y(gx), r: 9, style: 'fill:var(--caso2)' }, A.capa); }
+    /* lejos: 1–80 R, logarítmica */
+    const B = ejes(hl, { W: 640, H: 520, x: [0, 80], y: [-3.2, 1.2], xt: [0, 20, 40, 60, 80], yt: [-3, -2, -1, 0, 1], fy: v => sup(v), xl: '*r*/*R*', yl: '*g* (m/s²)', m: { l: 80, r: 16, t: 20, b: 60 } });
+    const p2 = []; for (let i = 0; i <= 200; i++) { const u = 1 + 79 * i / 200; p2.push([u, Math.log10(g(u))]); }
+    polilinea(B, p2, 'stroke:var(--res);stroke-width:4');
+    nodo('circle', { cx: B.X(xL), cy: B.Y(Math.log10(aLuna)), r: 11, style: 'fill:var(--papel);stroke:var(--tinta);stroke-width:4' }, B.capa);
+    rotulo(B.capa, B.X(xL) - 14, B.Y(Math.log10(aLuna)) - 20, 'Luna (medida)', { 'text-anchor': 'end', 'font-size': 22, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    if (x >= 1) nodo('circle', { cx: B.X(x), cy: B.Y(Math.log10(gx)), r: 9, style: 'fill:var(--caso2)' }, B.capa);
+    R_('cg-rv').textContent = num(x, 2) + ' R';
+    R_('cg-lect').textContent = 'r = ' + num(x * 6371, 0) + ' km · g = ' + (gx >= 0.1 || gx === 0 ? num(gx, 2) : num(gx * 1000, 3) + '×10⁻³') + ' m/s²';
+  }
+  $$('#dp-campo .btn[data-r]').forEach(b => b.addEventListener('click', () => { rr.value = b.dataset.r; $$('#dp-campo .btn[data-r]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  rr.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ DEL CAMPO A LA FUERZA: LEY DE GRAVITACIÓN UNIVERSAL ═══════════════ */
+(function () {
+  const host = document.getElementById('ng-fig');
+  if (!host) return;
+  const G = 6.674e-11, R_ = id => document.getElementById(id), rM = R_('ng-M'), rm = R_('ng-m'), rr = R_('ng-r');
+  function pinta() {
+    const M = +rM.value, m = +rm.value, r = +rr.value, F = G * M * m / (r * r);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1100 460', class: 'fig' }, host), y = 250, esc = 260;
+    const xM = 550 - r * esc / 2, xm = 550 + r * esc / 2, RM = 30 + 6 * M, Rm = 30 + 6 * m;
+    flecha(svg, xM, y + 110, xm, y + 110, 'var(--tinta2)', 4);             /* vector r: de M a m */
+    rotulo(svg, (xM + xm) / 2, y + 140, '!r! (de *M* a *m*), *r* = ' + num(r, 2) + ' m', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FMATH });
+    nodo('circle', { cx: xM, cy: y, r: RM, style: 'fill:var(--caso1)' }, svg);
+    nodo('circle', { cx: xm, cy: y, r: Rm, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, xM, y + 10, '*M*', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, xm, y + 10, '*m*', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    const L = Math.min(150, 30 + 4e10 * F);                               /* longitud de las flechas */
+    flecha(svg, xM, y - RM - 40, xM + L, y - RM - 40, 'var(--res)', 5);
+    flecha(svg, xm, y - Rm - 40, xm - L, y - Rm - 40, 'var(--res)', 5);
+    rotulo(svg, xM, y - RM - 70, '!F!_*m*→*M*', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, xm, y - Rm - 70, '!F!_*M*→*m*', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    R_('ng-Mv').textContent = M + ' kg'; R_('ng-mv').textContent = m + ' kg'; R_('ng-rv').textContent = num(r, 2) + ' m';
+    const e = Math.floor(Math.log10(F)), c = F / Math.pow(10, e);
+    R_('ng-lect').textContent = 'F = ' + num(c, 2) + ' × 10' + String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]) + ' N (¡diminuta!)';
+  }
+  [rM, rm, rr].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
+/* ═══ ENERGÍA POTENCIAL GRAVITACIONAL Y PUNTO DE RETORNO ════════════════ */
+(function () {
+  const host = document.getElementById('ug-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rv = R_('ug-v'), vesc = 11.18;
+  function pinta() {
+    const v = +rv.value, e = (v / vesc) ** 2 - 1;                         /* E en unidades de G M m / R */
+    const A = ejes(host, { W: 1180, H: 560, x: [1, 10], y: [-1.05, 0.5], xt: [1, 2, 4, 6, 8, 10], yt: [-1, -0.5, 0, 0.5], fy: v2 => num(v2, 1), xl: '*r*/*R*', yl: '*U*, *E* (en *GM*_T*m*/*R*)' });
+    const pu = []; for (let i = 0; i <= 200; i++) { const x = 1 + 9 * i / 200; pu.push([x, -1 / x]); }
+    nodo('polygon', { points: [[1, -1.05]].concat(pu).concat([[10, -1.05]]).map(p => A.X(p[0]) + ',' + A.Y(p[1])).join(' '), style: 'fill:var(--caso1-50)' }, A.capa);
+    polilinea(A, pu, 'stroke:var(--caso1);stroke-width:4');
+    polilinea(A, [[1, 0], [10, 0]], 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 6');
+    rotulo(A.capa, A.X(7), A.Y(-1 / 7) + 34, '*U*(*r*) = −*GM*_T*m*/*r*', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700' });
+    /* energía total y punto de retorno */
+    const xr = e < 0 ? -1 / e : Infinity, xf = Math.min(10, xr);
+    polilinea(A, [[1, e], [xf, e]], 'stroke:var(--res);stroke-width:4');
+    rotulo(A.capa, A.X(1) + 12, A.Y(e) - 12, '*E* = *K* + *U*', { 'font-size': 24, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    flecha(A.capa, A.X(1), A.Y(-1), A.X(1), A.Y(e), 'var(--caso2)', 4);
+    rotulo(A.capa, A.X(1) + 12, A.Y((e - 1) / 2), '*K*₀', { 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+    if (xr <= 10) { nodo('circle', { cx: A.X(xr), cy: A.Y(e), r: 9, style: 'fill:var(--res)' }, A.capa); rotulo(A.capa, A.X(xr) + 10, A.Y(e) + 30, 'retorno', { 'font-size': 22, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700' }); }
+    R_('ug-vv').textContent = num(v, 1) + ' km/s';
+    R_('ug-lect').textContent = e < 0 ? 'E < 0: sube hasta ' + (xr < 100 ? num(xr, 2) + ' R (' + num((xr - 1) * 6371, 0) + ' km de altura)' : 'muy lejos') : 'E ≥ 0: escapa, nunca vuelve';
+  }
+  rv.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ VELOCIDAD DE ESCAPE ════════════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('es-fig');
+  if (!host) return;
+  const G = 6.674e-11, c = 2.998e8, R_ = id => document.getElementById(id), rf = R_('es-rf');
+  const C = { tierra: ['Tierra', 5.972e24, 6.371e6], luna: ['Luna', 7.342e22, 1.737e6], marte: ['Marte', 6.417e23, 3.39e6], jupiter: ['Júpiter', 1.898e27, 6.991e7], sol: ['Sol', 1.989e30, 6.957e8] };
+  let k = 'tierra';
+  const fmt = v => v >= 1e5 ? num(v / 1e3, 0) + ' km/s' : num(v / 1e3, 2) + ' km/s';
+  const fr = v => { const e = Math.floor(Math.log10(v)); return num(v / Math.pow(10, e), 2) + '×10' + String(e).replace('-', '⁻').replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]); };
+  function pinta() {
+    const [n, M, R0] = C[k], f = Math.pow(10, +rf.value), R = R0 * f, Rs = 2 * G * M / (c * c);
+    const vo = Math.sqrt(G * M / R), ve = Math.min(c, Math.sqrt(2 * G * M / R)), agujero = R <= Rs;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1000 420', class: 'fig' }, host);
+    const barra = (y, v, col, t) => { const w = Math.max(4, 600 * Math.log10(1 + v / 1e3) / Math.log10(1 + c / 1e3)); nodo('rect', { x: 200, y: y, width: w, height: 46, style: 'fill:' + col }, svg); rotulo(svg, 190, y + 32, t, { 'text-anchor': 'end', 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' }); rotulo(svg, 210 + w, y + 32, fmt(v), { 'font-size': 26, style: 'fill:' + col + ';font-family:' + FMATH + ';font-weight:700' }); };
+    barra(60, vo, 'var(--caso1)', 'orbital'); barra(140, ve, 'var(--res)', 'escape'); barra(220, c, 'var(--tinta2)', 'luz, c');
+    rotulo(svg, 500, 330, n + ': radio ' + (R >= 1e3 ? fr(R / 1e3) + ' km' : fr(R) + ' m') + ' · radio de Schwarzschild ' + (Rs >= 1e3 ? num(Rs / 1e3, 2) + ' km' : num(Rs * 1000, 1) + ' mm'), { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    if (agujero) rotulo(svg, 500, 385, '¡Agujero negro! Ni la luz escapa.', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--mal);font-family:' + FTXT + ';font-weight:800' });
+    R_('es-rfv').textContent = f === 1 ? 'real' : '×' + fr(f).replace('1,00×', '');
+    R_('es-lect').textContent = n + ' · escala logarítmica';
+  }
+  $$('#dp-escape .btn[data-c]').forEach(b => b.addEventListener('click', () => { k = b.dataset.c; rf.value = 0; $$('#dp-escape .btn[data-c]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  rf.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CENTRO DE MASAS TIERRA–LUNA: EL NUEVO ORIGEN ════════════════════════ */
+(function () {
+  const cv = document.getElementById('ct-cv');
+  if (!cv) return;
+  const gc = cv.getContext('2d'), W = cv.width, H = cv.height, R_ = id => document.getElementById(id), rq = R_('ct-q');
+  let fase = 0, ult = 0;
+  function dibuja() {
+    const q = Math.pow(10, +rq.value), M = 1 + q, d = 420;                 /* separación en píxeles */
+    const rT = d * q / M, rL = d / M, cx = W / 2, cy = H / 2;
+    gc.fillStyle = tok('--panel'); gc.fillRect(0, 0, W, H);
+    gc.strokeStyle = tok('--linea'); gc.lineWidth = 2; gc.setLineDash([6, 8]);
+    gc.beginPath(); gc.arc(cx, cy, rL, 0, 7); gc.stroke();
+    if (rT > 2) { gc.beginPath(); gc.arc(cx, cy, rT, 0, 7); gc.stroke(); }
+    gc.setLineDash([]);
+    const xT = cx - rT * Math.cos(fase), yT = cy + rT * Math.sin(fase), xL = cx + rL * Math.cos(fase), yL = cy - rL * Math.sin(fase);
+    gc.strokeStyle = tok('--tinta2'); gc.lineWidth = 2; gc.beginPath(); gc.moveTo(xT, yT); gc.lineTo(xL, yL); gc.stroke();
+    gc.fillStyle = tok('--caso1'); gc.beginPath(); gc.arc(xT, yT, 46, 0, 7); gc.fill();
+    gc.fillStyle = tok('--tinta2'); gc.beginPath(); gc.arc(xL, yL, Math.max(8, 46 * Math.cbrt(q)), 0, 7); gc.fill();
+    gc.strokeStyle = tok('--caso2'); gc.lineWidth = 4; gc.beginPath(); gc.moveTo(cx - 14, cy); gc.lineTo(cx + 14, cy); gc.moveTo(cx, cy - 14); gc.lineTo(cx, cy + 14); gc.stroke();
+    gc.font = '700 24px ' + FTXT; gc.fillStyle = tok('--caso2'); gc.fillText('+ CM (origen)', cx - 60, cy + 84);
+    gc.fillStyle = tok('--caso1'); gc.fillText('Tierra', xT - 34, yT - 56);
+    gc.fillStyle = tok('--tinta2'); gc.fillText(q < 0.02 ? 'Luna' : 'm', xL + 20, yL - 16);
+    R_('ct-qv').textContent = q >= 0.995 ? '1' : '1/' + num(1 / q, 0);
+    R_('ct-lect').textContent = 'CM a ' + num(3.844e5 * q / M, 0) + ' km del centro de la Tierra (separación de la Luna)';
+  }
+  function bucle(ms) { if (activa(cv) && ms - ult > 30) { fase += 0.012 * Math.min(3, (ms - ult) / 30); ult = ms; dibuja(); } requestAnimationFrame(bucle); }
+  $$('#dp-cm-tl .btn[data-q]').forEach(b => b.addEventListener('click', () => { rq.value = b.dataset.q; $$('#dp-cm-tl .btn[data-q]').forEach(o => o.classList.toggle('on', o === b)); dibuja(); }));
+  rq.addEventListener('input', dibuja); dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ÓRBITA TIERRA–LUNA (Euler-Cromer en el sistema del CM) ═══════════ */
