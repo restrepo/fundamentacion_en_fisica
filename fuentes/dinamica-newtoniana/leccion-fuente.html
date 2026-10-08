@@ -339,12 +339,15 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 #pc-canon .pc-col > * + *{margin-top:6px}
 
 /* postulado del campo gravitacional */
-#dp-campo-u .gv-col > * + *{margin-top:8px}
-#dp-campo-u .caja{padding:4px 14px;font-size:25px}
-#dp-campo-u .caja h3{font-size:24px;margin:0}
-#dp-campo-u .gv-ctl{margin:4px 0}
-#dp-campo-u .btn{font-size:23px;padding:7px 12px}
-#dp-campo-u .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%);bottom:18px;margin:0;font-size:22px;font-style:italic;font-weight:600;color:var(--res);white-space:nowrap;z-index:5}
+#dp-luna .lu-col > * + *{margin-top:8px}
+#dp-luna .caja{padding:4px 14px;font-size:25px}
+#dp-luna .caja h3{font-size:24px;margin:0}
+#dp-luna .lu-ctl{margin:4px 0}
+#gv-pop .gl-dcl-txt{font-size:26px;line-height:1.4}
+#gv-pop .gv-ctl{margin:6px 0}
+#gv-pop .btn{font-size:23px;padding:7px 12px}
+#gv-pop .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
 
 /* solución detallada de la metodología */
 #dp-metodo .mt-sol{cursor:pointer}
@@ -1137,9 +1140,55 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       </div>
     </div>
   </div>
+  <p class="puente">→ ¿Y si lo que hace girar es la gravedad?</p>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-lineas" data-label="Por qué el campo decae como 1/r²" data-speaker-notes="§ 3.8. Justificación del 1/r² sin el concepto de fuerza y solo con álgebra: el campo se representa con líneas que llegan a la masa; su número es proporcional a M; la intensidad del campo (la aceleración de caída libre, en m/s²) es la densidad de líneas sobre una esfera, N/(4πr²). A doble distancia, las mismas líneas se reparten en 4 veces el área. Con N = 4πGM queda g = GM/r²; como las líneas apuntan hacia M, en forma vectorial g(r) = −GM r̂/r² = −GM r/r³. Con g₀ = 9,8 m/s² en R se obtiene GM. ↓ revela 4 pasos.">
+<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="pc-canon" data-label="El cañón de Newton" data-speaker-notes="§ 3.8. El cañón de Newton conectado con el movimiento circular: cerca de la superficie la caída libre g₀ hace de aceleración centrípeta, g₀ = v²/R, así que v_orb = √(g₀R) ≈ 7,9 km/s. Caer y orbitar son lo mismo. Deja abierta la pregunta: ¿la Luna también cae? Con más rapidez la órbita se alarga y, desde unos 11,2 km/s, la bala escapa: se explica más adelante con la energía potencial.">
+  <p class="ceja">§ 3.8 · Gravitación universal · Práctica</p>
+  <h2 class="titulo">El cañón de Newton: caer y orbitar son lo mismo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Disparo horizontal desde lo alto de una montaña</span><span class="val" id="cn-lect"></span></div>
+      <canvas class="lienzo" id="cn-cv" width="1120" height="640"></canvas>
+      <label class="ctrl"><span>Rapidez del disparo</span><input type="range" id="cn-v" min="3" max="12" step="0.1" value="6"><span class="v" id="cn-vv"></span></label>
+      <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
+    </figure>
+    <div class="pila pc-col">
+      <p style="margin:0;font-size:26px">Cerca de la superficie, todo cae hacia el centro de la Tierra con la misma aceleración, \(g_0 = \qty{9{,}8}{m/s^2}\), sea cual sea su masa. La bala cae siempre; si va lo bastante rápido, <strong>cae al mismo ritmo con que la superficie se curva</strong> y nunca llega al suelo.</p>
+      <div class="kf" style="padding:2px 14px;font-size:26px">\[ \underbrace{g_0}_{\text{caída libre}} = \underbrace{\dfrac{v^{2}}{R_T}}_{\text{centrípeta}} \;\Longrightarrow\; v_{\text{orb}} = \sqrt{g_0\,R_T} \]</div>
+      <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">Ensaya en la simulación: ¿con qué rapidez mínima, en km/s, la bala da la vuelta a la Tierra sin caer?</div>
+        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
+        <div class="pc-exp" style="display:none"><p style="margin:0">Cerca de la superficie, \(r \approx R = \qty{6371}{km}\) y \(g = \qty{9{,}8}{m/s^2}\): \(v_{\text{orb}} = \sqrt{(\qty{9{,}8}{m/s^2})(6{,}371\times 10^{6}\,\mathrm{m})} \approx \qty{7{,}9}{km/s}\). Es la aceleración centrípeta de la diapositiva anterior, \(a_c = v^{2}/r\), puesta por el campo.</p></div></div>
+      <p class="nota" style="margin:0">Con más rapidez la órbita se alarga, y desde unos \(\qty{11{,}2}{km/s}\) la bala ya no vuelve: lo explicaremos con la energía potencial gravitacional.</p>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button><a class="btn" href="https://colab.research.google.com/drive/1QK7xAYEgQcU3TP7SJtPEcoAToBYHeJ2-?usp=sharing" target="_blank" rel="noopener">Cuaderno gravedad.ipynb (Colab) ↗</a></div>
+    </div>
+  </div>
+  <p class="puente">→ ¿La Luna también cae? ¿Con qué aceleración?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-luna" data-label="La prueba de la Luna" data-speaker-notes="§ 3.8. La prueba de la Luna (Newton, 1666–1687): la Luna es una bala de cañón a 60 radios terrestres. Su aceleración centrípeta, 4π²r/T² ≈ 2,72×10⁻³ m/s², es g₀/3600 = g₀/60². En un segundo la manzana cae 4,9 m y la Luna 1,36 mm. Explorador: se prueba la hipótesis g ∝ 1/rⁿ; solo n = 2 da el valor medido. Pregunta puente: ¿por qué el cuadrado? ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">La prueba de la Luna: también cae, pero 3600 veces menos</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Manzana y Luna caen hacia el centro de la Tierra (no a escala)</span><span class="val" id="lu-lect"></span></div>
+      <div id="lu-fig"></div>
+      <label class="ctrl lu-ctl"><span>Hipótesis \(g \propto 1/r^{n}\)</span><input type="range" id="lu-n" min="0" max="3" step="0.25" value="1"><span class="v" id="lu-nv"></span></label>
+    </figure>
+    <div class="pila lu-col">
+      <div class="caja neutra frag"><h3>1 · La Luna es una bala de cañón</h3>Gira en una órbita casi circular de radio \(r_L = 3{,}84\times 10^{8}\,\mathrm{m}\) en \(T = 27{,}3\) días; su aceleración centrípeta es
+        \[ a_L = \dfrac{v^{2}}{r_L} = \dfrac{4\pi^{2} r_L}{T^{2}} \approx 2{,}72\times 10^{-3}\,\mathrm{m/s^2} \,. \]</div>
+      <div class="caja neutra frag"><h3>2 · Comparar con la manzana</h3>
+        \[ \dfrac{g_0}{a_L} = \dfrac{9{,}8}{2{,}72\times 10^{-3}} \approx 3600 = 60^{2}, \qquad \dfrac{r_L}{R_T} \approx 60 \,. \]
+        A 60 veces la distancia, la aceleración es \(60^{2}\) veces menor.</div>
+      <div class="kf frag" style="padding:2px 14px;font-size:26px"><h3 style="margin:0;font-size:24px">3 · La misma gravedad, debilitada con la distancia</h3>\[ g(r) = g_0 \left( \dfrac{R_T}{r} \right)^{2} \]
+        <p class="nota" style="margin:0">Ensaya otros exponentes en el explorador: solo \(n = 2\) da lo que mide la Luna.</p></div>
+    </div>
+  </div>
+  <p class="puente">→ ¿Por qué el inverso del <em>cuadrado</em>?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-lineas" data-label="Por qué el campo decae como 1/r²" data-speaker-notes="§ 3.8. Responde a la prueba de la Luna: ¿por qué el cuadrado? Justificación del 1/r² sin el concepto de fuerza y solo con álgebra: el campo se representa con líneas que llegan a la masa; su número es proporcional a M; la intensidad del campo (la aceleración de caída libre, en m/s²) es la densidad de líneas sobre una esfera, N/(4πr²). A doble distancia, las mismas líneas se reparten en 4 veces el área. Con N = 4πGM queda g = GM/r²; como las líneas apuntan hacia M, en forma vectorial g(r) = −GM r̂/r² = −GM r/r³. Con g₀ = 9,8 m/s² en R se obtiene GM. Clic en el paso 4: explorador del campo vectorial con sonda y equipotenciales (Tierra, Luna, Marte, Júpiter). ↓ revela 4 pasos.">
   <p class="ceja">§ 3.8 · Gravitación universal · ¿Por qué \(1/r^{2}\)?</p>
   <h2 class="titulo">El campo como líneas: la misma cantidad repartida en más área</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
@@ -1154,55 +1203,31 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="caja neutra frag"><h3>2 · Dibujar el campo con líneas</h3>Llegan radialmente a \(M\), en número \(N \propto M\). Más apretadas, campo más intenso: \(g = \dfrac{\text{líneas}}{\text{área}}\).</div>
       <div class="caja neutra frag"><h3>3 · Área de una esfera: \(4\pi r^{2}\)</h3>Las \(N\) líneas cruzan toda esfera centrada en \(M\); a distancia doble el área es \(4\) veces mayor, a triple \(9\) veces:
         \[ g(r) = \dfrac{N}{4\pi r^{2}} \;\propto\; \dfrac{M}{r^{2}}. \]</div>
-      <div class="kf frag" style="padding:2px 14px;font-size:25px"><h3 style="margin:0;font-size:24px">4 · Calibrar y dar la dirección</h3>\[ N = 4\pi G M: \quad \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r} \]
+      <div class="kf frag ug-pasoclic" id="gv-pop-btn" role="button" tabindex="0" title="Explorar el campo vectorial" style="padding:2px 14px;font-size:25px"><h3 style="margin:0;font-size:24px">4 · Calibrar y dar la dirección <span class="mt-mas">(ⓘ clic: explorar el campo)</span></h3>\[ N = 4\pi G M: \quad \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r} \]
         <p class="nota" style="margin:0">Las líneas apuntan <strong>hacia</strong> \(M\) y \(\hat{\vect{r}}\) sale de \(M\): de ahí el signo menos. En la superficie, \(g_0 = G M_T/R_T^{2} = \qty{9{,}8}{m/s^2}\); a \(2R_T\), \(\qty{2{,}45}{m/s^2}\).</p></div>
     </div>
   </div>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo-u" data-label="El campo gravitacional universal" data-speaker-notes="§ 3.8. Postulado: toda masa M crea a su alrededor un campo vectorial g(r) = −GM r/r³, dirigido hacia M. Una masa m en ese punto siente F = m g. En la superficie de la Tierra, g₀ = GM_T/R_T² ≈ 9,8 m/s². Explorador: arrastra la sonda; cambia el cuerpo; los círculos discontinuos son equipotenciales (Φ = −GM/r constante), perpendiculares a g. ↓ revela 3 pasos.">
-  <p class="ceja">§ 3.8 · Gravitación universal</p>
-  <h2 class="titulo">Postulado: toda masa crea un campo gravitacional</h2>
-  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Campo \(\vect{g}\) alrededor de un cuerpo · arrastra la sonda</span><span class="val" id="gv-lect"></span></div>
+  <div class="gl-dcl-fondo" id="gv-pop" style="display:none" role="dialog" aria-modal="true" aria-labelledby="gv-pop-tit">
+    <div class="gl-dcl-caja" style="width:1960px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="gv-pop-tit">El campo vectorial \(\vect{g}(\vect{r}) = -\,G M\,\vect{r}/r^{3}\) · arrastra la sonda</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
+        <div class="gv-fig-pop"><div class="svghd"><span>Campo \(\vect{g}\) alrededor de un cuerpo · arrastra la sonda</span><span class="val" id="gv-lect"></span></div>
       <div id="gv-fig" class="pb-arr"></div>
       <div class="fila-btn gv-ctl"><label class="chk p"><input type="checkbox" id="gv-eq" checked>Equipotenciales</label><span class="sub">Cuerpo:</span><button type="button" class="btn on" data-c="tierra">Tierra</button><button type="button" class="btn" data-c="luna">Luna</button><button type="button" class="btn" data-c="marte">Marte</button><button type="button" class="btn" data-c="jupiter">Júpiter</button></div>
-    </figure>
-    <div class="pila gv-col">
-      <div class="caja neutra frag"><h3>1 · El postulado</h3>Toda masa \(M\) crea a su alrededor un <strong>campo vectorial</strong>; a una distancia \(r\) de su centro,
-        \[ \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r}, \]
-        con \(\hat{\vect{r}}\) el vector unitario que apunta desde el centro de \(M\) hacia el punto.</div>
-      <div class="caja neutra frag"><h3>2 · Qué dice</h3>Apunta <strong>hacia</strong> \(M\) (signo menos), crece con \(M\) y decae como \(1/r^{2}\). Es universal: una masa \(m\) colocada allí siente \(\vect{F} = m\,\vect{g}\), sea una manzana o la Luna. Las <strong>equipotenciales</strong>, donde \(\Phi = -GM/r\) es constante, son círculos (esferas en el espacio) <strong>perpendiculares</strong> a \(\vect{g}\); con saltos iguales de \(\Phi\) se separan a medida que el campo se debilita.</div>
-      <div class="kf frag" style="padding:4px 14px;font-size:27px"><h3 style="margin:0;font-size:24px">3 · En la superficie de la Tierra</h3>\[ g_0 = \dfrac{G M_T}{R_T^{2}} = \dfrac{(6{,}674\times 10^{-11})(5{,}972\times 10^{24})}{(6{,}371\times 10^{6})^{2}}\,\mathrm{\dfrac{m}{s^{2}}} \approx \resalta{9{,}8\,\mathrm{m/s^2}} \]
+    </div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 8px"><strong>Qué dice.</strong> Apunta <strong>hacia</strong> \(M\) (signo menos), crece con \(M\) y decae como \(1/r^{2}\). Es universal: una masa \(m\) colocada allí siente \(\vect{F} = m\,\vect{g}\), sea una manzana o la Luna. Las <strong>equipotenciales</strong>, donde \(\Phi = -GM/r\) es constante, son círculos (esferas en el espacio) <strong>perpendiculares</strong> a \(\vect{g}\); con saltos iguales de \(\Phi\) se separan a medida que el campo se debilita.</p>
+          <div class="kf" style="padding:4px 14px;font-size:25px"><strong>En la superficie de la Tierra.</strong>\[ g_0 = \dfrac{G M_T}{R_T^{2}} = \dfrac{(6{,}674\times 10^{-11})(5{,}972\times 10^{24})}{(6{,}371\times 10^{6})^{2}}\,\mathrm{\dfrac{m}{s^{2}}} \approx \resalta{9{,}8\,\mathrm{m/s^2}} \]
         <p class="nota" style="margin:0">Es la aceleración de caída libre que usamos desde la § 3.4: \(\vect{g} = -\,g_0\,\hat{\vect{y}}\) cerca del suelo.</p></div>
+        </div>
+      </div>
     </div>
   </div>
+  <p class="puente">→ ¿Y dentro de la Tierra?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="pc-canon" data-label="El cañón de Newton" data-speaker-notes="§ 3.8. El cañón de Newton conectado con el movimiento circular: el campo gravitacional g(r) = GM/r² da la aceleración centrípeta de la órbita, g(r) = v²/r, así que v_orb = √(GM/r) ≈ 7,9 km/s cerca de la superficie. Con más rapidez la órbita se alarga y, desde unos 11,2 km/s, la bala escapa: se explica más adelante con la energía potencial.">
-  <p class="ceja">§ 3.8 · Gravitación universal · Práctica</p>
-  <h2 class="titulo">El cañón de Newton: el campo hace de fuerza centrípeta</h2>
-  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
-    <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Disparo horizontal desde lo alto de una montaña</span><span class="val" id="cn-lect"></span></div>
-      <canvas class="lienzo" id="cn-cv" width="1120" height="640"></canvas>
-      <label class="ctrl"><span>Rapidez del disparo</span><input type="range" id="cn-v" min="3" max="12" step="0.1" value="6"><span class="v" id="cn-vv"></span></label>
-      <div class="fila-btn"><button type="button" class="btn prim" id="cn-play">▶ Disparar</button></div>
-    </figure>
-    <div class="pila pc-col">
-      <p style="margin:0;font-size:26px">A una distancia \(r\) del centro, el <strong>campo gravitacional</strong> de la Tierra le da a la bala una aceleración hacia el centro, \(g(r) = G M_T/r^{2}\), sea cual sea su masa. La bala cae siempre; si va lo bastante rápido, <strong>cae al mismo ritmo con que la superficie se curva</strong>.</p>
-      <div class="kf" style="padding:2px 14px;font-size:26px">\[ \underbrace{g(r)}_{\text{campo}} = \underbrace{\dfrac{v^{2}}{r}}_{\text{centrípeta}} \;\Longrightarrow\; v_{\text{orb}} = \sqrt{g(r)\,r} = \sqrt{\dfrac{G M_T}{r}} \]</div>
-      <div class="pc-q" data-ok-num="7.9" data-tol="0.15"><div class="pr-q">Ensaya en la simulación: ¿con qué rapidez mínima, en km/s, la bala da la vuelta a la Tierra sin caer?</div>
-        <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
-        <div class="pc-exp" style="display:none"><p style="margin:0">Cerca de la superficie, \(r \approx R = \qty{6371}{km}\) y \(g = \qty{9{,}8}{m/s^2}\): \(v_{\text{orb}} = \sqrt{(\qty{9{,}8}{m/s^2})(6{,}371\times 10^{6}\,\mathrm{m})} \approx \qty{7{,}9}{km/s}\). Es la aceleración centrípeta de la diapositiva anterior, \(a_c = v^{2}/r\), puesta por el campo.</p></div></div>
-      <p class="nota" style="margin:0">Con más rapidez la órbita se alarga, y desde unos \(\qty{11{,}2}{km/s}\) la bala ya no vuelve: lo explicaremos con la energía potencial gravitacional.</p>
-      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verexp">Ver explicación</button><a class="btn" href="https://colab.research.google.com/drive/1QK7xAYEgQcU3TP7SJtPEcoAToBYHeJ2-?usp=sharing" target="_blank" rel="noopener">Cuaderno gravedad.ipynb (Colab) ↗</a></div>
-    </div>
-  </div>
-</section>
-
-<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo" data-label="El campo gravitacional de la Tierra" data-speaker-notes="§ 3.8. Campo gravitacional: fuerza por unidad de masa de una masa de prueba pequeña. Dentro de la Tierra (densidad uniforme) crece linealmente desde cero en el centro; fuera decrece como 1/r². La prueba de la Luna lo confirma a 60 radios terrestres. ↓ revela 3 pasos.">
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo" data-label="El campo gravitacional de la Tierra" data-speaker-notes="§ 3.8. El campo de la Tierra en todo el espacio: fuera decrece como 1/r² (lo que confirmó la Luna a 60 radios); dentro, con densidad uniforme, solo atrae la masa interior y el campo crece linealmente desde cero en el centro. ↓ revela 2 pasos.">
   <p class="ceja">§ 3.8 · Gravitación universal</p>
   <h2 class="titulo">El campo gravitacional, del centro de la Tierra a la Luna</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,1fr)">
@@ -1213,15 +1238,15 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="fila-btn cg-ctl"><button type="button" class="btn" data-r="0">Centro</button><button type="button" class="btn on" data-r="1">Superficie</button><button type="button" class="btn" data-r="1.063">Estación espacial</button><button type="button" class="btn" data-r="6.62">Geoestacionario</button><button type="button" class="btn" data-r="60.3">Luna</button></div>
     </figure>
     <div class="pila cg-col">
-      <div class="caja neutra frag"><h3>1 · Campo: fuerza por unidad de masa</h3>Con una <strong>masa de prueba</strong> \(m\) pequeña (que no mueve a la Tierra), el campo es \(\vect{g} = \vect{F}/m\): no depende de \(m\) y apunta hacia el centro. En la superficie, \(g_0 = \qty{9{,}8}{m/s^2}\).</div>
-      <div class="caja neutra frag"><h3>2 · Fuera de la Tierra: inverso del cuadrado</h3>
-        \[ g(r) = g_0 \left(\dfrac{R}{r}\right)^{2} = \dfrac{G M_T}{r^{2}}, \qquad r \ge R. \]
-        Prueba de la Luna: a \(60{,}3\,R\), \(g = 9{,}8/60{,}3^{2} \approx 2{,}70\times 10^{-3}\,\mathrm{m/s^2}\), y su aceleración centrípeta medida es \(4\pi^{2} r/T^{2} \approx 2{,}72\times 10^{-3}\,\mathrm{m/s^2}\).</div>
-      <div class="caja c2 frag"><h3>3 · Dentro: solo cuenta la masa interior</h3>Con densidad uniforme, a una distancia \(r\) solo atrae la masa de radio \(r\), que crece como \(r^{3}\):
+      <div class="caja neutra frag"><h3>1 · Fuera de la Tierra: inverso del cuadrado</h3>
+        \[ g(r) = g_0 \left(\dfrac{R}{r}\right)^{2} = \dfrac{G M_T}{r^{2}}, \qquad r \ge R \,. \]
+        Es lo que midió la Luna: a \(60{,}3\,R\), \(g \approx 2{,}7\times 10^{-3}\,\mathrm{m/s^2}\). Explora la estación espacial y la órbita geoestacionaria.</div>
+      <div class="caja c2 frag"><h3>2 · Dentro: solo cuenta la masa interior</h3>Con densidad uniforme, a una distancia \(r\) solo atrae la masa de radio \(r\), que crece como \(r^{3}\):
         \[ g(r) = g_0\,\dfrac{r}{R}, \qquad r \le R. \]
         En el centro, \(g = 0\): la atracción se cancela en todas direcciones.</div>
     </div>
   </div>
+  <p class="puente">→ ¿Qué fuerza siente una masa en ese campo?</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-newton-grav" data-label="La ley de gravitación universal" data-speaker-notes="§ 3.8. De campo a fuerza, en forma vectorial: F_M→m = m g_M(r) = −GMm r/r³ = −F_m→M, con r de M a m. Por acción y reacción la fuerza es simétrica en las dos masas: ley de gravitación universal (Principia, 1687). G la midió Cavendish en 1798. ↓ revela 3 pasos.">
@@ -1244,6 +1269,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="kf frag" style="padding:4px 14px;font-size:28px">\[ G = 6{,}674\times 10^{-11}\,\mathrm{N\,m^2/kg^2} \]<p class="nota" style="margin:0">\(G\) es tan pequeña que entre objetos cotidianos la fuerza es diminuta: la midió Cavendish en 1798 con una balanza de torsión. Con ella se «pesó» la Tierra: \(M_T = g_0 R^{2}/G \approx 6\times 10^{24}\,\mathrm{kg}\).</p></div>
     </div>
   </div>
+  <p class="puente">→ ¿Cuánta energía cuesta alejarse de la Tierra?</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-epot" data-label="Energía potencial gravitacional" data-speaker-notes="§ 3.8. Energía potencial gravitacional U(r) = −GMm/r, con cero en el infinito; cerca de la superficie se reduce a mgh. Con la energía total E = K + U se ve hasta dónde sube un proyectil: si E < 0 hay punto de retorno; si E ≥ 0 no vuelve. ↓ revela 3 pasos.">
@@ -1313,6 +1339,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       </div>
     </div>
   </div>
+  <p class="puente">→ ¿Con qué rapidez ya no se vuelve?</p>
 </section>
 
 <section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="dp-escape" data-label="Velocidad de escape" data-speaker-notes="§ 3.8. Velocidad de escape: E = 0, v_esc = √(2GM/R) = √2 v_orb. Comparación entre cuerpos; si v_esc alcanzara c, el cuerpo sería un agujero negro: radio de Schwarzschild 2GM/c² (la Tierra cabría en 9 mm).">
@@ -1326,13 +1353,14 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <label class="ctrl es-ctl"><span>Comprimir el cuerpo: radio</span><input type="range" id="es-rf" min="-10" max="0" step="0.1" value="0"><span class="v" id="es-rfv"></span></label>
     </figure>
     <div class="pila es-col">
-      \[ E = \tfrac12 m v^{2} - \dfrac{G M m}{R} = 0 \;\Longrightarrow\; \resalta{v_{\text{esc}} = \sqrt{\dfrac{2 G M}{R}} = \sqrt{2}\;v_{\text{orb}}} \]
+      <div style="font-size:27px">\[ E = \tfrac12 m v^{2} - \dfrac{G M m}{R} = 0 \;\Longrightarrow\; \resalta{v_{\text{esc}} = \sqrt{\dfrac{2 G M}{R}} = \sqrt{2}\;v_{\text{orb}}} \]</div>
       <div class="pc-q" data-ok-num="11.2" data-tol="0.2"><div class="pr-q">Con \(g_0 = \qty{9{,}8}{m/s^2}\) y \(R = \qty{6371}{km}\), ¿cuál es la velocidad de escape de la Tierra, en km/s? (Pista: \(G M_T = g_0 R^{2}\).)</div>
         <div class="fila-btn"><input class="pr-in pc-in" type="text" placeholder="km/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div><div class="pc-fb"></div>
         <div class="pc-exp" style="display:none"><p style="margin:0">\(v_{\text{esc}} = \sqrt{2 g_0 R} = \sqrt{2\,(9{,}8)(6{,}371\times 10^{6})}\,\mathrm{m/s} \approx \qty{11{,}2}{km/s}\), es decir, \(\sqrt{2}\times\qty{7{,}9}{km/s}\). En el cañón de Newton, a partir de esa rapidez la bala ya no vuelve.</p></div></div>
       <div class="caja c2" style="padding:4px 14px"><p style="margin:0;font-size:24px"><strong>No depende de la masa del proyectil</strong> ni de la dirección del lanzamiento (sin aire). Si un cuerpo se comprime hasta que \(v_{\text{esc}} = c\), ni la luz escapa: es un <strong>agujero negro</strong>, de radio \(R_s = 2GM/c^{2}\).</p></div>
     </div>
   </div>
+  <p class="puente">→ Si la Luna atrae a la Tierra, ¿la Tierra también se mueve?</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-cm-tl" data-label="El centro de masas Tierra–Luna" data-speaker-notes="Antes de la simulación: hasta aquí la masa de prueba era tan pequeña que el centro de masas coincidía con el centro de la Tierra. La Luna no es pequeña (1/81 de la Tierra): el sistema de coordenadas se pone en el centro de masas Tierra–Luna, a unos 4670 km del centro de la Tierra, y se trabaja con la posición relativa r. ↓ revela 3 pasos.">
@@ -3382,6 +3410,58 @@ const T_OSC = 2 * Math.PI;
   rd.addEventListener('input', dibuja);
 })();
 
+/* ═══ LA PRUEBA DE LA LUNA: g ∝ 1/rⁿ, ¿qué n? ═══════════════════════════ */
+(function () {
+  const host = document.getElementById('lu-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rn = R_('lu-n');
+  const g0 = 9.8, xL = 3.844e8 / 6.371e6, aL = 4 * Math.PI * Math.PI * 3.844e8 / Math.pow(27.32 * 86400, 2);
+  const W = 1100, H = 600, ex = 120, ey = 200, eR = 46, lx = 930;         /* Tierra en (ex,ey); Luna en lx (no a escala) */
+  const sup = v => { const e = Math.floor(Math.log10(v)), m = v / Math.pow(10, e); return num(m, 2) + '×10' + String(e).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]); };
+  const est = 'font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px';
+  function pinta() {
+    const n = +rn.value, pred = g0 / Math.pow(xL, n), ok = Math.abs(Math.log10(pred / aL)) < 0.05;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* órbita de la Luna: arco de circunferencia centrada en la Tierra */
+    const rO = lx - ex;
+    nodo('path', { d: 'M ' + (ex + rO * Math.cos(0.42)) + ' ' + (ey - rO * Math.sin(0.42)) + ' A ' + rO + ' ' + rO + ' 0 0 1 ' + (ex + rO * Math.cos(-0.2)) + ' ' + (ey - rO * Math.sin(-0.2)), style: 'fill:none;stroke:var(--linea);stroke-width:3;stroke-dasharray:10 8' }, svg);
+    nodo('line', { x1: ex, y1: ey, x2: lx, y2: ey, style: 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    rotulo(svg, (ex + lx) / 2, ey - 12, '*r*_L ≈ 60 *R*_T', { 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);' + est });
+    /* Tierra y manzana */
+    nodo('circle', { cx: ex, cy: ey, r: eR, style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4' }, svg);
+    rotulo(svg, ex, ey + 8, 'Tierra', { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+    const mx = ex, my = ey - eR - 58;
+    nodo('circle', { cx: mx, cy: my, r: 11, style: 'fill:var(--caso2)' }, svg);
+    flecha(svg, mx, my + 12, mx, ey - eR - 4, 'var(--res)', 5);
+    rotulo(svg, mx + 20, my - 4, '*g*_0 = 9,8 m/s²', { 'font-size': 24, style: 'fill:var(--res);' + est });
+    rotulo(svg, mx + 20, my + 24, 'cae 4,9 m en 1 s', { 'font-size': 21, style: 'fill:var(--tinta);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* Luna: velocidad tangente y caída hacia la Tierra */
+    nodo('circle', { cx: lx, cy: ey, r: 20, style: 'fill:var(--linea);stroke:var(--tinta2);stroke-width:3' }, svg);
+    rotulo(svg, lx, ey + 52, 'Luna', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT + ';font-weight:700' });
+    flecha(svg, lx, ey - 22, lx, ey - 120, 'var(--proy)', 4);
+    rotulo(svg, lx + 12, ey - 104, '!v!', { 'font-size': 26, style: 'fill:var(--proy);' + est });
+    flecha(svg, lx - 22, ey + 2, lx - 112, ey + 2, 'var(--res)', 5);
+    rotulo(svg, lx - 150, ey + 36, '*a*_L = 2,72×10⁻³ m/s²', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--res);' + est });
+    rotulo(svg, lx - 150, ey + 64, 'cae 1,36 mm en 1 s', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--tinta);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* escala logarítmica: predicción g0/60,3ⁿ frente a lo medido */
+    const y0 = 470, xa = 90, xb = 1050, lmin = -5, lmax = 1.5, X = v => xa + (Math.log10(v) - lmin) / (lmax - lmin) * (xb - xa);
+    nodo('line', { x1: xa, y1: y0, x2: xb, y2: y0, style: 'stroke:var(--tinta);stroke-width:2' }, svg);
+    for (let e = -5; e <= 1; e++) { const x = X(Math.pow(10, e)); nodo('line', { x1: x, y1: y0 - 8, x2: x, y2: y0 + 8, style: 'stroke:var(--tinta);stroke-width:2' }, svg); rotulo(svg, x, y0 + 34, sup(Math.pow(10, e)).replace(/^1,00×/, ''), { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FMATH }); }
+    rotulo(svg, xb, y0 + 66, 'aceleración (m/s², escala logarítmica)', { 'text-anchor': 'end', 'font-size': 19, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    const xm = X(aL), xp = X(pred), xg = X(g0);
+    nodo('circle', { cx: xg, cy: y0, r: 9, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, xg, y0 - 18, 'manzana', { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+    nodo('rect', { x: xm - 7, y: y0 - 30, width: 14, height: 60, style: 'fill:var(--caso1);opacity:.85' }, svg);
+    rotulo(svg, xm, y0 - 40, 'Luna medida', { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+    nodo('path', { d: 'M ' + xp + ' ' + (y0 - 46) + ' l -12 -20 l 24 0 z', style: 'fill:' + (ok ? 'var(--caso1)' : 'var(--res)') }, svg);
+    rotulo(svg, xp, y0 - 74, 'predicción con *n* = ' + num(n, 2), { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:' + (ok ? 'var(--caso1)' : 'var(--res)') + ';' + est });
+    R_('lu-nv').textContent = num(n, 2);
+    R_('lu-lect').textContent = 'g₀/60,3ⁿ = ' + sup(pred) + ' m/s² · medido ' + sup(aL) + (ok ? ' ✓' : ' ✗');
+  }
+  rn.addEventListener('input', pinta); pinta();
+})();
+
 /* ═══ POR QUÉ 1/r²: DENSIDAD DE LÍNEAS DE CAMPO SOBRE UNA ESFERA ════════ */
 (function () {
   const host = document.getElementById('ln-fig');
@@ -3426,7 +3506,7 @@ const T_OSC = 2 * Math.PI;
   [rr, rm].forEach(x => x.addEventListener('input', pinta)); pinta();
 })();
 
-/* ═══ POSTULADO DEL CAMPO GRAVITACIONAL UNIVERSAL (mapa vectorial con sonda) ═ */
+/* ═══ CAMPO GRAVITACIONAL VECTORIAL (ventana de dp-lineas: mapa con sonda) ═ */
 (function () {
   const host = document.getElementById('gv-fig');
   if (!host) return;
@@ -3475,7 +3555,16 @@ const T_OSC = 2 * Math.PI;
   host.addEventListener('pointerdown', ev => { arr = true; host.setPointerCapture(ev.pointerId); P = aP(ev); pinta(); ev.preventDefault(); });
   host.addEventListener('pointermove', ev => { if (arr) { P = aP(ev); pinta(); } });
   ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
-  $$('#dp-campo-u .btn[data-c]').forEach(b => b.addEventListener('click', () => { k = b.dataset.c; $$('#dp-campo-u .btn[data-c]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  $$('#gv-pop .btn[data-c]').forEach(b => b.addEventListener('click', () => { k = b.dataset.c; $$('#gv-pop .btn[data-c]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  const btn = R_('gv-pop-btn'), modal = R_('gv-pop');
+  const abre = () => { pinta(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
   eq.addEventListener('change', pinta);
   pinta();
 })();
