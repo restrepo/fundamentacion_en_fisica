@@ -328,6 +328,16 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .mt-mas{font-size:21px;color:var(--res);font-weight:600}
 #mt-sol .gl-dcl-txt{font-size:26px;line-height:1.4}
 #mt-sol .gl-dcl-g{gap:50px}
+#dp-epot .ug-pasoclic{cursor:pointer}
+#dp-epot .ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
+#ug-w .gl-dcl-txt{font-size:26px;line-height:1.4}
+#ug-h .gl-dcl-txt{font-size:26px;line-height:1.4}
+#ug-h-lect b{color:var(--res)}
+#dp-lineas .ln-col > * + *{margin-top:8px}
+#dp-lineas .caja{padding:3px 14px;font-size:24px}
+#dp-lineas .caja h3{font-size:24px;margin:0}
+#dp-lineas .ctrl{margin:2px 0}
+#dp-lineas .ln-ctl{margin:4px 0}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1521,20 +1531,41 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo-u" data-label="El campo gravitacional universal" data-speaker-notes="§ 3.8. Postulado: toda masa M crea a su alrededor un campo vectorial g(r) = −GM r/r³, dirigido hacia M. Una masa m en ese punto siente F = m g. En la superficie de la Tierra, g₀ = GM_T/R_T² ≈ 9,8 m/s². Explorador: arrastra la sonda; cambia el cuerpo. ↓ revela 3 pasos.">
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-lineas" data-label="Por qué el campo decae como 1/r²" data-speaker-notes="§ 3.8. Justificación del 1/r² sin el concepto de fuerza y solo con álgebra: el campo se representa con líneas que llegan a la masa; su número es proporcional a M; la intensidad del campo (la aceleración de caída libre, en m/s²) es la densidad de líneas sobre una esfera, N/(4πr²). A doble distancia, las mismas líneas se reparten en 4 veces el área. Con N = 4πGM queda g = GM/r²; como las líneas apuntan hacia M, en forma vectorial g(r) = −GM r̂/r² = −GM r/r³. Con g₀ = 9,8 m/s² en R se obtiene GM. ↓ revela 4 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal · ¿Por qué \(1/r^{2}\)?</p>
+  <h2 class="titulo">El campo como líneas: la misma cantidad repartida en más área</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Las líneas que cruzan una ventana a \(r\) se reparten en \(4\) a \(2r\) y en \(9\) a \(3r\)</span><span class="val" id="ln-lect"></span></div>
+      <div id="ln-fig"></div>
+      <label class="ctrl ln-ctl"><span>Distancia \(r\) (en radios \(R\))</span><input type="range" id="ln-r" min="1" max="4" step="0.05" value="2"><span class="v" id="ln-rv"></span></label>
+      <label class="ctrl ln-ctl"><span>Masa \(M\), líneas \(N\)</span><input type="range" id="ln-m" min="1" max="4" step="1" value="2"><span class="v" id="ln-mv"></span></label>
+    </figure>
+    <div class="pila ln-col">
+      <div class="caja neutra frag"><h3>1 · Qué medimos: una aceleración</h3>Todo cae con la misma aceleración, \(g_0 = \qty{9{,}8}{m/s^2}\), sin importar su masa: esa aceleración <strong>es</strong> el campo, sin hablar de fuerzas.</div>
+      <div class="caja neutra frag"><h3>2 · Dibujar el campo con líneas</h3>Llegan radialmente a \(M\), en número \(N \propto M\). Más apretadas, campo más intenso: \(g = \dfrac{\text{líneas}}{\text{área}}\).</div>
+      <div class="caja neutra frag"><h3>3 · Área de una esfera: \(4\pi r^{2}\)</h3>Las \(N\) líneas cruzan toda esfera centrada en \(M\); a distancia doble el área es \(4\) veces mayor, a triple \(9\) veces:
+        \[ g(r) = \dfrac{N}{4\pi r^{2}} \;\propto\; \dfrac{M}{r^{2}}. \]</div>
+      <div class="kf frag" style="padding:2px 14px;font-size:25px"><h3 style="margin:0;font-size:24px">4 · Calibrar y dar la dirección</h3>\[ N = 4\pi G M: \quad \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r} \]
+        <p class="nota" style="margin:0">Las líneas apuntan <strong>hacia</strong> \(M\) y \(\hat{\vect{r}}\) sale de \(M\): de ahí el signo menos. En la superficie, \(g_0 = G M_T/R_T^{2} = \qty{9{,}8}{m/s^2}\); a \(2R_T\), \(\qty{2{,}45}{m/s^2}\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-campo-u" data-label="El campo gravitacional universal" data-speaker-notes="§ 3.8. Postulado: toda masa M crea a su alrededor un campo vectorial g(r) = −GM r/r³, dirigido hacia M. Una masa m en ese punto siente F = m g. En la superficie de la Tierra, g₀ = GM_T/R_T² ≈ 9,8 m/s². Explorador: arrastra la sonda; cambia el cuerpo; los círculos discontinuos son equipotenciales (Φ = −GM/r constante), perpendiculares a g. ↓ revela 3 pasos.">
   <p class="ceja">§ 3.8 · Gravitación universal</p>
   <h2 class="titulo">Postulado: toda masa crea un campo gravitacional</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Campo \(\vect{g}\) alrededor de un cuerpo · arrastra la sonda</span><span class="val" id="gv-lect"></span></div>
       <div id="gv-fig" class="pb-arr"></div>
-      <div class="fila-btn gv-ctl"><span class="sub">Cuerpo:</span><button type="button" class="btn on" data-c="tierra">Tierra</button><button type="button" class="btn" data-c="luna">Luna</button><button type="button" class="btn" data-c="marte">Marte</button><button type="button" class="btn" data-c="jupiter">Júpiter</button></div>
+      <div class="fila-btn gv-ctl"><label class="chk p"><input type="checkbox" id="gv-eq" checked>Equipotenciales</label><span class="sub">Cuerpo:</span><button type="button" class="btn on" data-c="tierra">Tierra</button><button type="button" class="btn" data-c="luna">Luna</button><button type="button" class="btn" data-c="marte">Marte</button><button type="button" class="btn" data-c="jupiter">Júpiter</button></div>
     </figure>
     <div class="pila gv-col">
       <div class="caja neutra frag"><h3>1 · El postulado</h3>Toda masa \(M\) crea a su alrededor un <strong>campo vectorial</strong>; a una distancia \(r\) de su centro,
         \[ \vect{g}(\vect{r}) = -\,\dfrac{G M}{r^{2}}\,\hat{\vect{r}} = -\,\dfrac{G M}{r^{3}}\,\vect{r}, \]
         con \(\hat{\vect{r}}\) el vector unitario que apunta desde el centro de \(M\) hacia el punto.</div>
-      <div class="caja neutra frag"><h3>2 · Qué dice</h3>Apunta <strong>hacia</strong> \(M\) (signo menos), crece con \(M\) y decae como \(1/r^{2}\). Es universal: una masa \(m\) colocada allí siente \(\vect{F} = m\,\vect{g}\), sea una manzana o la Luna.</div>
+      <div class="caja neutra frag"><h3>2 · Qué dice</h3>Apunta <strong>hacia</strong> \(M\) (signo menos), crece con \(M\) y decae como \(1/r^{2}\). Es universal: una masa \(m\) colocada allí siente \(\vect{F} = m\,\vect{g}\), sea una manzana o la Luna. Las <strong>equipotenciales</strong>, donde \(\Phi = -GM/r\) es constante, son círculos (esferas en el espacio) <strong>perpendiculares</strong> a \(\vect{g}\); con saltos iguales de \(\Phi\) se separan a medida que el campo se debilita.</div>
       <div class="kf frag" style="padding:4px 14px;font-size:27px"><h3 style="margin:0;font-size:24px">3 · En la superficie de la Tierra</h3>\[ g_0 = \dfrac{G M_T}{R_T^{2}} = \dfrac{(6{,}674\times 10^{-11})(5{,}972\times 10^{24})}{(6{,}371\times 10^{6})^{2}}\,\mathrm{\dfrac{m}{s^{2}}} \approx \resalta{9{,}8\,\mathrm{m/s^2}} \]
         <p class="nota" style="margin:0">Es la aceleración de caída libre que usamos desde la § 3.4: \(\vect{g} = -\,g_0\,\hat{\vect{y}}\) cerca del suelo.</p></div>
     </div>
@@ -1617,13 +1648,61 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <label class="ctrl ug-ctl"><span>Rapidez de lanzamiento</span><input type="range" id="ug-v" min="1" max="13" step="0.1" value="8"><span class="v" id="ug-vv"></span></label>
     </figure>
     <div class="pila ug-col">
-      <div class="caja neutra frag"><h3>1 · Trabajo contra el campo</h3>Llevar \(m\) desde \(r\) hasta muy lejos cuesta un trabajo finito. Tomando \(U = 0\) en el infinito:
+      <div class="caja neutra frag ug-pasoclic" id="ug-w-btn" role="button" tabindex="0" title="Ver la deducción"><h3>1 · Trabajo contra el campo <span class="mt-mas">(ⓘ clic: deducción)</span></h3>Llevar \(m\) desde \(r\) hasta muy lejos cuesta un trabajo finito. Tomando \(U = 0\) en el infinito:
         \[ U(r) = -\,\dfrac{G M_T\,m}{r}. \]
         Es negativa: la masa está «atrapada» en un pozo.</div>
-      <div class="caja neutra frag"><h3>2 · Cerca de la superficie: \(mgh\)</h3>Para una altura \(h \ll R\):
+      <div class="caja neutra frag ug-pasoclic" id="ug-h-btn" role="button" tabindex="0" title="Ver la demostración"><h3>2 · Cerca de la superficie: \(mgh\) <span class="mt-mas">(ⓘ clic: demostración)</span></h3>Para una altura \(h \ll R\):
         \[ U(R + h) - U(R) \approx \dfrac{G M_T m}{R^{2}}\,h = m g_0 h. \]
         La fórmula de siempre es el caso de alturas pequeñas.</div>
       <div class="caja c2 frag"><h3>3 · Energía total y punto de retorno</h3>\(E = \tfrac12 m v^{2} - G M_T m/r\) se conserva. El proyectil sube hasta que \(U = E\). Si \(E \lt 0\), vuelve; si \(E \ge 0\), <strong>nunca vuelve</strong>.</div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="ug-w" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ug-w-tit">
+    <div class="gl-dcl-caja" style="width:2080px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="ug-w-tit">De dónde sale \(U(r) = -GMm/r\): el trabajo contra el campo</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)">
+        <div><div id="ug-w-fig"></div>
+          <label class="ctrl"><span>Número de tramos \(n\)</span><input type="range" id="ug-n" min="1" max="12" step="1" value="3"><span class="v" id="ug-nv"></span></label>
+          <p class="nota" id="ug-w-lect" style="margin:0"></p></div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>1 · El problema.</strong> Para subir \(m\) de \(r_1\) a \(r_2\) despacio hay que hacer una fuerza igual y opuesta a la gravedad, \(F(r) = GMm/r^{2}\). Pero <strong>no es constante</strong>: no basta con \(W = F\,d\).</p>
+          <p style="margin:0 0 6px"><strong>2 · Tramos cortos.</strong> Entre \(r_i\) y \(r_{i+1}\) la fuerza casi no cambia; se usa su valor en la media geométrica, \(GMm/(r_i\,r_{i+1})\):
+            \[ W_i = \dfrac{G M m}{r_i\,r_{i+1}}\,(r_{i+1} - r_i) = G M m \left( \dfrac{1}{r_i} - \dfrac{1}{r_{i+1}} \right). \]</p>
+          <p style="margin:0 0 6px"><strong>3 · Sumar: casi todo se cancela.</strong>
+            \[ W = G M m \left[ \left(\tfrac{1}{r_1} - \tfrac{1}{r_{a}}\right) + \left(\tfrac{1}{r_{a}} - \tfrac{1}{r_{b}}\right) + \dots \right] = G M m \left( \dfrac{1}{r_1} - \dfrac{1}{r_2} \right), \]
+            el mismo resultado con cualquier número de tramos (es el área bajo la curva \(F(r)\), la integral \(\int_{r_1}^{r_2} F\,dr\)).</p>
+          <p style="margin:0"><strong>4 · La energía potencial.</strong> Ese trabajo queda guardado: \(U(r_2) - U(r_1) = W = \dfrac{GMm}{r_1} - \dfrac{GMm}{r_2}\). Con \(r_2 \to \infty\) y \(U(\infty) = 0\):
+            \[ \resalta{U(r) = -\,\dfrac{G M m}{r}}. \]</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="ug-h" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ug-h-tit">
+    <div class="gl-dcl-caja" style="width:1900px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="ug-h-tit">De \(U(r) = -GMm/r\) a \(m g_0 h\): los pasos que faltan</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>1 · La diferencia.</strong> Se evalúa \(U(r)\) arriba, en \(r = R + h\), y abajo, en \(r = R\):
+            \[ U(R+h) - U(R) = -\dfrac{G M m}{R+h} + \dfrac{G M m}{R} = G M m \left( \dfrac{1}{R} - \dfrac{1}{R+h} \right). \]</p>
+          <p style="margin:0 0 6px"><strong>2 · Denominador común.</strong>
+            \[ \dfrac{1}{R} - \dfrac{1}{R+h} = \dfrac{(R+h) - R}{R\,(R+h)} = \dfrac{h}{R\,(R+h)} . \]</p>
+          <p style="margin:0 0 6px"><strong>3 · Sacar \(R^{2}\).</strong> Como \(R\,(R+h) = R^{2}\left(1 + \tfrac{h}{R}\right)\), el resultado <strong>exacto</strong> es
+            \[ U(R+h) - U(R) = \dfrac{G M}{R^{2}}\; m\, h\; \dfrac{1}{1 + h/R} = \dfrac{m\, g_0\, h}{1 + h/R}, \]
+            con \(g_0 = GM/R^{2}\), el campo en la superficie.</p>
+          <p style="margin:0"><strong>4 · Alturas pequeñas.</strong> Si \(h \ll R\), entonces \(h/R \approx 0\) y \(1 + h/R \approx 1\):
+            \[ \resalta{U(R+h) - U(R) \approx m\, g_0\, h} . \]
+            La constante \(-GMm/R\) desaparece en la diferencia: solo importan los <strong>cambios</strong> de energía potencial, por eso cerca del suelo podemos poner el cero donde queramos.</p>
+        </div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>5 · ¿Qué tan buena es?</strong> Del paso 3, \(m g_0 h\) es mayor que el valor exacto en el factor \(1 + h/R\): el error relativo es
+            \[ \dfrac{m g_0 h - \Delta U}{\Delta U} = \dfrac{h}{R} . \]</p>
+          <label class="ctrl"><span>Altura \(h\)</span><input type="range" id="ug-hh" min="0" max="4" step="0.01" value="2.6"><span class="v" id="ug-hv"></span></label>
+          <div class="kf" style="padding:6px 14px;font-size:25px;line-height:1.5" id="ug-h-lect"></div>
+          <p class="nota" style="margin:6px 0 0">Valores por kilogramo, con \(g_0 = \qty{9{,}8}{m/s^2}\) y \(R = \qty{6371}{km}\). Para un edificio o el Everest, \(mgh\) es excelente; para la Estación Espacial ya se nota; para la Luna hay que usar \(-GMm/r\).</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -3976,18 +4055,72 @@ const T_OSC = 2 * Math.PI;
   rd.addEventListener('input', dibuja);
 })();
 
+/* ═══ POR QUÉ 1/r²: DENSIDAD DE LÍNEAS DE CAMPO SOBRE UNA ESFERA ════════ */
+(function () {
+  const host = document.getElementById('ln-fig');
+  if (!host) return;
+  const g0 = 9.8, R_ = id => document.getElementById(id), rr = R_('ln-r'), rm = R_('ln-m');
+  function pinta() {
+    const r = +rr.value, M = +rm.value, n = M + 1, N = n * n;   /* n × n líneas por la ventana a r = 1 */                       /* líneas que cruzan la ventana a r = 1 */
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1100 560', class: 'fig' }, host);
+    /* fuente a la izquierda; ventanas cuadradas en perspectiva a r = 1, 2, 3 */
+    const S = [90, 300], ex = 230, lado = 70;                              /* r = 1 → 230 px; lado de la ventana a r = 1 */
+    nodo('circle', { cx: S[0], cy: S[1], r: 14 + 6 * M, style: 'fill:var(--caso1)' }, svg);
+    rotulo(svg, S[0], S[1] + 9, '*M*', { 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-family:' + FMATH + ';font-weight:700' });
+    const ventana = (k, op, col) => {                                    /* cuadrado de lado k·lado a distancia k */
+      const x = S[0] + k * ex, h = k * lado, dx = 0.45 * h;               /* perspectiva oblicua */
+      const P = [[x, S[1] - h], [x + dx, S[1] - h - dx * 0.5], [x + dx, S[1] + h - dx * 0.5], [x, S[1] + h]];
+      nodo('polygon', { points: P.map(p => p.join(',')).join(' '), style: 'fill:' + col + ';fill-opacity:' + op + ';stroke:var(--tinta2);stroke-width:2' }, svg);
+      for (let i = 1; i < k; i++) {                                      /* subdivisión en k × k cuadritos */
+        const f = i / k;
+        nodo('line', { x1: x + dx * f, y1: S[1] - h - dx * 0.5 * f, x2: x + dx * f, y2: S[1] + h - dx * 0.5 * f, style: 'stroke:var(--tinta2);stroke-width:1' }, svg);
+        nodo('line', { x1: x, y1: S[1] - h + 2 * h * f, x2: x + dx, y2: S[1] - h + 2 * h * f - dx * 0.5, style: 'stroke:var(--tinta2);stroke-width:1' }, svg);
+      }
+      rotulo(svg, x + dx / 2, S[1] + h + 34, k === 1 ? '*r*: 1 cuadro' : k + '*r*: ' + k * k + ' cuadros', { 'text-anchor': 'middle', 'font-size': 23, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' });
+    };
+    [1, 2, 3].forEach(k => ventana(k, 0.12, 'var(--linea)'));
+    /* líneas de campo: llegan a M desde la ventana más lejana (N por la ventana a r = 1) */
+    const x3 = S[0] + 3 * ex, h3 = 3 * lado, dx3 = 0.45 * h3;
+    for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) {
+      const u = (i + 0.5) / n, v = (j + 0.5) / n;
+      const px = x3 + dx3 * u, py = S[1] - h3 + 2 * h3 * v - dx3 * 0.5 * u;
+      flecha(svg, px, py, S[0] + 0.12 * (px - S[0]), S[1] + 0.12 * (py - S[1]), 'var(--res)', 2.2);
+    }
+    /* ventana móvil a la distancia r del deslizador */
+    const xr = S[0] + Math.min(r, 3.3) * ex, hr = r * lado, dxr = 0.45 * hr;
+    if (r <= 3.3) nodo('polygon', { points: [[xr, S[1] - hr], [xr + dxr, S[1] - hr - dxr * 0.5], [xr + dxr, S[1] + hr - dxr * 0.5], [xr, S[1] + hr]].map(p => p.join(',')).join(' '), style: 'fill:var(--caso2);fill-opacity:.18;stroke:var(--caso2);stroke-width:4' }, svg);
+    const dens = N / (r * r), g = g0 * (N / 9) / (r * r);              /* N = 9 ↔ Tierra */
+    rotulo(svg, 40, 44, 'Por la ventana pasan siempre las mismas ' + N + ' líneas; el área crece como *r*²', { 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:600' });
+    rotulo(svg, 40, 80, 'densidad = ' + N + '/' + num(r * r, 2) + ' = ' + num(dens, 2) + ' líneas por cuadro', { 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+    R_('ln-rv').textContent = num(r, 2) + ' R'; R_('ln-mv').textContent = 'N = ' + N;
+    R_('ln-lect').textContent = 'g = ' + num(g, 2) + ' m/s² · masa = ' + num(N / 9, 2) + ' × Tierra';
+  }
+  [rr, rm].forEach(x => x.addEventListener('input', pinta)); pinta();
+})();
+
 /* ═══ POSTULADO DEL CAMPO GRAVITACIONAL UNIVERSAL (mapa vectorial con sonda) ═ */
 (function () {
   const host = document.getElementById('gv-fig');
   if (!host) return;
   const G = 6.674e-11, R_ = id => document.getElementById(id);
   const C = { tierra: ['Tierra', 5.972e24, 6.371e6, '--caso1-50', '--caso1'], luna: ['Luna', 7.342e22, 1.737e6, '--linea', '--tinta2'], marte: ['Marte', 6.417e23, 3.39e6, '--caso2-50', '--caso2'], jupiter: ['Júpiter', 1.898e27, 6.991e7, '--caso2-50', '--caso2'] };
+  const eq = R_('gv-eq');
   let k = 'tierra', P = [1.6, 0.9], arr = false;                       /* sonda, en radios del cuerpo */
   const W = 1100, H = 620, cx = 550, cy = 310, esc = 110;               /* 1 radio = 110 px */
   function pinta() {
     const [n, M, R, fondo, borde] = C[k], g0 = G * M / (R * R);
     host.innerHTML = '';
     const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* círculos equipotenciales: Φ = −GM/r constante, con saltos iguales de Φ (0,2 GM/R) */
+    if (eq.checked) {
+      const clip = nodo('clipPath', { id: 'gv-clip' }, svg); nodo('rect', { x: 0, y: 0, width: W, height: H }, clip);
+      const ge = nodo('g', { 'clip-path': 'url(#gv-clip)' }, svg);
+      [0.9, 0.7, 0.5, 0.3].forEach((u, n) => {
+        nodo('circle', { cx: cx, cy: cy, r: esc / u, style: 'fill:none;stroke:var(--caso1);stroke-width:2.5;stroke-dasharray:10 7;opacity:' + (0.95 - n * 0.12) }, ge);
+        rotulo(ge, cx + esc / u * 0.71 + 6, cy + esc / u * 0.71 + 4, 'Φ = −' + num(u, 2) + ' *GM*/*R*', { 'font-size': 19, style: 'fill:var(--caso1);font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:5px' });
+      });
+    }
     /* mapa de flechas: dirección hacia el centro, longitud según g (recortada) */
     for (let i = -4; i <= 4; i++) for (let j = -2; j <= 2; j++) {
       const x = i * 1.15, y = j * 1.15, r = Math.hypot(x, y);
@@ -4016,6 +4149,7 @@ const T_OSC = 2 * Math.PI;
   host.addEventListener('pointermove', ev => { if (arr) { P = aP(ev); pinta(); } });
   ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
   $$('#dp-campo-u .btn[data-c]').forEach(b => b.addEventListener('click', () => { k = b.dataset.c; $$('#dp-campo-u .btn[data-c]').forEach(o => o.classList.toggle('on', o === b)); pinta(); }));
+  eq.addEventListener('change', pinta);
   pinta();
 })();
 
@@ -4104,6 +4238,63 @@ const T_OSC = 2 * Math.PI;
     R_('ug-lect').textContent = e < 0 ? 'E < 0: sube hasta ' + (xr < 100 ? num(xr, 2) + ' R (' + num((xr - 1) * 6371, 0) + ' km de altura)' : 'muy lejos') : 'E ≥ 0: escapa, nunca vuelve';
   }
   rv.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ ENERGÍA POTENCIAL: DEDUCCIÓN POR EL TRABAJO (ventana emergente) ═══ */
+(function () {
+  const btn = document.getElementById('ug-w-btn'), modal = document.getElementById('ug-w');
+  if (!btn || !modal) return;
+  const R_ = id => document.getElementById(id), rn = R_('ug-n'), r1 = 1, r2 = 4;   /* en radios terrestres, F en GMm/R² */
+  function dibuja() {
+    const n = +rn.value, host = R_('ug-w-fig');
+    const A = ejes(host, { W: 1000, H: 560, x: [0.5, 4.5], y: [0, 1.1], xt: [1, 2, 3, 4], yt: [0, 0.25, 0.5, 0.75, 1], fy: v => num(v, 2), xl: '*r*/*R*', yl: '*F* (en *GMm*/*R*²)' });
+    /* tramos con altura en la media geométrica (geométricamente espaciados) */
+    const q = Math.pow(r2 / r1, 1 / n); let suma = 0;
+    for (let i = 0; i < n; i++) {
+      const a = r1 * Math.pow(q, i), b = a * q, h = 1 / (a * b);
+      suma += h * (b - a);
+      nodo('rect', { x: A.X(a), y: A.Y(h), width: A.X(b) - A.X(a), height: A.Y(0) - A.Y(h), style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:2' }, A.capa);
+    }
+    const p = []; for (let i = 0; i <= 200; i++) { const x = 0.96 + 3.54 * i / 200; p.push([x, 1 / (x * x)]); }
+    polilinea(A, p, 'stroke:var(--res);stroke-width:4');
+    rotulo(A.capa, A.X(1.55), A.Y(0.62), '*F*(*r*) = *GMm*/*r*²', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    [[r1, '*r*₁'], [r2, '*r*₂']].forEach(([x, t]) => rotulo(A.capa, A.X(x), A.Y(0) - 10, t, { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' }));
+    R_('ug-nv').textContent = n;
+    R_('ug-w-lect').textContent = 'Suma de ' + n + (n === 1 ? ' tramo' : ' tramos') + ' = ' + num(suma, 4) + ' · exacto 1/r₁ − 1/r₂ = ' + num(1 / r1 - 1 / r2, 4) + ' (en GMm/R): ¡iguales con cualquier n!';
+  }
+  const abre = () => { dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+  rn.addEventListener('input', dibuja);
+})();
+
+/* ═══ ENERGÍA POTENCIAL: DE −GMm/r A mgh (ventana emergente) ═══ */
+(function () {
+  const btn = document.getElementById('ug-h-btn'), modal = document.getElementById('ug-h');
+  if (!btn || !modal) return;
+  const R_ = id => document.getElementById(id), hh = R_('ug-hh'), g0 = 9.8, R = 6371;   /* R en km */
+  const ref = h => h < 3 ? 'como un edificio alto' : h < 20 ? 'como el Everest (8,8 km)' : h < 1000 ? 'como la Estación Espacial (≈ 400 km)' : 'ya comparable con el radio terrestre';
+  const fmt = j => j >= 1e6 ? num(j / 1e6, 2) + ' MJ' : j >= 1e3 ? num(j / 1e3, 2) + ' kJ' : num(j, 1) + ' J';
+  function pinta() {
+    const h = Math.pow(10, +hh.value), hm = h * 1e3;            /* km, m */
+    const aprox = g0 * hm, exacto = aprox / (1 + h / R), err = 100 * h / R;
+    R_('ug-hv').textContent = (h < 10 ? num(h, 1) : num(h, 0)) + ' km';
+    R_('ug-h-lect').innerHTML = 'Exacto: Δ<i>U</i>/<i>m</i> = ' + fmt(exacto) + '/kg<br>Aproximado: <i>g</i><sub>0</sub><i>h</i> = ' + fmt(aprox) + '/kg<br>Error: <b>' + (err < 0.1 ? num(err, 3) : err < 10 ? num(err, 2) : num(err, 0)) + ' %</b> · altura ' + ref(h);
+  }
+  const abre = () => { pinta(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+  hh.addEventListener('input', pinta);
 })();
 
 /* ═══ VELOCIDAD DE ESCAPE ════════════════════════════════════════════════ */
