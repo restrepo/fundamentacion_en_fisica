@@ -182,6 +182,15 @@ dl.glosa dd{margin:0;font-size:29px}
 .os-ley .l-tl::before{background:var(--res)} .os-ley .l-s::before{background:var(--caso2)} .os-ley .l-t::before{background:var(--tinta)}
 
 /* caída libre, movimiento parabólico e independencia */
+#dp-paradoja .gp-col > * + *{margin-top:8px}
+#dp-paradoja .caja{padding:4px 14px;font-size:24px}
+#dp-paradoja .caja h3{font-size:24px;margin:0}
+#dp-paradoja .gp-ctl{margin:4px 0}
+#dp-paradoja .btn{font-size:22px;padding:7px 12px}
+#dp-paradoja .fila-btn .sub{font-weight:700;color:var(--tinta);margin-right:4px}
+#gp-pop .gl-dcl-txt{font-size:26px;line-height:1.4}
+#gp-pop .btn{font-size:23px;padding:7px 12px}
+#gp-pop a.btn{text-decoration:none;display:inline-block}
 #dp-caida .cl-col > * + *,#dp-parab .pb-col > * + *,#dp-indep .in-col > * + *{margin-top:8px}
 #dp-caida .caja h3{font-size:25px;margin:0}
 #dp-caida .caja{font-size:30px}
@@ -710,6 +719,44 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
     <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
     <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: la montaña rusa" loading="lazy">Cargando…</iframe>
   </dialog>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-paradoja" data-label="El experimento pensado de Galileo" data-speaker-notes="§ 3.5. Experimento pensado de Galileo (Discorsi, 1638): si lo pesado cayera más rápido, dos piedras atadas deberían caer a la vez más lento que la pesada (la ligera la frena) y más rápido (pesan más juntas). La contradicción obliga a que la aceleración de caída no dependa de la masa. Explorador: con la hipótesis de Aristóteles se ven las dos predicciones incompatibles para el par atado; con la de Galileo los tres caen juntos. Resolución con la ley de la fuerza: si el peso es mg, a = F/m = g. Apolo 15 (1971): martillo y pluma caen juntos en la Luna (clic en el paso 4: animación en la Luna y en la Tierra con aire). ↓ revela 4 pasos.">
+  <p class="ceja">§ 3.5 · Caída libre · Un experimento pensado</p>
+  <h2 class="titulo">Galileo ata dos piedras: ¿cae más rápido lo más pesado?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Tres caídas desde el reposo: \(M\), \(m\) y las dos atadas</span><span class="val" id="gp-lect"></span></div>
+      <div id="gp-fig"></div>
+      <div class="fila-btn gp-ctl"><button type="button" class="btn on" data-h="ari">Aristóteles: lo pesado cae más rápido</button><button type="button" class="btn" data-h="gal">Galileo: todos igual</button><button type="button" class="btn prim" id="gp-play">▶ Soltar</button><button type="button" class="btn" id="gp-reset">↺</button></div>
+      <label class="ctrl gp-ctl"><span>Razón de masas \(M/m\)</span><input type="range" id="gp-r" min="1.5" max="5" step="0.5" value="3"><span class="v" id="gp-rv"></span></label>
+    </figure>
+    <div class="pila gp-col">
+      <div class="caja neutra frag"><h3>1 · La hipótesis antigua</h3>Para Aristóteles, un cuerpo cae más rápido cuanto más pesado es: la piedra pesada \(M\) cae más rápido que la ligera \(m\).</div>
+      <div class="caja neutra frag"><h3>2 · Atamos las dos piedras</h3><strong>a)</strong> La ligera, que cae más despacio, <strong>frena</strong> a la pesada: el par cae <em>más lento</em> que \(M\) sola. <strong>b)</strong> Pero el par pesa más, \(M + m \gt M\): debe caer <em>más rápido</em> que \(M\) sola.</div>
+      <div class="caja c2 frag"><h3>3 · Contradicción</h3>El mismo objeto no puede caer a la vez más lento y más rápido que \(M\). La hipótesis se destruye a sí misma, <strong>sin hacer ningún experimento</strong>. La única salida: todos caen con la misma aceleración.</div>
+      <div class="kf frag ug-pasoclic" id="gp-pop-btn" role="button" tabindex="0" title="Ver el martillo y la pluma" style="padding:4px 14px;font-size:26px"><h3 style="margin:0;font-size:24px">4 · Con la ley de la fuerza <span class="mt-mas">(ⓘ clic: el martillo y la pluma)</span></h3>\[ F = m\,g \quad\Longrightarrow\quad a = \dfrac{F}{m} = \dfrac{m\,g}{m} = \resalta{g} \]
+        <p class="nota" style="margin:0">El peso crece con la masa justo lo que crece la inercia: la masa se cancela. En la Luna, en 1971, el astronauta David Scott soltó un martillo y una pluma: llegaron juntos al suelo.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="gp-pop" style="display:none" role="dialog" aria-modal="true" aria-labelledby="gp-pop-tit">
+    <div class="gl-dcl-caja" style="width:1900px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="gp-pop-tit">El martillo y la pluma: Apolo 15, en la Luna (2 de agosto de 1971)</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+        <div><div id="gp-pop-fig"></div>
+          <div class="fila-btn"><button type="button" class="btn on" data-lugar="luna">En la Luna (sin aire)</button><button type="button" class="btn" data-lugar="tierra">En la Tierra (con aire)</button><button type="button" class="btn prim" id="gp-pop-play">▶ Soltar</button><a class="btn" href="https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html" target="_blank" rel="noopener">🎥 Video original (NASA) ↗</a></div>
+          <p class="nota" id="gp-pop-lect" style="margin:4px 0 0"></p></div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 8px"><strong>El experimento.</strong> Al final de su última caminata lunar, el astronauta David Scott sostuvo un martillo de geólogo (\(\qty{1{,}32}{kg}\)) y una pluma de halcón (\(\qty{0{,}03}{kg}\)) a la misma altura, unos \(\qty{1{,}6}{m}\), y los soltó a la vez frente a la cámara de televisión. El video original está en el sitio de la NASA (botón «🎥 Video original»).</p>
+          <p style="margin:0 0 8px"><strong>El resultado.</strong> Llegaron juntos al suelo. El martillo tiene unas 44 veces la masa de la pluma, pero los dos cayeron con la misma aceleración, \(g_L = \qty{1{,}62}{m/s^2}\):
+            \[ t = \sqrt{\dfrac{2h}{g_L}} = \sqrt{\dfrac{2\,(\qty{1{,}6}{m})}{\qty{1{,}62}{m/s^2}}} \approx \qty{1{,}4}{s} \,. \]</p>
+          <p style="margin:0 0 8px"><strong>¿Por qué en la Tierra la pluma se queda atrás?</strong> Por el <strong>aire</strong>, no por la gravedad: el arrastre es muy grande comparado con el peso de la pluma, que alcanza enseguida una rapidez terminal pequeña. En la Luna no hay atmósfera y solo queda la gravedad.</p>
+          <p style="margin:0">«Lo que demuestra que el señor Galileo tenía razón», dijo Scott. Es la conclusión del experimento pensado: \(a = mg/m = g\), la masa se cancela.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-caida" data-label="Caída libre: altura máxima y tiempos" data-speaker-notes="§ 3.5. Resultados analíticos del lanzamiento vertical (aceleración constante −g): tiempo de subida v₀/g, altura máxima v₀²/(2g) y tiempo de vuelo 2v₀/g; regresa con la misma rapidez v₀. ↓ revela 3 pasos. Explorador: v₀ y la gravedad de la Tierra, la Luna o Marte.">
@@ -3913,6 +3960,144 @@ const T_OSC = 2 * Math.PI;
   document.addEventListener('slidechange', cierra);
   eq.addEventListener('change', pinta);
   pinta();
+})();
+
+/* ═══ EXPERIMENTO PENSADO DE GALILEO: DOS PIEDRAS ATADAS ═══════════════ */
+(function () {
+  const host = document.getElementById('gp-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rr = R_('gp-r');
+  const W = 1100, H = 500, y0 = 80, yS = 440, g = 9.8, Hm = 20, esc = (yS - y0) / Hm;     /* 20 m de caída */
+  let hip = 'ari', t = 0, corre = false, t0 = 0;
+  const colM = 'var(--caso1)', colm = 'var(--caso2)';
+  /* Aristóteles: rapidez constante proporcional al peso (v = k·masa), escala para que M tarde ~2 s */
+  const velA = (masa, M) => (Hm / 2.0) * masa / M;
+  function pos(caso, tt) {
+    const M = +rr.value, m = 1;
+    if (hip === 'gal') return Math.min(Hm, 0.5 * g * tt * tt);
+    const v = caso === 'M' ? velA(M, M) : caso === 'm' ? velA(m, M) : caso === 'freno' ? (velA(M, M) + velA(m, M)) / 2 : velA(M + m, M);
+    return Math.min(Hm, v * tt);
+  }
+  function piedra(svg, x, y, r, col, lab) {
+    nodo('circle', { cx: x, cy: y, r: r, style: 'fill:' + col + ';stroke:var(--tinta);stroke-width:2.5' }, svg);
+    rotulo(svg, x, y + 8, lab, { 'text-anchor': 'middle', 'font-size': Math.max(18, r * 0.8), style: 'fill:var(--panel);font-family:' + FMATH + ';font-weight:700' });
+  }
+  function dibuja() {
+    const M = +rr.value, rM = 34 * Math.sqrt(M / 3), rm = 34 * Math.sqrt(1 / 3);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    nodo('line', { x1: 40, y1: y0 - 40, x2: W - 40, y2: y0 - 40, style: 'stroke:var(--tinta2);stroke-width:3;stroke-dasharray:10 7' }, svg);
+    rotulo(svg, 50, y0 - 52, 'se sueltan desde el reposo', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    nodo('line', { x1: 40, y1: yS + 30, x2: W - 40, y2: yS + 30, style: 'stroke:var(--tinta);stroke-width:4' }, svg);
+    const col = [[170, 'M'], [380, 'm'], hip === 'ari' ? [640, 'freno'] : [760, 'par'], hip === 'ari' ? [880, 'suma'] : null].filter(Boolean);
+    const tit = { M: 'pesada M', m: 'ligera m', freno: 'atadas: «m frena»', suma: 'atadas: «pesan más»', par: 'atadas, M + m' };
+    col.forEach(([x, c]) => {
+      const yy = y0 + esc * pos(c, t);
+      rotulo(svg, x, H - 8, tit[c], { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+      if (c === 'M') piedra(svg, x, yy, rM, colM, 'M');
+      else if (c === 'm') piedra(svg, x, yy, rm, colm, 'm');
+      else {
+        const op = c === 'par' ? 1 : 0.55, ym = yy - rM - rm - 22;
+        nodo('line', { x1: x, y1: ym, x2: x, y2: yy, style: 'stroke:var(--tinta);stroke-width:4;opacity:' + op }, svg);
+        const gg = nodo('g', { style: 'opacity:' + op }, svg);
+        piedra(gg, x, yy, rM, colM, 'M'); piedra(gg, x, ym, rm, colm, 'm');
+      }
+    });
+    if (hip === 'ari') {
+      nodo('line', { x1: 520, y1: y0 - 20, x2: 520, y2: yS + 20, style: 'stroke:var(--linea);stroke-width:2' }, svg);
+      rotulo(svg, 760, y0 - 12, 'el mismo par, dos predicciones', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--mal);font-family:' + FTXT + ';font-weight:700' });
+      const yM = pos('M', t), yf = pos('freno', t), ys = pos('suma', t);
+      const hM = y0 + esc * yM;
+      nodo('line', { x1: 540, y1: hM, x2: W - 40, y2: hM, style: 'stroke:var(--caso1);stroke-width:2.5;stroke-dasharray:8 6' }, svg);
+      rotulo(svg, W - 44, hM - 8, 'altura de M sola', { 'text-anchor': 'end', 'font-size': 19, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px' });
+      if (t > 0.3 && ys > yM && yf < yM) rotulo(svg, 760, y0 + 36, '¡contradicción!', { 'text-anchor': 'middle', 'font-size': 34, style: 'fill:var(--mal);font-family:' + FTXT + ';font-weight:800;paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    } else if (t > 0.3) rotulo(svg, 560, yS - 20, 'caen juntas: no hay contradicción', { 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:800;paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    R_('gp-rv').textContent = num(M, 1);
+    R_('gp-lect').textContent = hip === 'ari' ? 't = ' + num(t, 2) + ' s · frenada: ' + num(pos('freno', t), 1) + ' m; pesando más: ' + num(pos('suma', t), 1) + ' m; M sola: ' + num(pos('M', t), 1) + ' m' : 't = ' + num(t, 2) + ' s · todas han caído ' + num(pos('M', t), 1) + ' m = ½gt²';
+  }
+  function bucle(ts) {
+    if (corre) { if (!t0) t0 = ts; t = (ts - t0) / 1000; const fin = hip === 'gal' ? Math.sqrt(2 * Hm / g) : 2 * Hm / velA(1, +rr.value) / 2; if (t >= Math.max(fin, 2.2)) { corre = false; } dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  const reinicia = () => { corre = false; t = 0; t0 = 0; dibuja(); };
+  R_('gp-play').addEventListener('click', () => { t = 0; t0 = 0; corre = true; });
+  R_('gp-reset').addEventListener('click', reinicia);
+  $$('#dp-paradoja .btn[data-h]').forEach(b => b.addEventListener('click', () => { hip = b.dataset.h; $$('#dp-paradoja .btn[data-h]').forEach(o => o.classList.toggle('on', o === b)); reinicia(); }));
+  rr.addEventListener('input', reinicia);
+  document.addEventListener('slidechange', () => { corre = false; });
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ EL MARTILLO Y LA PLUMA (ventana de dp-paradoja) ══════════════════ */
+(function () {
+  const btn = document.getElementById('gp-pop-btn'), modal = document.getElementById('gp-pop');
+  if (!btn || !modal) return;
+  const R_ = id => document.getElementById(id);
+  const W = 1000, H = 600, ys = 520, h = 1.6, esc = 260;               /* 1 m = 260 px; suelo en ys */
+  let lugar = 'luna', t = 0, t0 = 0, corre = false;
+  /* altura caída en t: Luna, ½ g t² para ambos; Tierra: martillo casi libre, pluma con arrastre (v_t ≈ 0,5 m/s) */
+  const cae = (obj, tt) => {
+    if (lugar === 'luna') return Math.min(h, 0.81 * tt * tt);
+    if (obj === 'martillo') return Math.min(h, 4.9 * tt * tt);
+    const vt = 0.5, g = 9.8; return Math.min(h, vt * vt / g * Math.log(Math.cosh(g * tt / vt)));
+  };
+  const tFin = () => lugar === 'luna' ? Math.sqrt(2 * h / 1.62) : 3.6;
+  function martillo(svg, x, y, op) {
+    const gg = nodo('g', { style: 'opacity:' + op }, svg);
+    nodo('rect', { x: x - 6, y: y - 60, width: 12, height: 74, rx: 3, style: 'fill:var(--caso2)' }, gg);
+    nodo('rect', { x: x - 30, y: y - 74, width: 60, height: 22, rx: 4, style: 'fill:var(--tinta2);stroke:var(--tinta);stroke-width:2' }, gg);
+  }
+  function pluma(svg, x, y, op) {
+    const gg = nodo('g', { style: 'opacity:' + op }, svg);
+    nodo('path', { d: 'M ' + x + ' ' + (y + 14) + ' Q ' + (x - 26) + ' ' + (y - 30) + ' ' + (x + 4) + ' ' + (y - 70) + ' Q ' + (x + 22) + ' ' + (y - 30) + ' ' + x + ' ' + (y + 14) + ' Z', style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:3' }, gg);
+    nodo('line', { x1: x, y1: y + 18, x2: x + 3, y2: y - 66, style: 'stroke:var(--caso2);stroke-width:2' }, gg);
+  }
+  function dibuja() {
+    const host = R_('gp-pop-fig'); host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const luna = lugar === 'luna';
+    nodo('rect', { x: 0, y: 0, width: W, height: ys, style: 'fill:' + (luna ? 'var(--tinta)' : 'var(--caso1-50)') }, svg);
+    if (luna) for (let i = 0; i < 40; i++) nodo('circle', { cx: (i * 263) % W, cy: (i * 151) % (ys - 80), r: i % 3 ? 1.5 : 2.5, style: 'fill:var(--panel);opacity:.7' }, svg);
+    nodo('rect', { x: 0, y: ys, width: W, height: H - ys, style: 'fill:' + (luna ? 'var(--tinta2)' : 'var(--caso2)') }, svg);
+    if (luna) [[120, 560, 40], [760, 575, 60], [900, 548, 26]].forEach(([cx, cy, r]) => nodo('ellipse', { cx: cx, cy: cy, rx: r, ry: r / 4, style: 'fill:var(--linea);opacity:.6' }, svg));
+    /* astronauta (silueta simple) */
+    const ax = 500, ay = ys;
+    const tr = 'fill:' + (luna ? 'var(--panel)' : 'var(--panel)') + ';stroke:var(--tinta);stroke-width:3';
+    nodo('rect', { x: ax - 36, y: ay - 300, width: 72, height: 150, rx: 22, style: tr }, svg);
+    nodo('rect', { x: ax - 58, y: ay - 290, width: 26, height: 110, rx: 8, style: tr }, svg);
+    nodo('circle', { cx: ax, cy: ay - 340, r: 40, style: tr }, svg);
+    nodo('ellipse', { cx: ax + 8, cy: ay - 342, rx: 26, ry: 18, style: 'fill:' + (luna ? 'var(--caso2)' : 'var(--proy)') + ';opacity:.85' }, svg);
+    nodo('rect', { x: ax - 32, y: ay - 155, width: 26, height: 155, rx: 10, style: tr }, svg);
+    nodo('rect', { x: ax + 6, y: ay - 155, width: 26, height: 155, rx: 10, style: tr }, svg);
+    const yR = ys - h * esc;                                        /* altura de suelta */
+    nodo('line', { x1: ax + 30, y1: ay - 270, x2: ax + 150, y2: yR - 50, style: 'stroke:' + (luna ? 'var(--panel)' : 'var(--tinta)') + ';stroke-width:14;stroke-linecap:round' }, svg);
+    nodo('line', { x1: ax - 30, y1: ay - 270, x2: ax - 150, y2: yR - 50, style: 'stroke:' + (luna ? 'var(--panel)' : 'var(--tinta)') + ';stroke-width:14;stroke-linecap:round' }, svg);
+    nodo('line', { x1: 60, y1: yR, x2: W - 60, y2: yR, style: 'stroke:' + (luna ? 'var(--linea)' : 'var(--tinta2)') + ';stroke-width:2;stroke-dasharray:8 7' }, svg);
+    rotulo(svg, 70, yR - 10, 'h ≈ 1,6 m', { 'font-size': 22, style: 'fill:' + (luna ? 'var(--panel)' : 'var(--tinta)') + ';font-family:' + FMATH + ';font-weight:700' });
+    /* posiciones estroboscópicas cada 0,2 s y posición actual */
+    const xm = ax - 170, xp = ax + 170;
+    for (let k = 1; k * 0.2 < t; k++) { martillo(svg, xm, yR + esc * cae('martillo', k * 0.2), 0.22); pluma(svg, xp, yR + esc * cae('pluma', k * 0.2), 0.22); }
+    martillo(svg, xm, yR + esc * cae('martillo', t), 1); pluma(svg, xp, yR + esc * cae('pluma', t), 1);
+    const ct = luna ? 'var(--panel)' : 'var(--tinta)';
+    rotulo(svg, xm, 40, 'martillo · 1,32 kg', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:' + ct + ';font-family:' + FTXT + ';font-weight:700' });
+    rotulo(svg, xp, 40, 'pluma · 0,03 kg', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:' + ct + ';font-family:' + FTXT + ';font-weight:700' });
+    const dm = cae('martillo', t), dp = cae('pluma', t);
+    R_('gp-pop-lect').textContent = 't = ' + num(t, 2) + ' s · martillo: ' + num(dm, 2) + ' m · pluma: ' + num(dp, 2) + ' m' + (luna ? (t > 0 ? ' · caen juntos (posiciones cada 0,2 s)' : '') : ' · el aire frena a la pluma');
+  }
+  function bucle(ts) {
+    if (corre) { if (!t0) t0 = ts; t = Math.min(tFin(), (ts - t0) / 1000); if (t >= tFin()) corre = false; dibuja(); }
+    if (modal.style.display !== 'none' || corre) requestAnimationFrame(bucle);
+  }
+  const abre = () => { t = 0; dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; corre = false; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+  R_('gp-pop-play').addEventListener('click', () => { t = 0; t0 = 0; corre = true; requestAnimationFrame(bucle); });
+  $$('#gp-pop .btn[data-lugar]').forEach(b => b.addEventListener('click', () => { lugar = b.dataset.lugar; $$('#gp-pop .btn[data-lugar]').forEach(o => o.classList.toggle('on', o === b)); corre = false; t = 0; dibuja(); }));
 })();
 
 /* ═══ VENTANAS: CÁLCULO DE v DE LA LUNA Y CAMPO DENTRO DE LA TIERRA ════ */
