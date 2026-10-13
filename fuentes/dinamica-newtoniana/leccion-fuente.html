@@ -406,7 +406,22 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
 .ug-pasoclic{cursor:pointer}
 .ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
 #lu-v .gl-dcl-txt,#cg-in .gl-dcl-txt{font-size:26px;line-height:1.4}
-#ug-w .gl-dcl-txt{font-size:24px;line-height:1.3}
+#ug-g .gl-dcl-txt{font-size:24px;line-height:1.3}
+#ug-g .gl-dcl-txt li{margin:2px 0}
+table.ug-g-tab{font-size:24px}
+table.ug-g-tab td,table.ug-g-tab th{padding:3px 8px}
+/* trabajo con la fuerza promedio */
+#dp-trabajo-g .tw-col > * + *{margin-top:8px}
+#dp-trabajo-g .caja{padding:4px 14px;font-size:24px}
+#dp-trabajo-g .caja h3{font-size:24px;margin:0}
+#dp-trabajo-g .ctrl{margin:2px 0}
+#dp-trabajo-g .tw-btns{margin:4px 0;gap:8px}
+#dp-trabajo-g .tw-btns .btn{font-size:22px;padding:6px 12px}
+table.tw-tab{font-size:22px;margin-top:4px}
+table.tw-tab th{font-size:20px}
+table.tw-tab td,table.tw-tab th{padding:2px 10px}
+table.tw-tab tr.on td{background:var(--caso2-50);font-weight:700}
+table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
 #ct-pop .gl-dcl-txt{font-size:22px;line-height:1.3}
 #ug-h .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-h-lect b{color:var(--res)}
@@ -1629,7 +1644,77 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
   <p class="puente">→ ¿Cuánta energía cuesta alejarse de la Tierra?</p>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-epot" data-label="Energía potencial gravitacional" data-speaker-notes="§ 3.8. Energía potencial gravitacional U(r) = −GMm/r, con cero en el infinito; cerca de la superficie se reduce a mgh. Con la energía total E = K + U se ve hasta dónde sube un proyectil: si E < 0 hay punto de retorno; si E ≥ 0 no vuelve. ↓ revela 3 pasos.">
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-trabajo-g" data-label="Energía potencial gravitacional: fuerza promedio" data-speaker-notes="§ 3.8. Trabajo contra la gravedad con la fuerza promedio. Con fuerza constante W = FΔr es un área; con fuerza variable, W = ⟨F⟩Δr, donde ⟨F⟩ es la altura del rectángulo de igual área (como la velocidad media). Para F ∝ 1/r² el promedio correcto es el geométrico, ⟨F⟩ = GMm/(r_a r_b): coincide con el área medida y pasa la prueba del infinito (el aritmético da trabajo infinito; el del punto medio, cero). De ahí W = GMm(1/r_a − 1/r_b) = U(r_b) − U(r_a) y U(r) = −GMm/r. ↓ revela 4 pasos.">
+  <p class="ceja">§ 3.8 · Gravitación universal</p>
+  <h2 class="titulo">Energía potencial gravitacional: la fuerza promedio</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Fuerza del agente externo de \(r_a = R\) a \(r_b\)</span><span class="val" id="tw-lect"></span></div>
+      <div id="tw-fig"></div>
+      <label class="ctrl tw-ctl"><span>Punto final \(r_b\)</span><input type="range" id="tw-rb" min="1.2" max="10" step="0.1" value="4"><span class="v" id="tw-rbv"></span></label>
+      <div class="fila-btn tw-btns" role="group" aria-label="Promedio que se dibuja"><button type="button" class="btn" data-p="arit">Aritmético</button><button type="button" class="btn" data-p="medio">Punto medio</button><button type="button" class="btn on" data-p="geom">Geométrico</button></div>
+      <table class="tabla tw-tab">
+        <thead><tr><th class="izq">Trabajo \(W\) (en \(GMm/R\))</th><th>Valor</th><th>Diferencia con el área</th></tr></thead>
+        <tbody>
+          <tr class="tw-area"><td class="izq">Área bajo la curva (medida)</td><td id="tw-a"></td><td>—</td></tr>
+          <tr data-p="arit"><td class="izq">\(\langle F\rangle_{\text{arit}}\,\Delta r\)</td><td id="tw-arit"></td><td id="tw-arit-e"></td></tr>
+          <tr data-p="medio"><td class="izq">\(\langle F\rangle_{\text{medio}}\,\Delta r\)</td><td id="tw-medio"></td><td id="tw-medio-e"></td></tr>
+          <tr data-p="geom"><td class="izq">\(\langle F\rangle_{\text{geom}}\,\Delta r\)</td><td id="tw-geom"></td><td id="tw-geom-e"></td></tr>
+        </tbody>
+      </table>
+    </figure>
+    <div class="pila tw-col">
+      <div class="caja neutra frag"><h3>1 · Fuerza constante: el trabajo es un área</h3>Para alejar \(m\) despacio, un agente externo hace una fuerza opuesta a la gravedad. Si fuera constante, \(W = F\,(r_b - r_a)\): el área de un rectángulo.</div>
+      <div class="caja neutra frag"><h3>2 · Fuerza variable: la fuerza promedio</h3>\(F = GMm/r^{2}\) disminuye; el trabajo es el área bajo la curva. La <strong>fuerza promedio</strong> \(\langle F\rangle\) es la altura del rectángulo de igual base e igual área (como \(\Delta x = \bar v\,\Delta t\)):
+        \[ W = \langle F\rangle\,(r_b - r_a) \,, \qquad F(r_b) \lt \langle F\rangle \lt F(r_a) \,. \]</div>
+      <div class="caja c2 frag ug-pasoclic" id="ug-g-btn" role="button" tabindex="0" title="Ver por qué el promedio geométrico"><h3>3 · ¿Qué promedio? El geométrico <span class="mt-mas">(ⓘ clic: por qué)</span></h3>El aritmético sobreestima el área; el geométrico la da exacta:
+        \[ \langle F\rangle = \sqrt{F(r_a)\,F(r_b)} = \dfrac{G M m}{r_a\,r_b} \,. \]
+</div>
+      <div class="caja neutra frag"><h3>4 · La energía potencial</h3>
+        \[ W = \dfrac{G M m}{r_a r_b}\,(r_b - r_a) = G M m \left( \dfrac{1}{r_a} - \dfrac{1}{r_b} \right) = U(r_b) - U(r_a) \,. \]
+        Solo depende de los extremos. Con \(U(\infty) = 0\): \(\;\resalta{U(r) = -\,\dfrac{G M m}{r}}\,\).</div>
+    </div>
+  </div>
+  <p class="puente">→ ¿Qué forma tiene \(U(r)\) y qué dice de un lanzamiento?</p>
+  <div class="gl-dcl-fondo" id="ug-g" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ug-g-tit">
+    <div class="gl-dcl-caja" style="width:2000px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="ug-g-tit">¿Por qué el promedio geométrico de la fuerza?</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)">
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>1 · Tres candidatos.</strong> Con \(F(r) = GMm/r^{2}\), el promedio aritmético de los extremos, la fuerza en el punto medio y el promedio geométrico de los extremos son
+            \[ \langle F\rangle_{\text{arit}} = \dfrac{G M m}{2}\left( \dfrac{1}{r_a^{2}} + \dfrac{1}{r_b^{2}} \right) , \quad
+               \langle F\rangle_{\text{medio}} = \dfrac{4\,G M m}{(r_a + r_b)^{2}} \,, \quad
+               \langle F\rangle_{\text{geom}} = \dfrac{G M m}{r_a\,r_b} \,. \]
+            Los tres quedan entre \(F(r_b)\) y \(F(r_a)\), y si \(r_b \approx r_a\) los tres valen \(F(r_a)\): se recupera \(W = F\,\Delta r\). Solo se distinguen en recorridos largos.</p>
+          <p style="margin:0"><strong>2 · La prueba del infinito.</strong> Llevamos \(r_b \to \infty\) en \(W = \langle F\rangle\,(r_b - r_a)\):</p>
+          <ul style="margin:2px 0 0;padding-left:28px">
+            <li><strong>Aritmético:</strong> \(W \ge \dfrac{G M m}{2 r_a^{2}}\,(r_b - r_a) \to \infty\). Ningún cohete escaparía de la Tierra; pero las sondas Voyager ya salieron del sistema solar. <span style="color:var(--mal);font-weight:700">Descartado.</span></li>
+            <li><strong>Punto medio:</strong> \(W = \dfrac{4\,G M m\,(r_b - r_a)}{(r_a + r_b)^{2}} \to 0\). Ir hasta el infinito costaría menos que ir hasta \(2r_a\), que cuesta al menos \(F(2r_a)\,r_a = GMm/(4r_a)\). <span style="color:var(--mal);font-weight:700">Absurdo.</span></li>
+            <li><strong>Geométrico:</strong> \(W = G M m \left( \dfrac{1}{r_a} - \dfrac{1}{r_b} \right) \to \dfrac{G M m}{r_a}\): finito y positivo. <span style="color:var(--res);font-weight:700">✓</span></li>
+          </ul>
+        </div>
+        <div class="gl-dcl-txt">
+          <p style="margin:0 0 6px"><strong>3 · La medida del área lo confirma.</strong> Con \(r_a = R\), en unidades de \(GMm/R\):</p>
+          <table class="tabla ug-g-tab">
+            <thead><tr><th>\(r_b\)</th><th>Área medida</th><th>Aritmético</th><th>Punto medio</th><th>Geométrico</th></tr></thead>
+            <tbody>
+              <tr><td>\(2R\)</td><td>\(0{,}500\)</td><td>\(0{,}625\)</td><td>\(0{,}444\)</td><td><strong>\(0{,}500\)</strong></td></tr>
+              <tr><td>\(4R\)</td><td>\(0{,}750\)</td><td>\(1{,}594\)</td><td>\(0{,}480\)</td><td><strong>\(0{,}750\)</strong></td></tr>
+              <tr><td>\(10R\)</td><td>\(0{,}900\)</td><td>\(4{,}545\)</td><td>\(0{,}298\)</td><td><strong>\(0{,}900\)</strong></td></tr>
+              <tr><td>\(\infty\)</td><td>\(1\)</td><td>\(\infty\)</td><td>\(0\)</td><td><strong>\(1\)</strong></td></tr>
+            </tbody>
+          </table>
+          <p style="margin:8px 0 6px"><strong>4 · Una intuición.</strong> La fuerza cambia <em>por factores</em>: de \(R\) a \(10R\) se divide entre \(100\). El promedio aritmético queda dominado por los valores grandes cerca de \(r_a\); el geométrico equilibra los factores. Además, es la fuerza a la distancia media geométrica:
+            \[ F\!\left(\sqrt{r_a r_b}\,\right) = \dfrac{G M m}{\left(\sqrt{r_a r_b}\,\right)^{2}} = \dfrac{G M m}{r_a\,r_b} \,. \]</p>
+          <p class="nota" style="margin:0">Con cálculo: \(\frac{1}{r_b - r_a}\int_{r_a}^{r_b} \frac{G M m}{r^{2}}\,dr = \frac{G M m}{r_a\,r_b}\), exactamente el promedio geométrico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-epot" data-label="Energía potencial gravitacional" data-speaker-notes="§ 3.8. El pozo de energía: U(r) = −GMm/r (deducida en la diapositiva anterior), con cero en el infinito; cerca de la superficie se reduce a mgh. Con la energía total E = K + U se ve hasta dónde sube un proyectil: si E < 0 hay punto de retorno; si E ≥ 0 no vuelve. ↓ revela 3 pasos.">
   <p class="ceja">§ 3.8 · Gravitación universal</p>
   <h2 class="titulo">Energía potencial gravitacional: un pozo de energía</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
@@ -1639,37 +1724,11 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
       <label class="ctrl ug-ctl"><span>Rapidez de lanzamiento</span><input type="range" id="ug-v" min="1" max="13" step="0.1" value="8"><span class="v" id="ug-vv"></span></label>
     </figure>
     <div class="pila ug-col">
-      <div class="caja neutra frag ug-pasoclic" id="ug-w-btn" role="button" tabindex="0" title="Ver la deducción"><h3>1 · Trabajo contra el campo <span class="mt-mas">(ⓘ clic: deducción)</span></h3>Llevar \(m\) desde \(r\) hasta muy lejos cuesta un trabajo finito. Tomando \(U = 0\) en el infinito:
-        \[ U(r) = -\,\dfrac{G M_T\,m}{r}. \]
-        Es negativa: la masa está «atrapada» en un pozo.</div>
+      <div class="caja neutra frag"><h3>1 · Un pozo de energía</h3>\(U(r) = -\,G M_T m/r\) es negativa y tiende a \(0\) en el infinito: la masa está «atrapada» en un pozo, y salir de él cuesta \(G M_T m/R\) desde la superficie.</div>
       <div class="caja neutra frag ug-pasoclic" id="ug-h-btn" role="button" tabindex="0" title="Ver la demostración"><h3>2 · Cerca de la superficie: \(mgh\) <span class="mt-mas">(ⓘ clic: demostración)</span></h3>Para una altura \(h \ll R\):
-        \[ U(R + h) - U(R) \approx \dfrac{G M_T m}{R^{2}}\,h = m g_0 h. \]
+        \[ U(R + h) - U(R) \approx \dfrac{G M_T m}{R^{2}}\,h = m g_0 h \,. \]
         La fórmula de siempre es el caso de alturas pequeñas.</div>
       <div class="caja c2 frag"><h3>3 · Energía total y punto de retorno</h3>\(E = \tfrac12 m v^{2} - G M_T m/r\) se conserva. El proyectil sube hasta que \(U = E\). Si \(E \lt 0\), vuelve; si \(E \ge 0\), <strong>nunca vuelve</strong>.</div>
-    </div>
-  </div>
-  <div class="gl-dcl-fondo" id="ug-w" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ug-w-tit">
-    <div class="gl-dcl-caja" style="width:2080px">
-      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
-      <h3 id="ug-w-tit">De dónde sale \(U(r) = -GMm/r\): el trabajo contra el campo</h3>
-      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)">
-        <div><div id="ug-w-fig"></div>
-          <label class="ctrl"><span>Número de tramos \(N\)</span><input type="range" id="ug-n" min="1" max="20" step="1" value="4"><span class="v" id="ug-nv"></span></label>
-          <p class="nota" id="ug-w-lect" style="margin:0"></p>
-          <div class="kf" style="padding:4px 14px;font-size:24px;margin-top:8px"><strong>5 · La energía potencial.</strong> Con \(R \to \infty\), \(1/R \to 0\) y \(W_{r\to\infty} = GMm/r = U(\infty) - U(r)\). Con \(U(\infty) = 0\):
-            \[ \resalta{U(r) = -\,\dfrac{G M m}{r}} \]
-            <p class="nota" style="margin:0">Es el área bajo la curva \(F(r)\): la integral \(\int_{r}^{\infty} F\,dr\).</p></div></div>
-        <div class="gl-dcl-txt">
-          <p style="margin:0 0 6px"><strong>1 · El problema.</strong> Para alejar \(m\) despacio hay que hacer una fuerza igual y opuesta a la gravedad, \(F(r) = GMm/r^{2}\). <strong>No es constante</strong>: no basta con \(W = F\,d\).</p>
-          <p style="margin:0 0 6px"><strong>2 · Tramos.</strong> Dividimos el camino desde \(r\) hasta una distancia lejana \(R\) en \(N\) tramos, con puntos \(r_0 = r \lt r_1 \lt \dots \lt r_N = R\). En el tramo de \(r_{k-1}\) a \(r_k\) la fuerza es mayor al comienzo que al final, y la cantidad \(GMm/(r_{k-1}r_k)\) siempre queda entre esos dos valores:
-            \[ \dfrac{GMm}{r_k^{2}} \lt \dfrac{GMm}{r_{k-1}\,r_k} \lt \dfrac{GMm}{r_{k-1}^{2}} \,. \]</p>
-          <p style="margin:0 0 6px"><strong>3 · Trabajo en un tramo.</strong> Usando ese valor intermedio como fuerza en el tramo, el trabajo del agente externo es
-            \[ W_k = \dfrac{GMm}{r_{k-1}\,r_k}\,(r_k - r_{k-1}) = GMm\left( \dfrac{1}{r_{k-1}} - \dfrac{1}{r_k} \right) . \]</p>
-          <p style="margin:0 0 6px"><strong>4 · Sumar: cada término se cancela con el siguiente.</strong>
-            \[ W_{r\to R} = GMm\left[ \left(\tfrac{1}{r_0} - \tfrac{1}{r_1}\right) + \left(\tfrac{1}{r_1} - \tfrac{1}{r_2}\right) + \dots + \left(\tfrac{1}{r_{N-1}} - \tfrac{1}{r_N}\right) \right] = GMm\left( \dfrac{1}{r} - \dfrac{1}{R} \right) . \]
-            Vale lo mismo con cualquier \(N\); y como el trabajo verdadero queda entre los rectángulos de fuerza mínima y máxima (a trazos), que se juntan al achicar los tramos, es el valor exacto.</p>
-        </div>
-      </div>
     </div>
   </div>
   <div class="gl-dcl-fondo" id="ug-h" style="display:none" role="dialog" aria-modal="true" aria-labelledby="ug-h-tit">
@@ -4541,30 +4600,64 @@ const T_OSC = 2 * Math.PI;
   rv.addEventListener('input', pinta); pinta();
 })();
 
-/* ═══ ENERGÍA POTENCIAL: DEDUCCIÓN POR EL TRABAJO (ventana emergente) ═══ */
+/* ═══ TRABAJO CONTRA LA GRAVEDAD CON LA FUERZA PROMEDIO ═════════════════ */
 (function () {
-  const btn = document.getElementById('ug-w-btn'), modal = document.getElementById('ug-w');
-  if (!btn || !modal) return;
-  const R_ = id => document.getElementById(id), rn = R_('ug-n'), r1 = 1, r2 = 4;   /* en radios terrestres, F en GMm/R² */
-  function dibuja() {
-    const n = +rn.value, host = R_('ug-w-fig');
-    const A = ejes(host, { W: 1000, H: 390, x: [0.5, 4.5], y: [0, 1.1], xt: [1, 2, 3, 4], yt: [0, 0.25, 0.5, 0.75, 1], fy: v => num(v, 2), xl: '*r*/*R*', yl: '*F* (en *GMm*/*R*²)' });
-    /* tramos iguales; altura intermedia GMm/(r_{k-1} r_k), entre la mínima y la máxima del tramo (líneas a trazos) */
-    const dr = (r2 - r1) / n; let suma = 0;
-    for (let k = 1; k <= n; k++) {
-      const a = r1 + (k - 1) * dr, b = a + dr, h = 1 / (a * b);
-      suma += h * dr;
-      nodo('rect', { x: A.X(a), y: A.Y(h), width: A.X(b) - A.X(a), height: A.Y(0) - A.Y(h), style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:2' }, A.capa);
-      [1 / (a * a), 1 / (b * b)].forEach(v => nodo('line', { x1: A.X(a), y1: A.Y(v), x2: A.X(b), y2: A.Y(v), style: 'stroke:var(--tinta2);stroke-width:1.5;stroke-dasharray:5 4' }, A.capa));
-    }
-    const p = []; for (let i = 0; i <= 200; i++) { const x = 0.96 + 3.54 * i / 200; p.push([x, 1 / (x * x)]); }
-    polilinea(A, p, 'stroke:var(--res);stroke-width:4');
-    rotulo(A.capa, A.X(1.55), A.Y(0.62), '*F*(*r*) = *GMm*/*r*²', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
-    [[r1, '*r*'], [r2, '*R*']].forEach(([x, t]) => rotulo(A.capa, A.X(x), A.Y(0) - 10, t, { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' }));
-    R_('ug-nv').textContent = n;
-    R_('ug-w-lect').textContent = 'N = ' + n + ': suma = ' + num(suma, 4) + ' = 1/r − 1/R (en GMm/R, de R a 4R): ¡igual con cualquier N!';
+  const host = document.getElementById('tw-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rb = R_('tw-rb'), ra = 1;   /* r en R; F en GMm/R²; W en GMm/R */
+  const F = r => 1 / (r * r);
+  const PROM = {
+    arit: b => (F(ra) + F(b)) / 2,
+    medio: b => F((ra + b) / 2),
+    geom: b => Math.sqrt(F(ra) * F(b))
+  };
+  const NOM = { arit: '⟨*F*⟩_arit', medio: '⟨*F*⟩_medio', geom: '⟨*F*⟩_geom' };
+  let sel = 'geom';
+  function area(b) {                                    /* medida numérica (Simpson), sin usar la fórmula */
+    const n = 2000, h = (b - ra) / n; let s = F(ra) + F(b);
+    for (let i = 1; i < n; i++) s += (i % 2 ? 4 : 2) * F(ra + i * h);
+    return s * h / 3;
   }
-  const abre = () => { dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  function pinta() {
+    const b = +rb.value, A = ejes(host, { W: 1100, H: 370, x: [0.6, 10.4], y: [0, 1.12], xt: [1, 2, 4, 6, 8, 10], yt: [0, 0.25, 0.5, 0.75, 1], fy: v => num(v, 2), xl: '*r*/*R*', yl: '*F* (en *GMm*/*R*²)' });
+    /* área bajo la curva */
+    const pa = []; for (let i = 0; i <= 200; i++) { const x = ra + (b - ra) * i / 200; pa.push([x, F(x)]); }
+    nodo('polygon', { points: [[ra, 0]].concat(pa).concat([[b, 0]]).map(p => A.X(p[0]) + ',' + A.Y(p[1])).join(' '), style: 'fill:var(--caso1-50)' }, A.capa);
+    /* rectángulo del promedio escogido */
+    const hsel = PROM[sel](b);
+    nodo('rect', { x: A.X(ra), y: A.Y(hsel), width: A.X(b) - A.X(ra), height: A.Y(0) - A.Y(hsel), style: 'fill:var(--caso2);fill-opacity:.22;stroke:var(--caso2);stroke-width:3' }, A.capa);
+    rotulo(A.capa, (A.X(ra) + A.X(b)) / 2 + 40, A.Y(hsel) - 10, NOM[sel], { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* curva */
+    const pc = []; for (let i = 0; i <= 300; i++) { const x = 0.95 + 9.45 * i / 300; pc.push([x, F(x)]); }
+    polilinea(A, pc, 'stroke:var(--res);stroke-width:4');
+    rotulo(A.capa, A.X(1.25), A.Y(0.95), '*F*(*r*) = *GMm*/*r*²', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    [[ra, '*r*_a'], [b, '*r*_b']].forEach(([x, t]) => {
+      nodo('line', { x1: A.X(x), y1: A.Y(0), x2: A.X(x), y2: A.Y(F(x)), style: 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:5 4' }, A.capa);
+      rotulo(A.capa, A.X(x), A.Y(0) - 10, t, { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    });
+    /* lectura */
+    const W = area(b), d = b - ra;
+    R_('tw-rbv').textContent = num(b, 1) + ' R';
+    R_('tw-a').textContent = num(W, 3);
+    Object.keys(PROM).forEach(k => {
+      const w = PROM[k](b) * d, e = 100 * (w - W) / W;
+      R_('tw-' + k).textContent = num(w, 3);
+      R_('tw-' + k + '-e').textContent = Math.abs(e) < 0.05 ? '0 % ✓' : (e > 0 ? '+' : '−') + num(Math.abs(e), 1) + ' %';
+    });
+    $$('.tw-tab tr[data-p]').forEach(tr => tr.classList.toggle('on', tr.dataset.p === sel));
+    R_('tw-lect').textContent = 'área = ' + num(W, 3) + ' GMm/R';
+  }
+  $$('.tw-btns .btn').forEach(bt => bt.addEventListener('click', () => {
+    sel = bt.dataset.p; $$('.tw-btns .btn').forEach(x => x.classList.toggle('on', x === bt)); pinta();
+  }));
+  rb.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ ¿POR QUÉ EL PROMEDIO GEOMÉTRICO? (ventana emergente) ══════════════ */
+(function () {
+  const btn = document.getElementById('ug-g-btn'), modal = document.getElementById('ug-g');
+  if (!btn || !modal) return;
+  const abre = () => { modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
   const cierra = () => { modal.style.display = 'none'; };
   btn.addEventListener('click', abre);
   btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
@@ -4572,7 +4665,6 @@ const T_OSC = 2 * Math.PI;
   modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
   document.addEventListener('slidechange', cierra);
-  rn.addEventListener('input', dibuja);
 })();
 
 /* ═══ ENERGÍA POTENCIAL: DE −GMm/r A mgh (ventana emergente) ═══ */
