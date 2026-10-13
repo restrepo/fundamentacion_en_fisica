@@ -350,7 +350,7 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
 .ug-pasoclic{cursor:pointer}
 .ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
 #lu-v .gl-dcl-txt,#cg-in .gl-dcl-txt{font-size:26px;line-height:1.4}
-#ug-w .gl-dcl-txt{font-size:26px;line-height:1.4}
+#ug-w .gl-dcl-txt{font-size:24px;line-height:1.36}
 #ug-h .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-h-lect b{color:var(--res)}
 #dp-lineas .ln-col > * + *{margin-top:8px}
@@ -2015,17 +2015,20 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <h3 id="ug-w-tit">De dónde sale \(U(r) = -GMm/r\): el trabajo contra el campo</h3>
       <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)">
         <div><div id="ug-w-fig"></div>
-          <label class="ctrl"><span>Número de tramos \(n\)</span><input type="range" id="ug-n" min="1" max="12" step="1" value="3"><span class="v" id="ug-nv"></span></label>
-          <p class="nota" id="ug-w-lect" style="margin:0"></p></div>
+          <label class="ctrl"><span>Número de tramos \(n\)</span><input type="range" id="ug-n" min="1" max="40" step="1" value="4"><span class="v" id="ug-nv"></span></label>
+          <p class="nota" id="ug-w-lect" style="margin:0"></p>
+          <div class="kf" style="padding:4px 14px;font-size:24px;margin-top:8px"><strong>5 · La energía potencial.</strong> \(U(r_2) - U(r_1) = W\). Con \(r_2 \to \infty\) y \(U(\infty) = 0\):
+            \[ \resalta{U(r) = -\,\dfrac{G M m}{r}} \]
+            <p class="nota" style="margin:0">Es el área bajo la curva \(F(r)\): la integral \(\int_{r_1}^{r_2} F\,dr\).</p></div></div>
         <div class="gl-dcl-txt">
-          <p style="margin:0 0 6px"><strong>1 · El problema.</strong> Para subir \(m\) de \(r_1\) a \(r_2\) despacio hay que hacer una fuerza igual y opuesta a la gravedad, \(F(r) = GMm/r^{2}\). Pero <strong>no es constante</strong>: no basta con \(W = F\,d\).</p>
-          <p style="margin:0 0 6px"><strong>2 · Tramos cortos.</strong> Entre \(r_i\) y \(r_{i+1}\) la fuerza casi no cambia; se usa su valor en la media geométrica, \(GMm/(r_i\,r_{i+1})\):
-            \[ W_i = \dfrac{G M m}{r_i\,r_{i+1}}\,(r_{i+1} - r_i) = G M m \left( \dfrac{1}{r_i} - \dfrac{1}{r_{i+1}} \right). \]</p>
-          <p style="margin:0 0 6px"><strong>3 · Sumar: casi todo se cancela.</strong>
-            \[ W = G M m \left[ \left(\tfrac{1}{r_1} - \tfrac{1}{r_{a}}\right) + \left(\tfrac{1}{r_{a}} - \tfrac{1}{r_{b}}\right) + \dots \right] = G M m \left( \dfrac{1}{r_1} - \dfrac{1}{r_2} \right), \]
-            el mismo resultado con cualquier número de tramos (es el área bajo la curva \(F(r)\), la integral \(\int_{r_1}^{r_2} F\,dr\)).</p>
-          <p style="margin:0"><strong>4 · La energía potencial.</strong> Ese trabajo queda guardado: \(U(r_2) - U(r_1) = W = \dfrac{GMm}{r_1} - \dfrac{GMm}{r_2}\). Con \(r_2 \to \infty\) y \(U(\infty) = 0\):
-            \[ \resalta{U(r) = -\,\dfrac{G M m}{r}}. \]</p>
+          <p style="margin:0 0 6px"><strong>1 · El problema.</strong> Para subir \(m\) despacio de \(r_1\) a \(r_2\) hay que hacer una fuerza igual y opuesta a la gravedad, \(F(r) = GMm/r^{2}\). <strong>No es constante</strong>: no basta con \(W = F\,d\).</p>
+          <p style="margin:0 0 6px"><strong>2 · Tramos, con la fórmula \(1/r^{2}\).</strong> Divide el camino en \(n\) tramos de ancho \(\Delta r\). En el tramo de \(r_i\) a \(r_{i+1}\) la fuerza baja de \(GMm/r_i^{2}\) a \(GMm/r_{i+1}^{2}\): su trabajo \(W_i\) queda entre los rectángulos verde y naranja,
+            \[ \dfrac{GMm}{r_{i+1}^{2}}\,\Delta r \;<\; W_i \;<\; \dfrac{GMm}{r_i^{2}}\,\Delta r \,. \]</p>
+          <p style="margin:0 0 6px"><strong>3 · Una resta de fracciones</strong> cae entre las mismas cotas, porque \(r_i \lt r_{i+1}\):
+            \[ \dfrac{\Delta r}{r_{i+1}^{2}} \;<\; \dfrac{1}{r_i} - \dfrac{1}{r_{i+1}} = \dfrac{\Delta r}{r_i\,r_{i+1}} \;<\; \dfrac{\Delta r}{r_i^{2}} \,. \]
+            Al sumar los tramos, el término del medio se cancela en cadena y deja \(\tfrac{1}{r_1} - \tfrac{1}{r_2}\). Así, \(W\) y \(GMm\left(\tfrac{1}{r_1} - \tfrac{1}{r_2}\right)\) quedan ambos entre \(W_{\text{inf}}\) y \(W_{\text{sup}}\).</p>
+          <p style="margin:0"><strong>4 · Las cotas se juntan.</strong> También se cancela en cadena \(W_{\text{sup}} - W_{\text{inf}} = GMm\,\Delta r\left(\tfrac{1}{r_1^{2}} - \tfrac{1}{r_2^{2}}\right)\), que tiende a cero al achicar \(\Delta r\). Dos números siempre atrapados entre cotas que se juntan son iguales:
+            \[ W = GMm\left( \dfrac{1}{r_1} - \dfrac{1}{r_2} \right) . \]</p>
         </div>
       </div>
     </div>
@@ -4925,20 +4928,21 @@ const T_OSC = 2 * Math.PI;
   const R_ = id => document.getElementById(id), rn = R_('ug-n'), r1 = 1, r2 = 4;   /* en radios terrestres, F en GMm/R² */
   function dibuja() {
     const n = +rn.value, host = R_('ug-w-fig');
-    const A = ejes(host, { W: 1000, H: 560, x: [0.5, 4.5], y: [0, 1.1], xt: [1, 2, 3, 4], yt: [0, 0.25, 0.5, 0.75, 1], fy: v => num(v, 2), xl: '*r*/*R*', yl: '*F* (en *GMm*/*R*²)' });
-    /* tramos con altura en la media geométrica (geométricamente espaciados) */
-    const q = Math.pow(r2 / r1, 1 / n); let suma = 0;
+    const A = ejes(host, { W: 1000, H: 430, x: [0.5, 4.5], y: [0, 1.1], xt: [1, 2, 3, 4], yt: [0, 0.25, 0.5, 0.75, 1], fy: v => num(v, 2), xl: '*r*/*R*', yl: '*F* (en *GMm*/*R*²)' });
+    /* tramos iguales: rectángulo superior con F(r_i) = 1/r_i² y rectángulo inferior con F(r_{i+1}) = 1/r_{i+1}² */
+    const dr = (r2 - r1) / n; let sup = 0, inf = 0;
     for (let i = 0; i < n; i++) {
-      const a = r1 * Math.pow(q, i), b = a * q, h = 1 / (a * b);
-      suma += h * (b - a);
-      nodo('rect', { x: A.X(a), y: A.Y(h), width: A.X(b) - A.X(a), height: A.Y(0) - A.Y(h), style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:2' }, A.capa);
+      const a = r1 + i * dr, b = a + dr, hs = 1 / (a * a), hi = 1 / (b * b);
+      sup += hs * dr; inf += hi * dr;
+      nodo('rect', { x: A.X(a), y: A.Y(hs), width: A.X(b) - A.X(a), height: A.Y(hi) - A.Y(hs), style: 'fill:var(--caso2-50);stroke:var(--caso2);stroke-width:1.5' }, A.capa);
+      nodo('rect', { x: A.X(a), y: A.Y(hi), width: A.X(b) - A.X(a), height: A.Y(0) - A.Y(hi), style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:1.5' }, A.capa);
     }
     const p = []; for (let i = 0; i <= 200; i++) { const x = 0.96 + 3.54 * i / 200; p.push([x, 1 / (x * x)]); }
     polilinea(A, p, 'stroke:var(--res);stroke-width:4');
     rotulo(A.capa, A.X(1.55), A.Y(0.62), '*F*(*r*) = *GMm*/*r*²', { 'font-size': 26, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
     [[r1, '*r*₁'], [r2, '*r*₂']].forEach(([x, t]) => rotulo(A.capa, A.X(x), A.Y(0) - 10, t, { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' }));
     R_('ug-nv').textContent = n;
-    R_('ug-w-lect').textContent = 'Suma de ' + n + (n === 1 ? ' tramo' : ' tramos') + ' = ' + num(suma, 4) + ' · exacto 1/r₁ − 1/r₂ = ' + num(1 / r1 - 1 / r2, 4) + ' (en GMm/R): ¡iguales con cualquier n!';
+    R_('ug-w-lect').textContent = n + (n === 1 ? ' tramo' : ' tramos') + ': W_inf = ' + num(inf, 4) + ' < exacto 1/r₁ − 1/r₂ = ' + num(1 / r1 - 1 / r2, 4) + ' < W_sup = ' + num(sup, 4) + ' (en GMm/R) · diferencia ' + num(sup - inf, 4);
   }
   const abre = () => { dibuja(); modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
   const cierra = () => { modal.style.display = 'none'; };
