@@ -377,7 +377,7 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
 .ug-pasoclic:hover{outline:3px dashed var(--res);outline-offset:-4px}
 #lu-v .gl-dcl-txt,#cg-in .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-w .gl-dcl-txt{font-size:24px;line-height:1.3}
-#ct-pop .gl-dcl-txt{font-size:23px;line-height:1.35}
+#ct-pop .gl-dcl-txt{font-size:22px;line-height:1.3}
 #ug-h .gl-dcl-txt{font-size:26px;line-height:1.4}
 #ug-h-lect b{color:var(--res)}
 
@@ -1745,7 +1745,7 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
     </figure>
     <div class="pila ct-col">
       <div class="caja neutra frag"><h3>1 · Hasta ahora: masa de prueba</h3>Con \(m \ll M_T\), el centro de masas coincide con el centro de la Tierra: el origen allí y la Tierra quieta.</div>
-      <div class="caja neutra frag"><h3>2 · La Luna no es pequeña</h3>\(m_L/M_T \approx 1/81\): el origen va al <strong>centro de masas</strong>, que está a \(r\,m_L/(M_T + m_L) \approx \qty{4670}{km}\) del centro de la Tierra, dentro de ella.</div>
+      <div class="caja neutra frag"><h3>2 · La Luna no es pequeña</h3>\(m_L = 7{,}342\times 10^{22}\,\mathrm{kg}\) y \(M_T = 5{,}972\times 10^{24}\,\mathrm{kg}\), así que \(m_L/M_T \approx 1/81\): el origen va al <strong>centro de masas</strong>, que está a \(r\,m_L/(M_T + m_L) \approx \qty{4670}{km}\) del centro de la Tierra, dentro de ella.</div>
       <div class="kf frag ug-pasoclic" id="ct-pop-btn" role="button" tabindex="0" title="Ver la demostración" style="padding:4px 14px;font-size:27px"><h3 style="margin:0;font-size:22px">3 · Posiciones y momentos en el marco del centro de masas <span class="mt-mas">(ⓘ clic: demostración)</span></h3>\[ \vect{r} = \vect{r}_L - \vect{r}_T, \qquad \vect{r}_T = -\dfrac{m_L}{M}\,\vect{r}, \qquad \vect{r}_L = \dfrac{M_T}{M}\,\vect{r} \]
         <p class="nota" style="margin:0">Con \(M = M_T + m_L\) y \(\vect{P}_{\text{total}} = \vect{0}\) en ese marco: los dos cuerpos están siempre en lados opuestos del origen, como en la simulación que sigue.</p></div>
     </div>
@@ -1773,9 +1773,11 @@ section.diapositiva .puente{position:absolute;left:50%;transform:translateX(-50%
             \[ \vect{p}_L = m_L\,\vect{v}_L = \dfrac{m_L M_T}{M}\,\vect{v}, \qquad \vect{p}_T = M_T\,\vect{v}_T = -\,\dfrac{m_L M_T}{M}\,\vect{v} \,, \]
             \[ \resalta{\vect{p}_T = -\,\vect{p}_L} \;\Longrightarrow\; \vect{P}_{\text{total}} = \vect{p}_T + \vect{p}_L = M\,\vect{V}_{\text{CM}} = \vect{0} \,. \]
             El centro de masas no se mueve: por eso el origen sigue siéndolo durante toda la simulación.</p>
-          <p style="margin:0"><strong>5 · Condiciones iniciales de la simulación (perigeo).</strong> \(\vect{r} = r_p\,\hat{\vect{x}}\), con \(r_p = \qty{363296}{km}\), y \(\vect{v} = v_p\,\hat{\vect{y}}\), con \(v_p = \qty{1082{,}4}{m/s}\). Con \(M_T/M \approx 0{,}9879\) y \(m_L/M \approx 0{,}0121\):
-            \[ \vect{r}_L \approx \qty{358884}{km}\,\hat{\vect{x}}, \quad \vect{r}_T \approx -\,\qty{4412}{km}\,\hat{\vect{x}}, \quad \vect{p}_L = -\vect{p}_T \approx 7{,}85\times 10^{25}\,\mathrm{kg\,m/s}\;\hat{\vect{y}} \,. \]
-            <span class="nota" style="font-size:21px">En el perigeo el centro de masas está a \(\qty{4412}{km}\) del centro de la Tierra; a la distancia media, \(\qty{384400}{km}\), a unos \(\qty{4670}{km}\).</span></p>
+          <p style="margin:0"><strong>5 · Condiciones iniciales de la simulación (perigeo).</strong> Datos: \(M_T = 5{,}972\times 10^{24}\,\mathrm{kg}\), \(m_L = 7{,}342\times 10^{22}\,\mathrm{kg}\), \(M = 6{,}045\times 10^{24}\,\mathrm{kg}\), así que \(M_T/M \approx 0{,}9879\) y \(m_L/M \approx 0{,}0121\). En el perigeo, \(\vect{r} = r_p\,\hat{\vect{x}}\) con \(r_p = \qty{363296}{km}\) y \(\vect{v} = v_p\,\hat{\vect{y}}\) con \(v_p = \qty{1082{,}4}{m/s}\):
+            \[ \vect{r}_L \approx \qty{358884}{km}\,\hat{\vect{x}}, \qquad \vect{r}_T \approx -\,\qty{4412}{km}\,\hat{\vect{x}} \,, \]
+            \[ \vect{v}_L = \dfrac{M_T}{M}\,v_p\,\hat{\vect{y}} \approx (0{,}9879)(\qty{1082{,}4}{m/s})\,\hat{\vect{y}} \approx \qty{1069{,}3}{m/s}\,\hat{\vect{y}} \,, \]
+            \[ \vect{p}_L = m_L\,\vect{v}_L \approx (7{,}342\times 10^{22}\,\mathrm{kg})(\qty{1069{,}3}{m/s})\,\hat{\vect{y}} \approx \resalta{7{,}85\times 10^{25}\,\mathrm{kg\,m/s}\;\hat{\vect{y}}}, \quad \vect{p}_T = -\vect{p}_L \,. \]
+            <span class="nota" style="font-size:20px">En el perigeo el CM está a \(\qty{4412}{km}\) del centro de la Tierra; a la distancia media, \(\qty{384400}{km}\), a unos \(\qty{4670}{km}\).</span></p>
         </div>
       </div>
     </div>
