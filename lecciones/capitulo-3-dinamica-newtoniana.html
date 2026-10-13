@@ -190,6 +190,36 @@ dl.glosa dd{margin:0;font-size:29px}
 .os-ley{display:flex;gap:26px;font:600 22px/1 var(--font-body);margin-top:2px}
 .os-ley span::before{content:'';display:inline-block;width:28px;height:5px;margin-right:8px;vertical-align:middle}
 .os-ley .l-tl::before{background:var(--res)} .os-ley .l-s::before{background:var(--caso2)} .os-ley .l-t::before{background:var(--tinta)}
+#dp-algo .al-col > * + *{margin-top:10px}
+#dp-algo .caja{padding:6px 14px;font-size:25px}
+#dp-algo .caja h3{font-size:24px;margin:0}
+#dp-algo .al-fig{padding:12px 18px}
+#dp-algo .al-flujo{display:flex;flex-direction:column;align-items:center;font-size:23px;line-height:1.25}
+#dp-algo .al-b{border:2.5px solid var(--tinta);padding:6px 16px;text-align:center;transition:background .2s,box-shadow .2s}
+#dp-algo .al-ini,#dp-algo .al-fin{border-radius:14px;background:var(--mal-50,var(--caso2-50))}
+#dp-algo .al-ci{background:var(--caso2-50);font-weight:700}
+#dp-algo .al-pr{background:var(--res-50);min-width:640px}
+#dp-algo .al-fl{font-size:22px;line-height:1;color:var(--tinta2);margin:1px 0}
+#dp-algo .al-ciclo{position:relative;display:flex;flex-direction:column;align-items:center;padding-left:70px}
+#dp-algo .al-ciclo::before{content:"";position:absolute;left:12px;top:26px;bottom:44px;width:46px;border:2.5px solid var(--tinta);border-right:0}
+#dp-algo .al-ciclo::after{content:"▶";position:absolute;left:52px;top:13px;font-size:20px;color:var(--tinta)}
+#dp-algo .al-si{position:absolute;left:22px;bottom:50px;font-weight:700;font-size:20px;color:var(--tinta)}
+#dp-algo .al-fila{display:flex;align-items:center;gap:10px}
+#dp-algo .al-dec{width:260px;height:88px;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);background:var(--tinta);display:flex;align-items:center;justify-content:center;transition:background .2s}
+#dp-algo .al-dec span{background:var(--caso1-50);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);width:252px;height:82px;display:flex;align-items:center;justify-content:center}
+#dp-algo .al-no{font-weight:700;font-size:20px}
+#dp-algo .al-b.on{box-shadow:0 0 0 5px var(--res);background:var(--panel)}
+#dp-algo .al-dec.on{background:var(--res)}
+#dp-algo .al-ctl{margin-top:8px;justify-content:center}
+#dp-algo .al-lect{font:600 22px var(--font-body);color:var(--res);margin-left:12px}
+#al-ci .gl-dcl-txt{font-size:25px;line-height:1.4}
+#al-ci .al-tab{border-collapse:collapse;font-size:24px;width:100%}
+#al-ci .al-tab th,#al-ci .al-tab td{border-bottom:1.5px solid var(--linea);padding:4px 12px;text-align:left}
+#dp-mang .am-col > * + *,#dp-mang-cons .lc-col > * + *,#dp-kep1 .k1-col > * + *,#dp-kep2 .k2-col > * + *,#dp-kep3 .k3-col > * + *{margin-top:8px}
+#dp-mang .caja,#dp-mang-cons .caja,#dp-kep1 .caja,#dp-kep2 .caja,#dp-kep3 .caja{padding:4px 14px;font-size:24px}
+#dp-mang .caja h3,#dp-mang-cons .caja h3,#dp-kep1 .caja h3,#dp-kep2 .caja h3,#dp-kep3 .caja h3{font-size:23px;margin:0}
+#dp-mang .ctrl,#dp-kep1 .ctrl,#dp-kep2 .ctrl,#dp-kep3 .ctrl{margin:4px 0}
+#dp-mang-cons .btn,#dp-kep2 .btn{font-size:22px;padding:7px 12px}
 #dp-paradoja .gp-col > * + *{margin-top:8px}
 #dp-paradoja .caja{padding:4px 14px;font-size:24px}
 #dp-paradoja .caja h3{font-size:24px;margin:0}
@@ -2176,6 +2206,68 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-algo" data-label="El algoritmo de la órbita Tierra–Luna" data-speaker-notes="§ 3.9. Diagrama de bloques del algoritmo de Euler-Cromer para la órbita Tierra–Luna en el sistema del centro de masas (figura del documento original). Clic en «Condiciones iniciales»: ventana con las condiciones en el perigeo, en símbolos y con números. El botón «Recorrer» ilumina los bloques en el orden en que se ejecutan. Puntos clave: primero se actualiza p y luego r con el p nuevo (Euler-Cromer); el mismo F_L Δt se suma a la Luna y se resta a la Tierra, así que P_total sigue siendo 0.">
+  <p class="ceja">§ 3.9 · Simulación numérica</p>
+  <h2 class="titulo">El algoritmo: la órbita Tierra–Luna paso a paso</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)">
+    <figure class="svgbox al-fig" style="margin:0">
+      <div class="al-flujo">
+        <div class="al-b al-ini" data-k="ini">Inicio \((t = 0)\)</div>
+        <div class="al-fl">↓</div>
+        <div class="al-b al-ci ug-pasoclic" data-k="ci" id="al-ci-btn" role="button" tabindex="0" title="Ver las condiciones iniciales">Condiciones iniciales <span class="mt-mas">(ⓘ clic)</span></div>
+        <div class="al-fl">↓</div>
+        <div class="al-ciclo">
+          <div class="al-b al-pr" data-k="F">Calcular \(\vect{F}_L = -\,G\,\dfrac{m_L M_T}{\abs{\vect{r}}^{3}}\,\vect{r}\), con \(\vect{r} = \vect{r}_L - \vect{r}_T\)</div>
+          <div class="al-fl">↓</div>
+          <div class="al-b al-pr" data-k="p">Actualizar: \(\vect{p}_L \leftarrow \vect{p}_L + \vect{F}_L\,\Delta t\) y \(\vect{p}_T \leftarrow \vect{p}_T - \vect{F}_L\,\Delta t\)</div>
+          <div class="al-fl">↓</div>
+          <div class="al-b al-pr" data-k="r">Actualizar: \(\vect{r}_L \leftarrow \vect{r}_L + \dfrac{\vect{p}_L}{m_L}\,\Delta t\) y \(\vect{r}_T \leftarrow \vect{r}_T + \dfrac{\vect{p}_T}{M_T}\,\Delta t\)</div>
+          <div class="al-fl">↓</div>
+          <div class="al-b al-pr" data-k="t">Avanzar el tiempo: \(t \leftarrow t + \Delta t\)</div>
+          <div class="al-fl">↓</div>
+          <div class="al-fila"><div class="al-dec" data-k="dec"><span>¿\(t \lt t_{\text{final}}\)?</span></div><div class="al-no">No →</div><div class="al-b al-fin" data-k="fin">Graficar y fin</div></div>
+          <span class="al-si">Sí</span>
+        </div>
+      </div>
+      <div class="fila-btn al-ctl"><button type="button" class="btn prim" id="al-play">▶ Recorrer el algoritmo</button><span class="al-lect" id="al-lect"></span></div>
+    </figure>
+    <div class="pila al-col">
+      <div class="caja neutra frag"><h3>1 · Euler-Cromer</h3>En cada paso se actualiza primero la cantidad de movimiento con la fuerza, y luego la posición con el \(\vect{p}\) <strong>ya actualizado</strong>. Es el mismo algoritmo del oscilador de la § 3.2.</div>
+      <div class="caja neutra frag"><h3>2 · Acción y reacción, en el código</h3>El mismo impulso \(\vect{F}_L\,\Delta t\) se <strong>suma</strong> a la Luna y se <strong>resta</strong> a la Tierra: \(\vect{P}_{\text{total}} = \vect{p}_T + \vect{p}_L\) no cambia en ningún paso.</div>
+      <div class="caja c2 frag"><h3>3 · ¿Dónde estamos?</h3>En el <strong>marco del centro de masas</strong>, con la Tierra y la Luna sobre el eje \(x\) en el perigeo. Las condiciones iniciales (clic en su recuadro) garantizan \(\vect{P}_{\text{total}} = \vect{0}\) desde \(t = 0\).</div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="al-ci" style="display:none" role="dialog" aria-modal="true" aria-labelledby="al-ci-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="al-ci-tit">Condiciones iniciales: perigeo, en el sistema del centro de masas</h3>
+      <div class="gl-dcl-g" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+        <div class="gl-dcl-txt al-ci-sim">
+          <p style="margin:0 0 6px">Sean \(r_p\) la distancia y \(v_p\) la rapidez relativas en el perigeo. Definimos la masa total \(M_{\text{tot}} = M_T + m_L\):</p>
+          \[ \vect{r}_L = \left( \dfrac{M_T}{M_{\text{tot}}}\,r_p \,,\; 0 \right), \qquad \vect{r}_T = \left( -\,\dfrac{m_L}{M_{\text{tot}}}\,r_p \,,\; 0 \right), \]
+          \[ \vect{v}_{L0} = \left( 0 \,,\; \dfrac{M_T}{M_{\text{tot}}}\,v_p \right), \qquad \vect{p}_L = m_L\,\vect{v}_{L0}, \qquad \vect{p}_T = -\,\vect{p}_L \,. \]
+          <p class="nota" style="margin:6px 0 0">Las magnitudes relativas se reparten en proporción inversa a las masas, y \(\vect{p}_T = -\vect{p}_L\) hace que el momento total inicial sea exactamente \(\vect{0}\). La deducción está en la diapositiva anterior (paso 3).</p>
+        </div>
+        <div class="gl-dcl-txt">
+          <table class="al-tab">
+            <tr><th>Dato</th><th>Valor</th></tr>
+            <tr><td>\(M_T\)</td><td>\(5{,}972\times 10^{24}\,\mathrm{kg}\)</td></tr>
+            <tr><td>\(m_L\)</td><td>\(7{,}342\times 10^{22}\,\mathrm{kg}\)</td></tr>
+            <tr><td>\(M_{\text{tot}}\)</td><td>\(6{,}045\times 10^{24}\,\mathrm{kg}\)</td></tr>
+            <tr><td>\(r_p\), \(v_p\)</td><td>\(\qty{363296}{km}\), \(\qty{1082{,}4}{m/s}\)</td></tr>
+            <tr><td>\(\vect{r}_L\)</td><td>\((\qty{358884}{km},\ 0)\)</td></tr>
+            <tr><td>\(\vect{r}_T\)</td><td>\((-\qty{4412}{km},\ 0)\)</td></tr>
+            <tr><td>\(\vect{v}_{L0}\)</td><td>\((0,\ \qty{1069{,}3}{m/s})\)</td></tr>
+            <tr><td>\(\vect{p}_L\)</td><td>\((0,\ 7{,}85\times 10^{25}\,\mathrm{kg\,m/s})\)</td></tr>
+            <tr><td>\(\vect{p}_T\)</td><td>\((0,\ -7{,}85\times 10^{25}\,\mathrm{kg\,m/s})\)</td></tr>
+          </table>
+          <p class="nota" style="margin:6px 0 0">Con \(\Delta t = \qty{1}{h}\) y \(t_{\text{final}}\) de unos dos meses, la Luna da poco más de dos vueltas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orbita" data-label="Simulación Tierra–Luna" data-speaker-notes="§ 3.9. El mismo algoritmo de Euler-Cromer con la fuerza gravitacional, en el sistema del centro de masas.">
   <p class="ceja">§ 3.9 · Gravitación y simulación</p>
   <h2 class="titulo">El mismo algoritmo, ahora con \(\vect{F}_L = -G\,m_L M_T\,\vect{r}/\abs{\vect{r}}^{3}\)</h2>
@@ -2276,10 +2368,185 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
     <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: ¿qué sistema es aislado?" loading="lazy">Cargando…</iframe>
   </dialog>
+  <p class="puente">→ Una cantidad más que se conserva: el momento angular</p>
 </section>
 
-<section class="poster" data-seccion="Práctica" data-label="§ 6 · Práctica" data-speaker-notes="Separador: Práctica. 4 diapositivas.">
+<section class="poster" data-seccion="Momento angular y Kepler" data-label="§ 6 · Momento angular y Kepler" data-speaker-notes="Separador: Momento angular y Kepler. 4 diapositivas.">
   <div class="p-num">§ 6</div>
+  <h2 class="p-tit">Momento angular y Kepler</h2>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Momento angular: L = r × p</span><span>Sin torque, el momento angular no cambia</span><span>El torque de la gravedad del Sol sobre un planeta</span><span>Primera ley: las órbitas son elipses con el Sol en un foco</span></div>
+</section>
+
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-mang" data-label="Momento angular" data-speaker-notes="§ 3.10. Momento angular L = r × p: perpendicular al plano de r y p; magnitud r p sen θ = r p⊥, el área del paralelogramo. Solo la componente de p perpendicular a r cuenta. Explorador: cambia el ángulo entre r y p; ⊙ sale del plano, ⊗ entra. Torque τ = r × F. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.10 · Momento angular</p>
+  <h2 class="titulo">Momento angular: \(\vect{L} = \vect{r} \times \vect{p}\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Solo cuenta la parte de \(\vect{p}\) perpendicular a \(\vect{r}\)</span><span class="val" id="am-lect"></span></div>
+      <div id="am-fig"></div>
+      <label class="ctrl am-ctl"><span>Ángulo \(\theta\) entre \(\vect{r}\) y \(\vect{p}\)</span><input type="range" id="am-th" min="0" max="360" step="1" value="60"><span class="v" id="am-thv"></span></label>
+    </figure>
+    <div class="pila am-col">
+      <div class="caja neutra frag"><h3>1 · Definición</h3>Con \(\vect{r}\) medido desde un punto \(O\) y \(\vect{p} = m\,\vect{v}\), el momento angular respecto a \(O\) es el producto vectorial
+        \[ \vect{L} = \vect{r} \times \vect{p} \,, \]
+        perpendicular al plano de \(\vect{r}\) y \(\vect{p}\) (regla de la mano derecha).</div>
+      <div class="caja neutra frag"><h3>2 · Magnitud: el área del paralelogramo</h3>
+        \[ L = r\,p\,\sin\theta = r\,p_{\perp} \,. \]
+        Si \(\vect{p}\) apunta hacia \(O\) o se aleja de él (\(\theta = 0^\circ\) o \(180^\circ\)), \(L = 0\): no hay giro.</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:26px"><h3 style="margin:0;font-size:24px">3 · Lo que lo cambia: el torque</h3>\[ \vect{\tau} = \vect{r} \times \vect{F} \]
+        <p class="nota" style="margin:0">Así como la fuerza cambia \(\vect{p}\), el torque cambia \(\vect{L}\).</p></div>
+    </div>
+  </div>
+  <p class="puente">→ ¿Cuándo se conserva el momento angular?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-mang-cons" data-label="Conservación del momento angular" data-speaker-notes="§ 3.10. Demostración algebraica del documento: ΔL = r×Δp + Δr×p + Δr×Δp; Δr ∥ p anula el segundo término y el tercero es despreciable; con Δp = FΔt, ΔL = τΔt. Con fuerza central (gravedad) τ = 0 y L se conserva. Simulación: con fuerza central L/L₀ = 1; con un empujón lateral cambia. Nota: Euler-Cromer conserva L exactamente para fuerzas centrales. ↓ revela 4 pasos.">
+  <p class="ceja">§ 3.10 · Conservación del momento angular</p>
+  <h2 class="titulo">Sin torque, el momento angular no cambia</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Órbita con Euler-Cromer: \(\vect{F}\) siempre paralela a \(\vect{r}\)</span><span class="val" id="lc-lect"></span></div>
+      <canvas class="lienzo" id="lc-cv" width="1000" height="640"></canvas>
+      <div class="fila-btn lc-ctl"><button type="button" class="btn on" data-f="central">Fuerza central (gravedad)</button><button type="button" class="btn" data-f="lateral">Con un empujón lateral</button><button type="button" class="btn" id="lc-reset">↺</button></div>
+    </figure>
+    <div class="pila lc-col">
+      <div class="caja neutra frag"><h3>1 · El cambio en un intervalo \(\Delta t\)</h3>
+        \[ \Delta\vect{L} = (\vect{r} + \Delta\vect{r}) \times (\vect{p} + \Delta\vect{p}) - \vect{r} \times \vect{p} = \vect{r} \times \Delta\vect{p} + \Delta\vect{r} \times \vect{p} + \Delta\vect{r} \times \Delta\vect{p} \]</div>
+      <div class="caja neutra frag"><h3>2 · Dos términos se van</h3>\(\Delta\vect{r} \approx \vect{v}\,\Delta t\) es paralelo a \(\vect{p} = m\vect{v}\): \(\Delta\vect{r} \times \vect{p} = \vect{0}\). Y \(\Delta\vect{r} \times \Delta\vect{p}\) es el producto de dos cantidades muy pequeñas: \(\Delta\vect{L} \approx \vect{r} \times \Delta\vect{p}\).</div>
+      <div class="caja neutra frag"><h3>3 · Con la ley de la fuerza</h3>\(\Delta\vect{p} = \vect{F}\,\Delta t\):
+        \[ \Delta\vect{L} = (\vect{r} \times \vect{F})\,\Delta t = \vect{\tau}\,\Delta t \,. \]</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:25px"><h3 style="margin:0;font-size:24px">4 · Fuerza central: \(\vect{F} \parallel \vect{r}\)</h3>\[ \vect{\tau} = \vect{r} \times \vect{F} = \vect{0} \;\Longrightarrow\; \resalta{\vect{L} = \text{constante}} \]
+        <p class="nota" style="margin:0">La gravedad del Sol apunta siempre hacia él: el momento angular de un planeta se conserva.</p></div>
+    </div>
+  </div>
+  <p class="puente">→ Actividad: ¿cuánto vale el torque de la gravedad?</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Momento angular y Kepler" id="ac-torque" data-label="Actividad: el torque de la gravedad" data-speaker-notes="Actividad en parejas: el torque de la gravedad respecto al Sol es cero en toda la órbita, porque la fuerza es central (paralela a r). Respuesta: 3. Errores: confundir fuerza (máxima en el perihelio) con torque (1), o pensar que cambia de signo porque el planeta acelera y frena (4).">
+  <p class="ceja">§ 3.10 · Conservación del momento angular · Actividad en parejas</p>
+  <h2 class="titulo">El torque de la gravedad del Sol sobre un planeta</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="torque"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Un planeta recorre una órbita elíptica alrededor del Sol. El torque que la gravedad del Sol ejerce sobre el planeta, calculado respecto al Sol:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">es máximo en el perihelio, donde la fuerza es mayor</button><button type="button" class="pr-opc" data-o="b">es máximo en el afelio, donde \(r\) es mayor</button><button type="button" class="pr-opc" data-o="c">es cero en todos los puntos de la órbita</button><button type="button" class="pr-opc" data-o="d">cambia de signo entre el perihelio y el afelio</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La fuerza gravitacional apunta siempre hacia el Sol, es decir, a lo largo de \(-\vect{r}\). El ángulo entre \(\vect{r}\) y \(\vect{F}\) es \(180^\circ\) y \(\sin 180^\circ = 0\): \(\vect{\tau} = \vect{r} \times \vect{F} = \vect{0}\) en <strong>todos</strong> los puntos, aunque la fuerza sea más intensa en el perihelio. Por eso el momento angular del planeta se conserva.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-torque">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 El torque es \(\vect{\tau} = \vect{r} \times \vect{F}\). ¿Qué ángulo forman \(\vect{r}\) (del Sol al planeta) y la fuerza gravitacional?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-torque" class="gform-dlg" aria-label="Formulario: Actividad: el torque de la gravedad">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el torque de la gravedad" loading="lazy">Cargando…</iframe>
+  </dialog>
+  <p class="puente">→ ¿Qué forma tienen las órbitas?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-kep1" data-label="Primera ley de Kepler" data-speaker-notes="§ 3.11. Primera ley de Kepler: órbitas elípticas con el Sol en un foco. Explorador: rapidez en el punto de partida en unidades de la rapidez circular √(GM/r); con 1 la órbita es un círculo, con más es una elipse alargada, desde √2 escapa (parábola o hipérbola), con menos el punto de partida es el afelio. Excentricidad e = (v/v_c)² − 1. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.11 · Leyes de Kepler</p>
+  <h2 class="titulo">Primera ley: las órbitas son elipses con el Sol en un foco</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Lanzamiento perpendicular al radio, desde la misma distancia</span><span class="val" id="k1-lect"></span></div>
+      <div id="k1-fig"></div>
+      <label class="ctrl k1-ctl"><span>Rapidez \(v/v_{\text{circ}}\)</span><input type="range" id="k1-v" min="0.7" max="1.6" step="0.01" value="1.2"><span class="v" id="k1-vv"></span></label>
+    </figure>
+    <div class="pila k1-col">
+      <div class="caja neutra frag"><h3>1 · El enunciado</h3>«La órbita de cada planeta es una <strong>elipse</strong> con el Sol en uno de sus focos». En una elipse, la suma de las distancias a los dos focos es constante, \(2a\).</div>
+      <div class="caja neutra frag"><h3>2 · El círculo: un caso especial</h3>Si la gravedad da exactamente la fuerza centrípeta,
+        \[ \dfrac{GMm}{r^{2}} = \dfrac{m v^{2}}{r} \;\Longrightarrow\; v_{\text{circ}} = \sqrt{\dfrac{GM}{r}} \,, \]
+        y los dos focos coinciden en el Sol.</div>
+      <div class="caja c2 frag"><h3>3 · Más o menos rápido</h3>Con otra rapidez la órbita se estira en una elipse (excentricidad \(e = (v/v_{\text{circ}})^{2} - 1\) desde el perihelio). Desde \(v = \sqrt{2}\,v_{\text{circ}} = v_{\text{esc}}\) la órbita ya no se cierra: el cuerpo escapa.</div>
+    </div>
+  </div>
+  <p class="puente">→ ¿Por qué los planetas van más rápido cerca del Sol?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-kep2" data-label="Segunda ley de Kepler" data-speaker-notes="§ 3.11. Segunda ley: áreas iguales en tiempos iguales, consecuencia de la conservación del momento angular: ΔA/Δt = L/(2m). Explorador: la órbita se divide en 12 intervalos de tiempo iguales (sectores alternados en color, todos con la misma área); el planeta se mueve según la ecuación de Kepler. La razón de rapideces perihelio/afelio es (1 + e)/(1 − e). ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.11 · Leyes de Kepler</p>
+  <h2 class="titulo">Segunda ley: áreas iguales en tiempos iguales</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Doce intervalos de tiempo iguales: doce áreas iguales</span><span class="val" id="k2-lect"></span></div>
+      <div id="k2-fig"></div>
+      <label class="ctrl k2-ctl"><span>Excentricidad \(e\)</span><input type="range" id="k2-e" min="0" max="0.8" step="0.01" value="0.5"><span class="v" id="k2-ev"></span></label>
+      <div class="fila-btn k2-ctl"><button type="button" class="btn" id="k2-play">Pausa</button></div>
+    </figure>
+    <div class="pila k2-col">
+      <div class="caja neutra frag"><h3>1 · El área de un triángulo delgado</h3>En un \(\Delta t\) corto el planeta barre un triángulo de base \(r\) y altura \(v_{\perp}\,\Delta t\):
+        \[ \Delta A \approx \tfrac12\,r\,v_{\perp}\,\Delta t \,. \]</div>
+      <div class="caja neutra frag"><h3>2 · Con el momento angular</h3>\(L = m\,r\,v_{\perp}\) se conserva (fuerza central):
+        \[ \dfrac{\Delta A}{\Delta t} = \dfrac{r\,v_{\perp}}{2} = \resalta{\dfrac{L}{2m}} = \text{constante} \,. \]</div>
+      <div class="caja c2 frag"><h3>3 · Consecuencia</h3>Como \(r\,v_{\perp}\) es constante, donde \(r\) es pequeño \(v_{\perp}\) es grande: el planeta va <strong>más rápido en el perihelio</strong> y más lento en el afelio, en la razón \(\dfrac{v_p}{v_a} = \dfrac{r_a}{r_p} = \dfrac{1+e}{1-e}\).</div>
+    </div>
+  </div>
+  <p class="puente">→ Actividad: un cometa muy excéntrico</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Momento angular y Kepler" id="ac-cometa" data-label="Actividad: el cometa excéntrico" data-speaker-notes="Actividad en parejas: conservación del momento angular en un cometa (perihelio 0,5 UA, afelio 35 UA). En los extremos v ⊥ r, así que r_p v_p = r_a v_a: v_p/v_a = 70. Respuesta: 2. Errores: usar energía mal o la raíz (3), o el cuadrado (4).">
+  <p class="ceja">§ 3.11 · Leyes de Kepler · Actividad en parejas</p>
+  <h2 class="titulo">Un cometa muy excéntrico: ¿cuánto más rápido en el perihelio?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cometa"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Un cometa pasa a \(\qty{0{,}5}{UA}\) del Sol en el perihelio y se aleja hasta \(\qty{35}{UA}\) en el afelio. Su rapidez en el perihelio, comparada con la del afelio, es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la misma: la órbita es cerrada</button><button type="button" class="pr-opc" data-o="b">70 veces mayor</button><button type="button" class="pr-opc" data-o="c">\(\sqrt{70} \approx 8{,}4\) veces mayor</button><button type="button" class="pr-opc" data-o="d">\(70^{2} = 4900\) veces mayor</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En los dos extremos \(\vect{v} \perp \vect{r}\), así que \(L = m\,r\,v\). Como \(L\) se conserva, \(r_p\,v_p = r_a\,v_a\):</p><p style="margin:4px 0 0">\(\dfrac{v_p}{v_a} = \dfrac{r_a}{r_p} = \dfrac{35}{0{,}5} = 70\). El cometa pasa como un rayo cerca del Sol y se arrastra lentamente en las afueras, barriendo siempre la misma área por unidad de tiempo.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-cometa">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 En el perihelio y en el afelio la velocidad es perpendicular a \(\vect{r}\). ¿Qué cantidad es igual en los dos puntos?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-cometa" class="gform-dlg" aria-label="Formulario: Actividad: el cometa excéntrico">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el cometa excéntrico" loading="lazy">Cargando…</iframe>
+  </dialog>
+  <p class="puente">→ ¿Cómo depende el período de la distancia?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-kep3" data-label="Tercera ley de Kepler" data-speaker-notes="§ 3.11. Tercera ley: T² ∝ a³. Para órbitas circulares, T = 2πr/v con v = √(GM/r) da T² = 4π²r³/(GM); en general T² = 4π²a³/(G(M+m)). Gráfica log–log de los planetas: pendiente 3/2. Ejemplo: período de la Luna, 27,3 días. ↓ revela 3 pasos.">
+  <p class="ceja">§ 3.11 · Leyes de Kepler</p>
+  <h2 class="titulo">Tercera ley: \(T^{2} \propto a^{3}\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Los planetas en escala logarítmica: una recta de pendiente \(3/2\)</span><span class="val" id="k3-lect"></span></div>
+      <div id="k3-fig"></div>
+      <label class="ctrl k3-ctl"><span>Planeta hipotético: \(a\) (UA)</span><input type="range" id="k3-a" min="-0.6" max="1.6" step="0.01" value="0.6"><span class="v" id="k3-av"></span></label>
+    </figure>
+    <div class="pila k3-col">
+      <div class="caja neutra frag"><h3>1 · Período de una órbita circular</h3>
+        \[ T = \dfrac{2\pi r}{v}, \qquad v = \sqrt{\dfrac{GM}{r}} \;\Longrightarrow\; T = \dfrac{2\pi r}{\sqrt{GM/r}} \,. \]</div>
+      <div class="caja neutra frag"><h3>2 · Elevar al cuadrado</h3>
+        \[ T^{2} = \dfrac{4\pi^{2} r^{2}}{GM/r} = \resalta{\dfrac{4\pi^{2}}{GM}\,r^{3}} \,. \]
+        La constante es la misma para todo lo que orbita la misma masa \(M\). En general, \(T^{2} = \dfrac{4\pi^{2}}{G(M + m)}\,a^{3}\).</div>
+      <div class="kf frag" style="padding:4px 14px;font-size:24px"><h3 style="margin:0;font-size:23px">3 · Ejemplo: la Luna</h3>\[ T = 2\pi\sqrt{\dfrac{a^{3}}{G(M_T + m_L)}} \approx 2{,}36\times 10^{6}\,\mathrm{s} \approx 27{,}3\ \text{días} \]
+        <p class="nota" style="margin:0">Con \(a = 3{,}844\times 10^{8}\,\mathrm{m}\), \(G = 6{,}674\times 10^{-11}\,\mathrm{N\,m^2/kg^2}\) y \(M_T + m_L = 6{,}045\times 10^{24}\,\mathrm{kg}\).</p></div>
+    </div>
+  </div>
+  <p class="puente">→ Actividad: un planeta cuatro veces más lejos</p>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Momento angular y Kepler" id="ac-periodo" data-label="Actividad: el período a 4 UA" data-speaker-notes="Actividad en parejas: tercera ley de Kepler. Con T² ∝ a³, a = 4 UA da T = 4^{3/2} = 8 años. Respuesta: 4. Errores: proporcionalidad directa (1), T ∝ a² (2), T ∝ a³ (3).">
+  <p class="ceja">§ 3.11 · Leyes de Kepler · Actividad en parejas</p>
+  <h2 class="titulo">Un planeta cuatro veces más lejos que la Tierra: ¿cuánto dura su año?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="periodo"></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un planeta gira alrededor del Sol en una órbita casi circular de radio \(\qty{4}{UA}\), cuatro veces la distancia Tierra–Sol. Su período es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">4 años</button><button type="button" class="pr-opc" data-o="b">16 años</button><button type="button" class="pr-opc" data-o="c">64 años</button><button type="button" class="pr-opc" data-o="d">8 años</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Para todo lo que orbita el Sol, \(T^{2}/a^{3}\) es el mismo. En años y UA: \(T^{2} = a^{3} = 4^{3} = 64\), de donde \(T = \sqrt{64} = 8\) años. Júpiter, a unos \(\qty{5{,}2}{UA}\), tarda \(5{,}2^{3/2} \approx 11{,}9\) años. Más lejos, el planeta va más despacio y además recorre un camino más largo.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-periodo">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Con la Tierra como referencia (\(a = \qty{1}{UA}\), \(T = 1\) año), la tercera ley dice \(T^{2} = a^{3}\) en esas unidades.</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-periodo" class="gform-dlg" aria-label="Formulario: Actividad: el período a 4 UA">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el período a 4 UA" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
+<section class="poster" data-seccion="Práctica" data-label="§ 7 · Práctica" data-speaker-notes="Separador: Práctica. 4 diapositivas.">
+  <div class="p-num">§ 7</div>
   <h2 class="p-tit">Práctica</h2>
   <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Comprueba lo aprendido</span><span>Sé el computador: dos pasos con Δt = 0,5 s</span><span>¿Cambia la aceleración si lo lanzas hacia abajo?</span><span>En el punto más alto</span></div>
 </section>
@@ -5107,6 +5374,214 @@ const T_OSC = 2 * Math.PI;
   document.addEventListener('slidechange', cierra);
 })();
 
+/* ═══ ALGORITMO DE LA ÓRBITA TIERRA–LUNA: DIAGRAMA DE BLOQUES ═══════════ */
+(function () {
+  const sl = document.getElementById('dp-algo');
+  if (!sl) return;
+  const R_ = id => document.getElementById(id);
+  const bloque = k => $('[data-k="' + k + '"]', sl);
+  const orden = ['ini', 'ci'].concat(['F', 'p', 'r', 't', 'dec'], ['F', 'p', 'r', 't', 'dec'], ['F', 'p', 'r', 't', 'dec', 'fin']);
+  const nota = { ini: 't = 0', ci: 'perigeo, P_total = 0', F: 'fuerza en la posición actual', p: 'impulso ±F_L Δt', r: 'posiciones con el p nuevo', t: 't ← t + Δt', dec: '¿falta tiempo?', fin: 't = t_final: graficar' };
+  let id = null, i = 0, vuelta = 1;
+  const apaga = () => $$('.on', sl).forEach(e => e.classList.remove('on'));
+  function paso() {
+    apaga(); const k = orden[i]; bloque(k).classList.add('on');
+    if (k === 'F' && i > 2) vuelta++;
+    R_('al-lect').textContent = (['F', 'p', 'r', 't', 'dec'].includes(k) ? 'paso ' + vuelta + ' · ' : '') + nota[k] + (k === 'dec' ? (i === orden.length - 2 ? ' → No' : ' → Sí') : '');
+    i++; if (i >= orden.length) { clearInterval(id); id = null; }
+  }
+  const para = () => { if (id) clearInterval(id); id = null; apaga(); R_('al-lect').textContent = ''; };
+  R_('al-play').addEventListener('click', () => { para(); i = 0; vuelta = 1; paso(); id = setInterval(paso, 900); });
+  document.addEventListener('slidechange', para);
+  /* ventana de condiciones iniciales */
+  const btn = R_('al-ci-btn'), modal = R_('al-ci');
+  const abre = () => { modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+  const cierra = () => { modal.style.display = 'none'; };
+  btn.addEventListener('click', abre);
+  btn.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); abre(); } });
+  $('.gl-dcl-x', modal).addEventListener('click', cierra);
+  modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+  document.addEventListener('slidechange', cierra);
+})();
+
+/* ═══ MOMENTO ANGULAR: L = r × p ═════════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('am-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), th = R_('am-th');
+  function pinta() {
+    const t = +th.value * Math.PI / 180, W = 1000, H = 560;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const O = [160, 420], ar = 0.42, rl = 380, P = [O[0] + rl * Math.cos(ar), O[1] - rl * Math.sin(ar)];
+    const pl = 230, pa = ar + t, Q = [P[0] + pl * Math.cos(pa), P[1] - pl * Math.sin(pa)];
+    /* paralelogramo de r y p */
+    const C = [O[0] + pl * Math.cos(pa), O[1] - pl * Math.sin(pa)];
+    nodo('polygon', { points: [O, P, Q, C].map(q => q.join(',')).join(' '), style: 'fill:var(--res-50);stroke:var(--res);stroke-width:1.5;stroke-dasharray:6 5' }, svg);
+    /* componentes de p: paralela y perpendicular a r */
+    const pp = pl * Math.cos(t), pq = pl * Math.sin(t);
+    const A1 = [P[0] + pp * Math.cos(ar), P[1] - pp * Math.sin(ar)];
+    nodo('line', { x1: P[0], y1: P[1], x2: A1[0], y2: A1[1], style: 'stroke:var(--tinta2);stroke-width:3;stroke-dasharray:7 5' }, svg);
+    if (Math.abs(pq) > 6) flecha(svg, A1[0], A1[1], Q[0], Q[1], 'var(--caso2)', 4);
+    nodo('circle', { cx: O[0], cy: O[1], r: 9, style: 'fill:var(--tinta)' }, svg);
+    rotulo(svg, O[0] - 30, O[1] + 34, '*O*', { 'font-size': 28, style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' });
+    flecha(svg, O[0], O[1], P[0], P[1], 'var(--caso1)', 5);
+    rotulo(svg, (O[0] + P[0]) / 2 + 10, (O[1] + P[1]) / 2 + 36, '!r!', { 'font-size': 30, style: 'fill:var(--caso1);font-family:' + FMATH + ';font-weight:700' });
+    flecha(svg, P[0], P[1], Q[0], Q[1], 'var(--proy)', 5);
+    rotulo(svg, Q[0] + 12, Q[1] - 6, '!p!', { 'font-size': 30, style: 'fill:var(--proy);font-family:' + FMATH + ';font-weight:700' });
+    if (Math.abs(pq) > 30) rotulo(svg, (A1[0] + Q[0]) / 2 + 12, (A1[1] + Q[1]) / 2, '!p!_⊥', { 'font-size': 26, style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px' });
+    nodo('circle', { cx: P[0], cy: P[1], r: 13, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:3' }, svg);
+    const L = Math.sin(t), sym = Math.abs(L) < 0.01 ? '0' : (L > 0 ? '⊙' : '⊗');
+    rotulo(svg, 820, 110, '!L!', { 'text-anchor': 'middle', 'font-size': 34, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    rotulo(svg, 820, 170, sym, { 'text-anchor': 'middle', 'font-size': 64, style: 'fill:var(--res);font-family:' + FTXT });
+    rotulo(svg, 820, 215, Math.abs(L) < 0.01 ? 'L = 0' : (L > 0 ? 'sale del plano' : 'entra al plano'), { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700' });
+    R_('am-thv').textContent = th.value + '°';
+    R_('am-lect').textContent = 'L = r p sen θ = ' + num(L, 2) + ' r p (área del paralelogramo)';
+  }
+  th.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CONSERVACIÓN DEL MOMENTO ANGULAR: ÓRBITA CON Y SIN TORQUE ═══════════ */
+(function () {
+  const cv = document.getElementById('lc-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, sl = document.getElementById('dp-mang-cons');
+  let modo = 'central', s, ult = 0;
+  const GM = 1, dt = 0.004;
+  function reinicia() { s = { r: [1, 0], p: [0, 1.15], t: 0, tr: [] }; s.L0 = s.r[0] * s.p[1] - s.r[1] * s.p[0]; }
+  function paso() {
+    const d = Math.hypot(s.r[0], s.r[1]); let Fx = -GM * s.r[0] / (d * d * d), Fy = -GM * s.r[1] / (d * d * d);
+    if (modo === 'lateral') { const ux = -s.r[1] / d, uy = s.r[0] / d; Fx += 0.12 * ux; Fy += 0.12 * uy; }
+    s.p[0] += Fx * dt; s.p[1] += Fy * dt; s.r[0] += s.p[0] * dt; s.r[1] += s.p[1] * dt; s.t += dt;
+    s.tr.push([s.r[0], s.r[1]]); if (s.tr.length > 2600) s.tr.shift(); if (Math.hypot(s.r[0], s.r[1]) > 2.6) { const m = modo; reinicia(); modo = m; }
+    return [Fx, Fy];
+  }
+  const E = 150, X = v => W / 2 + 130 + v * E, Y = v => H / 2 - v * E;
+  function flechaC(x1, y1, x2, y2, c) { g.strokeStyle = c; g.fillStyle = c; g.lineWidth = 4; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2, y2); g.stroke(); const a = Math.atan2(y2 - y1, x2 - x1); g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - 16 * Math.cos(a - 0.4), y2 - 16 * Math.sin(a - 0.4)); g.lineTo(x2 - 16 * Math.cos(a + 0.4), y2 - 16 * Math.sin(a + 0.4)); g.closePath(); g.fill(); }
+  function dibuja(F) {
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, H);
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 2; g.beginPath(); s.tr.forEach((q, i) => i ? g.lineTo(X(q[0]), Y(q[1])) : g.moveTo(X(q[0]), Y(q[1]))); g.stroke();
+    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(X(0), Y(0), 22, 0, 7); g.fill();
+    const x = X(s.r[0]), y = Y(s.r[1]);
+    flechaC(X(0), Y(0), x, y, tok('--caso1'));
+    const f = Math.hypot(F[0], F[1]); flechaC(x, y, x + 90 * F[0] / f, y - 90 * F[1] / f, tok('--res'));
+    const pm = Math.hypot(s.p[0], s.p[1]); flechaC(x, y, x + 90 * s.p[0] / pm, y - 90 * s.p[1] / pm, tok('--proy'));
+    g.fillStyle = tok('--tinta'); g.beginPath(); g.arc(x, y, 11, 0, 7); g.fill();
+    g.font = '700 24px ' + FTXT; g.fillStyle = tok('--caso1'); g.fillText('r', (X(0) + x) / 2 + 8, (Y(0) + y) / 2 - 8);
+    g.fillStyle = tok('--res'); g.fillText('F', x + 96 * F[0] / f, y - 96 * F[1] / f);
+    g.fillStyle = tok('--proy'); g.fillText('p', x + 96 * s.p[0] / pm, y - 96 * s.p[1] / pm);
+    const L = s.r[0] * s.p[1] - s.r[1] * s.p[0];
+    document.getElementById('lc-lect').textContent = 'L/L₀ = ' + num(L / s.L0, 4) + (modo === 'central' ? ' · τ = 0: constante' : ' · τ ≠ 0: cambia');
+  }
+  function bucle(ts) {
+    if (sl.classList.contains('activa') || sl.offsetParent) { if (ts - ult > 16) { let F; for (let k = 0; k < 6; k++) F = paso(); dibuja(F); ult = ts; } }
+    requestAnimationFrame(bucle);
+  }
+  $$('#dp-mang-cons .btn[data-f]').forEach(b => b.addEventListener('click', () => { modo = b.dataset.f; $$('#dp-mang-cons .btn[data-f]').forEach(o => o.classList.toggle('on', o === b)); reinicia(); }));
+  document.getElementById('lc-reset').addEventListener('click', reinicia);
+  reinicia(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ PRIMERA LEY DE KEPLER: FORMA DE LA ÓRBITA SEGÚN LA RAPIDEZ ═══════════ */
+(function () {
+  const host = document.getElementById('k1-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), rv = R_('k1-v');
+  function pinta() {
+    const q = +rv.value, ee = q * q - 1, W = 1000, H = 540, Sx = 560, Sy = 270, E = 95;      /* r0 = 1 → 95 px */
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const pts = [];
+    for (let i = 0; i <= 720; i++) {
+      const f = -Math.PI + 2 * Math.PI * i / 720, den = 1 + ee * Math.cos(f);
+      if (den <= 0.02) continue;
+      const r = (1 + ee) / den; if (r > 12) continue;
+      pts.push([Sx + E * r * Math.cos(f), Sy - E * r * Math.sin(f)]);
+    }
+    nodo('polyline', { points: pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '), style: 'fill:none;stroke:var(--caso1);stroke-width:4' }, svg);
+    nodo('circle', { cx: Sx, cy: Sy, r: E, style: 'fill:none;stroke:var(--linea);stroke-width:2;stroke-dasharray:8 6' }, svg);
+    const e = Math.abs(ee);
+    if (ee < 1 && ee > -1 && e > 0.01) {
+      const a = 1 / (1 - ee), c = a * ee;                                  /* centro en x = -c (en unidades r0) */
+      const F2 = [Sx - 2 * c * E, Sy];
+      nodo('circle', { cx: F2[0], cy: F2[1], r: 7, style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
+      rotulo(svg, F2[0], F2[1] + 34, 'otro foco', { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    }
+    nodo('circle', { cx: Sx, cy: Sy, r: 20, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, Sx, Sy + 50, 'Sol (foco)', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+    nodo('circle', { cx: Sx + E, cy: Sy, r: 11, style: 'fill:var(--tinta)' }, svg);
+    flecha(svg, Sx + E, Sy - 14, Sx + E, Sy - 14 - 70 * q, 'var(--proy)', 4);
+    rotulo(svg, Sx + E + 12, Sy - 30 - 70 * q, '!v!', { 'font-size': 26, style: 'fill:var(--proy);font-family:' + FMATH + ';font-weight:700' });
+    const tipo = ee >= 1 - 1e-9 ? (Math.abs(ee - 1) < 0.02 ? 'parábola: escapa justo' : 'hipérbola: escapa') : (e < 0.01 ? 'círculo (e = 0)' : 'elipse, e = ' + num(e, 2) + (ee < 0 ? ' (sale desde el afelio)' : ''));
+    rotulo(svg, 30, 40, 'círculo de referencia: v = v_circ', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    R_('k1-vv').textContent = num(q, 2);
+    R_('k1-lect').textContent = tipo;
+  }
+  rv.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ SEGUNDA LEY DE KEPLER: ÁREAS IGUALES EN TIEMPOS IGUALES ══════════════ */
+(function () {
+  const host = document.getElementById('k2-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), re = R_('k2-e'), bp = R_('k2-play'), sl = document.getElementById('dp-kep2');
+  let corre = true, fase = 0, ult = 0;
+  const posE = (E, e) => [Math.cos(E) - e, Math.sqrt(1 - e * e) * Math.sin(E)];   /* a = 1, foco en el origen */
+  const kepler = (M, e) => { let E = M; for (let k = 0; k < 30; k++) E -= (E - e * Math.sin(E) - M) / (1 - e * Math.cos(E)); return E; };
+  function pinta() {
+    const e = +re.value, W = 1000, H = 540, a = 330, Cx = 500 + a * e * 0.0, Fx = 560, Fy = 270, N = 12;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const X = q => Fx + a * q[0] * 0.95, Y = q => Fy - a * q[1] * 0.95 * 0.72;
+    for (let k = 0; k < N; k++) {
+      const pts = [[Fx, Fy]];
+      for (let j = 0; j <= 24; j++) { const M = 2 * Math.PI * (k + j / 24) / N; pts.push([X(posE(kepler(M, e), e)), Y(posE(kepler(M, e), e))]); }
+      nodo('polygon', { points: pts.map(q => q[0].toFixed(1) + ',' + q[1].toFixed(1)).join(' '), style: 'fill:' + (k % 2 ? 'var(--caso1-50)' : 'var(--caso2-50)') + ';stroke:var(--linea);stroke-width:1' }, svg);
+    }
+    const orb = []; for (let j = 0; j <= 200; j++) { const E = 2 * Math.PI * j / 200; orb.push(posE(E, e)); }
+    nodo('polyline', { points: orb.map(q => X(q).toFixed(1) + ',' + Y(q).toFixed(1)).join(' '), style: 'fill:none;stroke:var(--tinta);stroke-width:3' }, svg);
+    nodo('circle', { cx: Fx, cy: Fy, r: 18, style: 'fill:var(--caso2)' }, svg);
+    const P = posE(kepler(fase, e), e);
+    nodo('line', { x1: Fx, y1: Fy, x2: X(P), y2: Y(P), style: 'stroke:var(--tinta);stroke-width:2.5' }, svg);
+    nodo('circle', { cx: X(P), cy: Y(P), r: 12, style: 'fill:var(--proy)' }, svg);
+    rotulo(svg, X([1 - e, 0]) + 14, Fy + 34, 'perihelio', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    rotulo(svg, X([-1 - e, 0]) - 10, Fy + 34, 'afelio', { 'text-anchor': 'end', 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    R_('k2-ev').textContent = num(e, 2);
+    R_('k2-lect').textContent = 'cada sector: 1/12 del período y 1/12 del área · v_perihelio/v_afelio = ' + num((1 + e) / (1 - e), 2);
+  }
+  function bucle(ts) {
+    if (corre && sl.offsetParent && ts - ult > 30) { fase = (fase + 0.025) % (2 * Math.PI); pinta(); ult = ts; }
+    requestAnimationFrame(bucle);
+  }
+  re.addEventListener('input', pinta);
+  bp.addEventListener('click', () => { corre = !corre; bp.textContent = corre ? 'Pausa' : '▶ Seguir'; });
+  pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ TERCERA LEY DE KEPLER: T² ∝ a³ EN ESCALA LOG–LOG ═════════════════════ */
+(function () {
+  const host = document.getElementById('k3-fig');
+  if (!host) return;
+  const R_ = id => document.getElementById(id), ra = R_('k3-a');
+  const P = [['Mercurio', 0.387, 0.241], ['Venus', 0.723, 0.615], ['Tierra', 1, 1], ['Marte', 1.524, 1.881], ['Júpiter', 5.203, 11.86], ['Saturno', 9.537, 29.46], ['Urano', 19.19, 84.01], ['Neptuno', 30.07, 164.8]];
+  const L10 = Math.log10;
+  function pinta() {
+    const A = ejes(host, { W: 1000, H: 540, x: [-0.6, 1.6], y: [-1, 2.5], xt: [-0.5, 0, 0.5, 1, 1.5], yt: [-1, 0, 1, 2], fx: v => num(Math.pow(10, v), v < 0 ? 2 : (v < 1 ? 1 : 0)), fy: v => num(Math.pow(10, v), v < 0 ? 1 : 0), xl: '*a* (UA)', yl: '*T* (años)' });
+    polilinea(A, [[-0.6, -0.9], [1.6, 2.4]], 'stroke:var(--res);stroke-width:3;stroke-dasharray:10 7');
+    rotulo(A.capa, A.X(0.62), A.Y(0.35), 'pendiente 3/2: *T*² = *a*³', { 'font-size': 23, style: 'fill:var(--res);font-family:' + FMATH + ';font-weight:700' });
+    P.forEach(([n, a, T], i) => {
+      nodo('circle', { cx: A.X(L10(a)), cy: A.Y(L10(T)), r: 10, style: 'fill:var(--caso1)' }, A.capa);
+      rotulo(A.capa, A.X(L10(a)) + (i % 2 ? 14 : -14), A.Y(L10(T)) + (i % 2 ? 28 : -14), n, { 'text-anchor': i % 2 ? 'start' : 'end', 'font-size': 19, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:5px' });
+    });
+    const x = +ra.value, a = Math.pow(10, x), T = Math.pow(a, 1.5);
+    nodo('circle', { cx: A.X(x), cy: A.Y(1.5 * x), r: 13, style: 'fill:none;stroke:var(--caso2);stroke-width:4' }, A.capa);
+    R_('k3-av').textContent = num(a, a < 1 ? 2 : 1);
+    R_('k3-lect').textContent = 'a = ' + num(a, a < 1 ? 2 : 1) + ' UA → T = a^(3/2) = ' + num(T, T < 10 ? 2 : 1) + ' años';
+  }
+  ra.addEventListener('input', pinta); pinta();
+})();
+
 /* ═══ ÓRBITA TIERRA–LUNA (Euler-Cromer en el sistema del CM) ═══════════ */
 (function () {
   const cv = document.getElementById('or-cv');
@@ -5478,6 +5953,41 @@ function lienzoOrbita(cv, trazos, marcas) {
   const suelo = (svg, x1, x2, y) => lin(svg, x1, y, x2, y, 'stroke:var(--tinta);stroke-width:3');
 
   const FIG = {
+    torque(h) {
+      const svg = lienzo(h, 640, 470), C = [320, 230], a = 250, b = 160, c = Math.sqrt(a * a - b * b), S = [C[0] + c, C[1]];
+      nodo('ellipse', { cx: C[0], cy: C[1], rx: a, ry: b, style: 'fill:none;stroke:var(--tinta2);stroke-width:3;stroke-dasharray:9 7' }, svg);
+      circ(svg, S[0], S[1], 20, 'fill:var(--caso2)'); tx(svg, S[0], S[1] + 50, 'Sol', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+      const t = 2.2, P = [C[0] + a * Math.cos(t), C[1] - b * Math.sin(t)];
+      flecha(svg, S[0], S[1], P[0], P[1], 'var(--caso1)', 4);
+      mt(svg, (S[0] + P[0]) / 2 + 6, (S[1] + P[1]) / 2 - 12, 'r', 'var(--caso1)');
+      const d = Math.hypot(S[0] - P[0], S[1] - P[1]);
+      flecha(svg, P[0], P[1], P[0] + 90 * (S[0] - P[0]) / d, P[1] + 90 * (S[1] - P[1]) / d, 'var(--res)', 5);
+      mt(svg, P[0] + 60 * (S[0] - P[0]) / d - 10, P[1] + 60 * (S[1] - P[1]) / d + 36, 'F', 'var(--res)');
+      circ(svg, P[0], P[1], 13, 'fill:var(--proy)');
+      mt(svg, 220, 440, 'τ = r × F = ?', 'var(--res)', { 'font-size': 28 });
+    },
+    cometa(h) {
+      const svg = lienzo(h, 640, 470), rp = 0.5, ra = 35, a = (rp + ra) / 2, e = (ra - rp) / (ra + rp), b = a * Math.sqrt(1 - e * e);
+      const sx = 560 / (2 * a), S = [600 - rp * sx, 230];
+      nodo('ellipse', { cx: S[0] - a * e * sx, cy: S[1], rx: a * sx, ry: Math.max(18, b * sx * 2.2), style: 'fill:none;stroke:var(--tinta2);stroke-width:3;stroke-dasharray:9 7' }, svg);
+      circ(svg, S[0], S[1], 12, 'fill:var(--caso2)'); tx(svg, S[0] - 6, S[1] - 26, 'Sol', { 'text-anchor': 'end', 'font-size': 21, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+      circ(svg, S[0] + rp * sx + 6, S[1], 9, 'fill:var(--proy)'); flecha(svg, S[0] + rp * sx + 6, S[1] - 12, S[0] + rp * sx + 6, S[1] - 110, 'var(--proy)', 4);
+      mt(svg, S[0] - 40, S[1] - 120, 'v_p = ?', 'var(--proy)', { 'font-size': 24 });
+      const Ax = S[0] - ra * sx; circ(svg, Ax, S[1], 9, 'fill:var(--proy)'); flecha(svg, Ax, S[1] + 12, Ax, S[1] + 40, 'var(--proy)', 4);
+      mt(svg, Ax + 10, S[1] + 70, 'v_a', 'var(--proy)', { 'font-size': 24 });
+      tx(svg, S[0] + 8, S[1] + 60, '0,5 UA', { 'text-anchor': 'middle', 'font-size': 20 });
+      tx(svg, (Ax + S[0]) / 2, S[1] + 20, '35 UA', { 'text-anchor': 'middle', 'font-size': 20 });
+      tx(svg, 20, 455, 'perihelio a la derecha, afelio a la izquierda (no a escala vertical)', { 'font-size': 19, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    periodo(h) {
+      const svg = lienzo(h, 640, 470), S = [320, 235];
+      circ(svg, S[0], S[1], 20, 'fill:var(--caso2)');
+      circ(svg, S[0], S[1], 50, 'fill:none;stroke:var(--caso1);stroke-width:3;stroke-dasharray:8 6');
+      circ(svg, S[0], S[1], 200, 'fill:none;stroke:var(--res);stroke-width:3;stroke-dasharray:8 6');
+      circ(svg, S[0] + 50, S[1], 9, 'fill:var(--caso1)'); circ(svg, S[0] - 141, S[1] - 141, 12, 'fill:var(--res)');
+      tx(svg, S[0] + 64, S[1] + 6, 'Tierra: 1 UA, 1 año', { 'font-size': 19, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+      tx(svg, S[0] - 150, S[1] - 160, '4 UA, T = ?', { 'font-size': 22, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700' });
+    },
     hockey(h) {
       const svg = lienzo(h, 640, 470);
       rect(svg, 30, 150, 580, 200, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:3', 14);
