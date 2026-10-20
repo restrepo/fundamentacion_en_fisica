@@ -218,6 +218,13 @@ dl.glosa dd{margin:0;font-size:29px}
 #dp-mang .am-col > * + *,#dp-mang-cons .lc-col > * + *,#dp-kep1 .k1-col > * + *,#dp-kep2 .k2-col > * + *,#dp-kep3 .k3-col > * + *{margin-top:8px}
 #dp-mang .caja,#dp-mang-cons .caja,#dp-kep1 .caja,#dp-kep2 .caja,#dp-kep3 .caja{padding:4px 14px;font-size:24px}
 #dp-mang .caja h3,#dp-mang-cons .caja h3,#dp-kep1 .caja h3,#dp-kep2 .caja h3,#dp-kep3 .caja h3{font-size:23px;margin:0}
+#dp-kep1 .k1-sis{margin:2px 0;gap:8px}
+#dp-bici .bc-col > * + *{margin-top:8px}
+#dp-bici .caja{padding:4px 14px;font-size:24px}
+#dp-bici .caja h3{font-size:23px;margin:0}
+#dp-bici .ctrl{margin:4px 0}
+#dp-bici #bc-nota{font-size:21px;line-height:1.3;padding:0 12px}
+#dp-kep1 .k1-sis .btn{font-size:22px;padding:6px 12px}
 #dp-mang .ctrl,#dp-kep1 .ctrl,#dp-kep2 .ctrl,#dp-kep3 .ctrl{margin:4px 0}
 #dp-mang-cons .btn,#dp-kep2 .btn{font-size:22px;padding:7px 12px}
 #dp-paradoja .gp-col > * + *{margin-top:8px}
@@ -299,6 +306,18 @@ dl.glosa dd{margin:0;font-size:29px}
 .imp-tab{font-size:26px;margin:4px 0}
 .imp-tab th,.imp-tab td{padding:4px 18px;text-align:center}
 .imp-tab th.izq{text-align:left}
+.pq-slide .pq-izq > * + *{margin-top:10px}
+.pq-enun{background:var(--panel);border-left:8px solid var(--caso1);padding:6px 16px;font-size:24px;line-height:1.35}
+.pq-slide .pc-col > * + *{margin-top:6px}
+.pq-slide .pc-q + .pc-q{margin-top:6px;padding-top:6px}
+.pq-fila{display:grid;grid-template-columns:minmax(0,1fr) 170px auto;gap:10px;align-items:center}
+.pq-slide .pr-q{font-size:24px}
+.pq-slide .pr-in{font-size:24px;width:100%;box-sizing:border-box;padding:6px 10px}
+.pq-slide .pr-btn{font-size:21px;padding:6px 10px}
+.pq-slide .pc-fb{font-size:21px}
+.pq-slide .pc-exp{font-size:22px;padding:4px 12px;margin-top:2px}
+.pq-slide .pc-pista{font-size:22px;padding:4px 12px}
+.pq-slide .gl-dcl-txt{font-size:25px;line-height:1.35}
 .pc-slide .pc-col > * + *{margin-top:10px}
 .pc-slide .pr-q{font-size:30px}
 .pc-slide .pr-opcs{display:flex;flex-direction:column;align-items:stretch;gap:8px}
@@ -2432,7 +2451,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <section class="poster" data-seccion="Momento angular y Kepler" data-label="§ 6 · Momento angular y Kepler" data-speaker-notes="Separador: Momento angular y Kepler. 4 diapositivas.">
   <div class="p-num">§ 6</div>
   <h2 class="p-tit">Momento angular y Kepler</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Momento angular: L = r × p</span><span>Sin torque, el momento angular no cambia</span><span>El torque de la gravedad del Sol sobre un planeta</span><span>Primera ley: las órbitas son elipses con el Sol en un foco</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Momento angular: L = r × p</span><span>Sin torque, el momento angular no cambia</span><span>El torque de la gravedad del Sol sobre un planeta</span><span>¿Por qué no se cae una bicicleta en movimiento?</span></div>
 </section>
 
 
@@ -2498,24 +2517,48 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
     <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: el torque de la gravedad" loading="lazy">Cargando…</iframe>
   </dialog>
+  <p class="puente">→ ¿Y por qué no se cae una bicicleta en movimiento?</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-bici" data-label="El equilibrio de la bicicleta" data-speaker-notes="§ 3.10. Por qué una bicicleta en movimiento no se cae: las ruedas giran y tienen momento angular L = Iω a lo largo del eje. Si la bicicleta se inclina, el peso hace un torque horizontal, hacia adelante, perpendicular a L; como ΔL = τΔt, L no se tumba sino que gira en el plano horizontal (precesión): la rueda delantera gira hacia el lado de la caída, las ruedas vuelven a quedar debajo del centro de masa y la bicicleta se endereza. Con más rapidez, más L y la corrección es más suave; quieta, L = 0 y se cae. Demostración: rueda colgada de un extremo de su eje, Ω = mgd/(Iω); sin giro, cae. Nota honesta: no es el único efecto; la geometría de la horquilla (avance) y sobre todo el ciclista también corrigen; Kooijman et al. (Science, 2011) construyeron una bicicleta sin efecto giroscópico que también se equilibra sola. ↓ revela 4 pasos.">
+  <p class="ceja">§ 3.10 · Conservación del momento angular</p>
+  <h2 class="titulo">¿Por qué no se cae una bicicleta en movimiento?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Rueda colgada de su eje</span><span class="val" id="bc-lect"></span></div>
+      <div id="bc-fig"></div>
+      <label class="ctrl bc-ctl"><span>Giro (vueltas/s)</span><input type="range" id="bc-f" min="0" max="10" step="0.1" value="5"><span class="v" id="bc-fv"></span></label>
+      <p class="nota" id="bc-nota" style="margin:0"></p>
+    </figure>
+    <div class="pila bc-col">
+      <div class="caja neutra frag"><h3>1 · Una rueda que gira tiene momento angular</h3>Cada punto de la rueda contribuye con \(\vect{r} \times \vect{p}\); en total, \(\vect{L} = I\,\vect{\omega}\), a lo largo del eje. Para la rueda delantera, a \(\qty{20}{km/h}\), \(L\) es del orden de \(\qty{3}{kg\,m^2/s}\).</div>
+      <div class="caja neutra frag"><h3>2 · Inclinarse produce un torque</h3>Si la bicicleta se inclina a la derecha, el peso hace un torque horizontal, hacia adelante, <strong>perpendicular</strong> a \(\vect{L}\). Como \(\Delta\vect{L} = \vect{\tau}\,\Delta t\), el eje no se tumba: <strong>gira</strong>, como la rueda colgada,
+        \[ \Omega = \dfrac{\tau}{L} = \dfrac{m g d}{I\,\omega} \,. \]</div>
+      <div class="caja c2 frag"><h3>3 · La rueda gira hacia la caída</h3>La rueda delantera se orienta hacia el lado de la inclinación: las ruedas vuelven a quedar debajo del centro de masa y la bicicleta se endereza. Más rapidez, más \(L\), corrección más suave; quieta, \(L = 0\) y se cae.</div>
+      <div class="caja neutra frag"><h3>4 · No es lo único</h3><span style="font-size:22px">La geometría de la horquilla (el avance) y sobre todo el ciclista, que gira el manubrio, también corrigen. En 2011 se construyó una bicicleta sin efecto giroscópico que se equilibra sola (Kooijman et&nbsp;al., <em>Science</em>).</span></div>
+    </div>
+  </div>
   <p class="puente">→ ¿Qué forma tienen las órbitas?</p>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-kep1" data-label="Primera ley de Kepler" data-speaker-notes="§ 3.11. Primera ley de Kepler: órbitas elípticas con el Sol en un foco. Explorador: rapidez en el punto de partida en unidades de la rapidez circular √(GM/r); con 1 la órbita es un círculo, con más es una elipse alargada, desde √2 escapa (parábola o hipérbola), con menos el punto de partida es el afelio. Excentricidad e = (v/v_c)² − 1. ↓ revela 3 pasos.">
+<section class="diapositiva compacta" data-seccion="Momento angular y Kepler" id="dp-kep1" data-label="Primera ley de Kepler" data-speaker-notes="§ 3.11. Primera ley de Kepler, precisada: la órbita de cada planeta es una elipse con el centro de masa del sistema estrella–planeta en un foco; la estrella describe otra elipse semejante, más pequeña, alrededor del mismo punto (M r_estrella + m r_planeta = 0). Con la Tierra el CM está prácticamente en el centro del Sol; con Júpiter (m/M ≈ 1/1050) el CM está a 1,07 radios solares del centro del Sol, fuera de su superficie, y el Sol se bambolea a 12,5 m/s con período de 11,9 años: es el método de la velocidad radial para descubrir exoplanetas. En una estrella doble las dos elipses son comparables. Explorador: rapidez en el punto de partida en unidades de la rapidez circular; e = (v/v_c)² − 1. ↓ revela 4 pasos.">
   <p class="ceja">§ 3.11 · Leyes de Kepler</p>
-  <h2 class="titulo">Primera ley: las órbitas son elipses con el Sol en un foco</h2>
+  <h2 class="titulo">Primera ley: elipses con el centro de masa en un foco</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
     <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Lanzamiento perpendicular al radio, desde la misma distancia</span><span class="val" id="k1-lect"></span></div>
+      <div class="svghd"><span>Vista desde el centro de masa</span><span class="val" id="k1-lect"></span></div>
       <div id="k1-fig"></div>
       <label class="ctrl k1-ctl"><span>Rapidez \(v/v_{\text{circ}}\)</span><input type="range" id="k1-v" min="0.7" max="1.6" step="0.01" value="1.2"><span class="v" id="k1-vv"></span></label>
+      <div class="fila-btn k1-sis" role="group" aria-label="Sistema"><button type="button" class="btn on" data-s="tierra">Sol + Tierra</button><button type="button" class="btn" data-s="jupiter">Sol + Júpiter</button><button type="button" class="btn" data-s="doble">Estrella doble</button></div>
     </figure>
     <div class="pila k1-col">
-      <div class="caja neutra frag"><h3>1 · El enunciado</h3>«La órbita de cada planeta es una <strong>elipse</strong> con el Sol en uno de sus focos». En una elipse, la suma de las distancias a los dos focos es constante, \(2a\).</div>
-      <div class="caja neutra frag"><h3>2 · El círculo: un caso especial</h3>Si la gravedad da exactamente la fuerza centrípeta,
-        \[ \dfrac{GMm}{r^{2}} = \dfrac{m v^{2}}{r} \;\Longrightarrow\; v_{\text{circ}} = \sqrt{\dfrac{GM}{r}} \,, \]
-        y los dos focos coinciden en el Sol.</div>
-      <div class="caja c2 frag"><h3>3 · Más o menos rápido</h3>Con otra rapidez la órbita se estira en una elipse (excentricidad \(e = (v/v_{\text{circ}})^{2} - 1\) desde el perihelio). Desde \(v = \sqrt{2}\,v_{\text{circ}} = v_{\text{esc}}\) la órbita ya no se cierra: el cuerpo escapa.</div>
+      <div class="caja neutra frag"><h3>1 · El enunciado, precisado</h3>«La órbita de cada planeta es una <strong>elipse</strong> con el <strong>centro de masa</strong> del sistema estrella–planeta en uno de sus focos». La estrella describe otra elipse, más pequeña, alrededor del mismo punto:
+        \[ M\,\vect{r}_{\star} + m\,\vect{r}_{p} = \vect{0} \,. \]</div>
+      <div class="caja neutra frag"><h3>2 · El círculo: un caso especial</h3>Si la gravedad da justo la fuerza centrípeta, \(v_{\text{circ}} = \sqrt{GM/r}\) y los dos focos coinciden en el centro de masa.</div>
+      <div class="caja neutra frag"><h3>3 · Más o menos rápido</h3>Con otra rapidez la órbita se estira (\(e = (v/v_{\text{circ}})^{2} - 1\) desde el perihelio). Desde \(v = \sqrt{2}\,v_{\text{circ}}\) ya no se cierra: escapa.</div>
+      <div class="caja c2 frag"><h3>4 · Júpiter: el Sol también se mueve</h3>Con \(m_J/M_\odot \approx 1/1050\), el centro de masa está a
+        \[ \dfrac{m_J}{M_\odot + m_J}\,a_J \approx 1{,}07\,R_\odot \]
+        del centro del Sol, <strong>fuera de su superficie</strong>. El Sol se bambolea a \(\qty{12{,}5}{m/s}\) cada \(11{,}9\) años: así se descubren exoplanetas.</div>
     </div>
   </div>
   <p class="puente">→ ¿Por qué los planetas van más rápido cerca del Sol?</p>
@@ -2846,6 +2889,197 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\Delta\vect{r} = (5, -8, 10)\qty{}{m}\). \(W = (8)(5) + (-6)(-8) + (5)(10) = 40 + 48 + 50 = \qty{138}{J}\). Solo importan los puntos inicial y final, porque la fuerza es constante.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Calcula \(\Delta\vect{r} = B - A\) y luego \(W = \vect{F}\cdot\Delta\vect{r} = F_x\Delta x + F_y\Delta y + F_z\Delta z\).</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-tierra" data-label="Ejercicio 3.16.2: la caída de la Tierra (enfoque estático)" data-speaker-notes="Ejercicio 3.16.2 del documento, con el enfoque estático: origen en el centro de masa del sistema Tierra–piedra, que está aislado y no se mueve; en cada instante M_T r_T = m r_p. a) a_T = mg/M_T ≈ 1,64×10⁻²⁴ m/s². b) Antes de soltar la piedra, r_T = m(R_T + h)/(M_T + m) ≈ 1,067×10⁻¹⁸ m. c) El desplazamiento de la Tierra es el cambio de r_T: d_T = m h/(M_T + m) ≈ 1,68×10⁻²³ m, cien millones de veces menor que un núcleo atómico. Respuestas en las unidades indicadas: 1,64; 1,067; 1,68.">
+  <p class="ceja">Ejercicio 3.16.2 · Enfoque estático</p>
+  <h2 class="titulo">La «caída» de la Tierra: el centro de masa no se mueve</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="tierracm"></div></figure>
+      <div class="pq-enun">Se deja caer desde el reposo una piedra de \(m = \qty{1{,}0}{kg}\) desde \(h = \qty{100}{m}\). Por acción y reacción, la piedra atrae a la Tierra (\(M_T = 5{,}97\times 10^{24}\,\mathrm{kg}\), \(R_T = \qty{6371}{km}\)) con la misma fuerza. El sistema está aislado: su centro de masa no se mueve.</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="1.64" data-tol="0.01"><div class="pq-fila"><div class="pr-q">a) Aceleración de la Tierra, en \(10^{-24}\,\mathrm{m/s^2}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁻²⁴" aria-label="a) Aceleración de la Tierra, en \(10^{-24}\,\mathrm{m/s^2}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La fuerza sobre la Tierra es \(m g = \qty{9{,}8}{N}\): \(a_T = mg/M_T = 9{,}8/(5{,}97\times 10^{24}) \approx 1{,}64\times 10^{-24}\,\mathrm{m/s^2}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1.067" data-tol="0.003"><div class="pq-fila"><div class="pr-q">b) Antes de soltarla: distancia del centro de la Tierra al CM, en \(10^{-18}\,\mathrm{m}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁻¹⁸" aria-label="b) Antes de soltarla: distancia del centro de la Tierra al CM, en \(10^{-18}\,\mathrm{m}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con \(r_T + r_p = R_T + h\) y \(M_T r_T = m r_p\): \(r_T = \dfrac{m\,(R_T + h)}{M_T + m} \approx 1{,}067\times 10^{-18}\,\mathrm{m}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1.675" data-tol="0.01"><div class="pq-fila"><div class="pr-q">c) Distancia que sube la Tierra, \(d_T\), en \(10^{-23}\,\mathrm{m}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁻²³" aria-label="c) Distancia que sube la Tierra, \(d_T\), en \(10^{-23}\,\mathrm{m}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Después, \(r_T^{\prime} = m R_T/(M_T + m)\). El CM no se mueve: \(d_T = r_T - r_T^{\prime} = \dfrac{m h}{M_T + m} \approx 1{,}68\times 10^{-23}\,\mathrm{m}\), cien millones de veces menos que un núcleo.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-tierra-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Pon el origen en el CM. En cada instante \(M_T r_T = m r_p\), y \(r_T + r_p\) es la distancia entre la piedra y el centro de la Tierra. El desplazamiento de la Tierra es cuánto cambia \(r_T\).</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-tierra-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-tierra-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-tierra-sol-tit">Ejercicio 3.16.2 con el enfoque estático</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) Aceleración de la Tierra.</strong> La Tierra atrae a la piedra con su peso, \(F = m g = (\qty{1{,}0}{kg})(\qty{9{,}8}{m/s^2}) = \qty{9{,}8}{N}\). Por acción y reacción, la piedra atrae a la Tierra con la misma magnitud, y por la ley de la fuerza
+  \[ a_T = \dfrac{F}{M_T} = \dfrac{\qty{9{,}8}{N}}{5{,}97\times 10^{24}\,\mathrm{kg}} \approx 1{,}64\times 10^{-24}\,\mathrm{m/s^2} \,. \]</p>
+<p style="margin:0"><strong>b) El enfoque estático.</strong> Con el origen en el centro de masa del sistema aislado, \(\vect{0} = (M_T\,\vect{r}_T + m\,\vect{r}_p)/(M_T + m)\), es decir, \(M_T\,\vect{r}_T = -\,m\,\vect{r}_p\). En magnitudes, con \(D = r_T + r_p\) la distancia entre la piedra y el centro de la Tierra,
+  \[ M_T\,r_T = m\,r_p \;\Longrightarrow\; r_T = \dfrac{m\,D}{M_T + m} \,. \]
+  Antes de soltarla, \(D = R_T + h\) y
+  \[ r_T = \dfrac{(\qty{1{,}0}{kg})(6{,}3711\times 10^{6}\,\mathrm{m})}{5{,}97\times 10^{24}\,\mathrm{kg}} \approx 1{,}067\times 10^{-18}\,\mathrm{m} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) El desplazamiento de la Tierra.</strong> Al llegar al suelo, \(D = R_T\). El centro de masa no se movió, así que la Tierra se desplazó hacia la piedra
+  \[ d_T = \dfrac{m\,(R_T + h)}{M_T + m} - \dfrac{m\,R_T}{M_T + m} = \dfrac{m\,h}{M_T + m} \,, \]
+  \[ d_T \approx \dfrac{(\qty{1{,}0}{kg})(\qty{100}{m})}{5{,}97\times 10^{24}\,\mathrm{kg}} \approx 1{,}68\times 10^{-23}\,\mathrm{m} \,. \]</p>
+<p style="margin:0 0 6px"><strong>La misma idea que en el sistema binario.</strong> \(M_T\,r_T = m\,r_p\) es la fórmula \(m_1 r_1 = m_2 r_2\) de los radios orbitales: distancias al CM. Aplicada antes y después da \(M_T\,d_T = m\,h\), el mismo resultado del enfoque cinemático, \(d_T = \tfrac12 a_T t^{2}\).</p>
+<p style="margin:0"><strong>Interpretación.</strong> Un núcleo atómico mide unos \(10^{-15}\,\mathrm{m}\): la Tierra se mueve cien millones de veces menos. Suponer la Tierra inmóvil es una aproximación excelente.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-auto" data-label="Problema 1: el automóvil que acelera" data-speaker-notes="Problema 1 del documento. a = Δv/Δt = 2,5 m/s²; por la ley de la fuerza F = mΔv/Δt = 3000 N; con la ecuación sin tiempo Δx = v²/(2a) = 125 m; W = FΔx = 375 kJ, igual a ΔK = ½mv². Respuestas: 2,5; 3000; 125; 375.">
+  <p class="ceja">Problemas del capítulo · Problema 1</p>
+  <h2 class="titulo">Un automóvil que acelera: fuerza y trabajo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="auto"></div></figure>
+      <div class="pq-enun">Un automóvil de \(m = \qty{1200}{kg}\) acelera en línea recta desde el reposo hasta \(\qty{25}{m/s}\) en \(\qty{10}{s}\), bajo una fuerza neta constante.</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="2.5" data-tol="0.02"><div class="pq-fila"><div class="pr-q">a) Aceleración \(a\), en \(\mathrm{m/s^2}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s²" aria-label="a) Aceleración \(a\), en \(\mathrm{m/s^2}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(a = \Delta v/\Delta t = (\qty{25}{m/s})/(\qty{10}{s}) = \qty{2{,}5}{m/s^2}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="3000" data-tol="10"><div class="pq-fila"><div class="pr-q">b) Fuerza neta \(F\), en \(\mathrm{N}\)</div><input class="pr-in pc-in" type="text" placeholder="N" aria-label="b) Fuerza neta \(F\), en \(\mathrm{N}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Ley de la fuerza: \(F = \Delta p/\Delta t = m\,\Delta v/\Delta t = (1200)(25)/10 = \qty{3000}{N}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="125" data-tol="0.5"><div class="pq-fila"><div class="pr-q">c) Desplazamiento \(\Delta x\), en \(\mathrm{m}\)</div><input class="pr-in pc-in" type="text" placeholder="m" aria-label="c) Desplazamiento \(\Delta x\), en \(\mathrm{m}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v^{2} = v_0^{2} + 2a\,\Delta x \Rightarrow \Delta x = (25)^{2}/(2 \cdot 2{,}5) = \qty{125}{m}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="375" data-tol="1"><div class="pq-fila"><div class="pr-q">d) Trabajo total \(W\), en \(\mathrm{kJ}\)</div><input class="pr-in pc-in" type="text" placeholder="kJ" aria-label="d) Trabajo total \(W\), en \(\mathrm{kJ}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(W = F\,\Delta x = (3000)(125) = \qty{375}{kJ}\); comprueba: \(\Delta K = \tfrac12 (1200)(25)^{2} = \qty{375}{kJ}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-auto-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Empieza por \(a = \Delta v/\Delta t\). Para \(\Delta x\) usa la ecuación sin tiempo, \(v^{2} = v_0^{2} + 2a\,\Delta x\). El trabajo total debe ser igual al cambio de energía cinética.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-auto-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-auto-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-auto-sol-tit">Problema 1: leyes de Newton y trabajo</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) Aceleración.</strong> Con fuerza constante la aceleración es constante:
+  \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{\qty{25}{m/s} - 0}{\qty{10}{s}} = \qty{2{,}5}{m/s^2} \,. \]</p>
+<p style="margin:0"><strong>b) Fuerza neta.</strong> Por la ley de la fuerza, \(F = \Delta p/\Delta t\) con \(\Delta p = m\,\Delta v\):
+  \[ F = \dfrac{(\qty{1200}{kg})(\qty{25}{m/s})}{\qty{10}{s}} = m\,a = \qty{3000}{N} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) Desplazamiento.</strong> Con la ecuación cinemática sin tiempo, \(v^{2} = v_0^{2} + 2a\,\Delta x\):
+  \[ \Delta x = \dfrac{v^{2} - v_0^{2}}{2a} = \dfrac{(\qty{25}{m/s})^{2}}{2\,(\qty{2{,}5}{m/s^2})} = \qty{125}{m} \,. \]</p>
+<p style="margin:0"><strong>d) Trabajo.</strong> La fuerza es constante y paralela al desplazamiento:
+  \[ W = F\,\Delta x = (\qty{3000}{N})(\qty{125}{m}) = \qty{375}{kJ} \,. \]
+  Comprobación con el teorema del trabajo y la energía: \(W = \Delta K = \tfrac12 (\qty{1200}{kg})(\qty{25}{m/s})^{2} = \qty{375}{kJ}\).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-acant" data-label="Problema 2: el bloque que cae del acantilado" data-speaker-notes="Problema 2 del documento. Con U = 0 en el suelo: U_i = mgh = 980 J, K_i = 0; justo antes del impacto U_f = 0 y K_f = 980 J; v_f = √(2gh) ≈ 31,3 m/s, que no depende de la masa. Respuestas: 980; 980; 31,3.">
+  <p class="ceja">Problemas del capítulo · Problema 2</p>
+  <h2 class="titulo">Un bloque cae desde un acantilado: conservación de la energía</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="acant2"></div></figure>
+      <div class="pq-enun">Un bloque de piedra de \(\qty{2{,}0}{kg}\) se deja caer desde el reposo desde lo alto de un acantilado de \(\qty{50}{m}\). Sin resistencia del aire, use solo la conservación de la energía mecánica, \(K_i + U_i = K_f + U_f\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="980" data-tol="2"><div class="pq-fila"><div class="pr-q">a) Energía potencial inicial \(U_i\), en \(\mathrm{J}\)</div><input class="pr-in pc-in" type="text" placeholder="J" aria-label="a) Energía potencial inicial \(U_i\), en \(\mathrm{J}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(U_i = m g h = (2{,}0)(9{,}8)(50) = \qty{980}{J}\), y \(K_i = 0\) porque parte del reposo.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="980" data-tol="2"><div class="pq-fila"><div class="pr-q">b) Energía cinética \(K_f\) justo antes del impacto, en \(\mathrm{J}\)</div><input class="pr-in pc-in" type="text" placeholder="J" aria-label="b) Energía cinética \(K_f\) justo antes del impacto, en \(\mathrm{J}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En el suelo \(U_f = 0\): \(K_f = K_i + U_i - U_f = \qty{980}{J}\). Toda la energía potencial se volvió cinética.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="31.3" data-tol="0.1"><div class="pq-fila"><div class="pr-q">c) Rapidez \(v_f\) justo antes del impacto, en \(\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s" aria-label="c) Rapidez \(v_f\) justo antes del impacto, en \(\mathrm{m/s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\tfrac12 m v_f^{2} = m g h \Rightarrow v_f = \sqrt{2 g h} = \sqrt{2(9{,}8)(50)} \approx \qty{31{,}3}{m/s}\). La masa se cancela.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-acant-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Escoge \(U = 0\) en el suelo. Arriba solo hay energía potencial; abajo, justo antes del impacto, solo cinética.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-acant-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-acant-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-acant-sol-tit">Problema 2: conservación de la energía mecánica</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>Estado inicial.</strong> Con el nivel de referencia \(U = 0\) en el suelo, el bloque parte del reposo a \(h = \qty{50}{m}\):
+  \[ K_i = 0 \,, \qquad U_i = m g h = (\qty{2{,}0}{kg})(\qty{9{,}8}{m/s^2})(\qty{50}{m}) = \qty{980}{J} \,. \]</p>
+<p style="margin:0"><strong>Estado final.</strong> Justo antes del impacto, \(U_f = 0\). Por la conservación de la energía mecánica,
+  \[ K_f = K_i + U_i - U_f = \qty{980}{J} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>Rapidez.</strong> Con \(K_f = \tfrac12 m v_f^{2}\),
+  \[ \tfrac12\,m\,v_f^{2} = m g h \;\Longrightarrow\; v_f = \sqrt{2 g h} = \sqrt{2\,(\qty{9{,}8}{m/s^2})(\qty{50}{m})} \approx \qty{31{,}3}{m/s} \,. \]</p>
+<p style="margin:0"><strong>Interpretación.</strong> La masa se cancela: sin aire, un bloque de \(\qty{2}{kg}\) y una piedrita llegan con la misma rapidez, como en la caída libre de Galileo. Es el mismo resultado de la cinemática, \(v^{2} = v_0^{2} + 2 g h\), obtenido sin conocer el tiempo de caída.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-cajon" data-label="Problema 4: el cajón arrastrado con fricción" data-speaker-notes="Problema 4 del documento. Velocidad constante: fuerza neta cero. Vertical: F_N + F sen 30° − mg = 0 ⇒ F_N = 98 − 25 = 73 N. Horizontal: F cos 30° − f_k = 0 ⇒ f_k ≈ 43,3 N. μ_k = f_k/F_N ≈ 0,59. Error común: tomar F_N = mg; la cuerda levanta un poco el cajón. Respuestas: 73; 43,3; 0,59.">
+  <p class="ceja">Problemas del capítulo · Problema 4</p>
+  <h2 class="titulo">Arrastrar un cajón con una cuerda inclinada</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cajon"></div></figure>
+      <div class="pq-enun">Un cajón de \(\qty{10}{kg}\) se arrastra sobre un piso horizontal con una cuerda que ejerce \(\qty{50}{N}\) a \(30^\circ\) por encima de la horizontal. El cajón se mueve con <strong>velocidad constante</strong>.</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="73" data-tol="0.3"><div class="pq-fila"><div class="pr-q">a) Fuerza normal \(F_N\), en \(\mathrm{N}\)</div><input class="pr-in pc-in" type="text" placeholder="N" aria-label="a) Fuerza normal \(F_N\), en \(\mathrm{N}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Vertical: \(F_N + F\sin 30^\circ - m g = 0 \Rightarrow F_N = 98 - 25 = \qty{73}{N}\), menor que el peso.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="43.3" data-tol="0.2"><div class="pq-fila"><div class="pr-q">b) Fuerza de fricción \(f_k\), en \(\mathrm{N}\)</div><input class="pr-in pc-in" type="text" placeholder="N" aria-label="b) Fuerza de fricción \(f_k\), en \(\mathrm{N}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Horizontal: \(F\cos 30^\circ - f_k = 0 \Rightarrow f_k = (50)(0{,}866) \approx \qty{43{,}3}{N}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="0.593" data-tol="0.006"><div class="pq-fila"><div class="pr-q">c) Coeficiente de fricción cinética \(\mu_k\)</div><input class="pr-in pc-in" type="text" placeholder="μ_k" aria-label="c) Coeficiente de fricción cinética \(\mu_k\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\mu_k = f_k/F_N = 43{,}3/73 \approx 0{,}59\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-cajon-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Velocidad constante significa fuerza neta cero, en \(x\) y en \(y\). Descompón la tensión: la parte vertical, \(F\sin 30^\circ\), levanta un poco el cajón.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-cajon-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-cajon-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-cajon-sol-tit">Problema 4: fuerzas y fricción con ángulo</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>Diagrama de cuerpo libre.</strong> Sobre el cajón actúan el peso \(m g = \qty{98}{N}\) hacia abajo, la normal \(F_N\) hacia arriba, la tensión \(F = \qty{50}{N}\) a \(30^\circ\) y la fricción cinética \(f_k\) hacia atrás. Como la velocidad es constante, por la ley de la fuerza la fuerza neta es cero.</p>
+<p style="margin:0"><strong>a) Eje vertical.</strong>
+  \[ F_N + F\sin 30^\circ - m g = 0 \;\Longrightarrow\; F_N = \qty{98}{N} - (\qty{50}{N})(0{,}5) = \qty{73}{N} \,. \]
+  La normal es <strong>menor</strong> que el peso: la cuerda sostiene parte del cajón.</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>b) Eje horizontal.</strong>
+  \[ F\cos 30^\circ - f_k = 0 \;\Longrightarrow\; f_k = (\qty{50}{N})(0{,}866) \approx \qty{43{,}3}{N} \,. \]</p>
+<p style="margin:0"><strong>c) Coeficiente de fricción.</strong> Con \(f_k = \mu_k F_N\),
+  \[ \mu_k = \dfrac{f_k}{F_N} = \dfrac{\qty{43{,}3}{N}}{\qty{73}{N}} \approx 0{,}59 \,. \]
+  Si se usara por error \(F_N = m g\), se obtendría \(\mu_k \approx 0{,}44\).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-elast" data-label="Problema 8: choque elástico con masas iguales" data-speaker-notes="Problema 8 del documento. Con v_2i = 0: v_1f = (m₁ − m₂)/(m₁ + m₂) v_1i y v_2f = 2m₁/(m₁ + m₂) v_1i. Con m₁ = m₂: v_1f = 0 y v_2f = v_1i = 3,0×10⁶ m/s; la primera partícula cede todo su momento y toda su energía cinética (100 %). Respuestas: 0; 3; 100.">
+  <p class="ceja">Problemas del capítulo · Problema 8</p>
+  <h2 class="titulo">Choque elástico entre partículas de igual masa</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="elastico"></div></figure>
+      <div class="pq-enun">Una partícula de masa \(m\) con \(v_{1i} = 3{,}0\times 10^{6}\,\mathrm{m/s}\) choca de frente y de forma perfectamente elástica con otra de la <strong>misma masa</strong>, en reposo (\(v_{2i} = 0\)).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="0" data-tol="0.01"><div class="pq-fila"><div class="pr-q">a) Velocidad final \(v_{1f}\), en \(10^{6}\,\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁶ m/s" aria-label="a) Velocidad final \(v_{1f}\), en \(10^{6}\,\mathrm{m/s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v_{1f} = \dfrac{m_1 - m_2}{m_1 + m_2}\,v_{1i} = \dfrac{0}{2m}\,v_{1i} = 0\): la primera partícula se detiene.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="3" data-tol="0.01"><div class="pq-fila"><div class="pr-q">b) Velocidad final \(v_{2f}\), en \(10^{6}\,\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁶ m/s" aria-label="b) Velocidad final \(v_{2f}\), en \(10^{6}\,\mathrm{m/s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v_{2f} = \dfrac{2m_1}{m_1 + m_2}\,v_{1i} = v_{1i} = 3{,}0\times 10^{6}\,\mathrm{m/s}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="100" data-tol="0.5"><div class="pq-fila"><div class="pr-q">c) Energía cinética que recibe la partícula 2, en %</div><input class="pr-in pc-in" type="text" placeholder="%" aria-label="c) Energía cinética que recibe la partícula 2, en %"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(K_{2f}/K_{1i} = (v_{2f}/v_{1i})^{2} = 1\): el 100 %. Las partículas intercambian sus velocidades.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-elast-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Usa las fórmulas del choque elástico con el blanco en reposo, \(v_{1f} = \frac{m_1 - m_2}{m_1 + m_2}\,v_{1i}\) y \(v_{2f} = \frac{2m_1}{m_1 + m_2}\,v_{1i}\), y sustituye \(m_1 = m_2 = m\).</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-elast-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-elast-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-elast-sol-tit">Problema 8: colisiones elásticas y casos límite</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>Las dos leyes de conservación.</strong> En un choque elástico se conservan la cantidad de movimiento y la energía cinética:
+  \[ m_1 v_{1i} = m_1 v_{1f} + m_2 v_{2f} \,, \qquad \tfrac12 m_1 v_{1i}^{2} = \tfrac12 m_1 v_{1f}^{2} + \tfrac12 m_2 v_{2f}^{2} \,. \]
+  Su solución, con \(v_{2i} = 0\), es
+  \[ v_{1f} = \dfrac{m_1 - m_2}{m_1 + m_2}\,v_{1i} \,, \qquad v_{2f} = \dfrac{2 m_1}{m_1 + m_2}\,v_{1i} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>Masas iguales.</strong> Con \(m_1 = m_2 = m\),
+  \[ v_{1f} = \dfrac{m - m}{2m}\,v_{1i} = 0 \,, \qquad v_{2f} = \dfrac{2m}{2m}\,v_{1i} = 3{,}0\times 10^{6}\,\mathrm{m/s} \,. \]</p>
+<p style="margin:0 0 6px"><strong>Comprobación.</strong> Momento: \(m v_{1i} = m\,(0) + m v_{1i}\). Energía: \(\tfrac12 m v_{1i}^{2} = 0 + \tfrac12 m v_{1i}^{2}\). Las dos se cumplen.</p>
+<p style="margin:0"><strong>Interpretación.</strong> Las partículas intercambian sus velocidades, como las bolas de billar o el péndulo de Newton. Por eso los neutrones se frenan bien al chocar con núcleos ligeros, de masa parecida, como los del hidrógeno del agua en los reactores.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -5574,41 +5808,150 @@ const T_OSC = 2 * Math.PI;
   reinicia(); requestAnimationFrame(bucle);
 })();
 
+/* ═══ EQUILIBRIO DE LA BICICLETA: RUEDA COLGADA (PRECESIÓN) ═══════════════ */
+(function () {
+  const host = document.getElementById('bc-fig');
+  if (!host) return;
+  const sl = document.getElementById('dp-bici'), rf = document.getElementById('bc-f');
+  const m = 2.0, R = 0.25, I = m * R * R, d = 0.36, g = 9.8, tau = m * g * d, Ip = I / 2 + m * d * d;
+  const W = 1000, H = 560, C = [500, 230], S = 640, az = -0.55, el = 0.30;
+  const P = v => { const x = v[0] * Math.cos(az) - v[1] * Math.sin(az), y = v[0] * Math.sin(az) + v[1] * Math.cos(az);
+    return [C[0] + S * x, C[1] - S * (v[2] * Math.cos(el) + y * Math.sin(el))]; };
+  const suma = (a, b, k) => [a[0] + k * b[0], a[1] + k * b[1], a[2] + k * b[2]];
+  let psi = 0, beta = 0, wb = 0, fi = 0, pausa = 0, ult = 0;
+  function dibuja() {
+    const f = +rf.value, w = 2 * Math.PI * f, L = I * w;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    const u = [Math.cos(psi) * Math.cos(beta), Math.sin(psi) * Math.cos(beta), -Math.sin(beta)];
+    const wv = [-Math.sin(psi), Math.cos(psi), 0];
+    const vv = [-u[2] * wv[1], u[2] * wv[0], u[0] * wv[1] - u[1] * wv[0]];
+    const c = suma([0, 0, 0], u, d);
+    /* soporte, cuerda y trayectoria del centro */
+    const tope = P([0, 0, 0.30]), base = P([0, 0, 0]);
+    nodo('line', { x1: tope[0] - 160, y1: tope[1], x2: tope[0] + 160, y2: tope[1], style: 'stroke:var(--tinta2);stroke-width:6' }, svg);
+    nodo('line', { x1: tope[0], y1: tope[1], x2: base[0], y2: base[1], style: 'stroke:var(--tinta2);stroke-width:3' }, svg);
+    const orb = []; for (let i = 0; i <= 72; i++) { const a = 2 * Math.PI * i / 72; orb.push(P([d * Math.cos(a), d * Math.sin(a), 0])); }
+    nodo('polyline', { points: orb.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '), style: 'fill:none;stroke:var(--linea);stroke-width:2;stroke-dasharray:7 6' }, svg);
+    /* rueda: aro y rayos */
+    const aro = []; for (let i = 0; i <= 80; i++) { const a = 2 * Math.PI * i / 80; aro.push(P(suma(suma(c, wv, R * Math.cos(a)), vv, R * Math.sin(a)))); }
+    nodo('polyline', { points: aro.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '), style: 'fill:var(--caso1-50);fill-opacity:.55;stroke:var(--tinta);stroke-width:7' }, svg);
+    const pc = P(c);
+    for (let k = 0; k < 6; k++) { const a = fi + k * Math.PI / 3, q = P(suma(suma(c, wv, R * Math.cos(a)), vv, R * Math.sin(a)));
+      nodo('line', { x1: pc[0], y1: pc[1], x2: q[0], y2: q[1], style: 'stroke:var(--tinta2);stroke-width:2.5' }, svg); }
+    /* eje */
+    const ea = P(suma(c, u, 0.06));
+    nodo('line', { x1: base[0], y1: base[1], x2: ea[0], y2: ea[1], style: 'stroke:var(--tinta);stroke-width:8;stroke-linecap:round' }, svg);
+    nodo('circle', { cx: base[0], cy: base[1], r: 8, style: 'fill:var(--tinta)' }, svg);
+    /* vectores */
+    const et = (x, y, t, col) => rotulo(svg, x, y, t, { 'font-size': 28, style: 'fill:' + col + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    if (f > 0.05 && beta < 0.01) {
+      const qL = P(suma(c, u, 0.06 + Math.min(0.42, 0.035 * L)));
+      flecha(svg, ea[0], ea[1], qL[0], qL[1], 'var(--caso1)', 6); et(qL[0] + 10, qL[1] - 10, '!L!', 'var(--caso1)');
+      const qt = P(suma(c, wv, 0.15));
+      flecha(svg, pc[0], pc[1], qt[0], qt[1], 'var(--res)', 6); et(qt[0] + 8, qt[1] + 30, '!τ!', 'var(--res)');
+    }
+    const lg = beta > 0.2 ? 60 : 120; flecha(svg, pc[0], pc[1], pc[0], pc[1] + lg, 'var(--caso2)', 5); et(pc[0] + 10, pc[1] + lg - 4, '*m*!g!', 'var(--caso2)');
+    rotulo(svg, base[0] + 14, base[1] - 14, 'pivote', { 'text-anchor': 'start', 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    const Om = f > 0.05 ? tau / L : 0;
+    document.getElementById('bc-fv').textContent = num(f, 1);
+    document.getElementById('bc-lect').textContent = f < 0.8 ? 'casi sin giro: se cae' : 'Ω = ' + num(Om, 2) + ' rad/s · vuelta en ' + num(2 * Math.PI / Om, 1) + ' s';
+    document.getElementById('bc-nota').innerHTML = f < 0.8
+      ? 'Sin momento angular, el torque del peso simplemente la tumba.'
+      : '<i>m</i> = 2 kg, <i>R</i> = 25 cm, <i>d</i> = 36 cm: <i>L</i> = <i>Iω</i> = ' + num(L, 2) + ' kg·m²/s y <i>τ</i> = <i>mgd</i> = ' + num(tau, 2) + ' N·m. El torque, perpendicular a <b>L</b>, solo le cambia la dirección.';
+  }
+  function paso(dt) {
+    const f = +rf.value, w = 2 * Math.PI * f;
+    fi += Math.min(w, 9) * dt;
+    if (f < 0.8) {                                     /* cae como un péndulo desde la horizontal */
+      if (pausa > 0) { pausa -= dt; if (pausa <= 0) { beta = 0; wb = 0; } return; }
+      wb += (m * g * d * Math.cos(beta) / Ip) * dt; beta += wb * dt;
+      if (beta >= Math.PI / 2 - 0.05) { beta = Math.PI / 2 - 0.05; pausa = 1.2; }
+    } else { beta = 0; wb = 0; pausa = 0; psi += tau / (I * w) * dt; }
+  }
+  function bucle(ts) {
+    if (sl.classList.contains('activa') || sl.offsetParent) { const dt = Math.min(0.05, (ts - ult) / 1000 || 0); if (ts - ult > 30) { paso(dt); dibuja(); ult = ts; } } else ult = ts;
+    requestAnimationFrame(bucle);
+  }
+  rf.addEventListener('input', () => { beta = 0; wb = 0; pausa = 0; dibuja(); });
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ PROBLEMAS DEL CAPÍTULO: SOLUCIÓN COMPLETA (ventanas emergentes) ═════ */
+(function () {
+  $$('.pq-solbtn').forEach(btn => {
+    const modal = document.getElementById(btn.dataset.pop);
+    if (!modal) return;
+    const abre = () => { modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+    const cierra = () => { modal.style.display = 'none'; };
+    btn.addEventListener('click', abre);
+    $('.gl-dcl-x', modal).addEventListener('click', cierra);
+    modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+    document.addEventListener('slidechange', cierra);
+  });
+})();
+
 /* ═══ PRIMERA LEY DE KEPLER: FORMA DE LA ÓRBITA SEGÚN LA RAPIDEZ ═══════════ */
 (function () {
   const host = document.getElementById('k1-fig');
   if (!host) return;
   const R_ = id => document.getElementById(id), rv = R_('k1-v');
+  /* μ = m/(M + m): fracción de la masa que lleva el planeta */
+  const SIS = { tierra: { mu: 3.0e-6, nom: 'Sol + Tierra', t: '3,0×10⁻⁶' }, jupiter: { mu: 9.54e-4, nom: 'Sol + Júpiter', t: '9,5×10⁻⁴' }, doble: { mu: 1 / 3, nom: 'estrella doble (m = M/2)', t: '0,33' } };
+  let sis = 'tierra';
   function pinta() {
-    const q = +rv.value, ee = q * q - 1, W = 1000, H = 540, Sx = 560, Sy = 270, E = 95;      /* r0 = 1 → 95 px */
+    const q = +rv.value, ee = q * q - 1, mu = SIS[sis].mu, W = 1000, H = 540, Sx = 560, Sy = 270, E = sis === 'doble' ? 130 : 95;
     host.innerHTML = '';
     const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
-    const pts = [];
+    const rel = [];                                                        /* órbita relativa, r0 = 1 */
     for (let i = 0; i <= 720; i++) {
       const f = -Math.PI + 2 * Math.PI * i / 720, den = 1 + ee * Math.cos(f);
       if (den <= 0.02) continue;
       const r = (1 + ee) / den; if (r > 12) continue;
-      pts.push([Sx + E * r * Math.cos(f), Sy - E * r * Math.sin(f)]);
+      rel.push([r * Math.cos(f), r * Math.sin(f)]);
     }
-    nodo('polyline', { points: pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' '), style: 'fill:none;stroke:var(--caso1);stroke-width:4' }, svg);
-    nodo('circle', { cx: Sx, cy: Sy, r: E, style: 'fill:none;stroke:var(--linea);stroke-width:2;stroke-dasharray:8 6' }, svg);
+    const tray = (k, est) => nodo('polyline', { points: rel.map(p => (Sx + k * E * p[0]).toFixed(1) + ',' + (Sy - k * E * p[1]).toFixed(1)).join(' '), style: est }, svg);
+    nodo('circle', { cx: Sx, cy: Sy, r: E * (1 - mu), style: 'fill:none;stroke:var(--linea);stroke-width:2;stroke-dasharray:8 6' }, svg);
+    tray(1 - mu, 'fill:none;stroke:var(--caso1);stroke-width:4');           /* planeta */
+    if (mu > 0.01) tray(-mu, 'fill:none;stroke:var(--caso2);stroke-width:4');  /* estrella */
     const e = Math.abs(ee);
     if (ee < 1 && ee > -1 && e > 0.01) {
-      const a = 1 / (1 - ee), c = a * ee;                                  /* centro en x = -c (en unidades r0) */
-      const F2 = [Sx - 2 * c * E, Sy];
+      const c = ee / (1 - ee);                                             /* distancia foco–centro de la órbita relativa */
+      const F2 = [Sx - 2 * c * (1 - mu) * E, Sy];
       nodo('circle', { cx: F2[0], cy: F2[1], r: 7, style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
       rotulo(svg, F2[0], F2[1] + 34, 'otro foco', { 'text-anchor': 'middle', 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
     }
-    nodo('circle', { cx: Sx, cy: Sy, r: 20, style: 'fill:var(--caso2)' }, svg);
-    rotulo(svg, Sx, Sy + 50, 'Sol (foco)', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
-    nodo('circle', { cx: Sx + E, cy: Sy, r: 11, style: 'fill:var(--tinta)' }, svg);
-    flecha(svg, Sx + E, Sy - 14, Sx + E, Sy - 14 - 70 * q, 'var(--proy)', 4);
-    rotulo(svg, Sx + E + 12, Sy - 30 - 70 * q, '!v!', { 'font-size': 26, style: 'fill:var(--proy);font-family:' + FMATH + ';font-weight:700' });
+    /* estrella, planeta y centro de masa (en el foco común) */
+    const Px = Sx + (1 - mu) * E, Ex = Sx - mu * E;
+    nodo('circle', { cx: Ex, cy: Sy, r: 20, style: 'fill:var(--caso2)' }, svg);
+    rotulo(svg, Ex - 4, Sy - 30, sis === 'doble' ? 'estrella *M*' : 'Sol', { 'text-anchor': 'end', 'font-size': 21, style: 'fill:var(--caso2);font-family:' + FTXT + ';font-weight:700' });
+    nodo('circle', { cx: Px, cy: Sy, r: sis === 'doble' ? 15 : 11, style: 'fill:var(--tinta)' }, svg);
+    flecha(svg, Px, Sy - 14, Px, Sy - 14 - 70 * q * (1 - mu), 'var(--proy)', 4);
+    rotulo(svg, Px + 12, Sy - 30 - 70 * q * (1 - mu), '!v!', { 'font-size': 26, style: 'fill:var(--proy);font-family:' + FMATH + ';font-weight:700' });
+    if (mu > 0.01) flecha(svg, Ex, Sy + 22, Ex, Sy + 22 + 70 * q * mu, 'var(--caso2)', 4);
+    [[-11, 0, 11, 0], [0, -11, 0, 11]].forEach(d => nodo('line', { x1: Sx + d[0], y1: Sy + d[1], x2: Sx + d[2], y2: Sy + d[3], style: 'stroke:var(--res);stroke-width:4' }, svg));
+    rotulo(svg, Sx + 4, Sy + 52, 'CM (foco)', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    if (sis === 'jupiter') {                                               /* recuadro: cerca del Sol, ×1000 */
+      const B = [20, 300, 280, 230], C = [B[0] + 140, B[1] + 112], RS = 48, dCM = 1.07 * RS;
+      nodo('rect', { x: B[0], y: B[1], width: B[2], height: B[3], style: 'fill:var(--panel);stroke:var(--tinta2);stroke-width:2' }, svg);
+      nodo('circle', { cx: C[0], cy: C[1], r: dCM, style: 'fill:none;stroke:var(--caso2);stroke-width:2;stroke-dasharray:6 5' }, svg);
+      nodo('circle', { cx: C[0] - dCM, cy: C[1], r: RS, style: 'fill:var(--caso2);opacity:.45' }, svg);
+      nodo('circle', { cx: C[0] - dCM, cy: C[1], r: 5, style: 'fill:var(--caso2)' }, svg);
+      [[-9, 0, 9, 0], [0, -9, 0, 9]].forEach(d => nodo('line', { x1: C[0] + d[0], y1: C[1] + d[1], x2: C[0] + d[2], y2: C[1] + d[3], style: 'stroke:var(--res);stroke-width:4' }, svg));
+      rotulo(svg, B[0] + 10, B[1] + 26, 'Cerca del Sol, ×1000', { 'font-size': 19, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+      rotulo(svg, C[0] + 12, C[1] - 10, 'CM', { 'font-size': 19, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700' });
+      rotulo(svg, B[0] + 10, B[1] + B[3] - 34, 'CM a 1,07 *R*☉ del centro', { 'font-size': 18, style: 'fill:var(--tinta2);font-family:' + FTXT });
+      rotulo(svg, B[0] + 10, B[1] + B[3] - 12, 'del Sol: fuera de su superficie', { 'font-size': 18, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    }
     const tipo = ee >= 1 - 1e-9 ? (Math.abs(ee - 1) < 0.02 ? 'parábola: escapa justo' : 'hipérbola: escapa') : (e < 0.01 ? 'círculo (e = 0)' : 'elipse, e = ' + num(e, 2) + (ee < 0 ? ' (sale desde el afelio)' : ''));
-    rotulo(svg, 30, 40, 'círculo de referencia: v = v_circ', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    rotulo(svg, 30, 40, SIS[sis].nom + ' · m/(M + m) = ' + SIS[sis].t, { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
     R_('k1-vv').textContent = num(q, 2);
     R_('k1-lect').textContent = tipo;
   }
+  $$('#dp-kep1 .k1-sis .btn').forEach(b => b.addEventListener('click', () => {
+    sis = b.dataset.s; $$('#dp-kep1 .k1-sis .btn').forEach(o => o.classList.toggle('on', o === b)); pinta();
+  }));
   rv.addEventListener('input', pinta); pinta();
 })();
 
@@ -6431,6 +6774,85 @@ function lienzoOrbita(cv, trazos, marcas) {
       lin(svg, xm, ym + r, xm, 480, e); rect(svg, 330, 480, 400, 22, 'fill:var(--caso2)', 4);
       persona(svg, xf + r + 14, 480, 1.25, [xf + r, 400]);
       mt(svg, 250, 500, '25 kg', 'var(--caso2)', { 'font-size': 24 }); mt(svg, xf + r + 40, 340, '50 kg', 'var(--tinta)', { 'font-size': 24 });
+    },
+    /* ── problemas cuantitativos del capítulo ── */
+    tierracm(h) {
+      const svg = lienzo(h, 1000, 560), O = [360, 400], RT = 230;
+      nodo('circle', { cx: O[0], cy: O[1], r: RT, style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4' }, svg);
+      tx(svg, O[0] - 120, O[1] + 120, 'Tierra, *M*_T', { 'font-size': 26, style: 'fill:var(--caso1);font-family:' + FTXT + ';font-weight:700' });
+      circ(svg, O[0], O[1], 7, 'fill:var(--caso1)');
+      const P = [O[0], O[1] - RT - 120];
+      circ(svg, P[0], P[1], 16, 'fill:var(--tinta)'); tx(svg, P[0] + 26, P[1] + 8, 'piedra, *m* (antes)', { 'font-size': 22 });
+      circ(svg, P[0], O[1] - RT - 16, 16, 'fill:none;stroke:var(--tinta);stroke-width:3;stroke-dasharray:6 5');
+      tx(svg, P[0] + 26, O[1] - RT - 8, 'después', { 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT });
+      lin(svg, P[0] - 60, P[1], P[0] - 60, O[1] - RT, 'stroke:var(--tinta2);stroke-width:2'); mt(svg, P[0] - 96, (P[1] + O[1] - RT) / 2 + 10, '*h*', 'var(--tinta2)', { 'font-size': 26 });
+      const CM = [O[0], O[1] - 50];
+      [[-12, 0, 12, 0], [0, -12, 0, 12]].forEach(d => lin(svg, CM[0] + d[0], CM[1] + d[1], CM[0] + d[2], CM[1] + d[3], 'stroke:var(--res);stroke-width:5'));
+      tx(svg, CM[0] + 18, CM[1] + 6, 'CM (exagerado)', { 'font-size': 21, style: 'fill:var(--res);font-family:' + FTXT + ';font-weight:700' });
+      flecha(svg, CM[0] - 24, CM[1], CM[0] - 24, O[1], 'var(--caso1)', 3); mt(svg, CM[0] - 70, CM[1] + 36, '*r*_T', 'var(--caso1)', { 'font-size': 24 });
+      flecha(svg, CM[0] - 24, CM[1], CM[0] - 24, P[1] + 18, 'var(--tinta)', 3); mt(svg, CM[0] - 70, (CM[1] + P[1]) / 2, '*r*_p', 'var(--tinta)', { 'font-size': 24 });
+      mt(svg, 640, 120, '*M*_T *r*_T = *m* *r*_p', 'var(--res)', { 'font-size': 30 });
+      tx(svg, 640, 160, 'origen en el CM, que no se mueve', { 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+      tx(svg, 640, 540, 'no está a escala', { 'font-size': 20, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    auto(h) {
+      const svg = lienzo(h, 1000, 560), yS = 400;
+      suelo(svg, 30, 970, yS);
+      const carro = (x, est) => {
+        rect(svg, x, yS - 92, 220, 56, est, 10); rect(svg, x + 50, yS - 140, 110, 52, est, 14);
+        circ(svg, x + 50, yS - 26, 26, 'fill:var(--tinta)'); circ(svg, x + 170, yS - 26, 26, 'fill:var(--tinta)');
+      };
+      carro(60, 'fill:none;stroke:var(--tinta2);stroke-width:3;stroke-dasharray:8 6');
+      carro(700, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4');
+      tx(svg, 170, yS + 50, '*t* = 0, *v*₀ = 0', { 'text-anchor': 'middle', 'font-size': 24 });
+      tx(svg, 810, yS + 50, '*t* = 10 s, *v* = 25 m/s', { 'text-anchor': 'middle', 'font-size': 24 });
+      flecha(svg, 930, yS - 64, 990, yS - 64, 'var(--res)', 5); mt(svg, 940, yS - 80, '!F!', 'var(--res)');
+      lin(svg, 170, yS + 80, 810, yS + 80, 'stroke:var(--tinta2);stroke-width:2'); flecha(svg, 480, yS + 80, 810, yS + 80, 'var(--tinta2)', 2); flecha(svg, 500, yS + 80, 170, yS + 80, 'var(--tinta2)', 2);
+      mt(svg, 490, yS + 118, 'Δ*x* = ?', 'var(--tinta)', { 'text-anchor': 'middle', 'font-size': 28 });
+      tx(svg, 500, 120, '*m* = 1200 kg, fuerza neta constante', { 'text-anchor': 'middle', 'font-size': 26 });
+    },
+    acant2(h) {
+      const svg = lienzo(h, 1000, 560), y0 = 110, yS = 490;
+      rect(svg, 60, y0, 300, yS - y0, 'fill:var(--linea);stroke:var(--tinta2);stroke-width:3');
+      suelo(svg, 30, 970, yS);
+      rect(svg, 330, y0 - 50, 50, 50, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4', 4);
+      tx(svg, 400, y0 - 20, '2,0 kg, en reposo', { 'font-size': 24 });
+      lin(svg, 355, y0 + 10, 355, yS - 60, 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 7');
+      rect(svg, 330, yS - 50, 50, 50, 'fill:none;stroke:var(--caso1);stroke-width:3;stroke-dasharray:6 5', 4);
+      flecha(svg, 420, yS - 120, 420, yS - 30, 'var(--proy)', 5); mt(svg, 434, yS - 64, '*v*_f = ?', 'var(--proy)', { 'font-size': 26 });
+      lin(svg, 640, y0 - 25, 640, yS, 'stroke:var(--tinta2);stroke-width:2'); flecha(svg, 640, 300, 640, y0 - 25, 'var(--tinta2)', 2); flecha(svg, 640, 300, 640, yS, 'var(--tinta2)', 2);
+      mt(svg, 656, 300, '*h* = 50 m', 'var(--tinta)', { 'font-size': 28 });
+      tx(svg, 700, yS + 40, '*U* = 0 en el suelo', { 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
+    cajon(h) {
+      const svg = lienzo(h, 1000, 560), yS = 430, C = [380, 360];
+      suelo(svg, 30, 970, yS);
+      rect(svg, 280, 290, 200, 140, 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4', 4);
+      tx(svg, 398, 322, '10 kg', { 'font-size': 26 });
+      const a = Math.PI / 6, L = 330, A = [480, 300], B = [A[0] + L * Math.cos(a), A[1] - L * Math.sin(a)];
+      lin(svg, A[0], A[1], B[0], B[1], 'stroke:var(--tinta);stroke-width:3'); persona(svg, B[0] + 30, B[1] + 150, 1.4, [B[0], B[1]]);
+      flecha(svg, A[0], A[1], A[0] + 170 * Math.cos(a), A[1] - 170 * Math.sin(a), 'var(--res)', 6); mt(svg, A[0] + 120, A[1] - 110, '!F! = 50 N', 'var(--res)', { 'font-size': 26 });
+      lin(svg, A[0], A[1], A[0] + 120, A[1], 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5');
+      camino(svg, 'M ' + (A[0] + 80) + ' ' + A[1] + ' A 80 80 0 0 0 ' + (A[0] + 80 * Math.cos(a)) + ' ' + (A[1] - 80 * Math.sin(a)), 'fill:none;stroke:var(--tinta2);stroke-width:2');
+      mt(svg, A[0] + 88, A[1] - 12, '30°', 'var(--tinta2)', { 'font-size': 22 });
+      flecha(svg, C[0], C[1], C[0], C[1] + 150, 'var(--caso2)', 6); mt(svg, C[0] + 10, C[1] + 170, '*m*!g!', 'var(--caso2)', { 'font-size': 26 });
+      flecha(svg, C[0] - 60, yS, C[0] - 60, yS - 230, 'var(--caso1)', 6); mt(svg, C[0] - 140, yS - 236, '!F!_N = ?', 'var(--caso1)', { 'font-size': 26 });
+      flecha(svg, 280, yS - 10, 140, yS - 10, 'var(--mal)', 6); mt(svg, 130, yS - 26, '!f!_k', 'var(--mal)', { 'font-size': 26 });
+      flecha(svg, 600, 500, 700, 500, 'var(--proy)', 4); tx(svg, 710, 508, 'velocidad constante', { 'font-size': 22, style: 'fill:var(--proy);font-family:' + FTXT + ';font-weight:700' });
+    },
+    elastico(h) {
+      const svg = lienzo(h, 1000, 560);
+      const fila = (y, t, v1, v2) => {
+        tx(svg, 40, y - 70, t, { 'font-size': 26, style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+        lin(svg, 40, y + 40, 960, y + 40, 'stroke:var(--linea);stroke-width:3');
+        circ(svg, 320, y, 36, 'fill:var(--caso1)'); circ(svg, 620, y, 36, 'fill:var(--caso2)');
+        mt(svg, 320, y + 10, '*m*', 'var(--panel)', { 'text-anchor': 'middle', 'font-size': 28 }); mt(svg, 620, y + 10, '*m*', 'var(--panel)', { 'text-anchor': 'middle', 'font-size': 28 });
+        if (v1) { flecha(svg, 360, y, 360 + v1[0], y, 'var(--caso1)', 5); mt(svg, 366, y - 46, v1[1], 'var(--caso1)', { 'font-size': 24 }); }
+        if (v2) { flecha(svg, 660, y, 660 + v2[0], y, 'var(--caso2)', 5); mt(svg, 666, y - 46, v2[1], 'var(--caso2)', { 'font-size': 24 }); }
+      };
+      fila(170, 'Antes', [150, '*v*_1i = 3,0×10⁶ m/s'], null);
+      mt(svg, 620, 236, '*v*_2i = 0', 'var(--caso2)', { 'text-anchor': 'middle', 'font-size': 24 });
+      fila(430, 'Después (choque elástico, frontal)', [0, '*v*_1f = ?'], [150, '*v*_2f = ?']);
     },
     caja(h) {
       const svg = lienzo(h, 1000, 560);
