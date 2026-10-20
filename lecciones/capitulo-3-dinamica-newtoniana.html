@@ -648,16 +648,21 @@ body{background:var(--lienzo);display:flex;align-items:center;justify-content:ce
   background:color-mix(in srgb, var(--papel) 86%, transparent);backdrop-filter:blur(8px);
   border-bottom:1px solid var(--linea);transition:opacity .5s;
 }
-.marca{font-size:2.3cqh;font-weight:600;color:var(--tinta2);white-space:nowrap}
-.menu{margin-left:auto;display:flex;gap:0.17cqw}
+/* La barra nunca se desborda: ⛶ no se encoge; el menú se ajusta (ajustaMenu
+   reduce --menu-k y, si aún no cabe, oculta la marca) y, como último recurso,
+   se desplaza horizontalmente sin barra visible. */
+.marca{font-size:2.3cqh;font-weight:600;color:var(--tinta2);white-space:nowrap;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.barra.sin-marca .marca{display:none}
+.menu{margin-left:auto;display:flex;gap:0.17cqw;flex:0 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
 .menu button{
-  font:500 2.3cqh/1 var(--font-body);color:var(--tinta2);background:none;border:none;cursor:pointer;
-  padding:1cqh 0.7cqw;border-radius:.9cqh;position:relative;white-space:nowrap;
+  font:500 calc(2.3cqh * var(--menu-k, 1))/1 var(--font-body);color:var(--tinta2);background:none;border:none;cursor:pointer;
+  padding:1cqh calc(0.7cqw * var(--menu-k, 1));border-radius:.9cqh;position:relative;white-space:nowrap;flex:none;
 }
 .menu button:hover{color:var(--tinta);background:color-mix(in srgb, var(--tinta) 5%, transparent)}
 .menu button.actual{color:var(--res);font-weight:700}
 .menu button.actual::after{content:'';position:absolute;left:0.7cqw;right:0.7cqw;bottom:.45cqh;height:.35cqh;background:var(--res);border-radius:1cqh}
-.btn-fs{font-size:2.5cqh;color:var(--tinta2);background:none;border:none;cursor:pointer;padding:.8cqh 1cqh;border-radius:.9cqh;line-height:1}
+.btn-fs{flex:none;font-size:2.5cqh;color:var(--tinta2);background:none;border:none;cursor:pointer;padding:.8cqh 1cqh;border-radius:.9cqh;line-height:1}
 .btn-fs:hover{color:var(--tinta);background:color-mix(in srgb, var(--tinta) 5%, transparent)}
 .flecha{
   position:absolute;top:50%;transform:translateY(-50%);z-index:30;
@@ -3205,6 +3210,33 @@ function tok(nombre) {
     return b;
   });
 
+  /* Que la barra quepa siempre: reduce la letra del menú hasta un 60 %; si aún
+     no cabe, oculta la marca; el ⛶ queda siempre dentro de la diapositiva. */
+  const barra = menu.parentElement;
+  function ajustaMenu(){
+    barra.classList.remove('sin-marca');
+    let k = 1;
+    menu.style.setProperty('--menu-k', k);
+    const sobra = () => menu.scrollWidth > menu.clientWidth + 1;
+    while (sobra() && k > 0.62) { k -= 0.04; menu.style.setProperty('--menu-k', k.toFixed(2)); }
+    if (sobra()) {
+      barra.classList.add('sin-marca');
+      while (k < 1 && !sobra()) { k += 0.04; menu.style.setProperty('--menu-k', k.toFixed(2)); }
+      if (sobra() && k > 0.62) { k -= 0.04; menu.style.setProperty('--menu-k', k.toFixed(2)); }
+    }
+    centraActual();
+  }
+  function centraActual(){
+    const b = menu.querySelector('button.actual');
+    if (!b || menu.scrollWidth <= menu.clientWidth + 1) return;
+    const izq = b.offsetLeft - menu.offsetLeft, der = izq + b.offsetWidth;
+    if (izq < menu.scrollLeft) menu.scrollLeft = izq;
+    else if (der > menu.scrollLeft + menu.clientWidth) menu.scrollLeft = der - menu.clientWidth;
+  }
+  window.addEventListener('resize', ajustaMenu);
+  if (window.ResizeObserver) new ResizeObserver(ajustaMenu).observe(barra);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajustaMenu);
+
   function pinta(){
     const previo = dps.findIndex(d => d.hasAttribute('data-deck-active'));
     dps.forEach((d, k) => {
@@ -3221,6 +3253,7 @@ function tok(nombre) {
       b.classList.toggle('actual', cur);
       if (cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
+    centraActual();
     esc.classList.toggle('sin-pasos', frags[i].length === 0 && dps[i].id !== 'dp-hero');
     contador.textContent = String(i + 1);          /* solo la diapositiva actual; el total va en data-total */
     contador.dataset.total = N;
@@ -3361,6 +3394,7 @@ function tok(nombre) {
   const m0 = location.hash.match(/^#\/(\d+)$/);
   if (m0) { const n = parseInt(m0[1], 10) - 1; if (n >= 0 && n < N) i = n; }
   pinta();
+  ajustaMenu();
   despierta();
 })();
 
