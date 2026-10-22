@@ -1,0 +1,72 @@
+% =====================================================================
+% Reemplaza la subsección «El Concepto de Campo Gravitacional ($\boldsymbol{g}$)»,
+% que sigue a la nueva subsección «La ley de gravitación universal en
+% términos del campo» (archivo gravitacion_campo.tex).
+% La etiqueta eq:campo_g ahora está en gravitacion_campo.tex; aquí ya no
+% se define, para no duplicarla. Se conserva fig:campo_gravitacional_newton.
+% Requiere: tikz con \usetikzlibrary{arrows.meta}.
+% =====================================================================
+
+\subsection{Líneas de campo y superficies equipotenciales}
+\label{subsec:lineas_equipotenciales}
+
+Newton se sentía incómodo con la idea de una «acción a distancia», en la
+que un cuerpo tira de otro a través del espacio vacío. El concepto de campo
+evita esa dificultad: la masa $M$ modifica el espacio a su alrededor, y una
+masa $m$ responde al campo que encuentra \emph{en el lugar donde está},
+mediante $\boldsymbol{F} = m\,\boldsymbol{g}$. El campo es una propiedad del
+espacio creada por $M$, haya o no otra masa que lo sienta.
+
+La figura~\ref{fig:campo_gravitacional_newton} muestra el campo de la
+ecuación~\eqref{eq:campo_g_vectorial} alrededor de la Tierra. Las
+\textbf{líneas de campo} son radiales y apuntan hacia el centro; donde están
+más juntas, el campo es más intenso. Las \textbf{superficies equipotenciales}
+son esferas centradas en la Tierra: sobre cada una el campo tiene la misma
+magnitud, y en todos sus puntos es perpendicular a ella. Su significado en
+términos de energía se verá al estudiar la energía potencial gravitacional.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      scale=1.2, font=\large,
+      tierra/.style={shade, ball color=blue!60!cyan, text=white},
+      equipotencial/.style={dashed, orange, thick},
+      lineacampo/.style={-{Stealth[length=3mm, width=2mm]}, ultra thick, red!80!black},
+    ]
+    % Tierra en el centro
+    \node[tierra, circle, minimum size=3cm] at (0,0) {Tierra};
+    % Superficies equipotenciales (cortes de esferas)
+    \foreach \r in {2.5, 3.5, 4.5} {
+      \draw[equipotencial] (0,0) circle (\r);
+    }
+    % Líneas del campo gravitacional
+    \foreach \ang in {0, 45, ..., 315} {
+      \draw[lineacampo] (\ang:5) -- (\ang:1.5);
+    }
+    % Rótulos
+    \node[orange, font=\small, anchor=south west] at (0.1, 3.5) {Equipotencial};
+    \node[red!80!black, font=\small, rotate=45, anchor=south]
+      at (45:3.5) {Campo gravitacional $\boldsymbol{g}$};
+  \end{tikzpicture}
+  \caption{Corte en dos dimensiones del campo gravitacional $\boldsymbol{g}$
+    de la Tierra. Las líneas de campo (flechas rojas) son radiales y apuntan
+    hacia el centro; las equipotenciales (círculos naranjas a trazos) son
+    perpendiculares a ellas.}
+  \label{fig:campo_gravitacional_newton}
+\end{figure}
+
+\paragraph{El campo cerca de la superficie.}
+Para alturas $h$ pequeñas comparadas con el radio terrestre, $h \ll R_T$, la
+distancia al centro casi no cambia, $r = R_T + h \approx R_T$, y en una
+región pequeña las líneas de campo son prácticamente paralelas. El campo es
+entonces casi uniforme y, con el eje $y$ vertical hacia arriba,
+\begin{equation}
+  \boldsymbol{g} \approx -\,g_0\,\hat{\boldsymbol{y}} \,,
+  \qquad
+  g_0 = \frac{G M_T}{R_T^{2}} \approx \SI{9.8}{\meter\per\second\squared} \,.
+  \label{eq:campo_uniforme}
+\end{equation}
+Este es el campo que usamos en los problemas de caída libre y de movimiento
+parabólico. Por otra parte, las leyes de Kepler, que describen el movimiento
+de los planetas, se deducen de que la gravitación es una interacción central
+que decae como el inverso del cuadrado de la distancia.

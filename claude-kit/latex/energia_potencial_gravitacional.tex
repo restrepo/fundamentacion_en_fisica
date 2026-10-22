@@ -1,0 +1,248 @@
+% =====================================================================
+% Reemplaza el bloque
+%   \section*{Energía  potencial del campo gravitacional} ... \end{align}
+% de main.tex (la deducción con E_pot = F·r).
+% Requiere: amsmath, amssymb, siunitx, booktabs (ya cargados en main.tex).
+% =====================================================================
+
+\subsection{Energía potencial del campo gravitacional}
+\label{subsec:energia_potencial_gravitacional}
+
+\paragraph{Punto de partida: trabajo y energía potencial.}
+Recordemos que una fuerza \emph{constante} $\boldsymbol{F}$ que actúa sobre un
+cuerpo mientras este experimenta un desplazamiento $\Delta\boldsymbol{r}$
+realiza un trabajo igual al producto escalar de los dos vectores,
+\begin{equation}
+  W = \boldsymbol{F}\cdot\Delta\boldsymbol{r}
+    = \lvert\boldsymbol{F}\rvert\,\lvert\Delta\boldsymbol{r}\rvert\cos\theta \,,
+  \label{eq:trabajo_producto_escalar}
+\end{equation}
+donde $\theta$ es el ángulo entre $\boldsymbol{F}$ y $\Delta\boldsymbol{r}$.
+Cerca de la superficie, la gravedad hace sobre un cuerpo que sube una altura
+$h$ el trabajo $W = -mgh$, y por eso definimos la energía potencial $U = mgh$: el
+cambio de energía potencial es el negativo del trabajo que hace la gravedad,
+\begin{equation}
+  \Delta U = -\,W_{\text{grav}} \,.
+  \label{eq:def_cambio_epot}
+\end{equation}
+Usaremos la misma definición para el campo gravitacional a cualquier
+distancia, pero ahora con la referencia en el infinito:
+$U(\infty) = 0$.
+
+\paragraph{La dificultad: la fuerza no es constante.}
+Sobre una masa $m$ colocada en la posición $\boldsymbol{r}$, medida desde el
+centro de la Tierra (masa $M$), actúa la fuerza gravitacional
+\begin{equation}
+  \boldsymbol{F}(\boldsymbol{r})
+  = -\,\frac{GMm}{r^{3}}\,\boldsymbol{r}
+  = -\,\frac{GMm}{r^{2}}\,\hat{\boldsymbol{r}} \,,
+  \label{eq:fuerza_grav_epot}
+\end{equation}
+cuya magnitud, $GMm/r^{2}$, cambia con la distancia. La
+ecuación~\eqref{eq:trabajo_producto_escalar} no se puede aplicar de una sola
+vez a todo el recorrido. En particular, \emph{no} es correcto escribir
+$U = \boldsymbol{F}\cdot\boldsymbol{r}$: el vector
+$\boldsymbol{r}$ no es un desplazamiento del proceso y la fuerza no es la
+misma a lo largo del camino. Lo que haremos es dividir el camino en tramos
+cortos y acotar el trabajo en cada uno.
+
+\paragraph{Paso 1: el trabajo en un tramo radial.}
+Llevemos la masa $m$ en línea recta, alejándola del centro, desde la distancia
+$r_{a}$ hasta la distancia $r_{b} > r_{a}$. Dividimos el camino en $n$ tramos
+iguales de longitud
+\begin{equation}
+  \Delta r = \frac{r_{b} - r_{a}}{n} \,,
+  \label{eq:ancho_tramo}
+\end{equation}
+con extremos
+\begin{equation}
+  r_{0} = r_{a}, \quad
+  r_{i} = r_{a} + i\,\Delta r \quad (i = 0, 1, \dots, n), \quad
+  r_{n} = r_{b} \,.
+  \label{eq:extremos_tramos}
+\end{equation}
+En el tramo $i$, que va de $r_{i-1}$ a $r_{i}$, el desplazamiento es
+$\Delta\boldsymbol{r}_{i} = \Delta r\,\hat{\boldsymbol{r}}$, dirigido hacia
+afuera, mientras que la fuerza gravitacional apunta hacia el centro. El ángulo
+entre ellos es $\theta = 180^{\circ}$ y $\cos\theta = -1$. Si en ese tramo la
+fuerza tuviera el valor constante que tiene a una distancia $r$, el
+trabajo~\eqref{eq:trabajo_producto_escalar} sería
+\begin{equation}
+  \boldsymbol{F}\cdot\Delta\boldsymbol{r}_{i}
+  = \left(-\,\frac{GMm}{r^{2}}\,\hat{\boldsymbol{r}}\right)
+    \cdot\left(\Delta r\,\hat{\boldsymbol{r}}\right)
+  = -\,\frac{GMm}{r^{2}}\,\Delta r\,
+    \left(\hat{\boldsymbol{r}}\cdot\hat{\boldsymbol{r}}\right)
+  = -\,\frac{GMm}{r^{2}}\,\Delta r \,,
+  \label{eq:trabajo_tramo_fuerza_fija}
+\end{equation}
+porque $\hat{\boldsymbol{r}}\cdot\hat{\boldsymbol{r}} = 1$.
+
+\paragraph{Paso 2: cotas del trabajo en cada tramo.}
+Dentro del tramo $i$ la distancia está entre $r_{i-1}$ y $r_{i}$, de modo que
+la magnitud de la fuerza disminuye desde $GMm/r_{i-1}^{2}$, al comienzo,
+hasta $GMm/r_{i}^{2}$, al final. Por lo tanto, el trabajo verdadero $W_{i}$
+de la gravedad en ese tramo, que es negativo, tiene una magnitud mayor que la
+que tendría con la fuerza más débil del tramo y menor que la que tendría con
+la más intensa:
+\begin{equation}
+  \frac{GMm}{r_{i}^{2}}\,\Delta r
+  \;<\; -\,W_{i} \;<\;
+  \frac{GMm}{r_{i-1}^{2}}\,\Delta r \,.
+  \label{eq:cotas_trabajo_tramo}
+\end{equation}
+Geométricamente, $-W_{i}$ es el área bajo la curva $F(r) = GMm/r^{2}$ entre
+$r_{i-1}$ y $r_{i}$, y las dos cotas son las áreas de los rectángulos de base
+$\Delta r$ que quedan por debajo y por encima de la curva.
+
+\paragraph{Paso 3: una resta de fracciones con las mismas cotas.}
+Restando fracciones,
+\begin{equation}
+  \frac{1}{r_{i-1}} - \frac{1}{r_{i}}
+  = \frac{r_{i} - r_{i-1}}{r_{i-1}\,r_{i}}
+  = \frac{\Delta r}{r_{i-1}\,r_{i}} \,.
+  \label{eq:resta_fracciones}
+\end{equation}
+Como $0 < r_{i-1} < r_{i}$, al multiplicar esta desigualdad por $r_{i-1}$ y
+por $r_{i}$ se obtiene $r_{i-1}^{2} < r_{i-1}\,r_{i} < r_{i}^{2}$; tomando
+inversos, que invierten el orden de los números positivos, y multiplicando
+por $\Delta r > 0$,
+\begin{equation}
+  \frac{\Delta r}{r_{i}^{2}}
+  \;<\; \frac{1}{r_{i-1}} - \frac{1}{r_{i}} \;<\;
+  \frac{\Delta r}{r_{i-1}^{2}} \,.
+  \label{eq:cotas_resta}
+\end{equation}
+La diferencia $1/r_{i-1} - 1/r_{i}$ queda entre las mismas cotas que
+$-W_{i}/(GMm)$ en~\eqref{eq:cotas_trabajo_tramo}.
+
+\paragraph{Paso 4: sumar todos los tramos.}
+El trabajo total de la gravedad es la suma de los trabajos de los tramos,
+$W_{\text{grav}} = W_{1} + W_{2} + \dots + W_{n}$. Definimos las sumas
+inferior y superior
+\begin{equation}
+  S_{\text{inf}} = GMm\,\Delta r \sum_{i=1}^{n} \frac{1}{r_{i}^{2}} \,,
+  \qquad
+  S_{\text{sup}} = GMm\,\Delta r \sum_{i=1}^{n} \frac{1}{r_{i-1}^{2}} \,.
+  \label{eq:sumas_inf_sup}
+\end{equation}
+Sumando las desigualdades~\eqref{eq:cotas_trabajo_tramo} para
+$i = 1, \dots, n$,
+\begin{equation}
+  S_{\text{inf}} \;<\; -\,W_{\text{grav}} \;<\; S_{\text{sup}} \,.
+  \label{eq:cotas_trabajo_total}
+\end{equation}
+Sumando las desigualdades~\eqref{eq:cotas_resta}, multiplicadas por $GMm$,
+el término del medio se cancela en cadena (suma \emph{telescópica}):
+\begin{align}
+  \sum_{i=1}^{n}\left(\frac{1}{r_{i-1}} - \frac{1}{r_{i}}\right)
+  &= \left(\frac{1}{r_{0}} - \frac{1}{r_{1}}\right)
+   + \left(\frac{1}{r_{1}} - \frac{1}{r_{2}}\right)
+   + \dots
+   + \left(\frac{1}{r_{n-1}} - \frac{1}{r_{n}}\right) \nonumber\\
+  &= \frac{1}{r_{0}} - \frac{1}{r_{n}}
+   = \frac{1}{r_{a}} - \frac{1}{r_{b}} \,,
+  \label{eq:suma_telescopica}
+\end{align}
+porque cada $1/r_{i}$ intermedio aparece una vez sumando y otra restando. Por
+lo tanto,
+\begin{equation}
+  S_{\text{inf}} \;<\; GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+  \;<\; S_{\text{sup}} \,.
+  \label{eq:cotas_valor_exacto}
+\end{equation}
+
+\paragraph{Paso 5: las cotas se juntan.}
+La diferencia entre las dos sumas también es telescópica:
+\begin{align}
+  S_{\text{sup}} - S_{\text{inf}}
+  &= GMm\,\Delta r \sum_{i=1}^{n}
+     \left(\frac{1}{r_{i-1}^{2}} - \frac{1}{r_{i}^{2}}\right)
+   = GMm\,\Delta r \left(\frac{1}{r_{0}^{2}} - \frac{1}{r_{n}^{2}}\right)
+   \nonumber\\
+  &= GMm\,\frac{r_{b} - r_{a}}{n}
+     \left(\frac{1}{r_{a}^{2}} - \frac{1}{r_{b}^{2}}\right) .
+  \label{eq:diferencia_cotas}
+\end{align}
+Esta diferencia es inversamente proporcional al número de tramos: al
+multiplicar $n$ por $10$ se divide por $10$, y se puede hacer tan pequeña
+como se quiera. Según~\eqref{eq:cotas_trabajo_total}
+y~\eqref{eq:cotas_valor_exacto}, los números $-W_{\text{grav}}$ y
+$GMm\,(1/r_{a} - 1/r_{b})$, que no dependen de $n$, están \emph{siempre}
+dentro del mismo intervalo $(S_{\text{inf}},\, S_{\text{sup}})$, cuyo ancho
+tiende a cero. La única posibilidad es que sean iguales:
+\begin{equation}
+  W_{\text{grav}} = -\,GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right) .
+  \label{eq:trabajo_grav_r1_r2}
+\end{equation}
+El signo menos indica que, al alejarse la masa, la gravedad se opone al
+movimiento. En la tabla~\ref{tab:cotas_trabajo} se ven las cotas para
+$r_{a} = R$ y $r_{b} = 4R$, en unidades de $GMm/R$; allí el valor exacto es
+$1 - \tfrac{1}{4} = 0{,}75$.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Sumas inferior y superior del trabajo, en unidades de $GMm/R$, para
+    llevar la masa de $r_{a} = R$ a $r_{b} = 4R$. El valor exacto,
+    $0{,}7500$, queda siempre entre las dos, y la diferencia se divide por
+    $10$ cada vez que $n$ se multiplica por $10$.}
+  \label{tab:cotas_trabajo}
+  \begin{tabular}{@{}rccc@{}}
+    \toprule
+    $n$ & $S_{\text{inf}}$ & $S_{\text{sup}}$ & $S_{\text{sup}} - S_{\text{inf}}$ \\
+    \midrule
+    4   & $0{,}4828$ & $1{,}1859$ & $0{,}7031$ \\
+    40  & $0{,}7158$ & $0{,}7861$ & $0{,}0703$ \\
+    400 & $0{,}7465$ & $0{,}7535$ & $0{,}0070$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\paragraph{Paso 6: otros caminos.}
+Si el desplazamiento de un tramo es perpendicular a $\hat{\boldsymbol{r}}$,
+es decir, se mueve sobre una esfera centrada en $M$, entonces $\theta =
+90^{\circ}$ y, por~\eqref{eq:trabajo_producto_escalar}, la gravedad no
+realiza trabajo. Cualquier camino de $r_{a}$ a $r_{b}$ puede aproximarse por
+escalones radiales y escalones sobre esferas; solo los radiales contribuyen,
+y su suma es la misma que la del camino recto. El
+resultado~\eqref{eq:trabajo_grav_r1_r2} depende únicamente de las distancias
+inicial y final, y por eso tiene sentido hablar de una energía potencial que
+depende solo de $r$.
+
+\paragraph{Paso 7: la energía potencial.}
+Con la definición~\eqref{eq:def_cambio_epot},
+\begin{equation}
+  U(r_{b}) - U(r_{a})
+  = -\,W_{\text{grav}}
+  = GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right) .
+  \label{eq:cambio_epot_r1_r2}
+\end{equation}
+Ahora alejamos la masa indefinidamente: $r_{b} \to \infty$, de modo que
+$1/r_{b} \to 0$, y escogemos $U(\infty) = 0$. Llamando $r$ a la
+distancia inicial $r_{a}$,
+\begin{equation}
+  0 - U(r) = \frac{GMm}{r}
+  \quad\Longrightarrow\quad
+  \boxed{U(r) = -\,\frac{GMm}{r}} \,.
+  \label{eq:Epot_grav}
+\end{equation}
+La energía potencial es negativa a cualquier distancia finita: la masa está en
+un \emph{pozo} de energía, y para sacarla del campo hay que darle al menos la
+energía $GMm/r$.
+
+\paragraph{Comprobación: cerca de la superficie se recupera $mgh$.}
+Con $r_{a} = R_{T}$ y $r_{b} = R_{T} + h$ en~\eqref{eq:cambio_epot_r1_r2},
+\begin{equation}
+  U(R_{T} + h) - U(R_{T})
+  = GMm\,\frac{(R_{T} + h) - R_{T}}{R_{T}\,(R_{T} + h)}
+  = \frac{GM}{R_{T}^{2}}\,m\,h\,\frac{1}{1 + h/R_{T}} \,.
+  \label{eq:epot_cerca_exacta}
+\end{equation}
+Para $h \ll R_{T}$, $1 + h/R_{T} \approx 1$, y con
+$g = GM/R_{T}^{2} \approx \SI{9.8}{\meter\per\second\squared}$,
+\begin{equation}
+  U(R_{T} + h) - U(R_{T}) \approx m\,g\,h \,,
+  \label{eq:epot_cerca_mgh}
+\end{equation}
+que es la energía potencial que usamos cerca de la superficie. La
+expresión~\eqref{eq:Epot_grav} la contiene como caso particular.

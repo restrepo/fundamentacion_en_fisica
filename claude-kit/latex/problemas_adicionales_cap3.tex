@@ -1,0 +1,97 @@
+% =====================================================================
+% Cinco problemas adicionales para «Problemas Cuantitativos Propuestos»
+% del capítulo 3. Van dentro del mismo \begin{enumerate} ... \end{enumerate},
+% justo después del problema del cometa (momento angular), y continúan la
+% numeración (11 a 15).
+% Requiere: amsmath, siunitx (ya cargados en main.tex).
+% =====================================================================
+
+    \item \textbf{Impulso y ley de la fuerza:} Una pelota de tenis de
+    \SI{57}{\gram} llega horizontalmente a una pared con una rapidez de
+    \SI{30}{\meter\per\second} y rebota en la misma dirección, en sentido
+    contrario, con \SI{40}{\meter\per\second}. El contacto con la pared dura
+    \SI{5.0}{\milli\second}.
+    \begin{enumerate}
+        \item Tomando como positivo el sentido de salida, calcule el cambio en
+        la cantidad de movimiento $\Delta p$ de la pelota.
+        \item Utilizando la ley de la fuerza, $F = \Delta p/\Delta t$, calcule
+        la magnitud de la fuerza media que la pared ejerce sobre la pelota y
+        compárela con el peso de la pelota.
+        \textit{[Resp: a) $\Delta p = \SI{3.99}{\kilo\gram\meter\per\second}$;
+        b) $F \approx \SI{8.0e2}{\newton}$, unas $1400$ veces el peso]}
+    \end{enumerate}
+
+    \item \textbf{Trabajo con la Fuerza Promedio:} Se quiere subir un satélite
+    de \SI{500}{\kilo\gram} desde la superficie terrestre hasta una órbita a
+    \SI{400}{\kilo\meter} de altura. (Datos: $M_T = \SI{5.97e24}{\kilo\gram}$,
+    $R_T = \SI{6371}{\kilo\meter}$,
+    $G \approx \SI{6.674e-11}{\newton\meter\squared\per\kilo\gram\squared}$).
+    \begin{enumerate}
+        \item Calcule la fuerza promedio que debe vencerse en el ascenso,
+        usando el promedio geométrico de las fuerzas gravitacionales en los
+        extremos, $\langle F\rangle = \sqrt{F(r_a)\,F(r_b)} = GM_Tm/(r_a r_b)$.
+        \item Calcule el trabajo $W = \langle F\rangle\,(r_b - r_a)$ y
+        verifique que coincide con el cambio de energía potencial
+        $\Delta U = GM_Tm\,(1/r_a - 1/r_b)$.
+        \item Compare con la aproximación $mgh$, con
+        $g = \SI{9.8}{\meter\per\second\squared}$. ¿En qué porcentaje la
+        sobreestima? \textit{[Resp: a) $\langle F\rangle \approx
+        \SI{4.62e3}{\newton}$; b) $W \approx \SI{1.85e9}{\joule}$;
+        c) $mgh = \SI{1.96e9}{\joule}$, un \SI{6}{\percent} mayor, del orden
+        de $h/R_T$]}
+    \end{enumerate}
+
+    \item \textbf{Energía Potencial Gravitacional y Velocidad de Escape:}
+    Utilizando la conservación de la energía mecánica con
+    $U(r) = -GMm/r$ y la condición de que el cuerpo llegue al infinito con
+    rapidez nula ($K + U = 0$), calcule la velocidad de escape desde la
+    superficie de la Luna. (Datos: $M_L = \SI{7.35e22}{\kilo\gram}$,
+    $R_L = \SI{1737}{\kilo\meter}$). Compárela con la de la Tierra,
+    $\SI{11.2}{\kilo\meter\per\second}$, y explique por qué la Luna no ha
+    podido retener una atmósfera. \textit{[Resp:
+    $v_{\text{esc}} = \sqrt{2GM_L/R_L} \approx \SI{2.38}{\kilo\meter\per\second}$,
+    unas cinco veces menor que la de la Tierra]}
+
+    \item \textbf{Tercera Ley de Kepler y Centro de Masas:} Júpiter
+    ($m_J = \SI{1.90e27}{\kilogram}$) orbita al Sol
+    ($M_\odot = \SI{1.99e30}{\kilo\gram}$, $R_\odot = \SI{6.96e8}{\meter}$) a
+    una distancia media $a = \SI{5.20}{UA} = \SI{7.78e11}{\meter}$.
+    \begin{enumerate}
+        \item Usando la tercera ley de Kepler en la forma
+        $T^{2} \propto a^{3}$ y tomando como referencia la órbita terrestre
+        ($a = \SI{1}{UA}$, $T = 1$~año), calcule el período orbital de
+        Júpiter en años.
+        \item Con la definición del centro de masas, calcule la distancia
+        entre el centro del Sol y el centro de masas del sistema Sol--Júpiter
+        y exprésela en radios solares. ¿Está dentro o fuera del Sol?
+        \item Calcule la rapidez con la que el Sol gira alrededor de ese
+        centro de masas. (Este bamboleo del Sol es el que permite descubrir
+        planetas en otras estrellas por el método de la velocidad radial).
+        \textit{[Resp: a) $T \approx \num{11.9}$~años; b)
+        $r_\odot = m_J a/(M_\odot + m_J) \approx \SI{7.42e8}{\meter} \approx
+        1.07\,R_\odot$, fuera del Sol; c) $v_\odot = 2\pi r_\odot/T \approx
+        \SI{12.5}{\meter\per\second}$]}
+    \end{enumerate}
+
+    \item \textbf{Momento Angular y Precesión:} Una rueda de bicicleta de
+    masa $m = \SI{2.0}{\kilo\gram}$ y radio $R = \SI{0.25}{\meter}$, con
+    toda su masa en el aro ($I = mR^{2}$), se cuelga de una cuerda por un
+    extremo de su eje, a una distancia $d = \SI{0.36}{\meter}$ del centro de
+    la rueda, con el eje horizontal. La rueda gira a
+    $\num{5.0}$~vueltas por segundo.
+    \begin{enumerate}
+        \item Calcule el momento angular $L = I\omega$ de la rueda y el torque
+        $\tau = mgd$ que el peso ejerce respecto al punto de suspensión.
+        \item Como el torque es perpendicular a $\boldsymbol{L}$, la relación
+        $\Delta\boldsymbol{L} = \boldsymbol{\tau}\,\Delta t$ hace girar el eje
+        en un plano horizontal en lugar de tumbarlo. Calcule la rapidez
+        angular de esta precesión, $\Omega = \tau/L$, y el tiempo que tarda el
+        eje en dar una vuelta completa.
+        \item ¿Qué pasa con ese tiempo si la rueda gira el doble de rápido?
+        ¿Y si deja de girar? \textit{[Resp: a)
+        $L \approx \SI{3.93}{\kilo\gram\meter\squared\per\second}$,
+        $\tau \approx \SI{7.06}{\newton\meter}$; b)
+        $\Omega \approx \SI{1.80}{\radian\per\second}$, una vuelta cada
+        \SI{3.5}{\second}; c) se duplica; sin giro, $L = 0$ y la rueda
+        simplemente cae]}
+    \end{enumerate}

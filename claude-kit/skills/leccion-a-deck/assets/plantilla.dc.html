@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>%%TITULO%%</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="%%DS_CSS%%">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+<style>
+%%CSS%%
+</style>
+<script>
+%%MATHJAX%%
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-svg.js" id="MathJax-script"></script>
+</helmet>
+<x-import component-from-global-scope="deck-stage" from="./deck-stage.js" width="%%ANCHO%%" height="%%ALTO%%" hint-size="100%,100%">
+
+%%DIAPOSITIVAS%%
+
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+/* Color de un token del sistema, resuelto en tiempo de ejecución: las figuras
+   que se dibujan por JS siguen al tema si se retocan los tokens. */
+function tok(nombre) {
+  const v = getComputedStyle(document.documentElement).getPropertyValue(nombre).trim();
+  return v || '#201e1d';
+}
+
+/* Módulos de la lección (núcleo adaptado a deck-stage + interactividad propia).
+   Se ejecutan una sola vez, cuando la plantilla ya está en el DOM. */
+function initLeccion() {
+%%JS%%
+}
+
+class Component extends DCLogic {
+  componentDidMount() {
+    const arranca = () => {
+      const dsListo = getComputedStyle(document.documentElement).getPropertyValue('--color-accent').trim();
+      if (!document.querySelector('section.diapositiva') || (!dsListo && (this.__esperas = (this.__esperas || 0) + 1) < 100)) { setTimeout(arranca, 50); return; }
+      if (!window.__leccionLista) {
+        window.__leccionLista = true;
+        try { initLeccion(); } catch (e) { console.error('initLeccion', e); }
+      }
+      if (window.__leccionTypeset) window.__leccionTypeset();
+    };
+    arranca();
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

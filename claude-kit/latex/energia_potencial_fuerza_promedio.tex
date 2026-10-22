@@ -1,0 +1,310 @@
+% =====================================================================
+% Reemplaza la subsección «Energía potencial del campo gravitacional»
+% (archivo energia_potencial_gravitacional.tex, o el bloque original
+%   \section*{Energía  potencial del campo gravitacional} ... \end{align}
+% de main.tex, con la deducción E_pot = F·r).
+% Deducción con la fuerza promedio (promedio geométrico), sin dividir el
+% camino en tramos.
+% Requiere: amsmath, amssymb, siunitx, booktabs, tikz con
+%   \usetikzlibrary{arrows.meta} (ya cargados en main.tex).
+% Conserva las etiquetas eq:trabajo_producto_escalar, eq:def_cambio_epot,
+% eq:fuerza_grav_epot, eq:trabajo_grav_r1_r2, eq:cambio_epot_r1_r2,
+% eq:Epot_grav, eq:epot_cerca_exacta y eq:epot_cerca_mgh.
+% =====================================================================
+
+\subsection{Energía potencial del campo gravitacional}
+\label{subsec:energia_potencial_gravitacional}
+
+\paragraph{Punto de partida: trabajo y energía potencial.}
+Una fuerza \emph{constante} $\boldsymbol{F}$ que actúa sobre un cuerpo mientras
+este experimenta un desplazamiento $\Delta\boldsymbol{r}$ realiza un trabajo
+igual al producto escalar de los dos vectores,
+\begin{equation}
+  W = \boldsymbol{F}\cdot\Delta\boldsymbol{r}
+    = \lvert\boldsymbol{F}\rvert\,\lvert\Delta\boldsymbol{r}\rvert\cos\theta \,,
+  \label{eq:trabajo_producto_escalar}
+\end{equation}
+donde $\theta$ es el ángulo entre $\boldsymbol{F}$ y $\Delta\boldsymbol{r}$.
+Cerca de la superficie, la gravedad hace sobre un cuerpo que sube una altura
+$h$ el trabajo $W = -mgh$, y por eso definimos la energía potencial
+$U = mgh$: el cambio de energía potencial es el negativo del trabajo que hace
+la gravedad,
+\begin{equation}
+  \Delta U = -\,W_{\text{grav}} \,.
+  \label{eq:def_cambio_epot}
+\end{equation}
+Usaremos la misma definición para el campo gravitacional a cualquier
+distancia, pero ahora con la referencia en el infinito: $U(\infty) = 0$.
+
+\paragraph{La dificultad: la fuerza no es constante.}
+Sobre una masa $m$ en la posición $\boldsymbol{r}$, medida desde el centro de
+la Tierra (masa $M$), actúa la fuerza gravitacional
+\begin{equation}
+  \boldsymbol{F}(\boldsymbol{r})
+  = -\,\frac{GMm}{r^{3}}\,\boldsymbol{r}
+  = -\,\frac{GMm}{r^{2}}\,\hat{\boldsymbol{r}} \,,
+  \label{eq:fuerza_grav_epot}
+\end{equation}
+cuya magnitud, $F(r) = GMm/r^{2}$, disminuye con la distancia. Llevemos la
+masa en línea recta, alejándola del centro, desde la distancia $r_{a}$ hasta
+la distancia $r_{b} > r_{a}$. El desplazamiento apunta hacia afuera y la
+fuerza hacia el centro, de modo que $\theta = 180^{\circ}$ y
+$\cos\theta = -1$. Si la fuerza fuera constante, el
+trabajo~\eqref{eq:trabajo_producto_escalar} de la gravedad sería
+\begin{equation}
+  W_{\text{grav}} = -\,F\,(r_{b} - r_{a}) \,,
+  \label{eq:trabajo_fuerza_constante}
+\end{equation}
+cuya magnitud es el área de un rectángulo de altura $F$ y base
+$r_{b} - r_{a}$ en una gráfica de $F$ contra $r$. Pero la fuerza no es
+constante: es mayor al comienzo, $F(r_{a})$, que al final, $F(r_{b})$, y la
+ecuación~\eqref{eq:trabajo_fuerza_constante} no se puede aplicar tal como
+está. En particular, \emph{no} es correcto escribir
+$U = \boldsymbol{F}\cdot\boldsymbol{r}$: el vector $\boldsymbol{r}$ no es un
+desplazamiento del proceso y la fuerza no es la misma a lo largo del camino.
+
+\paragraph{La fuerza promedio.}
+Cuando la fuerza varía, la magnitud del trabajo sigue siendo el área bajo la
+curva $F(r)$ entre $r_{a}$ y $r_{b}$. Esa área es igual a la de un
+rectángulo con la misma base, $r_{b} - r_{a}$, y una altura adecuada, que
+llamamos \textbf{fuerza promedio} $\langle F\rangle$:
+\begin{equation}
+  W_{\text{grav}} = -\,\langle F\rangle\,(r_{b} - r_{a}) \,,
+  \qquad
+  F(r_{b}) < \langle F\rangle < F(r_{a}) \,.
+  \label{eq:trabajo_fuerza_promedio}
+\end{equation}
+Es la misma idea de la velocidad media: un auto cuya rapidez cambia recorre la
+misma distancia que si fuera todo el tiempo con su velocidad media,
+$\Delta x = \bar{v}\,\Delta t$. La fuerza promedio debe quedar entre la
+fuerza mínima y la máxima del recorrido, porque el área bajo la curva queda
+entre las áreas de los rectángulos de alturas $F(r_{b})$ y $F(r_{a})$. Toda
+la dificultad se reduce a encontrar $\langle F\rangle$.
+
+\paragraph{¿Qué promedio? Tres candidatos.}
+Con $F(r) = GMm/r^{2}$ hay tres maneras naturales de promediar la fuerza: el
+promedio aritmético de las fuerzas en los extremos, la fuerza en el punto
+medio del recorrido y el promedio geométrico de las fuerzas en los extremos,
+\begin{align}
+  \langle F\rangle_{\text{arit}}
+  &= \frac{F(r_{a}) + F(r_{b})}{2}
+   = \frac{GMm}{2}\left(\frac{1}{r_{a}^{2}} + \frac{1}{r_{b}^{2}}\right) ,
+  \label{eq:promedio_aritmetico}\\
+  \langle F\rangle_{\text{medio}}
+  &= F\!\left(\frac{r_{a} + r_{b}}{2}\right)
+   = \frac{4\,GMm}{(r_{a} + r_{b})^{2}} \,,
+  \label{eq:promedio_punto_medio}\\
+  \langle F\rangle_{\text{geom}}
+  &= \sqrt{F(r_{a})\,F(r_{b})}
+   = \sqrt{\frac{GMm}{r_{a}^{2}}\,\frac{GMm}{r_{b}^{2}}}
+   = \frac{GMm}{r_{a}\,r_{b}} \,.
+  \label{eq:promedio_geometrico}
+\end{align}
+Los tres quedan entre $F(r_{b})$ y $F(r_{a})$, y si $r_{b}$ está muy cerca de
+$r_{a}$, los tres se reducen a $F(r_{a})$ y se recupera el trabajo de una
+fuerza constante. Solo se distinguen en recorridos largos, y allí debemos
+buscar el criterio para escoger.
+
+\paragraph{La prueba del infinito.}
+Alejemos la masa cada vez más, $r_{b} \to \infty$, y veamos qué predice cada
+candidato para el trabajo $\langle F\rangle\,(r_{b} - r_{a})$ que hay que
+hacer contra la gravedad.
+\begin{itemize}
+  \item \textbf{Aritmético.} Como $1/r_{b}^{2} > 0$,
+    \begin{equation*}
+      \langle F\rangle_{\text{arit}}\,(r_{b} - r_{a})
+      > \frac{GMm}{2\,r_{a}^{2}}\,(r_{b} - r_{a})
+      \xrightarrow[\;r_{b}\to\infty\;]{} \infty \,.
+    \end{equation*}
+    Escapar de la Tierra exigiría una energía infinita y ningún cohete lo
+    lograría. Sin embargo, las sondas Voyager ya salieron del sistema solar.
+    Se descarta.
+  \item \textbf{Punto medio.}
+    \begin{equation*}
+      \langle F\rangle_{\text{medio}}\,(r_{b} - r_{a})
+      = \frac{4\,GMm\,(r_{b} - r_{a})}{(r_{a} + r_{b})^{2}}
+      \xrightarrow[\;r_{b}\to\infty\;]{} 0 \,.
+    \end{equation*}
+    Ir hasta el infinito costaría menos que ir solo hasta $2r_{a}$, que cuesta
+    al menos $F(2r_{a})\,r_{a} = GMm/(4r_{a})$, porque en ese recorrido la
+    fuerza nunca es menor que $F(2r_{a})$. Es absurdo: se descarta.
+  \item \textbf{Geométrico.}
+    \begin{equation*}
+      \langle F\rangle_{\text{geom}}\,(r_{b} - r_{a})
+      = \frac{GMm}{r_{a}\,r_{b}}\,(r_{b} - r_{a})
+      = GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+      \xrightarrow[\;r_{b}\to\infty\;]{} \frac{GMm}{r_{a}} \,.
+    \end{equation*}
+    El trabajo es finito y positivo, como debe ser.
+\end{itemize}
+
+\paragraph{La medida del área lo confirma.}
+El área bajo la curva puede medirse directamente, por ejemplo contando
+cuadritos sobre la gráfica en papel milimetrado o con un computador. La
+tabla~\ref{tab:promedios_fuerza} compara esa medida con el trabajo que da cada
+candidato para $r_{a} = R$, en unidades de $GMm/R$: solo el promedio
+geométrico coincide con el área en todos los casos. La
+figura~\ref{fig:promedio_geometrico} muestra por qué para $r_{b} = 4R$: el
+rectángulo de altura $\langle F\rangle_{\text{geom}}$ deja por fuera, a la
+izquierda, un trozo de área bajo la curva $A_{1}$, e incluye, a la derecha, un
+trozo $A_{2}$ que no está bajo la curva, y los dos son iguales. El rectángulo
+del promedio aritmético, en cambio, tiene más del doble del área.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Magnitud del trabajo para llevar la masa de $r_{a} = R$ a
+    $r_{b}$, en unidades de $GMm/R$: el área medida bajo la curva
+    $F(r) = GMm/r^{2}$ y el producto $\langle F\rangle\,(r_{b} - r_{a})$ con
+    cada promedio.}
+  \label{tab:promedios_fuerza}
+  \begin{tabular}{@{}ccccc@{}}
+    \toprule
+    $r_{b}$ & Área medida & Aritmético & Punto medio & Geométrico \\
+    \midrule
+    $2R$      & $0{,}500$ & $0{,}625$ & $0{,}444$ & $0{,}500$ \\
+    $4R$      & $0{,}750$ & $1{,}594$ & $0{,}480$ & $0{,}750$ \\
+    $10R$     & $0{,}900$ & $4{,}545$ & $0{,}298$ & $0{,}900$ \\
+    $\infty$  & $1$       & $\infty$  & $0$       & $1$       \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      x=2.4cm, y=8cm,
+      >={Stealth[length=2.5mm]},
+      curva/.style={very thick, blue!70!black},
+      geom/.style={thick, BurntOrange},
+      arit/.style={thick, dashed, gray!70!black},
+      guia/.style={thin, dashed, gray},
+    ]
+    % Área bajo la curva entre r_a = 1 y r_b = 4
+    \fill[blue!12] (1,0)
+      -- plot[domain=1:4, samples=100, smooth] (\x, {1/(\x*\x)})
+      -- (4,0) -- cycle;
+    % A_1: trozo del área que queda por encima del rectángulo (de 1 a 2)
+    \fill[blue!35] (1,0.25)
+      -- plot[domain=1:2, samples=60, smooth] (\x, {1/(\x*\x)})
+      -- cycle;
+    % A_2: trozo del rectángulo que queda por encima de la curva (de 2 a 4)
+    \fill[BurntOrange!35] (2,0.25)
+      -- plot[domain=2:4, samples=60, smooth] (\x, {1/(\x*\x)})
+      -- (4,0.25) -- cycle;
+    % Rectángulo del promedio geométrico, altura 1/(1·4) = 0,25
+    \draw[geom] (1,0) rectangle (4,0.25);
+    % Rectángulo del promedio aritmético, altura (1 + 1/16)/2 = 0,53125
+    \draw[arit] (1,0.53125) -- (4,0.53125) -- (4,0.25);
+    % Ejes
+    \draw[->] (0.6,0) -- (4.6,0) node[below left] {$r/R$};
+    \draw[->] (0.6,0) -- (0.6,1.12)
+      node[above] {$F$ \small(en $GMm/R^{2}$)};
+    \foreach \x in {1,2,3,4}
+      \draw (\x,0) -- (\x,-0.015) node[below] {$\x$};
+    \foreach \y/\t in {0.25/0{,}25, 0.5/0{,}5, 1/1}
+      \draw (0.6,\y) -- (0.57,\y) node[left] {$\t$};
+    % Curva F(r) = GMm/r^2
+    \draw[curva] plot[domain=0.95:4.4, samples=120, smooth]
+      (\x, {1/(\x*\x)});
+    \node[blue!70!black, anchor=west] at (1.12,0.92)
+      {$F(r) = \dfrac{GMm}{r^{2}}$};
+    % Guías y marcas de r_a, r_b
+    \draw[guia] (1,0.25) -- (1,1);
+    \node[below] at (1,-0.06) {$r_{a}$};
+    \node[below] at (4,-0.06) {$r_{b}$};
+    % Rótulos de las áreas
+    \node[font=\small] at (1.22,0.33) {$A_{1}$};
+    \node[font=\small] at (2.55,0.205) {$A_{2}$};
+    \node[BurntOrange!80!black, anchor=south, font=\small]
+      at (3.05,0.25) {$\langle F\rangle_{\text{geom}} = \dfrac{GMm}{r_{a} r_{b}}$};
+    \node[gray!40!black, anchor=south, font=\small]
+      at (3.05,0.53125) {$\langle F\rangle_{\text{arit}}$};
+  \end{tikzpicture}
+  \caption{Fuerza que hay que vencer para llevar una masa $m$ de $r_{a} = R$
+    a $r_{b} = 4R$. El área sombreada bajo la curva es la magnitud del
+    trabajo. El rectángulo de altura $\langle F\rangle_{\text{geom}}$ tiene
+    la misma área: lo que deja por fuera a la izquierda, $A_{1}$, es igual a
+    lo que agrega a la derecha, $A_{2}$ (ambos valen $0{,}25\,GMm/R$). La
+    altura del promedio aritmético (a trazos) da un rectángulo con más del
+    doble del área.}
+  \label{fig:promedio_geometrico}
+\end{figure}
+
+\paragraph{Una intuición.}
+La fuerza gravitacional cambia \emph{por factores}: al pasar de $R$ a $10R$ se
+divide entre $100$. En el promedio aritmético dominan los valores grandes
+cercanos a $r_{a}$, mientras que el geométrico equilibra los factores. Además,
+el promedio geométrico es exactamente la fuerza a la distancia media
+geométrica $\sqrt{r_{a}\,r_{b}}$:
+\begin{equation}
+  F\!\left(\sqrt{r_{a}\,r_{b}}\,\right)
+  = \frac{GMm}{\left(\sqrt{r_{a}\,r_{b}}\,\right)^{2}}
+  = \frac{GMm}{r_{a}\,r_{b}}
+  = \langle F\rangle_{\text{geom}} \,.
+  \label{eq:fuerza_media_geometrica}
+\end{equation}
+Quien conozca el cálculo integral puede comprobar que el promedio geométrico
+es el valor exacto:
+\begin{equation}
+  \frac{1}{r_{b} - r_{a}} \int_{r_{a}}^{r_{b}} \frac{GMm}{r^{2}}\,dr
+  = \frac{GMm}{r_{b} - r_{a}}\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+  = \frac{GMm}{r_{a}\,r_{b}} \,.
+  \label{eq:promedio_integral}
+\end{equation}
+
+\paragraph{El trabajo de la gravedad.}
+Con $\langle F\rangle = GMm/(r_{a} r_{b})$
+en~\eqref{eq:trabajo_fuerza_promedio},
+\begin{equation}
+  W_{\text{grav}}
+  = -\,\frac{GMm}{r_{a}\,r_{b}}\,(r_{b} - r_{a})
+  = -\,GMm\,\frac{r_{b} - r_{a}}{r_{a}\,r_{b}}
+  = -\,GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right) .
+  \label{eq:trabajo_grav_r1_r2}
+\end{equation}
+El signo menos indica que, al alejarse la masa, la gravedad se opone al
+movimiento. Si la masa se mueve sobre una esfera centrada en $M$, el
+desplazamiento es perpendicular a la fuerza, $\theta = 90^{\circ}$, y la
+gravedad no realiza trabajo; por eso el resultado depende únicamente de las
+distancias inicial y final, y tiene sentido hablar de una energía potencial
+que depende solo de $r$.
+
+\paragraph{La energía potencial.}
+Con la definición~\eqref{eq:def_cambio_epot},
+\begin{equation}
+  U(r_{b}) - U(r_{a})
+  = -\,W_{\text{grav}}
+  = GMm\left(\frac{1}{r_{a}} - \frac{1}{r_{b}}\right)
+  = \left(-\,\frac{GMm}{r_{b}}\right) - \left(-\,\frac{GMm}{r_{a}}\right) .
+  \label{eq:cambio_epot_r1_r2}
+\end{equation}
+El cambio de energía potencial es la diferencia de una misma función,
+$-GMm/r$, evaluada en los dos extremos. Ahora alejamos la masa
+indefinidamente: $r_{b} \to \infty$, de modo que $1/r_{b} \to 0$, y escogemos
+$U(\infty) = 0$. Llamando $r$ a la distancia inicial $r_{a}$,
+\begin{equation}
+  0 - U(r) = \frac{GMm}{r}
+  \quad\Longrightarrow\quad
+  \boxed{U(r) = -\,\frac{GMm}{r}} \,.
+  \label{eq:Epot_grav}
+\end{equation}
+La energía potencial es negativa a cualquier distancia finita: la masa está en
+un \emph{pozo} de energía, y para sacarla del campo hay que darle al menos la
+energía $GMm/r$.
+
+\paragraph{Comprobación: cerca de la superficie se recupera $mgh$.}
+Con $r_{a} = R_{T}$ y $r_{b} = R_{T} + h$ en~\eqref{eq:cambio_epot_r1_r2},
+\begin{equation}
+  U(R_{T} + h) - U(R_{T})
+  = GMm\,\frac{(R_{T} + h) - R_{T}}{R_{T}\,(R_{T} + h)}
+  = \frac{GM}{R_{T}^{2}}\,m\,h\,\frac{1}{1 + h/R_{T}} \,.
+  \label{eq:epot_cerca_exacta}
+\end{equation}
+Para $h \ll R_{T}$, $1 + h/R_{T} \approx 1$, y con
+$g = GM/R_{T}^{2} \approx \SI{9.8}{\meter\per\second\squared}$,
+\begin{equation}
+  U(R_{T} + h) - U(R_{T}) \approx m\,g\,h \,,
+  \label{eq:epot_cerca_mgh}
+\end{equation}
+que es la energía potencial que usamos cerca de la superficie. La
+expresión~\eqref{eq:Epot_grav} la contiene como caso particular.

@@ -1,0 +1,49 @@
+% =====================================================================
+% Va justo antes de \subsection{La ley de gravitación universal en
+% términos del campo} (archivo gravitacion_campo.tex), dentro de
+% \section{Ley de Gravitación Universal de Newton}.
+% Requiere: amsmath, siunitx.
+% =====================================================================
+
+\subsection{La prueba de la Luna}
+\label{subsec:prueba_luna}
+
+Una bala disparada horizontalmente desde lo alto de una montaña cae hacia la
+Tierra mientras avanza. Si su rapidez es suficiente, cae al mismo ritmo con
+que la superficie se curva y nunca llega al suelo: queda en órbita. Newton se
+preguntó si la Luna no sería precisamente eso, una bala de cañón muy lejana
+que cae continuamente hacia la Tierra.
+
+La Luna describe una órbita casi circular de radio
+$r_L \approx \SI{3.84e8}{\meter}$ en un período $T \approx 27{,}3$~días
+$\approx \SI{2.36e6}{\second}$. Su aceleración centrípeta, dirigida hacia el
+centro de la Tierra, es
+\begin{equation}
+  a_L = \frac{v^{2}}{r_L} = \frac{4\pi^{2} r_L}{T^{2}}
+  \approx \SI{2.72e-3}{\meter\per\second\squared} \,.
+  \label{eq:aceleracion_luna}
+\end{equation}
+Comparada con la aceleración de caída libre en la superficie,
+\begin{equation}
+  \frac{g_0}{a_L} \approx \frac{\num{9.8}}{\num{2.72e-3}}
+  \approx 3600 = 60^{2} \,,
+  \label{eq:cociente_luna}
+\end{equation}
+y la Luna está a una distancia del centro de la Tierra de unos $60$ radios
+terrestres, $r_L \approx 60\,R_T$. A una distancia $60$ veces mayor, la
+aceleración es $60^{2}$ veces menor. Dicho de otra manera: en un segundo una
+manzana cae $\SI{4.9}{\meter}$, mientras que la Luna se desvía de la línea
+recta, hacia la Tierra, apenas $\SI{1.36}{\milli\meter}$.
+
+Si suponemos que la aceleración de caída libre decae como $1/r^{n}$, la
+predicción para la Luna es $g_0/60^{n}$. Con $n = 1$ se obtiene
+$\SI{0.16}{\meter\per\second\squared}$, unas $60$ veces más de lo medido;
+con $n = 3$, unas $60$ veces menos. Solo $n = 2$ concuerda con la
+observación. La manzana y la Luna caen por la misma causa, debilitada con la
+distancia según
+\begin{equation}
+  g(r) = g_0 \left( \frac{R_T}{r} \right)^{2} \,.
+  \label{eq:g_inverso_cuadrado}
+\end{equation}
+En la siguiente subsección veremos por qué el exponente es precisamente
+$2$.
