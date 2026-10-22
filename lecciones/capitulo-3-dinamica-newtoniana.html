@@ -3111,6 +3111,48 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-rueda" data-label="Problema 15: la rueda que precesa" data-speaker-notes="Problema 15 propuesto. Rueda de m = 2,0 kg, R = 0,25 m, I = mR² = 0,125 kg·m², colgada de un extremo del eje a d = 0,36 m, girando a 5,0 vueltas/s. L = Iω = 0,125·2π·5 ≈ 3,93 kg·m²/s; τ = mgd ≈ 7,06 N·m; Ω = τ/L ≈ 1,80 rad/s; una vuelta cada 2π/Ω ≈ 3,5 s. Con el doble de giro, L se duplica y el período de precesión también; sin giro, L = 0 y la rueda cae. Es la misma rueda de la diapositiva de la bicicleta. Respuestas: 3,93; 7,06; 1,80; 3,5.">
+  <p class="ceja">Problemas del capítulo · Problema 15</p>
+  <h2 class="titulo">La rueda colgada de su eje: precesión</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="ruedacolgada"></div></figure>
+      <div class="pq-enun">Una rueda de bicicleta de \(m = \qty{2{,}0}{kg}\) y \(R = \qty{0{,}25}{m}\), con toda su masa en el aro (\(I = mR^{2}\)), cuelga de una cuerda por un extremo de su eje horizontal, a \(d = \qty{0{,}36}{m}\) de su centro. La rueda gira a \(5{,}0\) vueltas por segundo.</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="3.93" data-tol="0.03"><div class="pq-fila"><div class="pr-q">a) Momento angular \(L = I\omega\), en \(\mathrm{kg\,m^2/s}\)</div><input class="pr-in pc-in" type="text" placeholder="kg·m²/s" aria-label="a) Momento angular \(L = I\omega\), en \(\mathrm{kg\,m^2/s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(I = (2{,}0)(0{,}25)^{2} = \qty{0{,}125}{kg\,m^2}\), \(\omega = 2\pi(5{,}0) = \qty{31{,}4}{rad/s}\): \(L \approx \qty{3{,}93}{kg\,m^2/s}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="7.06" data-tol="0.03"><div class="pq-fila"><div class="pr-q">b) Torque del peso \(\tau = mgd\), en \(\mathrm{N\,m}\)</div><input class="pr-in pc-in" type="text" placeholder="N·m" aria-label="b) Torque del peso \(\tau = mgd\), en \(\mathrm{N\,m}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\tau = (2{,}0)(9{,}8)(0{,}36) \approx \qty{7{,}06}{N\,m}\), horizontal y perpendicular a \(\vect{L}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1.80" data-tol="0.02"><div class="pq-fila"><div class="pr-q">c) Rapidez angular de precesión \(\Omega = \tau/L\), en \(\mathrm{rad/s}\)</div><input class="pr-in pc-in" type="text" placeholder="rad/s" aria-label="c) Rapidez angular de precesión \(\Omega = \tau/L\), en \(\mathrm{rad/s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\Omega = 7{,}06/3{,}93 \approx \qty{1{,}80}{rad/s}\): el eje gira en el plano horizontal en lugar de caer.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="3.5" data-tol="0.05"><div class="pq-fila"><div class="pr-q">d) Tiempo de una vuelta del eje, en \(\mathrm{s}\)</div><input class="pr-in pc-in" type="text" placeholder="s" aria-label="d) Tiempo de una vuelta del eje, en \(\mathrm{s}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(T_p = 2\pi/\Omega \approx \qty{3{,}5}{s}\). Con el doble de giro, \(L\) se duplica y \(T_p\) también.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-rueda-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Un torque perpendicular a \(\vect{L}\) no cambia su magnitud, solo su dirección: en un tiempo \(\Delta t\) el eje gira un ángulo \(\Delta\phi = \tau\,\Delta t/L\).</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-rueda-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-rueda-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-rueda-sol-tit">Problema 15: momento angular y precesión</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) Momento angular.</strong> Con toda la masa en el aro y \(\omega = 2\pi f\),
+  \[ I = m R^{2} = (\qty{2{,}0}{kg})(\qty{0{,}25}{m})^{2} = \qty{0{,}125}{kg\,m^2} \,, \]
+  \[ \omega = 2\pi\,(\qty{5{,}0}{s^{-1}}) \approx \qty{31{,}4}{rad/s} \,, \qquad L = I\,\omega \approx \qty{3{,}93}{kg\,m^2/s} \,, \]
+  a lo largo del eje.</p>
+<p style="margin:0"><strong>b) Torque.</strong> Respecto al punto de suspensión, el peso actúa a la distancia \(d\) y es perpendicular al eje:
+  \[ \tau = m g d = (\qty{2{,}0}{kg})(\qty{9{,}8}{m/s^2})(\qty{0{,}36}{m}) \approx \qty{7{,}06}{N\,m} \,. \]
+  \(\vect{\tau} = \vect{r} \times m\vect{g}\) es horizontal y perpendicular a \(\vect{L}\).</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) Precesión.</strong> En un tiempo \(\Delta t\), \(\Delta\vect{L} = \vect{\tau}\,\Delta t\) es perpendicular a \(\vect{L}\): cambia su dirección, no su magnitud. El eje gira un ángulo \(\Delta\phi = \Delta L/L = \tau\,\Delta t/L\), así que
+  \[ \Omega = \dfrac{\Delta\phi}{\Delta t} = \dfrac{\tau}{L} = \dfrac{m g d}{I\,\omega} \approx \dfrac{\qty{7{,}06}{N\,m}}{\qty{3{,}93}{kg\,m^2/s}} \approx \qty{1{,}80}{rad/s} \,. \]</p>
+<p style="margin:0 0 6px"><strong>d) Período de precesión.</strong> \(T_p = 2\pi/\Omega \approx \qty{3{,}5}{s}\).</p>
+<p style="margin:0"><strong>Más o menos giro.</strong> Como \(T_p = 2\pi I\omega/(mgd)\), si la rueda gira el doble de rápido, \(T_p\) se duplica: la precesión es más lenta. Si deja de girar, \(L = 0\) y el torque simplemente la tumba. Es el efecto que ayuda a enderezar una bicicleta en movimiento.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Práctica" data-label="Glosario" data-speaker-notes="Glosario del capítulo.">
   <p class="ceja">Glosario</p>
   <h2 class="titulo">Términos del capítulo</h2>
@@ -6860,6 +6902,22 @@ function lienzoOrbita(cv, trazos, marcas) {
       mt(svg, 250, 500, '25 kg', 'var(--caso2)', { 'font-size': 24 }); mt(svg, xf + r + 40, 340, '50 kg', 'var(--tinta)', { 'font-size': 24 });
     },
     /* ── problemas cuantitativos del capítulo ── */
+    ruedacolgada(h) {
+      const svg = lienzo(h, 1000, 560), P = [380, 230], d = 230, C = [P[0] + d, P[1]];
+      rect(svg, 200, 50, 360, 14, 'fill:var(--linea)'); lin(svg, P[0], 64, P[0], P[1], 'stroke:var(--tinta2);stroke-width:3');
+      nodo('ellipse', { cx: C[0], cy: C[1], rx: 46, ry: 160, style: 'fill:var(--caso1-50);fill-opacity:.6;stroke:var(--tinta);stroke-width:7' }, svg);
+      lin(svg, P[0], P[1], C[0] + 40, C[1], 'stroke:var(--tinta);stroke-width:8;stroke-linecap:round'); circ(svg, P[0], P[1], 8, 'fill:var(--tinta)');
+      tx(svg, P[0] - 16, P[1] - 14, 'pivote', { 'text-anchor': 'end', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT });
+      flecha(svg, C[0] + 40, C[1], C[0] + 190, C[1], 'var(--caso1)', 6); mt(svg, C[0] + 196, C[1] + 10, '!L!', 'var(--caso1)');
+      flecha(svg, C[0], C[1], C[0], C[1] + 170, 'var(--caso2)', 5); mt(svg, C[0] + 12, C[1] + 196, '*m*!g!', 'var(--caso2)');
+      circ(svg, C[0] - 70, C[1] - 120, 18, 'fill:none;stroke:var(--res);stroke-width:4'); lin(svg, C[0] - 82, C[1] - 132, C[0] - 58, C[1] - 108, 'stroke:var(--res);stroke-width:4'); lin(svg, C[0] - 58, C[1] - 132, C[0] - 82, C[1] - 108, 'stroke:var(--res);stroke-width:4');
+      mt(svg, C[0] - 140, C[1] - 112, '!τ!', 'var(--res)'); tx(svg, C[0] - 120, C[1] - 150, 'entra en la página', { 'text-anchor': 'middle', 'font-size': 19, style: 'fill:var(--res);font-family:' + FTXT });
+      lin(svg, P[0], P[1] + 40, C[0], P[1] + 40, 'stroke:var(--tinta2);stroke-width:2'); flecha(svg, (P[0] + C[0]) / 2, P[1] + 40, P[0], P[1] + 40, 'var(--tinta2)', 2); flecha(svg, (P[0] + C[0]) / 2, P[1] + 40, C[0], P[1] + 40, 'var(--tinta2)', 2);
+      mt(svg, (P[0] + C[0]) / 2 - 10, P[1] + 72, '*d*', 'var(--tinta2)', { 'font-size': 26 });
+      camino(svg, 'M 260 470 A 260 50 0 0 0 760 470', 'fill:none;stroke:var(--tinta2);stroke-width:3;stroke-dasharray:9 7');
+      flecha(svg, 740, 488, 770, 470, 'var(--tinta2)', 3);
+      tx(svg, 510, 545, 'vista de lado: el eje precesa en el plano horizontal', { 'text-anchor': 'middle', 'font-size': 21, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    },
     tierracm(h) {
       const svg = lienzo(h, 1000, 560), O = [360, 400], RT = 230;
       nodo('circle', { cx: O[0], cy: O[1], r: RT, style: 'fill:var(--caso1-50);stroke:var(--caso1);stroke-width:4' }, svg);
