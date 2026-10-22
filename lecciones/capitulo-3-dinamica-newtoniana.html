@@ -651,7 +651,7 @@ body{background:var(--lienzo);display:flex;align-items:center;justify-content:ce
 /* La barra nunca se desborda: ⛶ no se encoge; el menú se ajusta (ajustaMenu
    reduce --menu-k y, si aún no cabe, oculta la marca) y, como último recurso,
    se desplaza horizontalmente sin barra visible. */
-.marca{font-size:2.3cqh;font-weight:600;color:var(--tinta2);white-space:nowrap;flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.marca{font-size:2.3cqh;font-weight:600;color:var(--tinta2);white-space:nowrap;flex:none}
 .barra.sin-marca .marca{display:none}
 .menu{margin-left:auto;display:flex;gap:0.17cqw;flex:0 1 auto;min-width:0;overflow-x:auto;overflow-y:hidden;scrollbar-width:none}
 .menu::-webkit-scrollbar{display:none}
@@ -1285,6 +1285,28 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <div class="kf frag" style="padding:4px 14px;font-size:29px">\[ R_{\text{máx}} = \tfrac{v_0^{2}}{g} \ \text{ en } \theta = 45^\circ; \qquad y = x\tan\theta - \tfrac{g\,x^{2}}{2 v_0^{2}\cos^{2}\theta} \]<p class="nota" style="margin:0">Como \(\sin 2\theta = \sin(180^\circ - 2\theta)\), \(\theta\) y \(90^\circ - \theta\) dan el mismo alcance. Eliminando \(t\) sale una parábola.</p></div>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Aceleración constante y energía" id="ac-vertical" data-label="Actividad: dos disparos verticales" data-speaker-notes="Actividad en parejas (instrucción entre pares), del ejercicio conceptual del documento «Tiempos de vuelo en lanzamiento vertical»: un barco en reposo dispara simultáneamente dos proyectiles verticales, A desde la popa y B desde la proa; A sube más alto. Respuesta: 3 (B regresa primero). Como H = v₀²/(2g) y t_vuelo = 2v₀/g, t_vuelo = √(8H/g) ∝ √H: el que sube menos baja antes, sin importar la masa. Error común: «ambos al mismo tiempo» (2), confundiendo con la caída simultánea desde la misma altura. Prepara la pregunta siguiente de los barcos: el tiempo de vuelo lo fija solo el movimiento vertical.">
+  <p class="ceja">§ 3.5 · Movimiento parabólico · Actividad en parejas</p>
+  <h2 class="titulo">Dos disparos verticales: ¿cuál regresa primero?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="vertical"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Disparar</button><span class="pc-simtxt"></span></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Un barco de guerra <strong>en reposo</strong> dispara simultáneamente dos proyectiles exactamente hacia arriba: A desde la popa y B desde la proa. Sin resistencia del aire, alcanzan las alturas máximas de la figura. ¿Qué proyectil regresa primero al nivel del barco?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">el proyectil A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">el proyectil B</button><button type="button" class="pr-opc" data-o="d">se necesita más información</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En la altura máxima \(v = 0\): \(H = v_0^{2}/(2g)\), así que A salió más rápido. El tiempo de vuelo es \(t_{\text{vuelo}} = 2v_0/g\), y eliminando \(v_0\),
+          \[ t_{\text{vuelo}} = \sqrt{\dfrac{8H}{g}} \propto \sqrt{H} \,. \]
+          El que sube menos regresa antes: <strong>B</strong>, sin importar su masa. Si A sube el cuádruple, tarda el doble.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-vertical">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿Qué proyectil salió con mayor rapidez? Con \(v = v_0 - g t\), ¿cuánto tarda cada uno en detenerse arriba?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-vertical" class="gform-dlg" aria-label="Formulario: Actividad: dos disparos verticales">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: dos disparos verticales" loading="lazy">Cargando…</iframe>
+  </dialog>
+  <p class="puente">→ ¿Y si los disparos son parabólicos?</p>
 </section>
 
 <section class="diapositiva compacta pc-slide" data-seccion="Aceleración constante y energía" id="pc-barcos" data-label="¿Qué barco es alcanzado primero?" data-speaker-notes="§ 3.5. Pregunta conceptual (diapositiva 2 del PowerPoint de práctica): el tiempo de vuelo depende solo del movimiento vertical. Explicación alternativa con el ángulo de lanzamiento: con la misma rapidez, t = 2v₀ sin θ / g, y el disparo a A sale con mayor ángulo.",>
@@ -2938,7 +2960,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-auto" data-label="Problema 1: el automóvil que acelera" data-speaker-notes="Problema 1 del documento. a = Δv/Δt = 2,5 m/s²; por la ley de la fuerza F = mΔv/Δt = 3000 N; con la ecuación sin tiempo Δx = v²/(2a) = 125 m; W = FΔx = 375 kJ, igual a ΔK = ½mv². Respuestas: 2,5; 3000; 125; 375.">
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-auto" data-label="Problema 1: el automóvil que acelera" data-speaker-notes="Problema 1 del documento. a = Δv/Δt = 2,5 m/s²; por la ley de la fuerza F = mΔv/Δt = 3000 N; por el teorema del trabajo y la energía W = ΔK = ½mv² = 375 kJ; como la fuerza es constante, W = FΔx ⇒ Δx = W/F = 125 m (la ecuación sin tiempo, obtenida con la energía; comprobación: Δx = v̄Δt = 12,5 × 10). Respuestas: 2,5; 3000; 375; 125.">
   <p class="ceja">Problemas del capítulo · Problema 1</p>
   <h2 class="titulo">Un automóvil que acelera: fuerza y trabajo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
@@ -2951,12 +2973,12 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(a = \Delta v/\Delta t = (\qty{25}{m/s})/(\qty{10}{s}) = \qty{2{,}5}{m/s^2}\).</p></div></div>
       <div class="pc-q pq-q" data-ok-num="3000" data-tol="10"><div class="pq-fila"><div class="pr-q">b) Fuerza neta \(F\), en \(\mathrm{N}\)</div><input class="pr-in pc-in" type="text" placeholder="N" aria-label="b) Fuerza neta \(F\), en \(\mathrm{N}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Ley de la fuerza: \(F = \Delta p/\Delta t = m\,\Delta v/\Delta t = (1200)(25)/10 = \qty{3000}{N}\).</p></div></div>
-      <div class="pc-q pq-q" data-ok-num="125" data-tol="0.5"><div class="pq-fila"><div class="pr-q">c) Desplazamiento \(\Delta x\), en \(\mathrm{m}\)</div><input class="pr-in pc-in" type="text" placeholder="m" aria-label="c) Desplazamiento \(\Delta x\), en \(\mathrm{m}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
-        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v^{2} = v_0^{2} + 2a\,\Delta x \Rightarrow \Delta x = (25)^{2}/(2 \cdot 2{,}5) = \qty{125}{m}\).</p></div></div>
-      <div class="pc-q pq-q" data-ok-num="375" data-tol="1"><div class="pq-fila"><div class="pr-q">d) Trabajo total \(W\), en \(\mathrm{kJ}\)</div><input class="pr-in pc-in" type="text" placeholder="kJ" aria-label="d) Trabajo total \(W\), en \(\mathrm{kJ}\)"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
-        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(W = F\,\Delta x = (3000)(125) = \qty{375}{kJ}\); comprueba: \(\Delta K = \tfrac12 (1200)(25)^{2} = \qty{375}{kJ}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="375" data-tol="1"><div class="pq-fila"><div class="pr-q">c) Trabajo total \(W\), con la energía, en \(\mathrm{kJ}\)</div><input class="pr-in pc-in" type="text" placeholder="kJ" aria-label="c) Trabajo total W, con la energía, en kJ"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Teorema del trabajo y la energía: \(W = \Delta K = \tfrac12 (1200)(25)^{2} - 0 = \qty{375}{kJ}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="125" data-tol="0.5"><div class="pq-fila"><div class="pr-q">d) Desplazamiento \(\Delta x\), en \(\mathrm{m}\)</div><input class="pr-in pc-in" type="text" placeholder="m" aria-label="d) Desplazamiento Δx, en m"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(W = F\,\Delta x \Rightarrow \Delta x = W/F = (375\,000\,\mathrm{J})/(\qty{3000}{N}) = \qty{125}{m}\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-auto-sol">📖 Solución completa</button></div>
-      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Empieza por \(a = \Delta v/\Delta t\). Para \(\Delta x\) usa la ecuación sin tiempo, \(v^{2} = v_0^{2} + 2a\,\Delta x\). El trabajo total debe ser igual al cambio de energía cinética.</p></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Empieza por \(a = \Delta v/\Delta t\). El trabajo de la fuerza neta es igual al cambio de energía cinética, \(W = \Delta K\); y como la fuerza es constante, \(W = F\,\Delta x\).</p></div>
     </div>
   </div>
   <div class="gl-dcl-fondo" id="pq-auto-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-auto-sol-tit">
@@ -2968,11 +2990,11 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{\qty{25}{m/s} - 0}{\qty{10}{s}} = \qty{2{,}5}{m/s^2} \,. \]</p>
 <p style="margin:0"><strong>b) Fuerza neta.</strong> Por la ley de la fuerza, \(F = \Delta p/\Delta t\) con \(\Delta p = m\,\Delta v\):
   \[ F = \dfrac{(\qty{1200}{kg})(\qty{25}{m/s})}{\qty{10}{s}} = m\,a = \qty{3000}{N} \,. \]</p></div>
-        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) Desplazamiento.</strong> Con la ecuación cinemática sin tiempo, \(v^{2} = v_0^{2} + 2a\,\Delta x\):
-  \[ \Delta x = \dfrac{v^{2} - v_0^{2}}{2a} = \dfrac{(\qty{25}{m/s})^{2}}{2\,(\qty{2{,}5}{m/s^2})} = \qty{125}{m} \,. \]</p>
-<p style="margin:0"><strong>d) Trabajo.</strong> La fuerza es constante y paralela al desplazamiento:
-  \[ W = F\,\Delta x = (\qty{3000}{N})(\qty{125}{m}) = \qty{375}{kJ} \,. \]
-  Comprobación con el teorema del trabajo y la energía: \(W = \Delta K = \tfrac12 (\qty{1200}{kg})(\qty{25}{m/s})^{2} = \qty{375}{kJ}\).</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) Trabajo, con la energía.</strong> Toda la energía que entrega la fuerza neta se convierte en energía cinética del auto (teorema del trabajo y la energía):
+  \[ W = \Delta K = \tfrac12\,m\,v^{2} - \tfrac12\,m\,v_0^{2} = \tfrac12\,(\qty{1200}{kg})(\qty{25}{m/s})^{2} - 0 = \qty{375}{kJ} \,. \]</p>
+<p style="margin:0"><strong>d) Desplazamiento.</strong> La fuerza es constante y paralela al desplazamiento, así que \(W = F\,\Delta x\):
+  \[ \Delta x = \dfrac{W}{F} = \dfrac{\tfrac12\,m\,v^{2}}{m\,a} = \dfrac{v^{2}}{2a} = \dfrac{375\,000\,\mathrm{J}}{\qty{3000}{N}} = \qty{125}{m} \,. \]
+  Es la ecuación sin tiempo, \(v^{2} = v_0^{2} + 2a\,\Delta x\), obtenida con la energía. Otra comprobación: con aceleración constante, \(\Delta x = \bar v\,\Delta t = (\qty{12{,}5}{m/s})(\qty{10}{s}) = \qty{125}{m}\).</p></div>
       </div>
     </div>
   </div>
@@ -3213,6 +3235,7 @@ function tok(nombre) {
   /* Que la barra quepa siempre: reduce la letra del menú hasta un 60 %; si aún
      no cabe, oculta la marca; el ⛶ queda siempre dentro de la diapositiva. */
   const barra = menu.parentElement;
+  let ultimaSec = null;
   function ajustaMenu(){
     barra.classList.remove('sin-marca');
     let k = 1;
@@ -3253,7 +3276,7 @@ function tok(nombre) {
       b.classList.toggle('actual', cur);
       if (cur) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
     });
-    centraActual();
+    if (sec !== ultimaSec) { ultimaSec = sec; ajustaMenu(); }   /* la sección actual va en negrita: re-medir */
     esc.classList.toggle('sin-pasos', frags[i].length === 0 && dps[i].id !== 'dp-hero');
     contador.textContent = String(i + 1);          /* solo la diapositiva actual; el total va en data-total */
     contador.dataset.total = N;
@@ -6707,6 +6730,33 @@ function lienzoOrbita(cv, trazos, marcas) {
       };
       dib(false);
       b.addEventListener('click', () => { dib(true); st.textContent = 'v₀ = 20 m/s, rapidez terminal 20 m/s: la bajada tarda más'; });
+    },
+    vertical(h, sl) {
+      const svg = lienzo(h, 1000, 560), y0 = 470, yC = y0 - 70, g2 = 9.8;
+      const tir = [{ x: 300, H: 330, col: 'var(--caso2)', n: 'A', d: 'popa' }, { x: 700, H: 130, col: 'var(--caso1)', n: 'B', d: 'proa' }];
+      tir.forEach(p => { p.v0 = Math.sqrt(2 * g2 * p.H); p.T = 2 * p.v0 / g2; });
+      const dib = (t) => {
+        svg.innerHTML = '';
+        rect(svg, 0, y0, 1000, 90, 'fill:var(--caso1-50)'); suelo(svg, 0, 1000, y0);
+        camino(svg, 'M 200 ' + (y0 - 40) + ' L 800 ' + (y0 - 40) + ' L 760 ' + (y0 + 18) + ' L 240 ' + (y0 + 18) + ' Z', 'fill:var(--tinta2)');
+        rect(svg, 380, y0 - 80, 240, 40, 'fill:var(--tinta2)'); rect(svg, 450, y0 - 115, 100, 35, 'fill:var(--tinta2)');
+        tx(svg, 500, y0 + 56, 'barco en reposo', { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--tinta2);font-family:' + FTXT });
+        tir.forEach(p => {
+          rect(svg, p.x - 9, yC - 6, 18, 36, 'fill:var(--tinta)');
+          tx(svg, p.x, y0 - 8, p.d, { 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--panel);font-family:' + FTXT + ';font-weight:700' });
+          lin(svg, p.x - 14, yC - 10, p.x - 14, yC - p.H, 'stroke:' + p.col + ';stroke-width:3;stroke-dasharray:10 8');
+          flecha(svg, p.x - 14, yC - p.H + 40, p.x - 14, yC - p.H, p.col, 3);
+          lin(svg, p.x + 14, yC - p.H, p.x + 14, yC - 10, 'stroke:var(--tinta2);stroke-width:3;stroke-dasharray:10 8');
+          flecha(svg, p.x + 14, yC - 50, p.x + 14, yC - 10, 'var(--tinta2)', 3);
+          mt(svg, p.x, yC - p.H - 16, p.n, p.col, { 'text-anchor': 'middle', 'font-size': 36 });
+          if (t > 0) { const s = Math.min(t, p.T), yy = p.v0 * s - g2 * s * s / 2; circ(svg, p.x, yC - 10 - yy, 11, 'fill:' + p.col);
+            if (t >= p.T) mt(svg, p.x + 34, yC - 30, '¡' + num(p.T, 1) + ' s!', p.col, { 'font-size': 26 }); }
+        });
+      };
+      dib(0);
+      const b = $('.pc-sim', sl), st = $('.pc-simtxt', sl); let t = 0, ult = 0, corre = false;
+      b.addEventListener('click', () => { t = 0; corre = true; st.textContent = ''; });
+      (function bucle(ms) { if (corre && activa(h)) { t += ult ? Math.min(0.05, (ms - ult) / 1000) * 4 : 0; const T = Math.max(...tir.map(p => p.T)); if (t >= T) { t = T; corre = false; st.textContent = 'Primero B (' + num(tir[1].T, 1) + ' s), luego A (' + num(tir[0].T, 1) + ' s): A sube 2,5 veces más y tarda √2,5 ≈ 1,6 veces más'; } dib(t); } ult = ms; requestAnimationFrame(bucle); })(0);
     },
     barcos(h, sl) {
       const svg = lienzo(h, 1100, 560), y0 = 470, xs = 140, g2 = 9.8;
