@@ -136,6 +136,29 @@ ol.ej .resp::before{content:'→ ';color:var(--tinta2)}
 .btn.sel{border-color:var(--tinta);background:var(--primario-tinte)}
 select.pr-in{font-family:var(--font-body)}
 
+/* ── Actividad: arrastrar factores de conversión ── */
+#fc-probs .btn.hecho::after{content:' ✓';color:var(--res)}
+.fc-enun{font:600 40px/1.3 var(--font-body);color:var(--tinta);background:var(--panel);border-left:9px solid var(--caso2);padding:16px 24px}
+.fc-enun .q{font-family:'STIX Two Text',Georgia,serif;font-weight:500;font-size:46px;white-space:nowrap}
+.fc-bandeja{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.fc-ficha{display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--caso1);padding:12px 18px;font:500 40px/1.15 'STIX Two Text',Georgia,serif;color:var(--tinta);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.fc-ficha:hover,.fc-ficha:focus-visible{background:var(--primario-tinte)}
+.fc-ficha .n{border-bottom:3px solid var(--tinta);padding:0 14px 4px}
+.fc-ficha .d{padding:4px 14px 0}
+.fc-fantasma{position:absolute;z-index:50;pointer-events:none;cursor:grabbing;outline:4px solid var(--res);opacity:.92}
+.fc-zona{border:3px dashed var(--linea);padding:10px 18px 18px;min-height:500px;transition:background .2s,border-color .2s}
+.fc-zona.sobre{border-color:var(--res);background:var(--res-50)}
+.fc-zona.listo{border-style:solid;border-color:var(--res)}
+.fc-tex{font-size:36px;min-height:200px;display:flex;align-items:center;justify-content:center}
+.fc-frac{display:grid;justify-items:center;gap:10px;margin-top:6px}
+.fc-fila{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;min-height:62px}
+.fc-barra{width:92%;border-top:4px solid var(--tinta)}
+.fc-u{font:500 32px/1 'STIX Two Text',Georgia,serif;padding:12px 16px;border:2px solid var(--linea);background:var(--papel);color:var(--tinta)}
+.fc-u.ini{border-color:var(--caso2);border-width:3px}
+.fc-u.x{text-decoration:line-through;text-decoration-thickness:4px;text-decoration-color:var(--mal);opacity:.45}
+.fc-u.uno{border-style:dashed;color:var(--tinta2)}
+.fc-nota{min-height:2.6em;margin:12px 0 0}
+
 </style></head>
 <body>
 <div id="escenario">
@@ -369,6 +392,28 @@ select.pr-in{font-family:var(--font-body)}
     </div>
     <div class="svgbox"><div class="svghd"><span>Cadena de conversión</span><span class="val" id="conv-lect"></span></div>
       <div id="conv-tex" class="ec" style="font-size:40px;min-height:300px"></div></div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Unidades y dimensiones" id="dp-fc" data-label="Actividad: arrastra el factor">
+  <p class="ceja">§ 1.3 · Actividad: factores de conversión <span class="score">Resueltos: <b id="fc-score">0</b> / 6</span></p>
+  <h2 class="titulo">Arrastra factores de conversión hasta llegar a la unidad pedida</h2>
+  <div class="fila-btn" id="fc-probs"></div>
+  <div class="g2-40">
+    <div class="pila">
+      <div class="fc-enun" id="fc-enun"></div>
+      <p class="nota" style="margin:0">Factores disponibles: arrástralos a la zona punteada (o tócalos). Cada uno se puede usar varias veces.</p>
+      <div class="fc-bandeja" id="fc-bandeja"></div>
+      <div class="fila-btn"><button type="button" class="btn" id="fc-undo">↶ Quitar el último</button><button type="button" class="btn" id="fc-rein">Empezar de nuevo</button></div>
+    </div>
+    <div class="svgbox">
+      <div class="svghd"><span>Suelta aquí los factores</span><span class="val" id="fc-lect"></span></div>
+      <div class="fc-zona" id="fc-zona">
+        <div id="fc-tex" class="ec fc-tex"></div>
+        <div class="fc-frac"><div class="fc-fila" id="fc-arriba"></div><div class="fc-barra"></div><div class="fc-fila" id="fc-abajo"></div></div>
+      </div>
+      <p class="nota fc-nota" id="fc-nota"></p>
+    </div>
   </div>
 </section>
 
@@ -1029,6 +1074,179 @@ function cientTxt(v, cifras) {
   rv.addEventListener('input', pinta);
   document.addEventListener('diapositiva', () => { if (el.__tex && !el.querySelector('mjx-container')) { el.__tex = null; pinta(); } });
   cambia('vel');
+})();
+
+/* ═══ ACTIVIDAD: ARRASTRAR FACTORES DE CONVERSIÓN ══════════════════════
+   Cada factor multiplica por 1 y cancela UNA sola unidad: una unidad al
+   cubo necesita el mismo factor tres veces, es decir, el factor al cubo. */
+(function () {
+  const zona = document.getElementById('fc-zona');
+  if (!zona) return;
+  const dp = zona.closest('section'), bandeja = document.getElementById('fc-bandeja');
+  const texEl = document.getElementById('fc-tex'), nota = document.getElementById('fc-nota');
+  /* id → [número arriba, unidad arriba, número abajo, unidad abajo] */
+  const F = {
+    'm/km': [1000, 'm', 1, 'km'], 'km/m': [1, 'km', 1000, 'm'],
+    'cm/m': [100, 'cm', 1, 'm'], 'm/cm': [1, 'm', 100, 'cm'],
+    'mm/m': [1000, 'mm', 1, 'm'], 'm/mm': [1, 'm', 1000, 'mm'],
+    's/h': [3600, 's', 1, 'h'], 'h/s': [1, 'h', 3600, 's'],
+    'g/kg': [1000, 'g', 1, 'kg'], 'kg/g': [1, 'kg', 1000, 'g'],
+  };
+  const P = [
+    { v: 2, de: [['km', 3]], a: [['m', 3]], f: ['km/m', 'm/km', 'cm/m', 'm/cm'] },
+    { v: 3, de: [['m', 2]], a: [['cm', 2]], f: ['m/cm', 'cm/m', 'm/km', 'km/m'] },
+    { v: 500, de: [['cm', 3]], a: [['m', 3]], f: ['cm/m', 'm/cm', 'mm/m', 'm/mm'] },
+    { v: 4, de: [['mm', 2]], a: [['m', 2]], f: ['mm/m', 'm/mm', 'cm/m', 'm/cm'] },
+    { v: 9.8, de: [['m', 1], ['s', -2]], a: [['km', 1], ['h', -2]], f: ['km/m', 'm/km', 's/h', 'h/s'] },
+    { v: 1, de: [['g', 1], ['cm', -3]], a: [['kg', 1], ['m', -3]], f: ['kg/g', 'g/kg', 'cm/m', 'm/cm'] },
+  ];
+  const SUP = n => String(n).replace('-', '⁻').replace(/\d/g, c => '⁰¹²³⁴⁵⁶⁷⁸⁹'[c]);
+  /* lista [[u, e], …] → texto «km/h²» */
+  const uTxt = L => {
+    const a = L.filter(p => p[1] > 0).map(p => p[0] + (p[1] > 1 ? SUP(p[1]) : ''));
+    const b = L.filter(p => p[1] < 0).map(p => p[0] + (p[1] < -1 ? SUP(-p[1]) : ''));
+    if (!a.length && !b.length) return '(sin unidades)';
+    return (a.join('·') || '1') + (b.length ? '/' + (b.length > 1 ? '(' + b.join('·') + ')' : b[0]) : '');
+  };
+  const uTex = L => {
+    const f = p => '\\mathrm{' + p[0] + '}' + (Math.abs(p[1]) > 1 ? '^{' + Math.abs(p[1]) + '}' : '');
+    const a = L.filter(p => p[1] > 0).map(f), b = L.filter(p => p[1] < 0).map(f);
+    if (!b.length) return a.join('\\cdot ');
+    return '\\dfrac{' + (a.join('\\cdot ') || '1') + '}{' + b.join('\\cdot ') + '}';
+  };
+  /* número: hasta 4 cifras significativas, coma decimal, potencia de 10 si hace falta */
+  const valor = (v, tex) => {
+    const e = Math.floor(Math.log10(Math.abs(v)) + 1e-9);
+    if (e >= -2 && e <= 4) {
+      const s = String(+v.toPrecision(4));
+      return tex ? s.replace('.', '{,}') : s.replace('.', ',');
+    }
+    const m = String(+(v / Math.pow(10, e)).toPrecision(4));
+    return tex ? m.replace('.', '{,}') + '\\times 10^{' + e + '}' : m.replace('.', ',') + ' × 10' + SUP(e);
+  };
+  const ficha = id => { const f = F[id]; return '<span class="n">' + f[0] + ' ' + f[1] + '</span><span class="d">' + f[2] + ' ' + f[3] + '</span>'; };
+  const fichaTxt = id => { const f = F[id]; return '(' + f[0] + ' ' + f[1] + ' / ' + f[2] + ' ' + f[3] + ')'; };
+
+  let k = 0, usados = [];
+  const hechos = new Set();
+  const probs = document.getElementById('fc-probs');
+  probs.innerHTML = '<span class="nota" style="margin-right:6px">Problema:</span>' + P.map((p, i) => '<button type="button" class="btn" data-p="' + i + '">' + (i + 1) + '</button>').join('');
+
+  /* estado: exponentes netos, valor numérico y las fichas de unidad arriba y abajo */
+  function estado() {
+    const p = P[k], net = new Map(), orden = [];
+    const suma = (u, e) => { if (!net.has(u)) { net.set(u, 0); orden.push(u); } net.set(u, net.get(u) + e); };
+    const arriba = [], abajo = [];
+    p.de.forEach(([u, e]) => { suma(u, e); for (let i = 0; i < Math.abs(e); i++) (e > 0 ? arriba : abajo).push({ u, ini: true }); });
+    let v = p.v;
+    usados.forEach(id => { const f = F[id]; v *= f[0] / f[2]; suma(f[1], 1); suma(f[3], -1); arriba.push({ u: f[1] }); abajo.push({ u: f[3] }); });
+    /* tachar los pares iguales arriba y abajo */
+    const cuenta = (L, u) => L.filter(x => x.u === u).length;
+    orden.forEach(u => {
+      let c = Math.min(cuenta(arriba, u), cuenta(abajo, u));
+      [arriba, abajo].forEach(L => { let r = c; L.forEach(x => { if (r > 0 && x.u === u) { x.x = true; r--; } }); });
+    });
+    const L = orden.map(u => [u, net.get(u)]).filter(q => q[1] !== 0);
+    const meta = new Map(p.a);
+    let dist = 0;
+    new Set([...orden, ...meta.keys()]).forEach(u => { dist += Math.abs((net.get(u) || 0) - (meta.get(u) || 0)); });
+    return { v, L, net, arriba, abajo, dist };
+  }
+
+  function pinta(msg, color) {
+    const p = P[k], s = estado();
+    $$('#fc-probs .btn').forEach(b => { b.classList.toggle('on', +b.dataset.p === k); b.classList.toggle('hecho', hechos.has(+b.dataset.p)); });
+    document.getElementById('fc-enun').innerHTML = 'Convierte <span class="q">' + valor(p.v) + ' ' + uTxt(p.de) + '</span> a <span class="q">' + uTxt(p.a) + '</span>';
+    /* producto en TeX, con los factores repetidos agrupados como potencia */
+    const grupos = [];
+    usados.forEach(id => { const g = grupos.find(q => q[0] === id); if (g) g[1]++; else grupos.push([id, 1]); });
+    let tex = valor(p.v, true) + '\\,' + uTex(p.de);
+    grupos.forEach(([id, n]) => {
+      const f = F[id], fr = '\\dfrac{' + f[0] + '\\,\\mathrm{' + f[1] + '}}{' + f[2] + '\\,\\mathrm{' + f[3] + '}}';
+      tex += '\\cdot ' + (n > 1 ? '\\left(' + fr + '\\right)^{' + n + '}' : fr);
+    });
+    if (usados.length) tex = '\\begin{gathered}' + tex + '\\\\[8pt] = ' + valor(s.v, true) + '\\,' + uTex(s.L) + '\\end{gathered}';
+    texVivo(texEl, tex);
+    const fila = L => L.map(x => '<span class="fc-u' + (x.ini ? ' ini' : '') + (x.x ? ' x' : '') + '">' + x.u + '</span>').join('') || '<span class="fc-u uno">1</span>';
+    document.getElementById('fc-arriba').innerHTML = fila(s.arriba);
+    document.getElementById('fc-abajo').innerHTML = fila(s.abajo);
+    document.getElementById('fc-lect').textContent = 'ahora: ' + uTxt(s.L);
+    const listo = s.dist === 0;
+    zona.classList.toggle('listo', listo);
+    if (listo && !hechos.has(k)) hechos.add(k);
+    document.getElementById('fc-score').textContent = hechos.size;
+    $$('#fc-probs .btn').forEach(b => b.classList.toggle('hecho', hechos.has(+b.dataset.p)));
+    if (listo) {
+      msg = '✓ ¡Listo! ' + valor(p.v) + ' ' + uTxt(p.de) + ' = ' + valor(s.v) + ' ' + uTxt(p.a) + '. Usaste ' +
+        grupos.map(([id, n]) => fichaTxt(id) + (n > 1 ? SUP(n) : '')).join(' · ') + '.';
+      color = 'var(--res)';
+    }
+    nota.textContent = msg || '';
+    nota.style.color = color || 'var(--tinta2)';
+  }
+
+  function aplicar(id) {
+    if (usados.length >= 8) { pinta('Ya hay demasiados factores: quita alguno con «↶ Quitar el último».', 'var(--mal)'); return; }
+    const antes = estado();
+    usados.push(id);
+    const s = estado(), f = F[id];
+    if (s.dist === 0) { pinta(); return; }
+    if (s.dist > antes.dist) {
+      const sobra = s.L.filter(q => Math.abs(q[1]) > Math.abs(antes.net.get(q[0]) || 0)).map(q => [q]).map(uTxt);
+      pinta('✗ Ese factor te aleja de ' + uTxt(P[k].a) + (sobra.length ? ': ahora aparece ' + sobra.join(' y ') : '') + '. ¿Quedó al revés? Quítalo con «↶ Quitar el último».', 'var(--mal)');
+    } else if (s.dist < antes.dist) {
+      const baja = u => Math.abs(s.net.get(u) || 0) < Math.abs(antes.net.get(u) || 0);
+      const fuera = baja(f[3]) ? f[3] : f[1], entra = fuera === f[3] ? f[1] : f[3];
+      pinta('Bien: se canceló un ' + fuera + ' y apareció un ' + entra + '. Ahora tienes ' + uTxt(s.L) + '.', 'var(--tinta)');
+    } else {
+      pinta('Ese factor no te acerca a ' + uTxt(P[k].a) + '. Ahora tienes ' + uTxt(s.L) + '.', 'var(--mal)');
+    }
+  }
+
+  function nuevo(i) {
+    k = i; usados = [];
+    bandeja.innerHTML = P[k].f.map(id => '<div class="fc-ficha" role="button" tabindex="0" data-f="' + id + '">' + ficha(id) + '</div>').join('');
+    const p = P[k], cubo = p.de.find(q => Math.abs(q[1]) > 1);
+    pinta('Cada factor cancela una sola unidad.' + (cubo ? ' Como tienes ' + uTxt([cubo]) + ', necesitarás un mismo factor ' + ['', 'una', 'dos', 'tres', 'cuatro'][Math.abs(cubo[1])] + ' veces.' : ''));
+  }
+
+  probs.addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) nuevo(+b.dataset.p); });
+  document.getElementById('fc-undo').addEventListener('click', () => { if (usados.length) { usados.pop(); pinta('Quitaste el último factor. Ahora tienes ' + uTxt(estado().L) + '.'); } });
+  document.getElementById('fc-rein').addEventListener('click', () => nuevo(k));
+  bandeja.addEventListener('keydown', ev => { const t = ev.target.closest('.fc-ficha'); if (t && (ev.key === 'Enter' || ev.key === ' ')) { ev.preventDefault(); aplicar(t.dataset.f); } });
+
+  /* arrastre con eventos de puntero (ratón, lápiz y pantalla táctil); tocar sin arrastrar también aplica */
+  let arr = null;
+  const dentro = ev => { const r = zona.getBoundingClientRect(); return ev.clientX >= r.left && ev.clientX <= r.right && ev.clientY >= r.top && ev.clientY <= r.bottom; };
+  const suelta = () => { if (arr && arr.g) arr.g.remove(); arr = null; zona.classList.remove('sobre'); };
+  bandeja.addEventListener('pointerdown', ev => {
+    const t = ev.target.closest('.fc-ficha'); if (!t || ev.button > 0) return;
+    ev.preventDefault();
+    arr = { t, id: t.dataset.f, x0: ev.clientX, y0: ev.clientY, g: null };
+    t.setPointerCapture(ev.pointerId);
+  });
+  bandeja.addEventListener('pointermove', ev => {
+    if (!arr) return;
+    if (!arr.g && Math.hypot(ev.clientX - arr.x0, ev.clientY - arr.y0) < 8) return;
+    const R = dp.getBoundingClientRect(), esc = R.width / dp.offsetWidth;
+    if (!arr.g) {
+      arr.g = arr.t.cloneNode(true); arr.g.classList.add('fc-fantasma');
+      arr.g.style.width = arr.t.offsetWidth + 'px'; dp.appendChild(arr.g);
+    }
+    arr.g.style.left = ((ev.clientX - R.left) / esc - arr.g.offsetWidth / 2) + 'px';
+    arr.g.style.top = ((ev.clientY - R.top) / esc - arr.g.offsetHeight / 2) + 'px';
+    zona.classList.toggle('sobre', dentro(ev));
+  });
+  bandeja.addEventListener('pointerup', ev => {
+    if (!arr) return;
+    const id = arr.id, arrastrado = !!arr.g, ok = dentro(ev);
+    suelta();
+    if (!arrastrado || ok) aplicar(id);
+  });
+  bandeja.addEventListener('pointercancel', suelta);
+  document.addEventListener('slidechange', suelta);
+  document.addEventListener('diapositiva', () => { if (texEl.__tex && !texEl.querySelector('mjx-container')) { texEl.__tex = null; pinta(nota.textContent, nota.style.color); } });
+  nuevo(0);
 })();
 
 /* ═══ CONVERSOR A UNIDADES NATURALES ═══════════════════════════════════ */

@@ -28,7 +28,7 @@ superior por secciones · clic en el contador para saltar a un número.
 
 ### Capítulo 0 · Estructura de la materia
 
-81 diapositivas en doce bloques, a partir de las presentaciones del curso
+82 diapositivas en doce bloques, a partir de las presentaciones del curso
 (con sus imágenes): el universo (escalas, historia térmica, expansión con
 la ley de Hubble, materia oscura con curvas de rotación, energía oscura y
 el contenido del universo, líneas de Fraunhofer, ondas gravitacionales); campos (superconductividad y efecto
@@ -47,19 +47,21 @@ LHC); interacción
 débil (espectro beta de dos y tres cuerpos, $W$ y $Z$, muón, modelo estándar
 y el $\Xi_{cc}^{+}$, las preguntas abiertas y la participación del Instituto de
 Física de la UdeA en CMS, LIGO y DUNE); álgebra (preámbulo matemático con frutas: paréntesis,
-$(a+b)^2$ como áreas, simplificación, recíproco, propiedad distributiva y un
+$(a+b)^2$ como áreas, simplificación, recíproco, propiedad distributiva, una
+manzana al cubo para entender por qué km³ se cancela dividiendo tres veces por km y un
 despeje de variables paso a paso); y práctica: reto, tres cuestionarios y
 dos glosarios. Cada diapositiva lleva al pie su idea clave, y la primera de
 varias secciones un mapa de escala «estamos aquí».
 
 ### Capítulo 1 · Preliminares
 
-27 diapositivas en cinco bloques: vectores (magnitud y dirección con el
+28 diapositivas en cinco bloques: vectores (magnitud y dirección con el
 cuadrante correcto, origen desplazado, suma y diferencia arrastrando las
 puntas, invariancia bajo traslaciones, vectores libres y ligados, producto
 escalar y producto vectorial con el torque); unidades y dimensiones (tabla de
-cantidades fundamentales, análisis dimensional, unidades de $G$ y cadena de
-factores de conversión); unidades naturales (electronvoltio, $\hbar$ y un
+cantidades fundamentales, análisis dimensional, unidades de $G$, cadena de
+factores de conversión y una actividad para arrastrar factores hasta convertir
+unidades elevadas a una potencia, como km³ a m³ o m/s² a km/h²); unidades naturales (electronvoltio, $\hbar$ y un
 conversor SI ↔ unidades naturales); transformaciones (rotación de ejes y
 demostración de la invariancia de $r^2$); y práctica: reto de homogeneidad
 dimensional, cuestionario, los 20 ejercicios del capítulo con respuestas y

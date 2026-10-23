@@ -177,6 +177,16 @@ table.tabla td.num,table.tabla th.num{text-align:right;font-variant-numeric:tabu
 .de-pasos .paso{display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:2px solid var(--linea);padding:4px 6px}
 .de-pasos .paso .op{font:600 26px/1 var(--font-body);color:var(--caso2)}
 .de-pasos .paso.fin{color:var(--res);font-weight:700}
+/* potencias de una fruta o de una unidad: 🍎³, km³ */
+.fr-pot{display:inline-flex;align-items:flex-start}
+.fr-pot sup{font:700 54px/1 var(--font-body);color:var(--res);margin-left:2px}
+.fr.fr-m{height:90px}
+.fr.fr-s{height:70px}
+.fr-frac .fr-pot sup{font-size:42px}
+.ec-fr.ec-fr-p{font-size:31px;font-weight:500;gap:12px}
+.ec-fr.ec-fr-p .fr-frac > span{font-size:36px;padding:2px 8px}
+.ec-fr.ec-fr-p .fr-pot sup{font-size:34px}
+.u-caja{display:inline-flex;align-items:center;justify-content:center;height:100px;min-width:110px;padding:0 16px;box-sizing:border-box;border:3px solid var(--caso2);background:var(--panel);font:600 50px/1 'STIX Two Text',Georgia,serif;color:var(--tinta)}
 
 /* ── Reglas de Feynman de la QCD (leyenda de las fotos) ── */
 .fo-reglas{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
@@ -1556,6 +1566,26 @@ section.diapositiva > .mapa{position:absolute;top:58px;right:97px;width:900px}
     </div>
   </div>
   <p class="clave">El factor de afuera multiplica a cada término del paréntesis.</p>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Álgebra" id="dp-cubo" data-label="Una manzana al cubo">
+  <p class="ceja">§ 0.11 · Potencias y unidades</p>
+  <h2 class="titulo">Una manzana al cubo: tres manzanas multiplicadas</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="ec-fr"><span class="fr-pot"><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><sup>3</sup></span><span>=</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>·</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>·</span><img class="fr sin-visor" src="img/fruta-manzana.webp" alt="manzana"></div>
+      <p class="chico frag">Para cancelar una manzana al cubo hay que dividir por <strong>tres</strong> manzanas:</p>
+      <div class="ec-fr frag"><span class="fr-frac"><span class="fr-num"><span class="fr-pot"><img class="fr fr-m sin-visor" src="img/fruta-manzana.webp" alt="manzana"><sup>3</sup></span></span><span><img class="fr fr-m sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>·</span><img class="fr fr-m sin-visor" src="img/fruta-manzana.webp" alt="manzana"><span>·</span><img class="fr fr-m sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>= 1</span></div>
+      <div class="caja c2 frag"><div class="ec-fr ec-fr-p"><span><strong>Ojo:</strong> con una sola no basta:</span><span class="fr-frac"><span class="fr-num"><span class="fr-pot"><img class="fr fr-s sin-visor" src="img/fruta-manzana.webp" alt="manzana"><sup>3</sup></span></span><span><img class="fr fr-s sin-visor" src="img/fruta-manzana.webp" alt="manzana"></span></span><span>=</span><span class="fr-pot"><img class="fr fr-s sin-visor" src="img/fruta-manzana.webp" alt="manzana"><sup>2</sup></span></div></div>
+    </div>
+    <div class="pila">
+      <p class="chico frag">En el lugar de la manzana puede ir cualquier cosa; por ejemplo, un kilómetro:</p>
+      <div class="ec-fr frag"><span class="fr-pot"><span class="u-caja">km</span><sup>3</sup></span><span>=</span><span class="u-caja">km</span><span>·</span><span class="u-caja">km</span><span>·</span><span class="u-caja">km</span></div>
+      <div class="kf frag" style="font-size:34px">\[ \begin{gathered} \qty{1}{km^{3}} = 1\,\cancel{\mathrm{km}}\cdot\cancel{\mathrm{km}}\cdot\cancel{\mathrm{km}}\cdot\dfrac{\qty{1000}{m}}{1\,\cancel{\mathrm{km}}}\cdot\dfrac{\qty{1000}{m}}{1\,\cancel{\mathrm{km}}}\cdot\dfrac{\qty{1000}{m}}{1\,\cancel{\mathrm{km}}} \\[6pt] = 1\,\mathrm{km}^{3}\cdot\left(\dfrac{\qty{1000}{m}}{\qty{1}{km}}\right)^{3} = \qty{10^{9}}{m^{3}} \end{gathered} \]</div>
+      <div class="caja c1 frag"><p class="chico" style="margin:0">Cada factor \(\qty{1000}{m}/\qty{1}{km}\) cancela <strong>un solo</strong> km. Para cancelar \(\mathrm{km}^{3}\) hay que usarlo tres veces: un cubo de \(\qty{1}{km}\) de lado contiene \(1000\times 1000\times 1000\) cubos de \(\qty{1}{m}\). Error frecuente: \(\qty{1}{km^{3}} = \qty{1000}{m^{3}}\) ✗.</p></div>
+    </div>
+  </div>
+  <p class="clave">Para cancelar km³ hay que dividir tres veces por km.</p>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Álgebra" id="dp-desp" data-label="Despeje de variables">
