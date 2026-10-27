@@ -143,13 +143,54 @@ select.pr-in{font-family:var(--font-body)}
 .est:nth-child(-n+2){border-left-color:var(--caso2)}
 .est b{display:block;font:800 30px/1.2 var(--font-heading);margin-bottom:4px}
 
+/* ── §0 · Cargas: motivación ── */
+.foto{display:block;width:auto;max-width:100%;height:auto;max-height:var(--fh,600px);margin:0 auto;object-fit:contain;border:2px solid var(--linea);background:var(--panel)}
+.foto.sin-borde{border:0;background:none}
+figure.fg{margin:0}
+figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-top:8px}
+.mo-fotos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 24px;align-items:start}
+.mo-fotos .mo-ancha{grid-column:1 / -1}
+.mo-fotos figcaption{font-size:22px}
+.mo-lista{font-size:29px}
+.mo-lista li{margin-bottom:12px}
+#dp-superatomo .fg figcaption,#dp-fermi .fg figcaption,#dp-ionico .fg figcaption{font-size:21px}
+.mf-cv{cursor:default}
+#ac-varilla figcaption{font-size:22px}
+
+/* práctica conceptual y actividades (instrucción entre pares) */
+.pc-slide .pc-col > * + *{margin-top:10px}
+.pc-slide .pr-opcs{display:flex;flex-direction:column;align-items:stretch;gap:8px}
+.pc-slide .pr-opc{text-align:left}
+.pc-fb{font:600 26px/1.3 var(--font-body);min-height:0}
+.pc-fb.ok{color:var(--res)} .pc-fb.mal{color:var(--mal)}
+.pc-exp{background:var(--res-50);border-left:8px solid var(--res);padding:8px 16px;font-size:26px}
+.pc-pista{background:var(--caso2-50);border-left:8px solid var(--caso2);padding:8px 16px;font-size:26px}
+.pc-slide .btn{font-size:24px;padding:8px 14px}
+.ac-pasos{background:var(--caso1-50);border-left:8px solid var(--caso1);padding:6px 14px;font-size:23px;line-height:1.4;margin-top:6px}
+.ac-pasos ol{margin:0;padding-left:1.3em}
+.ac-slide .pr-q{font-size:29px}
+.ac-slide .pr-opc{font-size:25px;padding:8px 14px}
+.ac-slide .pc-exp{font-size:24px}
+.ac-slide .pc-pista{font-size:24px}
+.ac-slide .pc-col:has(.pc-exp:not([style*="none"])) .ac-pasos,.ac-slide .pc-col:has(.pc-pista:not([style*="none"])) .ac-pasos{display:none}
+
+/* gform-popup: formulario de Google en ventana emergente */
+.gform-btn{background:#673ab7;color:#fff;font:600 1rem system-ui,sans-serif;border:0;border-radius:6px;padding:.8em 1.5em;cursor:pointer}
+.gform-btn:hover{background:#512da8}
+section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px;border-radius:6px}
+.gform-btn:focus-visible,.gform-cerrar:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.gform-dlg{width:min(700px,95vw);height:90vh;max-height:none;padding:0;border:0;border-radius:10px;overflow:hidden}
+.gform-dlg::backdrop{background:rgba(20,10,40,.6)}
+.gform-dlg iframe{width:100%;height:100%;border:0;display:block}
+.gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);font-size:1.1rem;cursor:pointer}
+
 </style></head>
 <body>
 <div id="escenario">
 <span class="marca">Electromagnetismo · Cap. 4</span>
 <p class="credito">Diseño de material de estudio · W. Alexander Flórez</p>
 <!-- ═════════════ §1 · ELECTRICIDAD ═════════════ -->
-<section class="diapositiva portada" data-seccion="Electricidad" data-label="Electromagnetismo">
+<section class="diapositiva portada" data-seccion="Cargas" data-label="Electromagnetismo">
   <div>
     <p class="ceja">Fundamentación en Física · Capítulo 4</p>
     <h1>Electromagnetismo</h1>
@@ -161,6 +202,135 @@ select.pr-in{font-family:var(--font-body)}
     <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
   </figure>
   <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+</section>
+
+<!-- ═════════════ §0 · CARGAS: MOTIVACIÓN ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-cotid" data-label="Las cargas en la vida cotidiana">
+  <p class="ceja">§ 4.0 · Motivación</p>
+  <h2 class="titulo">Las cargas eléctricas son reales</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <div class="mo-fotos">
+      <figure class="fg"><img class="foto" style="--fh:300px" src="img/cabello-tobogan.webp" alt="Niña con el cabello erizado después de bajar por un tobogán de plástico"><figcaption>Al deslizarse por el tobogán de plástico, el cabello queda cargado y cada pelo repele a los demás.</figcaption></figure>
+      <figure class="fg"><img class="foto" style="--fh:300px" src="img/plasma-van-de-graaff.webp" alt="Filamentos de plasma luminoso alrededor de la esfera de un generador de Van de Graaff"><figcaption>El plasma sigue las líneas del campo eléctrico de un generador de Van de Graaff.</figcaption></figure>
+      <figure class="fg mo-ancha"><img class="foto sin-borde" style="--fh:170px" src="img/globos-repulsion.webp" alt="Dos globos colgados de un mismo punto que se separan porque se repelen"><figcaption>Dos globos frotados con la misma carga se repelen: \(\vect{F}\) apunta hacia afuera en ambos.</figcaption></figure>
+    </div>
+    <div class="pila">
+      <ul class="lista mo-lista">
+        <li class="frag"><strong>Rayos y chispas:</strong> la descarga al tocar la manija del carro y el rayo de una tormenta son el mismo fenómeno, a escalas distintas.</li>
+        <li class="frag"><strong>Tecnología:</strong> la pantalla táctil del celular detecta la carga de tu dedo; la impresora láser pega el tóner con cargas; los pintores de carros usan pintura electrostática.</li>
+        <li class="frag"><strong>Tu cuerpo:</strong> cada impulso nervioso es un frente de iones Na⁺ y K⁺ que cruzan la membrana de las neuronas.</li>
+        <li class="frag"><strong>¿Por qué no atraviesas el piso?</strong> Las nubes de electrones de tus zapatos y las del piso se repelen (con ayuda del <span class="prop" data-pop="pop-pauli">principio de Pauli</span>).</li>
+      </ul>
+      <div class="kf frag" style="font-size:31px">Entre dos protones, la fuerza eléctrica es
+        \[ \dfrac{F_e}{F_g} = \dfrac{k\,e^{2}}{G\,m_p^{2}} \approx 1{,}2\times 10^{36} \]
+        veces mayor que la gravitacional. Si no la notamos a diario es porque la materia es casi perfectamente <strong>neutra</strong>.</div>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-pauli"><h4>Principio de exclusión de Pauli</h4><p style="margin:0">Dos electrones no pueden ocupar el mismo estado cuántico: como mucho caben dos en cada nivel de energía, uno con espín ↑ y otro con espín ↓. Por eso las nubes de electrones de dos átomos no pueden encimarse, y la materia ocupa espacio. Se estudia en § 4.9.</p></div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Cargas" id="ac-varilla" data-label="Actividad: la varilla y los papelitos" data-speaker-notes="Actividad en parejas (instrucción entre pares). Una varilla de vidrio frotada con seda queda positiva (pierde electrones) y atrae pedacitos de papel neutros. Respuesta: 2 (polarización: la varilla separa las cargas del papel, el lado cercano queda con carga opuesta y, como la fuerza cae como 1/r², la atracción del lado cercano le gana a la repulsión del lado lejano). Errores comunes: creer que el papel se carga a través del aire (1), que la fuerza eléctrica solo atrae (3) o que es magnetismo (4).">
+  <p class="ceja">§ 4.0 · Motivación · Actividad en parejas</p>
+  <h2 class="titulo">¿Por qué una varilla cargada atrae papelitos sin carga?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila">
+      <figure class="fg"><img class="foto" style="--fh:420px" src="img/varilla-papelitos.webp" alt="Una mano frota una varilla de vidrio con un paño de seda y luego la acerca a pedacitos de papel, que son atraídos"><figcaption>Se frota una varilla de vidrio con seda y se acerca a pedacitos de papel: la varilla los atrae.</figcaption></figure>
+      <div class="caja neutra" style="font-size:26px"><p style="margin:0">Al frotarla, la seda le arranca electrones a la varilla: el vidrio queda con carga <strong>positiva</strong> y la seda, negativa. Los papelitos, en cambio, tienen carga neta <strong>cero</strong>.</p></div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Si el papel es neutro, ¿por qué salta hacia la varilla?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">La varilla le pasa carga al papel a través del aire antes de tocarlo.</button><button type="button" class="pr-opc" data-o="b">La varilla separa las cargas del papel: el lado cercano queda con carga opuesta y, por estar más cerca, su atracción le gana a la repulsión del lado lejano.</button><button type="button" class="pr-opc" data-o="c">La fuerza eléctrica entre un cuerpo cargado y uno neutro siempre es de atracción, porque solo hay fuerza cuando las cargas son distintas.</button><button type="button" class="pr-opc" data-o="d">Es una fuerza magnética: frotar la varilla la convierte en un imán.</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El papel tiene tantos electrones como protones, pero los electrones se pueden desplazar un poco. La varilla positiva los atrae hacia el lado cercano y deja más positivo el lado lejano: el papel se <strong>polariza</strong>. Las dos fuerzas tienen sentidos opuestos, pero la ley de Coulomb cae como \(1/r^{2}\): la carga negativa, más cercana, es atraída con más fuerza de lo que la positiva, más lejana, es repelida. La fuerza neta es de atracción. Con una varilla negativa pasa lo mismo, con los papeles invertidos. Así se pega también un globo frotado a la pared.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-varilla">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Neutro no significa sin cargas: el papel tiene electrones y protones. ¿Qué les pasa a los electrones del papel cuando se acerca una carga positiva? ¿Cómo cambia la fuerza de Coulomb con la distancia?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-varilla" class="gform-dlg" aria-label="Formulario: Actividad: la varilla y los papelitos">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: la varilla y los papelitos" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-superatomo" data-label="Un metal es un superátomo">
+  <p class="ceja">§ 4.0 · Motivación · Metales</p>
+  <h2 class="titulo">Un metal es un superátomo</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr)">
+    <div class="pila">
+      <figure class="fg"><img class="foto" style="--fh:400px" src="img/metal-cobre.webp" alt="Red cristalina del cobre: iones positivos ordenados y electrones de conducción moviéndose entre ellos"><figcaption>En el cobre, cada átomo suelta su electrón de valencia: quedan iones de carga \(+e\) en una red y electrones de carga \(-e\) que se mueven por todo el cristal. Fuente: N. Bonesteel, NHMFL.</figcaption></figure>
+      <div class="caja frag" style="font-size:27px"><p style="margin:0">Es como un <strong>átomo gigante</strong>: el «núcleo» es la red de \(\sim 10^{23}\) iones y los electrones de valencia ya no pertenecen a ningún átomo, sino a todo el metal. Esa nube negativa que pega a los iones positivos es el <strong>enlace metálico</strong>.</p></div>
+    </div>
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Niveles de energía al juntar \(N\) átomos</span><span class="val" id="sa-lect"></span></div>
+      <div id="sa-fig"></div>
+      <label class="ctrl"><span>Átomos \(N\)</span><input type="range" id="sa-n" min="0" max="6" step="1" value="0"><span class="v" id="sa-nv"></span></label>
+      <p class="nota" id="sa-nota" style="margin:0;min-height:2.6em"></p>
+    </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-fermi" data-label="El mar de Fermi">
+  <p class="ceja">§ 4.0 · Motivación · Metales</p>
+  <h2 class="titulo">Mar de Fermi: electrones veloces, corriente lenta</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Electrones de conducción entre los iones de un alambre</span><span class="val" id="mf-lect"></span></div>
+      <canvas class="lienzo mf-cv" id="mf-cv" width="1200" height="480"></canvas>
+      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="mf-i" min="0" max="10" step="0.5" value="0"><span class="v" id="mf-iv"></span></label>
+      <p class="nota" style="margin:0">Cable de cobre de \(\qty{1}{mm^{2}}\). La deriva está muy exagerada: en el cable real es unas \(10^{10}\) veces menor que la rapidez de los electrones. La flecha marca su desplazamiento promedio.</p>
+    </figure>
+    <div class="pila">
+      <figure class="fg"><img class="foto" style="--fh:310px" src="img/mar-fermi.webp" alt="Distribución de velocidades de los electrones de valencia: todas las velocidades entre menos v_F y v_F están ocupadas"><figcaption>Por el principio de Pauli, dos electrones de valencia no pueden moverse con la misma velocidad (y el mismo espín). Fuente: N. Bonesteel, NHMFL.</figcaption></figure>
+      <div class="caja frag" style="font-size:27px"><p style="margin:0">Los electrones llenan los niveles hasta \(E_F \approx \qty{7}{eV}\) en el cobre:
+        \[ v_F = \sqrt{\dfrac{2E_F}{m_e}} \approx \qty{1{,}6\times 10^{6}}{m/s} \approx \dfrac{c}{190} \,. \]</p></div>
+      <div class="caja c2 frag" style="font-size:27px"><p style="margin:0">Con \(n = \qty{8{,}5\times 10^{28}}{m^{-3}}\) electrones libres, una corriente de \(\qty{1}{A}\) solo necesita una deriva \(v_d = I/(n e A) \approx \qty{0{,}07}{mm/s}\). La luz se prende al instante porque lo que viaja casi a la velocidad de la luz es el <strong>campo</strong>, no los electrones.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-paradoja" data-label="La paradoja del enlace covalente">
+  <p class="ceja">§ 4.0 · Motivación · Enlaces</p>
+  <h2 class="titulo">La paradoja del enlace covalente</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Arrastra el par de electrones del H₂</span><span class="val" id="pa-lect"></span></div>
+      <div id="pa-fig" class="arrastre"></div>
+      <p class="nota" id="pa-nota" style="margin:0;min-height:1.3em"></p>
+    </figure>
+    <div class="pila">
+      <div class="caja neutra" style="font-size:27px"><p style="margin:0">En la molécula H₂ hay cuatro cargas: dos protones que <strong>se repelen</strong> y dos electrones que también <strong>se repelen</strong>. ¿De dónde sale la atracción?</p></div>
+      <div class="caja frag" style="font-size:27px"><p style="margin:0">Si los electrones están <strong>entre</strong> los núcleos, cada protón es atraído hacia el centro, y la suma de esas atracciones le gana a la repulsión entre los protones. Los dos núcleos «se pelean» por los mismos electrones, y eso los acerca.</p></div>
+      <div class="caja c2 frag" style="font-size:27px"><p style="margin:0">Fuera de la zona sombreada, el par de electrones jala más al núcleo cercano que al lejano y la molécula se rompe. Con el <span class="prop" data-pop="pop-pauli2">principio de Pauli</span>, solo dos electrones con espines opuestos caben en esa región: de ahí el «par» del enlace.</p></div>
+      <div class="kf frag" style="font-size:28px">En equilibrio la fuerza neta sobre cada núcleo es cero:
+        \[ \textstyle\sum \vect{F}_{\text{núcleo}} = \vect{F}_{\text{repulsión}} + \vect{F}_{\text{atracción}} = \vect{0} \]
+        y en el H₂ ocurre a \(d = \qty{0{,}074}{nm}\), con \(\qty{4{,}5}{eV}\) de energía de enlace.</div>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-pauli2"><h4>Principio de exclusión de Pauli</h4><p style="margin:0">Dos electrones no pueden ocupar el mismo estado cuántico. En el mismo orbital de enlace caben como máximo dos, con espines opuestos (↑↓). Un tercer electrón tendría que ir a un orbital de más energía, y en el He₂ eso impide el enlace.</p></div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-ionico" data-label="Enlace iónico y Van der Waals">
+  <p class="ceja">§ 4.0 · Motivación · Enlaces</p>
+  <h2 class="titulo">Toda la química es electricidad</h2>
+  <div class="g2">
+    <div class="pila">
+      <h3 style="margin:0">Enlace iónico: la sal de mesa</h3>
+      <div class="g2" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:28px;align-items:center">
+        <figure class="fg"><img class="foto" style="--fh:400px" src="img/enlace-ionico.webp" alt="El sodio cede su electrón de valencia al cloro y quedan los iones Na+ y Cl−"><figcaption>El Na cede su electrón de valencia al Cl. © Encyclopædia Britannica.</figcaption></figure>
+        <div class="pila">
+          <div class="kf frag" style="font-size:30px">\[ U_e = -k\,\dfrac{\abs{q_1}\,\abs{q_2}}{r} \]</div>
+          <div class="caja frag" style="font-size:26px"><p style="margin:0">Con \(k e^{2} = \qty{1{,}44}{eV\cdot nm}\) y \(r = \qty{0{,}236}{nm}\) entre el Na⁺ y el Cl⁻:
+            \[ U_e = -\dfrac{\qty{1{,}44}{eV\cdot nm}}{\qty{0{,}236}{nm}} \approx -\qty{6{,}1}{eV} \,. \]
+            Un pozo profundo: separar los iones cuesta, según la medición, unos \(\qty{5{,}8}{eV}\). El modelo de dos cargas puntuales casi lo explica todo.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="pila">
+      <h3 style="margin:0">Van der Waals: átomos neutros que se atraen</h3>
+      <figure class="fg"><img class="foto" style="--fh:300px" src="img/van-der-waals.webp" alt="Dos átomos neutros cuyas nubes de electrones se desplazan y forman dipolos que se atraen"><figcaption>Fuerza de Van der Waals entre dos átomos neutros. Fuente: GeeksforGeeks.</figcaption></figure>
+      <div class="caja c2 frag" style="font-size:26px"><p style="margin:0">En cada instante los electrones pueden estar más hacia un lado: aparece un <strong>dipolo instantáneo</strong>, que polariza al átomo vecino. Es el efecto de la varilla y el papelito, a escala atómica: \(\abs{\vect{F}} \propto 1/r^{7}\).</p></div>
+      <div class="caja c1 frag" style="font-size:26px"><p style="margin:0">Así se condensan los gases nobles, el gecko trepa por un vidrio y se pliegan las proteínas. El agua, con dipolos permanentes, forma los <strong>puentes de hidrógeno</strong>.</p></div>
+    </div>
+  </div>
 </section>
 
 <section class="diapositiva" data-seccion="Electricidad" id="dp-coul" data-label="Ley de Coulomb">
@@ -781,6 +951,245 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     requestAnimationFrame(bucle);
   }
   dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ACTIVIDADES: preguntas, pistas y formularios de Google ══════════ */
+(function () {
+  $$('section.pc-slide').forEach(sl => {
+    const qs = $$('.pc-q', sl);
+    const muestra = q => { const e = $('.pc-exp', q); if (e) e.style.display = ''; };
+    qs.forEach(q => {
+      const fb = $('.pc-fb', q);
+      $$('.pr-opc', q).forEach(b => b.addEventListener('click', () => {
+        const ok = b.dataset.o === q.dataset.ok;
+        $$('.pr-opc', q).forEach(o => o.classList.remove('ok', 'mal'));
+        b.classList.add(ok ? 'ok' : 'mal');
+        if (fb) { fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal'); fb.textContent = ok ? '✓ ¡Correcto!' : '✗ Aún no. Prueba otra opción o pide una pista.'; }
+        if (ok) muestra(q);
+      }));
+    });
+    const vp = $('.pc-verpista', sl), ve = $('.pc-verexp', sl), pi = $('.pc-pista', sl);
+    if (vp && pi) vp.addEventListener('click', () => { pi.style.display = pi.style.display === 'none' ? '' : 'none'; });
+    if (ve) ve.addEventListener('click', () => qs.forEach(muestra));
+  });
+  $$('[data-gform-open]').forEach(b => {
+    const d = document.getElementById(b.getAttribute('data-gform-open')); if (!d) return;
+    const f = d.querySelector('iframe');
+    b.addEventListener('click', () => { if (!f.src) f.src = f.dataset.src; d.showModal(); });
+    d.querySelector('.gform-cerrar').addEventListener('click', () => d.close());
+    d.addEventListener('click', e => { if (e.target === d) d.close(); });
+    document.addEventListener('slidechange', () => { if (d.open) d.close(); });
+  });
+})();
+
+/* ═══ SUPERÁTOMO: niveles de N átomos → banda con mar de Fermi ═════════
+   Cada nivel atómico se abre en N niveles; los electrones de valencia
+   (uno por átomo, como en el cobre) los llenan de dos en dos (Pauli). */
+(function () {
+  const host = document.getElementById('sa-fig');
+  if (!host) return;
+  const rn = document.getElementById('sa-n');
+  const NS_ = [1, 2, 4, 8, 16, 64, Infinity];
+  const W = 1240, H = 520, X0 = 300, X1 = 900, EV = 290, ANCHO = 120, EC = 470;
+  function pinta() {
+    const N = NS_[+rn.value], inf = !isFinite(N);
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* fila de átomos */
+    const nA = inf ? 16 : N, paso = Math.min(70, 600 / nA);
+    for (let i = 0; i < nA; i++) {
+      const cx = 600 + (i - (nA - 1) / 2) * paso, r = Math.min(24, paso * 0.36);
+      nodo('circle', { cx: cx, cy: 60, r: r, style: 'fill:var(--caso2)' }, svg);
+      if (r > 14) nodo('text', { x: cx, y: 69, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: '+' }, svg);
+    }
+    if (N > 1) nodo('rect', { x: 600 - nA * paso / 2 - 10, y: 22, width: nA * paso + 20, height: 76, rx: 38, style: 'fill:var(--caso1);opacity:.14' }, svg);
+    if (inf) nodo('text', { x: 600 + 8.6 * paso, y: 70, 'font-size': 30, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: '… 10²³' }, svg);
+    /* eje de energía */
+    flecha(svg, 90, 505, 90, 130, 'var(--tinta)', 3);
+    rotulo(svg, 60, 150, '*E*', { 'font-size': 32, style: 'fill:var(--tinta);font-family:' + FMATH });
+    /* nivel interno: casi no se abre (electrones pegados a su núcleo) */
+    const wc = inf ? 10 : N === 1 ? 0 : 10 * (1 - 1 / N);
+    nodo('rect', { x: X0, y: EC - wc - 3, width: X1 - X0, height: 2 * wc + 6, style: 'fill:var(--caso1);opacity:.75' }, svg);
+    nodo('text', { x: X1 + 20, y: EC + 9, 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'nivel interno: lleno' }, svg);
+    /* banda de valencia */
+    const w = N === 1 ? 0 : inf ? ANCHO : ANCHO * (1 - 1 / N);
+    const yF = EV;          /* la mitad de la banda llena */
+    if (inf) {
+      nodo('rect', { x: X0, y: EV - w, width: X1 - X0, height: 2 * w, style: 'fill:none;stroke:var(--caso1);stroke-width:3' }, svg);
+      nodo('rect', { x: X0, y: yF, width: X1 - X0, height: EV + w - yF, style: 'fill:var(--caso1);opacity:.55' }, svg);
+      nodo('text', { x: 600, y: yF + 80, 'text-anchor': 'middle', 'font-size': 32, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'mar de Fermi' }, svg);
+      nodo('text', { x: 600, y: EV - w / 2 + 10, 'text-anchor': 'middle', 'font-size': 27, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'estados vacíos' }, svg);
+    } else {
+      for (let j = 0; j < N; j++) {
+        const y = N === 1 ? EV : EV + w - 2 * w * j / (N - 1);
+        const ocup = Math.max(0, Math.min(2, N - 2 * j));       /* electrones en este nivel */
+        nodo('line', { x1: X0, x2: X1, y1: y, y2: y, style: 'stroke:' + (ocup ? 'var(--caso1)' : 'var(--proy)') + ';stroke-width:' + (N > 16 ? 2 : 4) }, svg);
+        if (N <= 16 && ocup) {
+          const s = Math.min(18, 2 * w / Math.max(1, N - 1) * 0.42 + 6);
+          [[-1, '↑'], [1, '↓']].slice(0, ocup).forEach(([k, a]) => nodo('text', { x: 600 + k * 40, y: y + s * 0.6, 'text-anchor': 'middle', 'font-size': Math.max(18, s * 2), style: 'fill:var(--caso1);font-weight:700;font-family:' + FTXT, txt: a }, svg));
+        }
+      }
+    }
+    /* nivel de Fermi */
+    if (N > 1) {
+      nodo('line', { x1: X0 - 40, x2: X1 + 10, y1: yF, y2: yF, style: 'stroke:var(--res);stroke-width:3;stroke-dasharray:10 7' }, svg);
+      rotulo(svg, X0 - 50, yF + 10, '*E*_F', { 'font-size': 32, 'text-anchor': 'end', style: 'fill:var(--res);font-weight:700;font-family:' + FMATH });
+    }
+    nodo('text', { x: X1 + 20, y: EV + 10, 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: N === 1 ? 'nivel de valencia' : 'banda de valencia' }, svg);
+    if (N > 1) nodo('text', { x: X1 + 20, y: EV + 44, 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: inf ? 'medio llena' : (N / 2) + ' de ' + N + ' niveles llenos' }, svg);
+    document.getElementById('sa-nv').textContent = inf ? '~10²³' : String(N);
+    document.getElementById('sa-lect').textContent = inf ? 'un trozo de cobre' : N === 1 ? 'un átomo de cobre' : N + ' átomos · ' + N + ' electrones de valencia';
+    document.getElementById('sa-nota').textContent = N === 1
+      ? 'Un átomo aislado: niveles discretos; su electrón de valencia está solo en el nivel más externo.'
+      : inf ? 'Con 10²³ átomos los niveles forman una banda continua, llena hasta E_F: el mar de Fermi. Justo encima hay estados vacíos; por eso un campo pequeño mueve los electrones y el metal conduce.'
+        : 'Cada nivel se abre en ' + N + ' niveles, y en cada uno caben dos electrones (↑↓, principio de Pauli). Los ' + N + ' electrones de valencia llenan la mitad inferior.';
+  }
+  rn.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ MAR DE FERMI: movimiento térmico rapidísimo + deriva lentísima ═══ */
+(function () {
+  const cv = document.getElementById('mf-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, ri = document.getElementById('mf-i');
+  const IONES = [];
+  for (let i = 0; i < 10; i++) for (let j = 0; j < 4; j++) IONES.push([70 + i * 118, 75 + j * 110]);
+  const E = [];
+  for (let k = 0; k < 70; k++) { const a = Math.random() * 2 * Math.PI; E.push({ x: Math.random() * W, y: 40 + Math.random() * (H - 80), vx: Math.cos(a), vy: Math.sin(a), h: [] }); }
+  let deriva = 0, ult = 0;
+  const VF = 7;                     /* px por cuadro: «v_F» de la animación */
+  function lee() {
+    const I = +ri.value, vd = I / (8.5e28 * E_C * 1e-6);          /* m/s */
+    document.getElementById('mf-iv').textContent = num(I, 1) + ' A';
+    document.getElementById('mf-lect').textContent = I ? 'v_d = ' + num(vd * 1000, 3) + ' mm/s' : 'sin corriente: deriva nula';
+    return I;
+  }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    g.strokeStyle = tok('--linea'); g.lineWidth = 4;
+    g.beginPath(); g.moveTo(0, 18); g.lineTo(W, 18); g.moveTo(0, H - 18); g.lineTo(W, H - 18); g.stroke();
+    IONES.forEach(([x, y]) => {
+      g.fillStyle = tok('--caso2'); g.globalAlpha = .9; g.beginPath(); g.arc(x, y, 24, 0, 2 * Math.PI); g.fill();
+      g.globalAlpha = 1; g.fillStyle = tok('--papel'); g.font = '700 30px ' + FTXT; g.textAlign = 'center'; g.fillText('+', x, y + 10);
+    });
+    g.strokeStyle = tok('--caso1'); g.lineWidth = 2; g.globalAlpha = .35;
+    E.forEach(e => { if (e.h.length > 1) { g.beginPath(); e.h.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke(); } });
+    g.globalAlpha = 1; g.fillStyle = tok('--caso1');
+    E.forEach(e => { g.beginPath(); g.arc(e.x, e.y, 8, 0, 2 * Math.PI); g.fill(); });
+    /* flecha de la deriva promedio (los electrones van contra la corriente) */
+    const I = +ri.value;
+    if (I > 0) {
+      const L = Math.min(380, 30 + 1400 * Math.abs(deriva));
+      g.fillStyle = tok('--panel'); g.globalAlpha = .85; g.fillRect(W / 2 - 230, H / 2 - 44, 460, 88); g.globalAlpha = 1;
+      g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 8;
+      g.beginPath(); g.moveTo(W / 2 + L / 2, H / 2 + 10); g.lineTo(W / 2 - L / 2 + 26, H / 2 + 10); g.stroke();
+      g.beginPath(); g.moveTo(W / 2 - L / 2, H / 2 + 10); g.lineTo(W / 2 - L / 2 + 30, H / 2 - 6); g.lineTo(W / 2 - L / 2 + 30, H / 2 + 26); g.fill();
+      g.font = '600 26px ' + FTXT; g.textAlign = 'center'; g.fillText('deriva de los electrones', W / 2, H / 2 - 16);
+      g.fillStyle = tok('--tinta'); g.font = '700 30px ' + FTXT; g.textAlign = 'right'; g.fillText('I →', W - 20, H - 30);
+    }
+    g.textAlign = 'left';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) {
+      ult = ms;
+      const vd = +ri.value * 0.11;          /* deriva exagerada, hacia la izquierda */
+      let suma = 0;
+      E.forEach(e => {
+        if (Math.random() < 0.03) { const a = Math.random() * 2 * Math.PI; e.vx = Math.cos(a); e.vy = Math.sin(a); }   /* choque */
+        e.x += VF * e.vx - vd; e.y += VF * e.vy; suma += VF * e.vx - vd;
+        if (e.y < 34 || e.y > H - 34) { e.vy = -e.vy; e.y = Math.max(34, Math.min(H - 34, e.y)); }
+        let salto = false;
+        if (e.x < 0) { e.x += W; salto = true; } else if (e.x > W) { e.x -= W; salto = true; }
+        if (salto) e.h = [];
+        e.h.push([e.x, e.y]); if (e.h.length > 6) e.h.shift();
+      });
+      deriva = 0.92 * deriva + 0.08 * (suma / E.length / VF);
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  ri.addEventListener('input', lee); lee(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ PARADOJA DEL ENLACE: el par de electrones del H₂ ═════════════════
+   Unidades: d = 1 entre protones y fuerzas en k e²/d². Protones en ±½;
+   el par de electrones (carga −2e) en P. Hay enlace si cada núcleo es
+   jalado hacia el otro (incluida la repulsión entre ellos). */
+(function () {
+  const host = document.getElementById('pa-fig');
+  if (!host) return;
+  const W = 1240, H = 620, S = 340, CX = W / 2, CY = H / 2;
+  const X = x => CX + S * x, Y = y => CY - S * y;
+  const A = [-0.5, 0], B = [0.5, 0];
+  const P = { x: 0, y: 0.28 };
+  const fuerza = (n, o, p) => {            /* fuerza sobre el núcleo n */
+    const rep = [n[0] - o[0], 0].map(v => Math.sign(v) * 1);           /* 1/d² = 1, hacia afuera */
+    let dx = p[0] - n[0], dy = p[1] - n[1]; const r = Math.max(0.12, Math.hypot(dx, dy));
+    const at = [2 * dx / (r * r * r), 2 * dy / (r * r * r)];
+    return { rep: rep, at: at, net: [rep[0] + at[0], rep[1] + at[1]] };
+  };
+  const enlaza = p => fuerza(B, A, p).net[0] < 0 && fuerza(A, B, p).net[0] > 0;
+  /* zona de enlace precalculada (filas de celdas) */
+  let zona = '';
+  const dc = 0.025;
+  for (let y = -0.9; y < 0.9; y += dc) {
+    let x0 = null;
+    for (let x = -1.7; x <= 1.71; x += dc) {
+      const s = enlaza([x + dc / 2, y + dc / 2]);
+      if (s && x0 === null) x0 = x;
+      if ((!s || x > 1.7) && x0 !== null) { zona += 'M' + X(x0).toFixed(1) + ' ' + Y(y + dc).toFixed(1) + 'H' + X(x).toFixed(1) + 'V' + Y(y).toFixed(1) + 'H' + X(x0).toFixed(1) + 'Z'; x0 = null; }
+    }
+  }
+  const largo = F => Math.min(1.1, 0.32 * Math.sqrt(Math.hypot(F[0], F[1])));
+  const fl = (svg, n, F, col, w) => { const L = largo(F), m = Math.hypot(F[0], F[1]) || 1; flecha(svg, X(n[0]), Y(n[1]), X(n[0] + L * F[0] / m), Y(n[1] + L * F[1] / m), col, w); };
+  let svg;
+  function pinta() {
+    host.innerHTML = '';
+    svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    nodo('path', { d: zona, style: 'fill:var(--res-50);stroke:none' }, svg);
+    nodo('text', { x: X(0), y: Y(-0.78), 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--res);font-weight:600;font-family:' + FTXT, txt: 'zona de enlace' }, svg);
+    nodo('line', { x1: X(-1.7), x2: X(1.7), y1: Y(0), y2: Y(0), style: 'stroke:var(--rejilla);stroke-width:2' }, svg);
+    const p = [P.x, P.y], ok = enlaza(p), fa = fuerza(A, B, p), fb = fuerza(B, A, p);
+    /* líneas de atracción hacia el par */
+    [A, B].forEach(n => nodo('line', { x1: X(n[0]), y1: Y(n[1]), x2: X(p[0]), y2: Y(p[1]), style: 'stroke:var(--caso1);stroke-width:2;stroke-dasharray:6 6;opacity:.6' }, svg));
+    [[A, fa], [B, fb]].forEach(([n, f]) => {
+      fl(svg, n, f.rep, 'var(--caso2)', 5); fl(svg, n, f.at, 'var(--caso1)', 5); fl(svg, n, f.net, 'var(--res)', 9);
+    });
+    [A, B].forEach(n => {
+      nodo('circle', { cx: X(n[0]), cy: Y(n[1]), r: 30, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:3' }, svg);
+      nodo('text', { x: X(n[0]), y: Y(n[1]) + 12, 'text-anchor': 'middle', 'font-size': 34, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: '+' }, svg);
+    });
+    /* el par de electrones ↑↓ */
+    const g = nodo('g', { style: 'cursor:grab' }, svg);
+    nodo('ellipse', { cx: X(p[0]), cy: Y(p[1]), rx: 62, ry: 40, style: 'fill:var(--caso1);opacity:.22' }, g);
+    [[-20, '↑'], [20, '↓']].forEach(([dx, s]) => {
+      nodo('circle', { cx: X(p[0]) + dx, cy: Y(p[1]), r: 17, style: 'fill:var(--caso1);stroke:var(--panel);stroke-width:2' }, g);
+      nodo('text', { x: X(p[0]) + dx, y: Y(p[1]) + 8, 'text-anchor': 'middle', 'font-size': 22, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: s }, g);
+    });
+    /* leyenda */
+    [['repulsión entre protones', 'var(--caso2)'], ['atracción del par', 'var(--caso1)'], ['fuerza neta', 'var(--res)']].forEach(([t, c], i) => {
+      nodo('line', { x1: 30, x2: 80, y1: 40 + 38 * i, y2: 40 + 38 * i, style: 'stroke:' + c + ';stroke-width:' + (i === 2 ? 9 : 5) }, svg);
+      nodo('text', { x: 92, y: 49 + 38 * i, 'font-size': 25, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: t }, svg);
+    });
+    const hacia = -fb.net[0];
+    document.getElementById('pa-lect').textContent = ok ? '✓ los núcleos se atraen: hay enlace' : '✗ los núcleos se separan';
+    document.getElementById('pa-lect').style.color = ok ? 'var(--res)' : 'var(--mal)';
+    document.getElementById('pa-nota').textContent = 'Núcleo derecho (en ke²/d²): repulsión 1,00 · atracción ' + num(Math.hypot(fb.at[0], fb.at[1]), 2) +
+      ' · neta ' + num(Math.abs(fb.net[0]), 2) + (hacia > 0 ? ', hacia el otro núcleo.' : ', alejándose del otro.');
+  }
+  host.addEventListener('pointerdown', ev => {
+    host.setPointerCapture(ev.pointerId); ev.preventDefault();
+    const mueve = e => {
+      const s = host.querySelector('svg'), pt = s.createSVGPoint(); pt.x = e.clientX; pt.y = e.clientY;
+      const q = pt.matrixTransform(s.getScreenCTM().inverse());
+      P.x = Math.max(-1.6, Math.min(1.6, (q.x - CX) / S)); P.y = Math.max(-0.85, Math.min(0.85, (CY - q.y) / S));
+      pinta();
+    };
+    mueve(ev);
+    const fin = () => { host.removeEventListener('pointermove', mueve); host.removeEventListener('pointerup', fin); host.removeEventListener('pointercancel', fin); };
+    host.addEventListener('pointermove', mueve); host.addEventListener('pointerup', fin); host.addEventListener('pointercancel', fin);
+  });
+  pinta();
 })();
 
 /* ═══ LEY DE COULOMB ═══════════════════════════════════════════════════ */
