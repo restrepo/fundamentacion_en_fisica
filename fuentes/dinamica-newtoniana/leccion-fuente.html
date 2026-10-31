@@ -6431,6 +6431,7 @@ function lienzoOrbita(cv, trazos, marcas) {
     document.addEventListener('slidechange', cierra);
     cap.addEventListener('click', async () => {
       cap.disabled = true; const txt = cap.textContent; cap.textContent = 'Generando…';
+      nota.textContent = 'Generando la captura… En un celular puede tardar unos segundos.'; nota.style.color = 'var(--tinta2)';
       try {
         if (!window.html2canvas) throw new Error('sin html2canvas');
         /* Copia SIN la escala del lienzo y a tamaño nativo: html2canvas mide mal
@@ -6439,7 +6440,10 @@ function lienzoOrbita(cv, trazos, marcas) {
         const cv = await html2canvas(dp, {
           scale: 1, width: W, height: H, windowWidth: W, windowHeight: H, x: 0, y: 0, scrollX: 0, scrollY: 0,
           backgroundColor: getComputedStyle(dp).backgroundColor || '#ffffff',
-          ignoreElements: el => el.classList && (el.classList.contains('no-captura') || el.classList.contains('envio-flota')),
+          /* Solo se clona la diapositiva: sin esto html2canvas copia el documento entero
+             (todas las diapositivas, sus imágenes y MathJax) y en un celular tarda minutos. */
+          ignoreElements: el => el === modal || (el.tagName === 'SECTION' && el !== dp && !el.contains(dp)) ||
+            (el.classList && (el.classList.contains('no-captura') || el.classList.contains('envio-flota'))),
           onclone: doc => {
             const lz = doc.getElementById('lienzo'), esc = doc.getElementById('escenario'), d = doc.getElementById(dp.id);
             if (lz) { lz.style.transform = 'none'; lz.style.left = '0'; lz.style.top = '0'; }

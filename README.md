@@ -90,13 +90,14 @@ centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-32 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+33 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
 enlace covalente con el par de electrones arrastrable y el enlace iónico y
-Van der Waals); electricidad (ley de Coulomb con cargas
-arrastrables y el campo, energía potencial y electronvoltio, aplicaciones,
+Van der Waals); electricidad (campo eléctrico y ley de Coulomb con cargas
+arrastrables, energía potencial y electronvoltio, una actividad para arrastrar
+factores de conversión entre J, eV, MeV, GeV y TeV, aplicaciones,
 corriente y potencia con un calculador de la factura); magnetismo (Ampère en un
 alambre, diseño de un solenoide, fuerza entre alambres paralelos); inducción y
 ondas (Faraday con un imán arrastrable y galvanómetro, corriente de
