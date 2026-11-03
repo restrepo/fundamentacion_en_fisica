@@ -155,6 +155,28 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .mo-lista li{margin-bottom:12px}
 #dp-superatomo .fg figcaption,#dp-fermi .fg figcaption,#dp-ionico .fg figcaption{font-size:21px}
 .mf-cv{cursor:default}
+/* ── Tipos de enlace y actividades ── */
+#en-tipos .btn{font-size:24px;padding:8px 14px}
+.ag-tab{font-size:28px}
+.cl-lista{display:grid;grid-template-columns:1fr 1fr;gap:10px 30px}
+.cl-it{display:grid;grid-template-columns:1fr;gap:6px;background:var(--panel);border:2px solid var(--linea);border-left:9px solid var(--linea);padding:8px 14px}
+.cl-it .cl-n{font:600 25px/1.2 var(--font-body)}
+.cl-it .cl-b{display:flex;flex-wrap:wrap;gap:6px}
+.cl-it .cl-b .btn{font-size:20px;padding:5px 10px}
+.cl-it .cl-exp{font-size:21px;color:var(--tinta2);display:none}
+.cl-it.ok{border-left-color:var(--res)} .cl-it.mal{border-left-color:var(--mal)}
+.cl-it.ok .cl-exp,.cl-it.mal .cl-exp{display:block}
+
+/* ── Fisión del uranio ── */
+.fis-tab{font-size:28px}
+.nev-g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#dp-nevera .pr-item{margin:0;padding:12px 18px}
+#dp-nevera .pr-q{font-size:27px}
+#dp-nevera .pr-in{width:150px;font-size:27px}
+#dp-nevera .pr-btn{font-size:24px;padding:8px 12px}
+#dp-nevera .pr-fb,#dp-nevera .pr-pista{font-size:24px}
+.fis-tab td,.fis-tab th{padding:6px 12px}
+
 /* ── Actividad: arrastrar factores de conversión (J ↔ eV) ── */
 #fc-probs .btn.hecho::after{content:' ✓';color:var(--res)}
 .fc-enun{font:600 34px/1.3 var(--font-body);color:var(--tinta);background:var(--panel);border-left:9px solid var(--caso2);padding:14px 22px}
@@ -482,14 +504,148 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-fis1" data-label="La fisión del uranio">
+  <p class="ceja">§ 4.1 · Fisión nuclear</p>
+  <h2 class="titulo">La fisión del uranio: una gota cargada que se parte</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr)">
+    <div class="pila">
+      <figure class="fg"><img class="foto sin-borde" style="--fh:360px" src="img/fision-gota.webp" alt="Un neutrón choca con un núcleo de uranio-235, que se deforma como una gota y se parte en bario-141, kriptón-92 y tres neutrones, liberando energía"><figcaption>Un neutrón lento convierte el ²³⁵U en ²³⁶U inestable, que se estira y se parte en dos fragmentos y tres neutrones.</figcaption></figure>
+      <div class="kf" style="font-size:32px">\[ {}^{235}_{92}\mathrm{U} + n \;\longrightarrow\; {}^{236}_{92}\mathrm{U}^{*} \;\longrightarrow\; {}^{141}_{56}\mathrm{Ba} + {}^{92}_{36}\mathrm{Kr} + 3n \]</div>
+    </div>
+    <div class="pila">
+      <div class="caja neutra frag" style="font-size:27px"><p style="margin:0"><strong>El núcleo como una gota.</strong> La fuerza nuclear fuerte mantiene juntos a los nucleones como la tensión superficial a una gota; la repulsión eléctrica de los \(Z\) protones empuja hacia afuera. La superficie pesa más en las gotas pequeñas: \(\dfrac{\text{área}}{\text{volumen}} \propto \dfrac{\pi r^{2}}{\tfrac43\pi r^{3}} \propto \dfrac1r\).</p></div>
+      <figure class="fg frag"><img class="foto sin-borde" style="--fh:190px" src="img/fusion-nucleos-livianos.webp" alt="Dos núcleos de helio-4 se fusionan en berilio-8, que con otro helio-4 forma carbono-12, emitiendo rayos gamma"><figcaption>Núcleos livianos: domina la «tensión superficial» y las gotas prefieren <strong>fusionarse</strong>, como el ⁴He en carbono dentro de las estrellas.</figcaption></figure>
+      <div class="caja c2 frag" style="font-size:27px"><p style="margin:0"><strong>Núcleos pesados:</strong> con 92 protones la repulsión eléctrica casi gana. Basta el golpe de un neutrón para deformar la gota; entonces las dos mitades se repelen y la <strong>fuerza eléctrica</strong> termina de partirla y lanza los fragmentos.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-fis2" data-label="Energía eléctrica de un núcleo">
+  <p class="ceja">§ 4.1 · Fisión nuclear · Energía potencial eléctrica</p>
+  <h2 class="titulo">¿Cuánta energía eléctrica guarda un núcleo de uranio?</h2>
+  <div class="g2">
+    <div class="pila">
+      <div class="caja neutra" style="font-size:27px"><p style="margin:0"><strong>Cuidado con el doble conteo.</strong> Multiplicar la energía de un protón con los otros 91 por los 92 protones, \(k\,(92e)(91e)/R\), cuenta cada par <strong>dos veces</strong>. La energía es el trabajo para traer los protones uno por uno desde el infinito: cada par cuenta una sola vez.</p></div>
+      <div class="kf frag" style="font-size:30px">Para una esfera de carga \(Q\) uniforme y radio \(R\):
+        \[ U = \dfrac35\,k\,\dfrac{Q^{2}}{R}, \qquad R \approx (\qty{1{,}2}{fm})\,A^{1/3} \]
+        <span style="font-size:24px">El \(3/5\) sale de sumar sobre el volumen de la esfera; \(A\) es el número de protones más neutrones.</span></div>
+      <div class="caja frag" style="font-size:27px"><p style="margin:0">Con \(Q = 92e\), \(R_U = (\qty{1{,}2}{fm})(235)^{1/3} \approx \qty{7{,}41}{fm}\) y \(k e^{2} = \qty{1{,}44}{MeV\cdot fm}\):
+        \[ U_U = \dfrac35\,\dfrac{(\qty{1{,}44}{MeV\cdot fm})\,(92)^{2}}{\qty{7{,}41}{fm}} \approx \qty{988}{MeV} \approx \qty{1{,}58\times 10^{-10}}{J} \,. \]</p></div>
+    </div>
+    <div class="pila">
+      <table class="tabla frag fis-tab">
+        <thead><tr><th class="izq">Núcleo</th><th>\(Z\)</th><th>\(A\)</th><th>\(R\) [fm]</th><th>\(U = \tfrac35 k Q^{2}/R\)</th></tr></thead>
+        <tbody>
+          <tr><td class="izq">\({}^{235}\mathrm{U}\) (antes)</td><td>92</td><td>235</td><td>7,41</td><td><strong>988 MeV</strong></td></tr>
+          <tr><td class="izq">\({}^{141}\mathrm{Ba}\)</td><td>56</td><td>141</td><td>6,25</td><td>434 MeV</td></tr>
+          <tr><td class="izq">\({}^{92}\mathrm{Kr}\)</td><td>36</td><td>92</td><td>5,42</td><td>207 MeV</td></tr>
+          <tr><td class="izq">Fragmentos (después)</td><td colspan="3"></td><td><strong>641 MeV</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="kf frag" style="font-size:31px">\[ \Delta U = U_U - \big(U_{\mathrm{Ba}} + U_{\mathrm{Kr}}\big) \approx \qty{988}{MeV} - \qty{641}{MeV} \approx \qty{347}{MeV} \]</div>
+      <div class="caja c2 frag" style="font-size:27px"><p style="margin:0">Partir el núcleo <strong>libera energía eléctrica</strong>: cada fragmento tiene menos protones apretados en menos espacio, \(U \propto Z^{2}/A^{1/3}\). Ese trabajo se hizo cuando se formó el uranio, en la colisión de estrellas de neutrones de la que salió el material del sistema solar: el uranio es una <strong>batería natural</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-fis3" data-label="Meitner y Frisch: la energía de la fisión">
+  <p class="ceja">§ 4.1 · Fisión nuclear · La idea de Lise Meitner</p>
+  <h2 class="titulo">Meitner y Frisch: la repulsión eléctrica lanza los fragmentos</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Parte el ²³⁶U en dos (+ 3 n)</span><span class="val" id="fi-lect"></span></div>
+      <div id="fi-fig"></div>
+      <label class="ctrl" style="grid-template-columns:200px 1fr 130px"><span>Protones \(Z_1\)</span><input type="range" id="fi-z" min="28" max="46" step="1" value="36"><span class="v" id="fi-zv"></span></label>
+      <p class="nota" style="margin:0;font-size:24px">Esferas con \(R = (\qty{1{,}2}{fm})A^{1/3}\) y \(A_1 + A_2 = 233\); contacto: \(k Z_1 Z_2 e^{2}/(R_1 + R_2)\).</p>
+    </figure>
+    <div class="pila">
+      <figure class="fg"><img class="foto" style="--fh:190px" src="img/hahn-meitner.webp" alt="Otto Hahn y Lise Meitner en su laboratorio"><figcaption>Otto Hahn y Lise Meitner. En 1938 Hahn y Fritz Strassmann hallaron bario al bombardear uranio con neutrones; Meitner y su sobrino Otto Frisch lo explicaron como una fisión.</figcaption></figure>
+      <div class="caja frag" style="font-size:26px"><p style="margin:0">Justo después de partirse, los dos fragmentos están casi en contacto y se repelen: unos \(\qty{250}{MeV}\) de energía potencial eléctrica se convierten en <strong>energía cinética</strong>. Salen a un 3–5 % de la velocidad de la luz y, al frenarse en el material, producen calor.</p></div>
+      <div class="caja c2 frag" style="font-size:26px"><p style="margin:0"><strong>Medido:</strong> unos \(\qty{200}{MeV}\) por fisión, el 85 % como energía cinética de los fragmentos. Es menos que \(\Delta U \approx \qty{347}{MeV}\) porque dos gotas tienen más superficie que una: la «tensión superficial» se queda con unos \(\qty{150}{MeV}\).</p></div>
+      <div class="kf frag" style="font-size:27px">Meitner lo confirmó con \(E = mc^{2}\): los fragmentos pesan unos \(\qty{0{,}2}{u}\) menos, y \(\qty{0{,}2}{u}\cdot c^{2} \approx \qty{200}{MeV}\), una quinta parte de la masa de un protón.</div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-enlaces" data-label="Los cinco tipos de enlace">
+  <p class="ceja">§ 4.1 · La naturaleza electrostática de los enlaces químicos</p>
+  <h2 class="titulo">Cinco maneras de pegar átomos, todas eléctricas</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,0.9fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="fila-btn" id="en-tipos" style="margin:0 0 8px"></div>
+      <div id="en-esq"></div>
+      <div class="svghd" style="margin:6px 0 0"><span>Energía de enlace (escala log)</span><span class="val" id="en-lect"></span></div>
+      <div id="en-graf"></div>
+    </figure>
+    <div class="pila" id="en-info">
+      <div class="caja" style="font-size:27px"><h3 id="en-nom" style="margin:0 0 6px"></h3><p id="en-mec" style="margin:0"></p></div>
+      <div class="kf" id="en-tex" style="font-size:30px;min-height:90px"></div>
+      <div class="caja neutra" style="font-size:26px"><p style="margin:0"><strong>Ejemplos:</strong> <span id="en-ej"></span></p><p style="margin:8px 0 0"><strong>Explica:</strong> <span id="en-exp"></span></p></div>
+      <p class="nota" style="margin:0">Toda la química es la ley de Coulomb más la mecánica cuántica: los electrones se redistribuyen para que la energía potencial del sistema sea mínima. Si la energía de enlace es menor que la energía térmica \(k_BT\), el enlace no resiste la agitación.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Electricidad" id="ac-agua" data-label="Actividad: agua y metano" data-speaker-notes="Actividad en parejas (instrucción entre pares). El agua (18 u) hierve a 100 °C y el metano (16 u) a −162 °C. Respuesta: 3. Al hervir no se rompen los enlaces covalentes dentro de las moléculas, sino las uniones entre moléculas: en el agua, puentes de hidrógeno entre dipolos permanentes (≈ 0,2 eV, unas 8 veces k_BT); en el metano, que es simétrico y apolar, solo fuerzas de Van der Waals (≈ 0,02 eV, del orden de k_BT). Errores comunes: la masa (1), creer que hervir rompe los enlaces covalentes (2), confundir con enlace iónico (4).">
+  <p class="ceja">§ 4.1 · Enlaces químicos · Actividad en parejas</p>
+  <h2 class="titulo">¿Por qué el agua es líquida y el metano es un gas?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr)">
+    <div class="pila">
+      <table class="tabla ag-tab">
+        <thead><tr><th class="izq">Sustancia</th><th>Masa molecular</th><th>Hierve a</th></tr></thead>
+        <tbody>
+          <tr><td class="izq">Agua, H₂O</td><td>18 u</td><td><strong>100 °C</strong></td></tr>
+          <tr><td class="izq">Metano, CH₄</td><td>16 u</td><td><strong>−162 °C</strong></td></tr>
+        </tbody>
+      </table>
+      <div id="ag-fig" class="svgbox"></div>
+      <p class="nota" style="margin:0">Las dos moléculas tienen enlaces covalentes por dentro y casi la misma masa. A 25 °C, la energía térmica de cada molécula es del orden de \(k_BT \approx \qty{0{,}025}{eV}\).</p>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">¿Por qué el agua sigue líquida hasta los 100 °C y el metano ya es gas a −162 °C?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">El agua es más pesada (18 u frente a 16 u) y por eso cuesta más evaporarla.</button><button type="button" class="pr-opc" data-o="b">Al hervir se rompen los enlaces covalentes dentro de las moléculas, y los O–H son mucho más fuertes que los C–H.</button><button type="button" class="pr-opc" data-o="c">Las moléculas de agua son dipolos permanentes y se unen entre sí con puentes de hidrógeno; las de metano, simétricas, solo con fuerzas de Van der Waals.</button><button type="button" class="pr-opc" data-o="d">El metano tiene enlaces iónicos, que se rompen con más facilidad.</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Al hervir <strong>no</strong> se rompen las moléculas: se separan unas de otras. Lo que importa es la unión <strong>entre</strong> moléculas. El oxígeno atrae más a los electrones y queda con carga parcial \(\delta^-\), y los hidrógenos con \(\delta^+\): cada H de una molécula se pega al O de la vecina con un puente de hidrógeno de unos \(\qty{0{,}2}{eV}\), unas 8 veces \(k_BT\). El metano es simétrico y no tiene dipolo permanente: sus moléculas solo se atraen por dipolos instantáneos (Van der Waals), unos \(\qty{0{,}02}{eV}\), del orden de \(k_BT\), y por eso a temperatura ambiente es gas. La diferencia de masa es mínima.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-agua">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Cuando el agua hierve, ¿se convierte en hidrógeno y oxígeno, o sigue siendo H₂O? ¿Qué uniones hay que vencer, entonces? Mira la forma de cada molécula.</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-agua" class="gform-dlg" aria-label="Formulario: Actividad: agua y metano">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: agua y metano" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-clasif" data-label="Actividad: clasifica los enlaces">
+  <p class="ceja">§ 4.1 · Enlaces químicos · Actividad <span class="score">Aciertos: <b id="cl-score">0</b> / 10</span></p>
+  <h2 class="titulo">Clasifica: ¿qué tipo de enlace mantiene unida cada cosa?</h2>
+  <div class="cl-lista" id="cl-lista"></div>
+  <div class="fila-btn" style="margin-top:12px"><button type="button" class="cz-btn" id="cl-ok">Comprobar</button><button type="button" class="cz-btn" id="cl-borrar">Empezar de nuevo</button><span class="cz-fb" id="cl-fb" style="margin:0 0 0 10px"></span><button type="button" class="envio-btn" data-envio="envio-dp-clasif">📷 Enviar mi clasificación</button></div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-dp-clasif" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-dp-clasif-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-dp-clasif-tit">Enviar tu clasificación</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="clasificacion-enlaces.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
+</section>
+
 <section class="diapositiva" data-seccion="Electricidad" id="dp-pot2" data-label="Corriente y potencia">
   <p class="ceja">§ 4.2 · Corriente eléctrica</p>
   <h2 class="titulo">Corriente, voltaje y la factura de la luz</h2>
   <div class="g2-40">
     <div class="pila">
-      <div class="frag">\[ I = \dfrac{q}{t} = \dfrac{n_e\,q_e}{t}, \qquad W = Vq = V I t \;\Longrightarrow\; P = \dfrac{W}{t} = V I. \]</div>
+      <div class="frag">\[ \begin{gathered} I = \dfrac{q}{t} = \dfrac{n_e\,q_e}{t}, \qquad W = Vq = V I t \\ \Longrightarrow\; P = \dfrac{W}{t} = V I \,. \end{gathered} \]</div>
       <div class="caja frag"><p style="margin:0"><strong>Ejemplo.</strong> Por un cable con \(\qty{0{,}5}{A}\) pasan \(0{,}5/(\qty{1{,}6\times 10^{-19}}{C}) \approx 3{,}1\times 10^{18}\) electrones cada segundo.</p></div>
-      <div class="caja c1 frag"><p style="margin:0"><strong>Nevera:</strong> \(\qty{34{,}7}{kWh}\) al mes \(\div\, \qty{720}{h} \approx \qty{48}{W}\); a \(\qty{110}{V}\), \(I \approx \qty{0{,}44}{A}\).</p></div>
+      <div class="caja c1 frag"><p style="margin:0"><strong>Ejemplo.</strong> Un equipo conectado a \(\qty{110}{V}\) que usa \(\qty{4}{A}\) consume \(P = VI = 110 \times \qty{4}{} = \qty{440}{W}\).</p></div>
     </div>
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Potencia media a partir del consumo mensual</span><span class="val" id="fa-lect"></span></div>
@@ -497,6 +653,43 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div id="fa-tex" class="ec" style="font-size:40px;min-height:300px"></div>
       <p class="nota">Mes de 30 días \(= \qty{720}{h}\); red de \(\qty{110}{V}\).</p>
     </figure>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-nevera" data-label="Actividad: la etiqueta de la nevera">
+  <p class="ceja">§ 4.2 · Corriente eléctrica · Actividad <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
+  <h2 class="titulo">Lee la etiqueta: ¿cuánta potencia usa esta nevera?</h2>
+  <div class="g2-40" style="grid-template-columns:minmax(0,0.62fr) minmax(0,1.38fr)">
+    <figure class="fg"><img class="foto" style="--fh:780px" src="img/etiqueta-nevera.webp" alt="Etiqueta de consumo de energía de un refrigerador: 34,7 kWh por mes, ahorro energético 52,3 %, clase B"><figcaption>Etiqueta de consumo de energía de una nevera (figura 4.6 del texto). Toca la imagen para ampliarla.</figcaption></figure>
+    <div class="pila">
+      <p class="nota" style="margin:0">Toma un mes de 30 días y una red de \(\qty{110}{V}\). Escribe el número y pulsa Enter o «Comprobar».</p>
+      <div class="nev-g">
+      <div class="pr-item" data-ok-num="48.2" data-tol="1">
+        <div class="pr-q">1. Potencia media que usa la nevera, en W.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="W"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(P = \dfrac{\text{energía}}{\text{tiempo}}\): usa \(\qty{1}{mes} = \qty{720}{h}\) y \(\qty{1}{kW} = \qty{1000}{W}\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 34,7 kWh / 720 h ≈ 0,0482 kW ≈ 48 W, menos que un bombillo incandescente de 60 W." data-mal-txt="Divide los kWh del mes entre las horas del mes y pasa de kW a W."></div>
+      </div>
+      <div class="pr-item" data-ok-num="0.44" data-tol="0.02">
+        <div class="pr-q">2. Corriente media que circula por el cable de la nevera, en A.</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="A"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">De \(P = VI\), despeja \(I = P/V\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: I = 48 W / 110 V ≈ 0,44 A." data-mal-txt="Usa I = P/V con la potencia de la pregunta 1."></div>
+      </div>
+      <div class="pr-item" data-ok-num="18.2" data-tol="0.6">
+        <div class="pr-q">3. Si la casa consume \(\qty{191}{kWh}\) al mes, ¿qué porcentaje de ese consumo es la nevera?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="%"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">Porcentaje = (consumo de la nevera / consumo de la casa) × 100.</div>
+        <div class="pr-fb" data-ok-txt="Correcto: 34,7 / 191 ≈ 0,182, es decir, un 18 %." data-mal-txt="Divide 34,7 kWh entre 191 kWh y multiplica por 100."></div>
+      </div>
+      <div class="pr-item" data-ok-num="26.3" data-tol="1">
+        <div class="pr-q">4. ¿Cuántos coulombs de carga pasan por el cable en un minuto?</div>
+        <div class="fila-btn"><input class="pr-in" type="text" placeholder="C"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
+        <div class="pr-pista">\(q = I\,t\), con \(t = \qty{60}{s}\).</div>
+        <div class="pr-fb" data-ok-txt="Correcto: q = 0,438 A × 60 s ≈ 26 C. Son unos 1,6 × 10²⁰ electrones cada minuto." data-mal-txt="Multiplica la corriente de la pregunta 2 por 60 s."></div>
+      </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -892,9 +1085,7 @@ function rango(id, alCambiar) {
 
 
 /* ═══ PRÁCTICA ═════════════════════════════════════════════════════════ */
-(function () {
-  const dp = document.getElementById('dp-practica');
-  if (!dp) return;
+$$('section').filter(sec => sec.querySelector('.pr-item')).forEach(function (dp) {
   const marcador = $('.pr-score', dp);
   let aciertos = 0;
   const fb = (it, ok) => { const f = $('.pr-fb', it); f.className = 'pr-fb ' + (ok ? 'ok' : 'mal'); f.textContent = (ok ? '✓ ' : '✗ ') + (ok ? f.dataset.okTxt : f.dataset.malTxt); };
@@ -918,7 +1109,7 @@ function rango(id, alCambiar) {
       }));
     }
   });
-})();
+});
 
 
 
@@ -1019,7 +1210,16 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   const g = cv.getContext('2d'), W = cv.width, H = cv.height;
   const Q = [{ x: 230, y: 280, q: 1 }, { x: 490, y: 280, q: -1 }];
   const campo = (x, y) => { let ex = 0, ey = 0; Q.forEach(c => { const dx = x - c.x, dy = y - c.y, r = Math.max(12, Math.hypot(dx, dy)); ex += c.q * dx / (r * r * r); ey += c.q * dy / (r * r * r); }); return [ex, ey]; };
-  const nueva = () => { const a = Math.random() * 2 * Math.PI; return { x: Q[0].x + 26 * Math.cos(a), y: Q[0].y + 26 * Math.sin(a), vida: 0 }; };
+  /* las cargas de prueba nacen en la carga + o, una de cada tres, en el borde del lienzo
+     (así también se ven las líneas que llegan a la carga − desde afuera) */
+  const nueva = () => {
+    if (Math.random() < 0.35) {
+      const t = Math.random() * 2 * (W + H);
+      const p = t < W ? [t, 2] : t < W + H ? [W - 2, t - W] : t < 2 * W + H ? [t - W - H, H - 2] : [2, t - 2 * W - H];
+      return { x: p[0], y: p[1], vida: 0 };
+    }
+    const a = Math.random() * 2 * Math.PI; return { x: Q[0].x + 26 * Math.cos(a), y: Q[0].y + 26 * Math.sin(a), vida: 0 };
+  };
   let P = []; for (let i = 0; i < 90; i++) { const p = nueva(); p.vida = Math.random() * 300; P.push(p); }
   /* líneas de campo precalculadas */
   const lineas = [];
@@ -1027,6 +1227,17 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     const a = 2 * Math.PI * k / 16; let x = Q[0].x + 20 * Math.cos(a), y = Q[0].y + 20 * Math.sin(a); const L = [[x, y]];
     for (let s = 0; s < 900; s++) { const e = campo(x, y), n = Math.hypot(e[0], e[1]); x += 3 * e[0] / n; y += 3 * e[1] / n; L.push([x, y]); if (Math.hypot(x - Q[1].x, y - Q[1].y) < 16 || x < -50 || x > W + 50 || y < -50 || y > H + 50) break; }
     lineas.push(L);
+  }
+  /* líneas que llegan a la carga − desde fuera del lienzo: se trazan hacia atrás desde −
+     y se conservan solo las que no terminan en + (esas ya están dibujadas) */
+  for (let k = 0; k < 16; k++) {
+    const a = 2 * Math.PI * k / 16; let x = Q[1].x + 20 * Math.cos(a), y = Q[1].y + 20 * Math.sin(a); const L = [[x, y]]; let enMas = false;
+    for (let s = 0; s < 900; s++) {
+      const e = campo(x, y), n = Math.hypot(e[0], e[1]); x -= 3 * e[0] / n; y -= 3 * e[1] / n; L.push([x, y]);
+      if (Math.hypot(x - Q[0].x, y - Q[0].y) < 16) { enMas = true; break; }
+      if (x < -50 || x > W + 50 || y < -50 || y > H + 50) break;
+    }
+    if (!enMas) lineas.push(L);
   }
   let ult = 0;
   function dibuja() {
@@ -1506,6 +1717,232 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   nuevo(0);
 })();
 
+/* ═══ FISIÓN: energía eléctrica antes y después de partir el núcleo ═══
+   Esferas uniformes: U = (3/5) k Z² e² / R, R = 1,2 fm · A^(1/3), k e² = 1,44 MeV·fm. */
+(function () {
+  const host = document.getElementById('fi-fig');
+  if (!host) return;
+  const rz = document.getElementById('fi-z'), KE2 = 1.44;
+  const R = A => 1.2 * Math.cbrt(A), U = (Z, A) => 0.6 * KE2 * Z * Z / R(A);
+  const U0 = U(92, 236);
+  function pinta() {
+    const Z1 = +rz.value, Z2 = 92 - Z1, A1 = Math.round(233 * Z1 / 92), A2 = 233 - A1;
+    const R1 = R(A1), R2 = R(A2), U1 = U(Z1, A1), U2 = U(Z2, A2), dU = U0 - U1 - U2, Uc = KE2 * Z1 * Z2 / (R1 + R2);
+    host.innerHTML = '';
+    const W = 1180, H = 560, svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* núcleo inicial y fragmentos tocándose (13 px por fm) */
+    const E = 13, cy = 120;
+    nodo('circle', { cx: 150, cy: cy, r: E * R(236), style: 'fill:var(--caso2);opacity:.85' }, svg);
+    nodo('text', { x: 150, y: cy + 10, 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: '²³⁶U' }, svg);
+    flecha(svg, 270, cy, 380, cy, 'var(--tinta2)', 4);
+    const x1 = 420 + E * R1, x2 = x1 + E * (R1 + R2);
+    [[x1, R1, Z1, A1], [x2, R2, Z2, A2]].forEach(([x, r, z, a]) => {
+      nodo('circle', { cx: x, cy: cy, r: E * r, style: 'fill:var(--caso2);opacity:.85' }, svg);
+      nodo('text', { x: x, y: cy + 9, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'Z=' + z }, svg);
+      nodo('text', { x: x, y: cy + E * r + 30, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'A=' + a }, svg);
+    });
+    flecha(svg, x1 - E * R1 - 8, cy - E * R1 - 14, x1 - E * R1 - 70, cy - E * R1 - 14, 'var(--res)', 5);
+    flecha(svg, x2 + E * R2 + 8, cy - E * R2 - 14, x2 + E * R2 + 70, cy - E * R2 - 14, 'var(--res)', 5);
+    /* barras de energía */
+    const X0 = 400, ESC = 0.6;            /* px por MeV */
+    const barras = [
+      ['Antes: U del ²³⁶U', U0, 'var(--caso2)'],
+      ['Después: U₁ + U₂', U1 + U2, 'var(--caso1)'],
+      ['Liberada: ΔU', dU, 'var(--res)'],
+      ['De contacto: kZ₁Z₂e²/(R₁+R₂)', Uc, 'var(--proy)'],
+      ['Medida por fisión', 200, 'var(--tinta2)'],
+    ];
+    barras.forEach(([t, v, c], i) => {
+      const y = 250 + i * 60;
+      nodo('text', { x: X0 - 14, y: y + 30, 'text-anchor': 'end', 'font-size': 25, style: 'fill:var(--tinta);font-family:' + FTXT, txt: t }, svg);
+      nodo('rect', { x: X0, y: y, width: Math.max(2, v * ESC), height: 42, style: 'fill:' + c + ';opacity:' + (i === 4 ? 0.5 : 0.9) }, svg);
+      nodo('text', { x: X0 + v * ESC + 12, y: y + 31, 'font-size': 27, style: 'fill:var(--tinta);font-weight:700;font-family:' + FTXT, txt: num(v, 0) + ' MeV' }, svg);
+    });
+    document.getElementById('fi-zv').textContent = Z1 + ' + ' + Z2;
+    document.getElementById('fi-lect').textContent = 'ΔU = ' + num(dU, 0) + ' MeV';
+  }
+  rz.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ LOS CINCO TIPOS DE ENLACE ═══════════════════════════════════════ */
+(function () {
+  const esq = document.getElementById('en-esq');
+  if (!esq) return;
+  const T = [
+    { k: 'ion', n: 'Iónico', E: [3, 8],
+      mec: 'Un átomo cede uno o más electrones a otro: quedan un catión (+) y un anión (−) que se atraen con la fuerza de Coulomb y forman una red cristalina.',
+      tex: 'U_e = -k\\,\\dfrac{\\abs{q_1}\\,\\abs{q_2}}{r}', ej: 'sal de mesa (Na⁺Cl⁻), fluorita (CaF₂).',
+      exp: 'sólidos duros y quebradizos, con puntos de fusión altos; conducen la electricidad solo fundidos o disueltos.' },
+    { k: 'cov', n: 'Covalente', E: [2, 10],
+      mec: 'Los átomos comparten un par de electrones (↑↓) que se ubica entre los núcleos y atrae a los dos a la vez, más de lo que los núcleos se repelen.',
+      tex: '\\textstyle\\sum \\vect{F}_{\\text{núcleo}} = \\vect{F}_{\\text{repulsión}} + \\vect{F}_{\\text{atracción}} = \\vect{0}', ej: 'H₂ (4,5 eV), O₂, el agua por dentro, el diamante, el ADN a lo largo de cada hebra.',
+      exp: 'las moléculas y los cristales muy duros como el diamante.' },
+    { k: 'met', n: 'Metálico', E: [1, 9],
+      mec: 'Cada átomo suelta sus electrones de valencia: queda una red de iones positivos sumergida en un «mar» de electrones que pertenece a todo el metal y la mantiene unida.',
+      tex: '\\text{iones } (+e) \;+\; \\text{mar de electrones } (-e)', ej: 'cobre, aluminio, hierro (energía de cohesión del cobre ≈ 3,5 eV por átomo).',
+      exp: 'que los metales conduzcan la electricidad y el calor, se puedan doblar sin romperse y tengan brillo.' },
+    { k: 'dip', n: 'Puente de hidrógeno', E: [0.1, 0.4],
+      mec: 'En moléculas como el agua los electrones se acercan al oxígeno (δ⁻) y dejan los hidrógenos con carga parcial δ⁺: son dipolos permanentes, y el H de una molécula se pega al O de la vecina.',
+      tex: '\\abs{\\vect{F}_{\\text{dipolos}}} \\propto \\dfrac{1}{r^{4}}', ej: 'agua líquida y hielo, las dos hebras del ADN, la forma de las proteínas.',
+      exp: 'que el agua sea líquida a temperatura ambiente y que el hielo flote.' },
+    { k: 'vdw', n: 'Van der Waals', E: [0.01, 0.1],
+      mec: 'En cada instante los electrones de un átomo neutro pueden estar más hacia un lado: aparece un dipolo instantáneo que induce otro en el átomo vecino, y los dos se atraen.',
+      tex: '\\abs{\\vect{F}_{\\text{Van der Waals}}} \\propto \\dfrac{\\abs{\\delta^{+}}\\,\\abs{\\delta^{-}}}{r^{7}}', ej: 'gases nobles condensados, el metano, las patas del gecko, la cera y muchos plásticos.',
+      exp: 'que los gases nobles solo se licúen a temperaturas muy bajas y que el gecko trepe por un vidrio.' },
+  ];
+  const tipos = document.getElementById('en-tipos');
+  tipos.innerHTML = T.map((t, i) => '<button type="button" class="btn" data-i="' + i + '">' + t.n + '</button>').join('');
+  const W = 1180, H = 330;
+  const at = (g, x, y, r, col, txt, op) => {
+    nodo('circle', { cx: x, cy: y, r: r, style: 'fill:' + col + ';opacity:' + (op || 0.9) }, g);
+    if (txt) nodo('text', { x: x, y: y + r * 0.33, 'text-anchor': 'middle', 'font-size': Math.max(18, r * 0.9), style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: txt }, g);
+  };
+  const tx = (g, x, y, t, o) => nodo('text', Object.assign({ x: x, y: y, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: t }, o || {}), g);
+  const DIB = {
+    ion(g) {
+      for (let i = 0; i < 6; i++) for (let j = 0; j < 2; j++) {
+        const x = 260 + i * 120, y = 110 + j * 120, cl = (i + j) % 2 === 0;
+        at(g, x, y, cl ? 50 : 30, cl ? 'var(--caso1)' : 'var(--caso2)', cl ? 'Cl⁻' : 'Na⁺');
+      }
+      tx(g, 590, 315, 'red cristalina de iones que se atraen');
+    },
+    cov(g) {
+      nodo('ellipse', { cx: 590, cy: 150, rx: 260, ry: 95, style: 'fill:var(--caso1);opacity:.18' }, g);
+      at(g, 440, 150, 34, 'var(--caso2)', '+'); at(g, 740, 150, 34, 'var(--caso2)', '+');
+      at(g, 568, 150, 18, 'var(--caso1)', '↑'); at(g, 612, 150, 18, 'var(--caso1)', '↓');
+      flecha(g, 474, 150, 540, 150, 'var(--caso1)', 4); flecha(g, 706, 150, 640, 150, 'var(--caso1)', 4);
+      flecha(g, 406, 150, 330, 150, 'var(--caso2)', 4); flecha(g, 774, 150, 850, 150, 'var(--caso2)', 4);
+      tx(g, 590, 300, 'el par compartido atrae a los dos núcleos');
+    },
+    met(g) {
+      nodo('rect', { x: 200, y: 30, width: 780, height: 250, rx: 30, style: 'fill:var(--caso1);opacity:.18' }, g);
+      for (let i = 0; i < 7; i++) for (let j = 0; j < 3; j++) at(g, 260 + i * 110, 75 + j * 80, 24, 'var(--caso2)', '+');
+      const P = [[300, 115], [430, 40], [520, 200], [640, 110], [700, 255], [810, 45], [900, 190], [360, 250], [580, 50], [760, 160], [470, 120], [880, 115]];
+      P.forEach(([x, y]) => at(g, x, y, 9, 'var(--caso1)'));
+      tx(g, 590, 315, 'iones positivos en un mar de electrones');
+    },
+    dip(g) {
+      const agua = (ox, oy) => {
+        const d = 62, h = [-52, 52].map(a => [ox + d * Math.cos(a * Math.PI / 180), oy + d * Math.sin(a * Math.PI / 180)]);
+        h.forEach(([x, y]) => nodo('line', { x1: ox, y1: oy, x2: x, y2: y, style: 'stroke:var(--tinta2);stroke-width:6' }, g));
+        at(g, ox, oy, 40, 'var(--caso1)', 'O'); h.forEach(([x, y]) => at(g, x, y, 24, 'var(--caso2)', 'H'));
+        tx(g, ox - 8, oy - 52, 'δ⁻', { 'font-size': 30, style: 'fill:var(--caso1);font-weight:700;font-family:' + FTXT });
+        return h;
+      };
+      const h = agua(330, 171);
+      agua(700, 122);
+      tx(g, h[0][0] + 4, h[0][1] - 32, 'δ⁺', { 'font-size': 30, style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT });
+      nodo('line', { x1: h[0][0] + 26, y1: h[0][1], x2: 658, y2: 122, style: 'stroke:var(--res);stroke-width:5;stroke-dasharray:10 8' }, g);
+      tx(g, 515, 160, 'puente de hidrógeno', { style: 'fill:var(--res);font-weight:700;font-family:' + FTXT });
+      tx(g, 590, 315, 'dipolos permanentes: el H (δ⁺) de una molécula atrae al O (δ⁻) de otra');
+    },
+    vdw(g) {
+      [[400, 1], [780, 1]].forEach(([x], i) => {
+        nodo('ellipse', { cx: x - 22, cy: 150, rx: 110, ry: 85, style: 'fill:var(--caso1);opacity:.22' }, g);
+        at(g, x + 10, 150, 22, 'var(--caso2)', '+');
+        tx(g, x - 95, 160, 'δ⁻', { 'font-size': 32, style: 'fill:var(--caso1);font-weight:700;font-family:' + FTXT });
+        tx(g, x + 95, 160, 'δ⁺', { 'font-size': 32, style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT });
+        tx(g, x, 275, i ? 'dipolo inducido' : 'dipolo instantáneo');
+      });
+      flecha(g, 520, 150, 620, 150, 'var(--res)', 5);
+      tx(g, 590, 315, 'átomos neutros que se atraen por un instante');
+    },
+  };
+  let sel = 0;
+  function pinta() {
+    const t = T[sel];
+    $$('#en-tipos .btn').forEach((b, i) => b.classList.toggle('on', i === sel));
+    esq.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, esq);
+    DIB[t.k](nodo('g', {}, svg));
+    /* gráfica logarítmica de energías */
+    const gr = document.getElementById('en-graf'); gr.innerHTML = '';
+    const G = nodo('svg', { viewBox: '0 0 1180 300', class: 'fig' }, gr);
+    const L0 = -2.3, L1 = 1.2, X = e => 250 + (Math.log10(e) - L0) / (L1 - L0) * 900;
+    [0.01, 0.1, 1, 10].forEach(e => {
+      nodo('line', { x1: X(e), x2: X(e), y1: 10, y2: 255, style: 'stroke:var(--rejilla);stroke-width:2' }, G);
+      nodo('text', { x: X(e), y: 288, 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FMATH, txt: num(e, e < 1 ? (e < 0.1 ? 2 : 1) : 0) + ' eV' }, G);
+    });
+    T.forEach((u, i) => {
+      const y = 18 + i * 47, on = i === sel;
+      nodo('text', { x: 236, y: y + 26, 'text-anchor': 'end', 'font-size': 24, style: 'fill:' + (on ? 'var(--tinta)' : 'var(--tinta2)') + ';font-weight:' + (on ? 700 : 400) + ';font-family:' + FTXT, txt: u.n }, G);
+      nodo('rect', { x: X(u.E[0]), y: y + 4, width: X(u.E[1]) - X(u.E[0]), height: 30, rx: 6, style: 'fill:' + (on ? 'var(--res)' : 'var(--proy)') + ';opacity:' + (on ? 0.95 : 0.55) }, G);
+    });
+    const xk = X(0.025);
+    nodo('line', { x1: xk, x2: xk, y1: 6, y2: 258, style: 'stroke:var(--mal);stroke-width:3;stroke-dasharray:8 6' }, G);
+    nodo('text', { x: xk + 8, y: 250, 'font-size': 22, style: 'fill:var(--mal);font-weight:600;font-family:' + FTXT, txt: 'kT a 25 °C' }, G);
+    document.getElementById('en-lect').textContent = t.n + ': ' + num(t.E[0], t.E[0] < 0.1 ? 2 : t.E[0] < 1 ? 1 : 0) + '–' + num(t.E[1], t.E[1] < 0.1 ? 2 : t.E[1] < 1 ? 1 : 0) + ' eV';
+    document.getElementById('en-nom').textContent = (sel + 1) + '. Enlace ' + (t.k === 'dip' ? 'por puente de hidrógeno (dipolos permanentes)' : t.k === 'vdw' ? 'de Van der Waals (dispersión de London)' : t.n.toLowerCase());
+    document.getElementById('en-mec').textContent = t.mec;
+    document.getElementById('en-ej').textContent = t.ej;
+    document.getElementById('en-exp').textContent = t.exp;
+    texVivo(document.getElementById('en-tex'), t.tex);
+  }
+  tipos.addEventListener('click', ev => { const b = ev.target.closest('button'); if (b) { sel = +b.dataset.i; pinta(); } });
+  document.addEventListener('diapositiva', () => { const el = document.getElementById('en-tex'); if (el.__tex && !el.querySelector('mjx-container')) { el.__tex = null; pinta(); } });
+  pinta();
+})();
+
+/* ═══ ACTIVIDAD AGUA/METANO: dibujo de las dos moléculas ═════════════ */
+(function () {
+  const host = document.getElementById('ag-fig');
+  if (!host) return;
+  const svg = nodo('svg', { viewBox: '0 0 900 260', class: 'fig' }, host);
+  const at = (x, y, r, col, t) => { nodo('circle', { cx: x, cy: y, r: r, style: 'fill:' + col }, svg); nodo('text', { x: x, y: y + r * 0.35, 'text-anchor': 'middle', 'font-size': r * 0.95, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: t }, svg); };
+  const enl = (x1, y1, x2, y2) => nodo('line', { x1: x1, y1: y1, x2: x2, y2: y2, style: 'stroke:var(--tinta2);stroke-width:6' }, svg);
+  /* agua: forma de V */
+  enl(220, 110, 160, 175); enl(220, 110, 280, 175); at(220, 110, 40, 'var(--caso1)', 'O'); at(160, 175, 24, 'var(--caso2)', 'H'); at(280, 175, 24, 'var(--caso2)', 'H');
+  nodo('text', { x: 220, y: 245, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'H₂O: forma de V' }, svg);
+  /* metano: tetraedro visto de frente */
+  [[600, 60], [700, 60], [600, 180], [700, 180]].forEach(([x, y]) => enl(650, 120, x, y));
+  [[600, 60], [700, 60], [600, 180], [700, 180]].forEach(([x, y]) => at(x, y, 24, 'var(--caso2)', 'H'));
+  at(650, 120, 36, 'var(--tinta2)', 'C');
+  nodo('text', { x: 650, y: 245, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'CH₄: simétrica' }, svg);
+})();
+
+/* ═══ ACTIVIDAD: CLASIFICA LOS ENLACES ═════════════════════════════════ */
+(function () {
+  const lista = document.getElementById('cl-lista');
+  if (!lista) return;
+  const TIP = [['ion', 'Iónico'], ['cov', 'Covalente'], ['met', 'Metálico'], ['dip', 'Puente de H'], ['vdw', 'Van der Waals']];
+  const IT = [
+    ['La sal de mesa, NaCl', 'ion', 'El Na cede su electrón al Cl: Na⁺ y Cl⁻ se atraen.'],
+    ['Un diamante (carbono puro)', 'cov', 'Cada C comparte un par de electrones con cuatro vecinos.'],
+    ['Un alambre de cobre', 'met', 'Iones Cu⁺ en un mar de electrones: por eso conduce.'],
+    ['El hielo, entre una molécula de H₂O y otra', 'dip', 'El H (δ⁺) de una molécula se pega al O (δ⁻) de la vecina.'],
+    ['El argón sólido, a −189 °C', 'vdw', 'Átomos neutros y simétricos: solo dipolos instantáneos.'],
+    ['La molécula de oxígeno, O₂', 'cov', 'Dos átomos iguales comparten dos pares de electrones.'],
+    ['Las patas de un gecko en un vidrio', 'vdw', 'Millones de pelillos se acercan tanto que los dipolos instantáneos bastan.'],
+    ['Las dos hebras del ADN, entre sí', 'dip', 'Las bases se aparean con puentes de hidrógeno: por eso las hebras se separan al copiarse.'],
+    ['La fluorita, CaF₂', 'ion', 'El Ca cede dos electrones, uno a cada F: Ca²⁺ y F⁻.'],
+    ['Una lámina de aluminio', 'met', 'Cada Al aporta tres electrones al mar común.'],
+  ];
+  lista.innerHTML = IT.map((it, i) => '<div class="cl-it" data-ok="' + it[1] + '" data-i="' + i + '"><span class="cl-n">' + (i + 1) + '. ' + it[0] + '</span><span class="cl-b">' +
+    TIP.map(t => '<button type="button" class="btn" data-t="' + t[0] + '">' + t[1] + '</button>').join('') + '</span><span class="cl-exp"></span></div>').join('');
+  const items = $$('.cl-it', lista), fb = document.getElementById('cl-fb'), marc = document.getElementById('cl-score');
+  items.forEach(it => it.querySelector('.cl-b').addEventListener('click', ev => {
+    const b = ev.target.closest('button'); if (!b) return;
+    it.dataset.resp = b.dataset.t; $$('button', it).forEach(o => o.classList.toggle('sel', o === b)); it.classList.remove('ok', 'mal');
+  }));
+  document.getElementById('cl-ok').addEventListener('click', () => {
+    let n = 0, faltan = 0;
+    items.forEach(it => {
+      if (!it.dataset.resp) { faltan++; return; }
+      const ok = it.dataset.resp === it.dataset.ok; if (ok) n++;
+      it.classList.toggle('ok', ok); it.classList.toggle('mal', !ok);
+      const nom = TIP.find(t => t[0] === it.dataset.ok)[1];
+      it.querySelector('.cl-exp').textContent = (ok ? '✓ ' : '✗ Es ' + nom.toLowerCase() + '. ') + IT[+it.dataset.i][2];
+    });
+    marc.textContent = n;
+    fb.textContent = faltan ? 'Te faltan ' + faltan + ' por clasificar.' : (n === items.length ? '✓ ¡Todas bien!' : n + ' de ' + items.length + ' correctas. Lee la explicación de cada una.');
+    fb.style.color = !faltan && n === items.length ? 'var(--res)' : 'var(--mal)';
+  });
+  document.getElementById('cl-borrar').addEventListener('click', () => {
+    items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('button', it).forEach(b => b.classList.remove('sel')); });
+    marc.textContent = '0'; fb.textContent = '';
+  });
+})();
+
 /* ═══ FACTURA: POTENCIA MEDIA ══════════════════════════════════════════ */
 (function () {
   const el = document.getElementById('fa-tex');
@@ -1808,6 +2245,8 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   });
   document.getElementById('ba-borrar').addEventListener('click', () => { items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); }); marc.textContent = '0'; fb.textContent = ''; });
 })();
+
+
 
 
 /* envio-formulario:h2c */
