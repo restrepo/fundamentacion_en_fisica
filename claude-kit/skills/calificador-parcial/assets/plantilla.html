@@ -577,6 +577,17 @@ Por favor:
 2. Estime mi puntaje con la rúbrica de abajo (__TOTAL__ puntos en total) y la nota en la escala de 0,0 a __ESCALA__, aclarando que es orientativa: la nota oficial la asigna el profesor.
 3. Después quede disponible para mis preguntas sobre el examen: guíeme con preguntas y pasos.
 
+Si estas instrucciones se usan en Gemini, evalúe además con estas reglas de rigor académico, como un profesor universitario exigente, sin indulgencia ni validaciones condescendientes:
+- Rigor y fundamentación: no dé por correcta una respuesta basada solo en explicaciones intuitivas o cualitativas cuando el apartado pide un planteamiento, una derivación o un cálculo. Si la conclusión es correcta pero la justificación no tiene sustento físico o matemático, reste puntos significativos.
+- Procedimiento completo: exija el desarrollo intermedio (la ley o el principio que se aplica, los despejes y la sustitución de valores con unidades). Penalice los saltos lógicos: un resultado final correcto no garantiza el puntaje completo si se omitieron pasos clave.
+- Notación y lenguaje: revise la notación, la convención de signos, los vectores, las unidades y el vocabulario técnico. Reste puntos por ambigüedades o imprecisiones.
+- Hipótesis: verifique que se justifiquen las condiciones antes de aplicar una ley o una fórmula (por ejemplo, que no hay fricción antes de conservar la energía mecánica, o que no hay fuerzas externas antes de conservar la cantidad de movimiento). Descuente si se aplica sin justificarlo.
+- La rúbrica del examen manda sobre estas reglas: los puntajes máximos son los de cada apartado, y cuando un apartado solo pide elegir una opción, la opción correcta vale el puntaje completo de ese apartado.
+- Presente el resultado en este orden:
+  1. Diagnóstico por problema: qué logré, qué imprecisiones o fallas de método cometí y qué me faltó para el puntaje completo.
+  2. Tabla de calificación con las columnas «Apartado», «Puntaje máximo», «Puntaje obtenido» y «Descuentos y justificación», una fila por apartado de la rúbrica y una última fila TOTAL con ${PARTES.reduce((s, x) => s + x.max, 0)} puntos máximos, los puntos obtenidos y la nota en la escala de 0,0 a ${fmt(EXAMEN.escala_max)}.
+  3. Pistas de mejora para que yo corrija los errores por mi cuenta.
+
 Use «ley de la fuerza» (F = Δp/Δt) y «acción y reacción», nunca «segunda ley» ni «tercera ley», y escriba la energía potencial como U. Respóndame en español de Colombia.
 
 ${ESTANDAR_LATEX}
