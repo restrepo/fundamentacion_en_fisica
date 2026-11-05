@@ -201,22 +201,35 @@ const EXAMEN = JSON.parse(document.getElementById("examen").textContent);
 const PROBLEMAS = EXAMEN.problemas;
 const NP = EXAMEN.paginas;
 const DISTRIB = EXAMEN.distribucion.map((d, i) => `página ${i + 1}: ${d}`).join("; ");
-const ESTANDAR_LATEX = String.raw`Formato de las matemáticas (el chat las muestra con KaTeX):
-- Escriba TODA expresión matemática, número con unidades o símbolo físico en LaTeX entre $$...$$: dentro de la oración para las expresiones en línea, y en su propia línea para las ecuaciones destacadas. No use bloques de código ni texto plano para las fórmulas.
-- Si estas instrucciones se usan en ChatGPT: use el componente matemático de ChatGPT, <math>...</math>, en lugar de los delimitadores $$...$$, con el mismo LaTeX dentro. Todas las demás reglas de este formato se mantienen.
-- Si estas instrucciones se usan en Gemini, escriba las matemáticas así (KaTeX/MathJax), en lugar de usar $$...$$ para todo:
-  - Ecuaciones en línea: use un solo signo de dólar $...$ para toda expresión corta, constante física, número con unidades, símbolo o variable que forme parte de un párrafo u oración. NUNCA use $$...$$ dentro de oraciones ni al final de un ítem o frase explicativa: eso rompe el flujo de lectura e inserta bloques centrados innecesarios.
-  - Ecuaciones destacadas: reserve $$...$$ exclusivamente para ecuaciones complejas, fórmulas principales o procedimientos algebraicos de varios pasos, aislados en su propia línea.
-  - Fracciones en línea con $\tfrac{a}{b}$ o con barra $a/b$; \frac solo en las ecuaciones destacadas.
-  - Números, unidades, notación científica, vectores, magnitudes y subíndices siguen las reglas de abajo, escritos entre $...$ cuando van en línea: $10\,\mathrm{J}$, $9{,}8\,\mathrm{m/s^2}$, $6{,}67 \times 10^{-11}\,\mathrm{N\,m^2/kg^2}$, $\lvert\Delta\boldsymbol{p}\rvert$, $v_{\text{antes}}$, $v_B$.
-- Coma decimal con llaves: $$9{,}8$$, $$0{,}5\,\mathrm{kg}$$; nunca punto decimal.
-- Unidades en redonda con \mathrm, separadas del número por un espacio fino \,: $$19{,}8\,\mathrm{m/s}$$, $$50\,\mathrm{J}$$, $$6{,}67\times 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$$. Notación científica siempre con \times 10^{n}, nunca con «e».
-- Vectores en negrilla con \boldsymbol: $$\boldsymbol{F} = \Delta\boldsymbol{p}/\Delta t$$. Magnitudes con \lvert\,\rvert: $$\lvert\Delta\boldsymbol{p}\rvert$$.
-- Subíndices que son palabras, en redonda con \text: $$v_{\text{antes}}$$, $$v_{\text{escape}}$$, $$g_{\text{Luna}}$$. Subíndices que son etiquetas de puntos o cuerpos, en cursiva: $$v_B$$, $$m_1$$.
-- La energía potencial se escribe $$U$$ (por ejemplo $$U = mgh$$); nunca E_pot ni E_p.
-- Fracciones con \frac en las ecuaciones destacadas y con \tfrac o barra en línea; raíces con \sqrt{...}; multiplicación con \times o con paréntesis: $$(0{,}5)(10)(10)$$.
-- Si una ecuación destacada cierra una oración, ponga \, antes del punto o la coma: $$v = \sqrt{2gh}\,.$$
-- Para varios pasos, una sola ecuación destacada con \begin{aligned} ... \end{aligned}, alineada en el signo igual.`;
+const ESTANDAR_LATEX = String.raw`Formato de las matemáticas. Primero identifique en qué asistente está respondiendo (Claude, ChatGPT o Gemini) y aplique la sección de delimitadores que le corresponde. Las convenciones de escritura valen para todos.
+
+CONVENCIONES DE ESCRITURA (valen igual en línea y en ecuaciones destacadas):
+- Escriba en LaTeX toda expresión matemática, número con unidades o símbolo físico. No use bloques de código ni texto plano para las fórmulas.
+- Coma decimal con llaves: $9{,}8$, $0{,}5\,\mathrm{kg}$. Nunca punto decimal.
+- Unidades en redonda con \mathrm y separadas del número por un espacio fino \, : $19{,}8\,\mathrm{m/s}$, $50\,\mathrm{J}$, $6{,}67\times 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$. Notación científica siempre con \times 10^{n}, nunca con «e».
+- Vectores en negrilla con \boldsymbol: $\boldsymbol{F} = \Delta\boldsymbol{p}/\Delta t$. Magnitudes con \lvert\,\rvert: $\lvert\Delta\boldsymbol{p}\rvert$.
+- Subíndices que son palabras, en redonda con \text: $v_{\text{antes}}$, $v_{\text{escape}}$, $g_{\text{Luna}}$. Subíndices que son etiquetas de puntos o cuerpos, en cursiva: $v_B$, $m_1$.
+- La energía potencial siempre es $U$ (por ejemplo $U = mgh$), nunca E_pot ni E_p.
+- Fracciones con \tfrac o con barra en línea, y con \frac en las ecuaciones destacadas. Raíces con \sqrt{...}. Multiplicación con \times o con paréntesis: $(0{,}5)(10)(10)$.
+- Si una ecuación destacada cierra una oración, ponga \, antes del punto o la coma.
+- Varios pasos algebraicos: una sola ecuación destacada con \begin{aligned} ... \end{aligned}, alineada en el signo igual.
+
+DELIMITADORES SI RESPONDE EN CLAUDE (KaTeX):
+REGLA PRINCIPAL: nunca use $$...$$ dentro de una oración, de un ítem de lista ni de una celda de tabla.
+1. Matemáticas en línea (dentro de una oración, un ítem o una celda de tabla): un solo signo de dólar, $...$. Esto incluye símbolos, variables, constantes y números con unidades. Ejemplos: $v_B = 19{,}8\,\mathrm{m/s}$, $U = mgh$, $E_i = 50\,\mathrm{J}$.
+2. Ecuaciones destacadas: use $$...$$ SOLO si la ecuación va en su propia línea, con una línea en blanco antes y otra después. No ponga texto en la misma línea que el $$. Si la ecuación está dentro de un ítem de lista, cierre el ítem y escriba la ecuación en un párrafo aparte, sin sangría de lista. Ejemplo de ecuación destacada correcta:
+
+$$R = \frac{2GM}{c^{2}}\,.$$
+
+3. No use los delimitadores \( \) ni \[ \], ni la etiqueta <math> ni marcas de otras plataformas.
+4. Antes de responder, revise que no quede ningún $$ dentro de una oración, una lista o una tabla, y que cada $$ de ecuación destacada esté solo en su línea.
+
+DELIMITADORES SI RESPONDE EN GEMINI (KaTeX/MathJax):
+1. Ecuaciones en línea: un solo signo de dólar $...$ para toda expresión corta, constante física, número con unidades, símbolo o variable que forme parte de un párrafo u oración. NUNCA use $$...$$ dentro de oraciones ni al final de un ítem o frase explicativa: eso rompe el flujo de lectura e inserta bloques centrados innecesarios.
+2. Ecuaciones destacadas: reserve $$...$$ exclusivamente para ecuaciones complejas, fórmulas principales o procedimientos algebraicos de varios pasos, aislados en su propia línea.
+
+DELIMITADORES SI RESPONDE EN CHATGPT:
+1. Use el componente matemático de ChatGPT, <math>...</math>, en lugar de $...$ y $$...$$, con el mismo LaTeX dentro. Las convenciones de escritura se mantienen.`;
 const PARTES = PROBLEMAS.flatMap(p => p.partes.map(x => Object.assign(x, {problema:p.n})));
 const estado = {imgs:Array(NP).fill(null), puntos:{}, comentarios:{}, lectura:{}, observ:"", calificado:false};
 let sample = null, sampleTexto = null, ctl = null;
@@ -356,7 +369,7 @@ Responda SOLO con un objeto JSON con esta forma exacta:
  "apartados":[{"id":"1-I","puntos":8,"lectura":"lo que escribió el estudiante, resumido en pocas palabras","comentario":"por qué ese puntaje, en una frase"}],
  "observaciones":"una o dos frases generales para el estudiante"${modo === "estudiante" ? `,
  "retro":[{"problema":1,"bien":"qué hizo bien","revisar":"qué error cometió o qué le faltó, sin dar la respuesta completa si la tuvo mal","pista":"una pregunta o pista para que lo corrija por su cuenta"}]` : ""}}
-Incluya exactamente un elemento en "apartados" por cada id: ${PARTES.map(x => x.id).join(", ")}. Escriba en español de Colombia.${modo === "estudiante" ? ' En "retro" incluya un elemento por cada problema, del 1 al ${PROBLEMAS.length}; diríjase al estudiante de usted, con tono formativo y alentador. En los textos de "comentario" y "retro" escriba las fórmulas en LaTeX entre $$...$$, con coma decimal $$9{,}8$$ y unidades $$\\,\\mathrm{m/s}$$ (escape las barras invertidas dentro del JSON).' : ""}`;
+Incluya exactamente un elemento en "apartados" por cada id: ${PARTES.map(x => x.id).join(", ")}. Escriba en español de Colombia.${modo === "estudiante" ? ' En "retro" incluya un elemento por cada problema, del 1 al ${PROBLEMAS.length}; diríjase al estudiante de usted, con tono formativo y alentador. En los textos de "comentario" y "retro" escriba las fórmulas en LaTeX entre $...$ (nunca $$...$$ dentro del texto), con coma decimal $9{,}8$ y unidades $19{,}8\\,\\mathrm{m/s}$ (escape las barras invertidas dentro del JSON).' : ""}`;
 }
 
 $("calificar").onclick = async () => {
@@ -484,7 +497,7 @@ function ponerTexto(el, texto){
   // una línea que solo contiene $$...$$ se muestra como ecuación destacada
   el.textContent = String(texto).replace(/^[ \t]*\$\$([\s\S]+?)\$\$[ \t]*$/gm, "\\[$1\\]");
   if (window.renderMathInElement){
-    try { renderMathInElement(el, {delimiters:[{left:"\\[", right:"\\]", display:true},{left:"$$", right:"$$", display:false},{left:"\\(", right:"\\)", display:false}], throwOnError:false}); } catch {}
+    try { renderMathInElement(el, {delimiters:[{left:"\\[", right:"\\]", display:true},{left:"$$", right:"$$", display:false},{left:"$", right:"$", display:false},{left:"\\(", right:"\\)", display:false}], throwOnError:false}); } catch {}
   }
 }
 
