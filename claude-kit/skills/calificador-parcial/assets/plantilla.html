@@ -111,7 +111,7 @@ kbd{font-family:var(--mono);font-size:.82em;border:1px solid var(--tinta2);borde
 
   <section class="panel solo-est guia" aria-labelledby="t-guia">
     <h2 id="t-guia">Cómo revisar su examen con Claude</h2>
-    <p class="coment">Funciona con su cuenta gratuita de Claude. Antes de empezar, tome una foto de cada una de las __NPAL__ páginas de su parcial: nítida, de frente y con buena luz.</p>
+    <p class="coment">Funciona con su cuenta gratuita de Claude. Antes de empezar, tome una foto de cada una de las __NPAL__ páginas de su parcial: nítida, de frente y con buena luz. Si prefiere ChatGPT o Gemini, los pasos son los mismos: el texto que se copia ya trae las reglas para que cada uno muestre bien las fórmulas.</p>
     <ol class="pasos">
       <li><div><h3>Copie las instrucciones</h3><p>El botón copia un texto con los enunciados, las soluciones y la rúbrica del parcial, y le explica a Claude cómo revisar su examen.</p><div class="fila"><button class="primario" id="copiarprompt" type="button">Copiar instrucciones</button><span class="estado" id="estcopia" role="status" aria-live="polite"></span></div></div></li>
       <li><div><h3>Abra un chat nuevo de Claude</h3><p>Entre a <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai/new</a> con su cuenta, o abra la aplicación de Claude en el celular y empiece una conversación nueva.</p></div></li>
@@ -204,6 +204,11 @@ const DISTRIB = EXAMEN.distribucion.map((d, i) => `página ${i + 1}: ${d}`).join
 const ESTANDAR_LATEX = String.raw`Formato de las matemáticas (el chat las muestra con KaTeX):
 - Escriba TODA expresión matemática, número con unidades o símbolo físico en LaTeX entre $$...$$: dentro de la oración para las expresiones en línea, y en su propia línea para las ecuaciones destacadas. No use bloques de código ni texto plano para las fórmulas.
 - Si estas instrucciones se usan en ChatGPT: use el componente matemático de ChatGPT, <math>...</math>, en lugar de los delimitadores $$...$$, con el mismo LaTeX dentro. Todas las demás reglas de este formato se mantienen.
+- Si estas instrucciones se usan en Gemini, escriba las matemáticas así (KaTeX/MathJax), en lugar de usar $$...$$ para todo:
+  - Ecuaciones en línea: use un solo signo de dólar $...$ para toda expresión corta, constante física, número con unidades, símbolo o variable que forme parte de un párrafo u oración. NUNCA use $$...$$ dentro de oraciones ni al final de un ítem o frase explicativa: eso rompe el flujo de lectura e inserta bloques centrados innecesarios.
+  - Ecuaciones destacadas: reserve $$...$$ exclusivamente para ecuaciones complejas, fórmulas principales o procedimientos algebraicos de varios pasos, aislados en su propia línea.
+  - Fracciones en línea con $\tfrac{a}{b}$ o con barra $a/b$; \frac solo en las ecuaciones destacadas.
+  - Números, unidades, notación científica, vectores, magnitudes y subíndices siguen las reglas de abajo, escritos entre $...$ cuando van en línea: $10\,\mathrm{J}$, $9{,}8\,\mathrm{m/s^2}$, $6{,}67 \times 10^{-11}\,\mathrm{N\,m^2/kg^2}$, $\lvert\Delta\boldsymbol{p}\rvert$, $v_{\text{antes}}$, $v_B$.
 - Coma decimal con llaves: $$9{,}8$$, $$0{,}5\,\mathrm{kg}$$; nunca punto decimal.
 - Unidades en redonda con \mathrm, separadas del número por un espacio fino \,: $$19{,}8\,\mathrm{m/s}$$, $$50\,\mathrm{J}$$, $$6{,}67\times 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$$. Notación científica siempre con \times 10^{n}, nunca con «e».
 - Vectores en negrilla con \boldsymbol: $$\boldsymbol{F} = \Delta\boldsymbol{p}/\Delta t$$. Magnitudes con \lvert\,\rvert: $$\lvert\Delta\boldsymbol{p}\rvert$$.
