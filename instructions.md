@@ -16,7 +16,7 @@ Conversa con el usuario en **español de Colombia y Latinoamérica**.
 | `fuentes/_ds/` | Sistema de diseño compartido. |
 | `lecciones/*.html` | **Generado.** Nunca se edita a mano; se regenera desde la fuente. |
 | `index.html`, `README.md` | Portada del sitio y descripción del repositorio. |
-| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción), `actualizar-repositorio`, `google-form-popup`. |
+| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante). |
 | `claude-kit/latex/` | Fragmentos LaTeX pendientes de pegar en `main.tex` del libro. |
 | `skills/` | Copias empaquetadas (`.skill`) para subir a claude.ai. |
 

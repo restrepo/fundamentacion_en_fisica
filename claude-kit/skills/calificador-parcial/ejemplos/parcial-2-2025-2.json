@@ -1,0 +1,135 @@
+{
+  "curso": "Fundamentación en Física",
+  "codigo": "302133",
+  "institucion": "Universidad de Antioquia",
+  "examen": "Parcial 2",
+  "tema": "dinámica newtoniana",
+  "paginas": 4,
+  "distribucion": [
+    "problemas 1 y 2",
+    "problema 3",
+    "problema 4",
+    "problemas 5 y 6"
+  ],
+  "escala_max": 5,
+  "problemas": [
+    {
+      "n": 1,
+      "titulo": "Pluma y martillo en la Luna",
+      "enunciado": "(I) Un astronauta en la Luna lanza una pluma horizontalmente y, al mismo tiempo y desde la misma altura, deja caer un martillo. Sin atmósfera, ¿cuál enunciado describe la aceleración justo después de soltarlos? a) la del martillo es mayor, b) la de la pluma es mayor, c) ambos tienen la misma aceleración distinta de cero, d) ambos tienen aceleración cero. (II) ¿Cuál llega primero al suelo?",
+      "solucion": "(I) c): la única fuerza es el peso; aceleración g_Luna ≈ 1,6 m/s² hacia abajo para los dos. (II) Llegan al mismo tiempo: el movimiento vertical es idéntico; la velocidad horizontal de la pluma solo la hace caer más lejos.",
+      "partes": [
+        {
+          "id": "1-I",
+          "txt": "(I) Elige c)",
+          "max": 8
+        },
+        {
+          "id": "1-II",
+          "txt": "(II) Llegan al mismo tiempo, con justificación (movimiento vertical idéntico)",
+          "max": 8
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "titulo": "Patinadores que se empujan",
+      "enunciado": "Dos patinadores, m1 = 50 kg y m2 = 75 kg, en reposo sobre el hielo, se empujan. El primero sale a 3 m/s hacia la derecha. Con conservación de la cantidad de movimiento, halle la velocidad del segundo.",
+      "solucion": "0 = m1 v1 + m2 v2 ⇒ v2 = −(m1/m2) v1 = −(50/75)(3 m/s) = −2 m/s, es decir 2 m/s hacia la izquierda.",
+      "partes": [
+        {
+          "id": "2-a",
+          "txt": "Plantea 0 = m1 v1 + m2 v2 (momento total inicial nulo)",
+          "max": 8
+        },
+        {
+          "id": "2-b",
+          "txt": "v2 = −2 m/s: valor, unidades y sentido (hacia la izquierda)",
+          "max": 8
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "titulo": "Montaña rusa sin fricción",
+      "enunciado": "Un carro parte del reposo en A, a 20 m de altura; B es el punto más bajo (h = 0), C una cima a 12 m, E una cima a 22 m. Sin fricción, g = 9,8 m/s². a) Rapidez en B y en C. b) ¿Llega a E? ¿Altura máxima de una colina que puede superar? c) ¿Cambian las respuestas si el carro tiene el doble de masa?",
+      "solucion": "v = √(2g(hA − h)). a) vB = √(2·9,8·20) ≈ 19,8 m/s; vC = √(2·9,8·8) ≈ 12,5 m/s. b) No llega a E: necesitaría mg(22 m) y solo tiene mg(20 m); supera cualquier colina de menos de 20 m. c) No cambian: la masa se cancela.",
+      "partes": [
+        {
+          "id": "3-a",
+          "txt": "a) Conservación de la energía; vB ≈ 19,8 m/s y vC ≈ 12,5 m/s",
+          "max": 8
+        },
+        {
+          "id": "3-b",
+          "txt": "b) No llega a E; altura máxima superable: menos de 20 m",
+          "max": 5
+        },
+        {
+          "id": "3-c",
+          "txt": "c) No cambian: la masa se cancela",
+          "max": 4
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "titulo": "Energía perdida en el rebote",
+      "enunciado": "Una pelota de 0,5 kg se suelta desde el reposo a 10 m, rebota y sube hasta 8 m. g = 10 m/s². a) Energía mecánica al soltarla y en el punto más alto tras el rebote; energía perdida y porcentaje. b) Rapidez justo antes y justo después de tocar el suelo. c) ¿En qué se transformó la energía perdida?",
+      "solucion": "a) Ei = mgh = 50 J, Ef = 40 J, se pierden 10 J = 20 %. b) v_antes = √(2·10·10) ≈ 14,1 m/s; v_después = √(2·10·8) ≈ 12,6 m/s. c) Calor, sonido y deformación de la pelota; el choque no es elástico.",
+      "partes": [
+        {
+          "id": "4-a",
+          "txt": "a) 50 J, 40 J, pérdida de 10 J (20 %)",
+          "max": 7
+        },
+        {
+          "id": "4-b",
+          "txt": "b) ≈ 14,1 m/s antes y ≈ 12,6 m/s después",
+          "max": 6
+        },
+        {
+          "id": "4-c",
+          "txt": "c) Calor, sonido o deformación (energía no mecánica)",
+          "max": 4
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "titulo": "Tierra como agujero negro",
+      "enunciado": "a) ¿A qué radio R debería comprimirse la masa de la Tierra, M ≈ 5,97×10^24 kg, para que la velocidad de escape v = √(2GM/R) sea c = 3×10^8 m/s? G = 6,67×10^−11 N·m²/kg². (Solo se pregunta la parte a.)",
+      "solucion": "c² = 2GM/R ⇒ R = 2GM/c² = 2(6,67×10^−11)(5,97×10^24)/(3×10^8)² m ≈ 8,9×10^−3 m ≈ 9 mm.",
+      "partes": [
+        {
+          "id": "5-a",
+          "txt": "Despeja R = 2GM/c²",
+          "max": 8
+        },
+        {
+          "id": "5-b",
+          "txt": "Resultado numérico R ≈ 8,9×10⁻³ m (≈ 9 mm) con unidades",
+          "max": 8
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "titulo": "Choque carro–camión",
+      "enunciado": "(I) Un carro pequeño choca de frente contra un camión pesado. Durante el choque: a) la fuerza del camión sobre el carro es mayor, b) la fuerza del carro sobre el camión es mayor, c) las dos fuerzas tienen igual magnitud y direcciones opuestas, d) depende de cuál iba más rápido. (II) ¿Cuál vehículo sufre el mayor cambio de velocidad? Justifique con F = Δp/Δt.",
+      "solucion": "(I) c), por acción y reacción. (II) Las fuerzas actúan el mismo Δt, así que |Δp| es igual para los dos: m_carro|Δv_carro| = m_camión|Δv_camión|; el carro, con menos masa, tiene el mayor cambio de velocidad.",
+      "partes": [
+        {
+          "id": "6-I",
+          "txt": "(I) Elige c) (acción y reacción)",
+          "max": 9
+        },
+        {
+          "id": "6-II",
+          "txt": "(II) El carro; |Δp| igual para ambos y menor masa ⇒ mayor Δv",
+          "max": 9
+        }
+      ]
+    }
+  ]
+}

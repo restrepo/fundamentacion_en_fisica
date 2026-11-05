@@ -1,0 +1,614 @@
+<title>Calificador __EXAMEN__</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: hoja cuadriculada; columna de páginas a la izquierda, rúbrica calificada a la derecha */
+:root{
+  --papel:#f6f8fa; --hoja:#ffffff; --tinta:#1b2a3a; --tinta2:#5a6b7c;
+  --cuadro:#e3e9ef; --azul:#1f4fa3; --rojo:#c2253a; --ok:#1f7a4d; --aviso:#a86400;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --texto:"IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --papel:#10161d; --hoja:#172029; --tinta:#e6edf4; --tinta2:#98a8b8;
+  --cuadro:#1f2a35; --azul:#7aa5ee; --rojo:#ff6b7d; --ok:#5ccf93; --aviso:#f0b85a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --papel:#10161d; --hoja:#172029; --tinta:#e6edf4; --tinta2:#98a8b8;
+  --cuadro:#1f2a35; --azul:#7aa5ee; --rojo:#ff6b7d; --ok:#5ccf93; --aviso:#f0b85a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:15px;line-height:1.5;
+  background-image:linear-gradient(var(--cuadro) 1px,transparent 1px),linear-gradient(90deg,var(--cuadro) 1px,transparent 1px);
+  background-size:22px 22px}
+.envoltura{max-width:1180px;margin:0 auto;padding-block:28px 48px;
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));
+  display:flex;flex-direction:column;gap:22px}
+header h1{font-family:var(--display);font-weight:800;font-size:clamp(1.7rem,4vw,2.5rem);margin:0;line-height:1.1;text-wrap:balance}
+header p{margin:6px 0 0;color:var(--tinta2);max-width:68ch}
+.etiqueta{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta2)}
+.rejilla{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:22px;align-items:start}
+@media (max-width:860px){.rejilla{grid-template-columns:minmax(0,1fr)}}
+.panel{background:var(--hoja);border:1px solid var(--cuadro);border-radius:6px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.panel h2{font-family:var(--display);font-weight:600;font-size:1.15rem;margin:0}
+.paginas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.ranura{position:relative;aspect-ratio:3/4;max-width:100%;border:1.5px dashed var(--tinta2);border-radius:4px;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px;cursor:pointer;overflow:hidden;
+  color:var(--tinta2);background:var(--papel);text-align:center;padding:8px}
+.ranura:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--azul);outline-offset:2px}
+.ranura.llena{border-style:solid;border-color:var(--azul);padding:0}
+.ranura img{width:100%;height:100%;object-fit:cover}
+.ranura .num{font-family:var(--display);font-weight:800;font-size:1.8rem;color:var(--tinta)}
+.ranura .quitar{position:absolute;top:6px;right:6px;background:var(--hoja);color:var(--tinta);border:1px solid var(--cuadro);
+  border-radius:50%;width:28px;height:28px;font-size:1rem;line-height:1;cursor:pointer}
+.ranura .pie{position:absolute;left:0;right:0;bottom:0;background:var(--hoja);color:var(--tinta);font-family:var(--mono);font-size:.72rem;padding:3px 6px}
+.ranura.arrastre{border-color:var(--rojo);background:var(--hoja)}
+.fila{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.campo{display:flex;flex-direction:column;gap:4px;flex:1 1 180px;min-width:0}
+.campo input{font:inherit;padding:8px 10px;border:1px solid var(--cuadro);border-radius:4px;background:var(--papel);color:var(--tinta);width:100%}
+button{font:inherit;cursor:pointer;border-radius:4px;padding:9px 16px;border:1px solid var(--tinta);background:var(--hoja);color:var(--tinta)}
+button.primario{background:var(--azul);border-color:var(--azul);color:var(--hoja);font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+.estado{font-size:.9rem;color:var(--tinta2);min-height:1.4em}
+.estado.error{color:var(--rojo)}
+.nota{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.nota .valor{font-family:var(--display);font-weight:800;font-size:3.4rem;line-height:1;color:var(--rojo);font-variant-numeric:tabular-nums}
+.nota .valor.vacia{color:var(--tinta2)}
+.nota .detalle{font-family:var(--mono);font-size:.85rem;color:var(--tinta2)}
+.marco-tabla{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--tinta2);text-align:left;font-weight:500;padding:6px 8px;border-bottom:1px solid var(--cuadro)}
+td{padding:8px;border-bottom:1px solid var(--cuadro);vertical-align:top}
+tr.problema td{background:var(--papel);font-weight:600;font-family:var(--display)}
+td.pts{white-space:nowrap;font-variant-numeric:tabular-nums;font-family:var(--mono)}
+td.pts input{width:3.6em;font:inherit;padding:3px 4px;border:1px solid var(--cuadro);border-radius:3px;background:var(--papel);color:var(--rojo);text-align:right}
+td.pts input.max{color:var(--tinta)}
+.coment{color:var(--tinta2);font-size:.85rem;margin-top:3px}
+.coment.vacio{font-style:italic}
+.aviso{border-left:3px solid var(--aviso);padding:6px 10px;background:var(--papel);font-size:.88rem}
+.historial table td{font-family:var(--mono);font-size:.82rem}
+.credito{color:var(--tinta2);font-size:.8rem}
+details summary{cursor:pointer;color:var(--azul)}
+@media (prefers-reduced-motion:no-preference){.nota .valor{transition:color .3s}}
+body[data-modo="estudiante"] .solo-prof{display:none}
+body:not([data-modo="estudiante"]) .solo-est{display:none}
+.modo{display:inline-flex;border:1px solid var(--tinta);border-radius:4px;overflow:hidden;margin-top:12px}
+.modo button{border:0;border-radius:0;padding:6px 14px}
+.modo button[aria-pressed="true"]{background:var(--tinta);color:var(--hoja)}
+.retro{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.tarjeta{border:1px solid var(--cuadro);border-radius:4px;padding:12px;background:var(--papel);min-width:0}
+.tarjeta h3{font-family:var(--display);font-size:1rem;margin:0 0 6px}
+.tarjeta p{margin:6px 0;font-size:.9rem}
+.etiqueta.ok{color:var(--ok)} .etiqueta.rojo{color:var(--rojo)} .etiqueta.azul{color:var(--azul)}
+.chat{display:flex;flex-direction:column;gap:10px}
+.chat form{align-items:flex-end}
+.mensajes{display:flex;flex-direction:column;gap:8px}
+.msg{max-width:85%;padding:8px 12px;border-radius:6px;white-space:pre-wrap;font-size:.92rem;overflow-wrap:anywhere}
+.msg.tu{align-self:flex-end;background:var(--azul);color:var(--hoja)}
+tr.actual td{background:var(--papel);font-weight:600}
+body[data-modo="estudiante"]:not([data-claude="si"]) .solo-claude{display:none}
+.pasos{list-style:none;counter-reset:paso;margin:0;padding:0;display:flex;flex-direction:column;gap:16px}
+.pasos li{counter-increment:paso;display:grid;grid-template-columns:2.4rem minmax(0,1fr);gap:12px;align-items:start}
+.pasos li::before{content:counter(paso);font-family:var(--display);font-weight:800;font-size:1.25rem;width:2.4rem;height:2.4rem;border-radius:50%;border:2px solid var(--azul);color:var(--azul);display:flex;align-items:center;justify-content:center}
+.pasos h3{font-family:var(--display);font-weight:600;font-size:1.05rem;margin:5px 0 2px}
+.pasos p{margin:0 0 8px;max-width:68ch}
+kbd{font-family:var(--mono);font-size:.82em;border:1px solid var(--tinta2);border-bottom-width:2px;border-radius:3px;padding:0 5px;background:var(--papel);white-space:nowrap}
+#textoprompt{width:100%;font-family:var(--mono);font-size:.8rem;background:var(--papel);color:var(--tinta);border:1px solid var(--cuadro);border-radius:4px;padding:8px;margin-top:8px}
+.quitarfila{padding:2px 9px}
+.msg.claude{align-self:flex-start;background:var(--papel);border:1px solid var(--cuadro)}
+</style>
+<style id="katex-css">__KATEX_CSS__
+.msg .katex-display{margin:.4em 0;overflow-x:auto;overflow-y:hidden}.katex{font-size:1.05em}</style>
+
+
+<div class="envoltura">
+  <header>
+    <span class="etiqueta">__ETIQUETA__</span>
+    <h1 id="titulo">Calificador del __EXAMEN__</h1>
+    <p id="intro">Suba las __NPAL__ páginas del parcial resuelto por un estudiante. Claude lee las respuestas, las compara con la solución del examen y asigna puntos por apartado. Usted revisa cada puntaje y lo corrige si hace falta; la nota se recalcula sola en la escala de 0,0 a __ESCALA__.</p>
+    <div class="modo" role="group" aria-label="Modo de uso"><button type="button" data-modo="profesor" aria-pressed="true">Profesor</button><button type="button" data-modo="estudiante" aria-pressed="false">Estudiante</button></div>
+  </header>
+
+  <section class="panel solo-est guia" aria-labelledby="t-guia">
+    <h2 id="t-guia">Cómo revisar su examen con Claude</h2>
+    <p class="coment">Funciona con su cuenta gratuita de Claude. Antes de empezar, tome una foto de cada una de las __NPAL__ páginas de su parcial: nítida, de frente y con buena luz.</p>
+    <ol class="pasos">
+      <li><div><h3>Copie las instrucciones</h3><p>El botón copia un texto con los enunciados, las soluciones y la rúbrica del parcial, y le explica a Claude cómo revisar su examen.</p><div class="fila"><button class="primario" id="copiarprompt" type="button">Copiar instrucciones</button><span class="estado" id="estcopia" role="status" aria-live="polite"></span></div></div></li>
+      <li><div><h3>Abra un chat nuevo de Claude</h3><p>Entre a <a href="https://claude.ai/new" target="_blank" rel="noopener">claude.ai/new</a> con su cuenta, o abra la aplicación de Claude en el celular y empiece una conversación nueva.</p></div></li>
+      <li><div><h3>Pegue el texto</h3><p>Haga clic en la caja del mensaje y pulse <kbd>Ctrl</kbd> + <kbd>V</kbd> (<kbd>⌘</kbd> + <kbd>V</kbd> en Mac). En el celular, mantenga presionada la caja y elija «Pegar». El texto queda como una tarjeta pequeña marcada «PASTED» o «Pegado»: así debe verse.</p></div></li>
+      <li><div><h3>Adjunte las __NPAL__ fotos</h3><p>Pulse el botón <kbd>+</kbd> junto a la caja y elija «Upload or add files» («Subir archivos»). Seleccione las fotos de las páginas __LISTAPAG__. También puede arrastrarlas a la caja.</p></div></li>
+      <li><div><h3>Envíe y siga preguntando</h3><p>Pulse la flecha de enviar. Claude le dirá, problema por problema, qué hizo bien, qué debe revisar y una pista para corregirlo, con una nota orientativa. Haga sus preguntas en esa misma conversación: en un chat nuevo Claude ya no tendrá su examen.</p></div></li>
+    </ol>
+    <p class="aviso">La nota que estime Claude es orientativa: la nota oficial la asigna el profesor. Si una corrección no le convence, coméntela en clase o en la asesoría.</p>
+    <details><summary>Ver el texto que se copia</summary><textarea id="textoprompt" readonly rows="12" aria-label="Instrucciones para Claude"></textarea></details>
+  </section>
+
+  <div class="rejilla solo-claude">
+    <section class="panel" aria-labelledby="t-paginas">
+      <h2 id="t-paginas">Páginas del examen</h2>
+      <div class="paginas" id="paginas"></div>
+      <input type="file" id="selector" accept="image/jpeg,image/png,image/webp" multiple hidden>
+      <span class="estado">Toque una ranura para elegir la foto de esa página, o arrastre las __NPAL__ fotos a la vez: se ordenan por nombre de archivo.</span>
+      <div class="fila solo-prof">
+        <label class="campo"><span class="etiqueta">Estudiante</span><input id="nombre" placeholder="Se lee de la página 1 si se deja vacío"></label>
+        <label class="campo"><span class="etiqueta">Identificación</span><input id="ident" placeholder="Opcional"></label>
+      </div>
+      <div class="fila">
+        <button class="primario" id="calificar" disabled>Calificar</button>
+        <button id="detener" hidden>Detener</button>
+        <button id="limpiar">Nuevo estudiante</button>
+      </div>
+      <div class="estado" id="estado" role="status" aria-live="polite"></div>
+      <div class="aviso" id="sinclaude" hidden>Esta vista no puede consultar a Claude.</div>
+
+    </section>
+
+    <section class="panel" aria-labelledby="t-rubrica">
+      <div class="nota">
+        <span class="valor vacia" id="nota">—</span>
+        <span class="detalle" id="detalle">0 de __TOTAL__ puntos · sin calificar</span>
+      </div>
+      <h2 id="t-rubrica">Rúbrica y puntos</h2>
+      <div class="marco-tabla">
+        <table>
+          <thead><tr><th>Apartado</th><th>Puntos</th></tr></thead>
+          <tbody id="rubrica"></tbody>
+        </table>
+      </div>
+      <div class="coment" id="observaciones"></div>
+      <div class="fila">
+        <button id="guardar" class="solo-prof" disabled>Registrar en el listado</button>
+        <button id="copiar">Copiar detalle</button>
+      </div>
+      <details class="solo-prof">
+        <summary>Cambiar los puntos máximos</summary>
+        <p class="coment">Los máximos son editables en la tabla mientras está abierto este panel. La nota es (puntos obtenidos ÷ puntos máximos) × __ESCALA__.</p>
+      </details>
+    </section>
+  </div>
+
+  <section class="panel solo-est solo-claude" aria-labelledby="t-retro">
+    <h2 id="t-retro">Retroalimentación</h2>
+    <div id="retro" class="retro"></div>
+    <div class="chat" id="zonachat">
+      <h2>Pregunte sobre su examen</h2>
+      <p class="coment">Escriba cualquier duda sobre los problemas del parcial o su solución. Si ya analizó sus fotos, Claude también tiene en cuenta lo que usted respondió. Las respuestas usan su propia cuenta de Claude.</p>
+      <div id="chat" class="mensajes" aria-live="polite"></div>
+      <form id="fchat" class="fila">
+        <label class="campo"><span class="etiqueta">Su pregunta</span><input id="pregunta" autocomplete="off" placeholder="Ej.: ¿por qué la masa se cancela en el problema 3?"></label>
+        <button class="primario" id="enviar" type="submit">Preguntar</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="panel historial solo-prof" aria-labelledby="t-hist">
+    <div class="fila" style="justify-content:space-between">
+      <h2 id="t-hist">Listado de la sesión</h2>
+      <div class="fila"><button id="copiarcsv">Copiar como tabla</button><button id="borrarhist">Borrar listado</button></div>
+    </div>
+    <div class="marco-tabla"><table><thead><tr><th>Estudiante</th><th>Identificación</th>__TH_PROBLEMAS__<th>Total</th><th>Nota</th><th></th></tr></thead><tbody id="hist"></tbody></table></div>
+    <div class="coment" id="histvacio">Aún no hay estudiantes calificados. Cada calificación se agrega aquí sola, con el nombre y la identificación leídos de la página 1. El listado vive solo en este navegador; cópielo a su hoja de notas al terminar.</div>
+  </section>
+
+  <p class="credito">Las calificaciones de Claude son una propuesta: revise cada apartado antes de registrar la nota.</p>
+</div>
+
+<script type="application/json" id="examen">__EXAMEN_JSON__</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+<script>
+const EXAMEN = JSON.parse(document.getElementById("examen").textContent);
+const PROBLEMAS = EXAMEN.problemas;
+const NP = EXAMEN.paginas;
+const DISTRIB = EXAMEN.distribucion.map((d, i) => `página ${i + 1}: ${d}`).join("; ");
+const ESTANDAR_LATEX = String.raw`Formato de las matemáticas (el chat las muestra con KaTeX):
+- Escriba TODA expresión matemática, número con unidades o símbolo físico en LaTeX entre $$...$$: dentro de la oración para las expresiones en línea, y en su propia línea para las ecuaciones destacadas. No use bloques de código ni texto plano para las fórmulas.
+- Coma decimal con llaves: $$9{,}8$$, $$0{,}5\,\mathrm{kg}$$; nunca punto decimal.
+- Unidades en redonda con \mathrm, separadas del número por un espacio fino \,: $$19{,}8\,\mathrm{m/s}$$, $$50\,\mathrm{J}$$, $$6{,}67\times 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$$. Notación científica siempre con \times 10^{n}, nunca con «e».
+- Vectores en negrilla con \boldsymbol: $$\boldsymbol{F} = \Delta\boldsymbol{p}/\Delta t$$. Magnitudes con \lvert\,\rvert: $$\lvert\Delta\boldsymbol{p}\rvert$$.
+- Subíndices que son palabras, en redonda con \text: $$v_{\text{antes}}$$, $$v_{\text{escape}}$$, $$g_{\text{Luna}}$$. Subíndices que son etiquetas de puntos o cuerpos, en cursiva: $$v_B$$, $$m_1$$.
+- La energía potencial se escribe $$U$$ (por ejemplo $$U = mgh$$); nunca E_pot ni E_p.
+- Fracciones con \frac en las ecuaciones destacadas y con \tfrac o barra en línea; raíces con \sqrt{...}; multiplicación con \times o con paréntesis: $$(0{,}5)(10)(10)$$.
+- Si una ecuación destacada cierra una oración, ponga \, antes del punto o la coma: $$v = \sqrt{2gh}\,.$$
+- Para varios pasos, una sola ecuación destacada con \begin{aligned} ... \end{aligned}, alineada en el signo igual.`;
+const PARTES = PROBLEMAS.flatMap(p => p.partes.map(x => Object.assign(x, {problema:p.n})));
+const estado = {imgs:Array(NP).fill(null), puntos:{}, comentarios:{}, lectura:{}, observ:"", calificado:false};
+let sample = null, sampleTexto = null, ctl = null;
+let modo = location.hash === "#estudiante" ? "estudiante" : "profesor";
+estado.retro = [];
+let turnos = [];
+
+const $ = id => document.getElementById(id);
+const fmt = (x, d=1) => Number(x).toLocaleString("es-CO",{minimumFractionDigits:d, maximumFractionDigits:d});
+
+/* ---------- Ranuras de páginas ---------- */
+let ranuraActiva = 0;
+function pintarRanuras(){
+  const cont = $("paginas"); cont.innerHTML = "";
+  estado.imgs.forEach((f, i) => {
+    const r = document.createElement("div");
+    r.className = "ranura" + (f ? " llena" : "");
+    r.tabIndex = 0; r.setAttribute("role","button");
+    r.setAttribute("aria-label", f ? `Página ${i+1}: ${f.name}. Toque para cambiarla` : `Elegir foto de la página ${i+1}`);
+    if (f){
+      const img = document.createElement("img"); img.alt = `Página ${i+1}`; img.src = f._url; r.append(img);
+      const pie = document.createElement("span"); pie.className = "pie"; pie.textContent = `Pág. ${i+1} · ${f.name}`; r.append(pie);
+      const q = document.createElement("button"); q.className = "quitar"; q.type="button"; q.textContent = "×"; q.setAttribute("aria-label",`Quitar página ${i+1}`);
+      q.onclick = e => { e.stopPropagation(); URL.revokeObjectURL(f._url); estado.imgs[i] = null; pintarRanuras(); };
+      r.append(q);
+    } else {
+      r.innerHTML = `<span class="num">${i+1}</span><span>Página ${i+1}</span>`;
+    }
+    r.onclick = () => { ranuraActiva = i; $("selector").click(); };
+    r.onkeydown = e => { if (e.key === "Enter" || e.key === " "){ e.preventDefault(); r.click(); } };
+    r.ondragover = e => { e.preventDefault(); r.classList.add("arrastre"); };
+    r.ondragleave = () => r.classList.remove("arrastre");
+    r.ondrop = e => { e.preventDefault(); e.stopPropagation(); r.classList.remove("arrastre"); recibir([...e.dataTransfer.files], i); };
+    cont.append(r);
+  });
+  $("calificar").disabled = !(sample && estado.imgs.every(Boolean));
+}
+function recibir(files, desde){
+  files = files.filter(f => /^image\//.test(f.type));
+  if (!files.length) return;
+  if (files.length > 1){ files.sort((a,b) => a.name.localeCompare(b.name, undefined, {numeric:true})); desde = 0; }
+  files.slice(0, 4 - desde).forEach((f, k) => {
+    const i = desde + k;
+    if (estado.imgs[i]) URL.revokeObjectURL(estado.imgs[i]._url);
+    f._url = URL.createObjectURL(f); estado.imgs[i] = f;
+  });
+  pintarRanuras();
+}
+$("selector").onchange = e => { recibir([...e.target.files], ranuraActiva); e.target.value = ""; };
+document.addEventListener("dragover", e => e.preventDefault());
+document.addEventListener("drop", e => { e.preventDefault(); recibir([...e.dataTransfer.files], 0); });
+
+/* ---------- Rúbrica ---------- */
+function pintarRubrica(){
+  const tb = $("rubrica"); tb.innerHTML = "";
+  const editarMax = document.querySelector("details").open;
+  PROBLEMAS.forEach(p => {
+    const sub = p.partes.reduce((s,x) => s + (Number(estado.puntos[x.id]) || 0), 0);
+    const max = p.partes.reduce((s,x) => s + x.max, 0);
+    const tr = document.createElement("tr"); tr.className = "problema";
+    tr.innerHTML = `<td>${p.n}. ${p.titulo}</td><td class="pts">${estado.calificado ? fmt(sub) : "—"} / ${fmt(max,0)}</td>`;
+    tb.append(tr);
+    p.partes.forEach(x => {
+      const r = document.createElement("tr");
+      const c1 = document.createElement("td");
+      c1.textContent = x.txt;
+      const lec = estado.lectura[x.id], com = estado.comentarios[x.id];
+      if (lec){ const d = document.createElement("div"); d.className = "coment"; d.textContent = "Escribió: " + lec; c1.append(d); }
+      const d2 = document.createElement("div"); d2.className = "coment" + (com ? "" : " vacio");
+      ponerTexto(d2, com || (estado.calificado ? "" : "Sin calificar"));
+      c1.append(d2);
+      const c2 = document.createElement("td"); c2.className = "pts";
+      const inp = document.createElement("input"); inp.type = "number"; inp.min = 0; inp.max = x.max; inp.step = 0.5;
+      inp.id = "pts-" + x.id; inp.setAttribute("aria-label", `Puntos de ${x.id}`);
+      inp.value = estado.puntos[x.id] ?? "";
+      inp.placeholder = "—";
+      inp.disabled = modo === "estudiante";
+      inp.oninput = () => { const v = inp.value === "" ? undefined : Math.max(0, Math.min(x.max, Number(inp.value))); estado.puntos[x.id] = v; estado.calificado = true; actualizarNota(); if (filaActual !== null) registrar(); };
+      inp.onchange = () => pintarRubrica();
+      c2.append(inp, " / ");
+      if (editarMax){
+        const m = document.createElement("input"); m.type="number"; m.min=0; m.step=0.5; m.value=x.max; m.className="max"; m.id="max-"+x.id;
+        m.setAttribute("aria-label", `Máximo de ${x.id}`);
+        m.onchange = () => { x.max = Math.max(0, Number(m.value) || 0); PROBLEMAS.forEach(pp => pp.partes.forEach(pp2 => { if (pp2.id === x.id) pp2.max = x.max; })); pintarRubrica(); };
+        c2.append(m);
+      } else c2.append(fmt(x.max,0));
+      r.append(c1, c2); tb.append(r);
+    });
+  });
+  $("observaciones").textContent = estado.observ ? "Observaciones: " + estado.observ : "";
+  actualizarNota();
+}
+document.querySelector("details").addEventListener("toggle", pintarRubrica);
+
+function totales(){
+  const max = PROBLEMAS.reduce((s,p) => s + p.partes.reduce((a,x) => a + x.max, 0), 0);
+  const obt = PROBLEMAS.reduce((s,p) => s + p.partes.reduce((a,x) => a + (Number(estado.puntos[x.id]) || 0), 0), 0);
+  const porProb = PROBLEMAS.map(p => p.partes.reduce((a,x) => a + (Number(estado.puntos[x.id]) || 0), 0));
+  const nota = max ? Math.round(obt / max * EXAMEN.escala_max * 10) / 10 : 0;
+  return {max, obt, porProb, nota};
+}
+function actualizarNota(){
+  const t = totales();
+  const v = $("nota");
+  if (estado.calificado){ v.textContent = fmt(t.nota); v.classList.remove("vacia"); }
+  else { v.textContent = "—"; v.classList.add("vacia"); }
+  $("detalle").textContent = `${fmt(t.obt, t.obt % 1 ? 1 : 0)} de ${fmt(t.max,0)} puntos` + (estado.calificado ? "" : " · sin calificar") + (modo === "estudiante" ? " · estimación orientativa: la nota oficial la asigna el profesor" : "");
+  $("guardar").disabled = !estado.calificado;
+  // subtotales sin repintar inputs
+  document.querySelectorAll("#rubrica tr.problema").forEach((tr, i) => {
+    const p = PROBLEMAS[i]; const max = p.partes.reduce((s,x) => s + x.max, 0);
+    tr.lastChild.textContent = `${estado.calificado ? fmt(t.porProb[i], t.porProb[i] % 1 ? 1 : 0) : "—"} / ${fmt(max,0)}`;
+  });
+}
+
+/* ---------- Calificar con Claude ---------- */
+function prompt(){
+  const rub = PROBLEMAS.map(p => `PROBLEMA ${p.n} (${p.titulo})
+Enunciado: ${p.enunciado}
+Solución de referencia: ${p.solucion}
+Apartados calificables:
+${p.partes.map(x => `- id "${x.id}" (máximo ${x.max} puntos): ${x.txt}`).join("\n")}`).join("\n\n");
+  return `Usted es profesor de física universitaria en Colombia y califica el ${EXAMEN.examen} de ${EXAMEN.curso} (${EXAMEN.tema}).
+Las __NPAL__ imágenes son, en orden, las páginas __LISTAPAG__ del examen resuelto a mano por un estudiante. Distribución: ${DISTRIB}. El estudiante puede haber escrito en otra parte de la hoja: busque la respuesta en todas las páginas.
+
+${rub}
+
+Criterios:
+- Califique cada apartado de 0 a su máximo, en múltiplos de 0,5. Dé crédito parcial por un planteamiento correcto con errores aritméticos, y crédito completo por métodos distintos al de referencia si son físicamente correctos.
+- Acepte redondeos razonables (por ejemplo 19,8 o 20 m/s) y coma o punto decimal. Penalice levemente la falta de unidades o de sentido cuando el apartado lo pide.
+- En las preguntas de selección, la opción correcta sin justificación vale el puntaje completo de ese apartado; una opción incorrecta vale 0.
+- Si un apartado está en blanco, dé 0. Si no se puede leer, dé 0 y dígalo en el comentario.
+- No invente lo que no está escrito.
+
+Responda SOLO con un objeto JSON con esta forma exacta:
+{"estudiante":{"nombre":"nombre escrito en la página 1 o \\"\\"","identificacion":"número escrito en la página 1 o \\"\\""},
+ "apartados":[{"id":"1-I","puntos":8,"lectura":"lo que escribió el estudiante, resumido en pocas palabras","comentario":"por qué ese puntaje, en una frase"}],
+ "observaciones":"una o dos frases generales para el estudiante"${modo === "estudiante" ? `,
+ "retro":[{"problema":1,"bien":"qué hizo bien","revisar":"qué error cometió o qué le faltó, sin dar la respuesta completa si la tuvo mal","pista":"una pregunta o pista para que lo corrija por su cuenta"}]` : ""}}
+Incluya exactamente un elemento en "apartados" por cada id: ${PARTES.map(x => x.id).join(", ")}. Escriba en español de Colombia.${modo === "estudiante" ? ' En "retro" incluya un elemento por cada problema, del 1 al ${PROBLEMAS.length}; diríjase al estudiante de usted, con tono formativo y alentador. En los textos de "comentario" y "retro" escriba las fórmulas en LaTeX entre $$...$$, con coma decimal $$9{,}8$$ y unidades $$\\,\\mathrm{m/s}$$ (escape las barras invertidas dentro del JSON).' : ""}`;
+}
+
+$("calificar").onclick = async () => {
+  if (!sample) return;
+  ctl = new AbortController();
+  $("calificar").disabled = true; $("detener").hidden = false;
+  const est = $("estado"); est.className = "estado"; est.textContent = "Claude está leyendo las __NPAL__ páginas. Suele tardar entre 30 segundos y 2 minutos…";
+  try {
+    const r = await sample.json(prompt(), {images: estado.imgs, modelTier: modo === "estudiante" ? "default" : "complex", signal: ctl.signal,
+      onText: () => { est.textContent = "Claude está escribiendo la calificación…"; }});
+    const lista = Array.isArray(r?.apartados) ? r.apartados : [];
+    estado.puntos = {}; estado.comentarios = {}; estado.lectura = {};
+    for (const a of lista){
+      const x = PARTES.find(p => p.id === String(a.id)); if (!x) continue;
+      const v = Math.max(0, Math.min(x.max, Math.round((Number(a.puntos) || 0) * 2) / 2));
+      estado.puntos[x.id] = v; estado.comentarios[x.id] = String(a.comentario || ""); estado.lectura[x.id] = String(a.lectura || "");
+    }
+    const faltan = PARTES.filter(x => estado.puntos[x.id] === undefined).map(x => x.id);
+    estado.observ = String(r?.observaciones || "");
+    estado.retro = Array.isArray(r?.retro) ? r.retro : [];
+    turnos = []; pintarRetro();
+    if (!$("nombre").value && r?.estudiante?.nombre) $("nombre").value = String(r.estudiante.nombre);
+    if (!$("ident").value && r?.estudiante?.identificacion) $("ident").value = String(r.estudiante.identificacion);
+    estado.calificado = true;
+    pintarRubrica();
+    let reg = "";
+    if (modo === "profesor"){
+      const n = registrar();
+      reg = ` Quedó en la fila ${n} del listado` + (($("nombre").value.trim() && $("ident").value.trim()) ? "; sus correcciones la actualizan." : "; no se pudo leer el nombre o la identificación: escríbalos arriba y la fila se actualiza.");
+    }
+    est.textContent = (faltan.length ? `Listo, pero faltaron los apartados ${faltan.join(", ")}: asígnelos a mano.` : "Listo. Revise cada apartado y corrija lo que haga falta.") + reg;
+  } catch (e) {
+    est.className = "estado error";
+    const msg = {
+      cancelled: "Calificación detenida.",
+      not_granted: "No se dio permiso para usar Claude. Puede calificar a mano en la rúbrica.",
+      rate_limited: "Se alcanzó el límite de uso de Claude. Intente de nuevo en unos minutos.",
+      image_rejected: "Alguna foto no se pudo usar (formato o tamaño). Use JPG o PNG de menos de 20 MB.",
+      images_unavailable: "Esta vista no puede enviar imágenes a Claude.",
+      invalid_json: "La respuesta de Claude no tuvo el formato esperado. Pulse Calificar de nuevo.",
+      refused: "Claude no pudo calificar estas imágenes. Revise que sean las páginas del examen.",
+      session_expired: "La sesión expiró: vuelva a iniciar sesión en claude.ai."
+    }[e?.code] || "No se pudo completar la calificación. Pulse Calificar para intentarlo de nuevo.";
+    est.textContent = msg;
+    if (e?.code === "cancelled") est.className = "estado";
+  } finally {
+    $("detener").hidden = true; ctl = null; pintarRanuras();
+  }
+};
+$("detener").onclick = () => ctl?.abort();
+
+/* ---------- Listado ---------- */
+const CLAVE = "calificador-parcial2-listado";
+let historial = [];
+let filaActual = null;
+try { historial = JSON.parse(localStorage.getItem(CLAVE) || "[]"); } catch { historial = []; }
+function guardarHist(){ try { localStorage.setItem(CLAVE, JSON.stringify(historial)); } catch {} }
+function pintarHist(){
+  const tb = $("hist"); tb.innerHTML = "";
+  historial.forEach((h, i) => {
+    const tr = document.createElement("tr");
+    if (i === filaActual) tr.className = "actual";
+    [h.nombre, h.ident, ...h.porProb.map(v => fmt(v, v % 1 ? 1 : 0)), fmt(h.obt, h.obt % 1 ? 1 : 0), fmt(h.nota)].forEach(v => { const td = document.createElement("td"); td.textContent = v; tr.append(td); });
+    const td = document.createElement("td");
+    const b = document.createElement("button"); b.type = "button"; b.className = "quitarfila"; b.textContent = "×";
+    b.setAttribute("aria-label", `Quitar a ${h.nombre} del listado`);
+    b.onclick = () => {
+      historial.splice(i, 1);
+      if (filaActual === i) filaActual = null; else if (filaActual !== null && filaActual > i) filaActual--;
+      guardarHist(); pintarHist();
+    };
+    td.append(b); tr.append(td); tb.append(tr);
+  });
+  $("histvacio").hidden = historial.length > 0;
+}
+function registrar(){
+  if (modo !== "profesor" || !estado.calificado) return null;
+  const t = totales();
+  const fila = {nombre: $("nombre").value.trim() || "(sin nombre)", ident: $("ident").value.trim(), porProb: t.porProb, obt: t.obt, nota: t.nota};
+  if (filaActual === null || filaActual >= historial.length){ historial.push(fila); filaActual = historial.length - 1; }
+  else historial[filaActual] = fila;
+  guardarHist(); pintarHist();
+  return filaActual + 1;
+}
+["nombre", "ident"].forEach(id => $(id).addEventListener("input", () => { if (filaActual !== null) registrar(); }));
+$("guardar").onclick = () => {
+  const n = registrar();
+  if (n){ $("estado").className = "estado"; $("estado").textContent = `Registrado en la fila ${n} del listado. Pulse «Nuevo estudiante» para seguir.`; }
+};
+$("borrarhist").onclick = () => {
+  const b = $("borrarhist");
+  if (b.dataset.confirmar){ historial = []; filaActual = null; guardarHist(); pintarHist(); b.textContent = "Borrar listado"; delete b.dataset.confirmar; }
+  else { b.dataset.confirmar = "1"; b.textContent = "Confirmar: borrar todo"; setTimeout(() => { b.textContent = "Borrar listado"; delete b.dataset.confirmar; }, 4000); }
+};
+async function copiar(texto, boton){
+  const previo = boton.textContent;
+  try { await navigator.clipboard.writeText(texto); boton.textContent = "Copiado"; }
+  catch { const ta = document.createElement("textarea"); ta.value = texto; document.body.append(ta); ta.select(); boton.textContent = "Texto seleccionado: Ctrl+C"; setTimeout(() => ta.remove(), 8000); }
+  setTimeout(() => boton.textContent = previo, 2500);
+}
+$("copiarcsv").onclick = () => {
+  const filas = [["Estudiante","Identificación", ...PROBLEMAS.map(p => "P" + p.n),"Total","Nota"],
+    ...historial.map(h => [h.nombre, h.ident, ...h.porProb.map(v => fmt(v, v % 1 ? 1 : 0)), fmt(h.obt, h.obt % 1 ? 1 : 0), fmt(h.nota)])];
+  copiar(filas.map(f => f.join("\t")).join("\n"), $("copiarcsv"));
+};
+$("copiar").onclick = () => {
+  const t = totales();
+  const lineas = [`${EXAMEN.examen} · ${$("nombre").value || "(sin nombre)"} ${$("ident").value ? "· " + $("ident").value : ""}`, `Nota: ${fmt(t.nota)} (${fmt(t.obt, t.obt % 1 ? 1 : 0)} de ${t.max} puntos)`, ""];
+  PROBLEMAS.forEach((p, i) => {
+    lineas.push(`${p.n}. ${p.titulo}: ${fmt(t.porProb[i], t.porProb[i] % 1 ? 1 : 0)}/${p.partes.reduce((s,x) => s + x.max, 0)}`);
+    p.partes.forEach(x => lineas.push(`   ${x.id}: ${estado.puntos[x.id] ?? "—"}/${x.max}${estado.comentarios[x.id] ? " — " + estado.comentarios[x.id] : ""}`));
+  });
+  if (estado.observ) lineas.push("", "Observaciones: " + estado.observ);
+  copiar(lineas.join("\n"), $("copiar"));
+};
+$("limpiar").onclick = () => {
+  estado.imgs.forEach(f => f && URL.revokeObjectURL(f._url));
+  estado.imgs = Array(NP).fill(null); estado.puntos = {}; estado.comentarios = {}; estado.lectura = {}; estado.observ = ""; estado.calificado = false; estado.retro = []; turnos = []; pintarRetro(); $("chat").innerHTML = ""; filaActual = null; pintarHist();
+  $("nombre").value = ""; $("ident").value = ""; $("estado").textContent = "";
+  pintarRanuras(); pintarRubrica();
+};
+
+/* ---------- Matemáticas con KaTeX ---------- */
+function ponerTexto(el, texto){
+  // una línea que solo contiene $$...$$ se muestra como ecuación destacada
+  el.textContent = String(texto).replace(/^[ \t]*\$\$([\s\S]+?)\$\$[ \t]*$/gm, "\\[$1\\]");
+  if (window.renderMathInElement){
+    try { renderMathInElement(el, {delimiters:[{left:"\\[", right:"\\]", display:true},{left:"$$", right:"$$", display:false},{left:"\\(", right:"\\)", display:false}], throwOnError:false}); } catch {}
+  }
+}
+
+/* ---------- Modo estudiante: retroalimentación y chat ---------- */
+function pintarRetro(){
+  const c = $("retro"); c.innerHTML = "";
+  if (!estado.retro.length){
+    const p = document.createElement("p"); p.className = "coment vacio";
+    p.textContent = "Suba las __NPAL__ páginas y pulse «Analizar mi examen». Aquí verá, problema por problema, qué hizo bien, qué revisar y una pista para corregirlo.";
+    c.append(p); return;
+  }
+  estado.retro.forEach(x => {
+    const p = PROBLEMAS.find(pp => pp.n === Number(x.problema));
+    const d = document.createElement("article"); d.className = "tarjeta";
+    const h = document.createElement("h3"); h.textContent = p ? `${p.n}. ${p.titulo}` : `Problema ${x.problema}`; d.append(h);
+    [["Bien","bien","ok"],["Para revisar","revisar","rojo"],["Pista","pista","azul"]].forEach(([et,k,cl]) => {
+      if (!x[k]) return;
+      const q = document.createElement("p");
+      const s = document.createElement("span"); s.className = "etiqueta " + cl; s.textContent = et + " · ";
+      const cuerpo = document.createElement("span"); ponerTexto(cuerpo, x[k]); q.append(s, cuerpo); d.append(q);
+    });
+    c.append(d);
+  });
+}
+function reglasChat(){
+  return `Usted es tutor del curso ${EXAMEN.curso} (${EXAMEN.institucion}) y ayuda a un estudiante a entender su ${EXAMEN.examen} de ${EXAMEN.tema}.
+
+Material del examen:
+${PROBLEMAS.map(p => `PROBLEMA ${p.n} (${p.titulo}): ${p.enunciado}\nSolución de referencia: ${p.solucion}`).join("\n\n")}
+
+${estado.calificado ? `Análisis del examen del estudiante (puntos estimados, lo que escribió y comentarios):\n${JSON.stringify({puntos: estado.puntos, lectura: estado.lectura, comentarios: estado.comentarios, retro: estado.retro})}` : "El estudiante todavía no ha subido su examen: responda sobre los problemas y su solución en general."}
+
+Reglas:
+- Responda en español de Colombia, de usted, en 150 palabras o menos.
+- Ayude a entender la física: prefiera guiar con preguntas y pasos antes que dar la respuesta completa, salvo que el estudiante ya la haya intentado.
+- Use «ley de la fuerza» (F = Δp/Δt) y «acción y reacción»; nunca diga «segunda ley» ni «tercera ley». La energía potencial se escribe U.
+- No use Markdown (ni **, ni #, ni listas con viñetas): solo párrafos cortos.
+${ESTANDAR_LATEX}
+- No cambie la nota ni prometa puntos: si el estudiante reclama, dígale que lo converse con el profesor.
+- Si pregunta algo ajeno al curso, redirija con amabilidad al examen.
+
+Los mensajes siguientes son del estudiante.`;
+}
+function burbuja(quien, texto){
+  const b = document.createElement("div"); b.className = "msg " + quien; ponerTexto(b, texto);
+  $("chat").append(b); b.scrollIntoView({block: "nearest"}); return b;
+}
+$("fchat").onsubmit = async e => {
+  e.preventDefault();
+  const q = $("pregunta").value.trim();
+  if (!q || ctl) return;
+  if (!sampleTexto){ burbuja("claude", "Esta página no puede consultar a Claude con su cuenta. Use «Copiar instrucciones para Claude» y haga sus preguntas en el chat de claude.ai."); return; }
+  $("pregunta").value = "";
+  burbuja("tu", q);
+  turnos.push({role: "user", content: q});
+  if (turnos.length > 12) turnos = turnos.slice(-12);
+  while (turnos.length && turnos[0].role !== "user") turnos.shift();
+  const b = burbuja("claude", "Pensando…");
+  ctl = new AbortController(); $("enviar").disabled = true;
+  try {
+    const { text } = await sampleTexto([{role: "user", content: reglasChat()}, ...turnos], {cache: false, modelTier: "default", signal: ctl.signal, onText: ({text}) => { ponerTexto(b, text); }});
+    turnos.push({role: "assistant", content: text});
+  } catch (err) {
+    turnos.pop();
+    b.textContent = err?.text || ({rate_limited: "Se alcanzó el límite de uso de su cuenta de Claude. Intente más tarde.", not_granted: "No se dio permiso para usar Claude en esta página."}[err?.code] || "No se pudo responder. Intente de nuevo.");
+  } finally { ctl = null; $("enviar").disabled = false; }
+};
+function aplicarModo(){
+  modo = location.hash === "#estudiante" ? "estudiante" : "profesor";
+  document.body.dataset.modo = modo;
+  const est = modo === "estudiante";
+  $("titulo").textContent = est ? "Revise su __EXAMEN__" : "Calificador del __EXAMEN__";
+  $("intro").textContent = est
+    ? "Siga estos cinco pasos para que Claude revise su parcial desde su propia cuenta: le dirá qué hizo bien, qué revisar y podrá hacerle preguntas sobre cada problema."
+    : "Suba las __NPAL__ páginas del parcial resuelto por un estudiante. Claude lee las respuestas, las compara con la solución del examen y asigna puntos por apartado. Usted revisa cada puntaje y lo corrige si hace falta; la nota se recalcula sola en la escala de 0,0 a __ESCALA__.";
+  $("calificar").textContent = est ? "Analizar mi examen" : "Calificar";
+  $("limpiar").textContent = est ? "Empezar de nuevo" : "Nuevo estudiante";
+  document.querySelectorAll(".modo button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.modo === modo)));
+  pintarRubrica();
+}
+document.querySelectorAll(".modo button").forEach(b => b.onclick = () => { location.hash = b.dataset.modo === "estudiante" ? "estudiante" : "profesor"; });
+window.addEventListener("hashchange", aplicarModo);
+
+/* ---------- Alternativa: instrucciones para el chat de Claude ---------- */
+function promptChat(){
+  return `Soy estudiante de ${EXAMEN.curso} (${EXAMEN.institucion}). Adjunto las fotos de las __NPAL__ páginas de mi ${EXAMEN.examen} de ${EXAMEN.tema}. ${DISTRIB[0].toUpperCase() + DISTRIB.slice(1)}.
+
+Por favor:
+1. Para cada problema, dígame qué hice bien, qué debo revisar y una pista para corregirlo por mi cuenta, sin darme de una vez la solución completa de lo que tuve mal.
+2. Estime mi puntaje con la rúbrica de abajo (__TOTAL__ puntos en total) y la nota en la escala de 0,0 a __ESCALA__, aclarando que es orientativa: la nota oficial la asigna el profesor.
+3. Después quede disponible para mis preguntas sobre el examen: guíeme con preguntas y pasos.
+
+Use «ley de la fuerza» (F = Δp/Δt) y «acción y reacción», nunca «segunda ley» ni «tercera ley», y escriba la energía potencial como U. Respóndame en español de Colombia.
+
+${ESTANDAR_LATEX}
+
+${PROBLEMAS.map(p => `PROBLEMA ${p.n} (${p.titulo})\nEnunciado: ${p.enunciado}\nSolución de referencia: ${p.solucion}\nRúbrica: ${p.partes.map(x => `${x.txt} (${x.max} puntos)`).join("; ")}`).join("\n\n")}`;
+}
+$("textoprompt").value = promptChat();
+$("copiarprompt").onclick = async () => {
+  const b = $("copiarprompt"), e = $("estcopia");
+  try {
+    await navigator.clipboard.writeText(promptChat());
+    b.textContent = "Copiado ✓"; e.textContent = "Listo. Siga con el paso 2.";
+  } catch {
+    const d = document.querySelector(".guia details"); d.open = true;
+    const t = $("textoprompt"); t.focus(); t.select();
+    e.textContent = "No se pudo copiar solo: el texto quedó seleccionado abajo. Cópielo con Ctrl + C, o mantenga presionado y elija «Copiar».";
+  }
+  setTimeout(() => { b.textContent = "Copiar instrucciones"; }, 3000);
+};
+
+/* ---------- Arranque ---------- */
+pintarRanuras(); pintarRubrica(); pintarHist(); pintarRetro(); aplicarModo();
+(async () => {
+  const aviso = $("sinclaude");
+  const mostrar = motivo => {
+    aviso.textContent = `Esta página no puede ${motivo}. ` + (modo === "estudiante"
+      ? "Use la alternativa: copie las instrucciones y péguelas en el chat de Claude junto con sus fotos."
+      : "Mientras tanto puede asignar los puntos a mano en la rúbrica.");
+    aviso.hidden = false;
+  };
+  try {
+    const s = await window.claude?.use?.("sample");
+    if (!s){ mostrar("consultar a Claude con la cuenta que la abrió: la plataforma no habilita las consultas desde artefactos para esta cuenta o para este enlace"); return; }
+    sampleTexto = s;
+    const lim = await s.limits().catch(() => null);
+    if (!lim?.images){ mostrar("enviar imágenes a Claude con esta cuenta (el chat de preguntas sí funciona)"); return; }
+    if (lim.images.maxCount < NP){ mostrar(`enviar más de ${lim.images.maxCount} imágenes por consulta y se necesitan ${NP} (el chat de preguntas sí funciona)`); return; }
+    sample = s; document.body.dataset.claude = "si"; pintarRanuras();
+  } catch { mostrar("consultar a Claude"); }
+})();
+</script>
