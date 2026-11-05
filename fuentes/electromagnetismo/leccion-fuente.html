@@ -648,10 +648,11 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="caja c1 frag"><p style="margin:0"><strong>Ejemplo.</strong> Un equipo conectado a \(\qty{110}{V}\) que usa \(\qty{4}{A}\) consume \(P = VI = 110 \times \qty{4}{} = \qty{440}{W}\).</p></div>
     </div>
     <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Potencia media a partir del consumo mensual</span><span class="val" id="fa-lect"></span></div>
-      <label class="ctrl"><span>Consumo del mes</span><input type="range" id="fa-e" min="10" max="600" step="1" value="191"><span class="v" id="fa-ev"></span></label>
-      <div id="fa-tex" class="ec" style="font-size:40px;min-height:300px"></div>
-      <p class="nota">Mes de 30 días \(= \qty{720}{h}\); red de \(\qty{110}{V}\).</p>
+      <figure class="fg" style="margin:0 0 8px"><img class="foto" style="--fh:270px" src="img/factura-epm.webp" alt="Factura de energía de EPM: lectura actual 22 559 menos lectura anterior 22 393 da 166 kWh en 30 días, a 776,22 pesos el kWh, total 128 852,52 pesos; histórico de consumos entre 131 y 191 kWh"><figcaption>Factura de energía de EPM de un hogar: \(22\,559 - 22\,393 = \qty{166}{kWh}\) en 30 días, a \(\$\,776{,}22\) el kWh.</figcaption></figure>
+      <div class="svghd"><span>Potencia media y costo a partir del consumo del mes</span><span class="val" id="fa-lect"></span></div>
+      <label class="ctrl"><span>Consumo del mes</span><input type="range" id="fa-e" min="10" max="600" step="1" value="166"><span class="v" id="fa-ev"></span></label>
+      <div id="fa-tex" class="ec" style="font-size:33px;min-height:250px"></div>
+      <p class="nota" style="margin:0">Mes de 30 días \(= \qty{720}{h}\); red de \(\qty{110}{V}\); tarifa de la factura, \(\$\,776{,}22\) por kWh.</p>
     </figure>
   </div>
 </section>
@@ -676,11 +677,11 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
         <div class="pr-pista">De \(P = VI\), despeja \(I = P/V\).</div>
         <div class="pr-fb" data-ok-txt="Correcto: I = 48 W / 110 V ≈ 0,44 A." data-mal-txt="Usa I = P/V con la potencia de la pregunta 1."></div>
       </div>
-      <div class="pr-item" data-ok-num="18.2" data-tol="0.6">
-        <div class="pr-q">3. Si la casa consume \(\qty{191}{kWh}\) al mes, ¿qué porcentaje de ese consumo es la nevera?</div>
+      <div class="pr-item" data-ok-num="20.9" data-tol="0.6">
+        <div class="pr-q">3. La factura de EPM de la diapositiva anterior marca \(\qty{166}{kWh}\) en el mes. ¿Qué porcentaje de ese consumo sería esta nevera?</div>
         <div class="fila-btn"><input class="pr-in" type="text" placeholder="%"><button type="button" class="pr-btn">Comprobar</button><button type="button" class="pr-btn pr-verpista">Pista</button></div>
         <div class="pr-pista">Porcentaje = (consumo de la nevera / consumo de la casa) × 100.</div>
-        <div class="pr-fb" data-ok-txt="Correcto: 34,7 / 191 ≈ 0,182, es decir, un 18 %." data-mal-txt="Divide 34,7 kWh entre 191 kWh y multiplica por 100."></div>
+        <div class="pr-fb" data-ok-txt="Correcto: 34,7 / 166 ≈ 0,209, es decir, un 21 %: una quinta parte de la factura." data-mal-txt="Divide 34,7 kWh entre 166 kWh y multiplica por 100."></div>
       </div>
       <div class="pr-item" data-ok-num="26.3" data-tol="1">
         <div class="pr-q">4. ¿Cuántos coulombs de carga pasan por el cable en un minuto?</div>
@@ -691,6 +692,27 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       </div>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Electricidad" id="ac-placa" data-label="Actividad: la placa de la nevera" data-speaker-notes="Actividad en parejas (instrucción entre pares). La placa de una nevera Samsung sin escarcha dice 110–127 V, 0,6 A y consumo 280 W. Con P = V I cos φ ≤ V I, 0,6 A a 110 V dan como máximo 66 W, y 280 W a 110 V exigirían unos 2,5 A: las dos cifras no pueden describir la misma carga. Respuesta: 2. Lo más probable es que 0,6 A sea la corriente del compresor al enfriar y 280 W la potencia de las resistencias de deshielo (en neveras Samsung parecidas suman unos 200 W + 90 W), que se encienden a ratos con el compresor apagado. Errores: creer que la placa está mal (1), que los 280 W se consumen todo el tiempo (3: serían unos 202 kWh al mes, más que los 166 kWh de la factura de toda una casa) o que cos φ puede aumentar la potencia por encima de V I (4). Esta placa es de otra nevera, no la de la etiqueta de la figura 4.6.">
+  <p class="ceja">§ 4.2 · Corriente eléctrica · Actividad en parejas</p>
+  <h2 class="titulo">La placa dice 0,6 A y 280 W: ¿cómo pueden ser ciertas las dos?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila">
+      <figure class="fg"><img class="foto" style="--fh:560px" src="img/placa-nevera-samsung.webp" alt="Placa de especificaciones de una nevera Samsung de 526 litros sin escarcha: alimentación AC 110 a 127 V, 60 Hz; 0,6 A; consumo 280 W"><figcaption>Placa de otra nevera (Samsung, 526 L, sin escarcha), distinta de la nevera de la figura 4.6: alimentación \(110\)–\(\qty{127}{V}\), \(\qty{0{,}6}{A}\), consumo \(\qty{280}{W}\).</figcaption></figure>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">A \(\qty{110}{V}\), una corriente de \(\qty{0{,}6}{A}\) da como máximo \(P = VI = \qty{66}{W}\). Pero la placa también dice «Consumo \(\qty{280}{W}\)». ¿Cuál es la explicación más razonable?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">La placa tiene un error: una de las dos cifras está mal.</button><button type="button" class="pr-opc" data-o="b">Describen dos cargas que no funcionan a la vez: 0,6 A es el compresor al enfriar, y 280 W las resistencias que derriten la escarcha, que se encienden a ratos con el compresor apagado.</button><button type="button" class="pr-opc" data-o="c">La nevera consume 280 W todo el tiempo; los 0,6 A son solo la corriente al arrancar.</button><button type="button" class="pr-opc" data-o="d">En corriente alterna el factor \(\cos\varphi\) hace que \(110 \times 0{,}6 \times \cos\varphi\) pueda llegar a 280 W.</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con 280 W a 110 V la corriente sería \(I = P/V \approx \qty{2{,}5}{A}\), no 0,6 A: las dos cifras no describen el mismo momento. Una nevera «sin escarcha» tiene <strong>resistencias de deshielo</strong> que calientan el evaporador unos minutos cada varias horas, con el compresor apagado; en neveras Samsung parecidas suman unos \(200 + 90 \approx \qty{290}{W}\). La opción 4 es imposible: en corriente alterna \(P = VI\cos\varphi\) y \(\cos\varphi \le 1\), así que el compresor usa <strong>menos</strong> de 66 W. Y 280 W todo el mes serían \(\qty{0{,}28}{kW}\times\qty{720}{h} \approx \qty{202}{kWh}\), más que los 166 kWh de la factura de EPM de una casa entera. Para estimar la factura no sirve la placa: sirve la etiqueta de consumo en kWh/mes.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-placa">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿Qué corriente necesitan 280 W a 110 V? Compárala con 0,6 A. En una nevera «sin escarcha», ¿qué parte calienta en vez de enfriar?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-placa" class="gform-dlg" aria-label="Formulario: Actividad: la placa de la nevera">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: la placa de la nevera" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <!-- ═════════════ §2 · MAGNETISMO ═════════════ -->
@@ -1950,7 +1972,8 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   const re = document.getElementById('fa-e');
   function pinta() {
     const E = +re.value, P = E / 720 * 1000, I = P / 110;
-    texVivo(el, '\\begin{gathered} P_{\\text{media}} = \\dfrac{' + tx(E, 0) + '\\,\\mathrm{kWh}}{720\\,\\mathrm{h}} \\approx ' + tx(E / 720, 4) + '\\,\\mathrm{kW} \\approx ' + tx(P, 1) + '\\,\\mathrm{W} \\\\[10pt] I = \\dfrac{P}{V} = \\dfrac{' + tx(P, 1) + '\\,\\mathrm{W}}{110\\,\\mathrm{V}} \\approx ' + tx(I, 2) + '\\,\\mathrm{A} \\end{gathered}');
+    const pesos = v => tx(v, 0).replace(/(\d)(?=(\d{3})+$)/, '$1\\,');
+    texVivo(el, '\\begin{gathered} P_{\\text{media}} = \\dfrac{' + tx(E, 0) + '\\,\\mathrm{kWh}}{720\\,\\mathrm{h}} \\approx ' + tx(E / 720, 4) + '\\,\\mathrm{kW} \\approx ' + tx(P, 1) + '\\,\\mathrm{W} \\\\[8pt] I = \\dfrac{P}{V} = \\dfrac{' + tx(P, 1) + '\\,\\mathrm{W}}{110\\,\\mathrm{V}} \\approx ' + tx(I, 2) + '\\,\\mathrm{A} \\\\[8pt] \\text{costo} = ' + tx(E, 0) + '\\,\\mathrm{kWh}\\times\\$\\,776{,}22/\\mathrm{kWh} \\approx \\$\\,' + pesos(E * 776.22) + ' \\end{gathered}');
     document.getElementById('fa-ev').textContent = E + ' kWh';
     document.getElementById('fa-lect').textContent = 'P ≈ ' + num(P, 0) + ' W';
   }
