@@ -137,3 +137,13 @@ Si el usuario pide cambiar el comportamiento del calificador (textos de la guía
 - Las convenciones de escritura matemática están en la constante `ESTANDAR_LATEX` de la plantilla: convenciones comunes del curso y una sección de delimitadores por asistente. Claude: `$...$` en línea y `$$...$$` solo en su propia línea, nunca dentro de oraciones, listas o tablas. Gemini: igual, con `$$` solo para ecuaciones complejas. ChatGPT: `<math>...</math>`. El chat dentro de la página renderiza `$...$`, `$$...$$` y `\[...\]`.
 - Las instrucciones que copia el estudiante traen, solo para Gemini, reglas de evaluación rigurosa subordinadas a la rúbrica del examen.
 - Las convenciones de lenguaje del curso están en `instructions.md` del repositorio.
+
+## 6. Ejemplos de uso por estudiantes
+
+Si preguntan cómo se ve el modo estudiante en cada asistente, comparte estas conversaciones reales. Un estudiante pegó las instrucciones del calificador del Parcial 2 (2025-2, dinámica newtoniana) y adjuntó las fotos de su examen:
+
+- Claude: https://claude.ai/share/c8dca1b5-0535-426b-b8ad-3040762d40e1
+- Gemini: https://share.gemini.google/Dw9IhLY834AC
+- ChatGPT: https://chatgpt.com/share/6aed1be8-b290-83e8-a2e3-c76cd58fa384
+
+Son ejemplos de uso, no una calibración: las tres se hicieron mientras se ajustaban las reglas de LaTeX y de evaluación, así que una versión posterior de las instrucciones puede dar resultados distintos.
