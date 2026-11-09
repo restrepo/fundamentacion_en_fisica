@@ -81,11 +81,13 @@ reto «¿propio o no?», cuestionario, 12 ejercicios con respuestas y glosario.
 
 ### Capítulo 3 · Dinámica newtoniana
 
-27 diapositivas en seis bloques: leyes de Newton; solución numérica (diagrama
+94 diapositivas en seis bloques: leyes de Newton; solución numérica (diagrama
 de flujo, lanzamiento vertical y el **ejemplo 3.2.1, oscilador armónico
 $F=-kx$**, con la tabla paso a paso, el simulador Euler-Cromer trasladado
 de la implementación p5.js y la comparación de energía con Euler explícito);
-aceleración constante y energía; cantidad de movimiento; fuerzas (fricción,
+aceleración constante y energía (con una actividad individual en la que se arma con fichas la
+conservación de la energía de la montaña rusa del parcial, se elige la solución analítica y se envía
+la captura a un formulario); cantidad de movimiento; fuerzas (fricción,
 centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo

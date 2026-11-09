@@ -149,17 +149,6 @@ dl.glosa dd{margin:0;font-size:29px}
 .tb-in:disabled{background:transparent;border-color:transparent;color:var(--tinta)}
 .tb-in.ok{border-color:var(--res);background:var(--res-50)}
 .tb-in.mal{border-color:var(--mal);background:var(--mal-50)}
-.envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
-.envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
-.envio-caja{position:relative;width:1180px;max-height:900px;overflow:auto;background:var(--panel);border:2px solid var(--tinta);box-shadow:var(--shadow-lg, 0 18px 48px color-mix(in srgb, var(--color-text) 25%, transparent));padding:30px 40px;font-size:30px;text-align:left}
-.envio-caja h3{margin:0 0 12px;font:800 44px/1.2 var(--font-heading);color:var(--res)}
-.envio-cerrar{position:absolute;top:10px;right:16px;border:0;background:none;font-size:48px;line-height:1;cursor:pointer;color:var(--tinta2)}
-.envio-pasos{margin:0;padding-left:1.3em}
-.envio-pasos li{margin-bottom:18px}
-.envio-prev img{display:block;max-width:100%;max-height:360px;margin-top:10px;border:2px solid var(--linea)}
-.envio-btn,.envio-accion{font:600 var(--t-peq, 30px)/1 var(--font-body);padding:12px 22px;border:2px solid var(--res);background:var(--res);color:var(--papel);cursor:pointer;text-decoration:none;display:inline-block}
-.envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
-.envio-nota{font-size:26px;color:var(--tinta2)}
 #dp-acel .g2-60{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}
 #dp-acel .ac-col > * + *{margin-top:10px}
 #dp-acel .ctrl{margin:4px 0}
@@ -422,6 +411,38 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
 #dp-lineas .caja h3{font-size:24px;margin:0}
 #dp-lineas .ctrl{margin:2px 0}
 #dp-lineas .ln-ctl{margin:4px 0}
+#ac-ecuacion .ec-fig{width:100%;height:auto;display:block}
+#ac-ecuacion .ec-fig text{font-family:'STIX Two Text',Georgia,serif;font-size:30px;fill:var(--tinta)}
+#ac-ecuacion .ec-fig .ec-cota{font-size:26px;fill:var(--tinta2)}
+#ac-ecuacion .ec-enun{font-size:25px;margin:0}
+#ac-ecuacion .ec-paso{border:2px solid var(--linea);background:var(--panel);padding:12px 16px;display:flex;flex-direction:column;gap:10px}
+#ac-ecuacion .ec-paso h3{margin:0;font:700 25px/1.2 var(--font-body);color:var(--tinta)}
+#ac-ecuacion .ec-paso.ec-bloq{opacity:.45;pointer-events:none}
+#ac-ecuacion .ec-eq{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:28px}
+#ac-ecuacion .ec-slot{min-width:150px;min-height:58px;border:2px dashed var(--tinta2);display:flex;align-items:center;justify-content:center;background:var(--papel);cursor:pointer}
+#ac-ecuacion .ec-slot.ok{border-style:solid;border-color:var(--res)}
+#ac-ecuacion .ec-slot.mal{border-style:solid;border-color:var(--mal)}
+#ac-ecuacion .ec-banco{display:flex;flex-wrap:wrap;gap:8px}
+#ac-ecuacion .ec-ficha{font-size:25px;padding:6px 12px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);cursor:pointer;min-height:52px}
+#ac-ecuacion .ec-slot .ec-ficha{border:none;background:transparent;padding:2px 6px}
+#ac-ecuacion .ec-opcs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#ac-ecuacion .ec-opc{font-size:25px;padding:6px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);cursor:pointer;text-align:left}
+#ac-ecuacion .ec-opc.ok{border-color:var(--res);background:var(--res-50)}
+#ac-ecuacion .ec-opc.mal{border-color:var(--mal)}
+#ac-ecuacion .ec-fb{font:600 23px/1.3 var(--font-body);min-height:30px;margin:0}
+#ac-ecuacion .btn,#ac-ecuacion .envio-btn{font-size:23px;padding:8px 14px}
+#ac-ecuacion .ec-inst{font-size:22px;margin:0;color:var(--tinta2)}
+.envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
+.envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
+.envio-caja{position:relative;width:1180px;max-height:900px;overflow:auto;background:var(--panel);border:2px solid var(--tinta);box-shadow:var(--shadow-lg, 0 18px 48px color-mix(in srgb, var(--color-text) 25%, transparent));padding:30px 40px;font-size:30px;text-align:left}
+.envio-caja h3{margin:0 0 12px;font:800 44px/1.2 var(--font-heading);color:var(--res)}
+.envio-cerrar{position:absolute;top:10px;right:16px;border:0;background:none;font-size:48px;line-height:1;cursor:pointer;color:var(--tinta2)}
+.envio-pasos{margin:0;padding-left:1.3em}
+.envio-pasos li{margin-bottom:18px}
+.envio-prev img{display:block;max-width:100%;max-height:360px;margin-top:10px;border:2px solid var(--linea)}
+.envio-btn,.envio-accion{font:600 var(--t-peq, 30px)/1 var(--font-body);padding:12px 22px;border:2px solid var(--res);background:var(--res);color:var(--papel);cursor:pointer;text-decoration:none;display:inline-block}
+.envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
+.envio-nota{font-size:26px;color:var(--tinta2)}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1183,6 +1204,75 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
     <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: la montaña rusa" loading="lazy">Cargando…</iframe>
   </dialog>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="ac-ecuacion" data-label="Actividad: construya la ecuación de la montaña rusa" data-speaker-notes="Actividad individual basada en el problema 3 del parcial 2. Paso 1: el estudiante arma la ecuación de conservación de la energía mecánica entre A y C con fichas: ½ m v_A² + m g h_A = ½ m v_C² + m g h_C. Las fichas m v son cantidad de movimiento y m g sola no es energía: distractores frecuentes. Paso 2: con v_A = 0 elige la solución analítica v_C = √(2g(h_A − h_C)); errores típicos: usar h_C en vez de la diferencia (√(2g h_C) ≈ 15,3 m/s, el error más común en el parcial), olvidar el factor 2 o dejar la masa. Resultado: v_C = √(2·9,8·8) ≈ 12,5 m/s. Paso 3: captura y envío al formulario.">
+  <p class="ceja">§ 3.5 · Conservación de la energía · Actividad individual</p>
+  <h2 class="titulo">Montaña rusa: construya la ecuación y elija la solución</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:30px">
+    <div class="pila">
+      <figure class="svgbox" style="margin:0">
+        <svg class="ec-fig" viewBox="0 0 760 360" role="img" aria-label="Vía de la montaña rusa: A a 20 m, B en el suelo, C a 12 m y E a 22 m">
+          <rect x="20" y="300" width="720" height="14" style="fill:var(--rejilla)"/>
+          <line x1="20" y1="300" x2="740" y2="300" style="stroke:var(--tinta);stroke-width:3"/>
+          <path d="M30 100 L90 100 C170 100 170 298 240 298 C320 298 320 148 400 148 C470 148 480 230 540 230 C610 230 620 82 690 82 L735 82" style="fill:none;stroke:var(--tinta);stroke-width:5"/>
+          <g style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:7 6"><line x1="90" y1="100" x2="90" y2="300"/><line x1="400" y1="148" x2="400" y2="300"/><line x1="690" y1="82" x2="690" y2="300"/></g>
+          <rect x="40" y="70" width="44" height="24" rx="3" style="fill:var(--caso1-50);stroke:var(--tinta);stroke-width:2"/>
+          <circle cx="90" cy="100" r="6" style="fill:var(--tinta)"/><circle cx="240" cy="298" r="6" style="fill:var(--tinta)"/><circle cx="400" cy="148" r="6" style="fill:var(--tinta)"/><circle cx="690" cy="82" r="6" style="fill:var(--tinta)"/>
+          <text x="98" y="88" font-style="italic">A</text><text x="226" y="340" font-style="italic">B</text><text x="392" y="132" font-style="italic">C</text><text x="680" y="66" font-style="italic">E</text>
+          <text class="ec-cota" x="100" y="215">20 m</text><text class="ec-cota" x="410" y="235">12 m</text><text class="ec-cota" x="618" y="205">22 m</text>
+        </svg>
+      </figure>
+      <p class="ec-enun">El carro parte del reposo en \(A\), a \(h_A = \qty{20}{m}\), y pasa por la cima \(C\), a \(h_C = \qty{12}{m}\). No hay fricción y \(g = \qty{9{,}8}{m/s^2}\). ¿Con qué rapidez pasa por \(C\)?</p>
+      <p class="ec-inst"><strong>Actividad individual.</strong> Trabaje solo: arme la ecuación, elija la solución y envíe la captura de la diapositiva.</p>
+    </div>
+    <div class="pila" style="gap:12px">
+      <div class="ec-paso" id="ec-p1">
+        <h3>1 · Toque las fichas para armar la conservación de la energía entre \(A\) y \(C\)</h3>
+        <div class="ec-eq"><span class="ec-slot" data-lado="A"></span><span>\(+\)</span><span class="ec-slot" data-lado="A"></span><span>\(=\)</span><span class="ec-slot" data-lado="C"></span><span>\(+\)</span><span class="ec-slot" data-lado="C"></span></div>
+        <div class="ec-banco" id="ec-banco">
+          <button type="button" class="ec-ficha" data-t="UC">\(m g h_C\)</button>
+          <button type="button" class="ec-ficha" data-t="pA">\(m v_A\)</button>
+          <button type="button" class="ec-ficha" data-t="KA">\(\tfrac12 m v_A^{2}\)</button>
+          <button type="button" class="ec-ficha" data-t="mg">\(m g\)</button>
+          <button type="button" class="ec-ficha" data-t="KC">\(\tfrac12 m v_C^{2}\)</button>
+          <button type="button" class="ec-ficha" data-t="pC">\(m v_C\)</button>
+          <button type="button" class="ec-ficha" data-t="UA">\(m g h_A\)</button>
+          <button type="button" class="ec-ficha" data-t="UB">\(m g h_B\)</button>
+        </div>
+        <div class="fila-btn"><button type="button" class="btn" id="ec-comp">Comprobar la ecuación</button><button type="button" class="btn" id="ec-borra">Vaciar</button></div>
+        <p class="ec-fb" id="ec-fb1">Toque una ficha para ponerla en la primera casilla libre; toque una casilla para devolverla.</p>
+      </div>
+      <div class="ec-paso ec-bloq" id="ec-p2">
+        <h3>2 · Con \(v_A = 0\), ¿cuál es la solución analítica para \(v_C\)?</h3>
+        <div class="ec-opcs">
+          <button type="button" class="ec-opc" data-o="b">\(v_C = \sqrt{2 g\, h_C}\)</button>
+          <button type="button" class="ec-opc" data-o="a">\(v_C = \sqrt{2 g\,(h_A - h_C)}\)</button>
+          <button type="button" class="ec-opc" data-o="c">\(v_C = \sqrt{g\,(h_A - h_C)}\)</button>
+          <button type="button" class="ec-opc" data-o="d">\(v_C = \sqrt{2 m g\,(h_A - h_C)}\)</button>
+        </div>
+        <p class="ec-fb" id="ec-fb2"></p>
+      </div>
+      <div class="fila-btn"><button type="button" class="btn" id="ec-pista">💡 Pista</button><button type="button" class="btn" id="ec-rein">Empezar de nuevo</button><button type="button" class="envio-btn" data-envio="envio-ac-ecuacion">📷 Enviar mi solución</button></div>
+      <p class="ec-fb" id="ec-pista-t" style="display:none;font-weight:400">💡 Sin fricción, la energía mecánica \(K + U\) es la misma en \(A\) y en \(C\). La energía cinética es \(\tfrac12 m v^{2}\) y la potencial \(m g h\); \(m v\) es cantidad de movimiento.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-ac-ecuacion" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-ecuacion-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-ac-ecuacion-tit">Enviar tu solución</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="montana-rusa-ecuacion.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
 </section>
 
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-paradoja" data-label="El experimento pensado de Galileo" data-speaker-notes="§ 3.5. Experimento pensado de Galileo (Discorsi, 1638): si lo pesado cayera más rápido, dos piedras atadas deberían caer a la vez más lento que la pesada (la ligera la frena) y más rápido (pesan más juntas). La contradicción obliga a que la aceleración de caída no dependa de la masa. Explorador: con la hipótesis de Aristóteles se ven las dos predicciones incompatibles para el par atado; con la de Galileo los tres caen juntos. Resolución con la ley de la fuerza: si el peso es mg, a = F/m = g. Apolo 15 (1971): martillo y pluma caen juntos en la Luna (clic en el paso 4: animación en la Luna y en la Tierra con aire). ↓ revela 4 pasos.">
@@ -4263,6 +4353,76 @@ const T_OSC = 2 * Math.PI;
 })();
 
 
+/* ═══ ACTIVIDAD: CONSTRUIR LA ECUACIÓN DE LA MONTAÑA RUSA ══════════════ */
+(function () {
+  const sec = document.getElementById('ac-ecuacion');
+  if (!sec) return;
+  const banco = $('#ec-banco', sec), slots = $$('.ec-slot', sec), fb1 = $('#ec-fb1', sec), fb2 = $('#ec-fb2', sec), p2 = $('#ec-p2', sec);
+  const orden = $$('.ec-ficha', banco);
+  const fb10 = fb1.innerHTML;
+  const A = ['KA', 'UA'].sort().join(), C = ['KC', 'UC'].sort().join();
+  const libre = () => slots.find(sl => !sl.firstElementChild);
+  const limpia = () => slots.forEach(sl => sl.classList.remove('ok', 'mal'));
+  const tex = (el, h) => { el.innerHTML = h; if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {}); };
+  const aviso = (t, c) => { fb1.style.color = c || ''; tex(fb1, t); };
+  orden.forEach(f => f.addEventListener('click', () => {
+    if (f.parentElement !== banco) return;
+    const sl = libre(); if (!sl) { aviso('Las cuatro casillas están llenas: toque una para vaciarla.', 'var(--mal)'); return; }
+    sl.appendChild(f); limpia(); aviso(fb10);
+  }));
+  slots.forEach(sl => sl.addEventListener('click', () => {
+    const f = sl.firstElementChild; if (!f || sec.dataset.paso1 === 'ok') return;
+    banco.insertBefore(f, orden.slice(orden.indexOf(f) + 1).find(o => o.parentElement === banco) || null);
+    limpia();
+  }));
+  function comprueba() {
+    const t = slots.map(sl => sl.firstElementChild ? sl.firstElementChild.dataset.t : null);
+    if (t.includes(null)) { aviso('Faltan fichas: la ecuación tiene cuatro términos.', 'var(--mal)'); return; }
+    const izq = t.slice(0, 2).sort().join(), der = t.slice(2).sort().join();
+    if ((izq === A && der === C) || (izq === C && der === A)) {
+      slots.forEach(sl => { sl.classList.remove('mal'); sl.classList.add('ok'); });
+      sec.dataset.paso1 = 'ok'; p2.classList.remove('ec-bloq');
+      aviso('✓ Correcto: la energía mecánica en \\(A\\) es igual a la energía mecánica en \\(C\\). Siga con el paso 2.', 'var(--res)');
+      return;
+    }
+    [[0, izq], [2, der]].forEach(([i0, lado]) => {
+      const ok = lado === A || lado === C;
+      [slots[i0], slots[i0 + 1]].forEach(sl => { sl.classList.toggle('mal', !ok); sl.classList.toggle('ok', ok); });
+    });
+    if (t.some(x => x === 'pA' || x === 'pC')) aviso('✗ \\(m v\\) es cantidad de movimiento, no energía. La energía cinética es \\(\\tfrac12 m v^{2}\\).', 'var(--mal)');
+    else if (t.includes('mg')) aviso('✗ \\(m g\\) es el peso, una fuerza. La energía potencial es \\(m g h\\).', 'var(--mal)');
+    else if (t.includes('UB')) aviso('✗ El punto \\(B\\) no interviene: compare solo \\(A\\) con \\(C\\).', 'var(--mal)');
+    else aviso('✗ Cada lado debe tener la energía cinética y la potencial de un mismo punto: \\(A\\) a un lado, \\(C\\) al otro.', 'var(--mal)');
+  }
+  $('#ec-comp', sec).addEventListener('click', comprueba);
+  $('#ec-borra', sec).addEventListener('click', () => {
+    if (sec.dataset.paso1 === 'ok') return;
+    orden.forEach(f => banco.appendChild(f)); limpia(); aviso(fb10);
+  });
+  const exp = {
+    a: '✓ Correcto. Con \\(v_A = 0\\): \\(m g h_A = \\tfrac12 m v_C^{2} + m g h_C\\); la masa se cancela y \\(v_C = \\sqrt{2(9{,}8)(8)}\\,\\mathrm{m/s} \\approx 12{,}5\\,\\mathrm{m/s}\\). Ahora envíe la captura.',
+    b: '✗ Esa sería la rapidez tras caer \\(12\\,\\mathrm{m}\\) desde el reposo. Lo que cuenta es cuánto baja el carro: \\(h_A - h_C = 8\\,\\mathrm{m}\\).',
+    c: '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_C^{2} = g\\,(h_A - h_C)\\), el \\(\\tfrac12\\) pasa al otro lado como 2.',
+    d: '✗ La masa aparece en todos los términos y se cancela: la rapidez no depende de la masa.'
+  };
+  $$('.ec-opc', sec).forEach(b => b.addEventListener('click', () => {
+    if (sec.dataset.paso1 !== 'ok') return;
+    $$('.ec-opc', sec).forEach(o => o.classList.remove('ok', 'mal'));
+    const ok = b.dataset.o === 'a';
+    b.classList.add(ok ? 'ok' : 'mal');
+    fb2.style.color = ok ? 'var(--res)' : 'var(--mal)'; tex(fb2, exp[b.dataset.o]);
+    if (ok) sec.dataset.paso2 = 'ok';
+  }));
+  $('#ec-pista', sec).addEventListener('click', () => { const t = $('#ec-pista-t', sec); t.style.display = t.style.display === 'none' ? '' : 'none'; });
+  $('#ec-rein', sec).addEventListener('click', () => {
+    delete sec.dataset.paso1; delete sec.dataset.paso2;
+    orden.forEach(f => banco.appendChild(f)); limpia(); p2.classList.add('ec-bloq');
+    $$('.ec-opc', sec).forEach(o => o.classList.remove('ok', 'mal'));
+    aviso(fb10); fb2.textContent = '';
+  });
+})();
+
+
 /* ═══ SIMULADOR EULER-CROMER (traslado de oscilador.js, p5.js) ═════════ */
 (function () {
   const cv = document.getElementById('os-cv');
@@ -7090,6 +7250,8 @@ function lienzoOrbita(cv, trazos, marcas) {
   });
   document.getElementById('cz-borrar').addEventListener('click', () => { ins.forEach(i => { i.value = ''; i.classList.remove('ok', 'mal'); }); fbk.textContent = ''; });
 })();
+
+
 
 
 
