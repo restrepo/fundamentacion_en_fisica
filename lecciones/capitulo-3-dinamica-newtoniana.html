@@ -1206,7 +1206,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </dialog>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="ac-ecuacion" data-label="Actividad: construya la ecuación de la montaña rusa" data-speaker-notes="Actividad individual basada en el problema 3 del parcial 2. Paso 1: el estudiante arma la ecuación de conservación de la energía mecánica entre A y C con fichas: ½ m v_A² + m g h_A = ½ m v_C² + m g h_C. Las fichas m v son cantidad de movimiento y m g sola no es energía: distractores frecuentes. Paso 2: con v_A = 0 elige la solución analítica v_C = √(2g(h_A − h_C)); errores típicos: usar h_C en vez de la diferencia (√(2g h_C) ≈ 15,3 m/s, el error más común en el parcial), olvidar el factor 2 o dejar la masa. Resultado: v_C = √(2·9,8·8) ≈ 12,5 m/s. Paso 3: captura y envío al formulario.">
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="ac-ecuacion" data-label="Actividad: construya la ecuación de la montaña rusa" data-speaker-notes="Actividad individual basada en el problema 3 del parcial 2. Se da por hecho que el carro parte del reposo (v_A = 0), así que en A solo hay energía potencial. Paso 1: el estudiante arma con fichas la conservación de la energía mecánica entre A y B: m g h_A = ½ m v_B² + m g h_B. Distractores: m v (cantidad de movimiento), m g sola (el peso), ½ m v_A² (es cero porque parte del reposo) y m g h_C (el punto C no interviene). Paso 2: con h_B = 0 elige la solución analítica y vota en el formulario con su número. Respuesta: 3, v_B = √(2 g h_A) = √(2·9,8·20) ≈ 19,8 m/s. Errores: olvidar el factor 2 (1), dejar la masa (2) u olvidar la raíz (4).">
   <p class="ceja">§ 3.5 · Conservación de la energía · Actividad individual</p>
   <h2 class="titulo">Montaña rusa: construya la ecuación y elija la solución</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:30px">
@@ -1223,56 +1223,43 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
           <text class="ec-cota" x="100" y="215">20 m</text><text class="ec-cota" x="410" y="235">12 m</text><text class="ec-cota" x="618" y="205">22 m</text>
         </svg>
       </figure>
-      <p class="ec-enun">El carro parte del reposo en \(A\), a \(h_A = \qty{20}{m}\), y pasa por la cima \(C\), a \(h_C = \qty{12}{m}\). No hay fricción y \(g = \qty{9{,}8}{m/s^2}\). ¿Con qué rapidez pasa por \(C\)?</p>
-      <p class="ec-inst"><strong>Actividad individual.</strong> Trabaje solo: arme la ecuación, elija la solución y envíe la captura de la diapositiva.</p>
+      <p class="ec-enun">El carro parte del reposo en \(A\) (\(v_A = 0\)), a \(h_A = \qty{20}{m}\), y baja hasta \(B\), el punto más bajo (\(h_B = 0\)). No hay fricción y \(g = \qty{9{,}8}{m/s^2}\). ¿Con qué rapidez pasa por \(B\)?</p>
+      <p class="ec-inst"><strong>Actividad individual.</strong> Trabaje solo: arme la ecuación, elija la solución y vote en el formulario con el número de su respuesta.</p>
     </div>
     <div class="pila" style="gap:12px">
       <div class="ec-paso" id="ec-p1">
-        <h3>1 · Toque las fichas para armar la conservación de la energía entre \(A\) y \(C\)</h3>
-        <div class="ec-eq"><span class="ec-slot" data-lado="A"></span><span>\(+\)</span><span class="ec-slot" data-lado="A"></span><span>\(=\)</span><span class="ec-slot" data-lado="C"></span><span>\(+\)</span><span class="ec-slot" data-lado="C"></span></div>
+        <h3>1 · Toque las fichas para armar la conservación de la energía entre \(A\) y \(B\)</h3>
+        <div class="ec-eq"><span class="ec-slot" data-lado="A"></span><span>\(=\)</span><span class="ec-slot" data-lado="B"></span><span>\(+\)</span><span class="ec-slot" data-lado="B"></span></div>
         <div class="ec-banco" id="ec-banco">
-          <button type="button" class="ec-ficha" data-t="UC">\(m g h_C\)</button>
-          <button type="button" class="ec-ficha" data-t="pA">\(m v_A\)</button>
-          <button type="button" class="ec-ficha" data-t="KA">\(\tfrac12 m v_A^{2}\)</button>
-          <button type="button" class="ec-ficha" data-t="mg">\(m g\)</button>
-          <button type="button" class="ec-ficha" data-t="KC">\(\tfrac12 m v_C^{2}\)</button>
-          <button type="button" class="ec-ficha" data-t="pC">\(m v_C\)</button>
-          <button type="button" class="ec-ficha" data-t="UA">\(m g h_A\)</button>
           <button type="button" class="ec-ficha" data-t="UB">\(m g h_B\)</button>
+          <button type="button" class="ec-ficha" data-t="pB">\(m v_B\)</button>
+          <button type="button" class="ec-ficha" data-t="UA">\(m g h_A\)</button>
+          <button type="button" class="ec-ficha" data-t="mg">\(m g\)</button>
+          <button type="button" class="ec-ficha" data-t="KB">\(\tfrac12 m v_B^{2}\)</button>
+          <button type="button" class="ec-ficha" data-t="KA">\(\tfrac12 m v_A^{2}\)</button>
+          <button type="button" class="ec-ficha" data-t="UC">\(m g h_C\)</button>
         </div>
         <div class="fila-btn"><button type="button" class="btn" id="ec-comp">Comprobar la ecuación</button><button type="button" class="btn" id="ec-borra">Vaciar</button></div>
         <p class="ec-fb" id="ec-fb1">Toque una ficha para ponerla en la primera casilla libre; toque una casilla para devolverla.</p>
       </div>
       <div class="ec-paso ec-bloq" id="ec-p2">
-        <h3>2 · Con \(v_A = 0\), ¿cuál es la solución analítica para \(v_C\)?</h3>
+        <h3>2 · Con \(h_B = 0\), ¿cuál es la solución analítica para \(v_B\)?</h3>
         <div class="ec-opcs">
-          <button type="button" class="ec-opc" data-o="b">\(v_C = \sqrt{2 g\, h_C}\)</button>
-          <button type="button" class="ec-opc" data-o="a">\(v_C = \sqrt{2 g\,(h_A - h_C)}\)</button>
-          <button type="button" class="ec-opc" data-o="c">\(v_C = \sqrt{g\,(h_A - h_C)}\)</button>
-          <button type="button" class="ec-opc" data-o="d">\(v_C = \sqrt{2 m g\,(h_A - h_C)}\)</button>
+          <button type="button" class="ec-opc" data-o="c">1 · \(v_B = \sqrt{g\, h_A}\)</button>
+          <button type="button" class="ec-opc" data-o="d">2 · \(v_B = \sqrt{2 m g\, h_A}\)</button>
+          <button type="button" class="ec-opc" data-o="a">3 · \(v_B = \sqrt{2 g\, h_A}\)</button>
+          <button type="button" class="ec-opc" data-o="b">4 · \(v_B = 2 g\, h_A\)</button>
         </div>
         <p class="ec-fb" id="ec-fb2"></p>
       </div>
-      <div class="fila-btn"><button type="button" class="btn" id="ec-pista">💡 Pista</button><button type="button" class="btn" id="ec-rein">Empezar de nuevo</button><button type="button" class="envio-btn" data-envio="envio-ac-ecuacion">📷 Enviar mi solución</button></div>
-      <p class="ec-fb" id="ec-pista-t" style="display:none;font-weight:400">💡 Sin fricción, la energía mecánica \(K + U\) es la misma en \(A\) y en \(C\). La energía cinética es \(\tfrac12 m v^{2}\) y la potencial \(m g h\); \(m v\) es cantidad de movimiento.</p>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-ecuacion">📝 Votar en el formulario</button><button type="button" class="btn" id="ec-pista">💡 Pista</button><button type="button" class="btn" id="ec-rein">Empezar de nuevo</button></div>
+      <p class="ec-fb" id="ec-pista-t" style="display:none;font-weight:400">💡 Sin fricción, la energía mecánica \(K + U\) es la misma en \(A\) y en \(B\). Como parte del reposo, en \(A\) solo hay energía potencial \(m g h_A\); \(m v\) es cantidad de movimiento.</p>
     </div>
   </div>
-  <!-- envio-formulario:inicio -->
-  <div class="envio-fondo no-captura" id="envio-ac-ecuacion" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-ecuacion-tit">
-    <div class="envio-caja">
-      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
-      <h3 id="envio-ac-ecuacion-tit">Enviar tu solución</h3>
-      <ol class="envio-pasos">
-        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
-          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="montana-rusa-ecuacion.png">Descargar de nuevo</a></div>
-          <div class="envio-prev"></div></li>
-        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
-          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
-      </ol>
-      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
-    </div>
-  </div>
-  <!-- envio-formulario:fin -->
+  <dialog id="gform-ac-ecuacion" class="gform-dlg" aria-label="Formulario: Actividad: construya la ecuación de la montaña rusa">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: construya la ecuación de la montaña rusa" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-paradoja" data-label="El experimento pensado de Galileo" data-speaker-notes="§ 3.5. Experimento pensado de Galileo (Discorsi, 1638): si lo pesado cayera más rápido, dos piedras atadas deberían caer a la vez más lento que la pesada (la ligera la frena) y más rápido (pesan más juntas). La contradicción obliga a que la aceleración de caída no dependa de la masa. Explorador: con la hipótesis de Aristóteles se ven las dos predicciones incompatibles para el par atado; con la de Galileo los tres caen juntos. Resolución con la ley de la fuerza: si el peso es mg, a = F/m = g. Apolo 15 (1971): martillo y pluma caen juntos en la Luna (clic en el paso 4: animación en la Luna y en la Tierra con aire). ↓ revela 4 pasos.">
@@ -4360,7 +4347,7 @@ const T_OSC = 2 * Math.PI;
   const banco = $('#ec-banco', sec), slots = $$('.ec-slot', sec), fb1 = $('#ec-fb1', sec), fb2 = $('#ec-fb2', sec), p2 = $('#ec-p2', sec);
   const orden = $$('.ec-ficha', banco);
   const fb10 = fb1.innerHTML;
-  const A = ['KA', 'UA'].sort().join(), C = ['KC', 'UC'].sort().join();
+  const B = ['KB', 'UB'].sort().join();
   const libre = () => slots.find(sl => !sl.firstElementChild);
   const limpia = () => slots.forEach(sl => sl.classList.remove('ok', 'mal'));
   const tex = (el, h) => { el.innerHTML = h; if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {}); };
@@ -4377,22 +4364,21 @@ const T_OSC = 2 * Math.PI;
   }));
   function comprueba() {
     const t = slots.map(sl => sl.firstElementChild ? sl.firstElementChild.dataset.t : null);
-    if (t.includes(null)) { aviso('Faltan fichas: la ecuación tiene cuatro términos.', 'var(--mal)'); return; }
-    const izq = t.slice(0, 2).sort().join(), der = t.slice(2).sort().join();
-    if ((izq === A && der === C) || (izq === C && der === A)) {
+    if (t.includes(null)) { aviso('Faltan fichas: la ecuación tiene tres términos.', 'var(--mal)'); return; }
+    const okA = t[0] === 'UA', okB = t.slice(1).sort().join() === B;
+    if (okA && okB) {
       slots.forEach(sl => { sl.classList.remove('mal'); sl.classList.add('ok'); });
       sec.dataset.paso1 = 'ok'; p2.classList.remove('ec-bloq');
-      aviso('✓ Correcto: la energía mecánica en \\(A\\) es igual a la energía mecánica en \\(C\\). Siga con el paso 2.', 'var(--res)');
+      aviso('✓ Correcto: \\(m g h_A = \\tfrac12 m v_B^{2} + m g h_B\\). La energía potencial en \\(A\\) se reparte en \\(B\\) entre cinética y potencial. Siga con el paso 2.', 'var(--res)');
       return;
     }
-    [[0, izq], [2, der]].forEach(([i0, lado]) => {
-      const ok = lado === A || lado === C;
-      [slots[i0], slots[i0 + 1]].forEach(sl => { sl.classList.toggle('mal', !ok); sl.classList.toggle('ok', ok); });
-    });
-    if (t.some(x => x === 'pA' || x === 'pC')) aviso('✗ \\(m v\\) es cantidad de movimiento, no energía. La energía cinética es \\(\\tfrac12 m v^{2}\\).', 'var(--mal)');
+    slots[0].classList.toggle('ok', okA); slots[0].classList.toggle('mal', !okA);
+    [slots[1], slots[2]].forEach(sl => { sl.classList.toggle('ok', okB); sl.classList.toggle('mal', !okB); });
+    if (t.some(x => x === 'pB')) aviso('✗ \\(m v\\) es cantidad de movimiento, no energía. La energía cinética es \\(\\tfrac12 m v^{2}\\).', 'var(--mal)');
     else if (t.includes('mg')) aviso('✗ \\(m g\\) es el peso, una fuerza. La energía potencial es \\(m g h\\).', 'var(--mal)');
-    else if (t.includes('UB')) aviso('✗ El punto \\(B\\) no interviene: compare solo \\(A\\) con \\(C\\).', 'var(--mal)');
-    else aviso('✗ Cada lado debe tener la energía cinética y la potencial de un mismo punto: \\(A\\) a un lado, \\(C\\) al otro.', 'var(--mal)');
+    else if (t.includes('KA')) aviso('✗ El carro parte del reposo: \\(v_A = 0\\), así que en \\(A\\) no hay energía cinética.', 'var(--mal)');
+    else if (t.includes('UC')) aviso('✗ El punto \\(C\\) no interviene: compare solo \\(A\\) con \\(B\\).', 'var(--mal)');
+    else aviso('✗ A la izquierda va la energía en \\(A\\) (solo potencial) y a la derecha la cinética y la potencial en \\(B\\).', 'var(--mal)');
   }
   $('#ec-comp', sec).addEventListener('click', comprueba);
   $('#ec-borra', sec).addEventListener('click', () => {
@@ -4400,10 +4386,10 @@ const T_OSC = 2 * Math.PI;
     orden.forEach(f => banco.appendChild(f)); limpia(); aviso(fb10);
   });
   const exp = {
-    a: '✓ Correcto. Con \\(v_A = 0\\): \\(m g h_A = \\tfrac12 m v_C^{2} + m g h_C\\); la masa se cancela y \\(v_C = \\sqrt{2(9{,}8)(8)}\\,\\mathrm{m/s} \\approx 12{,}5\\,\\mathrm{m/s}\\). Ahora envíe la captura.',
-    b: '✗ Esa sería la rapidez tras caer \\(12\\,\\mathrm{m}\\) desde el reposo. Lo que cuenta es cuánto baja el carro: \\(h_A - h_C = 8\\,\\mathrm{m}\\).',
-    c: '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_C^{2} = g\\,(h_A - h_C)\\), el \\(\\tfrac12\\) pasa al otro lado como 2.',
-    d: '✗ La masa aparece en todos los términos y se cancela: la rapidez no depende de la masa.'
+    a: '✓ Correcto. Con \\(h_B = 0\\): \\(m g h_A = \\tfrac12 m v_B^{2}\\); la masa se cancela y \\(v_B = \\sqrt{2(9{,}8)(20)}\\,\\mathrm{m/s} \\approx 19{,}8\\,\\mathrm{m/s}\\). Vote en el formulario con el número 3.',
+    b: '✗ Falta la raíz: de \\(v_B^{2} = 2 g h_A\\) se obtiene \\(v_B\\) sacando raíz cuadrada; además \\(2 g h_A\\) tiene unidades de \\(\\mathrm{m^2/s^2}\\).',
+    c: '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_B^{2} = g\\,h_A\\), el \\(\\tfrac12\\) pasa al otro lado como 2.',
+    d: '✗ La masa aparece en los dos lados y se cancela: la rapidez no depende de la masa.'
   };
   $$('.ec-opc', sec).forEach(b => b.addEventListener('click', () => {
     if (sec.dataset.paso1 !== 'ok') return;
@@ -7250,6 +7236,8 @@ function lienzoOrbita(cv, trazos, marcas) {
   });
   document.getElementById('cz-borrar').addEventListener('click', () => { ins.forEach(i => { i.value = ''; i.classList.remove('ok', 'mal'); }); fbk.textContent = ''; });
 })();
+
+
 
 
 
