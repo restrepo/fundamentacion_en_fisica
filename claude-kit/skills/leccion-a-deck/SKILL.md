@@ -66,6 +66,10 @@ de `assets/capa-ds.css`. En la fuente se escriben **sin** número ni letra
 número, conviene darle unidad o palabra («4 veces», no «4») para que no se lea
 «4. 4». El atributo `data-o` sigue siendo la clave interna de la respuesta y
 no se muestra.
+La regla vale también para las actividades hechas a mano cuyas opciones se
+crean con JavaScript: el contenedor lleva la clase `pr-opcs` y cada botón
+`pr-opc` (además de las clases propias de la actividad), sin número escrito en
+el texto, para que reciban la misma numeración en azul.
 
 **Visor de imágenes:** toda lección generada incluye `assets/visor-img.css` y
 `assets/visor-img.js`. Al hacer clic en una imagen de una diapositiva, se abre
