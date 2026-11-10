@@ -269,6 +269,35 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .envio-btn,.envio-accion{font:600 var(--t-peq, 30px)/1 var(--font-body);padding:12px 22px;border:2px solid var(--res);background:var(--res);color:var(--papel);cursor:pointer;text-decoration:none;display:inline-block}
 .envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
 .envio-nota{font-size:26px;color:var(--tinta2)}
+.mx-aviso{font-size:23px;line-height:1.35;color:var(--tinta2);border-left:6px solid var(--proy);padding:4px 14px;margin:0 0 10px}
+.mx-tabla{display:flex;flex-direction:column;gap:6px}
+.mx-fila{display:grid;grid-template-columns:70px minmax(0,1.05fr) 150px minmax(0,1.3fr);align-items:center;gap:18px;padding:4px 10px;border-bottom:1px solid var(--linea)}
+.mx-despues .mx-fila{grid-template-columns:60px minmax(0,1fr) 130px}
+.mx-n{font:600 28px/1 var(--font-body);color:var(--tinta2)}
+.mx-eq{font-size:38px}
+.mx-eq mjx-container[display="true"]{margin:0 !important}
+.mx-ic{width:150px;height:122px;display:block}
+.mx-despues .mx-ic{width:120px;height:98px}
+.mx-txt{font-size:26px;line-height:1.35}
+.mx-eq4{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mx-hueco{display:inline-flex;align-items:center;justify-content:center;min-width:170px;min-height:110px;border:3px dashed var(--res);background:var(--res-50);font:700 40px/1 var(--font-body);color:var(--res);padding:4px}
+.mx-hueco.ok{border-style:solid;border-color:var(--caso1);background:var(--caso1-50)}
+.mx-hueco.mal{border-style:solid;border-color:var(--mal)}
+.mx-hueco .mx-ficha{margin:0;cursor:default}
+.mx-banco{display:flex;flex-wrap:wrap;gap:14px;min-height:130px}
+.mx-ficha{font-size:30px;padding:8px 16px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);cursor:grab;touch-action:none;user-select:none;position:relative;z-index:1}
+.mx-ficha.arrastra{cursor:grabbing;z-index:30;box-shadow:0 8px 24px color-mix(in srgb, var(--color-text) 18%, transparent);border-color:var(--res)}
+.mx-f4.lista{background:var(--caso1-50)}
+.mx-cadena{font:500 30px/1.3 var(--font-body);text-align:center;background:var(--res-50);padding:8px 14px;margin:0 0 12px;letter-spacing:.01em}
+.mx-cadena b{font-weight:700}
+.mx-cadena .on{color:var(--res);text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.mx-calc .mx-linea{opacity:.15;transition:opacity .4s;margin:4px 0;font-size:26px}
+.mx-calc .mx-linea.on{opacity:1}
+.mx-grande{font-size:34px !important}
+.mx-grande #mx-num{font:700 40px/1 var(--font-body);color:var(--res);font-variant-numeric:tabular-nums}
+.mx-wow{font-size:24px !important;background:var(--caso1-50);border-left:8px solid var(--caso1);padding:8px 14px}
+.mx-sorpresa{font-size:40px;padding:6px 20px}
+#mx-calc{font-size:26px}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1536,6 +1565,91 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Inducción y ondas" id="dp-mx-antes" data-label="Antes de Maxwell: cuatro leyes" data-speaker-notes="§ 4.5. Las cuatro leyes del electromagnetismo antes de Maxwell, en forma diferencial. No hacen parte del curso: sirven para discutir. ∇· (divergencia) mide cuánto campo nace en un punto; ∇× (rotacional) mide cuánto circula a su alrededor. (1) Gauss: las cargas son fuentes de E. (2) No hay monopolos magnéticos. (3) Faraday: un B variable crea un E que circula. (4) Ampère: las corrientes crean un B que circula. Asimetría: (3) tiene un término con ∂B/∂t, pero (4) no tiene el equivalente con ∂E/∂t. Esa es la pieza que añade Maxwell. ↓ revela las cuatro leyes.">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Antes de Maxwell</p>
+  <h2 class="titulo">Antes de Maxwell: cuatro leyes que no encajaban</h2>
+  <p class="mx-aviso">Las fórmulas con \(\nabla\) y derivadas parciales <strong>no hacen parte del curso</strong>: están aquí para facilitar la discusión.</p>
+  <div class="mx-tabla">
+      <div class="mx-fila frag"><span class="mx-n">(1)</span><div class="mx-eq">\[ \nabla\cdot\vect{E} = \dfrac{\rho}{\varepsilon_0} \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><line x1="98.0" y1="65.0" x2="129.0" y2="65.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="138.0,65.0 129.0,60.0 129.0,70.0" style="fill:var(--caso2)"/><line x1="95.6" y1="74.0" x2="122.4" y2="89.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="130.2,94.0 124.9,85.2 119.9,93.8" style="fill:var(--caso2)"/><line x1="89.0" y1="80.6" x2="104.5" y2="107.4" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="109.0,115.2 108.8,104.9 100.2,109.9" style="fill:var(--caso2)"/><line x1="80.0" y1="83.0" x2="80.0" y2="114.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="80.0,123.0 85.0,114.0 75.0,114.0" style="fill:var(--caso2)"/><line x1="71.0" y1="80.6" x2="55.5" y2="107.4" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="51.0,115.2 59.8,109.9 51.2,104.9" style="fill:var(--caso2)"/><line x1="64.4" y1="74.0" x2="37.6" y2="89.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="29.8,94.0 40.1,93.8 35.1,85.2" style="fill:var(--caso2)"/><line x1="62.0" y1="65.0" x2="31.0" y2="65.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="22.0,65.0 31.0,70.0 31.0,60.0" style="fill:var(--caso2)"/><line x1="64.4" y1="56.0" x2="37.6" y2="40.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="29.8,36.0 35.1,44.8 40.1,36.2" style="fill:var(--caso2)"/><line x1="71.0" y1="49.4" x2="55.5" y2="22.6" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="51.0,14.8 51.2,25.1 59.8,20.1" style="fill:var(--caso2)"/><line x1="80.0" y1="47.0" x2="80.0" y2="16.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="80.0,7.0 75.0,16.0 85.0,16.0" style="fill:var(--caso2)"/><line x1="89.0" y1="49.4" x2="104.5" y2="22.6" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="109.0,14.8 100.2,20.1 108.8,25.1" style="fill:var(--caso2)"/><line x1="95.6" y1="56.0" x2="122.4" y2="40.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="130.2,36.0 119.9,36.2 124.9,44.8" style="fill:var(--caso2)"/><circle cx="80" cy="65" r="13" style="fill:var(--caso2)"/><text x="80" y="72" text-anchor="middle" style="font:700 20px var(--font-body);fill:var(--papel)">+</text></svg><div class="mx-txt"><strong>Ley de Gauss.</strong> Las cargas son las fuentes del campo eléctrico: de ellas salen o a ellas llegan las líneas de \(\vect{E}\).</div></div>
+      <div class="mx-fila frag"><span class="mx-n">(2)</span><div class="mx-eq">\[ \nabla\cdot\vect{B} = 0 \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><ellipse cx="80" cy="65" rx="40" ry="24" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><ellipse cx="80" cy="65" rx="58" ry="40" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><ellipse cx="80" cy="65" rx="74" ry="56" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><rect x="50" y="55" width="30" height="20" style="fill:var(--caso1)"/><rect x="80" y="55" width="30" height="20" style="fill:var(--mal)"/><text x="65" y="71" text-anchor="middle" style="font:700 15px var(--font-body);fill:var(--papel)">S</text><text x="95" y="71" text-anchor="middle" style="font:700 15px var(--font-body);fill:var(--papel)">N</text></svg><div class="mx-txt"><strong>Gauss para el magnetismo.</strong> No hay cargas magnéticas sueltas: las líneas de \(\vect{B}\) siempre se cierran.</div></div>
+      <div class="mx-fila frag"><span class="mx-n">(3)</span><div class="mx-eq">\[ \nabla\times\vect{E} = -\dfrac{\partial\vect{B}}{\partial t} \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><rect x="8" y="54" width="26" height="22" style="fill:var(--caso1)"/><rect x="34" y="54" width="26" height="22" style="fill:var(--mal)"/><line x1="20.0" y1="92.0" x2="49.0" y2="92.0" style="stroke:var(--tinta);stroke-width:3"/><polygon points="58.0,92.0 49.0,87.0 49.0,97.0" style="fill:var(--tinta)"/><ellipse cx="86" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="98" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="110" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="122" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="134" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="146" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><path d="M 146 40 A 18 18 0 1 1 145.9 40" style="fill:none;stroke:var(--res);stroke-width:2;stroke-dasharray:4 3"/><text x="128" y="122" text-anchor="middle" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--res)">E</text></svg><div class="mx-txt"><strong>Ley de Faraday.</strong> Un \(\vect{B}\) que cambia crea un \(\vect{E}\) que circula y empuja la corriente inducida.</div></div>
+      <div class="mx-fila frag"><span class="mx-n">(4)</span><div class="mx-eq">\[ \nabla\times\vect{B} = \mu_0\,\vect{j} \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><line x1="80" y1="8" x2="80" y2="122" style="stroke:var(--caso2);stroke-width:8"/><line x1="95.0" y1="100.0" x2="95.0" y2="39.0" style="stroke:var(--mal);stroke-width:3"/><polygon points="95.0,30.0 90.0,39.0 100.0,39.0" style="fill:var(--mal)"/><text x="108" y="40" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--mal)">I</text><ellipse cx="80" cy="40" rx="34" ry="9" style="fill:none;stroke:var(--res);stroke-width:2.5"/><ellipse cx="80" cy="65" rx="48" ry="12" style="fill:none;stroke:var(--res);stroke-width:2.5"/><ellipse cx="80" cy="90" rx="34" ry="9" style="fill:none;stroke:var(--res);stroke-width:2.5"/><text x="24" y="70" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--res)">B</text></svg><div class="mx-txt"><strong>Ley de Ampère.</strong> Las corrientes (\(\vect{j}\): corriente por unidad de área) crean un \(\vect{B}\) que circula.</div></div>
+      
+  </div>
+  <p class="nota" style="margin-top:6px"><span class="prop" data-pop="pop-mx-nabla">¿Qué significan \(\nabla\cdot\) y \(\nabla\times\)?</span> · Observa la asimetría: en (3) un campo que cambia crea el otro; en (4), no.</p>
+  <div class="pop-src" id="pop-mx-nabla" style="display:none"><h4>Divergencia y rotacional</h4>
+    <p style="margin:0 0 8px">\(\nabla = \left(\dfrac{\partial}{\partial x}, \dfrac{\partial}{\partial y}, \dfrac{\partial}{\partial z}\right)\) es un vector de derivadas.</p>
+    <p style="margin:0 0 8px"><strong>Divergencia</strong> \(\nabla\cdot\vect{E}\): cuánto campo <em>sale</em> de un punto. Es positiva donde nacen líneas (una carga \(+\)) y cero donde solo pasan.</p>
+    <p style="margin:0">El <strong>rotacional</strong>, \(\nabla\times\vect{B}\), mide cuánto <em>circula</em> el campo alrededor de un punto, como el agua en un remolino. Es la versión local de \(\sum \vect{B}\cdot\Delta\vect{L}\) de la ley de Ampère.</p>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-mx-cadena" data-label="Un campo alimenta al otro" data-speaker-notes="§ 4.5. Con el término de Maxwell las dos leyes quedan simétricas: un B que cambia crea E (Faraday) y un E que cambia crea B (Maxwell). La perturbación se sostiene sola: B(t) → E(t) → B(t) → … y se propaga como una onda transversal, con E y B perpendiculares entre sí y a la dirección de avance. Su rapidez es c, la misma en todos los sistemas de referencia inerciales (capítulo 2). La cadena de arriba se ilumina al ritmo de la onda. El botón ⏸ congela un instante; el deslizador cambia la longitud de onda.">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · La onda electromagnética</p>
+  <h2 class="titulo">Un campo alimenta al otro y la perturbación viaja</h2>
+  <p class="mx-cadena" id="mx-cadena"></p>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Onda electromagnética</span><span class="val" id="mx-lect"></span></div>
+      <canvas class="lienzo" id="mx-cv" width="1180" height="560"></canvas>
+    </figure>
+    <div class="pila">
+      <p>Un \(\vect{B}\) que cambia crea un \(\vect{E}\) (Faraday) y un \(\vect{E}\) que cambia crea un \(\vect{B}\) (Maxwell). Cada campo sostiene al otro, sin cargas ni cables.</p>
+      <div class="caja"><p style="margin:0"><strong>Velocidad de propagación:</strong> \(c\), la rapidez de la luz, <strong>la misma en todos los sistemas de referencia inerciales</strong> (capítulo 2).</p></div>
+      <p class="nota">\(\vect{E}\) y \(\vect{B}\) son perpendiculares entre sí y a la dirección de avance: la onda es transversal.</p>
+      <div class="fila-btn"><button type="button" class="btn" id="mx-pausa">⏸ Detener el tiempo</button></div>
+      <label class="ctrl"><span>Longitud de onda</span><input type="range" id="mx-l" min="200" max="700" step="10" value="420"><span class="v" id="mx-lv"></span></label>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta" data-seccion="Inducción y ondas" id="dp-mx-ecuacion" data-label="La ecuación de onda y la sorpresa de Maxwell" data-speaker-notes="§ 4.5. De las ecuaciones de Maxwell en el vacío sale una ecuación de onda. En la presentación se escribe para el potencial eléctrico V(t, x, y, z) con el producto escalar de Lorentz de las derivadas, ∂_μ·∂_μ V = 0, el mismo producto del intervalo c²t² − x² − y² − z² del capítulo 2. La rapidez de la onda queda fijada por dos constantes medidas en el laboratorio con cargas, imanes y corrientes: c = 1/√(μ₀ε₀) ≈ 299 792 458 m/s. En 1862 Maxwell usó la medida eléctrica de Weber y Kohlrausch (1856), 310 740 km/s, y la comparó con la rapidez de la luz medida por Fizeau (1849), 314 858 km/s: la luz es una onda electromagnética. «Una ola electromagnética no se puede surfear»: como c es la misma para todos, nadie puede viajar junto a la onda y verla quieta (la pregunta que se hacía Einstein a los 16 años). El botón calcula c paso a paso.">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Ecuación de onda</p>
+  <h2 class="titulo">La ecuación de onda esconde una sorpresa</h2>
+  <p class="mx-aviso">Las fórmulas con \(\nabla\) y derivadas parciales <strong>no hacen parte del curso</strong>: están aquí para facilitar la discusión.</p>
+  <div class="g2">
+    <div class="pila">
+      <p>\(\vect{E}(t,x,y,z) \;\to\; V(t,x,y,z)\): potencial eléctrico. En el vacío, las ecuaciones de Maxwell dan, con el producto escalar de Lorentz (el del intervalo \(c^{2}t^{2} - x^{2} - y^{2} - z^{2}\) del capítulo 2):</p>
+      <div class="kf" style="font-size:31px;padding:8px 18px">\[ \partial_\mu = \left(\dfrac{\partial}{c\,\partial t}, \dfrac{\partial}{\partial x}, \dfrac{\partial}{\partial y}, \dfrac{\partial}{\partial z}\right), \qquad \partial_\mu\cdot\partial_\mu V = 0 , \]
+      \[ \dfrac{\partial^{2} V}{c^{2}\,\partial t^{2}} - \dfrac{\partial^{2} V}{\partial x^{2}} - \dfrac{\partial^{2} V}{\partial y^{2}} - \dfrac{\partial^{2} V}{\partial z^{2}} = 0 . \]</div>
+      <div class="caja c1"><p style="margin:0"><strong>Una ola electromagnética no se puede surfear:</strong> como \(c\) es la misma para todos, nadie puede viajar junto a la onda y verla quieta.</p></div>
+    </div>
+    <div class="pila">
+      <p>La rapidez de la onda sale de dos constantes que se miden con cargas, imanes y corrientes, sin ninguna luz:</p>
+      <div class="kf mx-sorpresa">\[ c = \dfrac{1}{\sqrt{\mu_0\,\varepsilon_0}} \]</div>
+      <div class="fila-btn"><button type="button" class="btn" id="mx-calc">🧮 Calcular con \(\mu_0\) y \(\varepsilon_0\)</button></div>
+      <div class="mx-calc" id="mx-res">
+        <p class="mx-linea">\(\mu_0 = \qty{1{,}256\,637\,061\times 10^{-6}}{T\cdot m/A}\)</p>
+        <p class="mx-linea">\(\varepsilon_0 = \qty{8{,}854\,187\,819\times 10^{-12}}{C^{2}/(N\cdot m^{2})}\)</p>
+        <p class="mx-linea mx-grande">\(\dfrac{1}{\sqrt{\mu_0\varepsilon_0}} =\) <span id="mx-num">0</span>\(\;\mathrm{m/s}\)</p>
+        <p class="mx-linea mx-wow">¡Es la rapidez de la luz! En 1862, con las medidas eléctricas de Weber y Kohlrausch (\(\qty{310\,740}{km/s}\)) y la de la luz de Fizeau (\(\qty{314\,858}{km/s}\)), Maxwell concluyó que la luz es una onda electromagnética.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-mx-termino" data-label="Actividad: el término que añadió Maxwell" data-speaker-notes="Actividad individual de arrastrar: completar la ley de Ampère con el término de Maxwell, (1/c²)∂E/∂t = μ₀ε₀ ∂E/∂t, que es μ₀ por la densidad de corriente de desplazamiento ε₀ ∂E/∂t. Distractores: −∂B/∂t (ya está en Faraday), ρ/ε₀ (fuente de Gauss), (1/c²)∂B/∂t (cambia el campo equivocado). Con el término correcto las leyes (3) y (4) quedan simétricas y aparecen las ondas electromagnéticas.">
+  <p class="ceja">§ 4.5 · Después de Maxwell · Actividad individual</p>
+  <h2 class="titulo">Completa la ley de Ampère con el término de Maxwell</h2>
+  <p class="mx-aviso">Las fórmulas con \(\nabla\) y derivadas parciales <strong>no hacen parte del curso</strong>: están aquí para facilitar la discusión.</p>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
+    <div class="mx-tabla mx-despues">
+      <div class="mx-fila"><span class="mx-n">(1)</span><div class="mx-eq">\[ \nabla\cdot\vect{E} = \dfrac{\rho}{\varepsilon_0} \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><line x1="98.0" y1="65.0" x2="129.0" y2="65.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="138.0,65.0 129.0,60.0 129.0,70.0" style="fill:var(--caso2)"/><line x1="95.6" y1="74.0" x2="122.4" y2="89.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="130.2,94.0 124.9,85.2 119.9,93.8" style="fill:var(--caso2)"/><line x1="89.0" y1="80.6" x2="104.5" y2="107.4" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="109.0,115.2 108.8,104.9 100.2,109.9" style="fill:var(--caso2)"/><line x1="80.0" y1="83.0" x2="80.0" y2="114.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="80.0,123.0 85.0,114.0 75.0,114.0" style="fill:var(--caso2)"/><line x1="71.0" y1="80.6" x2="55.5" y2="107.4" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="51.0,115.2 59.8,109.9 51.2,104.9" style="fill:var(--caso2)"/><line x1="64.4" y1="74.0" x2="37.6" y2="89.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="29.8,94.0 40.1,93.8 35.1,85.2" style="fill:var(--caso2)"/><line x1="62.0" y1="65.0" x2="31.0" y2="65.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="22.0,65.0 31.0,70.0 31.0,60.0" style="fill:var(--caso2)"/><line x1="64.4" y1="56.0" x2="37.6" y2="40.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="29.8,36.0 35.1,44.8 40.1,36.2" style="fill:var(--caso2)"/><line x1="71.0" y1="49.4" x2="55.5" y2="22.6" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="51.0,14.8 51.2,25.1 59.8,20.1" style="fill:var(--caso2)"/><line x1="80.0" y1="47.0" x2="80.0" y2="16.0" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="80.0,7.0 75.0,16.0 85.0,16.0" style="fill:var(--caso2)"/><line x1="89.0" y1="49.4" x2="104.5" y2="22.6" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="109.0,14.8 100.2,20.1 108.8,25.1" style="fill:var(--caso2)"/><line x1="95.6" y1="56.0" x2="122.4" y2="40.5" style="stroke:var(--caso2);stroke-width:2.5"/><polygon points="130.2,36.0 119.9,36.2 124.9,44.8" style="fill:var(--caso2)"/><circle cx="80" cy="65" r="13" style="fill:var(--caso2)"/><text x="80" y="72" text-anchor="middle" style="font:700 20px var(--font-body);fill:var(--papel)">+</text></svg></div>
+      <div class="mx-fila"><span class="mx-n">(2)</span><div class="mx-eq">\[ \nabla\cdot\vect{B} = 0 \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><ellipse cx="80" cy="65" rx="40" ry="24" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><ellipse cx="80" cy="65" rx="58" ry="40" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><ellipse cx="80" cy="65" rx="74" ry="56" style="fill:none;stroke:var(--res);stroke-width:2;opacity:.75"/><rect x="50" y="55" width="30" height="20" style="fill:var(--caso1)"/><rect x="80" y="55" width="30" height="20" style="fill:var(--mal)"/><text x="65" y="71" text-anchor="middle" style="font:700 15px var(--font-body);fill:var(--papel)">S</text><text x="95" y="71" text-anchor="middle" style="font:700 15px var(--font-body);fill:var(--papel)">N</text></svg></div>
+      <div class="mx-fila"><span class="mx-n">(3)</span><div class="mx-eq">\[ \nabla\times\vect{E} = -\dfrac{\partial\vect{B}}{\partial t} \]</div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><rect x="8" y="54" width="26" height="22" style="fill:var(--caso1)"/><rect x="34" y="54" width="26" height="22" style="fill:var(--mal)"/><line x1="20.0" y1="92.0" x2="49.0" y2="92.0" style="stroke:var(--tinta);stroke-width:3"/><polygon points="58.0,92.0 49.0,87.0 49.0,97.0" style="fill:var(--tinta)"/><ellipse cx="86" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="98" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="110" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="122" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="134" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><ellipse cx="146" cy="65" rx="7" ry="30" style="fill:none;stroke:var(--caso2);stroke-width:3"/><path d="M 146 40 A 18 18 0 1 1 145.9 40" style="fill:none;stroke:var(--res);stroke-width:2;stroke-dasharray:4 3"/><text x="128" y="122" text-anchor="middle" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--res)">E</text></svg></div>
+      <div class="mx-fila mx-f4"><span class="mx-n">(4)</span><div class="mx-eq mx-eq4"><span>\(\displaystyle \nabla\times\vect{B} = \mu_0\,\vect{j} \;+\)</span><span class="mx-hueco" id="mx-hueco" aria-label="Espacio para el término que falta">?</span></div><svg viewBox="0 0 160 130" class="mx-ic" aria-hidden="true"><line x1="80" y1="8" x2="80" y2="122" style="stroke:var(--caso2);stroke-width:8"/><line x1="95.0" y1="100.0" x2="95.0" y2="39.0" style="stroke:var(--mal);stroke-width:3"/><polygon points="95.0,30.0 90.0,39.0 100.0,39.0" style="fill:var(--mal)"/><text x="108" y="40" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--mal)">I</text><ellipse cx="80" cy="40" rx="34" ry="9" style="fill:none;stroke:var(--res);stroke-width:2.5"/><ellipse cx="80" cy="65" rx="48" ry="12" style="fill:none;stroke:var(--res);stroke-width:2.5"/><ellipse cx="80" cy="90" rx="34" ry="9" style="fill:none;stroke:var(--res);stroke-width:2.5"/><text x="24" y="70" style="font:italic 700 18px 'STIX Two Text',Georgia,serif;fill:var(--res)">B</text></svg></div>
+    </div>
+    <div class="pila pc-col">
+      <p style="margin:0">Arrastra a la ley (4) el término que añadió Maxwell. También puedes tocarlo.</p>
+      <div class="mx-banco" id="mx-banco"><button type="button" class="mx-ficha" data-t="dBdt" data-fb="Ese término ya está en la ley de Faraday (3): un \(\vect{B}\) que cambia crea \(\vect{E}\). Aquí falta lo contrario.">\(\displaystyle -\dfrac{\partial\vect{B}}{\partial t}\)</button><button type="button" class="mx-ficha" data-t="E" data-fb="">\(\displaystyle \dfrac{1}{c^{2}}\dfrac{\partial\vect{E}}{\partial t}\)</button><button type="button" class="mx-ficha" data-t="rho" data-fb="Es la fuente de la ley de Gauss (1): las cargas crean \(\vect{E}\), no \(\vect{B}\).">\(\displaystyle \dfrac{\rho}{\varepsilon_0}\)</button><button type="button" class="mx-ficha" data-t="B2" data-fb="Casi: lo que debe cambiar es el campo <strong>eléctrico</strong>, como entre las placas del condensador.">\(\displaystyle \dfrac{1}{c^{2}}\dfrac{\partial\vect{B}}{\partial t}\)</button></div>
+      <p class="pc-fb" id="mx-fb"></p>
+      <div class="fila-btn"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn" id="mx-rein">Empezar de nuevo</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Recuerda el condensador: entre las placas no pasa carga, pero aparece \(\vect{B}\) porque algo cambia. ¿Qué campo cambia allí?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Arrastra</strong> el término al espacio de la ley (4).</li><li><strong>Lee</strong> la retroalimentación y, si hace falta, prueba otro.</li></ol></div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva" data-seccion="Inducción y ondas" id="dp-maxwell-cond" data-label="Campo magnético entre las placas de un condensador" data-speaker-notes="§ 4.5. Figura 4.15 del libro, E(t), animada. Al cerrar el interruptor, la batería lleva carga a las placas a través de una resistencia: Q(t) = Q₀(1 − e^(−t/τ)), con τ = RC, e I = ΔQ/Δt decrece exponencialmente. Entre las placas no cruza carga, pero el campo E = Q/(ε₀A) crece, y con él el flujo Φ_E = AE: la corriente de desplazamiento I_d = ε₀ ΔΦ_E/Δt es igual a la corriente del cable. Por eso el campo B entre las placas es el mismo que alrededor del cable. Puntos clave para discutir: (1) B depende de qué tan rápido cambia E, no de cuánto vale E: con las placas llenas, E es máximo y B es cero. (2) Al descargar, E disminuye y B cambia de sentido. (3) Con más resistencia la carga es más lenta y B es más débil pero dura más. El botón ⏸ congela un instante.">
   <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Figura 4.15</p>
   <h2 class="titulo">Entre las placas no pasa carga, pero aparece \(\vect{B}\)</h2>
@@ -1821,6 +1935,11 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <div class="pop-src" id="pop-co-arriba" style="display:none"><h4>La bobina vista desde arriba</h4>
     <canvas class="lienzo co-arr-cv" width="1000" height="640"></canvas>
     <p style="margin:10px 0 0">Debajo del vidrio hay una <strong>espiral plana</strong> de alambre de cobre. La corriente alterna la recorre en un sentido y, medio ciclo después, en el otro. En el fondo de la olla, las corrientes en remolino giran en círculos en sentido contrario. La línea punteada es el corte de la diapositiva: cada vez que cruza la espiral aparece un \(\odot\) o un \(\otimes\).</p>
+  </div>
+<div class="pop-src" id="pop-mx-nabla" style="display:none"><h4>Divergencia y rotacional</h4>
+    <p style="margin:0 0 8px">\(\nabla = \left(\dfrac{\partial}{\partial x}, \dfrac{\partial}{\partial y}, \dfrac{\partial}{\partial z}\right)\) es un vector de derivadas.</p>
+    <p style="margin:0 0 8px"><strong>Divergencia</strong> \(\nabla\cdot\vect{E}\): cuánto campo <em>sale</em> de un punto. Es positiva donde nacen líneas (una carga \(+\)) y cero donde solo pasan.</p>
+    <p style="margin:0">El <strong>rotacional</strong>, \(\nabla\times\vect{B}\), mide cuánto <em>circula</em> el campo alrededor de un punto, como el agua en un remolino. Es la versión local de \(\sum \vect{B}\cdot\Delta\vect{L}\) de la ley de Ampère.</p>
   </div>
 </div>
 <script>
@@ -4026,6 +4145,126 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     requestAnimationFrame(bucle);
   }
   dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ ECUACIONES DE MAXWELL (§ 4.5): onda, sorpresa de c y actividad ═══ */
+(function () {
+  /* cadena B(t) → E(t) → … y onda electromagnética */
+  const cv = document.getElementById('mx-cv');
+  if (cv) {
+    const g = cv.getContext('2d'), W = cv.width, H = cv.height, cad = document.getElementById('mx-cadena'), rl = document.getElementById('mx-l'), bP = document.getElementById('mx-pausa');
+    const N = 12;
+    cad.innerHTML = Array.from({ length: N }, (_, k) => '<span><b>' + (k % 2 ? 'E' : 'B') + '</b>(t)</span>').join(' → ') + ' → …';
+    const piezas = cad.querySelectorAll('span');
+    let fase = 0, ult = 0, pausa = false;
+    bP.addEventListener('click', () => { pausa = !pausa; bP.textContent = pausa ? '▶ Seguir' : '⏸ Detener el tiempo'; bP.classList.toggle('activo', pausa); });
+    const flecha = (x1, y1, x2, y2, col, wd) => {
+      const a = Math.atan2(y2 - y1, x2 - x1), c = 16;
+      g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wd; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+      g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 8 * Math.sin(a), y2 - c * Math.sin(a) - 8 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 8 * Math.sin(a), y2 - c * Math.sin(a) + 8 * Math.cos(a)); g.closePath(); g.fill();
+    };
+    function dibuja() {
+      g.clearRect(0, 0, W, H);
+      const x0 = 70, x1 = 1110, y0 = 290, A = 160, lam = +rl.value, dz = [0.62, 0.36];   /* eje z en perspectiva */
+      const f = x => Math.sin(2 * Math.PI * (x - x0) / lam - fase);
+      /* campo B: en el plano horizontal (perspectiva), detrás */
+      g.strokeStyle = tok('--res'); g.globalAlpha = 0.45; g.lineWidth = 2;
+      for (let x = x0; x <= x1; x += 14) { const v = f(x) * A * 0.75; g.beginPath(); g.moveTo(x, y0); g.lineTo(x + v * dz[0], y0 + v * dz[1]); g.stroke(); }
+      g.globalAlpha = 1; g.lineWidth = 4; g.beginPath();
+      for (let x = x0; x <= x1; x += 4) { const v = f(x) * A * 0.75; x === x0 ? g.moveTo(x + v * dz[0], y0 + v * dz[1]) : g.lineTo(x + v * dz[0], y0 + v * dz[1]); }
+      g.stroke();
+      /* eje de propagación */
+      flecha(x0 - 30, y0, x1 + 40, y0, tok('--tinta'), 3);
+      /* campo E: vertical */
+      g.strokeStyle = tok('--caso2'); g.globalAlpha = 0.5; g.lineWidth = 2;
+      for (let x = x0; x <= x1; x += 14) { g.beginPath(); g.moveTo(x, y0); g.lineTo(x, y0 - f(x) * A); g.stroke(); }
+      g.globalAlpha = 1; g.lineWidth = 4; g.beginPath();
+      for (let x = x0; x <= x1; x += 4) x === x0 ? g.moveTo(x, y0 - f(x) * A) : g.lineTo(x, y0 - f(x) * A);
+      g.stroke();
+      /* vectores en un punto fijo */
+      const xp = 830, e = f(xp);
+      flecha(xp, y0, xp, y0 - e * A, tok('--caso2'), 6);
+      flecha(xp, y0, xp + e * A * 0.75 * dz[0], y0 + e * A * 0.75 * dz[1], tok('--res'), 6);
+      g.font = 'italic 700 34px ' + FMATH; g.textAlign = 'center';
+      g.fillStyle = tok('--caso2'); g.fillText('E', 120, 100);
+      g.fillStyle = tok('--res'); g.fillText('B', 180, 470);
+      g.fillStyle = tok('--tinta'); g.fillText('c', x1 + 20, y0 - 22);
+      g.font = '24px ' + FTXT; g.fillStyle = tok('--tinta2'); g.textAlign = 'left'; g.fillText('dirección de avance', x1 - 230, y0 + 46);
+      /* cadena: se ilumina al ritmo de la onda */
+      const k = Math.floor(fase / Math.PI) % N;
+      piezas.forEach((p, i) => p.classList.toggle('on', i === k));
+    }
+    function bucle(ms) {
+      if (activa(cv) && ms - ult > 30) { ult = ms; if (!pausa) fase += 0.045; dibuja(); document.getElementById('mx-lv').textContent = num(+rl.value / 100, 1) + ' u'; document.getElementById('mx-lect').textContent = pausa ? 'tiempo detenido' : 'avanza con rapidez c'; }
+      requestAnimationFrame(bucle);
+    }
+    dibuja(); requestAnimationFrame(bucle);
+  }
+  /* la sorpresa: c = 1/√(μ0 ε0) */
+  const bc = document.getElementById('mx-calc');
+  if (bc) {
+    const lin = $$('#mx-res .mx-linea'), sal = document.getElementById('mx-num');
+    const c = 1 / Math.sqrt(1.25663706127e-6 * 8.8541878188e-12);
+    const fmt = v => Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\u202f');
+    let anim = null;
+    bc.addEventListener('click', () => {
+      lin.forEach(l => l.classList.remove('on')); sal.textContent = '0'; if (anim) cancelAnimationFrame(anim);
+      setTimeout(() => lin[0].classList.add('on'), 100);
+      setTimeout(() => lin[1].classList.add('on'), 700);
+      setTimeout(() => {
+        lin[2].classList.add('on'); const t0 = performance.now();
+        const paso = ms => { const u = Math.min(1, (ms - t0) / 1600); sal.textContent = fmt(c * (1 - Math.pow(1 - u, 3))); if (u < 1) anim = requestAnimationFrame(paso); else { sal.textContent = fmt(c); lin[3].classList.add('on'); } };
+        anim = requestAnimationFrame(paso);
+      }, 1300);
+    });
+    document.addEventListener('slidechange', () => { lin.forEach(l => l.classList.remove('on')); sal.textContent = '0'; });
+  }
+  /* actividad: arrastrar el término de Maxwell a la ley (4) */
+  const hueco = document.getElementById('mx-hueco');
+  if (hueco) {
+    const banco = document.getElementById('mx-banco'), fb = document.getElementById('mx-fb'), fila4 = hueco.closest('.mx-fila');
+    const fichas = $$('.mx-ficha', banco);
+    let listo = false;
+    const coloca = f => {
+      if (listo) return;
+      const previa = hueco.querySelector('.mx-ficha'); if (previa) banco.appendChild(previa);
+      hueco.textContent = ''; hueco.appendChild(f); f.style.transform = '';
+      const ok = f.dataset.t === 'E';
+      hueco.classList.toggle('ok', ok); hueco.classList.toggle('mal', !ok);
+      fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal');
+      if (ok) {
+        listo = true; fila4.classList.add('lista');
+        fb.innerHTML = '✓ ¡Correcto! Con \\(\\frac{1}{c^{2}}\\frac{\\partial\\vect{E}}{\\partial t} = \\mu_0\\varepsilon_0\\frac{\\partial\\vect{E}}{\\partial t}\\), un \\(\\vect{E}\\) que cambia crea \\(\\vect{B}\\): las leyes (3) y (4) quedan simétricas y aparecen las ondas electromagnéticas.';
+      } else fb.innerHTML = '✗ ' + f.dataset.fb;
+      if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([fb]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+    };
+    fichas.forEach(f => {
+      let ini = null, mov = false;
+      f.addEventListener('pointerdown', ev => {
+        if (listo || f.parentNode === hueco) return;
+        const sec = f.closest('section'), esc = sec.getBoundingClientRect().width / sec.offsetWidth;
+        ini = { x: ev.clientX, y: ev.clientY, esc: esc }; mov = false; f.setPointerCapture(ev.pointerId); f.classList.add('arrastra');
+      });
+      f.addEventListener('pointermove', ev => {
+        if (!ini) return;
+        const dx = ev.clientX - ini.x, dy = ev.clientY - ini.y; if (Math.hypot(dx, dy) > 6) mov = true;
+        f.style.transform = 'translate(' + (dx / ini.esc) + 'px,' + (dy / ini.esc) + 'px)';
+      });
+      const suelta = ev => {
+        if (!ini) return;
+        f.classList.remove('arrastra'); const r = hueco.getBoundingClientRect();
+        const dentro = ev.clientX >= r.left - 30 && ev.clientX <= r.right + 30 && ev.clientY >= r.top - 30 && ev.clientY <= r.bottom + 30;
+        if (!mov || dentro) coloca(f); else f.style.transform = '';
+        ini = null;
+      };
+      f.addEventListener('pointerup', suelta);
+      f.addEventListener('pointercancel', () => { f.classList.remove('arrastra'); f.style.transform = ''; ini = null; });
+    });
+    document.getElementById('mx-rein').addEventListener('click', () => {
+      listo = false; fichas.forEach(f => { f.style.transform = ''; banco.appendChild(f); });
+      hueco.textContent = '?'; hueco.classList.remove('ok', 'mal'); fila4.classList.remove('lista'); fb.className = 'pc-fb'; fb.textContent = '';
+    });
+  }
 })();
 
 /* ═══ MAXWELL: CAMPO B ENTRE LAS PLACAS DE UN CONDENSADOR (fig. 4.15) ═══
