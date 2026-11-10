@@ -850,7 +850,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       </div>
       <div class="ec-paso ec-bloq" id="ec-p2">
         <h3 id="ec-h2"></h3>
-        <div class="ec-opcs" id="ec-opcs"></div>
+        <div class="ec-opcs pr-opcs" id="ec-opcs"></div>
         <p class="ec-fb" id="ec-fb2"></p>
       </div>
       <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-ecuacion">📝 Votar en el formulario</button><button type="button" class="btn" id="ec-pista">💡 Pista</button><button type="button" class="btn" id="ec-rein">Empezar de nuevo</button></div>
@@ -3695,7 +3695,7 @@ const T_OSC = 2 * Math.PI;
     d.der.forEach((x, i) => { if (i) h += '<span>\\(+\\)</span>'; h += '<span class="ec-slot"></span>'; });
     eq.innerHTML = h;
     banco.innerHTML = d.fichas.map(t => '<button type="button" class="ec-ficha" data-t="' + t + '">\\(' + F[t] + '\\)</button>').join('');
-    opcs.innerHTML = d.opc.map(o => '<button type="button" class="ec-opc" data-o="' + o[0] + '">' + o[0] + ' · \\(' + o[1] + '\\)</button>').join('');
+    opcs.innerHTML = d.opc.map(o => '<button type="button" class="ec-opc pr-opc" data-o="' + o[0] + '">\\(' + o[1] + '\\)</button>').join('');
     if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([eq, banco, opcs]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
     p2.classList.add('ec-bloq'); fb2.textContent = '';
     tex(pista, d.pista);
