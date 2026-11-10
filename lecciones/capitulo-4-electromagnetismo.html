@@ -219,8 +219,8 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .co-ek{text-align:center;font-size:33px;margin:8px 0 4px}
 .co-ek .prop{display:inline-block;padding:0 6px}
 .popover:has(.pop-tab){max-width:1240px}
-.popover:has(.mo-fr-cv){max-width:1120px}
-.popover .mo-fr-cv{width:100%;height:auto;display:block}
+.popover:has(.mo-fr-cv),.popover:has(.co-arr-cv){max-width:1120px}
+.popover .mo-fr-cv,.popover .co-arr-cv{width:100%;height:auto;display:block}
 .pop-tab{font-size:26px}
 .pop-tab td{padding:4px 10px}
 .pop-tab td:nth-child(2){white-space:nowrap}
@@ -1366,11 +1366,16 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <canvas class="lienzo" id="co2-cv" width="1180" height="640"></canvas>
     </figure>
     <div class="pila">
-      <p>La bobina lleva corriente alterna: su campo magnético cambia de sentido muy rápido e <strong>induce corrientes en remolino</strong> en el fondo metálico de la olla. La resistencia del metal las convierte en calor.</p>
+      <p>La <span class="prop" data-pop="pop-co-arriba">bobina</span> lleva corriente alterna: su campo magnético cambia de sentido muy rápido e <strong>induce corrientes en remolino</strong> en el fondo metálico de la olla. La resistencia del metal las convierte en calor.</p>
       <div class="fila-btn" id="co2-ollas"><button type="button" class="btn" data-o="hierro">Olla de hierro</button><button type="button" class="btn" data-o="vidrio">Olla de vidrio</button><button type="button" class="btn" data-o="nada">Sin olla</button></div>
       <label class="ctrl"><span>Potencia</span><input type="range" id="co2-p" min="0" max="2000" step="100" value="1200"><span class="v" id="co2-pv"></span></label>
       <p class="nota">\(\otimes\) y \(\odot\) marcan la corriente que entra y sale de la pantalla, en la bobina y en el fondo de la olla: van en sentidos opuestos (ley de Lenz). El vidrio no conduce, así que solo se calienta por contacto con la olla.</p>
+      <div class="fila-btn"><button type="button" class="btn prop" data-pop="pop-co-arriba">Vista desde arriba</button></div>
     </div>
+  </div>
+  <div class="pop-src" id="pop-co-arriba" style="display:none"><h4>La bobina vista desde arriba</h4>
+    <canvas class="lienzo co-arr-cv" width="1000" height="640"></canvas>
+    <p style="margin:10px 0 0">Debajo del vidrio hay una <strong>espiral plana</strong> de alambre de cobre. La corriente alterna la recorre en un sentido y, medio ciclo después, en el otro. En el fondo de la olla, las corrientes en remolino giran en círculos en sentido contrario. La línea punteada es el corte de la diapositiva: cada vez que cruza la espiral aparece un \(\odot\) o un \(\otimes\).</p>
   </div>
 </section>
 
@@ -1651,6 +1656,10 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <div class="pop-src" id="pop-mo-frente" style="display:none"><h4>La espira vista de frente</h4>
     <canvas class="lienzo mo-fr-cv" width="1000" height="580"></canvas>
     <p style="margin:10px 0 0">Ahora el eje de giro queda vertical y se ve la cara de la espira. Los dos lados largos llevan la corriente en sentidos opuestos, así que las fuerzas \(\vect{F}\) apuntan una hacia afuera (⊙) y otra hacia adentro (⊗) del plano: un par de fuerzas. Abajo, las <strong>escobillas</strong> rozan el <strong>conmutador</strong>, un anillo partido que invierte la corriente cada media vuelta.</p>
+  </div>
+<div class="pop-src" id="pop-co-arriba" style="display:none"><h4>La bobina vista desde arriba</h4>
+    <canvas class="lienzo co-arr-cv" width="1000" height="640"></canvas>
+    <p style="margin:10px 0 0">Debajo del vidrio hay una <strong>espiral plana</strong> de alambre de cobre. La corriente alterna la recorre en un sentido y, medio ciclo después, en el otro. En el fondo de la olla, las corrientes en remolino giran en círculos en sentido contrario. La línea punteada es el corte de la diapositiva: cada vez que cruza la espiral aparece un \(\odot\) o un \(\otimes\).</p>
   </div>
 </div>
 <script>
@@ -3654,6 +3663,63 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     g.fillStyle = tok('--tinta2'); g.textAlign = 'center'; g.fillText('bobina con corriente alterna', 590, yb + 62);
     g.textAlign = 'left';
   }
+  /* Vista desde arriba: espiral plana de 4 vueltas. El ángulo θ crece en sentido horario
+     en pantalla; con sc > 0 la corriente va en sentido horario (⊗ a la izquierda del corte). */
+  function arriba(c) {
+    const q = c.getContext('2d'), P = +rp.value, cc = Math.cos(t), sc = Math.abs(cc) < 0.15 || !P ? 0 : Math.sign(cc);
+    const cx = 380, cy = 310, r0 = 45, r1 = 215, V = 4, tMax = 2 * Math.PI * V;
+    const rr = th => r0 + (r1 - r0) * th / tMax, pt = th => [cx + rr(th) * Math.cos(th), cy + rr(th) * Math.sin(th)];
+    const punta = (x, y, a, col) => { q.fillStyle = col; q.beginPath(); q.moveTo(x + 16 * Math.cos(a), y + 16 * Math.sin(a)); q.lineTo(x - 9 * Math.cos(a) + 9 * Math.sin(a), y - 9 * Math.sin(a) - 9 * Math.cos(a)); q.lineTo(x - 9 * Math.cos(a) - 9 * Math.sin(a), y - 9 * Math.sin(a) + 9 * Math.cos(a)); q.closePath(); q.fill(); };
+    q.clearRect(0, 0, c.width, c.height);
+    /* vidrio */
+    q.fillStyle = tok('--rejilla'); q.globalAlpha = 0.55; q.fillRect(95, 40, 570, 540); q.globalAlpha = 1;
+    q.strokeStyle = tok('--linea'); q.lineWidth = 2; q.strokeRect(95, 40, 570, 540);
+    q.fillStyle = tok('--tinta2'); q.font = '24px ' + FTXT; q.textAlign = 'left'; q.textBaseline = 'alphabetic'; q.fillText('vidrio', 110, 72);
+    /* espiral y sus terminales */
+    const camino = () => { q.beginPath(); for (let k = 0; k <= 400; k++) { const p = pt(tMax * k / 400); k ? q.lineTo(p[0], p[1]) : q.moveTo(p[0], p[1]); } };
+    q.strokeStyle = tok('--caso2'); q.lineWidth = 9; q.lineCap = 'round'; camino(); q.stroke();
+    const pi = pt(0), pe = pt(tMax);
+    q.lineWidth = 6; q.setLineDash([10, 8]); q.beginPath(); q.moveTo(pi[0], pi[1]); q.lineTo(pi[0], cy + 20); q.lineTo(720, cy + 20); q.stroke(); q.setLineDash([]);
+    q.beginPath(); q.moveTo(pe[0], pe[1]); q.lineTo(720, pe[1]); q.stroke();
+    q.fillStyle = tok('--tinta2'); q.fillText('a la fuente de', 735, cy + 2); q.fillText('corriente alterna', 735, cy + 30);
+    /* corriente: trazos que avanzan por la espiral */
+    if (sc) {
+      q.strokeStyle = tok('--res'); q.lineWidth = 4; q.setLineDash([16, 22]); q.lineDashOffset = -sc * t * 60; camino(); q.stroke(); q.setLineDash([]); q.lineDashOffset = 0;
+      q.strokeStyle = tok('--res'); q.lineWidth = 4; q.beginPath(); q.moveTo(690, 132); q.lineTo(740, 132); q.stroke(); punta(744, 132, 0, tok('--res'));
+      q.fillStyle = tok('--res'); q.fillText('corriente en la bobina', 762, 140);
+      [1.25, 2.25, 3.25].forEach(v => { const th = 2 * Math.PI * v, p = pt(th); punta(p[0], p[1], th + sc * Math.PI / 2, tok('--res')); });
+    }
+    /* olla y corrientes en remolino */
+    if (olla !== 'nada') {
+      q.strokeStyle = tok('--tinta'); q.lineWidth = 3; q.setLineDash([12, 10]); q.beginPath(); q.arc(cx, cy, 250, 0, 2 * Math.PI); q.stroke(); q.setLineDash([]);
+      q.strokeStyle = tok('--tinta'); q.setLineDash([12, 10]); q.beginPath(); q.moveTo(690, 82); q.lineTo(740, 82); q.stroke(); q.setLineDash([]);
+      q.fillStyle = tok('--tinta'); q.fillText(olla === 'hierro' ? 'olla de hierro' : 'olla de vidrio', 752, 90);
+      if (olla === 'hierro' && sc) {
+        q.strokeStyle = tok('--mal'); q.lineWidth = 2.5;
+        q.beginPath(); q.moveTo(690, 172); q.lineTo(740, 172); q.stroke(); punta(744, 172, 0, tok('--mal'));
+        q.fillStyle = tok('--mal'); q.fillText('corrientes en remolino', 762, 180);
+        [80, 140, 195].forEach((R, i) => {
+          q.globalAlpha = 0.5; q.beginPath(); q.arc(cx, cy, R, 0, 2 * Math.PI); q.stroke(); q.globalAlpha = 1;
+          [0.3, 2.4, 4.5].forEach(a0 => { const a = a0 + i * 0.7; punta(cx + R * Math.cos(a), cy + R * Math.sin(a), a - sc * Math.PI / 2, tok('--mal')); });
+        });
+      }
+    }
+    /* línea del corte y cruces con la espiral */
+    q.strokeStyle = tok('--tinta'); q.lineWidth = 2; q.setLineDash([6, 6]); q.beginPath(); q.moveTo(120, cy); q.lineTo(640, cy); q.stroke(); q.setLineDash([]);
+    const marca = (x, sg) => {
+      q.fillStyle = tok('--panel'); q.strokeStyle = tok('--caso2'); q.lineWidth = 3; q.beginPath(); q.arc(x, cy, 12, 0, 2 * Math.PI); q.fill(); q.stroke();
+      q.fillStyle = tok('--res'); q.strokeStyle = tok('--res'); q.lineWidth = 3;
+      if (sg > 0) { q.beginPath(); q.arc(x, cy, 4, 0, 2 * Math.PI); q.fill(); }
+      else if (sg < 0) { q.beginPath(); q.moveTo(x - 7, cy - 7); q.lineTo(x + 7, cy + 7); q.moveTo(x + 7, cy - 7); q.lineTo(x - 7, cy + 7); q.stroke(); }
+    };
+    for (let k = 0; k < V; k++) { marca(cx - rr(Math.PI + 2 * Math.PI * k), -sc); marca(cx + rr(2 * Math.PI * (k + 1)), sc); }
+    /* desde dónde se mira el corte */
+    q.strokeStyle = tok('--tinta'); q.fillStyle = tok('--tinta');
+    q.lineWidth = 4; q.beginPath(); q.moveTo(cx, 632); q.lineTo(cx, 600); q.stroke(); punta(cx, 594, -Math.PI / 2, tok('--tinta'));
+    q.fillText('el corte se mira desde aquí', cx + 20, 626);
+    q.fillText('línea del corte', 680, cy - 60);
+    q.textAlign = 'left';
+  }
   function bucle(ms) {
     if (activa(cv) && ms - ult > 25) {
       ult = ms; const P = +rp.value; t += 0.09;
@@ -3664,6 +3730,7 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
       const Tobj = olla === 'nada' ? 20 : 20 + 0.55 * (T - 20);
       Tv += (Tobj - Tv) * 0.02;
       dibuja();
+      const pc = document.querySelector('.popover .co-arr-cv'); if (pc) arriba(pc);
       lect.textContent = !P ? 'apagada' : olla === 'hierro' ? 'corrientes en remolino: la olla se calienta' : olla === 'vidrio' ? 'el vidrio no conduce: no se calienta' : 'sin olla: no se induce nada';
     }
     requestAnimationFrame(bucle);

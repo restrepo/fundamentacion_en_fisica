@@ -115,7 +115,7 @@ eléctrico con conmutador y una ventana con la vista frontal de la espira); indu
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica, frenado regenerativo de un carro eléctrico, cocina de inducción
-y carga inalámbrica del celular; corriente de desplazamiento de Maxwell,
+(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; corriente de desplazamiento de Maxwell,
 espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la
