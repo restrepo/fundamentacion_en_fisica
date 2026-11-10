@@ -219,8 +219,8 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .co-ek{text-align:center;font-size:33px;margin:8px 0 4px}
 .co-ek .prop{display:inline-block;padding:0 6px}
 .popover:has(.pop-tab){max-width:1240px}
-.popover:has(.mo-fr-cv),.popover:has(.co-arr-cv){max-width:1120px}
-.popover .mo-fr-cv,.popover .co-arr-cv{width:100%;height:auto;display:block}
+.popover:has(.mo-fr-cv),.popover:has(.co-arr-cv),.popover:has(.ge-sup-cv){max-width:1120px}
+.popover .mo-fr-cv,.popover .co-arr-cv,.popover .ge-sup-cv{width:100%;height:auto;display:block}
 .pop-tab{font-size:26px}
 .pop-tab td{padding:4px 10px}
 .pop-tab td:nth-child(2){white-space:nowrap}
@@ -1327,7 +1327,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <h2 class="titulo">El agua hace girar un imán y las bobinas generan corriente</h2>
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Turbina, rotor y estátor (en corte)</span><span class="val" id="ge-lect"></span></div>
+      <div class="svghd"><span>Central hidroeléctrica, en corte vertical</span><span class="val" id="ge-lect"></span></div>
       <canvas class="lienzo" id="ge-cv" width="1180" height="640"></canvas>
     </figure>
     <div class="pila">
@@ -1336,7 +1336,12 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <label class="ctrl"><span>Caudal de agua</span><input type="range" id="ge-q" min="0" max="100" step="1" value="60"><span class="v" id="ge-qv"></span></label>
       <label class="ctrl"><span>Pares de polos \(p\)</span><input type="range" id="ge-p" min="1" max="40" step="1" value="18"><span class="v" id="ge-pv"></span></label>
       <p class="nota">La red de Colombia es de \(\qty{60}{Hz}\): con \(p\) pares de polos el rotor debe girar a \(3600/p\) rpm. Más agua da más potencia, pero la rapidez de giro se mantiene fija. La animación va más lenta que la máquina real.</p>
+      <div class="fila-btn"><button type="button" class="btn prop" data-pop="pop-ge-corte">Corte superior del generador</button></div>
     </div>
+  </div>
+  <div class="pop-src" id="pop-ge-corte" style="display:none"><h4>El generador visto desde arriba</h4>
+    <canvas class="lienzo ge-sup-cv" width="1000" height="600"></canvas>
+    <p style="margin:10px 0 0">Corte horizontal del generador: el eje es vertical y sale de la pantalla. El rotor es un imán (en realidad un electroimán con muchos pares de polos; aquí solo uno). Cada <strong>bobina</strong> está enrollada en un diente del estátor y sus alambres atraviesan el corte: \(\odot\) a un lado del diente y \(\otimes\) al otro. La corriente es máxima cuando el flujo cambia más rápido, es decir, cuando los polos pasan de lado, no cuando apuntan a la bobina.</p>
   </div>
 </section>
 
@@ -1656,6 +1661,10 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <div class="pop-src" id="pop-mo-frente" style="display:none"><h4>La espira vista de frente</h4>
     <canvas class="lienzo mo-fr-cv" width="1000" height="580"></canvas>
     <p style="margin:10px 0 0">Ahora el eje de giro queda vertical y se ve la cara de la espira. Los dos lados largos llevan la corriente en sentidos opuestos, así que las fuerzas \(\vect{F}\) apuntan una hacia afuera (⊙) y otra hacia adentro (⊗) del plano: un par de fuerzas. Abajo, las <strong>escobillas</strong> rozan el <strong>conmutador</strong>, un anillo partido que invierte la corriente cada media vuelta.</p>
+  </div>
+<div class="pop-src" id="pop-ge-corte" style="display:none"><h4>El generador visto desde arriba</h4>
+    <canvas class="lienzo ge-sup-cv" width="1000" height="600"></canvas>
+    <p style="margin:10px 0 0">Corte horizontal del generador: el eje es vertical y sale de la pantalla. El rotor es un imán (en realidad un electroimán con muchos pares de polos; aquí solo uno). Cada <strong>bobina</strong> está enrollada en un diente del estátor y sus alambres atraviesan el corte: \(\odot\) a un lado del diente y \(\otimes\) al otro. La corriente es máxima cuando el flujo cambia más rápido, es decir, cuando los polos pasan de lado, no cuando apuntan a la bobina.</p>
   </div>
 <div class="pop-src" id="pop-co-arriba" style="display:none"><h4>La bobina vista desde arriba</h4>
     <canvas class="lienzo co-arr-cv" width="1000" height="640"></canvas>
@@ -3471,44 +3480,60 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   const rq = document.getElementById('ge-q'), rp = document.getElementById('ge-p'), lect = document.getElementById('ge-lect');
   let th = 0, w = 0, t = 0, ult = 0, gotas = [];
   const serie = [];
-  const C = { x: 330, y: 330 }, TB = { x: 120, y: 470 };
+  /* recorrido del agua: embalse → tubería → turbina → tubo de desfogue → río */
+  const RUTA = [[95, 440], [150, 440], [310, 535], [380, 540], [380, 600], [560, 600]];
+  const LR = []; let LT = 0;
+  for (let k = 1; k < RUTA.length; k++) { const l = Math.hypot(RUTA[k][0] - RUTA[k - 1][0], RUTA[k][1] - RUTA[k - 1][1]); LR.push(l); LT += l; }
+  const enRuta = s => { let d = s * LT; for (let k = 0; k < LR.length; k++) { if (d <= LR[k]) { const f = d / LR[k]; return [RUTA[k][0] + f * (RUTA[k + 1][0] - RUTA[k][0]), RUTA[k][1] + f * (RUTA[k + 1][1] - RUTA[k][1])]; } d -= LR[k]; } return RUTA[RUTA.length - 1]; };
+  const X0 = 380;                                  /* eje vertical */
   function dibuja() {
     g.clearRect(0, 0, W, H);
-    const q = +rq.value / 100;
-    /* tubería y agua */
-    g.strokeStyle = tok('--linea'); g.lineWidth = 34; g.lineCap = 'butt';
-    g.beginPath(); g.moveTo(20, 60); g.lineTo(TB.x - 10, TB.y - 70); g.stroke();
-    g.fillStyle = tok('--res'); g.globalAlpha = 0.7;
-    gotas.forEach(d => { g.beginPath(); g.arc(d.x, d.y, 6, 0, 2 * Math.PI); g.fill(); });
+    g.textAlign = 'center'; g.font = '24px ' + FTXT;
+    /* embalse y presa */
+    g.fillStyle = tok('--res-50'); g.fillRect(20, 230, 135, 240);
+    g.strokeStyle = tok('--res'); g.lineWidth = 3; g.beginPath(); g.moveTo(20, 230); g.lineTo(155, 230); g.stroke();
+    g.fillStyle = tok('--linea'); g.beginPath(); g.moveTo(150, 200); g.lineTo(185, 200); g.lineTo(235, 470); g.lineTo(150, 470); g.closePath(); g.fill();
+    g.fillStyle = tok('--tinta2'); g.fillText('embalse', 85, 215); g.fillText('presa', 190, 190);
+    /* tubería, carcasa de la turbina, desfogue y río */
+    g.strokeStyle = tok('--proy'); g.lineCap = 'butt';
+    g.lineWidth = 36; g.beginPath(); g.moveTo(150, 440); g.lineTo(310, 535); g.stroke();
+    g.lineWidth = 46; g.beginPath(); g.moveTo(X0, 560); g.lineTo(X0, 600); g.lineTo(565, 600); g.stroke();
+    g.fillStyle = tok('--panel'); g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+    g.fillRect(300, 500, 160, 80); g.strokeRect(300, 500, 160, 80);
+    g.fillStyle = tok('--tinta2'); g.textAlign = 'left'; g.fillText('tubería', 250, 470); g.fillText('turbina', 470, 535); g.fillText('río', 575, 608);
+    /* agua */
+    g.fillStyle = tok('--res');
+    gotas.forEach(d => { const p = enRuta(d.s); g.globalAlpha = d.s > 0.85 ? 0.35 : 0.85; g.beginPath(); g.arc(p[0], p[1] + d.o, 6, 0, 2 * Math.PI); g.fill(); });
     g.globalAlpha = 1;
-    /* turbina */
-    g.save(); g.translate(TB.x, TB.y); g.rotate(th);
-    g.strokeStyle = tok('--tinta'); g.lineWidth = 7;
-    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; g.beginPath(); g.moveTo(0, 0); g.lineTo(70 * Math.cos(a), 70 * Math.sin(a)); g.stroke(); }
-    g.restore();
-    g.strokeStyle = tok('--tinta2'); g.lineWidth = 3; g.beginPath(); g.arc(TB.x, TB.y, 74, 0, 2 * Math.PI); g.stroke();
-    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.textAlign = 'center'; g.fillText('turbina', TB.x, TB.y + 110);
+    /* álabes de la turbina, vistos de lado: los de adelante, llenos */
+    for (let k = 0; k < 10; k++) {
+      const a = th + k * Math.PI / 5, x = X0 + 66 * Math.sin(a), adelante = Math.cos(a) > 0;
+      g.strokeStyle = tok('--tinta'); g.globalAlpha = adelante ? 1 : 0.25; g.lineWidth = adelante ? 6 : 4;
+      g.beginPath(); g.moveTo(x - 8, 512); g.lineTo(x + 8, 568); g.stroke();
+    }
+    g.globalAlpha = 1;
     /* eje */
-    g.strokeStyle = tok('--tinta2'); g.lineWidth = 6; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(TB.x, TB.y); g.lineTo(C.x, C.y); g.stroke(); g.setLineDash([]);
-    /* estátor: anillo con dos bobinas en corte (arriba y abajo) */
-    g.strokeStyle = tok('--linea'); g.lineWidth = 26; g.beginPath(); g.arc(C.x, C.y, 175, 0, 2 * Math.PI); g.stroke();
-    const e = Math.sin(th);                     /* fem en la bobina ∝ dΦ/dt */
-    [[C.x - 40, C.y - 150, 1], [C.x + 40, C.y - 150, -1], [C.x - 40, C.y + 150, -1], [C.x + 40, C.y + 150, 1]].forEach(m => {
-      const x = m[0], y = m[1], sgn = Math.abs(e) * w < 0.05 ? 0 : Math.sign(e) * m[2];
-      g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 5; g.beginPath(); g.arc(x, y, 20, 0, 2 * Math.PI); g.fill(); g.stroke();
-      g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 4;
-      if (sgn > 0) { g.beginPath(); g.arc(x, y, 6, 0, 2 * Math.PI); g.fill(); }
-      else if (sgn < 0) { g.beginPath(); g.moveTo(x - 10, y - 10); g.lineTo(x + 10, y + 10); g.moveTo(x + 10, y - 10); g.lineTo(x - 10, y + 10); g.stroke(); }
+    g.fillStyle = tok('--tinta2'); g.fillRect(X0 - 9, 230, 18, 275);
+    g.fillStyle = tok('--panel'); for (let k = 0; k < 3; k++) { const y = 240 + ((th * 30 + k * 85) % 260); g.fillRect(X0 - 9, y, 18, 5); }
+    g.fillStyle = tok('--tinta2'); g.textAlign = 'left'; g.fillText('eje', X0 + 18, 380);
+    /* generador de lado: estátor con bobinas y rotor con polos que pasan */
+    g.fillStyle = tok('--rejilla'); g.fillRect(268, 75, 224, 155);
+    [[276, 300], [462, 300]].forEach(b => {
+      g.fillStyle = tok('--linea'); g.fillRect(b[0], 85, 22, 135);
+      g.strokeStyle = tok('--caso2'); g.lineWidth = 4; for (let y = 92; y < 218; y += 12) { g.beginPath(); g.moveTo(b[0] - 3, y); g.lineTo(b[0] + 25, y + 5); g.stroke(); }
     });
-    g.fillStyle = tok('--tinta2'); g.fillText('bobinas del estátor', C.x, C.y - 200);
-    /* rotor: imán que gira */
-    g.save(); g.translate(C.x, C.y); g.rotate(-th);
-    g.fillStyle = tok('--mal'); g.fillRect(0, -32, 120, 64);
-    g.fillStyle = tok('--caso1'); g.fillRect(-120, -32, 120, 64);
-    g.fillStyle = tok('--papel'); g.font = '800 38px ' + FTXT; g.textBaseline = 'middle';
-    g.fillText('N', 70, 2); g.fillText('S', -70, 2);
-    g.restore(); g.textBaseline = 'alphabetic';
-    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('rotor', C.x, C.y + 225);
+    g.fillStyle = tok('--panel'); g.fillRect(310, 95, 140, 115);
+    for (let k = 0; k < 8; k++) {
+      const a = th + k * Math.PI / 4; if (Math.cos(a) <= 0.05) continue;
+      const x = X0 + 70 * Math.sin(a), bw = 70 * (Math.PI / 4) * Math.cos(a);
+      g.fillStyle = k % 2 ? tok('--caso1') : tok('--mal'); g.fillRect(x - bw / 2 + 1, 97, bw - 2, 111);
+      if (bw > 30) { g.fillStyle = tok('--papel'); g.font = '800 28px ' + FTXT; g.textAlign = 'center'; g.fillText(k % 2 ? 'S' : 'N', x, 162); }
+    }
+    g.font = '24px ' + FTXT; g.fillStyle = tok('--tinta2'); g.textAlign = 'center'; g.fillText('generador', X0, 62);
+    g.textAlign = 'left'; g.fillText('rotor', 500, 130); g.fillText('estátor', 500, 190);
+    /* cable a la red */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.beginPath(); g.moveTo(492, 220); g.lineTo(560, 220); g.lineTo(560, 560); g.lineTo(830, 560); g.stroke();
+    g.textAlign = 'center';
     /* gráfica de la fem */
     const gx = 600, gy = 330, gw = 540, gh = 230;
     g.strokeStyle = tok('--linea'); g.lineWidth = 2; g.strokeRect(gx, gy - gh / 2, gw, gh);
@@ -3525,6 +3550,45 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     g.textAlign = 'left'; g.fillStyle = tok('--tinta2'); g.fillText('consumo de la red', gx + gw / 2 + 56, 568);
     g.textAlign = 'left';
   }
+  /* Corte superior: anillo del estátor con dos dientes y sus bobinas; rotor de un par de polos. */
+  function corteSup(c) {
+    const q = c.getContext('2d'), cx = 420, cy = 300, Ra = 250;
+    q.clearRect(0, 0, c.width, c.height);
+    q.strokeStyle = tok('--linea'); q.lineWidth = 34; q.beginPath(); q.arc(cx, cy, Ra, 0, 2 * Math.PI); q.stroke();
+    q.fillStyle = tok('--linea'); q.fillRect(cx - 34, cy - Ra, 68, 75); q.fillRect(cx - 34, cy + Ra - 75, 68, 75);
+    const e = Math.cos(th);                      /* fem ∝ dΦ/dt: máxima cuando el polo pasa de lado */
+    const marca = (x, y, sg) => {
+      q.fillStyle = tok('--panel'); q.strokeStyle = tok('--caso2'); q.lineWidth = 5; q.beginPath(); q.arc(x, y, 18, 0, 2 * Math.PI); q.fill(); q.stroke();
+      q.strokeStyle = tok('--res'); q.fillStyle = tok('--res'); q.lineWidth = 4;
+      if (sg > 0) { q.beginPath(); q.arc(x, y, 6, 0, 2 * Math.PI); q.fill(); }
+      else if (sg < 0) { q.beginPath(); q.moveTo(x - 9, y - 9); q.lineTo(x + 9, y + 9); q.moveTo(x + 9, y - 9); q.lineTo(x - 9, y + 9); q.stroke(); }
+    };
+    const sg = Math.abs(e) < 0.15 || w < 0.05 ? 0 : Math.sign(e);
+    [[-1, -1], [1, -1]].forEach(m => { for (let k = 0; k < 3; k++) { const y = cy - Ra + 18 + k * 30; marca(cx + m[0] * 56, y, sg * m[0]); marca(cx + m[0] * 56, cy + Ra - 18 - k * 30, -sg * m[0]); } });
+    /* rotor */
+    q.save(); q.translate(cx, cy); q.rotate(-th);
+    q.fillStyle = tok('--mal'); q.fillRect(0, -36, 150, 72);
+    q.fillStyle = tok('--caso1'); q.fillRect(-150, -36, 150, 72);
+    q.fillStyle = tok('--papel'); q.font = '800 40px ' + FTXT; q.textAlign = 'center'; q.textBaseline = 'middle';
+    q.fillText('N', 85, 2); q.fillText('S', -85, 2);
+    q.restore(); q.textBaseline = 'alphabetic';
+    q.fillStyle = tok('--tinta'); q.beginPath(); q.arc(cx, cy, 12, 0, 2 * Math.PI); q.fill();
+    q.fillStyle = tok('--panel'); q.beginPath(); q.arc(cx, cy, 4, 0, 2 * Math.PI); q.fill();
+    /* sentido de giro */
+    q.strokeStyle = tok('--tinta2'); q.lineWidth = 4; q.beginPath(); q.arc(cx, cy, 190, -2.4, -1.9); q.stroke();
+    const a = -2.4; q.fillStyle = tok('--tinta2'); q.beginPath();
+    q.moveTo(cx + 190 * Math.cos(a) - 14 * Math.sin(a) * -1, cy + 190 * Math.sin(a) + 14 * Math.cos(a) * -1);
+    q.lineTo(cx + 178 * Math.cos(a), cy + 178 * Math.sin(a)); q.lineTo(cx + 202 * Math.cos(a), cy + 202 * Math.sin(a)); q.closePath(); q.fill();
+    /* rótulos */
+    q.font = '24px ' + FTXT; q.fillStyle = tok('--tinta'); q.textAlign = 'left';
+    q.fillText('bobina enrollada', cx + 100, 40); q.fillText('en un diente', cx + 100, 68);
+    q.fillText('bobina', cx + 100, c.height - 30);
+    q.fillText('estátor', cx + Ra + 30, cy - 100);
+    q.fillText('rotor', cx + Ra + 30, cy + 10); q.fillText('eje vertical', cx + Ra + 30, cy + 40);
+    q.strokeStyle = tok('--tinta2'); q.lineWidth = 2;
+    q.beginPath(); q.moveTo(cx + 95, 50); q.lineTo(cx + 66, 80); q.moveTo(cx + 95, c.height - 38); q.lineTo(cx + 66, c.height - 70);
+    q.moveTo(cx + Ra + 25, cy - 108); q.lineTo(cx + Ra + 6, cy - 100); q.moveTo(cx + Ra + 25, cy + 2); q.lineTo(cx + 120, cy); q.stroke();
+  }
   function lectura() {
     const p = +rp.value, n = 3600 / p;
     document.getElementById('ge-qv').textContent = num(+rq.value, 0) + ' %';
@@ -3536,10 +3600,11 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
       const dt = 0.03; ult = ms;
       const q = +rq.value / 100, objetivo = 6 * Math.min(1, q * 1.6);  /* rapidez de giro, saturada (gobernador) */
       w += (objetivo - w) * 0.05; th += w * dt; t += dt;
-      if (Math.random() < q * 1.2) gotas.push({ x: 25, y: 62, vx: 3 + 3 * q, vy: 3.9 + 3.9 * q });
-      gotas = gotas.map(d => ({ x: d.x + d.vx, y: d.y + d.vy, vx: d.vx, vy: d.vy })).filter(d => d.y < TB.y - 40);
-      serie.push(Math.sin(th) * w / 6); while (serie.length > 180) serie.shift();
+      if (Math.random() < q * 1.4) gotas.push({ s: 0, o: (Math.random() - 0.5) * 18 });
+      gotas = gotas.map(d => ({ s: d.s + 0.004 + 0.008 * q, o: d.o })).filter(d => d.s < 1);
+      serie.push(Math.cos(th) * w / 6); while (serie.length > 180) serie.shift();
       dibuja();
+      const pc = document.querySelector('.popover .ge-sup-cv'); if (pc) corteSup(pc);
     }
     requestAnimationFrame(bucle);
   }

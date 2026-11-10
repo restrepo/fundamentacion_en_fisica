@@ -114,7 +114,7 @@ solo alambre con una ventana sobre el producto escalar, principio del motor
 eléctrico con conmutador y una ventana con la vista frontal de la espira); inducción y ondas (Faraday con el solenoide en corte,
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
-hidroeléctrica, frenado regenerativo de un carro eléctrico, cocina de inducción
+hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico, cocina de inducción
 (con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; corriente de desplazamiento de Maxwell,
 espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
