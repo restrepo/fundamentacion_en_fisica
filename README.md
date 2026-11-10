@@ -111,7 +111,7 @@ alambre, dos diapositivas que explican por qué la ley usa un producto escalar
 (lazos de distinta forma, tramo por tramo) y solo la corriente encerrada (tres
 alambres y un lazo arrastrable), fuerza entre alambres paralelos, diseño de un solenoide hecho de un
 solo alambre con una ventana sobre el producto escalar, principio del motor
-eléctrico con conmutador); inducción y ondas (Faraday con el solenoide en corte,
+eléctrico con conmutador y una ventana con la vista frontal de la espira); inducción y ondas (Faraday con el solenoide en corte,
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica, frenado regenerativo de un carro eléctrico, cocina de inducción

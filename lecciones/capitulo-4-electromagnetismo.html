@@ -219,6 +219,8 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .co-ek{text-align:center;font-size:33px;margin:8px 0 4px}
 .co-ek .prop{display:inline-block;padding:0 6px}
 .popover:has(.pop-tab){max-width:1240px}
+.popover:has(.mo-fr-cv){max-width:1120px}
+.popover .mo-fr-cv{width:100%;height:auto;display:block}
 .pop-tab{font-size:26px}
 .pop-tab td{padding:4px 10px}
 .pop-tab td:nth-child(2){white-space:nowrap}
@@ -1283,11 +1285,15 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <div class="pila">
       <p>Cada lado de la espira lleva corriente dentro del campo: sobre él actúa \(F = I L B\), hacia arriba en un lado y hacia abajo en el otro. Ese <strong>par de fuerzas</strong> produce un torque</p>
       <div class="kf">\[ \tau = N I A B \cos\varphi . \]</div>
-      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button></div>
+      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button><button type="button" class="btn prop" data-pop="pop-mo-frente">Vista frontal</button></div>
       <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="mo-i" min="0.5" max="5" step="0.5" value="2"><span class="v" id="mo-iv"></span></label>
       <p class="nota">El <strong>conmutador</strong> invierte la corriente cada media vuelta para que el torque no cambie de signo. Sin él, la espira oscila y se queda quieta perpendicular al campo.</p>
       <p class="puente">→ ¿Y si en vez de darle corriente hacemos girar la espira?</p>
     </div>
+  </div>
+  <div class="pop-src" id="pop-mo-frente" style="display:none"><h4>La espira vista de frente</h4>
+    <canvas class="lienzo mo-fr-cv" width="1000" height="580"></canvas>
+    <p style="margin:10px 0 0">Ahora el eje de giro queda vertical y se ve la cara de la espira. Los dos lados largos llevan la corriente en sentidos opuestos, así que las fuerzas \(\vect{F}\) apuntan una hacia afuera (⊙) y otra hacia adentro (⊗) del plano: un par de fuerzas. Abajo, las <strong>escobillas</strong> rozan el <strong>conmutador</strong>, un anillo partido que invierte la corriente cada media vuelta.</p>
   </div>
 </section>
 
@@ -1639,6 +1645,10 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <p style="margin:0 0 10px">La ley de Ampère suma, a lo largo de un lazo cerrado, cuánto «acompaña» el campo al camino. En cada tramo \(\Delta\vect{L}\) solo cuenta la componente de \(\vect{B}\) <strong>a lo largo</strong> del tramo:</p>
     \[ \begin{aligned} \vect{B}\cdot\Delta\vect{L} &= B\,\Delta L\cos\theta , \\ \textstyle\sum_{\text{lazo}} \vect{B}\cdot\Delta\vect{L} &= \mu_0\, I_{\text{enc}} . \end{aligned} \]
     <p style="margin:10px 0 0">Es la misma idea del trabajo, \(W = \vect{F}\cdot\vect{d}\): una fuerza perpendicular al desplazamiento no hace trabajo, y un campo perpendicular al tramo no aporta (\(\cos 90^\circ = 0\)). Si \(\vect{B}\) va paralelo al tramo, aporta todo (\(\cos 0^\circ = 1\)). Por eso en el solenoide solo cuenta el lado de adentro.</p>
+  </div>
+<div class="pop-src" id="pop-mo-frente" style="display:none"><h4>La espira vista de frente</h4>
+    <canvas class="lienzo mo-fr-cv" width="1000" height="580"></canvas>
+    <p style="margin:10px 0 0">Ahora el eje de giro queda vertical y se ve la cara de la espira. Los dos lados largos llevan la corriente en sentidos opuestos, así que las fuerzas \(\vect{F}\) apuntan una hacia afuera (⊙) y otra hacia adentro (⊗) del plano: un par de fuerzas. Abajo, las <strong>escobillas</strong> rozan el <strong>conmutador</strong>, un anillo partido que invierte la corriente cada media vuelta.</p>
   </div>
 </div>
 <script>
@@ -3344,6 +3354,74 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     g.textAlign = 'left'; g.textBaseline = 'alphabetic';
     g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('eje de giro', cx + 16, cy + 34);
   }
+  /* Vista frontal (desde arriba): el eje queda vertical; x = r cos φ, la profundidad es r sin φ. */
+  function frente(c) {
+    const q = c.getContext('2d'), W2 = c.width, H2 = c.height, ox = W2 / 2, R = 230, yT = 95, yB = 370, Rc = 42;
+    const fl = (x1, y1, x2, y2, col, wd) => {
+      const a = Math.atan2(y2 - y1, x2 - x1), k = 18;
+      q.strokeStyle = col; q.fillStyle = col; q.lineWidth = wd; q.beginPath(); q.moveTo(x1, y1); q.lineTo(x2 - k * Math.cos(a), y2 - k * Math.sin(a)); q.stroke();
+      q.beginPath(); q.moveTo(x2, y2); q.lineTo(x2 - k * Math.cos(a) + 9 * Math.sin(a), y2 - k * Math.sin(a) - 9 * Math.cos(a)); q.lineTo(x2 - k * Math.cos(a) - 9 * Math.sin(a), y2 - k * Math.sin(a) + 9 * Math.cos(a)); q.closePath(); q.fill();
+    };
+    q.clearRect(0, 0, W2, H2);
+    q.fillStyle = tok('--mal'); q.fillRect(20, 50, 120, 380);
+    q.fillStyle = tok('--caso1'); q.fillRect(W2 - 140, 50, 120, 380);
+    q.fillStyle = tok('--papel'); q.font = '800 54px ' + FTXT; q.textAlign = 'center'; q.textBaseline = 'middle';
+    q.fillText('N', 80, 240); q.fillText('S', W2 - 80, 240);
+    q.globalAlpha = 0.4;
+    for (let k = 0; k < 5; k++) fl(155, 80 + k * 80, W2 - 155, 80 + k * 80, tok('--caso1'), 3);
+    q.globalAlpha = 1;
+    q.fillStyle = tok('--caso1'); q.font = 'italic 700 30px ' + FMATH; q.fillText('B', W2 - 175, 62);
+    /* eje */
+    q.strokeStyle = tok('--tinta2'); q.lineWidth = 2; q.setLineDash([8, 7]);
+    q.beginPath(); q.moveTo(ox, 40); q.lineTo(ox, 470); q.stroke(); q.setLineDash([]);
+    const sg = signo(), xa = ox + R * Math.cos(phi), xb = ox - R * Math.cos(phi), alambre = tok('--caso2');
+    /* espira: dos lados largos, el tramo de arriba y las bajadas al conmutador */
+    const lado = (x, prof) => { q.globalAlpha = prof >= 0 ? 1 : 0.55; q.strokeStyle = alambre; q.lineWidth = prof >= 0 ? 9 : 6; q.beginPath(); q.moveTo(x, yT); q.lineTo(x, yB); q.lineTo(ox + Math.sign(x - ox) * 10, yB + 45); q.stroke(); q.globalAlpha = 1; };
+    lado(xa, Math.sin(phi)); lado(xb, -Math.sin(phi));
+    q.strokeStyle = alambre; q.lineWidth = 7; q.beginPath(); q.moveTo(xa, yT); q.lineTo(xb, yT); q.stroke();
+    /* conmutador o anillos */
+    const yc = yB + 45, hc = 56;
+    if (com) {
+      const colA = tok('--caso2'), colB = tok('--res-50'), gap = ox - Rc * Math.sin(phi);
+      const izq = Math.cos(phi) >= 0 ? colB : colA, der = Math.cos(phi) >= 0 ? colA : colB;
+      q.fillStyle = izq; q.fillRect(ox - Rc, yc, gap - (ox - Rc), hc);
+      q.fillStyle = der; q.fillRect(gap, yc, ox + Rc - gap, hc);
+      q.strokeStyle = tok('--panel'); q.lineWidth = 6; q.beginPath(); q.moveTo(gap, yc); q.lineTo(gap, yc + hc); q.stroke();
+      q.strokeStyle = tok('--tinta'); q.lineWidth = 2; q.strokeRect(ox - Rc, yc, 2 * Rc, hc);
+    } else {
+      [[yc, tok('--caso2')], [yc + 32, tok('--res-50')]].forEach(d => { q.fillStyle = d[1]; q.fillRect(ox - Rc, d[0], 2 * Rc, 24); q.strokeStyle = tok('--tinta'); q.lineWidth = 2; q.strokeRect(ox - Rc, d[0], 2 * Rc, 24); });
+    }
+    /* escobillas y fuente */
+    q.fillStyle = tok('--tinta2');
+    const yE = com ? yc + 14 : yc + 2;
+    q.fillRect(ox - Rc - 34, yE, 34, 28); q.fillRect(ox + Rc, com ? yE : yc + 34, 34, 28);
+    q.strokeStyle = tok('--tinta'); q.lineWidth = 3;
+    q.beginPath(); q.moveTo(ox - Rc - 34, yE + 14); q.lineTo(ox - 170, yE + 14); q.lineTo(ox - 170, 540); q.lineTo(ox - 14, 540);
+    q.moveTo(ox + Rc + 34, (com ? yE : yc + 34) + 14); q.lineTo(ox + 170, (com ? yE : yc + 34) + 14); q.lineTo(ox + 170, 540); q.lineTo(ox + 14, 540); q.stroke();
+    q.lineWidth = 5; q.beginPath(); q.moveTo(ox - 14, 515); q.lineTo(ox - 14, 565); q.moveTo(ox + 14, 525); q.lineTo(ox + 14, 555); q.stroke();
+    q.fillStyle = tok('--tinta'); q.font = '24px ' + FTXT; q.textAlign = 'left';
+    q.fillText(com ? 'escobillas y conmutador' : 'dos anillos: sin conmutador', ox + 200, yc + 28);
+    q.fillText('fuente', ox + 190, 548);
+    /* corriente y fuerzas */
+    if (on) {
+      fl(xa, 255 + sg * 45, xa, 255 - sg * 45, tok('--res'), 5);
+      fl(xb, 255 - sg * 45, xb, 255 + sg * 45, tok('--res'), 5);
+      const ux = Math.sign(xa - xb) || 1;
+      if (Math.abs(xa - xb) > 120) fl(ox - ux * sg * 50, yT, ox + ux * sg * 50, yT, tok('--res'), 5);
+      q.fillStyle = tok('--res'); q.font = 'italic 700 30px ' + FMATH; q.textAlign = 'center';
+      q.fillText('I', xa + 28, 255 - sg * 20); q.fillText('I', xb + 28, 255 + sg * 20);
+      const fz = (x, out) => {
+        q.fillStyle = tok('--panel'); q.strokeStyle = tok('--res'); q.lineWidth = 4;
+        q.beginPath(); q.arc(x, 165, 22, 0, 2 * Math.PI); q.fill(); q.stroke();
+        q.fillStyle = tok('--res');
+        if (out) { q.beginPath(); q.arc(x, 165, 7, 0, 2 * Math.PI); q.fill(); }
+        else { q.beginPath(); q.moveTo(x - 11, 154); q.lineTo(x + 11, 176); q.moveTo(x + 11, 154); q.lineTo(x - 11, 176); q.stroke(); }
+        q.font = 'italic 700 30px ' + FMATH; q.fillText('F', x + 40, 168);
+      };
+      fz(xa, sg > 0); fz(xb, sg < 0);
+    }
+    q.textAlign = 'left'; q.textBaseline = 'alphabetic';
+  }
   function lectura() {
     lect.textContent = on ? (Math.abs(w) < 0.05 ? (com ? 'arrancando' : 'quieta, perpendicular al campo') : (com ? 'gira siempre en el mismo sentido' : 'oscila sin conmutador')) : 'apagado';
     document.getElementById('mo-iv').textContent = num(+ri.value, 1) + ' A';
@@ -3354,6 +3432,7 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
       const tau = on ? 2.2 * (+ri.value) * signo() * Math.cos(phi) : 0;
       w += (tau - 0.9 * w) * dt; phi += w * dt;
       dibuja(); lectura();
+      const pc = document.querySelector('.popover .mo-fr-cv'); if (pc) frente(pc);
     } else if (!ult) ult = ms;
     requestAnimationFrame(bucle);
   }
