@@ -287,6 +287,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     <canvas class="lienzo" id="hero-cv" width="720" height="560"></canvas>
   </figure>
   <p class="ayuda"><kbd>→</kbd> diapositiva siguiente &nbsp;·&nbsp; <kbd>↑</kbd><kbd>↓</kbd> pasos dentro de la diapositiva &nbsp;·&nbsp; <kbd>espacio</kbd> todo en orden &nbsp;·&nbsp; <kbd>F</kbd> pantalla completa</p>
+
+  <dl class="siglas-def" hidden><dt>EPM</dt><dd><b>Empresas Públicas de Medellín</b>: la empresa de servicios públicos que distribuye la energía eléctrica, el agua y el gas en Medellín y buena parte de Antioquia.</dd><dt>NHMFL</dt><dd><b>National High Magnetic Field Laboratory</b>: el Laboratorio Nacional de Campos Magnéticos Altos de EE. UU., en Florida.</dd></dl>
 </section>
 
 <!-- ═════════════ §0 · CARGAS: MOTIVACIÓN ═════════════ -->
@@ -965,11 +967,26 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     <div class="pila">
       <p>Al girar el rotor, el flujo magnético por cada bobina cambia y, por la ley de Faraday, se induce una fem alterna:</p>
       <div class="kf">\[ \varepsilon = N B A\,\omega \sin(\omega t) , \qquad f = \dfrac{p\,n}{60} . \]</div>
+      <p style="margin:0"><span class="prop" data-pop="pop-ge-var">¿Qué significa cada símbolo?</span></p>
       <label class="ctrl"><span>Caudal de agua</span><input type="range" id="ge-q" min="0" max="100" step="1" value="60"><span class="v" id="ge-qv"></span></label>
       <label class="ctrl"><span>Pares de polos \(p\)</span><input type="range" id="ge-p" min="1" max="40" step="1" value="18"><span class="v" id="ge-pv"></span></label>
       <p class="nota">La red de Colombia es de \(\qty{60}{Hz}\): con \(p\) pares de polos el rotor debe girar a \(3600/p\) rpm. Más agua da más potencia, pero la rapidez de giro se mantiene fija. La animación va más lenta que la máquina real.</p>
       <div class="fila-btn"><button type="button" class="btn prop" data-pop="pop-ge-corte">Corte superior del generador</button></div>
     </div>
+  </div>
+  <div class="pop-src" id="pop-ge-var" style="display:none"><h4>Los símbolos de la fem del generador</h4>
+    <table class="pop-tab">
+      <tr><td>\(\varepsilon\)</td><td>fem inducida en una bobina</td><td>V</td></tr>
+      <tr><td>\(N\)</td><td>número de vueltas de la bobina</td><td>—</td></tr>
+      <tr><td>\(B\)</td><td>campo magnético del rotor en la bobina</td><td>T</td></tr>
+      <tr><td>\(A\)</td><td>área de cada vuelta de la bobina</td><td>\(\mathrm{m^{2}}\)</td></tr>
+      <tr><td>\(\omega\)</td><td>frecuencia angular de la fem: \(\omega = 2\pi f\)</td><td>rad/s</td></tr>
+      <tr><td>\(t\)</td><td>tiempo</td><td>s</td></tr>
+      <tr><td>\(f\)</td><td>frecuencia de la fem: ciclos por segundo (60 en Colombia)</td><td>Hz</td></tr>
+      <tr><td>\(n\)</td><td>rapidez de giro del rotor, en revoluciones por minuto</td><td>rpm</td></tr>
+      <tr><td>\(p\)</td><td>número de pares de polos (N y S) del rotor</td><td>—</td></tr>
+    </table>
+    <p style="margin:10px 0 0">El rotor da \(n/60\) vueltas por segundo y en cada vuelta pasan \(p\) pares de polos frente a cada bobina; cada par produce un ciclo completo de la fem. Por eso \(f = p\,n/60\). Con muchos polos, el rotor puede girar despacio y la fem conserva sus 60 Hz.</p>
   </div>
   <div class="pop-src" id="pop-ge-corte" style="display:none"><h4>El generador visto desde arriba</h4>
     <canvas class="lienzo ge-sup-cv" width="1000" height="600"></canvas>
@@ -1123,7 +1140,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     </figure>
     <div class="pila">
       \[ P = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}\,\gamma^{4}, \qquad a = \dfrac{c^{2}}{R} \]\[ \Delta E \approx 8{,}85\times 10^{-5}\,\dfrac{E^{4}}{R} \]
-      <p class="nota">\(\Delta E\) y \(E\) en \(\mathrm{GeV}\), \(R\) en metros.</p>
+      <p class="nota">\(\Delta E\) y \(E\) en \(\mathrm{GeV}\), \(R\) en metros. El botón carga los datos del LEP.</p>
       <label class="ctrl"><span>Energía \(E\) [GeV]</span><input type="range" id="si-e" min="1" max="120" step="0.5" value="50"><span class="v" id="si-ev"></span></label>
       <label class="ctrl"><span>Radio \(R\) [m]</span><input type="range" id="si-r" min="100" max="5000" step="10" value="1000"><span class="v" id="si-rv"></span></label>
       <div class="fila-btn"><button type="button" class="btn" id="si-lep">LEP (\(\qty{27}{km}\), \(\qty{104{,}5}{GeV}\))</button></div>
@@ -2941,7 +2958,7 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     const p = +rp.value, n = 3600 / p;
     document.getElementById('ge-qv').textContent = num(+rq.value, 0) + ' %';
     document.getElementById('ge-pv').textContent = p;
-    lect.textContent = +rq.value ? 'para 60 Hz: n = ' + num(n, 0) + ' rpm' : 'sin agua: no hay fem';
+    lect.textContent = +rq.value ? 'para 60 Hz: n = ' + num(n, 0) + ' rpm' : 'sin agua: no se induce corriente';
   }
   function bucle(ms) {
     if (activa(cv) && ms - ult > 25) {

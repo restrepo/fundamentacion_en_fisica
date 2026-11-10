@@ -110,6 +110,11 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
   - **Prácticas numéricas:** `pc-slide pq-slide`, con
     `.pc-q.pq-q[data-ok-num][data-tol]`, `.pq-fila`, `.pc-in`, `.pc-comprobar`,
     una pista y el popup «Solución completa» (`.pq-solbtn[data-pop]`).
+- **Siglas y acrónimos** («fem», «SI», «LHC», «EPM»…): siempre con ventana
+  emergente que explica su significado. El build las marca solas con el
+  diccionario de `claude-kit/skills/leccion-a-deck/assets/siglas.js`; las
+  propias de una lección se definen en la fuente con
+  `<dl class="siglas-def" hidden><dt>SIGLA</dt><dd><b>Nombre</b>: …</dd></dl>`.
 - Línea de crédito: «Diseño de material de estudio · W. Alexander Flórez».
 
 ## Convenciones del LaTeX del libro

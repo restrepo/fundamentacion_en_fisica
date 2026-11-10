@@ -84,6 +84,19 @@ y el JS de `assets/actividades.*`):
 Las opciones se escriben sin número (las numera `.pr-opcs`) y las notas del
 expositor llevan la respuesta y los errores comunes.
 
+**Siglas y acrónimos con ventana emergente** (`assets/siglas.css`,
+`assets/siglas.js`, incluidos siempre; `--sin-siglas` los quita): toda sigla
+del texto de las diapositivas («fem», «LHC», «SI», «rpm»…) queda subrayada con
+puntos y, al tocarla, abre una ventana con su significado (también dentro de
+otra ventana emergente). El marcado es automático para las siglas del
+diccionario base de `siglas.js`, fuera de fórmulas, botones, enlaces, campos,
+SVG y lienzos. **Cada sigla nueva de una lección debe tener su definición**:
+o se añade al diccionario base (si sirve para otras lecciones) o se define en
+la fuente, dentro de cualquier diapositiva:
+`<dl class="siglas-def" hidden><dt>EPM</dt><dd><b>Empresas Públicas de Medellín</b>: …</dd></dl>`.
+Las siglas que solo aparecen en botones o en texto escrito por el JS no se
+marcan: menciónalas también en el texto o en una nota.
+
 **Visor de imágenes:** toda lección generada incluye `assets/visor-img.css` y
 `assets/visor-img.js`. Al hacer clic en una imagen de una diapositiva, se abre
 una capa a pantalla completa, fuera del lienzo escalado, con la imagen a toda

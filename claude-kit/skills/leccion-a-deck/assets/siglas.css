@@ -1,0 +1,7 @@
+/* siglas: palabra subrayada con puntos y ventana emergente con su significado */
+abbr.sigla{text-decoration:underline dotted var(--res);text-decoration-thickness:2px;text-underline-offset:4px;cursor:help;border:0}
+abbr.sigla:hover,abbr.sigla:focus-visible{background:var(--res-50);outline:none}
+.sigla-pop{position:absolute;z-index:70;max-width:760px;background:var(--panel);border:2px solid var(--res);box-shadow:var(--shadow-lg,0 12px 32px rgba(0,0,0,.2));padding:14px 50px 14px 20px;font:400 27px/1.4 var(--font-body);color:var(--tinta);text-align:left;text-transform:none;letter-spacing:normal}
+.sigla-pop b{color:var(--res)}
+.sigla-pop .sigla-n{font-weight:800;color:var(--tinta)}
+.sigla-x{position:absolute;top:4px;right:10px;border:0;background:none;font-size:32px;line-height:1;cursor:pointer;color:var(--tinta2)}
