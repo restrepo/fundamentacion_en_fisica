@@ -1143,12 +1143,30 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </dialog>
 </section>
 
-<section class="poster" data-seccion="Magnetismo" data-label="§ 3 · Magnetismo" data-speaker-notes="Separador: Magnetismo. 3 diapositivas.">
+<section class="poster" data-seccion="Magnetismo" data-label="§ 3 · Magnetismo" data-speaker-notes="Separador: Magnetismo. 4 diapositivas.">
   <div class="p-num">§ 3</div>
   <h2 class="p-tit">Magnetismo</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(3,1fr)"><span>Las corrientes crean campos magnéticos</span><span>Un lazo rectangular explica el campo del solenoide</span><span>Corrientes paralelas se atraen; antiparalelas se repelen</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Limaduras de hierro: el campo magnético se hace visible</span><span>Las corrientes crean campos magnéticos</span><span>Un lazo rectangular explica el campo del solenoide</span><span>Corrientes paralelas se atraen; antiparalelas se repelen</span></div>
 </section>
 
+
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-limaduras" data-label="Limaduras de hierro y un imán" data-speaker-notes="§ 4.3. Primera diapositiva de magnetismo. Explorador: limaduras de hierro esparcidas al azar sobre una hoja. Con «Colocar el imán» aparece un imán de barra y cada limadura, que se imanta y se comporta como una agujita, gira hasta quedar paralela al campo; donde el campo es intenso (cerca de los polos) lo hace primero y las limaduras se acumulan allí. «Agitar la hoja» imita los golpecitos que se dan en el experimento real para que las limaduras lejanas, donde el campo es débil, terminen de alinearse. «Mostrar las líneas de campo» superpone las líneas calculadas: fuera del imán van de N a S. Pregunta para la clase: ¿qué pasa si se parte el imán por la mitad? (cada trozo tiene N y S: no hay monopolos magnéticos).">
+  <p class="ceja">§ 4.3 · Magnetismo</p>
+  <h2 class="titulo">Limaduras de hierro: el campo magnético se hace visible</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1.2fr) minmax(0,0.8fr)">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Limaduras de hierro sobre una hoja</span><span class="val" id="li-lect">sin imán</span></div>
+      <canvas class="lienzo" id="li-cv" width="1200" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>Cada limadura de hierro se imanta en presencia del imán y se comporta como una <strong>agujita de brújula</strong>: gira hasta quedar paralela al campo magnético \(\vect{B}\).</p>
+      <div class="fila-btn"><button type="button" class="btn" id="li-iman">🧲 Colocar el imán</button><button type="button" class="btn" id="li-agita">Agitar la hoja</button></div>
+      <label class="ctrl" style="grid-template-columns:auto 1fr"><input type="checkbox" id="li-lineas"><span>Mostrar las líneas de campo</span></label>
+      <p class="nota">Fuera del imán las líneas salen del polo norte \(N\) y entran por el polo sur \(S\); dentro del imán continúan de \(S\) a \(N\): son <strong>cerradas</strong>. Donde se juntan, el campo es más intenso.</p>
+      <p class="puente">→ Si se parte el imán por la mitad, ¿queda un polo norte suelto?</p>
+    </div>
+  </div>
+</section>
 
 <section class="diapositiva" data-seccion="Magnetismo" id="dp-amp" data-label="Ley de Ampère: alambre recto">
   <p class="ceja">§ 4.3 · Ley de Ampère</p>
@@ -2034,6 +2052,124 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     requestAnimationFrame(bucle);
   }
   dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ MAGNETISMO: limaduras de hierro alrededor de un imán de barra ════ */
+(function () {
+  const cv = document.getElementById('li-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const bIman = document.getElementById('li-iman'), bAgita = document.getElementById('li-agita'), cLin = document.getElementById('li-lineas'), lect = document.getElementById('li-lect');
+  /* imán de barra horizontal: dos «polos» puntuales (N a la derecha, S a la izquierda) */
+  const IM = { x: W / 2, y: H / 2, a: 150, w: 340, h: 80 };
+  const PN = { x: IM.x + IM.a, y: IM.y, q: 1 }, PS = { x: IM.x - IM.a, y: IM.y, q: -1 };
+  const campo = (x, y) => {
+    let bx = 0, by = 0;
+    [PN, PS].forEach(c => { const dx = x - c.x, dy = y - c.y, r = Math.max(14, Math.hypot(dx, dy)); bx += c.q * dx / (r * r * r); by += c.q * dy / (r * r * r); });
+    return [bx, by];
+  };
+  const dentro = (x, y, m) => Math.abs(x - IM.x) < IM.w / 2 + m && Math.abs(y - IM.y) < IM.h / 2 + m;
+  const B0 = (() => { const b = campo(IM.x, IM.y - 260); return Math.hypot(b[0], b[1]); })();
+  /* limaduras */
+  let semilla = 7; const azar = () => (semilla = (semilla * 16807) % 2147483647) / 2147483647;
+  const L = [];
+  while (L.length < 1900) {
+    const x = 10 + azar() * (W - 20), y = 10 + azar() * (H - 20);
+    if (dentro(x, y, 6)) continue;
+    const a0 = azar() * Math.PI;
+    L.push({ x0: x, y0: y, x: x, y: y, a0: a0, a: a0, len: 8 + azar() * 9, ruido: azar() - 0.5, tx: x, ty: y, ta: a0, k: 0.02 });
+  }
+  let iman = false, agitado = 0;
+  function objetivos() {
+    L.forEach(f => {
+      if (!iman) { f.tx = f.x0; f.ty = f.y0; f.ta = f.a0 + f.ruido * 0.3 * Math.min(agitado, 1); f.k = 0.08; return; }
+      const b = campo(f.x0, f.y0), m = Math.hypot(b[0], b[1]);
+      const s = m / (m + 0.35 * B0);                        /* 0 lejos … 1 cerca de los polos */
+      const pn = Math.hypot(f.x0 - PN.x, f.y0 - PN.y) < Math.hypot(f.x0 - PS.x, f.y0 - PS.y) ? PN : PS;
+      const dx = pn.x - f.x0, dy = pn.y - f.y0, d = Math.hypot(dx, dy) || 1;
+      const paso = Math.min(26 * s * s, d - 40);
+      let tx = f.x0 + (paso > 0 ? paso * dx / d : 0), ty = f.y0 + (paso > 0 ? paso * dy / d : 0);
+      if (dentro(tx, ty, 6)) { tx = f.x0; ty = f.y0; }
+      const bb = campo(tx, ty);
+      const desorden = (1 - s) * Math.pow(0.4, agitado) * 1.4;  /* lejos del imán, solo agitando se alinean */
+      f.tx = tx; f.ty = ty; f.ta = Math.atan2(bb[1], bb[0]) + f.ruido * desorden; f.k = 0.03 + 0.22 * s;
+    });
+  }
+  /* líneas de campo, trazadas desde el polo norte */
+  const lineas = [];
+  for (let k = 0; k < 22; k++) {
+    const t = 2 * Math.PI * (k + 0.5) / 22; let x = PN.x + 18 * Math.cos(t), y = PN.y + 18 * Math.sin(t);
+    if (dentro(x, y, 0)) { x = PN.x + 18 * Math.cos(t) + (Math.cos(t) > 0 ? 30 : 0); }
+    const P = [[x, y]];
+    for (let n = 0; n < 2500; n++) {
+      const b = campo(x, y), m = Math.hypot(b[0], b[1]); x += 3 * b[0] / m; y += 3 * b[1] / m; P.push([x, y]);
+      if (Math.hypot(x - PS.x, y - PS.y) < 16 || x < -300 || x > W + 300 || y < -300 || y > H + 300) break;
+    }
+    lineas.push(P);
+  }
+  /* líneas que llegan al polo sur desde fuera de la hoja: se trazan hacia atrás desde S
+     y se conservan solo las que no terminan en N (esas ya están dibujadas) */
+  for (let k = 0; k < 22; k++) {
+    const t = 2 * Math.PI * (k + 0.5) / 22; let x = PS.x + 18 * Math.cos(t), y = PS.y + 18 * Math.sin(t);
+    const P = [[x, y]]; let enN = false;
+    for (let n = 0; n < 2500; n++) {
+      const b = campo(x, y), m = Math.hypot(b[0], b[1]); x -= 3 * b[0] / m; y -= 3 * b[1] / m; P.push([x, y]);
+      if (Math.hypot(x - PN.x, y - PN.y) < 16) { enN = true; break; }
+      if (x < -300 || x > W + 300 || y < -300 || y > H + 300) break;
+    }
+    if (!enN) lineas.push(P);
+  }
+  const difAng = (a, b) => { let d = (b - a) % Math.PI; if (d > Math.PI / 2) d -= Math.PI; if (d < -Math.PI / 2) d += Math.PI; return d; };
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    g.fillStyle = tok('--panel'); g.fillRect(0, 0, W, H);
+    if (cLin.checked && iman) {
+      g.strokeStyle = tok('--caso2'); g.globalAlpha = 0.55; g.lineWidth = 2.5;
+      lineas.forEach(P => { g.beginPath(); P.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); });
+      g.globalAlpha = 1;
+    }
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 2.2; g.lineCap = 'round'; g.globalAlpha = 0.82;
+    g.beginPath();
+    L.forEach(f => { const c = Math.cos(f.a) * f.len / 2, sn = Math.sin(f.a) * f.len / 2; g.moveTo(f.x - c, f.y - sn); g.lineTo(f.x + c, f.y + sn); });
+    g.stroke(); g.globalAlpha = 1;
+    if (iman) {
+      const x0 = IM.x - IM.w / 2, y0 = IM.y - IM.h / 2;
+      g.fillStyle = tok('--caso1'); g.fillRect(x0, y0, IM.w / 2, IM.h);
+      g.fillStyle = tok('--caso2'); g.fillRect(IM.x, y0, IM.w / 2, IM.h);
+      g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.strokeRect(x0, y0, IM.w, IM.h);
+      g.fillStyle = tok('--papel'); g.font = '700 50px ' + FTXT; g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText('S', IM.x - IM.w / 4, IM.y + 2); g.fillText('N', IM.x + IM.w / 4, IM.y + 2);
+      g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+    }
+  }
+  let mov = 0, ult = 0;
+  function paso() {
+    let m = 0;
+    L.forEach(f => {
+      const da = difAng(f.a, f.ta); f.a += f.k * 1.6 * da; m = Math.max(m, Math.abs(da));
+      f.x += (f.tx - f.x) * 0.08; f.y += (f.ty - f.y) * 0.08; m = Math.max(m, Math.abs(f.tx - f.x) / 40);
+    });
+    return m;
+  }
+  function bucle(ms) {
+    if (mov > 0 && ms - ult > 30 && activa(cv)) { ult = ms; mov = paso() > 0.004 ? 1 : 0; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  function lectura() { lect.textContent = iman ? (agitado ? 'imán colocado · hoja agitada ' + agitado + (agitado === 1 ? ' vez' : ' veces') : 'imán colocado') : 'sin imán'; }
+  bIman.addEventListener('click', () => {
+    iman = !iman; agitado = 0;
+    bIman.textContent = iman ? 'Quitar el imán' : '🧲 Colocar el imán';
+    if (!iman) L.forEach(f => { f.a0 = f.a + (azar() - 0.5) * 0.9; });
+    objetivos(); mov = 1; lectura(); dibuja();
+  });
+  bAgita.addEventListener('click', () => {
+    agitado++;
+    L.forEach(f => { f.a += (azar() - 0.5) * 0.8; f.x += (azar() - 0.5) * 6; f.y += (azar() - 0.5) * 6; if (dentro(f.x, f.y, 4)) { f.x = f.tx; f.y = f.ty; } });
+    objetivos(); mov = 1; lectura(); dibuja();
+  });
+  cLin.addEventListener('change', dibuja);
+  document.addEventListener('diapositiva', dibuja);
+  objetivos(); dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ACTIVIDADES: preguntas, pistas y formularios de Google ══════════ */
