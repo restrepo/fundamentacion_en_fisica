@@ -107,9 +107,14 @@ envío de la captura al formulario), la factura de energía de EPM, la actividad
 actividad en parejas con la placa de una nevera (0,6 A frente a 280 W), aplicaciones,
 corriente y potencia con un calculador de la factura); magnetismo (limaduras de hierro que se orientan
 con las líneas de campo al colocar un imán de barra, Ampère en un
-alambre, diseño de un solenoide, fuerza entre alambres paralelos); inducción y
-ondas (Faraday con un imán arrastrable y galvanómetro, corriente de
-desplazamiento de Maxwell, espectro y antenas); del átomo clásico a Bohr
+alambre, fuerza entre alambres paralelos, diseño de un solenoide hecho de un
+solo alambre con una ventana sobre el producto escalar, principio del motor
+eléctrico con conmutador); inducción y ondas (Faraday con el solenoide en corte,
+⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
+arrastrable y galvanómetro; aplicaciones interactivas: generador de una
+hidroeléctrica, frenado regenerativo de un carro eléctrico, cocina de inducción
+y carga inalámbrica del celular; corriente de desplazamiento de Maxwell,
+espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,

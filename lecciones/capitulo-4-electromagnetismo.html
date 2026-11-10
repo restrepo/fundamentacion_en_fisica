@@ -258,6 +258,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .envio-btn,.envio-accion{font:600 var(--t-peq, 30px)/1 var(--font-body);padding:12px 22px;border:2px solid var(--res);background:var(--res);color:var(--papel);cursor:pointer;text-decoration:none;display:inline-block}
 .envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
 .envio-nota{font-size:26px;color:var(--tinta2)}
+.btn.activo{border-color:var(--res);background:var(--res-50);color:var(--tinta)}
+#fr-modos .btn,#co2-ollas .btn{font-size:25px;padding:9px 14px}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1146,7 +1148,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
 <section class="poster" data-seccion="Magnetismo" data-label="§ 3 · Magnetismo" data-speaker-notes="Separador: Magnetismo. 4 diapositivas.">
   <div class="p-num">§ 3</div>
   <h2 class="p-tit">Magnetismo</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Limaduras de hierro: el campo magnético se hace visible</span><span>Las corrientes crean campos magnéticos</span><span>Un lazo rectangular explica el campo del solenoide</span><span>Corrientes paralelas se atraen; antiparalelas se repelen</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Limaduras de hierro: el campo magnético se hace visible</span><span>Las corrientes crean campos magnéticos</span><span>Corrientes paralelas se atraen; antiparalelas se repelen</span><span>Un lazo rectangular explica el campo del solenoide</span></div>
 </section>
 
 
@@ -1186,26 +1188,6 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Magnetismo" id="dp-sol" data-label="Campo en un solenoide">
-  <p class="ceja">§ 4.3 · Solenoide</p>
-  <h2 class="titulo">Un lazo rectangular explica el campo del solenoide</h2>
-  <div class="g2">
-    <div class="pila">
-      <p>Ampère con producto escalar: \(\sum B\,L\cos\theta = \mu_0 I_{\text{enc}}\).</p>
-      <div class="caja neutra frag"><p style="margin:0"><strong>Lado 1</strong> (dentro, paralelo a \(\vect{B}\)): \(B L\cos 0^\circ = BL\).<br><strong>Lados 2 y 4</strong> (perpendiculares): \(\cos 90^\circ = 0\).<br><strong>Lado 3</strong> (fuera, \(B \approx 0\)): nada.</p></div>
-      <div class="frag">\[ B L = \mu_0\,(N I) \;\Longrightarrow\; B = \dfrac{\mu_0 N I}{L}. \]</div>
-      <p class="nota frag">Depende de las vueltas por unidad de longitud: 100 vueltas en \(\qty{1}{m}\) y 50 en \(\qty{0{,}5}{m}\) dan el mismo \(B\) con la misma corriente.</p>
-    </div>
-    <div class="pila">
-      <figure class="svgbox" style="margin:0"><div class="svghd"><span>Diseña tu electroimán</span><span class="val" id="so-lect"></span></div>
-        <div id="so-fig"></div></figure>
-      <label class="ctrl"><span>Vueltas \(N\)</span><input type="range" id="so-n" min="10" max="2000" step="10" value="1600"><span class="v" id="so-nv"></span></label>
-      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="so-i" min="0.5" max="10" step="0.5" value="5"><span class="v" id="so-iv"></span></label>
-      <label class="ctrl"><span>Longitud \(L\)</span><input type="range" id="so-l" min="0.1" max="1" step="0.05" value="0.5"><span class="v" id="so-lv"></span></label>
-    </div>
-  </div>
-</section>
-
 <section class="diapositiva" data-seccion="Magnetismo" id="dp-fm" data-label="Fuerza magnética y alambres paralelos">
   <p class="ceja">§ 4.3 · Fuerza magnética</p>
   <h2 class="titulo">Corrientes paralelas se atraen; antiparalelas se repelen</h2>
@@ -1224,10 +1206,55 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
-<section class="poster" data-seccion="Inducción y ondas" data-label="§ 4 · Inducción y ondas" data-speaker-notes="Separador: Inducción y ondas. 3 diapositivas.">
+<section class="diapositiva compacta" data-seccion="Magnetismo" id="dp-sol" data-label="Campo en un solenoide">
+  <p class="ceja">§ 4.3 · Solenoide</p>
+  <h2 class="titulo">Un lazo rectangular explica el campo del solenoide</h2>
+  <div class="g2">
+    <div class="pila">
+      <p>Ampère con <span class="prop" data-pop="pop-escalar">producto escalar</span>: \(\sum B\,L\cos\theta = \mu_0 I_{\text{enc}}\).</p>
+      <div class="caja neutra frag"><p style="margin:0"><strong>Lado 1</strong> (dentro, paralelo a \(\vect{B}\)): \(B L\cos 0^\circ = BL\).<br><strong>Lados 2 y 4</strong> (perpendiculares): \(\cos 90^\circ = 0\).<br><strong>Lado 3</strong> (fuera, \(B \approx 0\)): nada.</p></div>
+      <div class="frag">\[ B L = \mu_0\,(N I) \;\Longrightarrow\; B = \dfrac{\mu_0 N I}{L}. \]</div>
+      <p class="nota frag">Depende de las vueltas por unidad de longitud: 100 vueltas en \(\qty{1}{m}\) y 50 en \(\qty{0{,}5}{m}\) dan el mismo \(B\) con la misma corriente.</p>
+    </div>
+    <div class="pila">
+      <figure class="svgbox" style="margin:0"><div class="svghd"><span>Diseña tu electroimán</span><span class="val" id="so-lect"></span></div>
+        <div id="so-fig"></div></figure>
+      <label class="ctrl"><span>Vueltas \(N\)</span><input type="range" id="so-n" min="10" max="2000" step="10" value="1600"><span class="v" id="so-nv"></span></label>
+      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="so-i" min="0.5" max="10" step="0.5" value="5"><span class="v" id="so-iv"></span></label>
+      <label class="ctrl"><span>Longitud \(L\)</span><input type="range" id="so-l" min="0.1" max="1" step="0.05" value="0.5"><span class="v" id="so-lv"></span></label>
+    </div>
+  </div>
+
+  <div class="pop-src" id="pop-escalar" style="display:none"><h4>¿Por qué un producto escalar?</h4>
+    <p style="margin:0 0 10px">La ley de Ampère suma, a lo largo de un lazo cerrado, cuánto «acompaña» el campo al camino. En cada tramo \(\Delta\vect{L}\) solo cuenta la componente de \(\vect{B}\) <strong>a lo largo</strong> del tramo:</p>
+    \[ \begin{aligned} \vect{B}\cdot\Delta\vect{L} &= B\,\Delta L\cos\theta , \\ \textstyle\sum_{\text{lazo}} \vect{B}\cdot\Delta\vect{L} &= \mu_0\, I_{\text{enc}} . \end{aligned} \]
+    <p style="margin:10px 0 0">Es la misma idea del trabajo, \(W = \vect{F}\cdot\vect{d}\): una fuerza perpendicular al desplazamiento no hace trabajo, y un campo perpendicular al tramo no aporta (\(\cos 90^\circ = 0\)). Si \(\vect{B}\) va paralelo al tramo, aporta todo (\(\cos 0^\circ = 1\)). Por eso en el solenoide solo cuenta el lado de adentro.</p>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-motor" data-label="Principio del motor eléctrico" data-speaker-notes="§ 4.3. Principio del motor eléctrico, en corte: la espira se ve de canto entre los polos N y S, con sus dos lados como círculos (⊙ la corriente sale, ⊗ entra). Sobre cada lado actúa F = I L B, hacia arriba en uno y hacia abajo en el otro: un par de fuerzas que hace girar la espira, con torque τ = N I A B cos φ (φ, ángulo de la espira con el campo). El conmutador invierte la corriente cada media vuelta, justo cuando la espira queda perpendicular al campo, para que el torque no cambie de signo. Sin conmutador, la espira oscila y se detiene en esa posición. Pregunta: ¿qué pasa si en vez de dar corriente hacemos girar la espira? (generador, sección siguiente).">
+  <p class="ceja">§ 4.3 · Motor eléctrico</p>
+  <h2 class="titulo">Un par de fuerzas magnéticas hace girar la espira</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Espira entre los polos de un imán, en corte</span><span class="val" id="mo-lect"></span></div>
+      <canvas class="lienzo" id="mo-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>Cada lado de la espira lleva corriente dentro del campo: sobre él actúa \(F = I L B\), hacia arriba en un lado y hacia abajo en el otro. Ese <strong>par de fuerzas</strong> produce un torque</p>
+      <div class="kf">\[ \tau = N I A B \cos\varphi . \]</div>
+      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button></div>
+      <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="mo-i" min="0.5" max="5" step="0.5" value="2"><span class="v" id="mo-iv"></span></label>
+      <p class="nota">El <strong>conmutador</strong> invierte la corriente cada media vuelta para que el torque no cambie de signo. Sin él, la espira oscila y se queda quieta perpendicular al campo.</p>
+      <p class="puente">→ ¿Y si en vez de darle corriente hacemos girar la espira?</p>
+    </div>
+  </div>
+</section>
+
+<section class="poster" data-seccion="Inducción y ondas" data-label="§ 4 · Inducción y ondas" data-speaker-notes="Separador: Inducción y ondas. 4 diapositivas.">
   <div class="p-num">§ 4</div>
   <h2 class="p-tit">Inducción y ondas</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(3,1fr)"><span>Un campo magnético variable induce corriente</span><span>El aporte de Maxwell: la corriente de desplazamiento</span><span>La antena: cargas aceleradas que emiten ondas</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Un campo magnético variable induce corriente</span><span>El agua hace girar un imán y las bobinas generan corriente</span><span>Frenado regenerativo: el motor se vuelve generador</span><span>Cocina de inducción: la olla se calienta, el vidrio no</span></div>
 </section>
 
 
@@ -1236,13 +1263,82 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <h2 class="titulo">Un campo magnético variable induce corriente</h2>
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Arrastra el imán dentro y fuera del solenoide</span><span class="val" id="fa2-lect"></span></div>
+      <div class="svghd"><span>Solenoide en corte</span><span class="val" id="fa2-lect"></span></div>
       <div id="far-fig" class="arrastre"></div>
     </figure>
     <div class="pila">
-      <p>El flujo magnético cambia mientras el imán se mueve: aparece una corriente cuyo campo <strong>se opone</strong> al cambio. Quieto, no hay corriente. El mismo efecto ocurre si se mueve la bobina.</p>
-      <div class="caja c1 frag"><h3>Frenado regenerativo</h3><p style="margin:0">Al soltar el acelerador, las ruedas hacen girar el motor: la inducción recarga la batería y la oposición al giro frena el carro.</p></div>
-      <div class="caja c2 frag"><h3>Estufa de inducción</h3><p style="margin:0">La corriente alterna de una bobina crea un campo variable que induce corrientes en la olla metálica; su resistencia las convierte en calor.</p></div>
+      <p>El flujo magnético cambia mientras el imán se mueve: aparece una corriente inducida cuyo campo <strong>se opone</strong> al cambio (ley de Lenz). Quieto, no hay corriente. El mismo efecto ocurre si se mueve la bobina.</p>
+      <div class="caja neutra"><p style="margin:0">El corte muestra cada vuelta del alambre dos veces: arriba y abajo. \(\odot\) la corriente <strong>sale</strong> de la pantalla; \(\otimes\) <strong>entra</strong>. La bobina se convierte en un imán inducido, con sus polos marcados en los extremos.</p></div>
+      <p class="nota">Si el polo \(N\) del imán se acerca, en el extremo cercano de la bobina aparece otro \(N\) que lo repele; si se aleja, aparece un \(S\) que lo retiene.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-generador" data-label="Generador de una hidroeléctrica" data-speaker-notes="§ 4.4. Aplicación de la ley de Faraday: generador de una hidroeléctrica. El agua que cae mueve la turbina; su eje hace girar el rotor (un electroimán) dentro de las bobinas del estátor, vistas en corte. El flujo por las bobinas cambia y se induce una fem alterna ε = N B A ω sen(ωt): su amplitud crece con la rapidez de giro y su frecuencia es f = p n / 60 (p pares de polos, n en rpm). En Colombia la red es de 60 Hz, así que el generador debe girar a 3600/p rpm sin importar cuánta agua llegue: el caudal fija la potencia, no la frecuencia. La animación va mucho más lenta que la máquina real.">
+  <p class="ceja">§ 4.4 · Aplicaciones de la inducción · Hidroeléctrica</p>
+  <h2 class="titulo">El agua hace girar un imán y las bobinas generan corriente</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Turbina, rotor y estátor (en corte)</span><span class="val" id="ge-lect"></span></div>
+      <canvas class="lienzo" id="ge-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>Al girar el rotor, el flujo magnético por cada bobina cambia y, por la ley de Faraday, se induce una fem alterna:</p>
+      <div class="kf">\[ \varepsilon = N B A\,\omega \sin(\omega t) , \qquad f = \dfrac{p\,n}{60} . \]</div>
+      <label class="ctrl"><span>Caudal de agua</span><input type="range" id="ge-q" min="0" max="100" step="1" value="60"><span class="v" id="ge-qv"></span></label>
+      <label class="ctrl"><span>Pares de polos \(p\)</span><input type="range" id="ge-p" min="1" max="40" step="1" value="18"><span class="v" id="ge-pv"></span></label>
+      <p class="nota">La red de Colombia es de \(\qty{60}{Hz}\): con \(p\) pares de polos el rotor debe girar a \(3600/p\) rpm. Más agua da más potencia, pero la rapidez de giro se mantiene fija. La animación va más lenta que la máquina real.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-frenado" data-label="Frenado regenerativo de un carro eléctrico" data-speaker-notes="§ 4.4. Frenado regenerativo. Al acelerar, la batería alimenta el motor y la energía va a las ruedas. Al soltar el acelerador, las ruedas siguen girando y hacen girar el motor, que funciona como generador: la corriente inducida recarga la batería y, por la ley de Lenz, se opone al giro y frena el carro. Se recupera del orden del 60 al 70 % de la energía cinética; el resto se disipa como calor. Valores del explorador: m = 1500 kg; K = ½ m v², a 72 km/h K = 300 kJ ≈ 83 Wh. El freno de fricción convierte toda esa energía en calor.">
+  <p class="ceja">§ 4.4 · Aplicaciones de la inducción · Carro eléctrico</p>
+  <h2 class="titulo">Frenado regenerativo: el motor se vuelve generador</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Carro eléctrico de 1500 kg</span><span class="val" id="fr-lect"></span></div>
+      <canvas class="lienzo" id="fr-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <div class="fila-btn" id="fr-modos"><button type="button" class="btn" data-m="acel">Acelerar</button><button type="button" class="btn" data-m="regen">Soltar el acelerador</button><button type="button" class="btn" data-m="fric">Freno de fricción</button></div>
+      <p>Al soltar el acelerador, las ruedas hacen girar el motor: ahora es un <strong>generador</strong>. La corriente inducida recarga la batería y, por la ley de Lenz, <strong>se opone al giro</strong>: el carro frena.</p>
+      <label class="ctrl"><span>Intensidad de la regeneración</span><input type="range" id="fr-k" min="1" max="10" step="1" value="5"><span class="v" id="fr-kv"></span></label>
+      <p class="nota">Se recupera cerca del \(\qty{70}{\%}\) de la energía cinética \(K = \tfrac12 m v^{2}\); el resto se pierde como calor. El freno de fricción convierte toda \(K\) en calor de las pastillas.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-cocina" data-label="Cocina de inducción" data-speaker-notes="§ 4.4. Cocina de inducción, en corte. Bajo el vidrio hay una bobina plana por la que circula corriente alterna de unos 25 kHz: crea un campo magnético que cambia de sentido miles de veces por segundo. En el fondo metálico de la olla ese campo variable induce corrientes en remolino (de Foucault), opuestas a las de la bobina según Lenz; la resistencia del metal las convierte en calor. En el hierro, además, hay pérdidas por histéresis. El vidrio no es conductor: no se calienta por inducción, solo por contacto con la olla caliente. Una olla de vidrio no se calienta. La animación va unas 10 000 veces más lenta.">
+  <p class="ceja">§ 4.4 · Aplicaciones de la inducción · Cocina</p>
+  <h2 class="titulo">Cocina de inducción: la olla se calienta, el vidrio no</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Bobina, vidrio y olla, en corte</span><span class="val" id="co2-lect"></span></div>
+      <canvas class="lienzo" id="co2-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>La bobina lleva corriente alterna: su campo magnético cambia de sentido muy rápido e <strong>induce corrientes en remolino</strong> en el fondo metálico de la olla. La resistencia del metal las convierte en calor.</p>
+      <div class="fila-btn" id="co2-ollas"><button type="button" class="btn" data-o="hierro">Olla de hierro</button><button type="button" class="btn" data-o="vidrio">Olla de vidrio</button><button type="button" class="btn" data-o="nada">Sin olla</button></div>
+      <label class="ctrl"><span>Potencia</span><input type="range" id="co2-p" min="0" max="2000" step="100" value="1200"><span class="v" id="co2-pv"></span></label>
+      <p class="nota">\(\otimes\) y \(\odot\) marcan la corriente que entra y sale de la pantalla, en la bobina y en el fondo de la olla: van en sentidos opuestos (ley de Lenz). El vidrio no conduce, así que solo se calienta por contacto con la olla.</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-carga" data-label="Carga inalámbrica del celular" data-speaker-notes="§ 4.4. Carga inalámbrica (por contacto) del celular, en corte. La base tiene una bobina con corriente alterna de unos 100 a 200 kHz; su campo variable atraviesa la bobina receptora del celular e induce en ella una corriente que, rectificada, carga la batería: es un transformador con el núcleo de aire. Solo una parte del flujo de la base atraviesa la bobina del celular (el acople): baja rápido si se separan o se desalinean, y con él la eficiencia. Por eso el celular debe ir bien centrado y pegado a la base. Valores del explorador ilustrativos: potencia máxima 15 W.">
+  <p class="ceja">§ 4.4 · Aplicaciones de la inducción · Celular</p>
+  <h2 class="titulo">Carga inalámbrica: dos bobinas que comparten flujo</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Base de carga y celular, en corte</span><span class="val" id="ca-lect"></span></div>
+      <canvas class="lienzo" id="ca-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>La bobina de la base lleva corriente alterna. Su campo variable atraviesa la bobina del celular e <strong>induce</strong> en ella la corriente que carga la batería: es un transformador sin núcleo.</p>
+      <label class="ctrl"><span>Separación</span><input type="range" id="ca-d" min="2" max="30" step="1" value="4"><span class="v" id="ca-dv"></span></label>
+      <label class="ctrl"><span>Desalineación</span><input type="range" id="ca-x" min="0" max="30" step="1" value="0"><span class="v" id="ca-xv"></span></label>
+      <p class="nota">Solo una parte del flujo de la base atraviesa la bobina del celular. Si se separan o se desalinean, esa parte baja rápido y la carga se vuelve lenta e ineficiente: por eso el celular debe ir centrado y pegado a la base.</p>
     </div>
   </div>
 </section>
@@ -1499,6 +1595,11 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <p style="margin:0 0 6px">Con la masa del electrón (CODATA 2022) y la velocidad de la luz (exacta):</p>
     \[ \begin{aligned} m_e &= \qty{9{,}109\,383\,713\,9(28)\times 10^{-31}}{kg}, \qquad c = \qty{299\,792\,458}{m/s} \\ E_0 = m_e c^{2} &= \qty{9{,}109\,383\,714\times 10^{-31}}{kg}\times\qty{8{,}987\,551\,787\times 10^{16}}{m^{2}/s^{2}} \\ &= \qty{8{,}187\,105\,788\times 10^{-14}}{J} \end{aligned} \]
     <p style="margin:6px 0 0">En el problema se redondea a \(\qty{8{,}187\times 10^{-14}}{J}\). Ahora conviértelo a MeV con los factores.</p></div>
+<div class="pop-src" id="pop-escalar" style="display:none"><h4>¿Por qué un producto escalar?</h4>
+    <p style="margin:0 0 10px">La ley de Ampère suma, a lo largo de un lazo cerrado, cuánto «acompaña» el campo al camino. En cada tramo \(\Delta\vect{L}\) solo cuenta la componente de \(\vect{B}\) <strong>a lo largo</strong> del tramo:</p>
+    \[ \begin{aligned} \vect{B}\cdot\Delta\vect{L} &= B\,\Delta L\cos\theta , \\ \textstyle\sum_{\text{lazo}} \vect{B}\cdot\Delta\vect{L} &= \mu_0\, I_{\text{enc}} . \end{aligned} \]
+    <p style="margin:10px 0 0">Es la misma idea del trabajo, \(W = \vect{F}\cdot\vect{d}\): una fuerza perpendicular al desplazamiento no hace trabajo, y un campo perpendicular al tramo no aporta (\(\cos 90^\circ = 0\)). Si \(\vect{B}\) va paralelo al tramo, aporta todo (\(\cos 0^\circ = 1\)). Por eso en el solenoide solo cuenta el lado de adentro.</p>
+  </div>
 </div>
 <script>
 function tok(nombre) {
@@ -2902,15 +3003,26 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   function pinta() {
     const N = +rn.value, I = +ri.value, L = +rl.value, B = MU0 * N * I / L;
     host.innerHTML = '';
-    const svg = nodo('svg', { viewBox: '0 0 1000 330', class: 'fig' }, host);
-    const w = 800 * L, x0 = 500 - w / 2, espiras = Math.min(60, Math.max(4, Math.round(N / 30)));
-    for (let k = 0; k < espiras; k++) {
-      const x = x0 + w * (k + 0.5) / espiras;
-      nodo('ellipse', { cx: x, cy: 165, rx: 9, ry: 90, style: 'fill:none;stroke:var(--caso2);stroke-width:3' }, svg);
-    }
+    const svg = nodo('svg', { viewBox: '0 0 1000 360', class: 'fig' }, host);
+    const w = 800 * L, x0 = 500 - w / 2, espiras = Math.min(60, Math.max(3, Math.round(N / 30))), cy = 165, R = 90;
+    /* un único alambre en hélice: la mitad trasera de cada vuelta, tenue; la delantera, llena */
+    const paso = w / espiras, rx = Math.min(38, paso * 0.32);
+    const pt = t => [x0 + paso * t / (2 * Math.PI) + rx * Math.sin(t), cy - R * Math.cos(t)];
+    const tramo = (t1, t2) => { let d = ''; for (let k = 0; k <= 24; k++) { const q = pt(t1 + (t2 - t1) * k / 24); d += (k ? ' L ' : 'M ') + q[0].toFixed(1) + ' ' + q[1].toFixed(1); } return d; };
+    let atras = '', frente = '';
+    for (let k = 0; k < espiras; k++) { const t0 = 2 * Math.PI * k; atras += tramo(t0, t0 + Math.PI) + ' '; frente += tramo(t0 + Math.PI, t0 + 2 * Math.PI) + ' '; }
+    nodo('path', { d: atras, style: 'fill:none;stroke:var(--caso2);stroke-width:3;opacity:.4' }, svg);
+    /* terminales: el alambre entra por la izquierda y sale por la derecha */
+    const a = pt(0), b = pt(2 * Math.PI * espiras);
+    nodo('path', { d: 'M ' + (x0 - 60) + ' 340 L ' + (x0 - 60) + ' ' + a[1] + ' L ' + a[0] + ' ' + a[1], style: 'fill:none;stroke:var(--caso2);stroke-width:4' }, svg);
+    nodo('path', { d: 'M ' + b[0] + ' ' + b[1] + ' L ' + (x0 + w + 60) + ' ' + b[1] + ' L ' + (x0 + w + 60) + ' 340', style: 'fill:none;stroke:var(--caso2);stroke-width:4' }, svg);
+    nodo('path', { d: frente, style: 'fill:none;stroke:var(--caso2);stroke-width:4;stroke-linecap:round' }, svg);
+    flecha(svg, x0 - 60, 330, x0 - 60, 290, 'var(--tinta)', 4);
+    flecha(svg, x0 + w + 60, 290, x0 + w + 60, 330, 'var(--tinta)', 4);
+    rotulo(svg, x0 - 76, 318, '*I*', { 'font-size': 30, 'text-anchor': 'end', style: 'fill:var(--tinta);font-family:' + FMATH });
     const n = Math.max(1, Math.min(7, Math.round(Math.log10(B * 1e4 + 1) * 3)));
-    for (let k = 0; k < n; k++) { const y = 165 - 60 + 120 * (k + 0.5) / n; flecha(svg, x0 - 40, y, x0 + w + 60, y, 'var(--res)', 3); }
-    rotulo(svg, x0 + w + 70, 175, '!B!', { 'font-size': 34, style: 'fill:var(--res);font-family:' + FMATH });
+    for (let k = 0; k < n; k++) { const y = 165 - 60 + 120 * (k + 0.5) / n; flecha(svg, x0 - 30, y, x0 + w + 30, y, 'var(--res)', 3); }
+    rotulo(svg, x0 + w + 40, 140, '!B!', { 'font-size': 34, style: 'fill:var(--res);font-family:' + FMATH });
     document.getElementById('so-nv').textContent = N;
     document.getElementById('so-iv').textContent = num(I, 1) + ' A';
     document.getElementById('so-lv').textContent = num(L, 2) + ' m';
@@ -2954,21 +3066,39 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   let xm = -4, xmPrev = -4, corr = 0, ult = 0, A;
   const flujo = x => 1 / (1 + Math.pow(x / 1.3, 2));     /* solenoide centrado en x = 0 */
   function pinta() {
-    A = plano(host, { x: [-6, 6], y: [-4, 4] });
-    /* solenoide */
-    for (let k = 0; k < 12; k++) { const x = -1.6 + 3.2 * (k + 0.5) / 12; nodo('ellipse', { cx: A.X(x), cy: A.Y(0), rx: 10, ry: 110, style: 'fill:none;stroke:var(--caso2);stroke-width:4' }, A.capa); }
+    A = plano(host, { W: 1180, H: 660, x: [-6, 6], y: [-3, 3] });
+    /* solenoide en corte: tubo y vueltas del alambre arriba (y = 1,1) y abajo (y = −1,1) */
+    const xa = -2, xb = 2, ya = 1.35, sgn = Math.abs(corr) < 0.03 ? 0 : Math.sign(corr);
+    nodo('rect', { x: A.X(xa), y: A.Y(ya + 0.3), width: A.X(xb) - A.X(xa), height: A.Y(-ya - 0.3) - A.Y(ya + 0.3), style: 'fill:var(--caso2-50);opacity:.35;stroke:none' }, A.capa);
+    const marca = (x, y, sale) => {
+      const cx = A.X(x), cy = A.Y(y), r = 15;
+      nodo('circle', { cx: cx, cy: cy, r: r, style: 'fill:var(--panel);stroke:var(--caso2);stroke-width:4' }, A.capa);
+      if (sale === 1) nodo('circle', { cx: cx, cy: cy, r: 5, style: 'fill:var(--res)' }, A.capa);
+      else if (sale === -1) nodo('path', { d: 'M ' + (cx - 9) + ' ' + (cy - 9) + ' L ' + (cx + 9) + ' ' + (cy + 9) + ' M ' + (cx + 9) + ' ' + (cy - 9) + ' L ' + (cx - 9) + ' ' + (cy + 9), style: 'stroke:var(--res);stroke-width:4;stroke-linecap:round' }, A.capa);
+    };
+    /* flujo creciente (corr > 0): el campo inducido apunta hacia −x → arriba ⊗, abajo ⊙ */
+    for (let k = 0; k < 8; k++) { const x = xa + (xb - xa) * (k + 0.5) / 8; marca(x, ya, -sgn); marca(x, -ya, sgn); }
+    if (sgn) {
+      const izq = sgn > 0 ? 'N' : 'S', der = sgn > 0 ? 'S' : 'N';
+      const col = q => q === 'N' ? 'var(--mal)' : 'var(--caso1)';
+      etq(A, xa - 0.5, 1.2, izq, col(izq), { 'text-anchor': 'middle', 'font-size': 44, style: 'fill:' + col(izq) + ';font-weight:800;font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6' });
+      etq(A, xb + 0.5, 1.2, der, col(der), { 'text-anchor': 'middle', 'font-size': 44, style: 'fill:' + col(der) + ';font-weight:800;font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6' });
+      vec(A, sgn > 0 ? 0.9 : -0.9, 0.7, sgn > 0 ? -0.9 : 0.9, 0.7, 'var(--res)', A.capa, 5);
+      etq(A, sgn > 0 ? -1.25 : 1.25, 0.6, '!B!_ind', 'var(--res)', { 'text-anchor': 'middle', 'font-size': 30 });
+      etq(A, 0, 1.9, 'imán inducido', 'var(--tinta2)', { 'text-anchor': 'middle', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT });
+    }
     /* imán */
     nodo('rect', { x: A.X(xm - 1), y: A.Y(0.35), width: A.X(xm) - A.X(xm - 1), height: A.Y(-0.35) - A.Y(0.35), style: 'fill:var(--caso1)' }, A.capa);
     nodo('rect', { x: A.X(xm), y: A.Y(0.35), width: A.X(xm + 1) - A.X(xm), height: A.Y(-0.35) - A.Y(0.35), style: 'fill:var(--mal)' }, A.capa);
     nodo('text', { x: A.X(xm - 0.5), y: A.Y(0) + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'S' }, A.capa);
     nodo('text', { x: A.X(xm + 0.5), y: A.Y(0) + 10, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--papel);font-weight:700;font-family:' + FTXT, txt: 'N' }, A.capa);
     /* galvanómetro */
-    const gx = A.X(0), gy = A.Y(-2.9), R = 90, ang = Math.max(-1.2, Math.min(1.2, corr * 1.5));
+    const gx = A.X(0), gy = A.Y(-2.75), R = 70, ang = Math.max(-1.2, Math.min(1.2, corr * 1.5));
     nodo('path', { d: 'M ' + (gx - R) + ' ' + gy + ' A ' + R + ' ' + R + ' 0 0 1 ' + (gx + R) + ' ' + gy, style: 'fill:var(--papel);stroke:var(--tinta);stroke-width:3' }, A.capa);
     nodo('line', { x1: gx, y1: gy, x2: gx + (R - 10) * Math.sin(ang), y2: gy - (R - 10) * Math.cos(ang), style: 'stroke:var(--res);stroke-width:5;stroke-linecap:round' }, A.capa);
-    nodo('text', { x: gx, y: gy + 36, 'text-anchor': 'middle', 'font-size': 26, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'corriente inducida' }, A.capa);
-    etq(A, xm, 0.9, 'arrástrame', 'var(--tinta2)', { 'text-anchor': 'middle', 'font-size': 24 });
-    const txt = Math.abs(corr) < 0.03 ? 'sin corriente (flujo constante)' : (corr > 0 ? 'el flujo aumenta: la bobina se opone al imán' : 'el flujo disminuye: la bobina retiene al imán');
+    nodo('text', { x: gx + R + 16, y: gy - 8, 'text-anchor': 'start', 'font-size': 24, style: 'fill:var(--tinta2);font-family:' + FTXT, txt: 'corriente inducida' }, A.capa);
+    etq(A, xm, -0.75, 'arrástrame', 'var(--tinta2)', { 'text-anchor': 'middle', 'font-size': 24 });
+    const txt = Math.abs(corr) < 0.03 ? 'sin corriente (flujo constante)' : (corr > 0 ? 'flujo creciente: la bobina repele al imán' : 'flujo decreciente: la bobina retiene al imán');
     document.getElementById('fa2-lect').textContent = txt;
   }
   function bucle(ms) {
@@ -2982,6 +3112,352 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
   }
   arrastre(host, () => [{ id: 0, x: xm, y: 0 }, { id: 0, x: xm - 0.7, y: 0 }, { id: 0, x: xm + 0.7, y: 0 }], (id, x) => { xm = Math.max(-5, Math.min(5, x)); }, () => A);
   pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ MOTOR ELÉCTRICO: espira en corte entre dos polos ═════════════════ */
+(function () {
+  const cv = document.getElementById('mo-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, cx = W / 2, cy = H / 2 + 10, r = 150;
+  const bOn = document.getElementById('mo-on'), bCom = document.getElementById('mo-com'), ri = document.getElementById('mo-i'), lect = document.getElementById('mo-lect');
+  let phi = 0.35, w = 0, on = false, com = true, ult = 0;
+  const signo = () => com ? (Math.cos(phi) >= 0 ? 1 : -1) : 1;
+  function marca(x, y, s) {
+    g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 5;
+    g.beginPath(); g.arc(x, y, 24, 0, 2 * Math.PI); g.fill(); g.stroke();
+    g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 5;
+    if (!on) return;
+    if (s > 0) { g.beginPath(); g.arc(x, y, 7, 0, 2 * Math.PI); g.fill(); }
+    else { g.beginPath(); g.moveTo(x - 12, y - 12); g.lineTo(x + 12, y + 12); g.moveTo(x + 12, y - 12); g.lineTo(x - 12, y + 12); g.stroke(); }
+  }
+  function flechaC(x1, y1, x2, y2, col, wd) {
+    const a = Math.atan2(y2 - y1, x2 - x1), c = 20;
+    g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wd; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 10 * Math.sin(a), y2 - c * Math.sin(a) - 10 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 10 * Math.sin(a), y2 - c * Math.sin(a) + 10 * Math.cos(a)); g.closePath(); g.fill();
+  }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    /* polos */
+    g.fillStyle = tok('--mal'); g.fillRect(40, cy - 210, 170, 420);
+    g.fillStyle = tok('--caso1'); g.fillRect(W - 210, cy - 210, 170, 420);
+    g.fillStyle = tok('--papel'); g.font = '800 64px ' + FTXT; g.textAlign = 'center'; g.textBaseline = 'middle';
+    g.fillText('N', 125, cy); g.fillText('S', W - 125, cy);
+    /* campo uniforme de N a S */
+    g.globalAlpha = 0.45;
+    for (let k = -2; k <= 2; k++) flechaC(225, cy + k * 80, W - 225, cy + k * 80, tok('--caso1'), 3);
+    g.globalAlpha = 1;
+    g.fillStyle = tok('--caso1'); g.font = 'italic 700 34px ' + FMATH; g.fillText('B', W - 250, cy - 190);
+    /* espira de canto: dos lados unidos por una barra que pasa por el eje */
+    const xa = cx + r * Math.cos(phi), ya = cy - r * Math.sin(phi), xb = cx - r * Math.cos(phi), yb = cy + r * Math.sin(phi);
+    g.strokeStyle = tok('--caso2'); g.lineWidth = 8; g.globalAlpha = 0.6; g.beginPath(); g.moveTo(xa, ya); g.lineTo(xb, yb); g.stroke(); g.globalAlpha = 1;
+    g.fillStyle = tok('--tinta'); g.beginPath(); g.arc(cx, cy, 9, 0, 2 * Math.PI); g.fill();
+    const s = signo(), I = +ri.value;
+    marca(xa, ya, s); marca(xb, yb, -s);
+    if (on) {
+      const L = 50 + 22 * I;
+      flechaC(xa, ya - s * 30, xa, ya - s * (30 + L), tok('--res'), 6);
+      flechaC(xb, yb + s * 30, xb, yb + s * (30 + L), tok('--res'), 6);
+      g.fillStyle = tok('--res'); g.font = 'italic 700 32px ' + FMATH;
+      g.fillText('F', xa + 36, ya - s * (30 + L / 2)); g.fillText('F', xb + 36, yb + s * (30 + L / 2));
+    }
+    g.textAlign = 'left'; g.textBaseline = 'alphabetic';
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('eje de giro', cx + 16, cy + 34);
+  }
+  function lectura() {
+    lect.textContent = on ? (Math.abs(w) < 0.05 ? (com ? 'arrancando' : 'quieta, perpendicular al campo') : (com ? 'gira siempre en el mismo sentido' : 'oscila sin conmutador')) : 'apagado';
+    document.getElementById('mo-iv').textContent = num(+ri.value, 1) + ' A';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 25) {
+      const dt = Math.min(0.05, (ms - (ult || ms)) / 1000) || 0.025; ult = ms;
+      const tau = on ? 2.2 * (+ri.value) * signo() * Math.cos(phi) : 0;
+      w += (tau - 0.9 * w) * dt; phi += w * dt;
+      dibuja(); lectura();
+    } else if (!ult) ult = ms;
+    requestAnimationFrame(bucle);
+  }
+  bOn.addEventListener('click', () => { on = !on; bOn.textContent = on ? '■ Apagar' : '▶ Encender'; });
+  bCom.addEventListener('click', () => { com = !com; bCom.textContent = 'Conmutador: ' + (com ? 'sí' : 'no'); });
+  ri.addEventListener('input', lectura);
+  dibuja(); lectura(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ GENERADOR DE UNA HIDROELÉCTRICA ══════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('ge-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const rq = document.getElementById('ge-q'), rp = document.getElementById('ge-p'), lect = document.getElementById('ge-lect');
+  let th = 0, w = 0, t = 0, ult = 0, gotas = [];
+  const serie = [];
+  const C = { x: 330, y: 330 }, TB = { x: 120, y: 470 };
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const q = +rq.value / 100;
+    /* tubería y agua */
+    g.strokeStyle = tok('--linea'); g.lineWidth = 34; g.lineCap = 'butt';
+    g.beginPath(); g.moveTo(20, 60); g.lineTo(TB.x - 10, TB.y - 70); g.stroke();
+    g.fillStyle = tok('--res'); g.globalAlpha = 0.7;
+    gotas.forEach(d => { g.beginPath(); g.arc(d.x, d.y, 6, 0, 2 * Math.PI); g.fill(); });
+    g.globalAlpha = 1;
+    /* turbina */
+    g.save(); g.translate(TB.x, TB.y); g.rotate(th);
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 7;
+    for (let k = 0; k < 8; k++) { const a = k * Math.PI / 4; g.beginPath(); g.moveTo(0, 0); g.lineTo(70 * Math.cos(a), 70 * Math.sin(a)); g.stroke(); }
+    g.restore();
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 3; g.beginPath(); g.arc(TB.x, TB.y, 74, 0, 2 * Math.PI); g.stroke();
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.textAlign = 'center'; g.fillText('turbina', TB.x, TB.y + 110);
+    /* eje */
+    g.strokeStyle = tok('--tinta2'); g.lineWidth = 6; g.setLineDash([10, 8]); g.beginPath(); g.moveTo(TB.x, TB.y); g.lineTo(C.x, C.y); g.stroke(); g.setLineDash([]);
+    /* estátor: anillo con dos bobinas en corte (arriba y abajo) */
+    g.strokeStyle = tok('--linea'); g.lineWidth = 26; g.beginPath(); g.arc(C.x, C.y, 175, 0, 2 * Math.PI); g.stroke();
+    const e = Math.sin(th);                     /* fem en la bobina ∝ dΦ/dt */
+    [[C.x - 40, C.y - 150, 1], [C.x + 40, C.y - 150, -1], [C.x - 40, C.y + 150, -1], [C.x + 40, C.y + 150, 1]].forEach(m => {
+      const x = m[0], y = m[1], sgn = Math.abs(e) * w < 0.05 ? 0 : Math.sign(e) * m[2];
+      g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 5; g.beginPath(); g.arc(x, y, 20, 0, 2 * Math.PI); g.fill(); g.stroke();
+      g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 4;
+      if (sgn > 0) { g.beginPath(); g.arc(x, y, 6, 0, 2 * Math.PI); g.fill(); }
+      else if (sgn < 0) { g.beginPath(); g.moveTo(x - 10, y - 10); g.lineTo(x + 10, y + 10); g.moveTo(x + 10, y - 10); g.lineTo(x - 10, y + 10); g.stroke(); }
+    });
+    g.fillStyle = tok('--tinta2'); g.fillText('bobinas del estátor', C.x, C.y - 200);
+    /* rotor: imán que gira */
+    g.save(); g.translate(C.x, C.y); g.rotate(-th);
+    g.fillStyle = tok('--mal'); g.fillRect(0, -32, 120, 64);
+    g.fillStyle = tok('--caso1'); g.fillRect(-120, -32, 120, 64);
+    g.fillStyle = tok('--papel'); g.font = '800 38px ' + FTXT; g.textBaseline = 'middle';
+    g.fillText('N', 70, 2); g.fillText('S', -70, 2);
+    g.restore(); g.textBaseline = 'alphabetic';
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('rotor', C.x, C.y + 225);
+    /* gráfica de la fem */
+    const gx = 600, gy = 330, gw = 540, gh = 230;
+    g.strokeStyle = tok('--linea'); g.lineWidth = 2; g.strokeRect(gx, gy - gh / 2, gw, gh);
+    g.beginPath(); g.moveTo(gx, gy); g.lineTo(gx + gw, gy); g.stroke();
+    g.strokeStyle = tok('--res'); g.lineWidth = 4; g.beginPath();
+    serie.forEach((v, i) => { const x = gx + gw - (serie.length - 1 - i) * 3, y = gy - v * (gh / 2 - 12); i ? g.lineTo(x, y) : g.moveTo(x, y); });
+    g.stroke();
+    g.fillStyle = tok('--tinta'); g.font = 'italic 32px ' + FMATH; g.textAlign = 'left'; g.fillText('ε', gx + 10, gy - gh / 2 + 34);
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.textAlign = 'right'; g.fillText('tiempo →', gx + gw - 8, gy + gh / 2 - 10);
+    /* bombillo */
+    const br = Math.min(1, w / 6);
+    g.fillStyle = tok('--caso2'); g.globalAlpha = 0.15 + 0.85 * br; g.beginPath(); g.arc(gx + gw / 2, 560, 40, 0, 2 * Math.PI); g.fill(); g.globalAlpha = 1;
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.beginPath(); g.arc(gx + gw / 2, 560, 40, 0, 2 * Math.PI); g.stroke();
+    g.textAlign = 'left'; g.fillStyle = tok('--tinta2'); g.fillText('consumo de la red', gx + gw / 2 + 56, 568);
+    g.textAlign = 'left';
+  }
+  function lectura() {
+    const p = +rp.value, n = 3600 / p;
+    document.getElementById('ge-qv').textContent = num(+rq.value, 0) + ' %';
+    document.getElementById('ge-pv').textContent = p;
+    lect.textContent = +rq.value ? 'para 60 Hz: n = ' + num(n, 0) + ' rpm' : 'sin agua: no hay fem';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 25) {
+      const dt = 0.03; ult = ms;
+      const q = +rq.value / 100, objetivo = 6 * Math.min(1, q * 1.6);  /* rapidez de giro, saturada (gobernador) */
+      w += (objetivo - w) * 0.05; th += w * dt; t += dt;
+      if (Math.random() < q * 1.2) gotas.push({ x: 25, y: 62, vx: 3 + 3 * q, vy: 3.9 + 3.9 * q });
+      gotas = gotas.map(d => ({ x: d.x + d.vx, y: d.y + d.vy, vx: d.vx, vy: d.vy })).filter(d => d.y < TB.y - 40);
+      serie.push(Math.sin(th) * w / 6); while (serie.length > 180) serie.shift();
+      dibuja();
+    }
+    requestAnimationFrame(bucle);
+  }
+  [rq, rp].forEach(x => x.addEventListener('input', lectura));
+  lectura(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ FRENADO REGENERATIVO ═════════════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('fr-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, m = 1500, eta = 0.7;
+  const rk = document.getElementById('fr-k'), lect = document.getElementById('fr-lect');
+  let v = 20, x = 0, modo = 'regen', rec = 0, calor = 0, ult = 0, giro = 0;
+  const botones = $$('#fr-modos .btn');
+  const marcaModo = () => botones.forEach(b => b.classList.toggle('activo', b.dataset.m === modo));
+  function caja(x0, y0, w0, h0, t, col) {
+    g.strokeStyle = col; g.lineWidth = 4; g.fillStyle = tok('--panel'); g.fillRect(x0, y0, w0, h0); g.strokeRect(x0, y0, w0, h0);
+    g.fillStyle = tok('--tinta'); g.font = '600 26px ' + FTXT; g.textAlign = 'center'; g.fillText(t, x0 + w0 / 2, y0 + h0 / 2 + 9);
+  }
+  function flechaC(x1, y1, x2, y2, col) {
+    const a = Math.atan2(y2 - y1, x2 - x1), c = 22;
+    g.strokeStyle = col; g.fillStyle = col; g.lineWidth = 8; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 13 * Math.sin(a), y2 - c * Math.sin(a) - 13 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 13 * Math.sin(a), y2 - c * Math.sin(a) + 13 * Math.cos(a)); g.closePath(); g.fill();
+  }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    /* carretera con marcas que se desplazan */
+    g.fillStyle = tok('--rejilla'); g.fillRect(0, 250, W, 90);
+    g.fillStyle = tok('--panel'); for (let k = -1; k < 12; k++) { const xx = ((k * 120 - x * 8) % (W + 120) + W + 120) % (W + 120) - 60; g.fillRect(xx, 292, 60, 8); }
+    /* carro */
+    const cx = 420;
+    g.fillStyle = tok('--res'); g.beginPath(); g.moveTo(cx - 170, 240); g.lineTo(cx - 170, 190); g.lineTo(cx - 90, 190); g.lineTo(cx - 50, 140); g.lineTo(cx + 90, 140); g.lineTo(cx + 140, 190); g.lineTo(cx + 190, 200); g.lineTo(cx + 190, 240); g.closePath(); g.fill();
+    g.fillStyle = tok('--panel'); g.fillRect(cx - 35, 152, 55, 36); g.fillRect(cx + 30, 152, 55, 36);
+    [cx - 100, cx + 120].forEach(wx => {
+      g.fillStyle = tok('--tinta'); g.beginPath(); g.arc(wx, 250, 36, 0, 2 * Math.PI); g.fill();
+      g.strokeStyle = tok('--panel'); g.lineWidth = 4; g.beginPath(); g.moveTo(wx, 250); g.lineTo(wx + 26 * Math.cos(giro), 250 + 26 * Math.sin(giro)); g.stroke();
+    });
+    if (modo === 'fric' && v > 0.1) { g.fillStyle = tok('--mal'); g.globalAlpha = 0.5; [cx - 100, cx + 120].forEach(wx => { g.beginPath(); g.arc(wx, 250, 46, 0, 2 * Math.PI); g.fill(); }); g.globalAlpha = 1; }
+    /* flujo de energía */
+    const y = 450;
+    caja(60, y - 45, 220, 90, 'Batería', tok('--caso1'));
+    caja(470, y - 45, 240, 90, modo === 'acel' ? 'Motor' : modo === 'regen' ? 'Generador' : 'Motor (libre)', tok('--caso2'));
+    caja(900, y - 45, 220, 90, 'Ruedas', tok('--tinta2'));
+    if (v > 0.1 || modo === 'acel') {
+      if (modo === 'acel') { flechaC(290, y, 460, y, tok('--res')); flechaC(720, y, 890, y, tok('--res')); }
+      else if (modo === 'regen') { flechaC(890, y, 720, y, tok('--res')); flechaC(460, y, 290, y, tok('--res')); flechaC(590, y + 55, 590, y + 130, tok('--mal')); g.fillStyle = tok('--mal'); g.font = '24px ' + FTXT; g.textAlign = 'center'; g.fillText('calor (≈ 30 %)', 590, y + 160); }
+      else { flechaC(1010, y + 55, 1010, y + 130, tok('--mal')); g.fillStyle = tok('--mal'); g.font = '24px ' + FTXT; g.textAlign = 'center'; g.fillText('todo a calor en los frenos', 1010, y + 160); }
+    }
+    /* medidores */
+    g.textAlign = 'left'; g.fillStyle = tok('--tinta'); g.font = '600 30px ' + FTXT;
+    const K = 0.5 * m * v * v;
+    g.fillText('v = ' + num(v * 3.6, 0) + ' km/h', 700, 70);
+    g.fillText('K = ' + num(K / 1000, 0) + ' kJ', 700, 112);
+    g.fillStyle = tok('--caso1'); g.fillText('recuperada: ' + num(rec / 1000, 0) + ' kJ', 700, 154);
+    g.fillStyle = tok('--mal'); g.fillText('calor: ' + num(calor / 1000, 0) + ' kJ', 700, 196);
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 25) {
+      const dt = 0.05; ult = ms;
+      const K0 = 0.5 * m * v * v;
+      if (modo === 'acel') v = Math.min(33, v + (v < 1 ? 3 : Math.min(3, 60000 / (m * v))) * dt);
+      else if (modo === 'regen') v = Math.max(0, v - 0.35 * (+rk.value) * dt);
+      else v = Math.max(0, v - 6 * dt);
+      const dK = K0 - 0.5 * m * v * v;
+      if (dK > 0) { if (modo === 'regen') { rec += eta * dK; calor += (1 - eta) * dK; } else calor += dK; }
+      x += v * dt; giro += v * dt / 0.33;
+      dibuja();
+      lect.textContent = modo === 'acel' ? 'la batería impulsa las ruedas' : modo === 'regen' ? (v > 0.1 ? 'las ruedas recargan la batería' : 'detenido') : (v > 0.1 ? 'frenando con fricción' : 'detenido');
+    }
+    requestAnimationFrame(bucle);
+  }
+  botones.forEach(b => b.addEventListener('click', () => { modo = b.dataset.m; marcaModo(); }));
+  rk.addEventListener('input', () => { document.getElementById('fr-kv').textContent = rk.value; });
+  document.getElementById('fr-kv').textContent = rk.value;
+  marcaModo(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ COCINA DE INDUCCIÓN ══════════════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('co2-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const rp = document.getElementById('co2-p'), lect = document.getElementById('co2-lect');
+  let olla = 'hierro', t = 0, T = 20, Tv = 20, ult = 0;
+  const botones = $$('#co2-ollas .btn');
+  const marca = () => botones.forEach(b => b.classList.toggle('activo', b.dataset.o === olla));
+  const yv = 400, yb = 470, yo = 372;   /* vidrio, bobina, fondo de la olla */
+  function cruz(x, y, s, r) {
+    g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 4; g.beginPath(); g.arc(x, y, r, 0, 2 * Math.PI); g.fill(); g.stroke();
+    g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 4;
+    if (s > 0) { g.beginPath(); g.arc(x, y, r * 0.32, 0, 2 * Math.PI); g.fill(); }
+    else if (s < 0) { const q = r * 0.55; g.beginPath(); g.moveTo(x - q, y - q); g.lineTo(x + q, y + q); g.moveTo(x + q, y - q); g.lineTo(x - q, y + q); g.stroke(); }
+  }
+  function color(T) { const a = Math.min(1, (T - 20) / 230); return 'rgba(194,65,12,' + (0.15 + 0.85 * a).toFixed(2) + ')'; }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const P = +rp.value, c = Math.cos(t), sc = Math.abs(c) < 0.15 || !P ? 0 : Math.sign(c);
+    /* campo: lazos sobre la bobina, su sentido alterna */
+    if (P) {
+      g.strokeStyle = tok('--caso1'); g.globalAlpha = 0.2 + 0.5 * Math.abs(c); g.lineWidth = 3;
+      [90, 150, 210].forEach(rr => { [380, 800].forEach(xc => { g.beginPath(); g.ellipse(xc, yb, rr, rr * 0.9, 0, Math.PI, 2 * Math.PI); g.stroke(); }); });
+      g.globalAlpha = 1;
+    }
+    /* olla */
+    if (olla !== 'nada') {
+      g.fillStyle = olla === 'hierro' ? color(T) : tok('--res-50');
+      g.strokeStyle = olla === 'hierro' ? tok('--tinta') : tok('--res'); g.lineWidth = 6;
+      g.beginPath(); g.moveTo(330, yo); g.lineTo(330, 170); g.lineTo(850, 170); g.lineTo(850, yo); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = tok('--res'); g.globalAlpha = 0.25; g.fillRect(336, 230, 508, yo - 236); g.globalAlpha = 1;
+      g.fillStyle = tok('--tinta'); g.font = '600 26px ' + FTXT; g.textAlign = 'center';
+      g.fillText(olla === 'hierro' ? 'olla de hierro' : 'olla de vidrio', 590, 210);
+      g.font = '600 34px ' + FTXT; g.fillText('agua: ' + num(Math.min(T, 100), 0) + ' °C' + (T >= 100 ? ' · hierve' : ''), 590, 300);
+      if (olla === 'hierro' && sc) for (let k = 0; k < 7; k++) { const x = 370 + k * 75; cruz(x, yo - 14, k < 3.5 ? sc : -sc, 11); }
+    }
+    /* vidrio */
+    g.fillStyle = tok('--rejilla'); g.fillRect(250, yv - 18, 680, 36);
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.textAlign = 'left'; g.fillText('vidrio: ' + num(Tv, 0) + ' °C', 950, yv + 8);
+    /* bobina en corte: mitad izquierda ⊗, mitad derecha ⊙ (y al revés medio ciclo después) */
+    for (let k = 0; k < 8; k++) { const x = 330 + k * 75; cruz(x, yb, P ? (k < 4 ? -sc : sc) : 0, 20); }
+    g.fillStyle = tok('--tinta2'); g.textAlign = 'center'; g.fillText('bobina con corriente alterna', 590, yb + 62);
+    g.textAlign = 'left';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 25) {
+      ult = ms; const P = +rp.value; t += 0.09;
+      const abs = olla === 'hierro' ? 1 : 0;
+      T += (abs * P / 1200 * 0.9 - 0.004 * (T - 20)) * (T < 100 ? 1 : 0.02);
+      if (T > 100 && olla === 'hierro') T = 100;
+      if (olla !== 'hierro') T += -0.01 * (T - 20);
+      const Tobj = olla === 'nada' ? 20 : 20 + 0.55 * (T - 20);
+      Tv += (Tobj - Tv) * 0.02;
+      dibuja();
+      lect.textContent = !P ? 'apagada' : olla === 'hierro' ? 'corrientes en remolino: la olla se calienta' : olla === 'vidrio' ? 'el vidrio no conduce: no se calienta' : 'sin olla: no se induce nada';
+    }
+    requestAnimationFrame(bucle);
+  }
+  botones.forEach(b => b.addEventListener('click', () => { olla = b.dataset.o; if (olla !== 'hierro') T = Math.min(T, 20 + (T - 20)); marca(); }));
+  rp.addEventListener('input', () => { document.getElementById('co2-pv').textContent = num(+rp.value, 0) + ' W'; });
+  document.getElementById('co2-pv').textContent = num(+rp.value, 0) + ' W';
+  marca(); dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ CARGA INALÁMBRICA DEL CELULAR ════════════════════════════════════ */
+(function () {
+  const cv = document.getElementById('ca-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const rd = document.getElementById('ca-d'), rx = document.getElementById('ca-x'), lect = document.getElementById('ca-lect');
+  let t = 0, bat = 20, ult = 0;
+  const yb = 470, esc = 9;   /* 1 mm → 9 px */
+  function cruz(x, y, s) {
+    g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 4; g.beginPath(); g.arc(x, y, 14, 0, 2 * Math.PI); g.fill(); g.stroke();
+    g.strokeStyle = tok('--res'); g.fillStyle = tok('--res'); g.lineWidth = 4;
+    if (s > 0) { g.beginPath(); g.arc(x, y, 5, 0, 2 * Math.PI); g.fill(); }
+    else if (s < 0) { g.beginPath(); g.moveTo(x - 8, y - 8); g.lineTo(x + 8, y + 8); g.moveTo(x + 8, y - 8); g.lineTo(x - 8, y + 8); g.stroke(); }
+  }
+  const acople = () => { const d = +rd.value, x = +rx.value; return Math.exp(-(d - 2) / 9) * Math.exp(-Math.pow(x / 14, 2)); };
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const d = +rd.value, dx = +rx.value * esc, k = acople(), c = Math.cos(t), s = Math.abs(c) < 0.15 ? 0 : Math.sign(c);
+    const yc = yb - 40 - d * esc, xc = 590 + dx;
+    /* base */
+    g.fillStyle = tok('--rejilla'); g.fillRect(330, yb - 30, 520, 90);
+    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.textAlign = 'center'; g.fillText('base de carga', 590, yb + 90);
+    /* líneas de campo de la base */
+    g.strokeStyle = tok('--caso1'); g.globalAlpha = 0.2 + 0.45 * Math.abs(c); g.lineWidth = 3;
+    [60, 110, 170, 240].forEach(r => { g.beginPath(); g.ellipse(590, yb, r * 1.4, r * 1.25, 0, Math.PI, 2 * Math.PI); g.stroke(); });
+    g.globalAlpha = 1;
+    for (let q = 0; q < 6; q++) { const x = 420 + q * 34 * (q < 3 ? 1 : 1) + (q >= 3 ? 136 : 0); cruz(x, yb, q < 3 ? -s : s); }
+    /* celular */
+    g.fillStyle = tok('--tinta'); g.fillRect(xc - 230, yc - 70, 460, 64);
+    g.fillStyle = tok('--panel'); g.font = '600 24px ' + FTXT; g.fillText('celular', xc, yc - 30);
+    const si = k > 0.08 ? -s : 0;
+    for (let q = 0; q < 6; q++) { const x = xc - 170 + q * 34 + (q >= 3 ? 136 : 0); cruz(x, yc + 4, q < 3 ? -si : si); }
+    /* barra de batería */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3; g.strokeRect(80, 80, 60, 260);
+    g.fillStyle = tok('--caso1'); g.fillRect(84, 84 + 252 * (1 - bat / 100), 52, 252 * bat / 100);
+    g.fillStyle = tok('--tinta'); g.font = '600 26px ' + FTXT; g.fillText(num(bat, 0) + ' %', 110, 372);
+    g.textAlign = 'left';
+    g.font = '600 28px ' + FTXT; g.fillStyle = tok('--tinta');
+    const eta = 0.85 * k / (k + 0.12), Pw = 15 * eta * Math.min(1, k * 1.4);
+    g.fillText('acople: ' + num(100 * k, 0) + ' %', 830, 80);
+    g.fillText('eficiencia: ' + num(100 * eta, 0) + ' %', 830, 120);
+    g.fillText('potencia al celular: ' + num(Pw, 1) + ' W', 830, 160);
+    return Pw;
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 25) {
+      ult = ms; t += 0.12;
+      const Pw = dibuja();
+      bat = Math.min(100, bat + Pw * 0.004); if (bat >= 100) bat = 20;
+      lect.textContent = acople() > 0.5 ? 'carga rápida' : acople() > 0.15 ? 'carga lenta' : 'casi no carga';
+      document.getElementById('ca-dv').textContent = rd.value + ' mm';
+      document.getElementById('ca-xv').textContent = rx.value + ' mm';
+    }
+    requestAnimationFrame(bucle);
+  }
+  dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ESPECTRO Y ANTENAS ═══════════════════════════════════════════════ */
