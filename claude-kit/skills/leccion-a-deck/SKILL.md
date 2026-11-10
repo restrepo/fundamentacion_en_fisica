@@ -71,6 +71,19 @@ crean con JavaScript: el contenedor lleva la clase `pr-opcs` y cada botón
 `pr-opc` (además de las clases propias de la actividad), sin número escrito en
 el texto, para que reciban la misma numeración en azul.
 
+**Actividades de metodologías activas** (`references/actividades.md`): tres
+tipos de diapositiva `pc-slide ac-slide`, que se insertan en la fuente desde un
+JSON con `scripts/nueva_actividad.py` (idempotente; añade una sola vez el CSS
+y el JS de `assets/actividades.*`):
+- **pares** — instrucción entre pares: piensa y vota, discute, vota de nuevo, comprueba;
+- **individual** — selección múltiple **sin interacción con otro estudiante**,
+  con una o varias preguntas y voto opcional en el formulario;
+- **captura** — el estudiante resuelve en la diapositiva (menús, campos,
+  figura) y envía una **captura PNG** por un formulario de Google, con el botón
+  de la skill `boton-formulario`.
+Las opciones se escriben sin número (las numera `.pr-opcs`) y las notas del
+expositor llevan la respuesta y los errores comunes.
+
 **Visor de imágenes:** toda lección generada incluye `assets/visor-img.css` y
 `assets/visor-img.js`. Al hacer clic en una imagen de una diapositiva, se abre
 una capa a pantalla completa, fuera del lienzo escalado, con la imagen a toda

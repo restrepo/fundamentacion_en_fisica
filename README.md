@@ -92,7 +92,7 @@ centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-44 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+48 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
@@ -111,11 +111,11 @@ alambre, dos diapositivas que explican por qué la ley usa un producto escalar
 (lazos de distinta forma, tramo por tramo) y solo la corriente encerrada (tres
 alambres y un lazo arrastrable), fuerza entre alambres paralelos, diseño de un solenoide hecho de un
 solo alambre con una ventana sobre el producto escalar, principio del motor
-eléctrico con conmutador y una ventana con la vista frontal de la espira); inducción y ondas (Faraday con el solenoide en corte,
+eléctrico con conmutador y una ventana con la vista frontal de la espira; una actividad en parejas sobre la atracción entre corrientes paralelas y una individual sobre el torque nulo); inducción y ondas (Faraday con el solenoide en corte,
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico, cocina de inducción
-(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; corriente de desplazamiento de Maxwell,
+(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; corriente de desplazamiento de Maxwell,
 espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la

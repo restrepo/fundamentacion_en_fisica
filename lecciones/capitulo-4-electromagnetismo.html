@@ -249,6 +249,15 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .gform-dlg::backdrop{background:rgba(20,10,40,.6)}
 .gform-dlg iframe{width:100%;height:100%;border:0;display:block}
 .gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:var(--panel);box-shadow:0 1px 4px color-mix(in srgb, var(--color-text) 30%, transparent);font-size:1.1rem;cursor:pointer}
+.btn.activo{border-color:var(--res);background:var(--res-50);color:var(--tinta)}
+#fr-modos .btn,#co2-ollas .btn,#ae-formas .btn,#ampe-ver .btn{font-size:25px;padding:9px 14px}
+.ac-tabla{width:100%;border-collapse:collapse;font-size:25px;line-height:1.3}
+.ac-tabla th{font:700 22px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--tinta2);text-align:left;padding:6px 8px;border-bottom:2px solid var(--linea)}
+.ac-tabla td{padding:8px;border-bottom:1px solid var(--linea);vertical-align:middle}
+.ac-tabla td:first-child{font-weight:700;white-space:nowrap}
+.ac-tabla select{width:100%;font:500 23px/1.2 var(--font-body);padding:6px 8px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta)}
+.ac-tabla select:focus{outline:3px solid var(--res);outline-offset:1px}
+.ac-nombre{font:500 26px/1.2 var(--font-body);padding:8px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);width:100%}
 .envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
 .envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
 .envio-caja{position:relative;width:1180px;max-height:900px;overflow:auto;background:var(--panel);border:2px solid var(--tinta);box-shadow:var(--shadow-lg, 0 18px 48px color-mix(in srgb, var(--color-text) 25%, transparent));padding:30px 40px;font-size:30px;text-align:left}
@@ -260,8 +269,6 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .envio-btn,.envio-accion{font:600 var(--t-peq, 30px)/1 var(--font-body);padding:12px 22px;border:2px solid var(--res);background:var(--res);color:var(--papel);cursor:pointer;text-decoration:none;display:inline-block}
 .envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
 .envio-nota{font-size:26px;color:var(--tinta2)}
-.btn.activo{border-color:var(--res);background:var(--res-50);color:var(--tinta)}
-#fr-modos .btn,#co2-ollas .btn,#ae-formas .btn,#ampe-ver .btn{font-size:25px;padding:9px 14px}
 
 /* ══ CAPA DEL SISTEMA DE DISEÑO ═══════════════════════════════════════════
    Va DESPUÉS del CSS de la lección. Dos partes:
@@ -1248,6 +1255,25 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Magnetismo" id="ac-paralelos" data-label="Actividad: Dos alambres con corrientes en el mismo sentido" data-speaker-notes="Actividad en parejas (instrucción entre pares): dos alambres paralelos con corrientes en el mismo sentido se atraen. Respuesta: 1. Errores comunes: «se repelen», por analogía con cargas del mismo signo (2); «no se afectan porque son neutros» (3), sin distinguir la fuerza eléctrica de la magnética; «solo si las corrientes son iguales» (4), cuando por acción y reacción las fuerzas son iguales aunque las corrientes no lo sean.">
+  <p class="ceja">§ 4.3 · Fuerza magnética · Actividad en parejas</p>
+  <h2 class="titulo">Dos alambres con corrientes en el mismo sentido</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="-50 50 700 520" class="fig" role="img" aria-label="Dos alambres paralelos con corrientes hacia arriba"><line x1="200" y1="70" x2="200" y2="560" style="stroke:var(--caso2);stroke-width:12"/><line x1="400" y1="70" x2="400" y2="560" style="stroke:var(--caso2);stroke-width:12"/><line x1="200" y1="330" x2="200" y2="200" style="stroke:var(--res);stroke-width:6"/><polygon points="200,170 184,200 216,200" style="fill:var(--res)"/><line x1="400" y1="330" x2="400" y2="200" style="stroke:var(--res);stroke-width:6"/><polygon points="400,170 384,200 416,200" style="fill:var(--res)"/><text x="160" y="260" text-anchor="end" style="font:italic 700 40px 'STIX Two Text',Georgia,serif;fill:var(--res)">I<tspan baseline-shift="sub" font-size="70%">1</tspan></text><text x="440" y="260" style="font:italic 700 40px 'STIX Two Text',Georgia,serif;fill:var(--res)">I<tspan baseline-shift="sub" font-size="70%">2</tspan></text><line x1="215" y1="500" x2="385" y2="500" style="stroke:var(--tinta2);stroke-width:3"/><polygon points="210,500 232,490 232,510" style="fill:var(--tinta2)"/><polygon points="390,500 368,490 368,510" style="fill:var(--tinta2)"/><text x="300" y="485" text-anchor="middle" style="font:italic 36px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">d</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="a"><div class="pr-q">Dos alambres largos y paralelos llevan corrientes en el <strong>mismo sentido</strong>. Los alambres:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">se atraen</button><button type="button" class="pr-opc" data-o="b">se repelen</button><button type="button" class="pr-opc" data-o="c">no se afectan: cada alambre es eléctricamente neutro</button><button type="button" class="pr-opc" data-o="d">se atraen solo si las corrientes son iguales</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En el alambre 2, el campo del alambre 1 vale \(B = \mu_0 I_1/(2\pi d)\) y, por la regla de la mano derecha, la fuerza \(F = I_2 L B\) apunta hacia el alambre 1: <strong>corrientes en el mismo sentido se atraen</strong>; en sentidos opuestos se repelen. La fuerza es magnética, no eléctrica: los alambres son neutros. Por acción y reacción, las dos fuerzas son iguales aunque las corrientes no lo sean.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-paralelos">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Con la regla de la mano derecha, ¿hacia dónde apunta \(\vect{B}\) del alambre 1 en el sitio del alambre 2? Después aplica la regla para la fuerza sobre la corriente \(I_2\).</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-paralelos" class="gform-dlg" aria-label="Formulario: Actividad: Dos alambres con corrientes en el mismo sentido">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Dos alambres con corrientes en el mismo sentido" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Magnetismo" id="dp-sol" data-label="Campo en un solenoide">
   <p class="ceja">§ 4.3 · Solenoide</p>
   <h2 class="titulo">Un lazo rectangular explica el campo del solenoide</h2>
@@ -1297,10 +1323,29 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Magnetismo" id="ac-torque" data-label="Actividad: ¿Cuándo es cero el torque sobre la espira?" data-speaker-notes="Actividad individual (sin discusión): con τ = N I A B cos φ, φ el ángulo entre el plano de la espira y el campo, el torque es cero cuando el plano es perpendicular al campo (φ = 90°). Respuesta: 2. Errores comunes: «paralelo al campo» (1), que es justo donde el torque es máximo; «nunca» (4), confundiendo fuerza con torque: las fuerzas siguen actuando pero sobre la recta que pasa por el eje.">
+  <p class="ceja">§ 4.3 · Motor eléctrico · Actividad individual</p>
+  <h2 class="titulo">¿Cuándo es cero el torque sobre la espira?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 520" class="fig" role="img" aria-label="Espira en corte entre los polos de un imán"><rect x="20" y="80" width="120" height="360" style="fill:var(--mal)"/><rect x="560" y="80" width="120" height="360" style="fill:var(--caso1)"/><text x="80" y="275" text-anchor="middle" style="font:800 64px var(--font-body);fill:var(--papel)">N</text><text x="620" y="275" text-anchor="middle" style="font:800 64px var(--font-body);fill:var(--papel)">S</text><line x1="155" y1="130" x2="530" y2="130" style="stroke:var(--caso1);stroke-width:3;opacity:.5"/><polygon points="548,130 528,121 528,139" style="fill:var(--caso1);opacity:.5"/><line x1="155" y1="210" x2="530" y2="210" style="stroke:var(--caso1);stroke-width:3;opacity:.5"/><polygon points="548,210 528,201 528,219" style="fill:var(--caso1);opacity:.5"/><line x1="155" y1="310" x2="530" y2="310" style="stroke:var(--caso1);stroke-width:3;opacity:.5"/><polygon points="548,310 528,301 528,319" style="fill:var(--caso1);opacity:.5"/><line x1="155" y1="390" x2="530" y2="390" style="stroke:var(--caso1);stroke-width:3;opacity:.5"/><polygon points="548,390 528,381 528,399" style="fill:var(--caso1);opacity:.5"/><line x1="252" y1="329" x2="448" y2="191" style="stroke:var(--caso2);stroke-width:8;opacity:.7"/><line x1="350" y1="260" x2="470" y2="260" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 6"/><path d="M 420 260 A 70 70 0 0 0 407 220" style="fill:none;stroke:var(--tinta2);stroke-width:3"/><text x="432" y="245" style="font:italic 34px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">φ</text><circle cx="350" cy="260" r="8" style="fill:var(--tinta)"/><circle cx="448" cy="191" r="22" style="fill:var(--panel);stroke:var(--caso2);stroke-width:5"/><circle cx="448" cy="191" r="7" style="fill:var(--res)"/><circle cx="252" cy="329" r="22" style="fill:var(--panel);stroke:var(--caso2);stroke-width:5"/><path d="M 240 317 L 264 341 M 264 317 L 240 341" style="stroke:var(--res);stroke-width:5"/><text x="595" y="70" text-anchor="middle" style="font:italic 700 34px 'STIX Two Text',Georgia,serif;fill:var(--caso1)">B</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Con \(\tau = N I A B\cos\varphi\), donde \(\varphi\) es el ángulo entre el plano de la espira y el campo, el torque es <strong>cero</strong> cuando el plano de la espira es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">paralelo al campo</button><button type="button" class="pr-opc" data-o="b">perpendicular al campo</button><button type="button" class="pr-opc" data-o="c">inclinado \(45^\circ\) respecto al campo</button><button type="button" class="pr-opc" data-o="d">nunca: siempre hay torque si hay corriente</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con \(\varphi = 90^\circ\), \(\cos\varphi = 0\): las fuerzas \(F = I L B\) sobre los dos lados siguen actuando, pero quedan sobre una misma recta que pasa por el eje y no producen giro. Justo ahí el conmutador invierte la corriente, y la inercia lleva la espira más allá para que el torque siga en el mismo sentido.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-torque">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 En la diapositiva anterior, detén el tiempo cuando la espira quede vertical. ¿Cuánto vale \(\cos 90^\circ\)?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-torque" class="gform-dlg" aria-label="Formulario: Actividad: ¿Cuándo es cero el torque sobre la espira?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: ¿Cuándo es cero el torque sobre la espira?" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="poster" data-seccion="Inducción y ondas" data-label="§ 4 · Inducción y ondas" data-speaker-notes="Separador: Inducción y ondas. 4 diapositivas.">
   <div class="p-num">§ 4</div>
   <h2 class="p-tit">Inducción y ondas</h2>
-  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Un campo magnético variable induce corriente</span><span>El agua hace girar un imán y las bobinas generan corriente</span><span>Frenado regenerativo: el motor se vuelve generador</span><span>Cocina de inducción: la olla se calienta, el vidrio no</span></div>
+  <div class="p-pie" style="grid-template-columns:repeat(4,1fr)"><span>Un campo magnético variable induce corriente</span><span>El imán se aleja de la bobina</span><span>El agua hace girar un imán y las bobinas generan corriente</span><span>Frenado regenerativo: el motor se vuelve generador</span></div>
 </section>
 
 
@@ -1320,6 +1365,27 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <p class="nota">Si el polo \(N\) del imán se acerca, en el extremo cercano de la bobina aparece otro \(N\) que lo repele; si se aleja, aparece un \(S\) que lo retiene.</p>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-lenz" data-label="Actividad: El imán se aleja de la bobina" data-speaker-notes="Actividad individual con dos preguntas. 1) Si el polo N se aleja, el flujo por la bobina decrece y la corriente inducida crea un S en el extremo cercano, que atrae al imán y se opone a que se aleje. Respuesta: 2. Error común: «N, que lo repele» (1), aplicando la regla del imán que se acerca. 2) La fem es proporcional a la rapidez con que cambia el flujo: al doble de rapidez, la corriente casi se duplica. Respuesta: 2.">
+  <p class="ceja">§ 4.4 · Ley de Lenz · Actividad individual</p>
+  <h2 class="titulo">El imán se aleja de la bobina</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.75fr) minmax(0,1.25fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 520" class="fig" role="img" aria-label="Imán que se aleja de una bobina en corte"><rect x="380" y="160" width="270" height="220" style="fill:var(--caso2-50);opacity:.5"/><circle cx="400" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="400" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="446" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="446" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="492" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="492" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="538" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="538" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="584" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="584" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="630" cy="160" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><circle cx="630" cy="380" r="15" style="fill:var(--panel);stroke:var(--caso2);stroke-width:4"/><rect x="60" y="240" width="110" height="60" style="fill:var(--caso1)"/><rect x="170" y="240" width="110" height="60" style="fill:var(--mal)"/><text x="115" y="283" text-anchor="middle" style="font:700 32px var(--font-body);fill:var(--papel)">S</text><text x="225" y="283" text-anchor="middle" style="font:700 32px var(--font-body);fill:var(--papel)">N</text><line x1="250" y1="350" x2="110" y2="350" style="stroke:var(--tinta);stroke-width:6"/><polygon points="88,350 114,338 114,362" style="fill:var(--tinta)"/><text x="180" y="400" text-anchor="middle" style="font:italic 700 36px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">v</text><text x="345" y="290" text-anchor="middle" style="font:800 52px var(--font-body);fill:var(--res)">?</text><text x="515" y="450" text-anchor="middle" style="font:24px var(--font-body);fill:var(--tinta2)">bobina en corte</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">El polo \(N\) del imán <strong>se aleja</strong> de la bobina. En el extremo cercano de la bobina aparece:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">un polo \(N\), que repele al imán</button><button type="button" class="pr-opc" data-o="b">un polo \(S\), que atrae al imán y se opone a que se aleje</button><button type="button" class="pr-opc" data-o="c">ningún polo: solo hay corriente cuando el imán se acerca</button><button type="button" class="pr-opc" data-o="d">un polo que depende de la rapidez con que se aleja</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El flujo por la bobina <strong>disminuye</strong>. Por la ley de Lenz, la corriente inducida trata de mantenerlo: crea un campo en el mismo sentido que el del imán, y su extremo cercano queda como un polo \(S\), que atrae al \(N\) del imán.</p></div></div>
+      <div class="pc-q" data-ok="b"><div class="pr-q">Si el imán se aleja con el <strong>doble de rapidez</strong>, la corriente inducida:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">no cambia</button><button type="button" class="pr-opc" data-o="b">se duplica, aproximadamente</button><button type="button" class="pr-opc" data-o="c">se reduce a la mitad</button><button type="button" class="pr-opc" data-o="d">cambia de sentido</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La fem inducida es \(\varepsilon = -\Delta\Phi/\Delta t\): el mismo cambio de flujo en la mitad del tiempo da el doble de fem y, con la misma resistencia, el doble de corriente. El sentido no cambia porque el flujo sigue disminuyendo.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-lenz">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Pregúntate primero si el flujo por la bobina aumenta o disminuye. La corriente inducida se opone a ese cambio.</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-lenz" class="gform-dlg" aria-label="Formulario: Actividad: El imán se aleja de la bobina">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: El imán se aleja de la bobina" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <section class="diapositiva" data-seccion="Inducción y ondas" id="dp-generador" data-label="Generador de una hidroeléctrica" data-speaker-notes="§ 4.4. Aplicación de la ley de Faraday: generador de una hidroeléctrica. El agua que cae mueve la turbina; su eje hace girar el rotor (un electroimán) dentro de las bobinas del estátor, vistas en corte. El flujo por las bobinas cambia y se induce una fem alterna ε = N B A ω sen(ωt): su amplitud crece con la rapidez de giro y su frecuencia es f = p n / 60 (p pares de polos, n en rpm). En Colombia la red es de 60 Hz, así que el generador debe girar a 3600/p rpm sin importar cuánta agua llegue: el caudal fija la potencia, no la frecuencia. La animación va mucho más lenta que la máquina real.">
@@ -1399,6 +1465,33 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <p class="nota">Solo una parte del flujo de la base atraviesa la bobina del celular. Si se separan o se desalinean, esa parte baja rápido y la carga se vuelve lenta e ineficiente: por eso el celular debe ir centrado y pegado a la base.</p>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-captura" data-seccion="Inducción y ondas" id="ac-aplicaciones" data-label="Actividad: Cuatro aplicaciones de la inducción" data-speaker-notes="Actividad individual con entrega por captura. Respuestas: hidroeléctrica: un imán que gira frente a bobinas; mecánica del agua → eléctrica. Frenado regenerativo: un imán que gira frente a bobinas (las ruedas hacen girar el rotor del motor, que funciona como generador); cinética del carro → química de la batería. Cocina de inducción: corriente alterna en una bobina fija; eléctrica → térmica en la olla. Carga del celular: corriente alterna en una bobina fija; eléctrica → química de la batería del celular. «Térmica → eléctrica» no corresponde a ninguna. El estudiante escribe su nombre, toma la captura con el botón y la adjunta en el formulario.">
+  <p class="ceja">§ 4.4 · Aplicaciones de la inducción · Actividad con entrega</p>
+  <h2 class="titulo">Cuatro aplicaciones, una misma ley</h2>
+  <div class="pila pc-col">
+      <p style="margin:0">Para cada aplicación de la ley de Faraday, elige qué hace cambiar el flujo magnético y qué transformación de energía ocurre.</p><input class="ac-nombre" type="text" placeholder="Escribe aquí tu nombre completo" aria-label="Nombre"><table class="ac-tabla"><thead><tr><th>Aplicación</th><th>¿Qué hace cambiar el flujo?</th><th>Transformación de energía</th></tr></thead><tbody><tr><td>Hidroeléctrica</td><td><select><option value="">— elige —</option><option>un imán que gira frente a bobinas</option><option>una corriente alterna en una bobina fija</option><option>nada: el flujo no cambia</option></select></td><td><select><option value="">— elige —</option><option>mecánica del agua → eléctrica</option><option>cinética del carro → química de la batería</option><option>eléctrica → térmica en la olla</option><option>eléctrica → química de la batería del celular</option><option>térmica → eléctrica</option></select></td></tr><tr><td>Frenado regenerativo</td><td><select><option value="">— elige —</option><option>un imán que gira frente a bobinas</option><option>una corriente alterna en una bobina fija</option><option>nada: el flujo no cambia</option></select></td><td><select><option value="">— elige —</option><option>mecánica del agua → eléctrica</option><option>cinética del carro → química de la batería</option><option>eléctrica → térmica en la olla</option><option>eléctrica → química de la batería del celular</option><option>térmica → eléctrica</option></select></td></tr><tr><td>Cocina de inducción</td><td><select><option value="">— elige —</option><option>un imán que gira frente a bobinas</option><option>una corriente alterna en una bobina fija</option><option>nada: el flujo no cambia</option></select></td><td><select><option value="">— elige —</option><option>mecánica del agua → eléctrica</option><option>cinética del carro → química de la batería</option><option>eléctrica → térmica en la olla</option><option>eléctrica → química de la batería del celular</option><option>térmica → eléctrica</option></select></td></tr><tr><td>Carga del celular</td><td><select><option value="">— elige —</option><option>un imán que gira frente a bobinas</option><option>una corriente alterna en una bobina fija</option><option>nada: el flujo no cambia</option></select></td><td><select><option value="">— elige —</option><option>mecánica del agua → eléctrica</option><option>cinética del carro → química de la batería</option><option>eléctrica → térmica en la olla</option><option>eléctrica → química de la batería del celular</option><option>térmica → eléctrica</option></select></td></tr></tbody></table>
+      <div class="fila-btn"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="envio-btn" data-envio="envio-ac-aplicaciones">📷 Enviar mis respuestas</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 En dos aplicaciones algo gira; en las otras dos nada se mueve y el flujo cambia porque la corriente de la bobina es alterna.</p></div>
+      <div class="ac-pasos"><strong>Actividad con entrega</strong><ol><li><strong>Resuelve</strong> en la diapositiva, sin consultar a tus compañeros.</li><li>Pulsa «📷 Enviar mis respuestas» y <strong>toma la captura</strong>: se descarga como imagen.</li><li><strong>Abre el formulario</strong> y adjunta la imagen.</li></ol></div>
+  </div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-ac-aplicaciones" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-aplicaciones-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-ac-aplicaciones-tit">Enviar tus respuestas</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="aplicaciones-induccion.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
 </section>
 
 <section class="diapositiva compacta" data-seccion="Inducción y ondas" data-label="Corriente de desplazamiento">
@@ -4038,6 +4131,10 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   });
   document.getElementById('ba-borrar').addEventListener('click', () => { items.forEach(it => { delete it.dataset.resp; it.classList.remove('ok', 'mal'); $$('.dim-btns button', it).forEach(b => b.classList.remove('sel')); }); marc.textContent = '0'; fb.textContent = ''; });
 })();
+
+
+
+
 
 
 

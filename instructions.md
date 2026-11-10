@@ -16,7 +16,7 @@ Conversa con el usuario en **español de Colombia y Latinoamérica**.
 | `fuentes/_ds/` | Sistema de diseño compartido. |
 | `lecciones/*.html` | **Generado.** Nunca se edita a mano; se regenera desde la fuente. |
 | `index.html`, `README.md` | Portada del sitio y descripción del repositorio. |
-| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante). |
+| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción y actividades de metodologías activas), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante). |
 | `claude-kit/latex/` | Fragmentos LaTeX pendientes de pegar en `main.tex` del libro. |
 | `skills/` | Copias empaquetadas (`.skill`) para subir a claude.ai. |
 
@@ -98,6 +98,15 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
     opciones `.pc-q[data-ok] .pr-opc[data-o]`. El formulario de Google
     `1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k` va en
     `<dialog id="gform-…" class="gform-dlg">` y el botón lleva `data-gform-open`.
+  - **Actividades individuales** (selección múltiple sin interacción con otro
+    estudiante): `pc-slide ac-slide ac-individual`, ceja «… · Actividad individual».
+  - **Actividades con entrega por captura:** `pc-slide ac-slide ac-captura`,
+    ceja «… · Actividad con entrega»; botón «📷 …» de `boton-formulario`
+    (formulario de entregas `https://forms.gle/WJXuYvppqsqQ5NWG8`) y un campo
+    `input.ac-nombre` para que la imagen identifique al estudiante.
+  - Los tres tipos de actividad se crean con
+    `claude-kit/skills/leccion-a-deck/scripts/nueva_actividad.py FUENTE spec.json`
+    (ver `references/actividades.md`).
   - **Prácticas numéricas:** `pc-slide pq-slide`, con
     `.pc-q.pq-q[data-ok-num][data-tol]`, `.pq-fila`, `.pc-in`, `.pc-comprobar`,
     una pista y el popup «Solución completa» (`.pq-solbtn[data-pop]`).
