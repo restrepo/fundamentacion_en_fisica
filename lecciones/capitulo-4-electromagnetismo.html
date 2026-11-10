@@ -1285,7 +1285,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <div class="pila">
       <p>Cada lado de la espira lleva corriente dentro del campo: sobre él actúa \(F = I L B\), hacia arriba en un lado y hacia abajo en el otro. Ese <strong>par de fuerzas</strong> produce un torque</p>
       <div class="kf">\[ \tau = N I A B \cos\varphi . \]</div>
-      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button><button type="button" class="btn prop" data-pop="pop-mo-frente">Vista frontal</button></div>
+      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button><button type="button" class="btn" id="mo-reset">↺ Reiniciar</button><button type="button" class="btn prop" data-pop="pop-mo-frente">Vista frontal</button></div>
       <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="mo-i" min="0.5" max="5" step="0.5" value="2"><span class="v" id="mo-iv"></span></label>
       <p class="nota">El <strong>conmutador</strong> invierte la corriente cada media vuelta para que el torque no cambie de signo. Sin él, la espira oscila y se queda quieta perpendicular al campo.</p>
       <p class="puente">→ ¿Y si en vez de darle corriente hacemos girar la espira?</p>
@@ -3467,6 +3467,11 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     requestAnimationFrame(bucle);
   }
   bOn.addEventListener('click', () => { on = !on; bOn.textContent = on ? '■ Apagar' : '▶ Encender'; });
+  document.getElementById('mo-reset').addEventListener('click', () => {
+    phi = 0.35; w = 0; on = false; com = true;
+    bOn.textContent = '▶ Encender'; bCom.textContent = 'Conmutador: sí';
+    dibuja(); lectura();
+  });
   bCom.addEventListener('click', () => { com = !com; bCom.textContent = 'Conmutador: ' + (com ? 'sí' : 'no'); });
   ri.addEventListener('input', lectura);
   dibuja(); lectura(); requestAnimationFrame(bucle);
