@@ -2864,7 +2864,11 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     g.fillStyle = tok('--rejilla'); g.fillRect(268, 75, 224, 155);
     [[276, 300], [462, 300]].forEach(b => {
       g.fillStyle = tok('--linea'); g.fillRect(b[0], 85, 22, 135);
-      g.strokeStyle = tok('--caso2'); g.lineWidth = 4; for (let y = 92; y < 218; y += 12) { g.beginPath(); g.moveTo(b[0] - 3, y); g.lineTo(b[0] + 25, y + 5); g.stroke(); }
+      /* bobina sobre el diente: conductores axiales (paralelos al eje vertical)
+         y cabezas de bobina horizontales arriba y abajo */
+      g.strokeStyle = tok('--caso2'); g.lineWidth = 3.5;
+      g.beginPath(); g.moveTo(b[0] - 3, 92); g.lineTo(b[0] + 25, 92); g.moveTo(b[0] - 3, 213); g.lineTo(b[0] + 25, 213); g.stroke();
+      for (let x = b[0] + 1; x <= b[0] + 22; x += 5) { g.beginPath(); g.moveTo(x, 92); g.lineTo(x, 213); g.stroke(); }
     });
     g.fillStyle = tok('--panel'); g.fillRect(310, 95, 140, 115);
     for (let k = 0; k < 8; k++) {
