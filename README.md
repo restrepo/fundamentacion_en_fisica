@@ -86,8 +86,8 @@ de flujo, lanzamiento vertical y el **ejemplo 3.2.1, oscilador armónico
 $F=-kx$**, con la tabla paso a paso, el simulador Euler-Cromer trasladado
 de la implementación p5.js y la comparación de energía con Euler explícito);
 aceleración constante y energía (con una actividad individual en la que se arma con fichas la
-conservación de la energía entre A y B de la montaña rusa del parcial, se elige la solución analítica
-y se vota en el formulario); cantidad de movimiento; fuerzas (fricción,
+conservación de la energía de la montaña rusa del parcial entre A y el punto que se toque en la
+figura, B, C o E, se elige la solución analítica y se vota en el formulario); cantidad de movimiento; fuerzas (fricción,
 centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo

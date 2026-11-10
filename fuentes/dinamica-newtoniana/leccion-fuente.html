@@ -462,6 +462,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
 #ac-ecuacion .ec-fb{font:600 23px/1.3 var(--font-body);min-height:30px;margin:0}
 #ac-ecuacion .btn,#ac-ecuacion .envio-btn{font-size:23px;padding:8px 14px}
 #ac-ecuacion .ec-inst{font-size:22px;margin:0;color:var(--tinta2)}
+#ac-ecuacion .ec-punto{cursor:pointer}
+#ac-ecuacion .ec-punto .ec-halo{fill:var(--caso2-50);stroke:var(--caso2);stroke-width:2;opacity:.55}
+#ac-ecuacion .ec-punto .ec-dot{fill:var(--tinta)}
+#ac-ecuacion .ec-punto:hover .ec-halo,#ac-ecuacion .ec-punto:focus-visible .ec-halo{opacity:1}
+#ac-ecuacion .ec-punto.activo .ec-halo{fill:var(--res-50);stroke:var(--res);stroke-width:4;opacity:1}
+#ac-ecuacion .ec-punto.activo .ec-dot{fill:var(--res)}
+#ac-ecuacion .ec-punto:focus{outline:none}
 /* envio-formulario:css — botón «Enviar» con captura de la diapositiva y formulario */
 .envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
 .envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
@@ -810,54 +817,44 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </dialog>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="ac-ecuacion" data-label="Actividad: construya la ecuación de la montaña rusa" data-speaker-notes="Actividad individual basada en el problema 3 del parcial 2. Se da por hecho que el carro parte del reposo (v_A = 0) y que B está a nivel del suelo (h_B = 0): en A solo hay energía potencial y en B solo cinética. Paso 1: el estudiante arma con fichas la conservación de la energía mecánica entre A y B: m g h_A = ½ m v_B². Distractores: m v (cantidad de movimiento), m g sola (el peso), ½ m v_A² (cero porque parte del reposo), m g h_B (cero porque h_B = 0) y m g h_C (el punto C no interviene). Paso 2: elige la solución analítica y vota en el formulario con su número. Respuesta: 3, v_B = √(2 g h_A) = √(2·9,8·20) ≈ 19,8 m/s. Errores: olvidar el factor 2 (1), dejar la masa (2) u olvidar la raíz (4).">
+<section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="ac-ecuacion" data-label="Actividad: construya la ecuación de la montaña rusa" data-speaker-notes="Actividad individual basada en el problema 3 del parcial 2. El carro parte del reposo (v_A = 0) en A, a 20 m. Tocando B, C o E en la figura se cambia el punto de llegada. Paso 1: armar con fichas la conservación de la energía mecánica; paso 2: elegir la solución analítica y votar en el formulario con el punto y el número. B (h_B = 0): m g h_A = ½ m v_B², respuesta 3, v_B = √(2 g h_A) ≈ 19,8 m/s. C (12 m): m g h_A = ½ m v_C² + m g h_C, respuesta 2, v_C = √(2g(h_A − h_C)) ≈ 12,5 m/s; el error más común del parcial es √(2 g h_C), opción 1. E (22 m): m g h_A = ½ m v_E² + m g h_E daría v_E² = 2g(h_A − h_E) < 0: el carro no llega a E, respuesta 4; la opción 3, √(2g(h_E − h_A)) ≈ 6,3 m/s, invierte la resta para evitar el signo. Distractores de las fichas: m v (cantidad de movimiento), m g (el peso), ½ m v_A² (cero en el reposo) y la potencial de un punto que no interviene.">
   <p class="ceja">§ 3.5 · Conservación de la energía · Actividad individual</p>
   <h2 class="titulo">Montaña rusa: construya la ecuación y elija la solución</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.85fr) minmax(0,1.15fr);gap:30px">
     <div class="pila">
       <figure class="svgbox" style="margin:0">
-        <svg class="ec-fig" viewBox="0 0 760 360" role="img" aria-label="Vía de la montaña rusa: A a 20 m, B en el suelo, C a 12 m y E a 22 m">
+        <svg class="ec-fig" viewBox="0 0 760 360" role="group" aria-label="Vía de la montaña rusa: A a 20 m, B en el suelo, C a 12 m y E a 22 m. Toque B, C o E para cambiar el punto de llegada.">
           <rect x="20" y="300" width="720" height="14" style="fill:var(--rejilla)"/>
           <line x1="20" y1="300" x2="740" y2="300" style="stroke:var(--tinta);stroke-width:3"/>
           <path d="M30 100 L90 100 C170 100 170 298 240 298 C320 298 320 148 400 148 C470 148 480 230 540 230 C610 230 620 82 690 82 L735 82" style="fill:none;stroke:var(--tinta);stroke-width:5"/>
           <g style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:7 6"><line x1="90" y1="100" x2="90" y2="300"/><line x1="400" y1="148" x2="400" y2="300"/><line x1="690" y1="82" x2="690" y2="300"/></g>
           <rect x="40" y="70" width="44" height="24" rx="3" style="fill:var(--caso1-50);stroke:var(--tinta);stroke-width:2"/>
-          <circle cx="90" cy="100" r="6" style="fill:var(--tinta)"/><circle cx="240" cy="298" r="6" style="fill:var(--tinta)"/><circle cx="400" cy="148" r="6" style="fill:var(--tinta)"/><circle cx="690" cy="82" r="6" style="fill:var(--tinta)"/>
-          <text x="98" y="88" font-style="italic">A</text><text x="226" y="340" font-style="italic">B</text><text x="392" y="132" font-style="italic">C</text><text x="680" y="66" font-style="italic">E</text>
+          <circle cx="90" cy="100" r="6" style="fill:var(--tinta)"/>
+          <text x="98" y="88" font-style="italic">A</text>
           <text class="ec-cota" x="100" y="215">20 m</text><text class="ec-cota" x="410" y="235">12 m</text><text class="ec-cota" x="618" y="205">22 m</text>
+          <g class="ec-punto" data-p="B" tabindex="0" role="button" aria-label="Elegir el punto B"><circle class="ec-halo" cx="240" cy="298" r="24"/><circle class="ec-dot" cx="240" cy="298" r="8"/><text x="226" y="345" font-style="italic">B</text></g>
+          <g class="ec-punto" data-p="C" tabindex="0" role="button" aria-label="Elegir el punto C"><circle class="ec-halo" cx="400" cy="148" r="24"/><circle class="ec-dot" cx="400" cy="148" r="8"/><text x="392" y="122" font-style="italic">C</text></g>
+          <g class="ec-punto" data-p="E" tabindex="0" role="button" aria-label="Elegir el punto E"><circle class="ec-halo" cx="690" cy="82" r="24"/><circle class="ec-dot" cx="690" cy="82" r="8"/><text x="680" y="50" font-style="italic">E</text></g>
         </svg>
       </figure>
-      <p class="ec-enun">El carro parte del reposo en \(A\) (\(v_A = 0\)), a \(h_A = \qty{20}{m}\), y baja hasta \(B\), el punto más bajo, a nivel del suelo (\(h_B = 0\)). No hay fricción y \(g = \qty{9{,}8}{m/s^2}\). ¿Con qué rapidez pasa por \(B\)?</p>
-      <p class="ec-inst"><strong>Actividad individual.</strong> Trabaje solo: arme la ecuación, elija la solución y vote en el formulario con el número de su respuesta.</p>
+      <p class="ec-enun" id="ec-enun"></p>
+      <p class="ec-inst"><strong>Actividad individual.</strong> Toque \(B\), \(C\) o \(E\) en la figura para cambiar el punto de llegada. Trabaje solo: arme la ecuación, elija la solución y vote en el formulario con el punto y el número de su respuesta.</p>
     </div>
     <div class="pila" style="gap:12px">
       <div class="ec-paso" id="ec-p1">
-        <h3>1 · Toque las fichas para armar la conservación de la energía entre \(A\) y \(B\)</h3>
-        <div class="ec-eq"><span class="ec-slot" data-lado="A"></span><span>\(=\)</span><span class="ec-slot" data-lado="B"></span></div>
-        <div class="ec-banco" id="ec-banco">
-          <button type="button" class="ec-ficha" data-t="UB">\(m g h_B\)</button>
-          <button type="button" class="ec-ficha" data-t="pB">\(m v_B\)</button>
-          <button type="button" class="ec-ficha" data-t="UA">\(m g h_A\)</button>
-          <button type="button" class="ec-ficha" data-t="mg">\(m g\)</button>
-          <button type="button" class="ec-ficha" data-t="KB">\(\tfrac12 m v_B^{2}\)</button>
-          <button type="button" class="ec-ficha" data-t="KA">\(\tfrac12 m v_A^{2}\)</button>
-          <button type="button" class="ec-ficha" data-t="UC">\(m g h_C\)</button>
-        </div>
+        <h3 id="ec-h1"></h3>
+        <div class="ec-eq" id="ec-eq"></div>
+        <div class="ec-banco" id="ec-banco"></div>
         <div class="fila-btn"><button type="button" class="btn" id="ec-comp">Comprobar la ecuación</button><button type="button" class="btn" id="ec-borra">Vaciar</button></div>
-        <p class="ec-fb" id="ec-fb1">Toque una ficha para ponerla en la primera casilla libre; toque una casilla para devolverla.</p>
+        <p class="ec-fb" id="ec-fb1"></p>
       </div>
       <div class="ec-paso ec-bloq" id="ec-p2">
-        <h3>2 · ¿Cuál es la solución analítica para \(v_B\)?</h3>
-        <div class="ec-opcs">
-          <button type="button" class="ec-opc" data-o="c">1 · \(v_B = \sqrt{g\, h_A}\)</button>
-          <button type="button" class="ec-opc" data-o="d">2 · \(v_B = \sqrt{2 m g\, h_A}\)</button>
-          <button type="button" class="ec-opc" data-o="a">3 · \(v_B = \sqrt{2 g\, h_A}\)</button>
-          <button type="button" class="ec-opc" data-o="b">4 · \(v_B = 2 g\, h_A\)</button>
-        </div>
+        <h3 id="ec-h2"></h3>
+        <div class="ec-opcs" id="ec-opcs"></div>
         <p class="ec-fb" id="ec-fb2"></p>
       </div>
       <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-ecuacion">📝 Votar en el formulario</button><button type="button" class="btn" id="ec-pista">💡 Pista</button><button type="button" class="btn" id="ec-rein">Empezar de nuevo</button></div>
-      <p class="ec-fb" id="ec-pista-t" style="display:none;font-weight:400">💡 Sin fricción, la energía mecánica \(K + U\) es la misma en \(A\) y en \(B\). Como parte del reposo, en \(A\) solo hay energía potencial \(m g h_A\), y como \(h_B = 0\), en \(B\) solo hay energía cinética; \(m v\) es cantidad de movimiento.</p>
+      <p class="ec-fb" id="ec-pista-t" style="display:none;font-weight:400"></p>
     </div>
   </div>
   <dialog id="gform-ac-ecuacion" class="gform-dlg" aria-label="Formulario: Actividad: construya la ecuación de la montaña rusa">
@@ -3635,68 +3632,124 @@ const T_OSC = 2 * Math.PI;
 (function () {
   const sec = document.getElementById('ac-ecuacion');
   if (!sec) return;
-  const banco = $('#ec-banco', sec), slots = $$('.ec-slot', sec), fb1 = $('#ec-fb1', sec), fb2 = $('#ec-fb2', sec), p2 = $('#ec-p2', sec);
-  const orden = $$('.ec-ficha', banco);
-  const fb10 = fb1.innerHTML;
-  const libre = () => slots.find(sl => !sl.firstElementChild);
-  const limpia = () => slots.forEach(sl => sl.classList.remove('ok', 'mal'));
-  const tex = (el, h) => { el.innerHTML = h; if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {}); };
-  const aviso = (t, c) => { fb1.style.color = c || ''; tex(fb1, t); };
-  orden.forEach(f => f.addEventListener('click', () => {
-    if (f.parentElement !== banco) return;
-    const sl = libre(); if (!sl) { aviso('Las cuatro casillas están llenas: toque una para vaciarla.', 'var(--mal)'); return; }
-    sl.appendChild(f); limpia(); aviso(fb10);
-  }));
-  slots.forEach(sl => sl.addEventListener('click', () => {
-    const f = sl.firstElementChild; if (!f || sec.dataset.paso1 === 'ok') return;
-    banco.insertBefore(f, orden.slice(orden.indexOf(f) + 1).find(o => o.parentElement === banco) || null);
-    limpia();
-  }));
-  function comprueba() {
-    const t = slots.map(sl => sl.firstElementChild ? sl.firstElementChild.dataset.t : null);
-    if (t.includes(null)) { aviso('Faltan fichas: llene las dos casillas.', 'var(--mal)'); return; }
-    const okA = t[0] === 'UA', okB = t[1] === 'KB';
-    if (okA && okB) {
-      slots.forEach(sl => { sl.classList.remove('mal'); sl.classList.add('ok'); });
-      sec.dataset.paso1 = 'ok'; p2.classList.remove('ec-bloq');
-      aviso('✓ Correcto: \\(m g h_A = \\tfrac12 m v_B^{2}\\). Toda la energía potencial en \\(A\\) se convierte en energía cinética en \\(B\\). Siga con el paso 2.', 'var(--res)');
-      return;
+  const eq = $('#ec-eq', sec), banco = $('#ec-banco', sec), opcs = $('#ec-opcs', sec);
+  const fb1 = $('#ec-fb1', sec), fb2 = $('#ec-fb2', sec), p2 = $('#ec-p2', sec), pista = $('#ec-pista-t', sec);
+  const FB0 = 'Toque una ficha para ponerla en la primera casilla libre; toque una casilla para devolverla.';
+  const F = {
+    UA: 'm g h_A', KA: '\\tfrac12 m v_A^{2}', mg: 'm g',
+    KB: '\\tfrac12 m v_B^{2}', UB: 'm g h_B', pB: 'm v_B',
+    KC: '\\tfrac12 m v_C^{2}', UC: 'm g h_C', pC: 'm v_C',
+    KE: '\\tfrac12 m v_E^{2}', UE: 'm g h_E', pE: 'm v_E'
+  };
+  const P = {
+    B: {
+      enun: 'El carro parte del reposo en \\(A\\) (\\(v_A = 0\\)), a \\(h_A = \\qty{20}{m}\\), y baja hasta \\(B\\), el punto más bajo, a nivel del suelo (\\(h_B = 0\\)). No hay fricción y \\(g = \\qty{9{,}8}{m/s^2}\\). ¿Con qué rapidez pasa por \\(B\\)?',
+      der: ['KB'], fichas: ['UB', 'pB', 'UA', 'mg', 'KB', 'KA', 'UC'],
+      bien: '✓ Correcto: \\(m g h_A = \\tfrac12 m v_B^{2}\\). Toda la energía potencial en \\(A\\) se convierte en energía cinética en \\(B\\). Siga con el paso 2.',
+      pista: '💡 Sin fricción, la energía mecánica \\(K + U\\) es la misma en \\(A\\) y en \\(B\\). En \\(A\\) solo hay energía potencial (parte del reposo) y en \\(B\\) solo cinética (\\(h_B = 0\\)).',
+      ok: '3', opc: [
+        ['1', 'v_B = \\sqrt{g\\, h_A}', '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_B^{2} = g\\,h_A\\), el \\(\\tfrac12\\) pasa al otro lado como 2.'],
+        ['2', 'v_B = \\sqrt{2 m g\\, h_A}', '✗ La masa aparece en los dos lados y se cancela: la rapidez no depende de la masa.'],
+        ['3', 'v_B = \\sqrt{2 g\\, h_A}', '✓ Correcto. De \\(m g h_A = \\tfrac12 m v_B^{2}\\), la masa se cancela y \\(v_B = \\sqrt{2(9{,}8)(20)}\\,\\mathrm{m/s} \\approx 19{,}8\\,\\mathrm{m/s}\\). Vote en el formulario: punto \\(B\\), opción 3.'],
+        ['4', 'v_B = 2 g\\, h_A', '✗ Falta la raíz: de \\(v_B^{2} = 2 g h_A\\) se obtiene \\(v_B\\) sacando raíz cuadrada; \\(2 g h_A\\) tiene unidades de \\(\\mathrm{m^2/s^2}\\).']
+      ]
+    },
+    C: {
+      enun: 'El carro parte del reposo en \\(A\\) (\\(v_A = 0\\)), a \\(h_A = \\qty{20}{m}\\), y pasa por la cima \\(C\\), a \\(h_C = \\qty{12}{m}\\). No hay fricción y \\(g = \\qty{9{,}8}{m/s^2}\\). ¿Con qué rapidez pasa por \\(C\\)?',
+      der: ['KC', 'UC'], fichas: ['UC', 'pC', 'UA', 'mg', 'KC', 'KA', 'UB'],
+      bien: '✓ Correcto: \\(m g h_A = \\tfrac12 m v_C^{2} + m g h_C\\). En \\(C\\) el carro todavía está a \\(\\qty{12}{m}\\): solo baja \\(h_A - h_C\\). Siga con el paso 2.',
+      pista: '💡 Sin fricción, \\(K + U\\) es la misma en \\(A\\) y en \\(C\\). En \\(A\\) solo hay energía potencial; en \\(C\\) hay cinética y también potencial, porque \\(h_C \\neq 0\\).',
+      ok: '2', opc: [
+        ['1', 'v_C = \\sqrt{2 g\\, h_C}', '✗ Esa sería la rapidez tras caer \\(\\qty{12}{m}\\) desde el reposo. Lo que cuenta es cuánto baja el carro: \\(h_A - h_C = \\qty{8}{m}\\).'],
+        ['2', 'v_C = \\sqrt{2 g\\,(h_A - h_C)}', '✓ Correcto. De \\(m g h_A = \\tfrac12 m v_C^{2} + m g h_C\\), la masa se cancela y \\(v_C = \\sqrt{2(9{,}8)(8)}\\,\\mathrm{m/s} \\approx 12{,}5\\,\\mathrm{m/s}\\). Vote en el formulario: punto \\(C\\), opción 2.'],
+        ['3', 'v_C = \\sqrt{g\\,(h_A - h_C)}', '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_C^{2} = g\\,(h_A - h_C)\\), el \\(\\tfrac12\\) pasa al otro lado como 2.'],
+        ['4', 'v_C = \\sqrt{2 g\\,(h_A + h_C)}', '✗ La energía potencial en \\(C\\) se resta de la de \\(A\\): \\(\\tfrac12 m v_C^{2} = m g h_A - m g h_C\\).']
+      ]
+    },
+    E: {
+      enun: 'El carro parte del reposo en \\(A\\) (\\(v_A = 0\\)), a \\(h_A = \\qty{20}{m}\\). La siguiente cima, \\(E\\), está a \\(h_E = \\qty{22}{m}\\). No hay fricción y \\(g = \\qty{9{,}8}{m/s^2}\\). ¿Con qué rapidez llega a \\(E\\)?',
+      der: ['KE', 'UE'], fichas: ['UE', 'pE', 'UA', 'mg', 'KE', 'KA', 'UC'],
+      bien: '✓ Correcto: \\(m g h_A = \\tfrac12 m v_E^{2} + m g h_E\\). Ahora despeje \\(v_E^{2}\\) y fíjese en su signo. Siga con el paso 2.',
+      pista: '💡 Escriba la conservación entre \\(A\\) y \\(E\\) como si llegara. Al despejar, \\(v_E^{2}\\) debe ser positivo: ¿lo es si \\(h_E > h_A\\)?',
+      ok: '4', opc: [
+        ['1', 'v_E = \\sqrt{2 g\\, h_E} \\approx \\qty{20{,}8}{m/s}', '✗ Eso supone que el carro cae \\(\\qty{22}{m}\\) desde el reposo. Hay que comparar las alturas de \\(A\\) y de \\(E\\).'],
+        ['2', 'v_E = \\sqrt{2 g\\,(h_A + h_E)}', '✗ La energía potencial en \\(E\\) se resta de la de \\(A\\): \\(\\tfrac12 m v_E^{2} = m g h_A - m g h_E\\).'],
+        ['3', 'v_E = \\sqrt{2 g\\,(h_E - h_A)} \\approx \\qty{6{,}3}{m/s}', '✗ Invertir la resta para quitar el signo cambia la física. El despeje da \\(v_E^{2} = 2 g\\,(h_A - h_E) < 0\\), y eso no es posible.'],
+        ['4', '\\text{No llega: } v_E^{2} = 2 g\\,(h_A - h_E) < 0', '✓ Correcto. Para llegar a \\(E\\) necesitaría \\(m g\\,(\\qty{22}{m})\\), más que toda su energía, \\(m g\\,(\\qty{20}{m})\\). Se detiene a \\(\\qty{20}{m}\\) de altura, antes de la cima, y regresa. Vote en el formulario: punto \\(E\\), opción 4.']
+      ]
     }
-    slots[0].classList.toggle('ok', okA); slots[0].classList.toggle('mal', !okA);
-    slots[1].classList.toggle('ok', okB); slots[1].classList.toggle('mal', !okB);
-    if (t.some(x => x === 'pB')) aviso('✗ \\(m v\\) es cantidad de movimiento, no energía. La energía cinética es \\(\\tfrac12 m v^{2}\\).', 'var(--mal)');
-    else if (t.includes('mg')) aviso('✗ \\(m g\\) es el peso, una fuerza. La energía potencial es \\(m g h\\).', 'var(--mal)');
-    else if (t.includes('KA')) aviso('✗ El carro parte del reposo: \\(v_A = 0\\), así que en \\(A\\) no hay energía cinética.', 'var(--mal)');
-    else if (t.includes('UB')) aviso('✗ \\(B\\) está a nivel del suelo, \\(h_B = 0\\): allí la energía potencial es cero.', 'var(--mal)');
-    else if (t.includes('UC')) aviso('✗ El punto \\(C\\) no interviene: compare solo \\(A\\) con \\(B\\).', 'var(--mal)');
-    else aviso('✗ A la izquierda va la energía en \\(A\\) (solo potencial) y a la derecha la energía en \\(B\\) (solo cinética).', 'var(--mal)');
+  };
+  const tex = (el, h) => { el.innerHTML = h; if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {}); };
+  let punto = 'B', listo = false;
+  const fichas = () => $$('.ec-ficha', sec), slots = () => $$('.ec-slot', sec);
+  const aviso = (t, c) => { fb1.style.color = c || ''; tex(fb1, t); };
+  const limpia = () => slots().forEach(sl => sl.classList.remove('ok', 'mal'));
+  function arma(p) {
+    punto = p; listo = false;
+    const d = P[p];
+    $$('.ec-punto', sec).forEach(g => g.classList.toggle('activo', g.dataset.p === p));
+    tex($('#ec-enun', sec), d.enun);
+    tex($('#ec-h1', sec), '1 · Toque las fichas para armar la conservación de la energía entre \\(A\\) y \\(' + p + '\\)');
+    tex($('#ec-h2', sec), '2 · ¿Cuál es la solución analítica para \\(v_' + p + '\\)?');
+    let h = '<span class="ec-slot"></span><span>\\(=\\)</span>';
+    d.der.forEach((x, i) => { if (i) h += '<span>\\(+\\)</span>'; h += '<span class="ec-slot"></span>'; });
+    eq.innerHTML = h;
+    banco.innerHTML = d.fichas.map(t => '<button type="button" class="ec-ficha" data-t="' + t + '">\\(' + F[t] + '\\)</button>').join('');
+    opcs.innerHTML = d.opc.map(o => '<button type="button" class="ec-opc" data-o="' + o[0] + '">' + o[0] + ' · \\(' + o[1] + '\\)</button>').join('');
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([eq, banco, opcs]).then(() => window.__mjAplanar && window.__mjAplanar()).catch(() => {});
+    p2.classList.add('ec-bloq'); fb2.textContent = '';
+    tex(pista, d.pista);
+    aviso(FB0);
+    fichas().forEach(f => f.addEventListener('click', () => pone(f)));
+    slots().forEach(sl => sl.addEventListener('click', () => quita(sl)));
+    $$('.ec-opc', sec).forEach(b => b.addEventListener('click', () => elige(b)));
+  }
+  function pone(f) {
+    if (f.parentElement !== banco || listo) return;
+    const sl = slots().find(x => !x.firstElementChild);
+    if (!sl) { aviso('Las casillas están llenas: toque una para vaciarla.', 'var(--mal)'); return; }
+    sl.appendChild(f); limpia(); aviso(FB0);
+  }
+  function quita(sl) {
+    const f = sl.firstElementChild; if (!f || listo) return;
+    const orden = P[punto].fichas, i = orden.indexOf(f.dataset.t);
+    const sig = fichas().find(x => x.parentElement === banco && orden.indexOf(x.dataset.t) > i);
+    banco.insertBefore(f, sig || null); limpia();
+  }
+  function comprueba() {
+    const d = P[punto], s = slots(), t = s.map(sl => sl.firstElementChild ? sl.firstElementChild.dataset.t : null);
+    if (t.includes(null)) { aviso('Faltan fichas: llene todas las casillas.', 'var(--mal)'); return; }
+    const okA = t[0] === 'UA', okD = t.slice(1).sort().join() === d.der.slice().sort().join();
+    if (okA && okD) {
+      s.forEach(sl => { sl.classList.remove('mal'); sl.classList.add('ok'); });
+      listo = true; p2.classList.remove('ec-bloq'); aviso(d.bien, 'var(--res)'); return;
+    }
+    s[0].classList.toggle('ok', okA); s[0].classList.toggle('mal', !okA);
+    s.slice(1).forEach(sl => { sl.classList.toggle('ok', okD); sl.classList.toggle('mal', !okD); });
+    const usa = x => t.includes(x);
+    if (t.some(x => x[0] === 'p')) aviso('✗ \\(m v\\) es cantidad de movimiento, no energía. La energía cinética es \\(\\tfrac12 m v^{2}\\).', 'var(--mal)');
+    else if (usa('mg')) aviso('✗ \\(m g\\) es el peso, una fuerza. La energía potencial es \\(m g h\\).', 'var(--mal)');
+    else if (usa('KA')) aviso('✗ El carro parte del reposo: \\(v_A = 0\\), así que en \\(A\\) no hay energía cinética.', 'var(--mal)');
+    else if (punto === 'B' && usa('UB')) aviso('✗ \\(B\\) está a nivel del suelo, \\(h_B = 0\\): allí la energía potencial es cero.', 'var(--mal)');
+    else if (t.slice(1).some(x => x[1] !== punto)) aviso('✗ A la derecha van solo las energías del punto \\(' + punto + '\\): compare \\(A\\) con \\(' + punto + '\\).', 'var(--mal)');
+    else aviso('✗ A la izquierda va la energía en \\(A\\) (solo potencial) y a la derecha las energías en \\(' + punto + '\\).', 'var(--mal)');
+  }
+  function elige(b) {
+    if (!listo) return;
+    $$('.ec-opc', sec).forEach(o => o.classList.remove('ok', 'mal'));
+    const d = P[punto], ok = b.dataset.o === d.ok, o = d.opc.find(x => x[0] === b.dataset.o);
+    b.classList.add(ok ? 'ok' : 'mal');
+    fb2.style.color = ok ? 'var(--res)' : 'var(--mal)'; tex(fb2, o[2]);
   }
   $('#ec-comp', sec).addEventListener('click', comprueba);
-  $('#ec-borra', sec).addEventListener('click', () => {
-    if (sec.dataset.paso1 === 'ok') return;
-    orden.forEach(f => banco.appendChild(f)); limpia(); aviso(fb10);
+  $('#ec-borra', sec).addEventListener('click', () => { if (listo) return; P[punto].fichas.forEach(t => banco.appendChild($('.ec-ficha[data-t="' + t + '"]', sec))); limpia(); aviso(FB0); });
+  $('#ec-rein', sec).addEventListener('click', () => arma(punto));
+  $('#ec-pista', sec).addEventListener('click', () => { pista.style.display = pista.style.display === 'none' ? '' : 'none'; });
+  $$('.ec-punto', sec).forEach(g => {
+    g.addEventListener('click', () => arma(g.dataset.p));
+    g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); arma(g.dataset.p); } });
   });
-  const exp = {
-    a: '✓ Correcto. De \\(m g h_A = \\tfrac12 m v_B^{2}\\), la masa se cancela y \\(v_B = \\sqrt{2(9{,}8)(20)}\\,\\mathrm{m/s} \\approx 19{,}8\\,\\mathrm{m/s}\\). Vote en el formulario con el número 3.',
-    b: '✗ Falta la raíz: de \\(v_B^{2} = 2 g h_A\\) se obtiene \\(v_B\\) sacando raíz cuadrada; además \\(2 g h_A\\) tiene unidades de \\(\\mathrm{m^2/s^2}\\).',
-    c: '✗ Falta el factor 2: al despejar \\(\\tfrac12 v_B^{2} = g\\,h_A\\), el \\(\\tfrac12\\) pasa al otro lado como 2.',
-    d: '✗ La masa aparece en los dos lados y se cancela: la rapidez no depende de la masa.'
-  };
-  $$('.ec-opc', sec).forEach(b => b.addEventListener('click', () => {
-    if (sec.dataset.paso1 !== 'ok') return;
-    $$('.ec-opc', sec).forEach(o => o.classList.remove('ok', 'mal'));
-    const ok = b.dataset.o === 'a';
-    b.classList.add(ok ? 'ok' : 'mal');
-    fb2.style.color = ok ? 'var(--res)' : 'var(--mal)'; tex(fb2, exp[b.dataset.o]);
-    if (ok) sec.dataset.paso2 = 'ok';
-  }));
-  $('#ec-pista', sec).addEventListener('click', () => { const t = $('#ec-pista-t', sec); t.style.display = t.style.display === 'none' ? '' : 'none'; });
-  $('#ec-rein', sec).addEventListener('click', () => {
-    delete sec.dataset.paso1; delete sec.dataset.paso2;
-    orden.forEach(f => banco.appendChild(f)); limpia(); p2.classList.add('ec-bloq');
-    $$('.ec-opc', sec).forEach(o => o.classList.remove('ok', 'mal'));
-    aviso(fb10); fb2.textContent = '';
-  });
+  arma('B');
 })();
 
 
