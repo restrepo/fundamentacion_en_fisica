@@ -92,7 +92,7 @@ centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-48 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+49 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
@@ -115,7 +115,7 @@ eléctrico con conmutador y una ventana con la vista frontal de la espira; una a
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico, cocina de inducción
-(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; corriente de desplazamiento de Maxwell,
+(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; corriente de desplazamiento de Maxwell (y la figura 4.15 animada: el campo B aparece entre las placas mientras el condensador se carga o se descarga),
 espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la

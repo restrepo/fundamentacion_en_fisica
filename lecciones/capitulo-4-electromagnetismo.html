@@ -250,7 +250,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .gform-dlg iframe{width:100%;height:100%;border:0;display:block}
 .gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:var(--panel);box-shadow:0 1px 4px color-mix(in srgb, var(--color-text) 30%, transparent);font-size:1.1rem;cursor:pointer}
 .btn.activo{border-color:var(--res);background:var(--res-50);color:var(--tinta)}
-#fr-modos .btn,#co2-ollas .btn,#ae-formas .btn,#ampe-ver .btn{font-size:25px;padding:9px 14px}
+#fr-modos .btn,#co2-ollas .btn,#ae-formas .btn,#ampe-ver .btn,#mc-modos .btn{font-size:25px;padding:9px 14px}
 .ac-tabla{width:100%;border-collapse:collapse;font-size:25px;line-height:1.3}
 .ac-tabla th{font:700 22px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--tinta2);text-align:left;padding:6px 8px;border-bottom:2px solid var(--linea)}
 .ac-tabla td{padding:8px;border-bottom:1px solid var(--linea);vertical-align:middle}
@@ -1532,6 +1532,25 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <div class="pila">
       <div class="kf frag">\[ I_d = \varepsilon_0\,\dfrac{\Delta\Phi_E}{\Delta t} \]<p class="nota" style="margin:0">Un flujo eléctrico que cambia actúa como una corriente.</p></div>
       <div class="caja frag"><p style="margin:0">El magnetismo tiene dos fuentes: cargas en movimiento y campos eléctricos variables. Un \(\vect{E}\) cambiante crea \(\vect{B}\) y un \(\vect{B}\) cambiante crea \(\vect{E}\): la perturbación se sostiene a sí misma y viaja a la velocidad de la luz como <strong>onda electromagnética</strong>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-maxwell-cond" data-label="Campo magnético entre las placas de un condensador" data-speaker-notes="§ 4.5. Figura 4.15 del libro, E(t), animada. Al cerrar el interruptor, la batería lleva carga a las placas a través de una resistencia: Q(t) = Q₀(1 − e^(−t/τ)), con τ = RC, e I = ΔQ/Δt decrece exponencialmente. Entre las placas no cruza carga, pero el campo E = Q/(ε₀A) crece, y con él el flujo Φ_E = AE: la corriente de desplazamiento I_d = ε₀ ΔΦ_E/Δt es igual a la corriente del cable. Por eso el campo B entre las placas es el mismo que alrededor del cable. Puntos clave para discutir: (1) B depende de qué tan rápido cambia E, no de cuánto vale E: con las placas llenas, E es máximo y B es cero. (2) Al descargar, E disminuye y B cambia de sentido. (3) Con más resistencia la carga es más lenta y B es más débil pero dura más. El botón ⏸ congela un instante.">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Figura 4.15</p>
+  <h2 class="titulo">Entre las placas no pasa carga, pero aparece \(\vect{B}\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Batería, condensador e interruptor</span><span class="val" id="mc-lect"></span></div>
+      <canvas class="lienzo" id="mc-cv" width="1180" height="640"></canvas>
+    </figure>
+    <div class="pila">
+      <p>Entre las placas no cruza carga, pero mientras se cargan \(\vect{E} = Q/(\varepsilon_0 A)\) <strong>crece</strong> y aparece \(\vect{B}\), igual que alrededor del cable:</p>
+      <div class="kf">\[ I_d = \varepsilon_0\,\dfrac{\Delta\Phi_E}{\Delta t} = \varepsilon_0 A\,\dfrac{\Delta E}{\Delta t} = I \]</div>
+      <div class="fila-btn" id="mc-modos"><button type="button" class="btn" data-m="cargar">Cargar</button><button type="button" class="btn" data-m="abrir">Abrir</button><button type="button" class="btn" data-m="descargar">Descargar</button><button type="button" class="btn" id="mc-pausa">⏸ Detener el tiempo</button></div>
+      <label class="ctrl"><span>Resistencia \(R\)</span><input type="range" id="mc-r" min="1" max="10" step="1" value="4"><span class="v" id="mc-rv"></span></label>
+      <p class="nota">\(\vect{B}\) depende de qué tan rápido <strong>cambia</strong> \(\vect{E}\): con las placas llenas, \(B = 0\). Al descargar, \(\vect{B}\) cambia de sentido.</p>
+      <p class="puente">→ Si \(\vect{E}\) variable crea \(\vect{B}\) y \(\vect{B}\) variable crea \(\vect{E}\), ¿se sostienen solos?</p>
     </div>
   </div>
 </section>
@@ -4007,6 +4026,128 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     requestAnimationFrame(bucle);
   }
   dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ MAXWELL: CAMPO B ENTRE LAS PLACAS DE UN CONDENSADOR (fig. 4.15) ═══
+   Q(t) con constante de tiempo τ = RC; I = ΔQ/Δt; entre las placas
+   I_d = ε₀ ΔΦ_E/Δt = I. Los anillos de B tienen intensidad ∝ |I|. */
+(function () {
+  const cv = document.getElementById('mc-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const bots = $$('#mc-modos .btn[data-m]'), bPausa = document.getElementById('mc-pausa'), rr = document.getElementById('mc-r'), lect = document.getElementById('mc-lect');
+  let modo = 'abrir', q = 0, I = 0, t = 0, ult = 0, pausa = false, fase = 0;
+  const hist = [];
+  const XL = 340, XR = 520, YC = 240, HP = 130;          /* placas */
+  const XW1 = 110, XW2 = 750, YB = 480, YD = 570;         /* cables, rama de la batería y de descarga */
+  const flecha = (x1, y1, x2, y2, col, wd) => {
+    const a = Math.atan2(y2 - y1, x2 - x1), c = 18;
+    g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wd; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 9 * Math.sin(a), y2 - c * Math.sin(a) - 9 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 9 * Math.sin(a), y2 - c * Math.sin(a) + 9 * Math.cos(a)); g.closePath(); g.fill();
+  };
+  const tau = () => 0.5 + 0.35 * (+rr.value);             /* s de la animación */
+  /* anillo de B alrededor de un eje horizontal en (x, YC): la mitad de adelante (derecha) llena */
+  function anillo(x, rx, ry, k, sg) {
+    if (k < 0.02) { g.strokeStyle = tok('--res'); g.globalAlpha = 0.12; g.lineWidth = 2; g.setLineDash([6, 8]); g.beginPath(); g.ellipse(x, YC, rx, ry, 0, 0, 2 * Math.PI); g.stroke(); g.setLineDash([]); g.globalAlpha = 1; return; }
+    g.strokeStyle = tok('--res'); g.lineWidth = 2 + 4 * k;
+    g.globalAlpha = 0.25 + 0.2 * k; g.beginPath(); g.ellipse(x, YC, rx, ry, 0, Math.PI / 2, 3 * Math.PI / 2); g.stroke();
+    g.globalAlpha = 0.35 + 0.65 * k; g.beginPath(); g.ellipse(x, YC, rx, ry, 0, -Math.PI / 2, Math.PI / 2); g.stroke();
+    /* trazos que avanzan: con la corriente hacia +x, B baja por la mitad de adelante */
+    g.setLineDash([10, 16]); g.lineDashOffset = -sg * fase * 40; g.lineWidth = 3 + 3 * k; g.strokeStyle = tok('--panel');
+    g.beginPath(); g.ellipse(x, YC, rx, ry, 0, -Math.PI / 2, Math.PI / 2); g.stroke(); g.setLineDash([]); g.lineDashOffset = 0;
+    g.globalAlpha = 0.35 + 0.65 * k;
+    const yA = YC + sg * 8;
+    flecha(x + rx, YC - sg * 20, x + rx, yA + sg * 14, tok('--res'), 3 + 2 * k);
+    g.globalAlpha = 1;
+  }
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const Imax = 1 / tau(), k = Math.min(1, Math.abs(I) / Imax), sg = I >= 0 ? 1 : -1;
+    /* cables */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 5; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(XL, YC); g.lineTo(XW1, YC); g.lineTo(XW1, YD); g.moveTo(XW1, YB); g.lineTo(300, YB);
+    g.moveTo(340, YB); g.lineTo(640, YB); g.moveTo(XR, YC); g.lineTo(XW2, YC); g.lineTo(XW2, YB); g.lineTo(720, YB);
+    g.moveTo(XW1, YD); g.lineTo(640, YD); g.stroke();
+    /* batería */
+    g.lineWidth = 6; g.beginPath(); g.moveTo(300, YB - 34); g.lineTo(300, YB + 34); g.stroke();
+    g.lineWidth = 10; g.beginPath(); g.moveTo(340, YB - 18); g.lineTo(340, YB + 18); g.stroke();
+    g.fillStyle = tok('--tinta'); g.font = '26px ' + FTXT; g.textAlign = 'center';
+    g.fillText('batería', 320, YB + 66); g.fillText('+', 284, YB - 40);
+    /* resistencia en la rama de la derecha */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 4; g.fillStyle = tok('--panel');
+    g.fillRect(XW2 - 16, YC + 80, 32, 110); g.strokeRect(XW2 - 16, YC + 80, 32, 110);
+    g.fillStyle = tok('--tinta'); g.font = 'italic 30px ' + FMATH; g.textAlign = 'left'; g.fillText('R', XW2 + 26, YC + 145);
+    /* interruptor de dos posiciones */
+    const piv = [720, YB], cont = modo === 'cargar' ? [640, YB] : modo === 'descargar' ? [640, YD] : [650, YB - 60];
+    g.fillStyle = tok('--tinta'); [[640, YB], [640, YD], piv].forEach(c => { g.beginPath(); g.arc(c[0], c[1], 7, 0, 2 * Math.PI); g.fill(); });
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 6; g.beginPath(); g.moveTo(piv[0], piv[1]); g.lineTo(cont[0], cont[1]); g.stroke();
+    g.font = '24px ' + FTXT; g.textAlign = 'left'; g.fillStyle = tok('--tinta2'); g.fillText('interruptor', 735, YB + 40);
+    g.fillText('rama de descarga', 380, YD + 34);
+    /* placas en perspectiva y sus cargas */
+    [[XL, '+', tok('--caso2')], [XR, '−', tok('--caso1')]].forEach(([x, sgn, col]) => {
+      g.fillStyle = tok('--rejilla'); g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+      g.beginPath(); g.ellipse(x, YC, 22, HP, 0, 0, 2 * Math.PI); g.fill(); g.stroke();
+      const n = Math.round(q * 8);
+      g.fillStyle = col; g.font = '700 30px ' + FTXT; g.textAlign = 'center'; g.textBaseline = 'middle';
+      for (let j = 0; j < n; j++) g.fillText(sgn, x, YC - HP + 22 + j * (2 * HP - 44) / 7);
+      g.textBaseline = 'alphabetic';
+    });
+    /* campo eléctrico entre las placas */
+    if (q > 0.02) {
+      g.globalAlpha = 0.25 + 0.75 * q;
+      for (let j = 0; j < 5; j++) { const y = YC - 90 + j * 45; flecha(XL + 28, y, XR - 28, y, tok('--caso2'), 2 + 3 * q); }
+      g.globalAlpha = 1;
+      g.fillStyle = tok('--caso2'); g.font = 'italic 700 32px ' + FMATH; g.textAlign = 'center'; g.fillText('E', (XL + XR) / 2, YC - HP - 14);
+    }
+    /* anillos de B: alrededor de los cables y entre las placas */
+    anillo(215, 18, 62, k, sg); anillo(640, 18, 62, k, sg); anillo((XL + XR) / 2, 30, 105, k, sg);
+    if (k > 0.02) {
+      g.globalAlpha = 0.4 + 0.6 * k; g.fillStyle = tok('--res'); g.font = 'italic 700 32px ' + FMATH; g.textAlign = 'center';
+      g.fillText('B', 215, YC - 80); g.fillText('B', 640, YC - 80); g.globalAlpha = 1;
+      /* corriente en el cable y corriente de desplazamiento */
+      const L = 30 + 50 * k;
+      flecha(255 - sg * L / 2, YC - 28, 255 + sg * L / 2, YC - 28, tok('--mal'), 4);
+      flecha(675 - sg * L / 2, YC - 28, 675 + sg * L / 2, YC - 28, tok('--mal'), 4);
+      g.fillStyle = tok('--mal'); g.font = 'italic 700 30px ' + FMATH; g.fillText('I', 255, YC - 46); g.fillText('I', 675, YC - 46);
+      g.fillText('I', (XL + XR) / 2 - 8, YC + HP + 40); g.font = 'italic 700 20px ' + FMATH; g.fillText('d', (XL + XR) / 2 + 8, YC + HP + 48);
+    }
+    /* gráfica de E(t) y B(t) */
+    const gx = 830, gy = 90, gw = 320, gh = 360, y0 = gy + gh / 2;
+    g.strokeStyle = tok('--linea'); g.lineWidth = 2; g.strokeRect(gx, gy, gw, gh);
+    g.beginPath(); g.moveTo(gx, y0); g.lineTo(gx + gw, y0); g.stroke();
+    const linea = (f, col) => { g.strokeStyle = col; g.lineWidth = 4; g.beginPath(); hist.forEach((h, i) => { const x = gx + gw - (hist.length - 1 - i) * 2, y = y0 - f(h) * (gh / 2 - 14); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke(); };
+    linea(h => h[0], tok('--caso2')); linea(h => h[1], tok('--res'));
+    g.font = 'italic 700 28px ' + FMATH; g.textAlign = 'left';
+    g.fillStyle = tok('--caso2'); g.fillText('E', gx + 12, gy + 34);
+    g.fillStyle = tok('--res'); g.fillText('B', gx + 46, gy + 34);
+    g.font = '22px ' + FTXT; g.fillStyle = tok('--tinta2'); g.textAlign = 'right'; g.fillText('tiempo →', gx + gw - 8, gy + gh - 10);
+    g.textAlign = 'center'; g.fillText('E(t) y B entre las placas', gx + gw / 2, gy + gh + 34);
+    g.textAlign = 'left'; g.lineCap = 'butt';
+  }
+  function lectura() {
+    document.getElementById('mc-rv').textContent = rr.value + ' kΩ';
+    const k = Math.abs(I) * tau();
+    lect.textContent = pausa ? 'tiempo detenido' : modo === 'cargar' ? (k > 0.03 ? 'cargando: E crece y aparece B' : 'placas llenas: E constante, sin B')
+      : modo === 'descargar' ? (k > 0.03 ? 'descargando: E decrece y B cambia de sentido' : 'descargado') : (q > 0.02 ? 'interruptor abierto: E se mantiene, sin B' : 'interruptor abierto');
+    bots.forEach(b => b.classList.toggle('activo', b.dataset.m === modo));
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) {
+      ult = ms;
+      if (!pausa) {
+        const dt = 0.03, ta = tau();
+        const dq = modo === 'cargar' ? (1 - q) / ta : modo === 'descargar' ? -q / ta : 0;
+        q = Math.max(0, Math.min(1, q + dq * dt)); I = dq; t += dt; fase += dt * Math.min(1, Math.abs(I) * ta) * 3;
+        hist.push([q, I * ta]); while (hist.length > 160) hist.shift();
+      }
+      dibuja(); lectura();
+    }
+    requestAnimationFrame(bucle);
+  }
+  bots.forEach(b => b.addEventListener('click', () => { modo = b.dataset.m; lectura(); }));
+  bPausa.addEventListener('click', () => { pausa = !pausa; bPausa.textContent = pausa ? '▶ Seguir' : '⏸ Detener el tiempo'; bPausa.classList.toggle('activo', pausa); lectura(); });
+  rr.addEventListener('input', lectura);
+  lectura(); dibuja(); requestAnimationFrame(bucle);
 })();
 
 /* ═══ ESPECTRO Y ANTENAS ═══════════════════════════════════════════════ */
