@@ -255,7 +255,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 
 /* botón de modo seleccionado (aplicaciones de la inducción) */
 .btn.activo{border-color:var(--res);background:var(--res-50);color:var(--tinta)}
-#fr-modos .btn,#co2-ollas .btn{font-size:25px;padding:9px 14px}
+#fr-modos .btn,#co2-ollas .btn,#ae-formas .btn,#ampe-ver .btn{font-size:25px;padding:9px 14px}
 </style></head>
 <body>
 <div id="escenario">
@@ -752,6 +752,46 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="am-i" min="1" max="1000" step="1" value="500"><span class="v" id="am-iv"></span></label>
       <label class="ctrl"><span>Distancia \(r\)</span><input type="range" id="am-r" min="0.5" max="20" step="0.5" value="10"><span class="v" id="am-rv"></span></label>
       <p class="nota">\(\mu_0 = \qty{1{,}257\times 10^{-6}}{T\cdot m/A}\). Campo terrestre de referencia: \(\approx \qty{50}{\mu T}\).</p>
+      <p class="puente">→ ¿Por qué solo cuenta la parte de \(\vect{B}\) a lo largo del lazo y solo la corriente encerrada?</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-amp-escalar" data-label="Ampère: por qué un producto escalar" data-speaker-notes="§ 4.3. Por qué la ley de Ampère usa un producto escalar. El lazo se recorre en tramos pequeños ΔL. En cada tramo solo cuenta la componente de B a lo largo del tramo, B cos θ: es el producto escalar B·ΔL = B ΔL cos θ, como en el trabajo W = F·d, donde una fuerza perpendicular al desplazamiento no hace trabajo. En el círculo centrado, B es paralelo al camino en todas partes (θ = 0) y todos los tramos aportan igual. En el cuadrado, los tramos del medio de cada lado están más cerca del alambre (B grande, θ pequeño) y las esquinas más lejos (B pequeño, θ grande): aportan distinto, pero la suma de todos los tramos es la misma, μ0 I. Con el deslizador se recorre el lazo tramo por tramo; el grosor del lazo indica cuánto aporta cada tramo.">
+  <p class="ceja">§ 4.3 · Ley de Ampère · Producto escalar</p>
+  <h2 class="titulo">Solo cuenta la parte de <span style="font-style:italic;font-weight:800">B</span> a lo largo del camino</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Lazo alrededor de un alambre (corriente saliendo)</span><span class="val" id="ae-lect"></span></div>
+      <div id="ae-fig"></div>
+    </figure>
+    <div class="pila">
+      <p>Recorremos el lazo en tramos pequeños \(\Delta\vect{L}\). En cada uno solo aporta la componente de \(\vect{B}\) <strong>a lo largo del tramo</strong>, \(B\cos\theta\):</p>
+      <div class="kf">\[ \vect{B}\cdot\Delta\vect{L} = B\,\Delta L\cos\theta \]</div>
+      <div class="fila-btn" id="ae-formas"><button type="button" class="btn activo" data-f="circ">Círculo centrado</button><button type="button" class="btn" data-f="cuad">Cuadrado</button><button type="button" class="btn" data-f="desc">Círculo corrido</button></div>
+      <label class="ctrl"><span>Tramo</span><input type="range" id="ae-t" min="0" max="71" step="1" value="9"><span class="v" id="ae-tv"></span></label>
+      <p class="nota" id="ae-nota"></p>
+      <p class="nota">Es la idea del trabajo, \(W = \vect{F}\cdot\vect{d}\): lo perpendicular no aporta. El grosor del lazo indica cuánto aporta cada tramo.</p>
+      <p class="puente">→ ¿Y si una corriente queda fuera del lazo?</p>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-amp-enc" data-label="Ampère: solo la corriente encerrada" data-speaker-notes="§ 4.3. Por qué solo cuenta la corriente encerrada. Para un alambre, B = μ0 I /(2π r) y la componente de ΔL a lo largo de B es r Δφ, donde Δφ es el ángulo que barre el tramo visto desde el alambre. Entonces B·ΔL = (μ0 I / 2π) Δφ: la distancia se cancela. Si el alambre está dentro del lazo, al dar la vuelta el ángulo barrido suma 2π y el aporte total es μ0 I, sin importar la forma. Si está fuera, el ángulo primero crece y luego decrece: en un lado del lazo B acompaña al camino (aporte positivo, verde) y en el otro va en contra (negativo, rojo), y la suma es cero. El signo sigue la regla de la mano derecha: con el lazo recorrido en sentido antihorario, la corriente que sale (⊙) cuenta positiva y la que entra (⊗) negativa. Arrastrar el lazo para encerrar distintos alambres; los botones muestran el aporte de un solo alambre.">
+  <p class="ceja">§ 4.3 · Ley de Ampère · Corriente encerrada</p>
+  <h2 class="titulo">Solo cuenta la corriente que atraviesa el lazo</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Tres alambres y un lazo arrastrable</span><span class="val" id="ampe-lect"></span></div>
+      <div id="ampe-fig" style="touch-action:none"></div>
+    </figure>
+    <div class="pila">
+      <p>Para un alambre, \(B = \mu_0 I/(2\pi r)\), y cada tramo avanza \(r\,\Delta\varphi\) a lo largo de \(\vect{B}\), con \(\Delta\varphi\) el ángulo que barre visto desde el alambre. La distancia se cancela:</p>
+      <div class="kf">\[ \vect{B}\cdot\Delta\vect{L} = \frac{\mu_0 I}{2\pi}\,\Delta\varphi \]</div>
+      <p><strong>Dentro</strong>, el lazo le da la vuelta: \(\sum\Delta\varphi = 2\pi\) y aporta \(\mu_0 I\). <strong>Fuera</strong>, el ángulo sube y luego baja: \(\sum\Delta\varphi = 0\).</p>
+      <div class="fila-btn" id="ampe-ver"><button type="button" class="btn activo" data-w="-1">Todos</button><button type="button" class="btn" data-w="0">Solo 1</button><button type="button" class="btn" data-w="1">Solo 2</button><button type="button" class="btn" data-w="2">Solo 3</button></div>
+      <label class="ctrl"><span>Radio del lazo</span><input type="range" id="ampe-r" min="60" max="260" step="5" value="170"><span class="v" id="ampe-rv"></span></label>
+      <p class="nota" id="ampe-nota"></p>
     </div>
   </div>
 </section>
@@ -2244,6 +2284,147 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     document.getElementById('am-lect').textContent = 'B = ' + unidadSI(B, 'T') + ' = ' + num(B / 50e-6 * 100, 0) + ' % del campo terrestre';
   }
   ri.addEventListener('input', pinta); rr.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ AMPÈRE: PRODUCTO ESCALAR Y CORRIENTE ENCERRADA ══════════════════ */
+/* Aporte de un alambre (sx, sy, I) al tramo (x1,y1)→(x2,y2), en coordenadas
+   del SVG (y hacia abajo). Devuelve (I/2π)·Δφ, es decir, B·ΔL / μ0 en A. */
+function aporteAmp(w, x1, y1, x2, y2) {
+  const ax = x1 - w.x, ay = w.y - y1, bx = x2 - w.x, by = w.y - y2;
+  return w.I / (2 * Math.PI) * Math.atan2(ax * by - ay * bx, ax * bx + ay * by);
+}
+function marcaAlambre(svg, x, y, sale, r) {
+  r = r || 22;
+  nodo('circle', { cx: x, cy: y, r: r, style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:4' }, svg);
+  if (sale) nodo('circle', { cx: x, cy: y, r: r * 0.27, style: 'fill:var(--tinta)' }, svg);
+  else { const d = r * 0.55; nodo('path', { d: 'M ' + (x - d) + ' ' + (y - d) + ' L ' + (x + d) + ' ' + (y + d) + ' M ' + (x + d) + ' ' + (y - d) + ' L ' + (x - d) + ' ' + (y + d), style: 'stroke:var(--tinta);stroke-width:4' }, svg); }
+}
+function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido antihorario */
+  const n = P.length - 1;
+  [0.125, 0.375, 0.625, 0.875].forEach(f => {
+    const k = Math.floor(f * n), a = P[k], b = P[k + 1], L = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1;
+    const ux = (b[0] - a[0]) / L, uy = (b[1] - a[1]) / L;
+    flecha(svg, a[0] - ux * 18, a[1] - uy * 18, a[0] + ux * 18, a[1] + uy * 18, 'var(--tinta2)', 3);
+  });
+}
+(function () {
+  const host = document.getElementById('ae-fig');
+  if (!host) return;
+  const rt = document.getElementById('ae-t'), bots = $$('#ae-formas .btn');
+  const cx = 590, cy = 330, N = 72, a = 205, alambre = { x: cx, y: cy, I: 1 };
+  let forma = 'circ';
+  function lazo() {
+    const P = [];
+    for (let k = 0; k <= N; k++) {
+      const t = 2 * Math.PI * k / N;
+      if (forma === 'circ') P.push([cx + a * Math.cos(t), cy - a * Math.sin(t)]);
+      else if (forma === 'desc') P.push([cx + 115 + 195 * Math.cos(t), cy - 15 - 195 * Math.sin(t)]);
+      else {
+        const s = (4 * k / N) % 4, q = Math.floor(s), f = s - q, h = a * 0.95;
+        const u = [[h, -h + 2 * h * f], [h - 2 * h * f, h], [-h, h - 2 * h * f], [-h + 2 * h * f, -h]][q];
+        P.push([cx + u[0], cy - u[1]]);
+      }
+    }
+    return P;
+  }
+  function pinta() {
+    const j = +rt.value, P = lazo();
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 640', class: 'fig' }, host);
+    const c = [];
+    for (let k = 0; k < N; k++) c.push(aporteAmp(alambre, P[k][0], P[k][1], P[k + 1][0], P[k + 1][1]));
+    const mx = Math.max.apply(null, c.map(Math.abs));
+    nodo('polyline', { points: P.map(q => q.join(',')).join(' '), style: 'fill:none;stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    for (let k = 0; k < N; k++) nodo('line', { x1: P[k][0], y1: P[k][1], x2: P[k + 1][0], y2: P[k + 1][1], style: 'stroke:var(--caso1);stroke-linecap:butt;stroke-width:' + (3 + 13 * Math.abs(c[k]) / mx).toFixed(1) + ';opacity:.75' }, svg);
+    sentidoLazo(svg, P);
+    marcaAlambre(svg, cx, cy, true);
+    rotulo(svg, cx, cy + 58, '*I*', { 'font-size': 30, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-family:' + FMATH });
+    /* tramo elegido: ΔL, B, su proyección y el ángulo θ */
+    const p1 = P[j], p2 = P[j + 1], m = [(p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2];
+    const Lt = Math.hypot(p2[0] - p1[0], p2[1] - p1[1]), ux = (p2[0] - p1[0]) / Lt, uy = (p2[1] - p1[1]) / Lt;
+    const dx = m[0] - cx, dy = m[1] - cy, d = Math.hypot(dx, dy);
+    const bx = dy / d, by = -dx / d;                       /* antihorario en pantalla */
+    const LB = Math.min(210, 40000 / d), cs = ux * bx + uy * by, th = Math.acos(Math.max(-1, Math.min(1, cs)));
+    nodo('line', { x1: p1[0], y1: p1[1], x2: p2[0], y2: p2[1], style: 'stroke:var(--tinta);stroke-width:16;stroke-linecap:round' }, svg);
+    const tip = [m[0] + LB * bx, m[1] + LB * by], pr = [m[0] + LB * cs * ux, m[1] + LB * cs * uy];
+    nodo('line', { x1: tip[0], y1: tip[1], x2: pr[0], y2: pr[1], style: 'stroke:var(--tinta2);stroke-width:2.5;stroke-dasharray:7 6' }, svg);
+    flecha(svg, m[0], m[1], m[0] + 55 * ux, m[1] + 55 * uy, 'var(--tinta)', 5);
+    flecha(svg, m[0], m[1], tip[0], tip[1], 'var(--res)', 6);
+    if (LB * cs > 30) flecha(svg, m[0], m[1], pr[0], pr[1], 'var(--caso1)', 7);
+    if (th > 0.06) {
+      const r0 = 46, a1 = Math.atan2(uy, ux), a2 = Math.atan2(by, bx), sw = ux * by - uy * bx > 0 ? 1 : 0;
+      nodo('path', { d: 'M ' + (m[0] + r0 * Math.cos(a1)) + ' ' + (m[1] + r0 * Math.sin(a1)) + ' A ' + r0 + ' ' + r0 + ' 0 0 ' + sw + ' ' + (m[0] + r0 * Math.cos(a2)) + ' ' + (m[1] + r0 * Math.sin(a2)), style: 'fill:none;stroke:var(--tinta2);stroke-width:3' }, svg);
+      const am = a1 + (sw ? 1 : -1) * th / 2;
+      rotulo(svg, m[0] + 70 * Math.cos(am), m[1] + 70 * Math.sin(am) + 10, '*θ*', { 'font-size': 30, 'text-anchor': 'middle', style: 'fill:var(--tinta2);font-family:' + FMATH });
+    }
+    const et = (x, y, t, col) => rotulo(svg, x, y, t, { 'font-size': 32, 'text-anchor': 'middle', style: 'fill:' + col + ';font-family:' + FMATH + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    /* rótulos de ΔL y B cos θ del lado del tramo opuesto a B */
+    const sg = (bx * -uy + by * ux) >= 0 ? -1 : 1, ox = -uy * sg, oy = ux * sg;
+    et(tip[0] + 34 * bx, tip[1] + 34 * by + 10, '!B!', 'var(--res)');
+    et(m[0] + 25 * ux + 48 * ox, m[1] + 25 * uy + 48 * oy + 10, 'Δ!L!', 'var(--tinta)');
+    if (LB * cs > 110) et(pr[0] + 10 * ux + 60 * ox, pr[1] + 10 * uy + 60 * oy + 10, '*B* cos *θ*', 'var(--caso1)');
+    document.getElementById('ae-tv').textContent = (j + 1) + ' de ' + N;
+    document.getElementById('ae-lect').textContent = 'θ = ' + num(grados(th), 0) + '°, cos θ = ' + num(cs, 2);
+    const tot = c.reduce((x, y) => x + y, 0);
+    document.getElementById('ae-nota').textContent = 'Aporte de este tramo: ' + num(c[j] / tot * 100, 2) + ' % del total. Suma de los ' + N + ' tramos: ' + num(tot, 3) + ' · μ₀I, con cualquier forma.';
+  }
+  bots.forEach(b => b.addEventListener('click', () => { forma = b.dataset.f; bots.forEach(o => o.classList.toggle('activo', o === b)); pinta(); }));
+  rt.addEventListener('input', pinta); pinta();
+})();
+(function () {
+  const host = document.getElementById('ampe-fig');
+  if (!host) return;
+  const rr = document.getElementById('ampe-r'), bots = $$('#ampe-ver .btn');
+  const A = [{ x: 420, y: 330, I: 3 }, { x: 800, y: 210, I: -2 }, { x: 790, y: 470, I: 1 }];
+  let C = { x: 460, y: 330 }, ver = -1, movido = false, arr = null;
+  const M = 720, G = 6;
+  function pinta() {
+    const R = +rr.value;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 640', class: 'fig' }, host);
+    const P = [];
+    for (let k = 0; k <= M; k++) { const t = 2 * Math.PI * k / M; P.push([C.x + R * Math.cos(t), C.y - R * Math.sin(t)]); }
+    const usa = ver < 0 ? A : [A[ver]];
+    const seg = [];
+    for (let k = 0; k < M; k += G) { let v = 0; for (let i = k; i < k + G; i++) usa.forEach(w => { v += aporteAmp(w, P[i][0], P[i][1], P[i + 1][0], P[i + 1][1]); }); seg.push([k, v]); }
+    const mx = Math.max(1e-9, Math.max.apply(null, seg.map(q => Math.abs(q[1]))));
+    nodo('circle', { cx: C.x, cy: C.y, r: R, style: 'fill:var(--res-50);fill-opacity:.35;stroke:var(--proy);stroke-width:2;stroke-dasharray:6 6' }, svg);
+    seg.forEach(q => {
+      const a = P[q[0]], b = P[q[0] + G], w = 2 + 14 * Math.abs(q[1]) / mx;
+      if (Math.abs(q[1]) / mx < 0.03) return;
+      nodo('line', { x1: a[0], y1: a[1], x2: b[0], y2: b[1], style: 'stroke:' + (q[1] > 0 ? 'var(--caso1)' : 'var(--mal)') + ';stroke-linecap:butt;stroke-width:' + w.toFixed(1) + ';opacity:.8' }, svg);
+    });
+    sentidoLazo(svg, P);
+    let enc = 0, suma = 0; const dentro = [];
+    A.forEach((w, i) => {
+      const adentro = Math.hypot(w.x - C.x, w.y - C.y) < R;
+      if (adentro) { enc += w.I; dentro.push(i); }
+      for (let k = 0; k < M; k++) suma += aporteAmp(w, P[k][0], P[k][1], P[k + 1][0], P[k + 1][1]);
+      const op = ver < 0 || ver === i ? 1 : 0.35, g = nodo('g', { opacity: op }, svg);
+      marcaAlambre(g, w.x, w.y, w.I > 0);
+      rotulo(g, w.x + 34, w.y + 48, (i + 1) + ': ' + Math.abs(w.I) + ' A', { 'font-size': 28, style: 'fill:var(--tinta);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    });
+    if (!movido) rotulo(svg, C.x, C.y - R - 18, 'arrástrame', { 'font-size': 26, 'text-anchor': 'middle', style: 'fill:var(--res);font-family:' + FTXT });
+    document.getElementById('ampe-rv').textContent = R + ' px';
+    document.getElementById('ampe-lect').textContent = 'Σ B·ΔL = μ₀ · (' + num(suma, 2) + ' A)';
+    const term = dentro.map((i, k) => (A[i].I < 0 ? (k ? ' − ' : '−') : (k ? ' + ' : '')) + Math.abs(A[i].I) + ' A').join('');
+    const solo = ver < 0 ? '' : ' Aporte del alambre ' + (ver + 1) + ' solo: ' + num(usa.reduce((s, w) => { let v = 0; for (let k = 0; k < M; k++) v += aporteAmp(w, P[k][0], P[k][1], P[k + 1][0], P[k + 1][1]); return s + v; }, 0), 2) + ' A' + (dentro.indexOf(ver) < 0 ? ': el verde y el rojo se cancelan.' : '.');
+    document.getElementById('ampe-nota').textContent = 'Corriente encerrada: ' + (dentro.length ? term + (dentro.length > 1 ? ' = ' + enc + ' A' : '') : '0 A') + '. Verde: aporte positivo; rojo: negativo. Con el lazo antihorario, ⊙ cuenta positiva y ⊗ negativa.' + solo;
+  }
+  const aSVG = ev => { const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); };
+  host.addEventListener('pointerdown', ev => {
+    const p = aSVG(ev);
+    if (Math.hypot(p.x - C.x, p.y - C.y) > +rr.value + 20) return;
+    arr = { dx: C.x - p.x, dy: C.y - p.y }; host.setPointerCapture(ev.pointerId); ev.preventDefault();
+  });
+  host.addEventListener('pointermove', ev => {
+    if (!arr) return;
+    const p = aSVG(ev);
+    C = { x: Math.max(40, Math.min(1140, p.x + arr.dx)), y: Math.max(40, Math.min(600, p.y + arr.dy)) }; movido = true; pinta();
+  });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = null; }));
+  bots.forEach(b => b.addEventListener('click', () => { ver = +b.dataset.w; bots.forEach(o => o.classList.toggle('activo', o === b)); pinta(); }));
+  rr.addEventListener('input', pinta); pinta();
 })();
 
 /* ═══ SOLENOIDE ════════════════════════════════════════════════════════ */
