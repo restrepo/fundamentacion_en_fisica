@@ -1285,7 +1285,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <div class="pila">
       <p>Cada lado de la espira lleva corriente dentro del campo: sobre él actúa \(F = I L B\), hacia arriba en un lado y hacia abajo en el otro. Ese <strong>par de fuerzas</strong> produce un torque</p>
       <div class="kf">\[ \tau = N I A B \cos\varphi . \]</div>
-      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button><button type="button" class="btn" id="mo-reset">↺ Reiniciar</button><button type="button" class="btn prop" data-pop="pop-mo-frente">Vista frontal</button></div>
+      <div class="fila-btn"><button type="button" class="btn" id="mo-on">▶ Encender</button><button type="button" class="btn" id="mo-com">Conmutador: sí</button><button type="button" class="btn" id="mo-pausa">⏸ Detener el tiempo</button><button type="button" class="btn" id="mo-reset">↺ Reiniciar</button><button type="button" class="btn prop" data-pop="pop-mo-frente">Vista frontal</button></div>
       <label class="ctrl"><span>Corriente \(I\)</span><input type="range" id="mo-i" min="0.5" max="5" step="0.5" value="2"><span class="v" id="mo-iv"></span></label>
       <p class="nota">El <strong>conmutador</strong> invierte la corriente cada media vuelta para que el torque no cambie de signo. Sin él, la espira oscila y se queda quieta perpendicular al campo.</p>
       <p class="puente">→ ¿Y si en vez de darle corriente hacemos girar la espira?</p>
@@ -3341,7 +3341,9 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   if (!cv) return;
   const g = cv.getContext('2d'), W = cv.width, H = cv.height, cx = W / 2, cy = H / 2 + 10, r = 150;
   const bOn = document.getElementById('mo-on'), bCom = document.getElementById('mo-com'), ri = document.getElementById('mo-i'), lect = document.getElementById('mo-lect');
-  let phi = 0.35, w = 0, on = false, com = true, ult = 0;
+  let phi = 0.35, w = 0, on = false, com = true, ult = 0, pausa = false;
+  const bPausa = document.getElementById('mo-pausa');
+  const ponPausa = v => { pausa = v; bPausa.textContent = v ? '▶ Seguir' : '⏸ Detener el tiempo'; bPausa.classList.toggle('activo', v); };
   const signo = () => com ? (Math.cos(phi) >= 0 ? 1 : -1) : 1;
   function marca(x, y, s) {
     g.fillStyle = tok('--panel'); g.strokeStyle = tok('--caso2'); g.lineWidth = 5;
@@ -3453,14 +3455,14 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     q.textAlign = 'left'; q.textBaseline = 'alphabetic';
   }
   function lectura() {
-    lect.textContent = on ? (Math.abs(w) < 0.05 ? (com ? 'arrancando' : 'quieta, perpendicular al campo') : (com ? 'gira siempre en el mismo sentido' : 'oscila sin conmutador')) : 'apagado';
+    lect.textContent = pausa ? 'tiempo detenido: φ = ' + num(((grados(phi) % 360) + 360) % 360, 0) + '°' : on ? (Math.abs(w) < 0.05 ? (com ? 'arrancando' : 'quieta, perpendicular al campo') : (com ? 'gira siempre en el mismo sentido' : 'oscila sin conmutador')) : 'apagado';
     document.getElementById('mo-iv').textContent = num(+ri.value, 1) + ' A';
   }
   function bucle(ms) {
     if (activa(cv) && ms - ult > 25) {
       const dt = Math.min(0.05, (ms - (ult || ms)) / 1000) || 0.025; ult = ms;
       const tau = on ? 2.2 * (+ri.value) * signo() * Math.cos(phi) : 0;
-      w += (tau - 0.9 * w) * dt; phi += w * dt;
+      if (!pausa) { w += (tau - 0.9 * w) * dt; phi += w * dt; }
       dibuja(); lectura();
       const pc = document.querySelector('.popover .mo-fr-cv'); if (pc) frente(pc);
     } else if (!ult) ult = ms;
@@ -3468,10 +3470,11 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   }
   bOn.addEventListener('click', () => { on = !on; bOn.textContent = on ? '■ Apagar' : '▶ Encender'; });
   document.getElementById('mo-reset').addEventListener('click', () => {
-    phi = 0.35; w = 0; on = false; com = true;
+    phi = 0.35; w = 0; on = false; com = true; ponPausa(false);
     bOn.textContent = '▶ Encender'; bCom.textContent = 'Conmutador: sí';
     dibuja(); lectura();
   });
+  bPausa.addEventListener('click', () => ponPausa(!pausa));
   bCom.addEventListener('click', () => { com = !com; bCom.textContent = 'Conmutador: ' + (com ? 'sí' : 'no'); });
   ri.addEventListener('input', lectura);
   dibuja(); lectura(); requestAnimationFrame(bucle);
