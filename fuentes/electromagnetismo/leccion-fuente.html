@@ -1136,8 +1136,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-mx-termino" data-label="Después de Maxwell: completar la simetría" data-speaker-notes="Actividad individual de arrastrar. La motivación de Maxwell fue de simetría matemática: en (3) un B que cambia crea E; en (4) faltaba que un E que cambia creara B. El término correcto es μ₀ε₀ ∂E/∂t (μ₀ por la densidad de corriente de desplazamiento ε₀ ∂E/∂t). Todavía no aparece c: sale en la diapositiva de la ecuación de onda. Distractores: −∂B/∂t (ya está en Faraday), ρ/ε₀ (fuente de Gauss), μ₀ε₀ ∂B/∂t (cambia el campo equivocado).">
-  <p class="ceja">§ 4.5 · Después de Maxwell · Actividad individual</p>
+<section class="diapositiva compacta pc-slide ac-slide ac-individual ac-captura" data-seccion="Inducción y ondas" id="ac-mx-termino" data-label="Después de Maxwell: completar la simetría" data-speaker-notes="Actividad individual de arrastrar. La motivación de Maxwell fue de simetría matemática: en (3) un B que cambia crea E; en (4) faltaba que un E que cambia creara B. El término correcto es μ₀ε₀ ∂E/∂t (μ₀ por la densidad de corriente de desplazamiento ε₀ ∂E/∂t). Todavía no aparece c: sale en la diapositiva de la ecuación de onda. Distractores: −∂B/∂t (ya está en Faraday), ρ/ε₀ (fuente de Gauss), μ₀ε₀ ∂B/∂t (cambia el campo equivocado).">
+  <p class="ceja">§ 4.5 · Después de Maxwell · Actividad con entrega</p>
   <h2 class="titulo">Después de Maxwell: completa la simetría</h2>
   <p class="mx-aviso">Las fórmulas con \(\nabla\) y derivadas parciales <strong>no hacen parte del curso</strong>: están aquí para facilitar la discusión.</p>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)">
@@ -1151,11 +1151,27 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <p style="margin:0">En (3), un \(\vect{B}\) que cambia crea \(\vect{E}\). Por <strong>simetría</strong>, Maxwell pensó que un \(\vect{E}\) que cambia debía crear \(\vect{B}\). Arrastra a (4) el término que añadió (o tócalo).</p>
       <div class="mx-banco" id="mx-banco"><button type="button" class="mx-ficha" data-t="dBdt" data-fb="Ese término ya está en la ley de Faraday (3): un \(\vect{B}\) que cambia crea \(\vect{E}\). Aquí falta lo contrario.">\(\displaystyle -\dfrac{\partial\vect{B}}{\partial t}\)</button><button type="button" class="mx-ficha" data-t="E" data-fb="">\(\displaystyle \mu_0\varepsilon_0\,\dfrac{\partial\vect{E}}{\partial t}\)</button><button type="button" class="mx-ficha" data-t="rho" data-fb="Es la fuente de la ley de Gauss (1): las cargas crean \(\vect{E}\), no \(\vect{B}\).">\(\displaystyle \dfrac{\rho}{\varepsilon_0}\)</button><button type="button" class="mx-ficha" data-t="B2" data-fb="Casi: por simetría con (3), lo que debe cambiar en (4) es el campo <strong>eléctrico</strong>.">\(\displaystyle \mu_0\varepsilon_0\,\dfrac{\partial\vect{B}}{\partial t}\)</button></div>
       <p class="pc-fb" id="mx-fb"></p>
-      <div class="fila-btn"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn" id="mx-rein">Empezar de nuevo</button></div>
+      <div class="fila-btn"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn" id="mx-rein">Empezar de nuevo</button><button type="button" class="envio-btn" data-envio="envio-ac-mx-termino">📷 Enviar mi respuesta</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Compara (3) y (4): en (3) aparece la derivada en el tiempo de \(\vect{B}\). ¿De qué campo debería aparecer la derivada en (4)?</p></div>
-      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Arrastra</strong> el término al espacio de la ley (4).</li><li><strong>Lee</strong> la retroalimentación y, si hace falta, prueba otro.</li></ol></div>
+      <div class="ac-pasos"><strong>Actividad con entrega</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Arrastra</strong> el término al espacio de la ley (4).</li><li><strong>Lee</strong> la retroalimentación y, si hace falta, prueba otro.</li><li>Pulsa «📷 Enviar mi respuesta», toma la captura y adjúntala en el formulario.</li></ol></div>
     </div>
   </div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-ac-mx-termino" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-mx-termino-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-ac-mx-termino-tit">Enviar tu respuesta</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="simetria-maxwell.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
 </section>
 
 <section class="diapositiva" data-seccion="Inducción y ondas" id="dp-mx-cadena" data-label="Un campo alimenta al otro" data-speaker-notes="§ 4.5. Con el término de Maxwell las dos leyes quedan simétricas: un B que cambia crea E (Faraday) y un E que cambia crea B (Maxwell). La perturbación se sostiene sola: B(t) → E(t) → B(t) → … y se propaga como una onda transversal, con E y B perpendiculares entre sí y a la dirección de avance. Pregunta abierta para la diapositiva siguiente: ¿con qué rapidez viaja? La cadena de arriba se ilumina al ritmo de la onda. El botón ⏸ congela un instante; el deslizador cambia la longitud de onda.">
@@ -3835,6 +3851,8 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     });
   });
 })();
+
+
 
 
 
