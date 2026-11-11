@@ -291,6 +291,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .ac-tabla select:focus{outline:3px solid var(--res);outline-offset:1px}
 .ac-tabla select.ok{border-color:var(--caso1);background:var(--caso1-50)}
 .ac-tabla select.mal{border-color:var(--mal);background:var(--panel)}
+.an-pasos{margin:0;padding-left:1.2em;font-size:30px;line-height:1.35}
+.an-pasos li{margin-bottom:10px}
 .envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
 .envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
 .envio-caja{position:relative;width:1180px;max-height:900px;overflow:auto;background:var(--panel);border:2px solid var(--tinta);box-shadow:var(--shadow-lg, 0 18px 48px color-mix(in srgb, var(--color-text) 25%, transparent));padding:30px 40px;font-size:30px;text-align:left}
@@ -1713,22 +1715,92 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   </div>
 </section>
 
+<section class="diapositiva" data-seccion="Inducción y ondas" id="dp-antena" data-label="La antena dipolo" data-speaker-notes="§ 4.6. Figura «Antena» del libro, animada. Un oscilador (fuente de corriente alterna) empuja los electrones arriba y abajo por las dos varillas: las cargas se aceleran y desaceleran sin parar. (1) En un instante se acumulan cargas + arriba y − abajo: aparece un campo E cerca de la antena, que se invierte con cada medio ciclo. (2) El movimiento de las cargas es una corriente I(t), que por Ampère crea anillos de B alrededor de las varillas, también variables. (3) Por el término de Maxwell, el E variable crea B más lejos y ese B variable crea E aún más lejos: los campos se desprenden y viajan con rapidez c. La frecuencia de la onda es la del oscilador. ↓ revela los pasos.">
+  <p class="ceja">§ 4.6 · Ondas electromagnéticas · La antena dipolo</p>
+  <h2 class="titulo">Una antena: cargas que oscilan lanzan la onda</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Antena dipolo y onda emitida</span><span class="val" id="an-lect"></span></div>
+      <canvas class="lienzo" id="an-cv" width="1180" height="600"></canvas>
+    </figure>
+    <div class="pila">
+      <ol class="an-pasos">
+        <li class="frag"><strong>Oscilador:</strong> empuja los electrones arriba y abajo; las cargas se aceleran sin parar.</li>
+        <li class="frag"><strong>\(\vect{E}\) variable:</strong> se acumulan \(+\) y \(-\) en los extremos y el campo se invierte cada medio ciclo.</li>
+        <li class="frag"><strong>\(\vect{B}\) variable:</strong> la corriente \(I(t)\) crea anillos de \(\vect{B}\) (Ampère) que también oscilan.</li>
+        <li class="frag"><strong>La onda se desprende:</strong> \(\vect{E}\) variable crea \(\vect{B}\) más lejos y viceversa (Maxwell); los campos viajan solos con rapidez \(c\).</li>
+      </ol>
+      <div class="fila-btn"><button type="button" class="btn" id="an-pausa">⏸ Detener el tiempo</button></div>
+      <label class="ctrl"><span>Frecuencia del oscilador</span><input type="range" id="an-f" min="1" max="4" step="0.5" value="2"><span class="v" id="an-fv"></span></label>
+      <p class="nota">\(I(t)\): corriente en las varillas; \(\vect{E}\), \(\vect{B}\): campos eléctrico y magnético; \(c\): rapidez de la luz. La frecuencia de la onda es la del oscilador.</p>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva" data-seccion="Inducción y ondas" id="dp-onda" data-label="Ondas y antenas">
-  <p class="ceja">§ 4.6 · Ondas electromagnéticas</p>
-  <h2 class="titulo">La antena: cargas aceleradas que emiten ondas</h2>
+  <p class="ceja">§ 4.6 · Ondas electromagnéticas · Frecuencia y longitud de onda</p>
+  <h2 class="titulo">Del FM a los rayos X, la misma relación</h2>
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Espectro electromagnético</span><span class="val" id="on-lect"></span></div>
       <div id="on-fig"></div>
     </figure>
     <div class="pila">
-      <div class="kf">\[ c = \lambda f \]</div>
+      <div class="kf">\[ c = \lambda f \]<p class="nota" style="margin:0">\(c\): rapidez de la luz; \(\lambda\): longitud de onda, distancia entre dos crestas; \(f\): frecuencia, ciclos por segundo.</p></div>
       <label class="ctrl"><span>Frecuencia \(f\)</span><input type="range" id="on-f" min="4" max="20" step="0.02" value="8"><span class="v" id="on-fv"></span></label>
       <div class="fila-btn" id="on-pre"><button type="button" class="btn" data-lf="8">FM, \(\qty{100}{MHz}\)</button><button type="button" class="btn" data-lf="9.380">Wi-Fi, \(\qty{2{,}4}{GHz}\)</button><button type="button" class="btn" data-lf="14.66">Luz roja</button><button type="button" class="btn" data-lf="18.5">Rayos X</button></div>
       <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Longitud de onda \(\lambda\)<b id="on-l"></b></div><div>Antena \(\lambda/4\)<b id="on-a"></b></div></div>
       <p class="nota">Por eso las antenas de FM miden metros y las de un teléfono, centímetros.</p>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Inducción y ondas" id="ac-fm-antenas" data-label="Actividad: Dos emisoras de FM, dos antenas" data-speaker-notes="Actividad en parejas (instrucción entre pares). Con c = λf, la frecuencia menor da la longitud de onda mayor: A (90 MHz) emite λ = 3,33 m y B (105 MHz) λ = 2,86 m; con antenas de cuarto de onda, 0,83 m y 0,71 m. Respuesta: 1. Errores comunes: «igual, porque las dos viajan a c» (3), confundiendo rapidez con longitud de onda; «más corta» (2), invirtiendo la proporción; «depende de la potencia» (4), confundiendo el tamaño de la antena con la potencia del transmisor.">
+  <p class="ceja">§ 4.6 · Ondas electromagnéticas · Actividad en parejas</p>
+  <h2 class="titulo">Dos emisoras de FM, dos antenas</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 540" class="fig" role="img" aria-label="Dos antenas de emisoras de FM"><line x1="20" y1="470" x2="680" y2="470" style="stroke:var(--linea);stroke-width:4"/><line x1="200" y1="470" x2="200" y2="170" style="stroke:var(--tinta);stroke-width:6"/><line x1="160" y1="470" x2="200" y2="210" style="stroke:var(--tinta);stroke-width:3"/><line x1="240" y1="470" x2="200" y2="210" style="stroke:var(--tinta);stroke-width:3"/><path d="M 225 160 A 30 30 0 0 1 225 230" style="fill:none;stroke:var(--caso2);stroke-width:3;opacity:0.75"/><path d="M 250 150 A 60 60 0 0 1 250 240" style="fill:none;stroke:var(--caso2);stroke-width:3;opacity:0.5"/><path d="M 275 140 A 90 90 0 0 1 275 250" style="fill:none;stroke:var(--caso2);stroke-width:3;opacity:0.25"/><text x="200" y="510" text-anchor="middle" style="font:700 26px var(--font-body);fill:var(--tinta)">A: 90 MHz</text><text x="200" y="146" text-anchor="middle" style="font:800 34px var(--font-body);fill:var(--res)">?</text><line x1="500" y1="470" x2="500" y2="170" style="stroke:var(--tinta);stroke-width:6"/><line x1="460" y1="470" x2="500" y2="210" style="stroke:var(--tinta);stroke-width:3"/><line x1="540" y1="470" x2="500" y2="210" style="stroke:var(--tinta);stroke-width:3"/><path d="M 525 160 A 30 30 0 0 1 525 230" style="fill:none;stroke:var(--res);stroke-width:3;opacity:0.75"/><path d="M 550 150 A 60 60 0 0 1 550 240" style="fill:none;stroke:var(--res);stroke-width:3;opacity:0.5"/><path d="M 575 140 A 90 90 0 0 1 575 250" style="fill:none;stroke:var(--res);stroke-width:3;opacity:0.25"/><text x="500" y="510" text-anchor="middle" style="font:700 26px var(--font-body);fill:var(--tinta)">B: 105 MHz</text><text x="500" y="146" text-anchor="middle" style="font:800 34px var(--font-body);fill:var(--res)">?</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="a"><div class="pr-q">Dos emisoras de FM usan antenas de cuarto de onda. La emisora A transmite en \(\qty{90}{MHz}\) y la B en \(\qty{105}{MHz}\). Comparada con la de B, la antena de A es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">más larga</button><button type="button" class="pr-opc" data-o="b">más corta</button><button type="button" class="pr-opc" data-o="c">igual, porque las dos ondas viajan con rapidez \(c\)</button><button type="button" class="pr-opc" data-o="d">más larga solo si A transmite con más potencia</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">De \(c = \lambda f\), \(\lambda = c/f\): a menor frecuencia, mayor longitud de onda. A: \(\lambda = \qty{3{,}33}{m}\), antena de \(\qty{0{,}83}{m}\); B: \(\lambda = \qty{2{,}86}{m}\), antena de \(\qty{0{,}71}{m}\). Las dos ondas viajan a la misma rapidez \(c\); lo que cambia es la distancia entre crestas. La potencia no fija el tamaño de la antena.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-fm-antenas">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Despeja \(\lambda\) de \(c = \lambda f\) (\(\lambda\): longitud de onda; \(f\): frecuencia). Si \(f\) es menor, ¿\(\lambda\) crece o decrece?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-fm-antenas" class="gform-dlg" aria-label="Formulario: Actividad: Dos emisoras de FM, dos antenas">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Dos emisoras de FM, dos antenas" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-captura" data-seccion="Inducción y ondas" id="ac-fm-tabla" data-label="Actividad: Antenas de emisoras de FM" data-speaker-notes="Actividad individual con entrega por captura. λ = c/f con c = 3,00×10⁸ m/s: 90,0 MHz → 3,33 m y 0,83 m; 96,0 MHz → 3,13 m y 0,78 m; 100,0 MHz → 3,00 m y 0,75 m; 107,5 MHz → 2,79 m y 0,70 m. Distractores: 30,0 m y 7,50 m salen de usar 10⁷ Hz en vez de 10⁸ Hz (MHz mal convertido); 2,86 m y 0,71 m son de 105 MHz, de la actividad anterior. El botón «✓ Comprobar» marca cada respuesta.">
+  <p class="ceja">§ 4.6 · Ondas electromagnéticas · Actividad con entrega</p>
+  <h2 class="titulo">Calcula las antenas de cuatro emisoras de FM</h2>
+  <div class="pila pc-col">
+      <p style="margin:0">Las emisoras de FM en Colombia transmiten entre \(\qty{88}{MHz}\) y \(\qty{108}{MHz}\). Con \(c = \lambda f\) (\(c = \qty{3{,}00\times 10^{8}}{m/s}\); \(\lambda\): longitud de onda; \(f\): frecuencia), calcula para cada emisora la longitud de onda y la de su antena de cuarto de onda, \(\lambda/4\).</p>
+      <table class="ac-tabla"><thead><tr><th>Emisora</th><th>Longitud de onda \(\lambda\)</th><th>Antena \(\lambda/4\)</th></tr></thead><tbody><tr><td>\(\qty{90{,}0}{MHz}\)</td><td><select data-ok="3,33 m"><option value="">— elige —</option><option>3,33 m</option><option>3,00 m</option><option>3,13 m</option><option>30,0 m</option><option>2,79 m</option><option>2,86 m</option></select></td><td><select data-ok="0,83 m"><option value="">— elige —</option><option>0,75 m</option><option>0,71 m</option><option>0,83 m</option><option>7,50 m</option><option>0,78 m</option><option>0,70 m</option></select></td></tr><tr><td>\(\qty{96{,}0}{MHz}\)</td><td><select data-ok="3,13 m"><option value="">— elige —</option><option>2,86 m</option><option>2,79 m</option><option>30,0 m</option><option>3,13 m</option><option>3,00 m</option><option>3,33 m</option></select></td><td><select data-ok="0,78 m"><option value="">— elige —</option><option>7,50 m</option><option>0,71 m</option><option>0,75 m</option><option>0,70 m</option><option>0,78 m</option><option>0,83 m</option></select></td></tr><tr><td>\(\qty{100{,}0}{MHz}\)</td><td><select data-ok="3,00 m"><option value="">— elige —</option><option>3,13 m</option><option>2,79 m</option><option>3,33 m</option><option>30,0 m</option><option>2,86 m</option><option>3,00 m</option></select></td><td><select data-ok="0,75 m"><option value="">— elige —</option><option>0,75 m</option><option>0,83 m</option><option>0,71 m</option><option>0,78 m</option><option>7,50 m</option><option>0,70 m</option></select></td></tr><tr><td>\(\qty{107{,}5}{MHz}\)</td><td><select data-ok="2,79 m"><option value="">— elige —</option><option>2,79 m</option><option>30,0 m</option><option>2,86 m</option><option>3,13 m</option><option>3,33 m</option><option>3,00 m</option></select></td><td><select data-ok="0,70 m"><option value="">— elige —</option><option>0,83 m</option><option>0,71 m</option><option>0,70 m</option><option>0,75 m</option><option>7,50 m</option><option>0,78 m</option></select></td></tr></tbody></table>
+      <div class="fila-btn"><button type="button" class="btn ac-validar">✓ Comprobar</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="envio-btn" data-envio="envio-ac-fm-tabla">📷 Enviar mi tabla</button></div>
+      <p class="pc-fb ac-validar-fb"></p>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Pasa la frecuencia a hertz: \(\qty{1}{MHz} = \qty{10^{6}}{Hz}\), así que \(\qty{100}{MHz} = \qty{1{,}00\times 10^{8}}{Hz}\). Divide \(c\) entre \(f\) y luego entre 4.</p></div>
+      <div class="ac-pasos"><strong>Actividad con entrega</strong><ol><li><strong>Resuelve</strong> en la diapositiva, sin consultar a tus compañeros.</li><li>Pulsa «✓ Comprobar» y corrige lo que quede en rojo.</li><li>Pulsa «📷 Enviar mi tabla» y <strong>toma la captura</strong>: se descarga como imagen.</li><li><strong>Abre el formulario</strong> y adjunta la imagen.</li></ol></div>
+  </div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-ac-fm-tabla" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-fm-tabla-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-ac-fm-tabla-tit">Enviar tu tabla</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="antenas-fm.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
 </section>
 
 <section class="poster" data-seccion="Del átomo clásico a Bohr" data-label="§ 5 · Del átomo clásico a Bohr" data-speaker-notes="Separador: Del átomo clásico a Bohr. 4 diapositivas.">
@@ -4534,6 +4606,96 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   lectura(); dibuja(); requestAnimationFrame(bucle);
 })();
 
+/* ═══ ANTENA DIPOLO: cargas, corriente, campos cercanos y onda emitida ═ */
+(function () {
+  const cv = document.getElementById('an-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, rf = document.getElementById('an-f'), bP = document.getElementById('an-pausa'), lect = document.getElementById('an-lect');
+  let t = 0, ult = 0, pausa = false;
+  bP.addEventListener('click', () => { pausa = !pausa; bP.textContent = pausa ? '▶ Seguir' : '⏸ Detener el tiempo'; bP.classList.toggle('activo', pausa); });
+  const XA = 250, YC = 300, LV = 170, X0 = 340, VEL = 240;     /* antena, onda: rapidez en px/s de la animación */
+  const flecha = (x1, y1, x2, y2, col, wd) => {
+    const a = Math.atan2(y2 - y1, x2 - x1), c = 14, L = Math.hypot(x2 - x1, y2 - y1); if (L < 4) return;
+    g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wd; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 7 * Math.sin(a), y2 - c * Math.sin(a) - 7 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 7 * Math.sin(a), y2 - c * Math.sin(a) + 7 * Math.cos(a)); g.closePath(); g.fill();
+  };
+  function dibuja() {
+    g.clearRect(0, 0, W, H);
+    const f = +rf.value * 0.5, w = 2 * Math.PI * f, q = Math.sin(w * t), I = Math.cos(w * t);
+    /* oscilador y cables */
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 4;
+    g.beginPath(); g.moveTo(140, YC - 8); g.lineTo(XA, YC - 8); g.moveTo(140, YC + 8); g.lineTo(XA, YC + 8); g.stroke();
+    g.fillStyle = tok('--panel'); g.beginPath(); g.arc(110, YC, 34, 0, 2 * Math.PI); g.fill(); g.stroke();
+    g.fillStyle = tok('--tinta'); g.font = '700 40px ' + FTXT; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText('∼', 110, YC + 2);
+    g.textBaseline = 'alphabetic'; g.font = '22px ' + FTXT; g.fillStyle = tok('--tinta2'); g.fillText('oscilador', 110, YC + 62);
+    /* campo eléctrico cercano: arcos de un extremo al otro */
+    if (Math.abs(q) > 0.05) {
+      g.globalAlpha = 0.25 + 0.75 * Math.abs(q); g.strokeStyle = tok('--caso2'); g.lineWidth = 3;
+      [70, 120].forEach(d => [1, -1].forEach(lado => {
+        g.beginPath(); g.moveTo(XA, YC - LV + 10); g.bezierCurveTo(XA + lado * d, YC - LV + 40, XA + lado * d, YC + LV - 40, XA, YC + LV - 10); g.stroke();
+        const ym = YC, xm = XA + lado * d * 0.75;
+        flecha(xm, ym - 12 * Math.sign(q), xm, ym + 12 * Math.sign(q), tok('--caso2'), 3);
+      }));
+      g.globalAlpha = 1;
+    }
+    /* varillas */
+    g.strokeStyle = tok('--linea'); g.lineWidth = 12; g.lineCap = 'round';
+    g.beginPath(); g.moveTo(XA, YC - 12); g.lineTo(XA, YC - LV); g.moveTo(XA, YC + 12); g.lineTo(XA, YC + LV); g.stroke(); g.lineCap = 'butt';
+    /* anillos de B alrededor de las varillas */
+    [YC - 85, YC + 85].forEach(y => {
+      g.globalAlpha = 0.15 + 0.85 * Math.abs(I); g.strokeStyle = tok('--res'); g.lineWidth = 3;
+      g.beginPath(); g.ellipse(XA, y, 46, 13, 0, 0, 2 * Math.PI); g.stroke();
+      if (Math.abs(I) > 0.1) flecha(XA - 10 * Math.sign(I), y + 13, XA + 10 * Math.sign(I), y + 13, tok('--res'), 3);
+      g.globalAlpha = 1;
+    });
+    /* corriente en las varillas */
+    if (Math.abs(I) > 0.08) {
+      const L = 70 * Math.abs(I), s = Math.sign(I);
+      [YC - 85, YC + 85].forEach(y => flecha(XA - 30, y + s * L / 2, XA - 30, y - s * L / 2, tok('--mal'), 4));
+      g.fillStyle = tok('--mal'); g.font = 'italic 700 28px ' + FMATH; g.textAlign = 'right'; g.fillText('I(t)', XA - 46, YC - 40);
+    }
+    /* cargas en los extremos */
+    [[YC - LV, q], [YC + LV, -q]].forEach(([y, v]) => {
+      if (Math.abs(v) < 0.08) return;
+      g.fillStyle = v > 0 ? tok('--caso2') : tok('--caso1'); g.beginPath(); g.arc(XA, y, 10 + 10 * Math.abs(v), 0, 2 * Math.PI); g.fill();
+      g.fillStyle = tok('--papel'); g.font = '800 24px ' + FTXT; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(v > 0 ? '+' : '−', XA, y + 1); g.textBaseline = 'alphabetic';
+    });
+    g.textAlign = 'center'; g.font = 'italic 700 30px ' + FMATH;
+    g.fillStyle = tok('--caso2'); g.fillText('E', XA + 150, YC - 140);
+    g.fillStyle = tok('--res'); g.fillText('B', XA + 70, YC - 110);
+    /* onda que se aleja: E vertical (−q retrasada), B en perspectiva */
+    const lam = VEL / f, frente = X0 + VEL * t;
+    flecha(X0 - 10, YC, W - 20, YC, tok('--tinta'), 2.5);
+    g.fillStyle = tok('--tinta'); g.font = 'italic 700 28px ' + FMATH; g.fillText('c', W - 34, YC - 18);
+    for (let x = X0; x <= W - 40; x += 12) {
+      if (x > frente) break;
+      const e = -Math.sin(w * (t - (x - X0) / VEL)), amp = 120;
+      g.strokeStyle = tok('--caso2'); g.globalAlpha = 0.55; g.lineWidth = 2.5; g.beginPath(); g.moveTo(x, YC); g.lineTo(x, YC + e * amp); g.stroke();
+      g.strokeStyle = tok('--res'); g.globalAlpha = 0.4; g.beginPath(); g.moveTo(x, YC); g.lineTo(x - e * amp * 0.45, YC - e * amp * 0.3); g.stroke();
+      g.globalAlpha = 1;
+    }
+    g.strokeStyle = tok('--caso2'); g.lineWidth = 4; g.beginPath(); let pr = true;
+    for (let x = X0; x <= Math.min(W - 40, frente); x += 4) { const y = YC - Math.sin(w * (t - (x - X0) / VEL)) * 120; pr ? g.moveTo(x, y) : g.lineTo(x, y); pr = false; }
+    g.stroke();
+    /* longitud de onda */
+    if (frente > X0 + lam + 40 && X0 + lam < W - 60) {
+      const y = YC + 190; g.strokeStyle = tok('--tinta2'); g.lineWidth = 2;
+      flecha(X0 + 20 + lam / 2, y, X0 + 20, y, tok('--tinta2'), 2); flecha(X0 + 20 + lam / 2, y, X0 + 20 + lam, y, tok('--tinta2'), 2);
+      g.fillStyle = tok('--tinta2'); g.font = 'italic 28px ' + FMATH; g.fillText('λ', X0 + 20 + lam / 2, y - 12);
+    }
+    g.font = '22px ' + FTXT; g.fillStyle = tok('--tinta2'); g.fillText('onda electromagnética', 820, 70);
+    document.getElementById('an-fv').textContent = num(+rf.value, 1) + ' u';
+    lect.textContent = pausa ? 'tiempo detenido' : 'más frecuencia, onda más corta';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) { if (!pausa) t += 0.03; ult = ms; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  rf.addEventListener('input', () => { t = 0; dibuja(); });
+  document.addEventListener('slidechange', () => { t = 0; });
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
 /* ═══ ESPECTRO Y ANTENAS ═══════════════════════════════════════════════ */
 (function () {
   const host = document.getElementById('on-fig');
@@ -4730,6 +4892,8 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     });
   });
 })();
+
+
 
 
 

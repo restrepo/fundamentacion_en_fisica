@@ -92,7 +92,7 @@ centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-53 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+56 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
@@ -116,7 +116,7 @@ eléctrico con conmutador y una ventana con la vista frontal de la espira; una a
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico (con el motor en corte: imanes que giran y bobinas fijas), cocina de inducción
 (con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; ecuaciones de Maxwell en una línea conceptual: las cuatro leyes antes de Maxwell (con μ₀, ε₀ y j = I/A), una actividad para completar por simetría la ley de Ampère arrastrando μ₀ε₀ ∂E/∂t, la onda electromagnética que se sostiene sola, la ecuación de onda con la sorpresa de v = 1/√(μ₀ε₀) = c, la corriente de desplazamiento con un lazo y dos superficies (las fórmulas avanzadas se marcan como fuera del curso) y la figura 4.15 animada: el campo B aparece entre las placas mientras el condensador se carga o se descarga),
-espectro y antenas); del átomo clásico a Bohr
+la antena dipolo animada (figura del libro), espectro y antenas, una actividad en parejas y otra con entrega sobre las antenas de emisoras de FM); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,
