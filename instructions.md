@@ -102,8 +102,9 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
     estudiante): `pc-slide ac-slide ac-individual`, ceja «… · Actividad individual».
   - **Actividades con entrega por captura:** `pc-slide ac-slide ac-captura`,
     ceja «… · Actividad con entrega»; botón «📷 …» de `boton-formulario`
-    (formulario de entregas `https://forms.gle/WJXuYvppqsqQ5NWG8`) y un campo
-    `input.ac-nombre` para que la imagen identifique al estudiante.
+    (formulario de entregas `https://forms.gle/WJXuYvppqsqQ5NWG8`). Las tablas
+    de menús llevan el botón «✓ Comprobar». No se pide el nombre del
+    estudiante: el formulario ya lo identifica.
   - Los tres tipos de actividad se crean con
     `claude-kit/skills/leccion-a-deck/scripts/nueva_actividad.py FUENTE spec.json`
     (ver `references/actividades.md`).

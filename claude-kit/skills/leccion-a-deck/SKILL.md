@@ -79,8 +79,10 @@ y el JS de `assets/actividades.*`):
 - **individual** — selección múltiple **sin interacción con otro estudiante**,
   con una o varias preguntas y voto opcional en el formulario;
 - **captura** — el estudiante resuelve en la diapositiva (menús, campos,
-  figura) y envía una **captura PNG** por un formulario de Google, con el botón
-  de la skill `boton-formulario`.
+  figura), comprueba sus respuestas con **«✓ Comprobar»** (tablas de menús,
+  clave `tabla`) y envía una **captura PNG** por un formulario de Google, con
+  el botón de la skill `boton-formulario`. No se pide el nombre del estudiante:
+  el formulario ya lo identifica.
 Las opciones se escriben sin número (las numera `.pr-opcs`) y las notas del
 expositor llevan la respuesta y los errores comunes.
 

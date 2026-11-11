@@ -17,7 +17,10 @@ El JSON es un objeto o una lista de objetos:
    "seccion": "Inducción y ondas", "ceja": "§ 4.4 · Ley de Lenz", "titulo": "…",
    "notas": "respuesta y errores comunes (notas del expositor)",
    "figura": "<svg …>…</svg>",            opcional: columna izquierda
-   "trabajo": "<p>…</p><table class=\"ac-tabla\">…</table>",   opcional: zona de trabajo
+   "trabajo": "<p>…</p>",                 opcional: zona de trabajo (HTML libre)
+   "tabla": {"columnas": ["Aplicación", "¿…?"], "opciones": [["a", "b"], …],
+             "filas": [{"nombre": "…", "respuestas": ["a", …]}, …]},
+                                          opcional: tabla de menús con botón «✓ Comprobar»
    "preguntas": [{"enunciado": "…", "opciones": ["…", "…", "…", "…"], "correcta": 2,
                   "explicacion": "…"}],
    "pista": "…",
@@ -71,6 +74,8 @@ def pasos(a):
         li = ['<strong>Resuelve</strong> en la diapositiva, sin consultar a tus compañeros.',
               'Pulsa «%s» y <strong>toma la captura</strong>: se descarga como imagen.' % at(c.get('texto', '📷 Enviar mi trabajo')),
               '<strong>Abre el formulario</strong> y adjunta la imagen.']
+        if a.get('tabla') or a.get('validar'):
+            li.insert(1, 'Pulsa «✓ Comprobar» y corrige lo que quede en rojo.')
         tit = 'Actividad con entrega'
     return '<div class="ac-pasos"><strong>%s</strong><ol>%s</ol></div>' % (tit, ''.join('<li>%s</li>' % x for x in li))
 
@@ -87,6 +92,7 @@ def seccion(a):
     etiqueta = 'Actividad: ' + re.sub(r'<[^>]+>', '', a.get('etiqueta', a['titulo']))
     col = []
     if a.get('trabajo'): col.append(a['trabajo'])
+    if a.get('tabla'): col.append(tabla(a['tabla']))
     letras = 'abcdefgh'
     for q in a.get('preguntas', []):
         ok = letras[q['correcta'] - 1]
@@ -95,9 +101,11 @@ def seccion(a):
         col.append('<div class="pc-q" data-ok="%s"><div class="pr-q">%s</div><div class="pr-opcs">%s</div>\n        <div class="pc-fb"></div>%s</div>' % (ok, q['enunciado'], ops, exp))
     bot = []
     if voto: bot.append('<button type="button" class="gform-btn" data-gform-open="gform-%s">📝 Votar en el formulario</button>' % a['id'])
+    if a.get('tabla') or a.get('validar'): bot.append('<button type="button" class="btn ac-validar">✓ Comprobar</button>')
     if a.get('pista'): bot.append('<button type="button" class="btn pc-verpista">💡 Pista</button>')
     if a.get('preguntas'): bot.append('<button type="button" class="btn pc-verexp">Ver explicación</button>')
     col.append('<div class="fila-btn">%s</div>' % ''.join(bot))
+    if a.get('tabla') or a.get('validar'): col.append('<p class="pc-fb ac-validar-fb"></p>')
     if a.get('pista'): col.append('<div class="pc-pista" style="display:none"><p style="margin:0">💡 %s</p></div>' % a['pista'])
     col.append(pasos(a))
     cuerpo = '\n      '.join(col)
@@ -117,6 +125,20 @@ def seccion(a):
         c=cls, s=at(a['seccion']), i=a['id'], e=at(etiqueta), n=at(a.get('notas', '')), ceja=ceja, t=a['titulo'], cuerpo=cuerpo, dlg=dlg)
 
 
+def tabla(t):
+    """Tabla de menús: cada <select> lleva en data-ok el texto de su opción correcta."""
+    cab = ''.join('<th>%s</th>' % c for c in t['columnas'])
+    filas = ''
+    for f in t['filas']:
+        celdas = ''
+        for ops, ok in zip(t['opciones'], f['respuestas']):
+            if ok not in ops: sys.exit('respuesta «%s» no está entre las opciones %s' % (ok, ops))
+            celdas += '<td><select data-ok="%s"><option value="">— elige —</option>%s</select></td>' % (
+                at(ok), ''.join('<option>%s</option>' % at(o) for o in ops))
+        filas += '<tr><td>%s</td>%s</tr>' % (f['nombre'], celdas)
+    return '<table class="ac-tabla"><thead><tr>%s</tr></thead><tbody>%s</tbody></table>' % (cab, filas)
+
+
 def rango_seccion(s, ident):
     m = re.search(r'<section\b[^>]*\bid="%s"' % re.escape(ident), s)
     if not m: return None
@@ -134,10 +156,11 @@ def asegura_modulos(s):
     for nombre, centinela, cuerpo in piezas:
         if centinela not in s: add += '\n/* actividades:%s */\n%s/* actividades:%s-fin */\n' % (nombre, cuerpo, nombre)
     if add: s = s[:i] + add + s[i:]
-    if not ("'[data-gform-open]'" in s and "'.pc-verexp'" in s):
-        js = open(os.path.join(ASSETS, 'actividades.js'), encoding='utf-8').read()
-        j = s.rindex('</script>')
-        s = s[:j] + '\n' + js + s[j:]
+    js = open(os.path.join(ASSETS, 'actividades.js'), encoding='utf-8').read()
+    for nombre, centinela, cuerpo in re.findall(r'/\* @pieza (\S+) (.+?) \*/\n(.*?)/\* @fin \*/', js, re.S):
+        if centinela not in s:
+            j = s.rindex('</script>')
+            s = s[:j] + '\n' + cuerpo + s[j:]
     return s
 
 

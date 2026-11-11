@@ -27,7 +27,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .gform-dlg iframe{width:100%;height:100%;border:0;display:block}
 .gform-cerrar{position:absolute;top:8px;right:14px;z-index:1;width:36px;height:36px;border:0;border-radius:50%;background:var(--papel);box-shadow:0 1px 4px rgba(0,0,0,.3);font-size:1.1rem;cursor:pointer}
 /* @fin */
-/* @pieza tabla .ac-tabla{ */
+/* @pieza tabla .ac-tabla select.ok */
 /* actividades con entrega por captura: tabla de respuestas con menús */
 .ac-tabla{width:100%;border-collapse:collapse;font-size:25px;line-height:1.3}
 .ac-tabla th{font:700 22px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--tinta2);text-align:left;padding:6px 8px;border-bottom:2px solid var(--linea)}
@@ -35,5 +35,6 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .ac-tabla td:first-child{font-weight:700;white-space:nowrap}
 .ac-tabla select{width:100%;font:500 23px/1.2 var(--font-body);padding:6px 8px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta)}
 .ac-tabla select:focus{outline:3px solid var(--res);outline-offset:1px}
-.ac-nombre{font:500 26px/1.2 var(--font-body);padding:8px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);width:100%}
+.ac-tabla select.ok{border-color:var(--caso1);background:var(--caso1-50)}
+.ac-tabla select.mal{border-color:var(--mal);background:var(--panel)}
 /* @fin */

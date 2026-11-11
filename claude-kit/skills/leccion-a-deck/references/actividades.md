@@ -31,7 +31,9 @@ El JSON es un objeto o una lista. Claves:
 | `notas` | sí | Notas del expositor: **respuesta (número)** y errores comunes con su número. |
 | `figura` | no | SVG o HTML de la columna izquierda (colores solo con `var(--rol)`). Sin figura, una sola columna. |
 | `columnas` | no | `grid-template-columns` si hace falta más espacio para las preguntas, p. ej. `minmax(0,0.75fr) minmax(0,1.25fr)`. |
-| `trabajo` | no | HTML de la zona de trabajo, antes de las preguntas (para `captura`: instrucciones, `input.ac-nombre`, `table.ac-tabla` con `<select>`). |
+| `trabajo` | no | HTML libre de la zona de trabajo, antes de la tabla y de las preguntas (instrucciones, una figura, campos). |
+| `tabla` | no | Tabla de menús que se valida: `{columnas: [...], opciones: [[...] por columna de menú], filas: [{nombre, respuestas: [...]}]}`. Cada respuesta debe estar entre las opciones de su columna. El script pone en cada `<select>` el atributo `data-ok` con el texto de su opción correcta, y añade el botón **«✓ Comprobar»** y su línea de retroalimentación. |
+| `validar` | no | `true` para añadir «✓ Comprobar» a una zona de `trabajo` escrita a mano con `<select data-ok="texto correcto">`. |
 | `preguntas` | `pares`: sí | Lista de `{enunciado, opciones[4], correcta (1–4), explicacion}`. Opciones **sin número ni letra**: `.pr-opcs` las numera en azul. |
 | `pista` | no | Texto de la pista (el script antepone 💡). |
 | `formulario` | no | ID o URL `docs.google.com/forms/d/…` del formulario de **votación** (incrustado en `<dialog class="gform-dlg">`). Por defecto, el del curso; `null` lo quita. `captura` no lleva votación salvo que se pida. |
@@ -42,11 +44,12 @@ El script busca `agregar_boton_formulario.py` junto a esta skill
 lecciones, en `/mnt/skills/*/` y en `~/.claude/skills/`; si no lo encuentra,
 pásalo con `--boton`.
 
-También añade **una sola vez** por lección, dentro del último `<style>`, las
-piezas de `actividades.css` que falten (se reconocen por un selector
-centinela: `.ac-pasos{`, `.gform-dlg{`, `.ac-tabla{`) y, antes del último
-`</script>`, `actividades.js` si la lección no tiene ya el manejador de
-`.pc-q` y `[data-gform-open]`.
+También añade **una sola vez** por lección las piezas que falten de
+`actividades.css` (dentro del último `<style>`) y de `actividades.js` (antes
+del último `</script>`). Cada pieza se reconoce por un texto centinela
+escrito en su marca `/* @pieza nombre centinela */`: en el CSS, `.ac-pasos{`,
+`.gform-dlg{` y `.ac-tabla select.ok`; en el JS, `'.pc-verexp'` (preguntas,
+pistas y formularios) y `.ac-validar` (botón «✓ Comprobar»).
 
 ## Marcado que produce
 
@@ -85,7 +88,7 @@ diapositiva.
 
 - **pares:** piensa solo y vota → discute con tu compañero → vota de nuevo → comprueba.
 - **individual:** resuelve solo, sin consultar → vota con el número de tu respuesta → comprueba.
-- **captura:** resuelve en la diapositiva → pulsa «📷 …» y toma la captura → abre el formulario y adjunta la imagen.
+- **captura:** resuelve en la diapositiva → (si hay tabla o menús) pulsa «✓ Comprobar» y corrige → pulsa «📷 …» y toma la captura → abre el formulario y adjunta la imagen.
 
 ## Reglas
 
@@ -93,10 +96,14 @@ diapositiva.
   **errores comunes reales**; anótalos con su número en `notas`.
 - Español de Colombia, convenciones del libro (ley de la fuerza, acción y
   reacción, \(U\), coma decimal) y LaTeX según `references/latex.md`.
-- En `captura`, pide el nombre en la diapositiva (`input.ac-nombre`): la
-  imagen debe identificar al estudiante. No muestres la solución en la misma
-  diapositiva (la captura la incluiría); usa a lo sumo una pista. Recuerda al
-  profesor que la pregunta del formulario debe ser de tipo **«Subir archivo»**.
+- En `captura` **no pidas el nombre** del estudiante en la diapositiva: el
+  formulario ya lo identifica. Toda pregunta de selección (menús o tablas)
+  lleva su botón **«✓ Comprobar»** (clave `tabla` o `validar`), que marca en
+  verde las correctas y en rojo las incorrectas o vacías, con el conteo; el
+  estudiante corrige y después envía la captura. No muestres la solución
+  escrita en la diapositiva (la captura la incluiría); usa a lo sumo una pista.
+  Recuerda al profesor que la pregunta del formulario debe ser de tipo
+  **«Subir archivo»**.
 - Dos preguntas caben con figura si se da más ancho a la columna de
   preguntas (`columnas`). Verifica que no se desborde **con las explicaciones
   abiertas**.
