@@ -111,6 +111,10 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
   - **Prácticas numéricas:** `pc-slide pq-slide`, con
     `.pc-q.pq-q[data-ok-num][data-tol]`, `.pq-fila`, `.pc-in`, `.pc-comprobar`,
     una pista y el popup «Solución completa» (`.pq-solbtn[data-pop]`).
+- **Variables de las ecuaciones:** cada símbolo de una ecuación se explica en la
+  misma diapositiva o en una ventana emergente «¿Qué es cada símbolo?» (tabla
+  símbolo · significado · unidad), salvo que sea evidente (\(B\), \(t\)…) o ya
+  esté definido antes en la lección (\(\varepsilon_0\), \(\mu_0\)…).
 - **Siglas y acrónimos** («fem», «SI», «LHC», «EPM»…): siempre con ventana
   emergente que explica su significado. El build las marca solas con el
   diccionario de `claude-kit/skills/leccion-a-deck/assets/siglas.js`; las

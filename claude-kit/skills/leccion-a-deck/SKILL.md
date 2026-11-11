@@ -86,6 +86,20 @@ y el JS de `assets/actividades.*`):
 Las opciones se escriben sin número (las numera `.pr-opcs`) y las notas del
 expositor llevan la respuesta y los errores comunes.
 
+**Toda ecuación explica sus variables.** Cada vez que una diapositiva
+escribe una ecuación, cada símbolo que aparece en ella debe quedar explicado
+(qué es y, si aplica, su unidad), de una de dos formas:
+- en la diapositiva misma, con una frase corta junto a la ecuación
+  («\(Q\): carga de cada placa; \(A\): su área»);
+- en una ventana emergente («¿Qué es cada símbolo?», `.prop` + `pop-src` con
+  una tabla `pop-tab` de tres columnas: símbolo, significado, unidad) cuando son
+  varios o no caben.
+No hace falta repetir lo **evidente** (\(B\) campo magnético, \(t\) tiempo,
+\(x, y, z\)) ni lo **ya definido** en una diapositiva anterior de la misma
+lección (p. ej. \(\varepsilon_0\) y \(\mu_0\) después de la ley de Coulomb y de
+Ampère). Ante la duda, explica. Antes de entregar, recorre las ecuaciones
+nuevas y comprueba que ninguna variable quede sin explicar.
+
 **Siglas y acrónimos con ventana emergente** (`assets/siglas.css`,
 `assets/siglas.js`, incluidos siempre; `--sin-siglas` los quita): toda sigla
 del texto de las diapositivas («fem», «LHC», «SI», «rpm»…) queda subrayada con
