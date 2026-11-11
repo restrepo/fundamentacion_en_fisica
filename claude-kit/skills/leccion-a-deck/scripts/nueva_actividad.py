@@ -32,7 +32,7 @@ Es idempotente: si ya existe una diapositiva con ese id, la reemplaza.
 También añade, una sola vez por lección, el CSS (assets/actividades.css, por
 piezas) y el JS (assets/actividades.js) que hacen falta.
 """
-import argparse, glob, html, json, os, re, subprocess, sys
+import argparse, glob, html, json, os, random, re, subprocess, sys
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 ASSETS = os.path.join(AQUI, '..', 'assets')
@@ -129,12 +129,20 @@ def tabla(t):
     """Tabla de menús: cada <select> lleva en data-ok el texto de su opción correcta."""
     cab = ''.join('<th>%s</th>' % c for c in t['columnas'])
     filas = ''
-    for f in t['filas']:
+    for kf, f in enumerate(t['filas']):
         celdas = ''
-        for ops, ok in zip(t['opciones'], f['respuestas']):
+        for jc, (ops, ok) in enumerate(zip(t['opciones'], f['respuestas'])):
             if ok not in ops: sys.exit('respuesta «%s» no está entre las opciones %s' % (ok, ops))
+            orden = list(ops)
+            if t.get('barajar', True):
+                # orden distinto en cada menú, pero fijo (igual al regenerar): las demás
+                # opciones se barajan y la correcta cambia de posición de una fila a otra
+                rng = random.Random('%s|%d' % (f['nombre'], jc))
+                otras = [o for o in ops if o != ok]; rng.shuffle(otras)
+                pos = (2 * kf + jc + rng.randrange(2)) % len(ops)
+                orden = otras[:pos] + [ok] + otras[pos:]
             celdas += '<td><select data-ok="%s"><option value="">— elige —</option>%s</select></td>' % (
-                at(ok), ''.join('<option>%s</option>' % at(o) for o in ops))
+                at(ok), ''.join('<option>%s</option>' % at(o) for o in orden))
         filas += '<tr><td>%s</td>%s</tr>' % (f['nombre'], celdas)
     return '<table class="ac-tabla"><thead><tr>%s</tr></thead><tbody>%s</tbody></table>' % (cab, filas)
 

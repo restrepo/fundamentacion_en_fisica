@@ -32,7 +32,7 @@ El JSON es un objeto o una lista. Claves:
 | `figura` | no | SVG o HTML de la columna izquierda (colores solo con `var(--rol)`). Sin figura, una sola columna. |
 | `columnas` | no | `grid-template-columns` si hace falta más espacio para las preguntas, p. ej. `minmax(0,0.75fr) minmax(0,1.25fr)`. |
 | `trabajo` | no | HTML libre de la zona de trabajo, antes de la tabla y de las preguntas (instrucciones, una figura, campos). |
-| `tabla` | no | Tabla de menús que se valida: `{columnas: [...], opciones: [[...] por columna de menú], filas: [{nombre, respuestas: [...]}]}`. Cada respuesta debe estar entre las opciones de su columna. El script pone en cada `<select>` el atributo `data-ok` con el texto de su opción correcta, y añade el botón **«✓ Comprobar»** y su línea de retroalimentación. |
+| `tabla` | no | Tabla de menús que se valida: `{columnas: [...], opciones: [[...] por columna de menú], filas: [{nombre, respuestas: [...]}]}`. Cada respuesta debe estar entre las opciones de su columna. Las opciones se **barajan** en cada menú con un orden distinto pero fijo (el mismo al regenerar), para que su posición no delate la respuesta; `"barajar": false` conserva el orden dado. El script pone en cada `<select>` el atributo `data-ok` con el texto de su opción correcta, y añade el botón **«✓ Comprobar»** y su línea de retroalimentación. |
 | `validar` | no | `true` para añadir «✓ Comprobar» a una zona de `trabajo` escrita a mano con `<select data-ok="texto correcto">`. |
 | `preguntas` | `pares`: sí | Lista de `{enunciado, opciones[4], correcta (1–4), explicacion}`. Opciones **sin número ni letra**: `.pr-opcs` las numera en azul. |
 | `pista` | no | Texto de la pista (el script antepone 💡). |
