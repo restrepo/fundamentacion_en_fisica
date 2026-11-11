@@ -114,7 +114,7 @@ solo alambre con una ventana sobre el producto escalar, principio del motor
 eléctrico con conmutador y una ventana con la vista frontal de la espira; una actividad en parejas sobre la atracción entre corrientes paralelas y una individual sobre el torque nulo); inducción y ondas (Faraday con el solenoide en corte,
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
-hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico, cocina de inducción
+hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico (con el motor en corte: imanes que giran y bobinas fijas), cocina de inducción
 (con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; ecuaciones de Maxwell en una línea conceptual: las cuatro leyes antes de Maxwell (con μ₀, ε₀ y j = I/A), una actividad para completar por simetría la ley de Ampère arrastrando μ₀ε₀ ∂E/∂t, la onda electromagnética que se sostiene sola, la ecuación de onda con la sorpresa de v = 1/√(μ₀ε₀) = c, la corriente de desplazamiento con un lazo y dos superficies (las fórmulas avanzadas se marcan como fuera del curso) y la figura 4.15 animada: el campo B aparece entre las placas mientras el condensador se carga o se descarga),
 espectro y antenas); del átomo clásico a Bohr
 (colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,

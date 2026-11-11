@@ -206,8 +206,8 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .co-ek{text-align:center;font-size:33px;margin:8px 0 4px}
 .co-ek .prop{display:inline-block;padding:0 6px}
 .popover:has(.pop-tab){max-width:1240px}
-.popover:has(.mo-fr-cv),.popover:has(.co-arr-cv),.popover:has(.ge-sup-cv){max-width:1120px}
-.popover .mo-fr-cv,.popover .co-arr-cv,.popover .ge-sup-cv{width:100%;height:auto;display:block}
+.popover:has(.mo-fr-cv),.popover:has(.co-arr-cv),.popover:has(.ge-sup-cv),.popover:has(.fr-mot-cv){max-width:1120px}
+.popover .mo-fr-cv,.popover .co-arr-cv,.popover .ge-sup-cv,.popover .fr-mot-cv{width:100%;height:auto;display:block}
 .pop-tab{font-size:26px}
 .pop-tab td{padding:4px 10px}
 .pop-tab td:nth-child(2){white-space:nowrap}
@@ -1044,7 +1044,12 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <p>Al soltar el acelerador, las ruedas hacen girar el motor: ahora es un <strong>generador</strong>. La corriente inducida recarga la batería y, por la ley de Lenz, <strong>se opone al giro</strong>: el carro frena.</p>
       <label class="ctrl"><span>Intensidad de la regeneración</span><input type="range" id="fr-k" min="1" max="10" step="1" value="5"><span class="v" id="fr-kv"></span></label>
       <p class="nota">Se recupera cerca del \(\qty{70}{\%}\) de la energía cinética \(K = \tfrac12 m v^{2}\); el resto se pierde como calor. El freno de fricción convierte toda \(K\) en calor de las pastillas.</p>
+      <div class="fila-btn"><button type="button" class="btn prop" data-pop="pop-fr-motor">¿Cómo es el motor por dentro?</button></div>
     </div>
+  </div>
+  <div class="pop-src" id="pop-fr-motor" style="display:none"><h4>El motor de un carro eléctrico, en corte</h4>
+    <canvas class="lienzo fr-mot-cv" width="1000" height="560"></canvas>
+    <p style="margin:10px 0 0">Los <strong>imanes</strong> van en el rotor, que gira con las ruedas, y las <strong>bobinas</strong> están fijas en los dientes del estátor. Al frenar, los imanes en movimiento inducen en las bobinas una <strong>corriente alterna trifásica</strong>; el inversor la convierte en continua para recargar la batería. Al acelerar hace lo contrario. El motor con bobina que gira y conmutador de § 4.3 se usa en motores pequeños.</p>
   </div>
 </section>
 
@@ -3191,6 +3196,69 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     g.fillStyle = tok('--caso1'); g.fillText('recuperada: ' + num(rec / 1000, 0) + ' kJ', 700, 154);
     g.fillStyle = tok('--mal'); g.fillText('calor: ' + num(calor / 1000, 0) + ' kJ', 700, 196);
   }
+  /* Corte del motor: rotor de 4 imanes que gira con las ruedas y estátor de
+     6 dientes con bobinas fijas (3 fases). La corriente de cada bobina se
+     dibuja con la intensidad del color; la animación va muy lenta. */
+  const fase = [];
+  function motor(c) {
+    const q = c.getContext('2d'), cx = 290, cy = 285, R1 = 230, R2 = 186, RD = 116, RR = 94;
+    const rot = giro * 0.04, act = modo !== 'fric' && v > 0.1, amp = Math.min(1, v / 20);
+    q.clearRect(0, 0, c.width, c.height);
+    /* estátor: anillo y dientes */
+    q.fillStyle = tok('--linea'); q.beginPath(); q.arc(cx, cy, R1, 0, 2 * Math.PI); q.arc(cx, cy, R2, 0, 2 * Math.PI, true); q.fill();
+    const colF = [tok('--res'), tok('--caso1'), tok('--caso2')];
+    for (let k = 0; k < 6; k++) {
+      const a = k * Math.PI / 3 - Math.PI / 2;
+      q.save(); q.translate(cx, cy); q.rotate(a);
+      q.fillStyle = tok('--linea'); q.fillRect(RD, -22, R2 - RD + 4, 44);
+      q.beginPath(); q.moveTo(RD, -40); q.quadraticCurveTo(RD - 8, 0, RD, 40); q.lineTo(RD + 12, 40); q.lineTo(RD + 12, -40); q.closePath(); q.fill();
+      /* bobina */
+      const i = act ? amp * Math.sin(2 * rot - 2 * k * Math.PI / 3) : 0;
+      q.strokeStyle = tok('--caso2'); q.lineWidth = 4;
+      for (let r = RD + 22; r < R2 - 6; r += 9) { q.beginPath(); q.moveTo(r, -32); q.lineTo(r + 5, 32); q.stroke(); }
+      if (Math.abs(i) > 0.05) {
+        q.globalAlpha = 0.25 + 0.6 * Math.abs(i); q.fillStyle = colF[k % 3];
+        q.fillRect(RD + 18, -36, R2 - RD - 22, 72); q.globalAlpha = 1;
+      }
+      q.restore();
+      /* fase de cada bobina */
+      const lx = cx + (R1 + 24) * Math.cos(a), ly = cy + (R1 + 24) * Math.sin(a);
+      q.fillStyle = colF[k % 3]; q.font = '700 24px ' + FTXT; q.textAlign = 'center'; q.textBaseline = 'middle';
+      q.fillText(['A', 'B', 'C'][k % 3], lx, ly);
+    }
+    /* rotor con imanes */
+    q.fillStyle = tok('--rejilla'); q.beginPath(); q.arc(cx, cy, RR, 0, 2 * Math.PI); q.fill();
+    q.strokeStyle = tok('--tinta2'); q.lineWidth = 2; q.stroke();
+    for (let k = 0; k < 4; k++) {
+      const a0 = rot + k * Math.PI / 2 - Math.PI / 4 + 0.12, a1 = a0 + Math.PI / 2 - 0.24, N = k % 2 === 0;
+      q.fillStyle = N ? tok('--mal') : tok('--caso1');
+      q.beginPath(); q.arc(cx, cy, RR, a0, a1); q.arc(cx, cy, RR - 30, a1, a0, true); q.closePath(); q.fill();
+      const am = (a0 + a1) / 2;
+      q.fillStyle = tok('--papel'); q.font = '800 26px ' + FTXT; q.fillText(N ? 'N' : 'S', cx + (RR - 15) * Math.cos(am), cy + (RR - 15) * Math.sin(am));
+    }
+    q.fillStyle = tok('--tinta2'); q.beginPath(); q.arc(cx, cy, 22, 0, 2 * Math.PI); q.fill();
+    /* sentido de giro */
+    q.strokeStyle = tok('--tinta'); q.lineWidth = 3; q.beginPath(); q.arc(cx, cy, 50, -2.2, -0.9); q.stroke();
+    q.fillStyle = tok('--tinta'); q.beginPath(); q.moveTo(cx + 50 * Math.cos(-0.9) + 10, cy + 50 * Math.sin(-0.9) - 2); q.lineTo(cx + 50 * Math.cos(-0.9) - 8, cy + 50 * Math.sin(-0.9) - 12); q.lineTo(cx + 50 * Math.cos(-0.9) - 2, cy + 50 * Math.sin(-0.9) + 10); q.closePath(); q.fill();
+    /* rótulos */
+    q.textBaseline = 'alphabetic'; q.textAlign = 'left'; q.font = '24px ' + FTXT; q.fillStyle = tok('--tinta');
+    q.fillText('estátor: bobinas fijas', 600, 60);
+    q.fillText('rotor: imanes que giran', 600, 92);
+    q.fillText('con las ruedas', 600, 120);
+    /* cadena batería ↔ inversor ↔ bobinas */
+    const cajas = [['Batería (CC)', 190], ['Inversor', 290], ['Bobinas (CA trifásica)', 390]];
+    cajas.forEach(([t, y]) => { q.strokeStyle = tok('--tinta'); q.lineWidth = 2.5; q.fillStyle = tok('--panel'); q.fillRect(610, y - 30, 330, 52); q.strokeRect(610, y - 30, 330, 52); q.fillStyle = tok('--tinta'); q.textAlign = 'center'; q.fillText(t, 775, y + 4); });
+    const fl = (y1, y2) => { q.strokeStyle = tok('--res'); q.fillStyle = tok('--res'); q.lineWidth = 5; q.beginPath(); q.moveTo(775, y1); q.lineTo(775, y2 - Math.sign(y2 - y1) * 14); q.stroke(); q.beginPath(); q.moveTo(775, y2); q.lineTo(765, y2 - Math.sign(y2 - y1) * 16); q.lineTo(785, y2 - Math.sign(y2 - y1) * 16); q.closePath(); q.fill(); };
+    if (act) { if (modo === 'acel') { fl(224, 258); fl(324, 358); } else { fl(358, 324); fl(258, 224); } }
+    q.font = '22px ' + FTXT; q.fillStyle = tok('--tinta2'); q.textAlign = 'center';
+    q.fillText(!act ? (modo === 'fric' ? 'freno de fricción: el motor no genera' : 'detenido') : modo === 'acel' ? 'acelerar: la batería mueve los imanes' : 'frenar: los imanes inducen corriente', 775, 455);
+    /* las tres fases en el tiempo */
+    fase.push(act ? [0, 1, 2].map(j => amp * Math.sin(2 * rot - 2 * j * Math.PI / 3)) : [0, 0, 0]); while (fase.length > 120) fase.shift();
+    const gx = 620, gy = 520, gw = 310, gh = 34;
+    q.strokeStyle = tok('--linea'); q.lineWidth = 1.5; q.beginPath(); q.moveTo(gx, gy); q.lineTo(gx + gw, gy); q.stroke();
+    [0, 1, 2].forEach(j => { q.strokeStyle = colF[j]; q.lineWidth = 3; q.beginPath(); fase.forEach((f, i) => { const x = gx + gw - (fase.length - 1 - i) * gw / 120, y = gy - f[j] * gh; i ? q.lineTo(x, y) : q.moveTo(x, y); }); q.stroke(); });
+    q.textAlign = 'left';
+  }
   function bucle(ms) {
     if (activa(cv) && ms - ult > 25) {
       const dt = 0.05; ult = ms;
@@ -3202,6 +3270,7 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
       if (dK > 0) { if (modo === 'regen') { rec += eta * dK; calor += (1 - eta) * dK; } else calor += dK; }
       x += v * dt; giro += v * dt / 0.33;
       dibuja();
+      const pm = document.querySelector('.popover .fr-mot-cv'); if (pm) motor(pm);
       lect.textContent = modo === 'acel' ? 'la batería impulsa las ruedas' : modo === 'regen' ? (v > 0.1 ? 'las ruedas recargan la batería' : 'detenido') : (v > 0.1 ? 'frenando con fricción' : 'detenido');
     }
     requestAnimationFrame(bucle);
