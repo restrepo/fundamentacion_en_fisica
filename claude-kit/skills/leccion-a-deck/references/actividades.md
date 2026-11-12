@@ -36,6 +36,7 @@ El JSON es un objeto o una lista. Claves:
 | `validar` | no | `true` para añadir «✓ Comprobar» a una zona de `trabajo` escrita a mano con `<select data-ok="texto correcto">`. |
 | `preguntas` | `pares`: sí | Lista de `{enunciado, opciones[4], correcta (1–4), explicacion}`. Opciones **sin número ni letra**: `.pr-opcs` las numera en azul. |
 | `pista` | no | Texto de la pista (el script antepone 💡). |
+| `justificacion` | no | Casilla de texto bajo las preguntas para **justificar por escrito** (texto de la consigna, o `{texto, ejemplo, lado}` con el ejemplo en gris; `"lado": "figura"` la pone bajo la figura cuando la columna de preguntas no da abasto). Entra en la captura. Úsala sobre todo en actividades con entrega: escribir la justificación (principio + condición + conclusión) es lo que más cuesta en los exámenes. |
 | `formulario` | no | ID o URL `docs.google.com/forms/d/…` del formulario de **votación** (incrustado en `<dialog class="gform-dlg">`). Por defecto, el del curso; `null` lo quita. `captura` no lleva votación salvo que se pida. |
 | `captura` | `captura`: sí (puede ser `{}`) | `{form, texto, titulo, archivo}`: llama a la skill **boton-formulario** (`agregar_boton_formulario.py --id … --lugar fila`), que pone el botón «📷 …» en la fila de botones, la ventana de dos pasos (tomar captura → abrir el formulario) y, una sola vez, html2canvas y su módulo. `form` por defecto: el de entregas del curso. |
 

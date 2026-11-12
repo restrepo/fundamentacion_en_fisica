@@ -38,3 +38,11 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .ac-tabla select.ok{border-color:var(--caso1);background:var(--caso1-50)}
 .ac-tabla select.mal{border-color:var(--mal);background:var(--panel)}
 /* @fin */
+/* @pieza justifica .ac-just{ */
+/* casilla para justificar por escrito (entra en la captura) */
+.ac-just{display:block;font-size:25px}
+.ac-just span{display:block;font-weight:600;margin-bottom:4px}
+.ac-just textarea{width:100%;font:400 24px/1.35 var(--font-body);padding:8px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);resize:vertical}
+.ac-just textarea:focus{outline:3px solid var(--res);outline-offset:1px}
+.ac-just-fig{padding:0 18px 12px}
+/* @fin */

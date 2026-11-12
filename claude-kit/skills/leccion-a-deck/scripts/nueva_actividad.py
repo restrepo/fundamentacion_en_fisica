@@ -24,6 +24,8 @@ El JSON es un objeto o una lista de objetos:
    "preguntas": [{"enunciado": "…", "opciones": ["…", "…", "…", "…"], "correcta": 2,
                   "explicacion": "…"}],
    "pista": "…",
+   "justificacion": "Justifica la pregunta 2 en una frase."   opcional: casilla de texto bajo las
+                                          preguntas (o {"texto": …, "ejemplo": …}); entra en la captura
    "formulario": "1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k",   ID o URL; null = sin votación
    "captura": {"form": "https://forms.gle/…", "texto": "📷 Enviar mis respuestas",
                "titulo": "Enviar tus respuestas", "archivo": "aplicaciones.png"}}
@@ -64,7 +66,7 @@ def pasos(a):
               '<strong>Comprueba</strong> aquí tu respuesta y lee la explicación.']
         tit = 'Instrucción entre pares'
     elif t == 'individual':
-        li = ['<strong>Resuelve solo</strong>, sin consultar a tus compañeros.']
+        li = ['<strong>Resuelve solo</strong>, sin consultar a tus compañeros' + (', y <strong>justifica</strong> por escrito en la casilla.' if a.get('justificacion') else '.')]
         if voto: li.append('<strong>Vota</strong> en el formulario con el número de tu respuesta.')
         if a.get('captura'): li.append('Pulsa «%s» y envía la captura por el formulario.' % at(a['captura'].get('texto', '📷 Enviar mi trabajo')))
         li.append('<strong>Comprueba</strong> aquí tu respuesta y lee la explicación.')
@@ -99,6 +101,15 @@ def seccion(a):
         ops = ''.join('<button type="button" class="pr-opc" data-o="%s">%s</button>' % (letras[i], o) for i, o in enumerate(q['opciones']))
         exp = '<div class="pc-exp" style="display:none"><p style="margin:0">%s</p></div>' % q['explicacion'] if q.get('explicacion') else ''
         col.append('<div class="pc-q" data-ok="%s"><div class="pr-q">%s</div><div class="pr-opcs">%s</div>\n        <div class="pc-fb"></div>%s</div>' % (ok, q['enunciado'], ops, exp))
+    if a.get('justificacion'):
+        j = a['justificacion'] if isinstance(a['justificacion'], dict) else {'texto': a['justificacion']}
+        caja = '<label class="ac-just"><span>%s</span><textarea rows="2" placeholder="%s"></textarea></label>' % (
+            j.get('texto', 'Justifica tu respuesta en una frase.'),
+            at(j.get('ejemplo', 'Principio + condición + conclusión: «Por …, como …, entonces …».')))
+        if j.get('lado') == 'figura' and a.get('figura'):   # bajo la figura, si la columna de preguntas no da abasto
+            a['figura'] = a['figura'] + '<div class="ac-just-fig">' + caja + '</div>'
+        else:
+            col.append(caja)
     bot = []
     if voto: bot.append('<button type="button" class="gform-btn" data-gform-open="gform-%s">📝 Votar en el formulario</button>' % a['id'])
     if a.get('tabla') or a.get('validar'): bot.append('<button type="button" class="btn ac-validar">✓ Comprobar</button>')

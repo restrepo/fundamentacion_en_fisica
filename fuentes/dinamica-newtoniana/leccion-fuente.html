@@ -469,6 +469,32 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
 #ac-ecuacion .ec-punto.activo .ec-halo{fill:var(--res-50);stroke:var(--res);stroke-width:4;opacity:1}
 #ac-ecuacion .ec-punto.activo .ec-dot{fill:var(--res)}
 #ac-ecuacion .ec-punto:focus{outline:none}
+
+/* actividades del análisis del Parcial 2: controles bajo la figura */
+.cc-ctrl{padding:4px 18px 12px}
+.cc-ctrl .fila-btn{margin:4px 0}
+.cc-ctrl .btn{font-size:24px;padding:8px 14px}
+
+/* actividades:tabla */
+/* actividades con entrega por captura: tabla de respuestas con menús */
+.ac-tabla{width:100%;border-collapse:collapse;font-size:25px;line-height:1.3}
+.ac-tabla th{font:700 22px/1.2 var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--tinta2);text-align:left;padding:6px 8px;border-bottom:2px solid var(--linea)}
+.ac-tabla td{padding:8px;border-bottom:1px solid var(--linea);vertical-align:middle}
+.ac-tabla td:first-child{font-weight:700;white-space:nowrap}
+.ac-tabla select{width:100%;font:500 23px/1.2 var(--font-body);padding:6px 8px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta)}
+.ac-tabla select:focus{outline:3px solid var(--res);outline-offset:1px}
+.ac-tabla select.ok{border-color:var(--caso1);background:var(--caso1-50)}
+.ac-tabla select.mal{border-color:var(--mal);background:var(--panel)}
+/* actividades:tabla-fin */
+
+/* actividades:justifica */
+/* casilla para justificar por escrito (entra en la captura) */
+.ac-just{display:block;font-size:25px}
+.ac-just span{display:block;font-weight:600;margin-bottom:4px}
+.ac-just textarea{width:100%;font:400 24px/1.35 var(--font-body);padding:8px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);resize:vertical}
+.ac-just textarea:focus{outline:3px solid var(--res);outline-offset:1px}
+.ac-just-fig{padding:0 18px 12px}
+/* actividades:justifica-fin */
 /* envio-formulario:css — botón «Enviar» con captura de la diapositiva y formulario */
 .envio-flota{position:absolute;right:58px;bottom:84px;z-index:20;margin:0}
 .envio-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 45%, transparent);display:flex;align-items:center;justify-content:center}
@@ -943,6 +969,39 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Aceleración constante y energía" id="ac-tiro-horizontal" data-label="Actividad: Una bola se suelta y otra se lanza: ¿cuál llega primero?" data-speaker-notes="Actividad individual con entrega, sobre el problema 1 del Parcial 2 (pluma y martillo en la Luna): 3 de 7 dijeron que las aceleraciones eran distintas o cero y varios que llegaba primero uno de los dos. Pregunta 1: respuesta 3 (iguales, g hacia abajo; la velocidad horizontal constante no anula la aceleración vertical). Pregunta 2: respuesta 2 (al mismo tiempo: las dos parten con velocidad vertical cero y la misma aceleración g; el movimiento horizontal no cambia el vertical). La casilla de justificación entrena el paso que más falló en el examen: escribir el principio, la condición y la conclusión. El simulador (para comprobar después de responder) muestra fotos cada 0,2 s y líneas que unen las posiciones a la misma altura.">
+  <p class="ceja">§ 3.5 · Tiro horizontal · Actividad individual</p>
+  <h2 class="titulo">Una bola se suelta y otra se lanza: ¿cuál llega primero?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="svghd"><span>Desde 20 m: una se suelta, otra se lanza</span><span class="val" id="th-lect"></span></div><canvas class="lienzo" id="th-cv" width="1180" height="470"></canvas><div class="cc-ctrl"><div class="fila-btn"><button type="button" class="btn" id="th-play">▶ Comprobar con el simulador</button><button type="button" class="btn" id="th-rein">↺ Reiniciar</button></div><label class="ctrl"><span>Rapidez \(v_0\)</span><input type="range" id="th-v" min="2" max="14" step="1" value="8"><span class="v" id="th-vv"></span></label></div><div class="ac-just-fig"><label class="ac-just"><span>Justifica la pregunta 2 en una frase.</span><textarea rows="2" placeholder="Principio + condición + conclusión: «Por …, como las dos …, entonces …»."></textarea></label></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">1. Justo después de soltarlas, y sin aire, sus aceleraciones:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la de la bola lanzada es mayor</button><button type="button" class="pr-opc" data-o="b">la de la bola soltada es mayor</button><button type="button" class="pr-opc" data-o="c">son iguales: \(g\) hacia abajo</button><button type="button" class="pr-opc" data-o="d">la de la lanzada es cero, porque su velocidad horizontal es constante</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Sin aire, la única fuerza es el peso: por la ley de la fuerza las dos aceleran con \(g\) hacia abajo (\(g\): aceleración de la gravedad). Velocidad horizontal constante solo significa que no hay aceleración horizontal.</p></div></div>
+      <div class="pc-q" data-ok="b"><div class="pr-q">2. ¿Cuál llega primero al suelo?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la lanzada, porque tiene más rapidez</button><button type="button" class="pr-opc" data-o="b">llegan al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">la soltada, porque recorre menos distancia</button><button type="button" class="pr-opc" data-o="d">depende de la rapidez con que se lance</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Parten de la misma altura, con velocidad vertical cero y la misma aceleración \(g\): su movimiento vertical es idéntico. La velocidad horizontal solo hace caer más lejos a la lanzada, no más tarde.</p></div></div>
+      <div class="fila-btn"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button><button type="button" class="envio-btn" data-envio="envio-ac-tiro-horizontal">📷 Enviar mi respuesta</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Separa el movimiento en dos: horizontal y vertical. ¿Qué tienen igual las dos bolas en el movimiento vertical?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros, y <strong>justifica</strong> por escrito en la casilla.</li><li>Pulsa «📷 Enviar mi respuesta» y envía la captura por el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <!-- envio-formulario:inicio -->
+  <div class="envio-fondo no-captura" id="envio-ac-tiro-horizontal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="envio-ac-tiro-horizontal-tit">
+    <div class="envio-caja">
+      <button type="button" class="envio-cerrar" aria-label="Cerrar">×</button>
+      <h3 id="envio-ac-tiro-horizontal-tit">Enviar tu respuesta</h3>
+      <ol class="envio-pasos">
+        <li><strong>Toma la captura</strong> de la diapositiva completa: se descargará como imagen PNG.
+          <div class="fila-btn"><button type="button" class="envio-accion envio-captura">📷 Tomar captura</button><a class="envio-accion envio-sec envio-descarga" style="display:none" download="tiro-horizontal.png">Descargar de nuevo</a></div>
+          <div class="envio-prev"></div></li>
+        <li><strong>Abre el formulario</strong> y adjunta la imagen descargada.
+          <div class="fila-btn"><a class="envio-accion envio-sec" href="https://forms.gle/WJXuYvppqsqQ5NWG8" target="_blank" rel="noopener">Abrir el formulario ↗</a></div></li>
+      </ol>
+      <p class="envio-nota">Para adjuntar archivos, Google Forms puede pedir iniciar sesión con una cuenta de Google.</p>
+    </div>
+  </div>
+  <!-- envio-formulario:fin -->
+</section>
+
 <section class="diapositiva compacta" data-seccion="Aceleración constante y energía" id="dp-parab" data-label="Movimiento parabólico" data-speaker-notes="§ 3.5. Movimiento parabólico: en x no hay fuerza (velocidad constante v₀cosθ) y en y es la caída libre con v₀sinθ. Tiempo de subida, altura máxima, tiempo de vuelo, alcance v₀²sin2θ/g con máximo en 45°, y ángulos complementarios con el mismo alcance. ↓ revela 3 pasos.">
   <p class="ceja">§ 3.5 · Movimiento parabólico</p>
   <h2 class="titulo">Dos movimientos a la vez: uniforme en \(x\), caída libre en \(y\)</h2>
@@ -1294,6 +1353,27 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       <p class="nota">Deslizador en escala logarítmica: de \(m_1/m_2 = 0{,}01\) a \(100\).</p>
     </div>
   </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Cantidad de movimiento" id="ac-carro-camion" data-label="Actividad: El carro y el camión: ¿quién empuja más?" data-speaker-notes="Actividad en parejas (instrucción entre pares) sobre el error más frecuente del Parcial 2 (problema 6): solo 2 de 7 eligieron c) y varios justificaron que «el camión aplica mayor fuerza». Pregunta 1: respuesta 3 (fuerzas iguales y opuestas, por acción y reacción, sin importar masas ni velocidades). Pregunta 2: respuesta 1 (el carro): las fuerzas actúan el mismo Δt, así que |Δp| es igual para los dos y Δv = Δp/m es mayor para el de menor masa. El simulador muestra el choque; los dinamómetros solo aparecen al abrir la explicación, para no adelantar la respuesta. Con un carro de 1000 kg y un camión de 8000 kg, ambos a 15 m/s, en un choque que los deja pegados: Δv del carro ≈ 26,7 m/s y del camión ≈ 3,3 m/s, ocho veces menos.">
+  <p class="ceja">§ 3.6 · Acción y reacción · Actividad en parejas</p>
+  <h2 class="titulo">El carro y el camión: ¿quién empuja más?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><div class="svghd"><span>Choque de frente</span><span class="val" id="cc-lect"></span></div><canvas class="lienzo" id="cc-cv" width="1180" height="560"></canvas><div class="cc-ctrl"><div class="fila-btn"><button type="button" class="btn" id="cc-play">▶ Chocar</button><button type="button" class="btn" id="cc-rein">↺ Reiniciar</button></div><label class="ctrl"><span>Masa del camión</span><input type="range" id="cc-m" min="2000" max="12000" step="1000" value="8000"><span class="v" id="cc-mv"></span></label></div></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">1. Durante el choque de frente entre un carro pequeño y un camión pesado:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la fuerza del camión sobre el carro es mayor</button><button type="button" class="pr-opc" data-o="b">la fuerza del carro sobre el camión es mayor</button><button type="button" class="pr-opc" data-o="c">las dos fuerzas tienen la misma magnitud y direcciones opuestas</button><button type="button" class="pr-opc" data-o="d">depende de cuál iba más rápido</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Por <strong>acción y reacción</strong>, las dos fuerzas son iguales en magnitud y opuestas, sin importar masas ni velocidades. Que el carro quede peor no significa que reciba más fuerza.</p></div></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">2. ¿Cuál de los dos sufre el mayor cambio de velocidad?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">el carro</button><button type="button" class="pr-opc" data-o="b">el camión</button><button type="button" class="pr-opc" data-o="c">los dos cambian igual su velocidad</button><button type="button" class="pr-opc" data-o="d">ninguno: el choque los detiene a ambos</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Las fuerzas actúan el mismo \(\Delta t\): por la ley de la fuerza, \(F = \Delta p/\Delta t\), los dos tienen el mismo \(\abs{\Delta p} = m\,\abs{\Delta v}\), y el de menor masa cambia más su velocidad. (\(\Delta p\): cambio de la cantidad de movimiento; \(m\): masa; \(\Delta v\): cambio de velocidad.)</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-carro-camion">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Piensa en las dos preguntas por separado: la 1 es sobre las <strong>fuerzas</strong> (acción y reacción); la 2, sobre los <strong>efectos</strong> de esas fuerzas en cuerpos de masas distintas.</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-carro-camion" class="gform-dlg" aria-label="Formulario: Actividad: El carro y el camión: ¿quién empuja más?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: El carro y el camión: ¿quién empuja más?" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <section class="diapositiva compacta" data-seccion="Cantidad de movimiento" id="dp-aniq" data-label="Aniquilación electrón-positrón" data-speaker-notes="§ 3.6. En el marco del CM el par tiene P = 0. Un solo fotón llevaría p = E/c ≠ 0: imposible. Con dos fotones en sentidos opuestos, cada uno con E = γ m_e c² (511 keV en reposo), se conservan momentum y energía. Aplicación: la tomografía PET detecta los dos fotones de 511 keV en coincidencia.">
@@ -6583,6 +6663,152 @@ function lienzoOrbita(cv, trazos, marcas) {
 
 
 
+
+
+
+
+
+
+
+
+/* ═══ ACCIÓN Y REACCIÓN: choque de frente de un carro y un camión ═════ */
+(function () {
+  const cv = document.getElementById('cc-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, sec = cv.closest('section');
+  const rm = document.getElementById('cc-m'), lect = document.getElementById('cc-lect');
+  const M1 = 1000, V = 15, DT = 0.1, ESC = 14, YR = 420;        /* carro, rapidez de cada uno, duración del choque, px/m */
+  let t = 0, corre = false, ult = 0;
+  const datos = () => { const M2 = +rm.value, vf = (M1 * V - M2 * V) / (M1 + M2); return { M2, vf, dv1: Math.abs(vf - V), dv2: Math.abs(vf + V), F: M1 * Math.abs(vf - V) / DT }; };
+  const cient = x => { const e = Math.floor(Math.log10(x)), m = x / Math.pow(10, e); return num(m, 1) + '×10' + String(e).replace(/\d/g, d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[d]) + ' N'; };
+  const flecha = (x1, y1, x2, y2, col, wd) => {
+    const a = Math.atan2(y2 - y1, x2 - x1), c = 16;
+    g.strokeStyle = col; g.fillStyle = col; g.lineWidth = wd; g.beginPath(); g.moveTo(x1, y1); g.lineTo(x2 - c * Math.cos(a), y2 - c * Math.sin(a)); g.stroke();
+    g.beginPath(); g.moveTo(x2, y2); g.lineTo(x2 - c * Math.cos(a) + 8 * Math.sin(a), y2 - c * Math.sin(a) - 8 * Math.cos(a)); g.lineTo(x2 - c * Math.cos(a) - 8 * Math.sin(a), y2 - c * Math.sin(a) + 8 * Math.cos(a)); g.closePath(); g.fill();
+  };
+  function rueda(x, r) { g.fillStyle = tok('--tinta'); g.beginPath(); g.arc(x, YR - r, r, 0, 2 * Math.PI); g.fill(); }
+  function dibuja() {
+    const d = datos(), revela = !!sec.querySelector('.pc-exp:not([style*="none"])');
+    const tc = 1.6;                                   /* instante del choque (s de la animación) */
+    let x1, x2, v1, v2, fase;
+    if (t < tc) { x1 = 590 - (tc - t) * V * ESC; x2 = 590 + (tc - t) * V * ESC; v1 = V; v2 = -V; fase = 'antes'; }
+    else { x1 = 590 + (t - tc) * d.vf * ESC; x2 = x1; v1 = d.vf; v2 = d.vf; fase = t - tc < 0.35 ? 'choque' : 'despues'; }
+    g.clearRect(0, 0, W, H);
+    g.fillStyle = tok('--rejilla'); g.fillRect(0, YR, W, 40);
+    /* carro (a la izquierda del punto de contacto) */
+    const cl = 150, ch = 52, tl = 330, th = 150;
+    g.fillStyle = tok('--caso2'); g.fillRect(x1 - cl, YR - ch - 12, cl, ch);
+    g.beginPath(); g.moveTo(x1 - cl + 30, YR - ch - 12); g.lineTo(x1 - cl + 50, YR - ch - 48); g.lineTo(x1 - 40, YR - ch - 48); g.lineTo(x1 - 20, YR - ch - 12); g.closePath(); g.fill();
+    rueda(x1 - cl + 30, 16); rueda(x1 - 30, 16);
+    /* camión (a la derecha) */
+    g.fillStyle = tok('--caso1'); g.fillRect(x2 + 70, YR - th - 18, tl - 70, th);
+    g.fillStyle = tok('--res'); g.fillRect(x2, YR - 110 - 18, 70, 110);
+    g.fillStyle = tok('--panel'); g.fillRect(x2 + 10, YR - 120, 40, 34);
+    rueda(x2 + 40, 20); rueda(x2 + tl - 50, 20); rueda(x2 + tl - 100, 20);
+    g.font = '700 24px ' + FTXT; g.textAlign = 'center'; g.fillStyle = tok('--tinta');
+    g.fillText('carro, 1000 kg', x1 - cl / 2, YR + 70); g.fillText('camión, ' + num(d.M2, 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' kg', x2 + tl / 2, YR + 70);
+    /* velocidades */
+    const fv = 7;
+    if (Math.abs(v1) > 0.2) flecha(x1 - cl / 2, 130, x1 - cl / 2 + v1 * fv, 130, tok('--tinta'), 4);
+    if (Math.abs(v2) > 0.2) flecha(x2 + tl / 2, 130, x2 + tl / 2 + v2 * fv, 130, tok('--tinta'), 4);
+    g.font = '22px ' + FTXT; g.fillStyle = tok('--tinta2');
+    g.fillText(num(Math.abs(v1), 1) + ' m/s', x1 - cl / 2, 112); g.fillText(num(Math.abs(v2), 1) + ' m/s', x2 + tl / 2, 112);
+    /* dinamómetros: solo al abrir la explicación */
+    if (revela && fase !== 'antes') {
+      const ya = YR - 200, yb = YR - 250;
+      flecha(x1, ya, x1 - 130, ya, tok('--mal'), 6); flecha(x2, yb, x2 + 130, yb, tok('--mal'), 6);
+      g.fillStyle = tok('--mal'); g.font = '700 22px ' + FTXT;
+      g.fillText('sobre el carro: ' + cient(d.F), x1 - 90, ya - 14); g.fillText('sobre el camión: ' + cient(d.F), x2 + 90, yb - 14);
+    }
+    if (fase === 'despues') {
+      g.font = '700 26px ' + FTXT; g.textAlign = 'left'; g.fillStyle = tok('--tinta');
+      g.fillText('Δv del carro: ' + num(d.dv1, 1) + ' m/s', 40, 50); g.fillText('Δv del camión: ' + num(d.dv2, 1) + ' m/s', 40, 86);
+    }
+    if (fase === 'choque') { g.fillStyle = tok('--mal'); g.globalAlpha = 0.5; g.beginPath(); g.arc(x1, YR - 70, 40, 0, 2 * Math.PI); g.fill(); g.globalAlpha = 1; }
+    g.textAlign = 'left';
+    lect.textContent = fase === 'antes' ? (corre ? 'se acercan a ' + V + ' m/s cada uno' : 'pulsa ▶ Chocar') : revela ? 'fuerzas iguales, Δv distintos' : 'quedan pegados';
+    document.getElementById('cc-mv').textContent = num(+rm.value, 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' kg';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) { ult = ms; if (corre && t < 3.2) t += 0.03; dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  document.getElementById('cc-play').addEventListener('click', () => { t = 0; corre = true; });
+  document.getElementById('cc-rein').addEventListener('click', () => { t = 0; corre = false; dibuja(); });
+  rm.addEventListener('input', () => { t = 0; corre = false; dibuja(); });
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ TIRO HORIZONTAL: una bola soltada y otra lanzada a la vez ═══════ */
+(function () {
+  const cv = document.getElementById('th-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height, rv = document.getElementById('th-v'), lect = document.getElementById('th-lect');
+  const G = 9.8, H0 = 20, ESC = 18, Y0 = 60, X0 = 130, TF = Math.sqrt(2 * H0 / G);     /* m, px/m */
+  let t = 0, corre = false, ult = 0;
+  const Y = y => Y0 + (H0 - y) * ESC;
+  function dibuja() {
+    const v0 = +rv.value, tt = Math.min(t, TF);
+    g.clearRect(0, 0, W, H);
+    g.fillStyle = tok('--rejilla'); g.fillRect(0, Y(0), W, 30);
+    g.fillStyle = tok('--linea'); g.fillRect(40, Y0 + 14, 110, 8);
+    /* fotos cada 0,2 s */
+    for (let k = 0; k * 0.2 <= tt + 1e-9; k++) {
+      const s = k * 0.2, y = H0 - 0.5 * G * s * s;
+      g.strokeStyle = tok('--tinta2'); g.globalAlpha = 0.35; g.lineWidth = 1.5; g.setLineDash([6, 6]);
+      g.beginPath(); g.moveTo(X0 - 30, Y(y)); g.lineTo(X0 + v0 * s * ESC + 30, Y(y)); g.stroke(); g.setLineDash([]); g.globalAlpha = 0.45;
+      g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(X0, Y(y), 9, 0, 2 * Math.PI); g.fill();
+      g.fillStyle = tok('--res'); g.beginPath(); g.arc(X0 + v0 * s * ESC, Y(y), 9, 0, 2 * Math.PI); g.fill();
+      g.globalAlpha = 1;
+    }
+    /* posición actual */
+    const y = Math.max(0, H0 - 0.5 * G * tt * tt);
+    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(X0, Y(y), 15, 0, 2 * Math.PI); g.fill();
+    g.fillStyle = tok('--res'); g.beginPath(); g.arc(X0 + v0 * tt * ESC, Y(y), 15, 0, 2 * Math.PI); g.fill();
+    g.font = '22px ' + FTXT; g.textAlign = 'left';
+    g.fillStyle = tok('--caso2'); g.fillText('soltada', 20, Y0 - 16);
+    g.fillStyle = tok('--res'); g.fillText('lanzada con v₀ = ' + v0 + ' m/s', X0 + 30, Y0 - 16);
+    if (corre && t > 0) {
+      g.fillStyle = tok('--tinta'); g.font = '700 24px ' + FTXT; g.textAlign = 'right';
+      g.fillText('t = ' + num(tt, 2) + ' s', W - 30, 50);
+      g.fillText('altura de las dos: ' + num(y, 1) + ' m', W - 30, 84);
+      if (t >= TF) g.fillText('¡llegan juntas!', W - 30, 118);
+    }
+    g.textAlign = 'left';
+    lect.textContent = !corre ? 'responde primero' : t >= TF ? 'llegan a la vez' : 'fotos cada 0,2 s';
+    document.getElementById('th-vv').textContent = rv.value + ' m/s';
+  }
+  function bucle(ms) {
+    if (activa(cv) && ms - ult > 30) { ult = ms; if (corre && t < TF) t = Math.min(TF, t + 0.012); dibuja(); }
+    requestAnimationFrame(bucle);
+  }
+  document.getElementById('th-play').addEventListener('click', () => { t = 0; corre = true; });
+  document.getElementById('th-rein').addEventListener('click', () => { t = 0; corre = false; dibuja(); });
+  rv.addEventListener('input', () => { t = 0; corre = false; dibuja(); });
+  dibuja(); requestAnimationFrame(bucle);
+})();
+
+
+/* ═══ ACTIVIDADES: comprobar una tabla de menús (select[data-ok]) ═════ */
+(function () {
+  document.querySelectorAll('.ac-validar').forEach(b => {
+    const sec = b.closest('section'), sel = Array.from(sec.querySelectorAll('select[data-ok]')), fb = sec.querySelector('.ac-validar-fb');
+    sel.forEach(x => x.addEventListener('change', () => x.classList.remove('ok', 'mal')));
+    b.addEventListener('click', () => {
+      let bien = 0, vacios = 0;
+      sel.forEach(x => {
+        x.classList.remove('ok', 'mal');
+        if (!x.value) { vacios++; x.classList.add('mal'); return; }
+        const ok = x.value === x.dataset.ok; x.classList.add(ok ? 'ok' : 'mal'); if (ok) bien++;
+      });
+      if (!fb) return;
+      const todo = bien === sel.length;
+      fb.className = 'pc-fb ac-validar-fb ' + (todo ? 'ok' : 'mal');
+      fb.textContent = todo ? '✓ ¡Todo correcto! Ahora toma la captura y envíala.'
+        : '✗ ' + bien + ' de ' + sel.length + ' correctas' + (vacios ? ' (' + vacios + ' sin responder)' : '') + '. Corrige las marcadas en rojo.';
+    });
+  });
+})();
 
 
 
