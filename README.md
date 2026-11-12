@@ -92,7 +92,7 @@ centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-56 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+57 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
@@ -109,7 +109,7 @@ corriente y potencia con un calculador de la factura); magnetismo (limaduras de 
 con las líneas de campo al colocar un imán de barra, Ampère en un
 alambre, dos diapositivas que explican por qué la ley usa un producto escalar
 (lazos de distinta forma, tramo por tramo) y solo la corriente encerrada (tres
-alambres y un lazo arrastrable), fuerza entre alambres paralelos, diseño de un solenoide hecho de un
+alambres y un lazo arrastrable), el campo de dos alambres paralelos por superposición (líneas de campo como óvalos de Cassini o círculos de Apolonio y una elipse de Ampère que muestra por qué la ley no basta), fuerza entre alambres paralelos, diseño de un solenoide hecho de un
 solo alambre con una ventana sobre el producto escalar, principio del motor
 eléctrico con conmutador y una ventana con la vista frontal de la espira; una actividad en parejas sobre la atracción entre corrientes paralelas y una individual sobre el torque nulo); inducción y ondas (Faraday con el solenoide en corte,
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán

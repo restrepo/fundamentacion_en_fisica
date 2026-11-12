@@ -852,6 +852,35 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Magnetismo" id="dp-dos-alambres" data-label="Campo de dos alambres paralelos" data-speaker-notes="§ 4.3. Pregunta frecuente: ¿se calcula el campo de dos alambres con una elipse de Ampère con los alambres en los focos? No. La ley de Ampère vale para cualquier lazo (para la elipse da μ0 · 2I con corrientes iguales en el mismo sentido), pero solo sirve para despejar B cuando, por simetría, B es tangente al lazo y de magnitud constante en él. Con dos alambres no hay un lazo así: el botón «Probar una elipse» muestra que B cambia mucho a lo largo de ella. Se usa superposición: cada alambre aporta B_i = μ0 I/(2π r_i), tangente al círculo centrado en él, y se suman los vectores. Con corrientes iguales: mismo sentido, B = (μ0 I/π) ρ/(r1 r2), cero en el punto medio; sentidos opuestos, B = μ0 I a/(π r1 r2). Las líneas de campo: sentidos opuestos, círculos de Apolonio (r1/r2 constante); mismo sentido, óvalos de Cassini (r1 r2 constante), con una lemniscata en forma de 8 que pasa por el punto medio. Las elipses (r1 + r2 constante) no aparecen. Las líneas se dibujan a intervalos iguales del potencial vectorial, así que su densidad indica la intensidad del campo. Valores del explorador: I = 10 A, separación 2a = 10 cm.">
+  <p class="ceja">§ 4.3 · Ley de Ampère · Dos alambres</p>
+  <h2 class="titulo">Dos alambres: los campos se suman como vectores</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Corte de dos alambres</span><span class="val" id="da-lect"></span></div>
+      <div id="da-fig" style="touch-action:none"></div>
+    </figure>
+    <div class="pila">
+      <p>¿Una elipse de Ampère con los alambres en los focos? <strong>No</strong>: Ampère solo despeja \(B\) si \(\vect{B}\) es tangente y de magnitud constante en el lazo. Se usa <strong>superposición</strong>:</p>
+      <div class="kf" style="padding:6px 14px">\[ \vect{B} = \vect{B}_1 + \vect{B}_2, \qquad B_i = \frac{\mu_0 I}{2\pi r_i} \]</div>
+      <div class="fila-btn" id="da-modo"><button type="button" class="btn activo" data-m="1">Mismo sentido</button><button type="button" class="btn" data-m="-1">Sentidos opuestos</button><button type="button" class="btn" id="da-elipse">Probar una elipse</button></div>
+      <p class="nota frag" id="da-formula"></p>
+      <p class="nota" id="da-nota"></p>
+      <p class="nota" style="margin:0"><span class="prop" data-pop="pop-da-var">¿Qué es cada símbolo?</span></p>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-da-var" style="display:none"><h4>Los símbolos del campo de dos alambres</h4>
+    <table class="pop-tab">
+      <tr><td>\(I\)</td><td>corriente en cada alambre (en el explorador, 10 A)</td><td>A</td></tr>
+      <tr><td>\(r_1,\ r_2\)</td><td>distancias del punto a cada alambre</td><td>m</td></tr>
+      <tr><td>\(\vect{B}_1,\ \vect{B}_2\)</td><td>campo de cada alambre: tangente al círculo centrado en él</td><td>T</td></tr>
+      <tr><td>\(2a\)</td><td>separación entre los alambres (en el explorador, 10 cm)</td><td>m</td></tr>
+      <tr><td>\(\rho\)</td><td>distancia del punto al punto medio entre los alambres</td><td>m</td></tr>
+      <tr><td>\(\mu_0\)</td><td>permeabilidad del vacío, \(4\pi\times 10^{-7}\,\mathrm{T\cdot m/A}\)</td><td>T·m/A</td></tr>
+    </table>
+  </div>
+</section>
+
 <section class="diapositiva" data-seccion="Magnetismo" id="dp-fm" data-label="Fuerza magnética y alambres paralelos">
   <p class="ceja">§ 4.3 · Fuerza magnética</p>
   <h2 class="titulo">Corrientes paralelas se atraen; antiparalelas se repelen</h2>
@@ -2813,6 +2842,127 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = null; }));
   bots.forEach(b => b.addEventListener('click', () => { ver = +b.dataset.w; bots.forEach(o => o.classList.toggle('activo', o === b)); pinta(); }));
   rr.addEventListener('input', pinta); pinta();
+})();
+
+/* ═══ CAMPO DE DOS ALAMBRES PARALELOS ══════════════════════════════════ */
+(function () {
+  const host = document.getElementById('da-fig');
+  if (!host) return;
+  const W = 1180, H = 680, XL = 30, YL = XL * H / W, AW = 5;   /* cm; alambres en x = ±a */
+  const X = x => (x + XL) / (2 * XL) * W, Y = y => (YL - y) / (2 * YL) * H;
+  const aX = px => px / W * 2 * XL - XL, aY = py => YL - py / H * 2 * YL;
+  const I = 10, K = MU0 * I / (2 * Math.PI);             /* B = K / r, r en m */
+  let s2 = 1, elipse = false, P = { x: 2, y: 10.5 }, arr = false, movido = false;
+  const bots = $$('#da-modo .btn[data-m]'), bel = document.getElementById('da-elipse');
+  /* campo en (x, y) cm: alambre 1 en −a (sale ⊙), alambre 2 en +a (sale si s2 = 1) */
+  function campo(x, y) {
+    const r1 = Math.hypot(x + AW, y) / 100, r2 = Math.hypot(x - AW, y) / 100;
+    const b1 = [-y / 100 * K / (r1 * r1), (x + AW) / 100 * K / (r1 * r1)];
+    const b2 = [-s2 * y / 100 * K / (r2 * r2), s2 * (x - AW) / 100 * K / (r2 * r2)];
+    return { b1: b1, b2: b2, b: [b1[0] + b2[0], b1[1] + b2[1]], r1: r1, r2: r2 };
+  }
+  /* función de flujo: sus curvas de nivel son las líneas de campo */
+  const psi = (x, y) => Math.log(Math.hypot(x + AW, y)) + s2 * Math.log(Math.hypot(x - AW, y));
+  function contornos(g, niveles) {
+    const N = 236, M = 136, dx = 2 * XL / N, dy = 2 * YL / M, v = [];
+    for (let j = 0; j <= M; j++) { v.push([]); for (let i = 0; i <= N; i++) v[j].push(psi(-XL + i * dx, YL - j * dy)); }
+    niveles.forEach(c => {
+      let d = '';
+      for (let j = 0; j < M; j++) for (let i = 0; i < N; i++) {
+        const q = [v[j][i], v[j][i + 1], v[j + 1][i + 1], v[j + 1][i]];
+        if (!q.every(isFinite)) continue;
+        const xy = [[i, j], [i + 1, j], [i + 1, j + 1], [i, j + 1]], pts = [];
+        for (let k = 0; k < 4; k++) {
+          const a = q[k], b = q[(k + 1) % 4];
+          if ((a - c) * (b - c) < 0) { const t = (c - a) / (b - a), p0 = xy[k], p1 = xy[(k + 1) % 4]; pts.push([(p0[0] + t * (p1[0] - p0[0])) * W / N, (p0[1] + t * (p1[1] - p0[1])) * H / M]); }
+        }
+        if (pts.length >= 2) d += 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1) + 'L' + pts[1][0].toFixed(1) + ' ' + pts[1][1].toFixed(1);
+        if (pts.length === 4) d += 'M' + pts[2][0].toFixed(1) + ' ' + pts[2][1].toFixed(1) + 'L' + pts[3][0].toFixed(1) + ' ' + pts[3][1].toFixed(1);
+      }
+      nodo('path', { d: d, style: 'fill:none;stroke:var(--proy);stroke-width:2.5;opacity:.75' }, g);
+    });
+  }
+  const largo = Bv => 26 + 46 * Math.log10(1 + Bv * 1e6 / 4);          /* longitud de flecha en px */
+  function pinta() {
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* intensidad de |B| como fondo */
+    const fondo = nodo('g', {}, svg), n = 59, m = 34;
+    for (let j = 0; j < m; j++) for (let i = 0; i < n; i++) {
+      const x = -XL + (i + 0.5) * 2 * XL / n, y = YL - (j + 0.5) * 2 * YL / m, c = campo(x, y), B = Math.hypot(c.b[0], c.b[1]);
+      const o = Math.max(0, Math.min(0.32, 0.11 * Math.log10(B * 1e6 + 1) - 0.1));
+      nodo('rect', { x: (i * W / n).toFixed(1), y: (j * H / m).toFixed(1), width: (W / n + 0.6).toFixed(1), height: (H / m + 0.6).toFixed(1), style: 'fill:var(--res);fill-opacity:' + o.toFixed(2) + ';stroke:none' }, fondo);
+    }
+    /* líneas de campo a intervalos iguales de la función de flujo */
+    const g = nodo('g', {}, svg), niv = [], d = 0.32;
+    if (s2 > 0) { const c0 = 2 * Math.log(AW); for (let k = -6; k <= 9; k++) niv.push(c0 + k * d + (k ? 0 : 1e-3)); }
+    else for (let k = -9; k <= 9; k++) if (k) niv.push(k * d);
+    contornos(g, niv);
+    if (s2 < 0) nodo('line', { x1: X(0), x2: X(0), y1: 0, y2: H, style: 'stroke:var(--proy);stroke-width:2.5;opacity:.75' }, g);
+    /* elipse con focos en los alambres */
+    let txtE = '';
+    if (elipse) {
+      const A = 8, Bm = Math.sqrt(A * A - AW * AW), Q = [];
+      for (let k = 0; k <= 360; k++) { const t = 2 * Math.PI * k / 360; Q.push([A * Math.cos(t), Bm * Math.sin(t)]); }
+      nodo('path', { d: Q.map((q, k) => (k ? 'L' : 'M') + X(q[0]).toFixed(1) + ' ' + Y(q[1]).toFixed(1)).join(''), style: 'fill:none;stroke:var(--caso2);stroke-width:5;stroke-dasharray:14 9' }, svg);
+      let mn = Infinity, mx = 0, pmn, pmx;
+      Q.forEach(q => { const c = campo(q[0], q[1]), B = Math.hypot(c.b[0], c.b[1]); if (B < mn) { mn = B; pmn = q; } if (B > mx) { mx = B; pmx = q; } });
+      [[pmn, 'mín'], [pmx, 'máx']].forEach(e => {
+        nodo('circle', { cx: X(e[0][0]), cy: Y(e[0][1]), r: 10, style: 'fill:var(--caso2);stroke:var(--panel);stroke-width:3' }, svg);
+        rotulo(svg, X(e[0][0]) + (e[0][0] < 0 ? -16 : 16), Y(e[0][1]) + (e[0][1] > 0 ? -16 : 38), 'B ' + e[1] + ' = ' + num(Math.hypot.apply(null, campo(e[0][0], e[0][1]).b) * 1e6, 0) + ' μT', { 'font-size': 26, 'text-anchor': e[0][0] < 0 ? 'end' : 'start', style: 'fill:var(--caso2);font-weight:700;font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+      });
+      txtE = ' En la elipse B va de ' + num(mn * 1e6, 0) + ' a ' + num(mx * 1e6, 0) + ' μT: Ampère da la suma (μ₀ · ' + (s2 > 0 ? '20' : '0') + ' A), no B.';
+    }
+    /* alambres */
+    marcaAlambre(svg, X(-AW), Y(0), true, 20);
+    marcaAlambre(svg, X(AW), Y(0), s2 > 0, 20);
+    rotulo(svg, X(-AW), Y(0) + 54, '1', { 'font-size': 28, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+    rotulo(svg, X(AW), Y(0) + 54, '2', { 'font-size': 28, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-family:' + FTXT + ';font-weight:700' });
+    /* punto de prueba y vectores */
+    const c = campo(P.x, P.y), px = X(P.x), py = Y(P.y);
+    nodo('line', { x1: X(-AW), y1: Y(0), x2: px, y2: py, style: 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:5 6' }, svg);
+    nodo('line', { x1: X(AW), y1: Y(0), x2: px, y2: py, style: 'stroke:var(--tinta2);stroke-width:2;stroke-dasharray:5 6' }, svg);
+    const dib = (b, col, w, et, lado) => {
+      const B = Math.hypot(b[0], b[1]); if (B < 1e-12) return;
+      const L = largo(B), ux = b[0] / B, uy = -b[1] / B;
+      flecha(svg, px, py, px + L * ux, py + L * uy, col, w);
+      rotulo(svg, px + (L + 20) * ux - lado * 26 * uy, py + (L + 20) * uy + lado * 26 * ux + 10, et, { 'font-size': 30, 'text-anchor': 'middle', style: 'fill:' + col + ';font-family:' + FMATH + ';font-weight:700;paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    };
+    dib(c.b1, 'var(--caso2)', 4, '!B!_1', 1);
+    dib(c.b2, 'var(--caso1)', 4, '!B!_2', -1);
+    dib(c.b, 'var(--res)', 7, '!B!', 0);
+    nodo('circle', { cx: px, cy: py, r: 13, style: 'fill:var(--res);stroke:var(--panel);stroke-width:4;cursor:grab' }, svg);
+    if (!movido) rotulo(svg, px + 20, py + 34, 'arrástrame', { 'font-size': 24, 'text-anchor': 'start', style: 'fill:var(--res);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:6px' });
+    const B1 = Math.hypot(c.b1[0], c.b1[1]), B2 = Math.hypot(c.b2[0], c.b2[1]), B = Math.hypot(c.b[0], c.b[1]);
+    document.getElementById('da-lect').textContent = 'B₁ ' + num(B1 * 1e6, 1) + ' · B₂ ' + num(B2 * 1e6, 1) + ' · B ' + num(B * 1e6, 1) + ' μT';
+    document.getElementById('da-nota').textContent = (s2 > 0
+      ? 'Líneas: óvalos de Cassini (r₁ r₂ constante); la del punto medio es un 8, y allí B = 0.'
+      : 'Líneas: círculos de Apolonio (r₁/r₂ constante); entre los alambres los campos se refuerzan.') + txtE;
+  }
+  function formula() {
+    const el = document.getElementById('da-formula');
+    el.innerHTML = s2 > 0
+      ? 'Corrientes iguales: \\(B = \\dfrac{\\mu_0 I}{\\pi}\\,\\dfrac{\\rho}{r_1 r_2}\\).'
+      : 'Corrientes iguales: \\(B = \\dfrac{\\mu_0 I\\,a}{\\pi\\, r_1 r_2}\\).';
+    if (window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([el]).catch(() => {});
+  }
+  const aSVG = ev => { const svg = host.querySelector('svg'), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()); };
+  host.addEventListener('pointerdown', ev => {
+    const p = aSVG(ev);
+    if (Math.hypot(p.x - X(P.x), p.y - Y(P.y)) > 40) return;
+    arr = true; host.setPointerCapture(ev.pointerId); ev.preventDefault();
+  });
+  host.addEventListener('pointermove', ev => {
+    if (!arr) return;
+    const p = aSVG(ev);
+    let x = Math.max(-XL + 1, Math.min(XL - 1, aX(p.x))), y = Math.max(-YL + 1, Math.min(YL - 1, aY(p.y)));
+    [-AW, AW].forEach(xa => { const r = Math.hypot(x - xa, y); if (r < 1.6) { x = xa + (x - xa) * 1.6 / (r || 1); y = y * 1.6 / (r || 1) || 1.6; } });
+    P = { x: x, y: y }; movido = true; pinta();
+  });
+  ['pointerup', 'pointercancel'].forEach(t => host.addEventListener(t, () => { arr = false; }));
+  bots.forEach(b => b.addEventListener('click', () => { s2 = +b.dataset.m; bots.forEach(o => o.classList.toggle('activo', o === b)); formula(); pinta(); }));
+  bel.addEventListener('click', () => { elipse = !elipse; bel.classList.toggle('activo', elipse); pinta(); });
+  formula(); pinta();
 })();
 
 /* ═══ SOLENOIDE ════════════════════════════════════════════════════════ */
