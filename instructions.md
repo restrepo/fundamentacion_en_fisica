@@ -16,7 +16,7 @@ Conversa con el usuario en **español de Colombia y Latinoamérica**.
 | `fuentes/_ds/` | Sistema de diseño compartido. |
 | `lecciones/*.html` | **Generado.** Nunca se edita a mano; se regenera desde la fuente. |
 | `index.html`, `README.md` | Portada del sitio y descripción del repositorio. |
-| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción y actividades de metodologías activas), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante). |
+| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción y marcado de las actividades), `metodologias-activas` (qué actividad poner y dónde, auditoría pedagógica de una lección, pruebas de entrada y salida y su análisis), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante). |
 | `claude-kit/latex/` | Fragmentos LaTeX pendientes de pegar en `main.tex` del libro. |
 | `skills/` | Copias empaquetadas (`.skill`) para subir a claude.ai. |
 
@@ -133,6 +133,16 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
   Escríbelas como texto: `$\num{5.0}$~vueltas por segundo`.
 - Los fragmentos nuevos para `main.tex` se guardan en `claude-kit/latex/`
   como `.tex` y, si es posible, también como `.pdf` compilado.
+
+## Metodologías activas
+
+- Antes de añadir actividades a una lección, audítala:
+  ```bash
+  python3 -B claude-kit/skills/metodologias-activas/scripts/auditar_leccion.py fuentes/<slug>/leccion-fuente.html
+  ```
+  El informe lista las ideas previas sin actividad, los tramos sin actividad, los exploradores sin predicción, las ecuaciones con símbolos sin explicar y los problemas de las actividades. Es heurístico: confirma cada hallazgo en la diapositiva.
+- Las pruebas de entrada y salida viven en `claude-kit/skills/metodologias-activas/assets/pruebas.json`. Los formularios se generan con `generar_formularios.py` y las respuestas se analizan con `analizar_pruebas.py`.
+- Las respuestas de los estudiantes no se suben al repositorio.
 
 ## Mantener el kit al día
 

@@ -1,0 +1,462 @@
+{
+ "relatividad-especial": {
+  "titulo": "Prueba de entrada y salida · Capítulo 2 · Relatividad especial",
+  "notacion": "Notación: c es la rapidez de la luz en el vacío; v, la rapidez de un objeto o de un sistema de referencia; γ = 1/√(1 − v²/c²) es el factor de Lorentz, que vale 1 en reposo y crece sin límite cuando v se acerca a c.",
+  "preguntas": [
+   {
+    "enunciado": "Un tren pasa a gran velocidad junto a un andén. Caen dos rayos, uno en cada extremo del tren. Para una persona quieta en el andén, justo frente a la mitad del tren, los dos destellos le llegan al mismo tiempo. Para una pasajera sentada en la mitad del tren:",
+    "opciones": [
+     "También son simultáneos, porque la luz de ambos rayos viaja a c.",
+     "Cayó primero el rayo del frente del tren.",
+     "Cayó primero el rayo de la parte trasera del tren.",
+     "Solo dejan de ser simultáneos si el tren va a más de la mitad de c."
+    ],
+    "correcta": 1,
+    "explicacion": "La pasajera se mueve hacia la luz del frente y se aleja de la de atrás; como para ella la luz también viaja a c, concluye que el rayo del frente cayó primero. La simultaneidad depende del sistema de referencia.",
+    "errores": [
+     "simultaneidad absoluta",
+     null,
+     "invierte el sentido del movimiento",
+     "cree que hay un umbral de rapidez"
+    ]
+   },
+   {
+    "enunciado": "Un muón vive en promedio 2,2 μs medidos con un reloj que viaja con él. Atraviesa la atmósfera a 0,995c, con γ ≈ 10. Para un observador en tierra, ¿cuánto vive en promedio?",
+    "opciones": [
+     "22 μs.",
+     "2,2 μs, porque la vida media es una propiedad del muón.",
+     "0,22 μs.",
+     "Un poco menos de 2,2 μs, porque 0,995 es menor que 1."
+    ],
+    "correcta": 0,
+    "explicacion": "Dilatación del tiempo: el observador de tierra mide γ veces el tiempo propio, 10 × 2,2 μs = 22 μs.",
+    "errores": [
+     null,
+     "tiempo absoluto",
+     "invierte la dilatación",
+     "confunde γ con v/c"
+    ]
+   },
+   {
+    "enunciado": "Para el muón de la pregunta anterior, su propio reloj marca 2,2 μs. Desde su punto de vista, ¿por qué alcanza a llegar al suelo?",
+    "opciones": [
+     "Porque su reloj se atrasa.",
+     "Porque la gravedad de la Tierra lo acelera hasta superar c.",
+     "No llega: solo los observadores de tierra lo ven llegar.",
+     "Porque el espesor de la atmósfera, que se mueve hacia él, se contrae en la dirección del movimiento."
+    ],
+    "correcta": 3,
+    "explicacion": "En su propio sistema el reloj del muón marcha normal; lo que cambia es la atmósfera, que se mueve y se contrae en un factor γ. Que llegue o no al suelo es un hecho en el que todos los observadores coinciden.",
+    "errores": [
+     "mezcla sistemas de referencia",
+     "la gravedad lo explica",
+     "los hechos dependen del observador",
+     null
+    ]
+   },
+   {
+    "enunciado": "Una nave se aleja de la Tierra a 0,8c y enciende un faro que apunta hacia adelante. ¿Con qué rapidez mide la luz del faro un observador en la Tierra?",
+    "opciones": [
+     "1,8c.",
+     "0,2c.",
+     "c.",
+     "Depende de la potencia del faro."
+    ],
+    "correcta": 2,
+    "explicacion": "La rapidez de la luz en el vacío es la misma para todos los observadores, sin importar cómo se mueva la fuente.",
+    "errores": [
+     "suma galileana de velocidades",
+     "resta galileana de velocidades",
+     null,
+     "la rapidez de la luz depende de la fuente"
+    ]
+   },
+   {
+    "enunciado": "Una nave que se aleja de la Tierra a 0,6c lanza hacia adelante una sonda a 0,6c respecto a la nave. Respecto a la Tierra, la sonda va:",
+    "opciones": [
+     "A una rapidez mayor que 0,6c pero menor que c.",
+     "A 1,2c.",
+     "Exactamente a c.",
+     "A 0,6c, porque las rapideces no se suman en relatividad."
+    ],
+    "correcta": 0,
+    "explicacion": "Las velocidades se combinan con la fórmula relativista: (0,6c + 0,6c)/(1 + 0,36) ≈ 0,88c. Nunca se supera c.",
+    "errores": [
+     null,
+     "suma galileana",
+     "todo lo rápido viaja a c",
+     "cree que las rapideces no se combinan"
+    ]
+   },
+   {
+    "enunciado": "Una regla que mide 1 m en reposo viaja a 0,6c en la dirección de su longitud (γ = 1,25). ¿Cuánto mide para un observador en la Tierra?",
+    "opciones": [
+     "1,25 m.",
+     "1 m: la longitud de un objeto no cambia.",
+     "0,6 m.",
+     "0,8 m."
+    ],
+    "correcta": 3,
+    "explicacion": "Contracción de la longitud: L = L₀/γ = 1 m / 1,25 = 0,8 m.",
+    "errores": [
+     "aplica γ al revés",
+     "longitud absoluta",
+     "confunde la longitud con v/c",
+     null
+    ]
+   },
+   {
+    "enunciado": "Una astronauta viaja a gran velocidad hasta una estrella y regresa. Su hermano gemelo se queda en la Tierra. Cuando se reúnen:",
+    "opciones": [
+     "Tienen la misma edad, porque cada uno ve moverse al otro y los efectos se cancelan.",
+     "Ella es más vieja.",
+     "Ella es más joven.",
+     "La pregunta no tiene respuesta: depende de quién se considere quieto."
+    ],
+    "correcta": 2,
+    "explicacion": "La situación no es simétrica: ella cambia de sistema de referencia al dar la vuelta. Su reloj marca menos tiempo y, al reunirse, ella es más joven.",
+    "errores": [
+     "simetría ingenua de los gemelos",
+     "invierte el efecto",
+     null,
+     "todo es relativo"
+    ]
+   },
+   {
+    "enunciado": "En el LHC se le da a un protón cada vez más energía. ¿Qué pasa con su rapidez?",
+    "opciones": [
+     "Crece sin límite, al ritmo de la raíz cuadrada de la energía.",
+     "Se acerca a c sin alcanzarla nunca; lo que sigue creciendo es γ, y con γ la energía E = γmc².",
+     "Llega a c y desde ahí la energía extra solo aumenta su masa.",
+     "Se duplica cada vez que se duplica la energía."
+    ],
+    "correcta": 1,
+    "explicacion": "E = γmc²: más energía significa un γ mayor, y γ crece sin límite solo si v se acerca a c sin alcanzarla.",
+    "errores": [
+     "energía cinética clásica sin límite",
+     null,
+     "se puede alcanzar c",
+     "relación lineal entre energía y rapidez"
+    ]
+   }
+  ]
+ },
+ "dinamica-newtoniana": {
+  "titulo": "Prueba de entrada y salida · Capítulo 3 · Dinámica newtoniana",
+  "notacion": "En todas las preguntas se desprecia la resistencia del aire y se toma g = 9,8 m/s² (aceleración de la gravedad). Notación: p = mv es el momento lineal (masa por velocidad); la ley de la fuerza dice que la fuerza neta es F = Δp/Δt, el cambio de momento sobre el intervalo de tiempo.",
+  "preguntas": [
+   {
+    "enunciado": "Un bus de 12 toneladas choca de frente con un carro de 1 tonelada. Durante el choque:",
+    "opciones": [
+     "El bus le hace al carro una fuerza mayor que la que el carro le hace al bus.",
+     "Las dos fuerzas son iguales en magnitud y opuestas en dirección.",
+     "El carro le hace al bus una fuerza mayor, porque es el que se frena más.",
+     "Solo el bus hace fuerza; el carro solo la recibe."
+    ],
+    "correcta": 1,
+    "explicacion": "Acción y reacción: las fuerzas que dos cuerpos se hacen entre sí son siempre iguales en magnitud y opuestas, sin importar sus masas.",
+    "errores": [
+     "el más grande empuja más",
+     null,
+     "confunde fuerza con efecto",
+     "solo el cuerpo activo hace fuerza"
+    ]
+   },
+   {
+    "enunciado": "En el mismo choque, ¿cuál de los dos vehículos tiene el mayor cambio de velocidad?",
+    "opciones": [
+     "El bus, porque recibe la fuerza durante más tiempo.",
+     "Los dos el mismo, porque las fuerzas son iguales.",
+     "El carro, porque recibe el mismo cambio de momento con menos masa.",
+     "Depende de cuál iba más rápido antes del choque."
+    ],
+    "correcta": 2,
+    "explicacion": "Ambos reciben el mismo Δp (misma fuerza durante el mismo tiempo). Como Δv = Δp/m, el de menor masa cambia más su velocidad.",
+    "errores": [
+     "confunde con el tiempo de contacto",
+     "confunde fuerza con cambio de velocidad",
+     null,
+     "la velocidad previa decide el efecto"
+    ]
+   },
+   {
+    "enunciado": "Una canica sale rodando del borde de una mesa a 2 m/s. En el mismo instante se deja caer otra canica, sin empujarla, desde el mismo borde. ¿Cuál llega primero al piso?",
+    "opciones": [
+     "La que sale rodando, porque lleva más rapidez.",
+     "La que se deja caer, porque recorre menos distancia.",
+     "Llegan al mismo tiempo.",
+     "Depende de la masa de cada canica."
+    ],
+    "correcta": 2,
+    "explicacion": "El movimiento vertical es independiente del horizontal: las dos parten con velocidad vertical cero y caen la misma altura con la misma aceleración g.",
+    "errores": [
+     "el movimiento horizontal sostiene",
+     "confunde distancia recorrida con tiempo de caída",
+     null,
+     "la masa influye en la caída"
+    ]
+   },
+   {
+    "enunciado": "Mientras la canica que salió rodando va en el aire, su velocidad horizontal:",
+    "opciones": [
+     "Disminuye poco a poco hasta llegar al piso.",
+     "Se mantiene en 2 m/s.",
+     "Aumenta, porque la gravedad la acelera.",
+     "Se vuelve cero apenas deja la mesa."
+    ],
+    "correcta": 1,
+    "explicacion": "Sin aire no hay fuerza horizontal, así que la velocidad horizontal no cambia. La gravedad solo cambia la componente vertical.",
+    "errores": [
+     "hace falta fuerza para mantener la velocidad",
+     null,
+     "la gravedad actúa en horizontal",
+     "cae en línea recta al dejar la mesa"
+    ]
+   },
+   {
+    "enunciado": "Se lanza una piedra verticalmente hacia arriba. En el punto más alto de su trayectoria:",
+    "opciones": [
+     "La velocidad y la aceleración son cero.",
+     "La velocidad es cero y la aceleración es g hacia abajo.",
+     "La velocidad es cero y la aceleración es g hacia arriba.",
+     "La velocidad es máxima y la aceleración es cero."
+    ],
+    "correcta": 1,
+    "explicacion": "La única fuerza es el peso, que no desaparece en el punto más alto: la aceleración es g hacia abajo en todo el recorrido, aunque allí la velocidad sea cero.",
+    "errores": [
+     "v = 0 implica a = 0",
+     null,
+     "error de dirección de g",
+     "confunde el punto más alto con el de mayor rapidez"
+    ]
+   },
+   {
+    "enunciado": "Un carrito de montaña rusa parte del reposo a 30 m de altura y, sin fricción, pasa por un punto que está a 10 m de altura. Su rapidez en ese punto es:",
+    "opciones": [
+     "√(2 · 9,8 · 30) m/s.",
+     "√(2 · 9,8 · 10) m/s.",
+     "√(2 · 9,8 · 20) m/s.",
+     "No se puede saber sin conocer la forma de la pista."
+    ],
+    "correcta": 2,
+    "explicacion": "Lo que cuenta es la diferencia de alturas, Δh = 30 m − 10 m = 20 m: la energía potencial perdida, mgΔh, se vuelve energía cinética ½mv². La forma de la pista no importa sin fricción.",
+    "errores": [
+     "usa la altura inicial, no la diferencia",
+     "usa la altura final",
+     null,
+     "cree que la forma de la pista importa"
+    ]
+   },
+   {
+    "enunciado": "Desde la misma altura se dejan caer una bola de 1 kg y otra de 5 kg. Al llegar al suelo:",
+    "opciones": [
+     "La de 5 kg va cinco veces más rápido.",
+     "Las dos van igual de rápido.",
+     "La de 1 kg va más rápido, porque es más liviana.",
+     "La de 5 kg va √5 veces más rápido."
+    ],
+    "correcta": 1,
+    "explicacion": "En mgh = ½mv² la masa se cancela: v = √(2gh), igual para las dos.",
+    "errores": [
+     "la masa no se cancela",
+     null,
+     "lo liviano cae más rápido",
+     "la masa no se cancela (raíz)"
+    ]
+   },
+   {
+    "enunciado": "Una pelota de 0,5 kg choca de frente contra una pared a 4 m/s y rebota en la misma línea a 4 m/s. La magnitud del cambio de su momento es:",
+    "opciones": [
+     "0 kg·m/s, porque la rapidez no cambió.",
+     "2 kg·m/s.",
+     "4 kg·m/s.",
+     "8 kg·m/s."
+    ],
+    "correcta": 2,
+    "explicacion": "El momento es un vector: pasa de +2 kg·m/s a −2 kg·m/s, así que |Δp| = 0,5 kg × 8 m/s = 4 kg·m/s.",
+    "errores": [
+     "momento como escalar (signo)",
+     "usa solo un tramo",
+     null,
+     "olvida multiplicar por la masa"
+    ]
+   },
+   {
+    "enunciado": "Un disco de hockey se desliza sobre hielo, sin fricción, en línea recta y con rapidez constante. Las fuerzas horizontales sobre el disco:",
+    "opciones": [
+     "No hay ninguna fuerza horizontal neta.",
+     "Hay una fuerza en la dirección del movimiento, que lo mantiene andando.",
+     "Hay una fuerza que disminuye poco a poco mientras avanza.",
+     "Hay una fuerza igual a su peso, en la dirección del movimiento."
+    ],
+    "correcta": 0,
+    "explicacion": "Si la velocidad no cambia, el momento no cambia y, por la ley de la fuerza, la fuerza neta es cero. No hace falta fuerza para mantener el movimiento.",
+    "errores": [
+     null,
+     "hace falta fuerza para mantener el movimiento",
+     "ímpetu que se gasta",
+     "confunde el peso con una fuerza de avance"
+    ]
+   },
+   {
+    "enunciado": "Un carro de 1000 kg pasa del reposo a 20 m/s en 10 s. La fuerza neta media sobre el carro es:",
+    "opciones": [
+     "200 N.",
+     "20 000 N.",
+     "2 N.",
+     "2000 N."
+    ],
+    "correcta": 3,
+    "explicacion": "F = Δp/Δt = (1000 kg × 20 m/s)/10 s = 2000 N.",
+    "errores": [
+     "potencias de diez",
+     "potencias de diez",
+     "potencias de diez o unidades",
+     null
+    ]
+   }
+  ]
+ },
+ "electromagnetismo": {
+  "titulo": "Prueba de entrada y salida · Capítulo 4 · Electromagnetismo",
+  "notacion": "Notación: E es el campo eléctrico, B el campo magnético, I la corriente eléctrica; c = 3,0 × 10⁸ m/s es la rapidez de la luz, λ la longitud de onda y f la frecuencia de una onda.",
+  "preguntas": [
+   {
+    "enunciado": "Dos cargas puntuales se repelen con una fuerza F. Si la distancia entre ellas se duplica, la fuerza pasa a ser:",
+    "opciones": [
+     "2F.",
+     "F/2.",
+     "F/4.",
+     "F, porque las cargas no cambiaron."
+    ],
+    "correcta": 2,
+    "explicacion": "Ley de Coulomb: la fuerza es inversamente proporcional al cuadrado de la distancia; con el doble de distancia queda la cuarta parte.",
+    "errores": [
+     "proporcionalidad directa",
+     "inverso lineal, no del cuadrado",
+     null,
+     "la fuerza no depende de la distancia"
+    ]
+   },
+   {
+    "enunciado": "Por un cable largo y recto pasa una corriente constante. Las líneas del campo magnético alrededor del cable:",
+    "opciones": [
+     "Salen del cable en línea recta, hacia afuera.",
+     "Son paralelas al cable, en el sentido de la corriente.",
+     "Son círculos alrededor del cable.",
+     "No existen: solo un imán produce campo magnético."
+    ],
+    "correcta": 2,
+    "explicacion": "Una corriente produce un campo magnético cuyas líneas rodean el cable en círculos (regla de la mano derecha).",
+    "errores": [
+     "confunde con el campo eléctrico radial",
+     "el campo sigue a la corriente",
+     null,
+     "solo los imanes hacen campo magnético"
+    ]
+   },
+   {
+    "enunciado": "Dos cables largos y paralelos llevan corrientes en el mismo sentido. Los cables:",
+    "opciones": [
+     "Se atraen.",
+     "Se repelen.",
+     "No se hacen fuerza, porque los cables no tienen carga neta.",
+     "Giran hasta quedar perpendiculares."
+    ],
+    "correcta": 0,
+    "explicacion": "Corrientes paralelas en el mismo sentido se atraen; en sentidos opuestos se repelen. La regla «iguales se repelen» de las cargas no se aplica a las corrientes.",
+    "errores": [
+     null,
+     "regla de las cargas aplicada a corrientes",
+     "sin carga neta no hay fuerza",
+     "respuesta de adivinanza"
+    ]
+   },
+   {
+    "enunciado": "Un imán está quieto dentro de una bobina conectada a un bombillo. El bombillo:",
+    "opciones": [
+     "Se enciende y se queda encendido mientras el imán esté adentro.",
+     "No se enciende, porque el flujo magnético no cambia.",
+     "Se enciende solo si el imán es muy fuerte.",
+     "Parpadea con corriente alterna."
+    ],
+    "correcta": 1,
+    "explicacion": "Ley de Faraday: la fem inducida depende del cambio del flujo magnético, no del flujo. Imán quieto, flujo constante: no hay corriente.",
+    "errores": [
+     "basta con que haya campo",
+     null,
+     "la intensidad del imán importa sin cambio",
+     "confunde con un generador"
+    ]
+   },
+   {
+    "enunciado": "Se acerca el polo norte de un imán a un anillo de cobre que cuelga de un hilo. El anillo:",
+    "opciones": [
+     "Es atraído hacia el imán, porque el cobre es magnético.",
+     "No se mueve, porque el cobre no es magnético.",
+     "Es repelido, porque la corriente inducida se opone al aumento del flujo.",
+     "Gira sobre su eje sin acercarse ni alejarse."
+    ],
+    "correcta": 2,
+    "explicacion": "Ley de Lenz: la corriente inducida en el anillo crea un polo norte frente al imán, que se opone al acercamiento.",
+    "errores": [
+     "cree que el cobre es magnético",
+     "cree que sin magnetismo no hay efecto",
+     null,
+     "respuesta de adivinanza"
+    ]
+   },
+   {
+    "enunciado": "En una cocina de inducción se pone una olla de vidrio con agua. El agua:",
+    "opciones": [
+     "Se calienta igual que en una olla de metal, porque la placa está caliente.",
+     "Se calienta más rápido, porque el vidrio deja pasar el campo.",
+     "Hierve de inmediato, porque el campo magnético calienta directamente el agua.",
+     "No se calienta, o casi nada, porque en el vidrio no se inducen corrientes."
+    ],
+    "correcta": 3,
+    "explicacion": "La cocina calienta induciendo corrientes en el fondo metálico de la olla. El vidrio no conduce, así que no se inducen corrientes y casi no se calienta.",
+    "errores": [
+     "calienta por contacto con la placa",
+     "el campo calienta al atravesar el material",
+     "el campo calienta el agua directamente",
+     null
+    ]
+   },
+   {
+    "enunciado": "Mientras un condensador se carga, entre sus placas no pasa ninguna carga. En la región entre las placas:",
+    "opciones": [
+     "Hay campo magnético, porque el campo eléctrico está cambiando.",
+     "No hay campo magnético, porque no hay corriente.",
+     "Hay campo magnético, porque saltan chispas entre las placas.",
+     "Hay campo magnético solo si entre las placas hay un material."
+    ],
+    "correcta": 0,
+    "explicacion": "Corriente de desplazamiento (Maxwell): un campo eléctrico que cambia produce campo magnético, igual que una corriente.",
+    "errores": [
+     null,
+     "solo las cargas en movimiento producen B",
+     "imagina una corriente física entre las placas",
+     "necesita un material"
+    ]
+   },
+   {
+    "enunciado": "Una emisora de FM transmite a 100 MHz. La longitud de onda de su señal es aproximadamente:",
+    "opciones": [
+     "3 m.",
+     "30 m.",
+     "0,3 m.",
+     "3 km."
+    ],
+    "correcta": 0,
+    "explicacion": "λ = c/f = (3,0 × 10⁸ m/s)/(1,0 × 10⁸ Hz) = 3 m.",
+    "errores": [
+     null,
+     "potencias de diez",
+     "potencias de diez",
+     "potencias de diez"
+    ]
+   }
+  ]
+ }
+}

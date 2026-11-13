@@ -1,0 +1,36 @@
+{
+  "_nota": "Catálogo de ideas previas por capítulo. 'claves' son expresiones regulares (sin tildes, en minúsculas) que se buscan en el texto de las diapositivas de actividad. 'pregunta' es el número en la prueba de entrada y salida del capítulo (assets/pruebas.json). 'sugerencia' es la actividad que la atacaría si falta.",
+  "relatividad-especial": [
+    {"idea": "La simultaneidad es absoluta", "claves": ["simultane"], "pregunta": 1, "fuente": "Scherr, Shaffer y Vokos (2001)", "sugerencia": "Pares con el tren y los dos rayos: predecir qué cayó primero para la pasajera antes de mostrar el diagrama."},
+    {"idea": "«Un evento ocurre cuando el observador lo ve»", "claves": ["cuando (lo|la) ve", "red de relojes", "llega la (luz|senal)"], "pregunta": null, "fuente": "Scherr, Shaffer y Vokos (2001)", "sugerencia": "Individual: distinguir el instante del evento del instante en que llega la señal a cada observador."},
+    {"idea": "Mezclar sistemas de referencia (muón)", "claves": ["muon"], "pregunta": 3, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Captura con tabla de dos columnas (sistema del muón / sistema de tierra): qué se contrae y qué se dilata en cada uno."},
+    {"idea": "Dilatación del tiempo al revés o tiempo absoluto", "claves": ["dilatacion", "tiempo propio", "reloj de luz"], "pregunta": 2, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Individual: vida media del muón vista desde tierra con γ dado."},
+    {"idea": "Contracción de la longitud al revés o longitud absoluta", "claves": ["contraccion", "longitud propia"], "pregunta": 6, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Individual: regla de 1 m a 0,6c."},
+    {"idea": "Las velocidades se suman siempre (luz y sondas)", "claves": ["suma de velocidades", "composicion de velocidades", "faro", "sonda"], "pregunta": 4, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Pares: la luz de un faro en una nave que va a 0,8c."},
+    {"idea": "Paradoja de los gemelos «simétrica»", "claves": ["gemel"], "pregunta": 7, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Pares: ¿quién es más joven al reunirse?, y por qué la situación no es simétrica."},
+    {"idea": "Con más energía se supera c o solo «aumenta la masa»", "claves": ["supera(r)? (la rapidez de la luz|c\\b)", "alcanza(r)? c\\b", "lhc", "acelerador"], "pregunta": 8, "fuente": "Aslanides y Savage (2013)", "sugerencia": "Individual con la gráfica de γ frente a v/c: qué crece cuando se da más energía a un protón."}
+  ],
+  "dinamica-newtoniana": [
+    {"idea": "El más grande (o el más rápido) hace más fuerza", "claves": ["accion y reaccion", "choque de frente", "camion", "bus"], "pregunta": 1, "fuente": "Hestenes, Wells y Swackhamer (1992); Parcial 2", "sugerencia": "Pares con choque y dinamómetros que se revelan después de votar."},
+    {"idea": "Confundir fuerza con efecto (Δv)", "claves": ["cambio de velocidad", "delta ?v", "mayor cambio"], "pregunta": 2, "fuente": "Parcial 2", "sugerencia": "Individual: mismo Δp, distinto Δv = Δp/m."},
+    {"idea": "El movimiento necesita una fuerza en su dirección (ímpetu)", "claves": ["velocidad constante", "sin friccion", "hielo", "mantener el movimiento"], "pregunta": 9, "fuente": "Clement (1982); Halloun y Hestenes (1985)", "sugerencia": "Pares: disco sobre hielo con rapidez constante; ¿qué fuerzas horizontales hay?"},
+    {"idea": "v = 0 implica a = 0 en el punto más alto", "claves": ["punto mas alto", "altura maxima"], "pregunta": 5, "fuente": "Hestenes, Wells y Swackhamer (1992)", "sugerencia": "Individual con vectores de velocidad y aceleración en el punto más alto."},
+    {"idea": "El tiro horizontal «sostiene» el objeto", "claves": ["tiro horizontal", "sale rodando", "independencia", "barco"], "pregunta": 3, "fuente": "Parcial 2", "sugerencia": "Captura con predicción: canica que sale rodando frente a canica que se deja caer."},
+    {"idea": "Usar la altura en vez de la diferencia de alturas", "claves": ["diferencia de altura", "delta ?h", "montana rusa"], "pregunta": 6, "fuente": "Parcial 2", "sugerencia": "Individual: rapidez en un punto intermedio de una montaña rusa."},
+    {"idea": "Lo pesado cae más rápido", "claves": ["mas pesad", "misma altura", "la masa se cancela"], "pregunta": 7, "fuente": "Halloun y Hestenes (1985)", "sugerencia": "Pares: dos bolas de distinta masa soltadas desde la misma altura."},
+    {"idea": "El momento como escalar (signos)", "claves": ["rebota", "vector momento", "signo del momento"], "pregunta": 8, "fuente": "Parcial 2", "sugerencia": "Individual: pelota que rebota en una pared; |Δp|."},
+    {"idea": "Unidades y potencias de diez", "claves": ["unidades", "potencia de diez"], "pregunta": 10, "fuente": "Parcial 2", "sugerencia": "Práctica numérica con verificación de unidades como último paso."},
+    {"idea": "Justificación incompleta (principio + condición + conclusión)", "claves": ["justific"], "pregunta": null, "fuente": "Parcial 2", "sugerencia": "Clave `justificacion` en una actividad con entrega."}
+  ],
+  "electromagnetismo": [
+    {"idea": "La carga mayor hace más fuerza (acción y reacción en Coulomb)", "claves": ["coulomb.*(igual|mayor)", "carga mayor", "4 ?q"], "pregunta": null, "fuente": "Maloney et al. (2001), CSEM", "sugerencia": "Pares: dos cargas q y 4q; comparar las dos fuerzas."},
+    {"idea": "Fuerza proporcional a 1/r o independiente de la distancia", "claves": ["duplica la distancia", "inverso del cuadrado", "1/r"], "pregunta": 1, "fuente": "Maloney et al. (2001), CSEM", "sugerencia": "Individual: fuerza al duplicar la distancia."},
+    {"idea": "Solo los imanes producen campo magnético", "claves": ["oersted", "brujula", "campo de un (cable|alambre)"], "pregunta": 2, "fuente": "Maloney et al. (2001), CSEM", "sugerencia": "Clase demostrativa: brújula junto a un cable antes y después de cerrar el circuito."},
+    {"idea": "Corrientes paralelas como cargas: «iguales se repelen»", "claves": ["paralel"], "pregunta": 3, "fuente": "Maloney et al. (2001), CSEM", "sugerencia": "Pares: dos alambres con corrientes en el mismo sentido."},
+    {"idea": "Basta con que haya campo para que haya corriente inducida", "claves": ["iman quieto", "flujo (no )?cambia", "detenid"], "pregunta": 4, "fuente": "Ding et al. (2006), BEMA", "sugerencia": "Individual con el imán detenido dentro de la bobina."},
+    {"idea": "Ley de Lenz: el cobre «se pega» al imán", "claves": ["lenz", "anillo"], "pregunta": 5, "fuente": "Ding et al. (2006), BEMA", "sugerencia": "Individual: imán que se acerca o se aleja de una bobina o un anillo."},
+    {"idea": "Aplicaciones de la inducción (cocina, generador)", "claves": ["cocina", "generador", "induccion"], "pregunta": 6, "fuente": "Curso", "sugerencia": "Captura con tabla de aplicaciones."},
+    {"idea": "Sin corriente de carga no hay campo magnético (desplazamiento)", "claves": ["desplazamiento", "condensador"], "pregunta": 7, "fuente": "Curso; Maxwell", "sugerencia": "Individual: ¿hay B entre las placas mientras el condensador se carga?"},
+    {"idea": "Potencias de diez en c = λf", "claves": ["longitud de onda", "lambda", "fm"], "pregunta": 8, "fuente": "Curso", "sugerencia": "Captura con tabla de emisoras de FM."}
+  ]
+}
