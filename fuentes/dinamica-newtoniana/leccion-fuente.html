@@ -546,19 +546,19 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       <div class="caja frag">
         <h3>Cantidad de movimiento</h3>
         \[ \vect{p} = \gamma m \vect{v} \;\xrightarrow{\;\gamma \,\to\, 1\;}\; \vect{p} = m\vect{v} \]
-        <p class="nota">En el límite no relativista (\(\gamma = 1\)) y con masa constante, la ley de la fuerza se reduce a \(\vect{F} = m\vect{a}\).</p>
+        <p class="nota">\(m\): masa; \(\vect{v}\): velocidad. En el límite no relativista (\(\gamma = 1\)) y con masa constante, la ley de la fuerza se reduce a \(\vect{F} = m\vect{a}\).</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Leyes de Newton" id="ac-hockey" data-label="Actividad: el disco de hockey" data-speaker-notes="Actividad en parejas (instrucción entre pares): un disco se desliza sin fricción con velocidad constante. Respuesta: 3 (fuerza neta cero). Error común: creer que el movimiento necesita una fuerza en su dirección (1). Con F = Δp/Δt, velocidad constante significa Δp = 0 y F = 0.">
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Leyes de Newton" id="ac-hockey" data-label="Actividad: el disco de hockey" data-speaker-notes="Actividad en parejas (instrucción entre pares): un disco se desliza sin fricción con velocidad constante. Respuesta: 1 (fuerza neta cero). Errores: 2) creer que el movimiento necesita una fuerza en su dirección (ímpetu), el más común; 3) confunde con la fricción; 4) cree que la fuerza depende de la rapidez. Con F = Δp/Δt, velocidad constante significa Δp = 0 y F = 0.">
   <p class="ceja">§ 3.1 · Leyes de Newton · Actividad en parejas</p>
   <h2 class="titulo">El disco de hockey: ¿hace falta una fuerza para moverse?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="hockey"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Un disco de hockey se desliza sobre hielo, sin fricción, en línea recta y con <strong>velocidad constante</strong>. La fuerza horizontal neta sobre el disco:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">apunta en la dirección del movimiento: lo mantiene andando</button><button type="button" class="pr-opc" data-o="b">apunta en contra del movimiento</button><button type="button" class="pr-opc" data-o="c">es cero</button><button type="button" class="pr-opc" data-o="d">depende de qué tan rápido va</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">Un disco de hockey se desliza sobre hielo, sin fricción, en línea recta y con <strong>velocidad constante</strong>. La fuerza horizontal neta sobre el disco:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">es cero</button><button type="button" class="pr-opc" data-o="b">apunta en la dirección del movimiento: lo mantiene andando</button><button type="button" class="pr-opc" data-o="c">apunta en contra del movimiento</button><button type="button" class="pr-opc" data-o="d">depende de qué tan rápido va</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Si la velocidad es constante, la cantidad de movimiento no cambia: \(\Delta\vect{p} = 0\), y por la ley de la fuerza \(\vect{F} = \Delta\vect{p}/\Delta t = 0\). <strong>Moverse no requiere fuerza; cambiar el movimiento sí.</strong> La idea de que hace falta empujar para seguir andando viene de la fricción, que aquí no existe.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-hockey">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Escribe la ley de la fuerza como \(\vect{F} = \Delta\vect{p}/\Delta t\). Si la velocidad no cambia, ¿cuánto vale \(\Delta\vect{p}\)?</p></div>
@@ -584,7 +584,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       \[ v \approx \dfrac{x - x_0}{t - t_0} = \dfrac{\Delta x}{\Delta t}. \]
       <label class="ctrl"><span>Intervalo \(\Delta t\)</span><input type="range" id="vi-dt" min="0.05" max="1.5" step="0.05" value="1.5"><span class="v" id="vi-dtv"></span></label>
       <div class="caja">
-        <p style="margin:0">En tres dimensiones, y con \(\vect{p} = m\vect{v}\):</p>
+        <p style="margin:0">En tres dimensiones, con la posición \(\vect{r}\) y \(\vect{p} = m\vect{v}\):</p>
         \[ \vect{r} \approx \vect{r}_0 + \dfrac{\vect{p}}{m}\,\Delta t. \]
       </div>
       <p class="nota">La tangente en \(t_0 = 2{,}5\qty{}{s}\) tiene pendiente \(v_{\text{inst}} = 1{,}7\qty{}{m/s}\).</p>
@@ -604,6 +604,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
         \[ \vect{r} = \vect{r}_0 + \dfrac{\vect{p}}{m}\,\Delta t. \]</p>
       <p class="frag">Avanzamos el reloj, \(t \leftarrow t + \Delta t\), y repetimos mientras \(t \lt t_{\text{final}}\).</p>
       <div class="caja frag"><p style="margin:0">Usar el momento nuevo para actualizar la posición es el método de <span class="prop" data-pop="pop-ec">Euler-Cromer</span>.</p></div>
+      <p class="nota frag" style="margin:0"><strong>Pregunta para la clase:</strong> si Δt se hace más pequeño, ¿la solución numérica se acerca o se aleja de la exacta?</p>
     </div>
     <figure class="svgbox" style="margin:0">
       <div class="svghd"><span>Diagrama de flujo</span><span class="val" id="fl-lect">Inicio</span></div>
@@ -755,7 +756,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Aceleración constante y energía" id="ac-vt" data-label="Actividad: distancia con aceleración constante" data-speaker-notes="Actividad en parejas: un carro parte del reposo con aceleración constante; si en 2 s recorre d, en 4 s recorre 4d (área del triángulo ½at², proporcional a t²). Errores comunes: 2d (proporcionalidad directa), 3d.">
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Aceleración constante y energía" id="ac-vt" data-label="Actividad: distancia con aceleración constante" data-speaker-notes="Respuesta: 3 (4d). Errores: 1) 2d, proporcionalidad directa con t; 2) 3d, suma de intervalos; 4) 8d, proporcional a t³. Actividad en parejas: un carro parte del reposo con aceleración constante; si en 2 s recorre d, en 4 s recorre 4d (área del triángulo ½at², proporcional a t²). Errores comunes: 2d (proporcionalidad directa), 3d.">
   <p class="ceja">§ 3.3 · Aceleración constante · Actividad en parejas</p>
   <h2 class="titulo">Arranca un carro: ¿cuánto recorre en el doble de tiempo?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
@@ -803,6 +804,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       <label class="ctrl"><span>Paso \(\Delta t\)</span><input type="range" id="lv-dt" min="0.02" max="0.5" step="0.02" value="0.1"><span class="v" id="lv-dtv"></span></label>
       <div class="caja c2"><p style="margin:0">Solución analítica: \(y(t) = v_0 t - \tfrac12 g t^{2}\).</p></div>
       <p class="nota">Los puntos numéricos quedan ligeramente por debajo de la parábola: el error es proporcional a \(\Delta t\).</p>
+      <p class="puente" style="margin:0">→ Predice antes de mover el deslizador: con un Δt más grande, ¿los puntos quedan más cerca o más lejos de la parábola exacta?</p>
     </div>
   </div>
 </section>
@@ -816,7 +818,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       <div id="ce-fig"></div>
     </figure>
     <div class="pila">
-      <p>Con \(W = -mgh\) en el teorema del trabajo y la energía:</p>
+      <p>Con \(W = -mgh\) en el teorema del trabajo y la energía (\(K\): energía cinética; \(U = mgh\): energía potencial):</p>
       \[ \tfrac12 m v_0^{2} = \tfrac12 m v^{2} + mgh \;\Longrightarrow\; E_{\text{total}} = K + U = \text{cte.} \]
       <label class="ctrl"><span>Tiempo \(t\)</span><input type="range" id="ce-t" min="0" max="2" step="0.02" value="0.5"><span class="v" id="ce-tv"></span></label>
       <p class="nota">La igualdad vale para toda fuerza conservativa: aquellas cuyo trabajo solo transforma energía mecánica.</p>
@@ -969,7 +971,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Aceleración constante y energía" id="ac-tiro-horizontal" data-label="Actividad: Una bola se suelta y otra se lanza: ¿cuál llega primero?" data-speaker-notes="Actividad individual con entrega, sobre el problema 1 del Parcial 2 (pluma y martillo en la Luna): 3 de 7 dijeron que las aceleraciones eran distintas o cero y varios que llegaba primero uno de los dos. Pregunta 1: respuesta 3 (iguales, g hacia abajo; la velocidad horizontal constante no anula la aceleración vertical). Pregunta 2: respuesta 2 (al mismo tiempo: las dos parten con velocidad vertical cero y la misma aceleración g; el movimiento horizontal no cambia el vertical). La casilla de justificación entrena el paso que más falló en el examen: escribir el principio, la condición y la conclusión. El simulador (para comprobar después de responder) muestra fotos cada 0,2 s y líneas que unen las posiciones a la misma altura.">
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Aceleración constante y energía" id="ac-tiro-horizontal" data-label="Actividad: Una bola se suelta y otra se lanza: ¿cuál llega primero?" data-speaker-notes="Actividad individual con entrega, sobre el problema 1 del Parcial 2 (pluma y martillo en la Luna): 3 de 7 dijeron que las aceleraciones eran distintas o cero y varios que llegaba primero uno de los dos. Pregunta 1: respuesta 3 (iguales, g hacia abajo; la velocidad horizontal constante no anula la aceleración vertical). Errores: 1) cree que el impulso horizontal suma aceleración; 2) cree que el lanzamiento horizontal «sostiene» la bola; 4) confunde velocidad horizontal constante con aceleración nula. Pregunta 2: respuesta 2 (al mismo tiempo: las dos parten con velocidad vertical cero y la misma aceleración g). Errores: 1) más rapidez significa llegar antes; 3) confunde distancia recorrida con tiempo de caída; 4) cree que la rapidez horizontal cambia el tiempo de caída. La casilla de justificación entrena el paso que más falló en el examen: escribir el principio, la condición y la conclusión. El simulador (para comprobar después de responder) muestra fotos cada 0,2 s y líneas que unen las posiciones a la misma altura.">
   <p class="ceja">§ 3.5 · Tiro horizontal · Actividad individual</p>
   <h2 class="titulo">Una bola se suelta y otra se lanza: ¿cuál llega primero?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
@@ -1024,13 +1026,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Aceleración constante y energía" id="ac-vertical" data-label="Actividad: dos disparos verticales" data-speaker-notes="Actividad en parejas (instrucción entre pares), del ejercicio conceptual del documento «Tiempos de vuelo en lanzamiento vertical»: un barco en reposo dispara simultáneamente dos proyectiles verticales, A desde la popa y B desde la proa; A sube más alto. Respuesta: 3 (B regresa primero). Como H = v₀²/(2g) y t_vuelo = 2v₀/g, t_vuelo = √(8H/g) ∝ √H: el que sube menos baja antes, sin importar la masa. Error común: «ambos al mismo tiempo» (2), confundiendo con la caída simultánea desde la misma altura. Prepara la pregunta siguiente de los barcos: el tiempo de vuelo lo fija solo el movimiento vertical.">
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Aceleración constante y energía" id="ac-vertical" data-label="Actividad: dos disparos verticales" data-speaker-notes="Actividad en parejas (instrucción entre pares), del ejercicio conceptual del documento «Tiempos de vuelo en lanzamiento vertical»: un barco en reposo dispara simultáneamente dos proyectiles verticales, A desde la popa y B desde la proa; A sube más alto. Respuesta: 4 (B regresa primero). Como H = v₀²/(2g) y t_vuelo = 2v₀/g, t_vuelo = √(8H/g) ∝ √H: el que sube menos baja antes, sin importar la masa. Errores: 2) «ambos al mismo tiempo», confundiendo con la caída simultánea desde la misma altura; 1) cree que el que sube más va más rápido y vuelve antes; 3) cree que hacen falta las masas. Prepara la pregunta siguiente de los barcos: el tiempo de vuelo lo fija solo el movimiento vertical.">
   <p class="ceja">§ 3.5 · Movimiento parabólico · Actividad en parejas</p>
   <h2 class="titulo">Dos disparos verticales: ¿cuál regresa primero?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="vertical"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Disparar</button><span class="pc-simtxt"></span></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Un barco de guerra <strong>en reposo</strong> dispara simultáneamente dos proyectiles exactamente hacia arriba: A desde la popa y B desde la proa. Sin resistencia del aire, alcanzan las alturas máximas de la figura. ¿Qué proyectil regresa primero al nivel del barco?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">el proyectil A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">el proyectil B</button><button type="button" class="pr-opc" data-o="d">se necesita más información</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un barco de guerra <strong>en reposo</strong> dispara simultáneamente dos proyectiles exactamente hacia arriba: A desde la popa y B desde la proa. Sin resistencia del aire, alcanzan las alturas máximas de la figura. ¿Qué proyectil regresa primero al nivel del barco?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">el proyectil A</button><button type="button" class="pr-opc" data-o="b">ambos al mismo tiempo</button><button type="button" class="pr-opc" data-o="c">se necesita más información</button><button type="button" class="pr-opc" data-o="d">el proyectil B</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En la altura máxima \(v = 0\): \(H = v_0^{2}/(2g)\), así que A salió más rápido. El tiempo de vuelo es \(t_{\text{vuelo}} = 2v_0/g\), y eliminando \(v_0\),
           \[ t_{\text{vuelo}} = \sqrt{\dfrac{8H}{g}} \propto \sqrt{H} \,. \]
           El que sube menos regresa antes: <strong>B</strong>, sin importar su masa. Si A sube el cuádruple, tarda el doble.</p></div></div>
@@ -1046,7 +1048,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   <p class="puente">→ ¿Y si los disparos son parabólicos?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Aceleración constante y energía" id="pc-barcos" data-label="¿Qué barco es alcanzado primero?" data-speaker-notes="§ 3.5. Pregunta conceptual (diapositiva 2 del PowerPoint de práctica): el tiempo de vuelo depende solo del movimiento vertical. Explicación alternativa con el ángulo de lanzamiento: con la misma rapidez, t = 2v₀ sin θ / g, y el disparo a A sale con mayor ángulo.",>
+<section class="diapositiva compacta pc-slide" data-seccion="Aceleración constante y energía" id="pc-barcos" data-label="¿Qué barco es alcanzado primero?" data-speaker-notes="Respuesta: 3 (B). Errores: 1) «el más cercano llega primero»; 2) confunde con proyectiles a la misma altura; 4) cree que faltan datos porque no hay números. § 3.5. Pregunta conceptual (diapositiva 2 del PowerPoint de práctica): el tiempo de vuelo depende solo del movimiento vertical. Explicación alternativa con el ángulo de lanzamiento: con la misma rapidez, t = 2v₀ sin θ / g, y el disparo a A sale con mayor ángulo.",>
   <p class="ceja">§ 3.5 · Movimiento parabólico · Pregunta</p>
   <h2 class="titulo">¿Qué barco es alcanzado primero?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
@@ -1412,6 +1414,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       <div class="fila-btn"><button type="button" class="btn prim" id="gr-play">▶ Lanzar</button><button type="button" class="btn" id="gr-reset">↺ Reiniciar</button></div>
       <div class="lectura" style="grid-template-columns:1fr 1fr;margin-top:0"><div>\(\vect{P}\) justo antes<b id="gr-pa"></b></div><div>\(\vect{P}\) justo después<b id="gr-pd"></b></div></div>
       <div class="caja" style="padding:6px 16px"><p style="margin:0;font-size:25px">La explosión solo tiene <strong>fuerzas internas</strong>: no cambia \(\vect{P}_{\text{total}}\). Después, la única fuerza externa sigue siendo el peso, \(M_{\text{total}}\,\vect{g} = M_{\text{total}}\,\vect{a}_{\text{CM}}\): el CM continúa la parábola <strong>hasta que el primer fragmento toca el suelo</strong>, que entonces ejerce una fuerza externa.</p></div>
+      <p class="puente" style="margin:0">→ Predice antes de lanzar: después de la explosión, ¿qué trayectoria sigue el centro de masas de los fragmentos?</p>
     </div>
   </div>
 </section>
@@ -1614,7 +1617,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   <p class="puente">→ ¿Y si lo que hace girar es la gravedad?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="pc-canon" data-label="El cañón de Newton" data-speaker-notes="§ 3.8. El cañón de Newton conectado con el movimiento circular: cerca de la superficie la caída libre g₀ hace de aceleración centrípeta, g₀ = v²/R, así que v_orb = √(g₀R) ≈ 7,9 km/s. Caer y orbitar son lo mismo. Deja abierta la pregunta: ¿la Luna también cae? Con más rapidez la órbita se alarga y, desde unos 11,2 km/s, la bala escapa: se explica más adelante con la energía potencial.">
+<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="pc-canon" data-label="El cañón de Newton" data-speaker-notes="Respuesta: v_orb ≈ 7,9 km/s. § 3.8. El cañón de Newton conectado con el movimiento circular: cerca de la superficie la caída libre g₀ hace de aceleración centrípeta, g₀ = v²/R, así que v_orb = √(g₀R) ≈ 7,9 km/s. Caer y orbitar son lo mismo. Deja abierta la pregunta: ¿la Luna también cae? Con más rapidez la órbita se alarga y, desde unos 11,2 km/s, la bala escapa: se explica más adelante con la energía potencial.">
   <p class="ceja">§ 3.8 · Gravitación universal · Práctica</p>
   <h2 class="titulo">El cañón de Newton: caer y orbitar son lo mismo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.1fr) minmax(0,1fr)">
@@ -1799,13 +1802,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   <p class="puente">→ Actividad: ¿qué fuerza siente cada cuerpo?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-tl" data-label="Actividad: ¿quién atrae más?" data-speaker-notes="Actividad en parejas, de predicción (antes de la ley de gravitación como fuerza): fuerza de la Luna sobre la Tierra comparada con la de la Tierra sobre la Luna. Respuesta: 2 (F, acción y reacción). Error común: 1 (F/81, confundir fuerza con aceleración). Se conecta después con el centro de masas Tierra–Luna: aceleraciones en razón 1:81.">
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-tl" data-label="Actividad: ¿quién atrae más?" data-speaker-notes="Actividad en parejas, de predicción (antes de la ley de gravitación como fuerza): fuerza de la Luna sobre la Tierra comparada con la de la Tierra sobre la Luna. Respuesta: 3 (F, acción y reacción). Errores: 1) F/81, confunde fuerza con aceleración, el más común; 2) invierte la razón de masas; 4) cree que solo el cuerpo grande atrae. Se conecta después con el centro de masas Tierra–Luna: aceleraciones en razón 1:81.">
   <p class="ceja">§ 3.8 · Gravitación universal · Actividad en parejas</p>
   <h2 class="titulo">La Tierra y la Luna: ¿quién atrae más a quién?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="tierraluna"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="b"><div class="pr-q">La Tierra tiene unas 81 veces la masa de la Luna. Si la Tierra atrae a la Luna con una fuerza de magnitud \(F\), la Luna atrae a la Tierra con una fuerza de magnitud:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F/81\): la Luna tiene menos masa</button><button type="button" class="pr-opc" data-o="b">\(F\)</button><button type="button" class="pr-opc" data-o="c">\(81\,F\)</button><button type="button" class="pr-opc" data-o="d">cero: la Luna no atrae a la Tierra, solo la Tierra a la Luna</button></div>
+      <div class="pc-q" data-ok="c"><div class="pr-q">La Tierra tiene unas 81 veces la masa de la Luna. Si la Tierra atrae a la Luna con una fuerza de magnitud \(F\), la Luna atrae a la Tierra con una fuerza de magnitud:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F/81\): la Luna tiene menos masa</button><button type="button" class="pr-opc" data-o="b">\(81\,F\)</button><button type="button" class="pr-opc" data-o="c">\(F\)</button><button type="button" class="pr-opc" data-o="d">cero: la Luna no atrae a la Tierra, solo la Tierra a la Luna</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Por la ley de acción y reacción las dos fuerzas tienen la <strong>misma magnitud</strong> \(F\) y sentidos opuestos. Lo que difiere es el efecto: la aceleración de la Tierra, \(F/M_T\), es 81 veces menor que la de la Luna, \(F/m_L\). Por eso la Tierra también se mueve, pero poco: ambas giran alrededor del centro de masas.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-tl">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Piensa en la ley de acción y reacción. ¿Qué es lo que sí es distinto para la Tierra y para la Luna: la fuerza o la aceleración?</p></div>
@@ -1979,7 +1982,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   <p class="puente">→ ¿Con qué rapidez ya no se vuelve?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="dp-escape" data-label="Velocidad de escape" data-speaker-notes="§ 3.8. Velocidad de escape: E = 0, v_esc = √(2GM/R) = √2 v_orb. Comparación entre cuerpos; si v_esc alcanzara c, el cuerpo sería un agujero negro: radio de Schwarzschild 2GM/c² (la Tierra cabría en 9 mm).">
+<section class="diapositiva compacta pc-slide" data-seccion="Fuerzas en acción" id="dp-escape" data-label="Velocidad de escape" data-speaker-notes="Respuesta: v_esc ≈ 11,2 km/s. § 3.8. Velocidad de escape: E = 0, v_esc = √(2GM/R) = √2 v_orb. Comparación entre cuerpos; si v_esc alcanzara c, el cuerpo sería un agujero negro: radio de Schwarzschild 2GM/c² (la Tierra cabría en 9 mm).">
   <p class="ceja">§ 3.8 · Gravitación universal</p>
   <h2 class="titulo">Velocidad de escape: salir del pozo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)">
@@ -2000,13 +2003,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   <p class="puente">→ Actividad: ¿alrededor de qué punto giran la Tierra y la Luna?</p>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-cm" data-label="Actividad: ¿alrededor de qué punto giran?" data-speaker-notes="Actividad en parejas, de predicción (antes del centro de masas Tierra–Luna): r_CM = r·m_L/(M_T+m_L) ≈ 384 000/82 ≈ 4670 km del centro de la Tierra, dentro de ella. Respuesta: 3. Errores: el centro de la Tierra (1), el punto medio (2).">
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Fuerzas en acción" id="ac-cm" data-label="Actividad: ¿alrededor de qué punto giran?" data-speaker-notes="Actividad en parejas, de predicción (antes del centro de masas Tierra–Luna): r_CM = r·m_L/(M_T+m_L) ≈ 384 000/82 ≈ 4670 km del centro de la Tierra, dentro de ella. Respuesta: 1. Errores: 2) el centro de la Tierra, cree que la Tierra no se mueve; 3) el punto medio, ignora las masas; 4) invierte el papel de las masas.">
   <p class="ceja">§ 3.8 · Gravitación universal · Actividad en parejas</p>
   <h2 class="titulo">La Tierra y la Luna: ¿alrededor de qué punto giran?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="cmtl"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">La Tierra y la Luna se atraen con fuerzas iguales y opuestas, y giran juntas alrededor de su centro de masas. Con \(M_T \approx 81\,m_L\) y una distancia de \(\qty{384000}{km}\) entre sus centros, ese punto está:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">en el centro de la Tierra</button><button type="button" class="pr-opc" data-o="b">en el punto medio entre la Tierra y la Luna</button><button type="button" class="pr-opc" data-o="c">dentro de la Tierra, a unos \(\qty{4700}{km}\) de su centro</button><button type="button" class="pr-opc" data-o="d">en la superficie de la Luna</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">La Tierra y la Luna se atraen con fuerzas iguales y opuestas, y giran juntas alrededor de su centro de masas. Con \(M_T \approx 81\,m_L\) y una distancia de \(\qty{384000}{km}\) entre sus centros, ese punto está:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">dentro de la Tierra, a unos \(\qty{4700}{km}\) de su centro</button><button type="button" class="pr-opc" data-o="b">en el centro de la Tierra</button><button type="button" class="pr-opc" data-o="c">en el punto medio entre la Tierra y la Luna</button><button type="button" class="pr-opc" data-o="d">en la superficie de la Luna</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con el origen en el centro de la Tierra: \(r_{\text{CM}} = \dfrac{m_L\,r}{M_T + m_L} = \dfrac{\qty{384000}{km}}{82} \approx \qty{4700}{km}\). Como el radio de la Tierra es \(\qty{6371}{km}\), el centro de masas queda <strong>dentro</strong> de la Tierra, pero no en su centro: la Tierra también describe una pequeña órbita, de unos \(\qty{4700}{km}\) de radio, cada mes.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="gform-btn" data-gform-open="gform-ac-cm">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 El centro de masas está más cerca del cuerpo más masivo, en proporción inversa a las masas: \(M_T\,d_T = m_L\,d_L\).</p></div>
@@ -2059,7 +2062,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
           <p style="margin:0 0 6px"><strong>4 · Cantidades de movimiento.</strong> Multiplicando por las masas,
             \[ \vect{p}_L = m_L\,\vect{v}_L = \dfrac{m_L M_T}{M}\,\vect{v}, \qquad \vect{p}_T = M_T\,\vect{v}_T = -\,\dfrac{m_L M_T}{M}\,\vect{v} \,, \]
             \[ \resalta{\vect{p}_T = -\,\vect{p}_L} \;\Longrightarrow\; \vect{P}_{\text{total}} = \vect{p}_T + \vect{p}_L = M\,\vect{V}_{\text{CM}} = \vect{0} \,. \]
-            El centro de masas no se mueve: por eso el origen sigue siéndolo durante toda la simulación.</p>
+            Como \(\vect{V}_{\text{CM}}\), la velocidad del centro de masas, es cero, el centro de masas no se mueve: por eso el origen sigue siéndolo durante toda la simulación.</p>
           <p style="margin:0"><strong>5 · Condiciones iniciales de la simulación (perigeo).</strong> Datos: \(M_T = 5{,}972\times 10^{24}\,\mathrm{kg}\), \(m_L = 7{,}342\times 10^{22}\,\mathrm{kg}\), \(M = 6{,}045\times 10^{24}\,\mathrm{kg}\), así que \(M_T/M \approx 0{,}9879\) y \(m_L/M \approx 0{,}0121\). En el perigeo, \(\vect{r} = r_p\,\hat{\vect{x}}\) con \(r_p = \qty{363296}{km}\) y \(\vect{v} = v_p\,\hat{\vect{y}}\) con \(v_p = \qty{1082{,}4}{m/s}\):
             \[ \vect{r}_L \approx \qty{358884}{km}\,\hat{\vect{x}}, \qquad \vect{r}_T \approx -\,\qty{4412}{km}\,\hat{\vect{x}} \,, \]
             \[ \vect{v}_L = \dfrac{M_T}{M}\,v_p\,\hat{\vect{y}} \approx (0{,}9879)(\qty{1082{,}4}{m/s})\,\hat{\vect{y}} \approx \qty{1069{,}3}{m/s}\,\hat{\vect{y}} \,, \]
@@ -2133,6 +2136,22 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Fuerzas en acción" id="ac-luna-cae" data-label="Actividad: Predice: ¿la Luna está cayendo?" data-speaker-notes="Actividad individual, predicción antes de la simulación Tierra–Luna. Respuesta: 4. Errores: 1) «fuerza centrífuga» que equilibra la gravedad, razonamiento de un marco no inercial: si la fuerza neta fuera cero, la Luna seguiría en línea recta; 2) «en el espacio no hay gravedad»; 3) cree que caer implica chocar. Conecta con el cañón de Newton: caer y orbitar son lo mismo.">
+  <p class="ceja">§ 3.9 · Gravitación · Actividad individual</p>
+  <h2 class="titulo">Predice: ¿la Luna está cayendo?</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">La Luna da vueltas alrededor de la Tierra a unos \(\qty{1}{km/s}\). ¿Está cayendo hacia la Tierra?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">no: está en equilibrio, porque la fuerza centrífuga cancela la gravedad</button><button type="button" class="pr-opc" data-o="b">no: tan lejos de la Tierra no hay gravedad</button><button type="button" class="pr-opc" data-o="c">sí, y algún día chocará con la Tierra</button><button type="button" class="pr-opc" data-o="d">sí: cae todo el tiempo, pero su velocidad de lado hace que nunca llegue</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La única fuerza sobre la Luna es la gravedad de la Tierra, que apunta hacia ella: por la ley de la fuerza, la Luna cambia su momento hacia la Tierra, es decir, <strong>cae</strong>. Como además avanza de lado, en cada instante se desvía de la línea recta justo lo necesario para seguir en órbita, como la bala del cañón de Newton. Si la fuerza neta fuera cero, la Luna se iría en línea recta.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-luna-cae">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Si no hubiera ninguna fuerza sobre la Luna, ¿qué trayectoria seguiría?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-luna-cae" class="gform-dlg" aria-label="Formulario: Actividad: Predice: ¿la Luna está cayendo?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Predice: ¿la Luna está cayendo?" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Fuerzas en acción" id="dp-orbita" data-label="Simulación Tierra–Luna" data-speaker-notes="§ 3.9. El mismo algoritmo de Euler-Cromer con la fuerza gravitacional, en el sistema del centro de masas.">
   <p class="ceja">§ 3.9 · Gravitación y simulación</p>
   <h2 class="titulo">El mismo algoritmo, ahora con \(\vect{F}_L = -G\,m_L M_T\,\vect{r}/\abs{\vect{r}}^{3}\)</h2>
@@ -2188,6 +2207,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
       </div>
       <div class="caja frag" style="padding:6px 16px"><p style="margin:0;font-size:24px"><strong>El baricentro está dentro de la Tierra</strong> (su radio es de \(\qty{6371}{km}\)): la Tierra no está quieta, da una vuelta mensual a su alrededor a unos \(\qty{13}{m/s}\).</p></div>
       <div class="caja c2 frag" style="padding:6px 16px"><p style="margin:0;font-size:24px"><strong>Así se descubren exoplanetas.</strong> Ese bamboleo, medido por efecto Doppler (capítulo 2), revela al compañero invisible: Júpiter mueve al Sol unos \(\qty{12{,}5}{m/s}\). Es el método de velocidad radial.</p></div>
+      <p class="puente" style="margin:0">→ Predice antes de cambiar el marco: si al inicio la Tierra está en reposo en el laboratorio, ¿el centro de masas se queda quieto o se desplaza?</p>
     </div>
   </div>
 </section>
@@ -2314,7 +2334,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
     <div class="pila bc-col">
       <div class="caja neutra frag"><h3>1 · Una rueda que gira tiene momento angular</h3>Cada punto de la rueda contribuye con \(\vect{r} \times \vect{p}\); en total, \(\vect{L} = I\,\vect{\omega}\), a lo largo del eje. Para la rueda delantera, a \(\qty{20}{km/h}\), \(L\) es del orden de \(\qty{3}{kg\,m^2/s}\).</div>
       <div class="caja neutra frag"><h3>2 · Inclinarse produce un torque</h3>Si la bicicleta se inclina a la derecha, el peso hace un torque horizontal, hacia adelante, <strong>perpendicular</strong> a \(\vect{L}\). Como \(\Delta\vect{L} = \vect{\tau}\,\Delta t\), el eje no se tumba: <strong>gira</strong>, como la rueda colgada,
-        \[ \Omega = \dfrac{\tau}{L} = \dfrac{m g d}{I\,\omega} \,. \]</div>
+        \[ \Omega = \dfrac{\tau}{L} = \dfrac{m g d}{I\,\omega} \,. \]<p class="nota" style="margin:0">\(\Omega\): rapidez angular con que gira el eje.</p></div>
       <div class="caja c2 frag"><h3>3 · La rueda gira hacia la caída</h3>La rueda delantera se orienta hacia el lado de la inclinación: las ruedas vuelven a quedar debajo del centro de masa y la bicicleta se endereza. Más rapidez, más \(L\), corrección más suave; quieta, \(L = 0\) y se cae.</div>
       <div class="caja neutra frag"><h3>4 · No es lo único</h3><span style="font-size:22px">La geometría de la horquilla (el avance) y sobre todo el ciclista, que gira el manubrio, también corrigen. En 2011 se construyó una bicicleta sin efecto giroscópico que se equilibra sola (Kooijman et&nbsp;al., <em>Science</em>).</span></div>
     </div>
@@ -2486,13 +2506,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Pregunta conceptual 1 de 13 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-abajo" data-label="Práctica conceptual: ¿Cambia la aceleración si lo lanzas hacia abajo?" data-speaker-notes="Respuesta: 1 (g). Errores: 3) cree que el impulso inicial sigue acelerando el objeto; 2) confunde con la resistencia del aire; 4) mezcla velocidad inicial con aceleración. Pregunta conceptual 1 de 13 (diapositiva 4 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 1 / 13</p>
   <h2 class="titulo">¿Cambia la aceleración si lo lanzas hacia abajo?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="abajo"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="b"><div class="pr-q">Si dejas caer un objeto sin resistencia del aire, acelera hacia abajo a \(\qty{9{,}8}{m/s^2}\). Si en lugar de eso lo <strong>lanzas</strong> hacia abajo, su aceleración después de soltarlo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">menor que \(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="c">mayor que \(\qty{9{,}8}{m/s^2}\)</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">Si dejas caer un objeto sin resistencia del aire, acelera hacia abajo a \(\qty{9{,}8}{m/s^2}\). Si en lugar de eso lo <strong>lanzas</strong> hacia abajo, su aceleración después de soltarlo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="b">menor que \(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="c">mayor que \(\qty{9{,}8}{m/s^2}\)</button><button type="button" class="pr-opc" data-o="d">depende de la rapidez con que se lance</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Una vez suelto, la única fuerza es el peso \(m g\): \(a = F/m = g\), sin importar la velocidad inicial. Lanzarlo cambia \(v_0\), no la aceleración; en una gráfica \(v\)–\(t\) las dos rectas son <strong>paralelas</strong> (misma pendiente).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Después de soltarlo, ¿qué fuerzas actúan sobre el objeto? ¿Depende alguna de su velocidad?</p></div>
@@ -2500,7 +2520,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Pregunta conceptual 2 de 13 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-cima" data-label="Práctica conceptual: En el punto más alto" data-speaker-notes="Respuesta: 3 (v = 0, a = g). Errores: 1) v = 0 implica a = 0, el más frecuente; 2) y 4) confunden el punto más alto con un estado de movimiento horizontal. Pregunta conceptual 2 de 13 (diapositiva 5 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 2 / 13</p>
   <h2 class="titulo">En el punto más alto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
@@ -2514,13 +2534,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Pregunta conceptual 3 de 13 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-acantilado" data-label="Práctica conceptual: Dos pelotas desde un acantilado" data-speaker-notes="Respuesta: 4 (misma rapidez). Errores: 2) «la que va hacia abajo ya lleva ventaja»; 1) «la de arriba cae desde más alto»; 3) cree que la altura cambia la comparación. Pregunta conceptual 3 de 13 (diapositiva 1 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 3 / 13</p>
   <h2 class="titulo">Dos pelotas desde un acantilado</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="acantilado"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Desde el borde de un acantilado se lanza una pelota verticalmente hacia arriba y otra hacia abajo, con la misma rapidez inicial. Sin resistencia del aire, la que llega al suelo con <strong>mayor rapidez</strong> es la lanzada:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">hacia arriba</button><button type="button" class="pr-opc" data-o="b">hacia abajo</button><button type="button" class="pr-opc" data-o="c">ninguna: ambas llegan con la misma rapidez</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Desde el borde de un acantilado se lanza una pelota verticalmente hacia arriba y otra hacia abajo, con la misma rapidez inicial. Sin resistencia del aire, la que llega al suelo con <strong>mayor rapidez</strong> es la lanzada:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">hacia arriba</button><button type="button" class="pr-opc" data-o="b">hacia abajo</button><button type="button" class="pr-opc" data-o="c">depende de la altura del acantilado</button><button type="button" class="pr-opc" data-o="d">ninguna: ambas llegan con la misma rapidez</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Al bajar, la pelota lanzada hacia arriba pasa por el borde con velocidad \(-v_0\): desde ahí hace lo mismo que la otra. Por energía: \(\tfrac12 m v^{2} = \tfrac12 m v_0^{2} + m g h\), igual para ambas. Solo cambia el tiempo de vuelo.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Sigue a la pelota lanzada hacia arriba: ¿con qué velocidad vuelve a pasar por el borde del acantilado?</p></div>
@@ -2528,13 +2548,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Pregunta conceptual 4 de 13 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piedra" data-label="Práctica conceptual: Subir o bajar: ¿qué tarda más con aire?" data-speaker-notes="Respuesta: 1 (subir tarda menos). Errores: 3) ignora el arrastre, simetría del caso sin aire; 2) invierte el efecto del arrastre; 4) confunde con la caída libre de cuerpos de distinta masa. Pregunta conceptual 4 de 13 (diapositiva 14 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 4 / 13</p>
   <h2 class="titulo">Subir o bajar: ¿qué tarda más con aire?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piedra"></div><div class="fila-btn" style="margin-top:6px"><button type="button" class="btn prim pc-sim">▶ Simular</button><span class="pc-simtxt"></span></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Se lanza una piedra hacia arriba. Además de la gravedad, la frena la resistencia del aire. El tiempo que tarda en subir hasta el punto más alto es ____ el tiempo que tarda en regresar desde la cima a su posición original.</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">mayor que</button><button type="button" class="pr-opc" data-o="b">igual a</button><button type="button" class="pr-opc" data-o="c">menor que</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">Se lanza una piedra hacia arriba. Además de la gravedad, la frena la resistencia del aire. El tiempo que tarda en subir hasta el punto más alto es ____ el tiempo que tarda en regresar desde la cima a su posición original.</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">menor que</button><button type="button" class="pr-opc" data-o="b">mayor que</button><button type="button" class="pr-opc" data-o="c">igual a</button><button type="button" class="pr-opc" data-o="d">depende de la masa de la piedra</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Al subir, peso y arrastre apuntan hacia abajo y se suman: frena rápido. Al bajar, el arrastre se opone al peso: acelera menos y llega más lenta. Recorre la misma altura más despacio, así que la bajada tarda más: \(t_{\text{sub}} \lt t_{\text{baj}}\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Compara las fuerzas al subir y al bajar: ¿suman o se restan la gravedad y el arrastre?</p></div>
@@ -2542,13 +2562,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Pregunta conceptual 5 de 13 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-montana" data-label="Práctica conceptual: Montaña rusa: rapidez y aceleración" data-speaker-notes="Respuesta: 4. Errores: 2) confunde rapidez creciente con aceleración creciente; 1) y 3) creen que la rapidez baja al aplanarse la vía. Pregunta conceptual 5 de 13 (diapositiva 3 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 5 / 13</p>
   <h2 class="titulo">Montaña rusa: rapidez y aceleración</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="montana"></div><label class="ctrl"><span>Posición del carro</span><input type="range" class="pc-pos" min="0" max="100" step="1" value="15"><span class="v pc-posv"></span></label></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="d"><div class="pr-q">Un carro baja por la vía de la figura. A medida que avanza más allá del punto mostrado, ¿qué sucede con su rapidez y con su aceleración en la dirección del movimiento?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">ambas disminuyen</button><button type="button" class="pr-opc" data-o="b">la rapidez disminuye, pero la aceleración aumenta</button><button type="button" class="pr-opc" data-o="c">ambas permanecen constantes</button><button type="button" class="pr-opc" data-o="d">la rapidez aumenta, pero la aceleración disminuye</button><button type="button" class="pr-opc" data-o="e">ambas aumentan</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un carro baja por la vía de la figura. A medida que avanza más allá del punto mostrado, ¿qué sucede con su rapidez y con su aceleración en la dirección del movimiento?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">ambas disminuyen</button><button type="button" class="pr-opc" data-o="b">ambas aumentan</button><button type="button" class="pr-opc" data-o="c">la rapidez disminuye, pero la aceleración aumenta</button><button type="button" class="pr-opc" data-o="d">la rapidez aumenta, pero la aceleración disminuye</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La altura siempre disminuye, así que la rapidez aumenta: \(v = \sqrt{2g\,(h_0 - h)}\). Pero la vía se aplana: la inclinación \(\alpha\) disminuye y con ella la aceleración tangencial \(a = g\sin\alpha\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 La aceleración a lo largo de la vía es \(g\sin\alpha\). ¿Qué le pasa a la inclinación \(\alpha\) más abajo?</p></div>
@@ -2556,13 +2576,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Pregunta conceptual 6 de 13 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-canicas" data-label="Práctica conceptual: Dos canicas desde el techo" data-speaker-notes="Respuesta: 1 (el doble). Errores: 2) confunde misma rapidez con misma energía; 3) «lo liviano cae más rápido»; 4) eleva al cuadrado la masa. Pregunta conceptual 6 de 13 (diapositiva 8 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 6 / 13</p>
   <h2 class="titulo">Dos canicas desde el techo</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="canicas"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="b"><div class="pr-q">Dos canicas, una con el doble de masa que la otra, se dejan caer desde el techo de un edificio. Justo antes de golpear el suelo, la más pesada tiene:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la misma energía cinética que la ligera</button><button type="button" class="pr-opc" data-o="b">el doble de energía cinética</button><button type="button" class="pr-opc" data-o="c">la mitad de energía cinética</button><button type="button" class="pr-opc" data-o="d">cuatro veces más energía cinética</button><button type="button" class="pr-opc" data-o="e">imposible de determinar</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">Dos canicas, una con el doble de masa que la otra, se dejan caer desde el techo de un edificio. Justo antes de golpear el suelo, la más pesada tiene:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">el doble de energía cinética</button><button type="button" class="pr-opc" data-o="b">la misma energía cinética que la ligera</button><button type="button" class="pr-opc" data-o="c">la mitad de energía cinética</button><button type="button" class="pr-opc" data-o="d">cuatro veces más energía cinética</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Ambas caen con la misma aceleración y llegan con la misma rapidez \(v = \sqrt{2gh}\). Como \(K = \tfrac12 m v^{2} = m g h\), la de doble masa tiene el <strong>doble</strong> de energía cinética.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Las dos llegan con la misma rapidez. ¿De qué depende entonces \(K = \tfrac12 m v^{2}\)?</p></div>
@@ -2570,13 +2590,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Pregunta conceptual 7 de 13 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-rampa" data-label="Práctica conceptual: Para llegar con el doble de rapidez" data-speaker-notes="Respuesta: 4 (h ∝ v²). Errores: 1) proporcionalidad directa entre altura y rapidez, el error más frecuente; 2) cree que la rapidez no depende de la altura; 3) adivinanza intermedia. Pregunta conceptual 7 de 13 (diapositiva 12 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 7 / 13</p>
   <h2 class="titulo">Para llegar con el doble de rapidez</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="rampa"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="d"><div class="pr-q">Un bloque en reposo se desliza por una rampa sin fricción y llega abajo con rapidez \(v\). Para llegar con rapidez \(2v\), ¿cuántas veces más alta debe ser la nueva rampa?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">la misma altura</button><button type="button" class="pr-opc" data-o="b">2 veces más alta</button><button type="button" class="pr-opc" data-o="c">3 veces más alta</button><button type="button" class="pr-opc" data-o="d">4 veces más alta</button><button type="button" class="pr-opc" data-o="e">5 veces más alta</button><button type="button" class="pr-opc" data-o="f">6 veces más alta</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Un bloque en reposo se desliza por una rampa sin fricción y llega abajo con rapidez \(v\). Para llegar con rapidez \(2v\), ¿cuántas veces más alta debe ser la nueva rampa?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">2 veces más alta</button><button type="button" class="pr-opc" data-o="b">la misma altura</button><button type="button" class="pr-opc" data-o="c">3 veces más alta</button><button type="button" class="pr-opc" data-o="d">4 veces más alta</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(m g h = \tfrac12 m v^{2}\Rightarrow h \propto v^{2}\). Doblar la rapidez cuadruplica la energía cinética, así que la altura debe ser <strong>4 veces</strong> mayor.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 La energía cinética ganada es igual a la potencial perdida, \(mgh\). ¿Cómo depende \(K\) de \(v\)?</p></div>
@@ -2584,13 +2604,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Pregunta conceptual 8 de 13 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bolera" data-label="Práctica conceptual: El alimentador de la bolera" data-speaker-notes="Respuesta: 1 (25 N). Errores: 2) usa el peso completo mg ≈ 50 N, ignora la rampa; 3) multiplica en vez de dividir; 4) olvida g. Pregunta conceptual 8 de 13 (diapositiva 7 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 8 / 13</p>
   <h2 class="titulo">El alimentador de la bolera</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bolera"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">El mecanismo de una bolera empuja las bolas por una rampa de \(\qty{1{,}0}{m}\) que las sube \(\qty{0{,}5}{m}\). ¿Aproximadamente cuánta fuerza debe ejercer sobre una bola de \(\qty{5{,}0}{kg}\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{200}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{50}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{25}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{5{,}0}{N}\)</button><button type="button" class="pr-opc" data-o="e">imposible de determinar</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">El mecanismo de una bolera empuja las bolas por una rampa de \(\qty{1{,}0}{m}\) que las sube \(\qty{0{,}5}{m}\). ¿Aproximadamente cuánta fuerza debe ejercer sobre una bola de \(\qty{5{,}0}{kg}\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{25}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{50}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{200}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{5{,}0}{N}\)</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Subiéndola a rapidez constante, \(F\,d = m g h\): \(F = \dfrac{(\qty{5}{kg})(\qty{9{,}8}{m/s^2})(\qty{0{,}5}{m})}{\qty{1{,}0}{m}} \approx \qty{25}{N}\). Es lo mismo que \(m g \sin 30^\circ\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Usa el trabajo: la fuerza a lo largo de la rampa por la distancia debe igualar la energía potencial ganada.</p></div>
@@ -2598,13 +2618,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Pregunta conceptual 9 de 13 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-bici" data-label="Práctica conceptual: Dos caminos a la cima" data-speaker-notes="Respuesta: 2 (la mitad). Errores: 1) cree que la fuerza solo depende de la altura; 3) usa el cuadrado de la longitud; 4) confunde fuerza con potencia. Pregunta conceptual 9 de 13 (diapositiva 9 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 9 / 13</p>
   <h2 class="titulo">Dos caminos a la cima</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="bici"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="c"><div class="pr-q">Dos caminos llevan de la base a la cima de una colina; uno es el doble de largo que el otro. Comparada con la fuerza promedio \(F_{\text{corta}}\) en el camino corto, la fuerza promedio en el camino largo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F_{\text{corta}}/4\)</button><button type="button" class="pr-opc" data-o="b">\(F_{\text{corta}}/3\)</button><button type="button" class="pr-opc" data-o="c">\(F_{\text{corta}}/2\)</button><button type="button" class="pr-opc" data-o="d">\(F_{\text{corta}}\)</button><button type="button" class="pr-opc" data-o="e">indeterminada: depende del tiempo</button></div>
+      <div class="pc-q" data-ok="b"><div class="pr-q">Dos caminos llevan de la base a la cima de una colina; uno es el doble de largo que el otro. Comparada con la fuerza promedio \(F_{\text{corta}}\) en el camino corto, la fuerza promedio en el camino largo es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(F_{\text{corta}}\)</button><button type="button" class="pr-opc" data-o="b">\(F_{\text{corta}}/2\)</button><button type="button" class="pr-opc" data-o="c">\(F_{\text{corta}}/4\)</button><button type="button" class="pr-opc" data-o="d">indeterminada: depende del tiempo</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">En ambos caminos el trabajo es el mismo, \(W = m g h\). Con \(W = F\,d\): \(F_{\text{larga}}\,(2d) = F_{\text{corta}}\,d\Rightarrow F_{\text{larga}} = F_{\text{corta}}/2\). Menos fuerza, más distancia.</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 La energía potencial ganada es la misma por los dos caminos. ¿Cómo se reparte en el camino largo?</p></div>
@@ -2612,13 +2632,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Pregunta conceptual 10 de 13 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-piano" data-label="Práctica conceptual: Subir un piano con poleas" data-speaker-notes="Respuesta: 1 (500 N). Errores: 2) ignora la ventaja de la polea móvil; 3) cuenta cuatro tramos; 4) duplica en vez de dividir. Pregunta conceptual 10 de 13 (diapositiva 10 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 10 / 13</p>
   <h2 class="titulo">Subir un piano con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="piano"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="e"><div class="pr-q">Un transportista sube un piano de \(\qty{100}{kg}\) a velocidad constante con el sistema de poleas sin fricción de la figura. ¿Con cuánta fuerza tira de la cuerda? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{2000}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{1500}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{1000}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{750}{N}\)</button><button type="button" class="pr-opc" data-o="e">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="f">\(\qty{200}{N}\)</button></div>
+      <div class="pc-q" data-ok="a"><div class="pr-q">Un transportista sube un piano de \(\qty{100}{kg}\) a velocidad constante con el sistema de poleas sin fricción de la figura. ¿Con cuánta fuerza tira de la cuerda? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{1000}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{250}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{2000}{N}\)</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Dos tramos de cuerda sostienen la polea del piano, cada uno con tensión \(T\): \(2T = m g\Rightarrow T = \dfrac{(\qty{100}{kg})(\qty{10}{m/s^2})}{2} = \qty{500}{N}\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Cuenta cuántos tramos de cuerda sostienen la polea móvil unida al piano. La tensión es la misma en toda la cuerda.</p></div>
@@ -2626,13 +2646,13 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Pregunta conceptual 11 de 13 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-plataforma" data-label="Práctica conceptual: Subirse a sí mismo con poleas" data-speaker-notes="Respuesta: 4 (250 N). Errores: 2) cuenta solo los dos tramos de la polea y olvida el que sostiene la persona; 3) usa solo el peso de la persona; 1) usa el peso total sin poleas. Pregunta conceptual 11 de 13 (diapositiva 11 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 11 / 13</p>
   <h2 class="titulo">Subirse a sí mismo con poleas</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
     <figure class="svgbox pc-figura" style="margin:0"><div class="pc-fig" data-fig="plataforma"></div></figure>
     <div class="pila pc-col">
-      <div class="pc-q" data-ok="d"><div class="pr-q">Una persona de \(\qty{50}{kg}\) está de pie sobre una plataforma de \(\qty{25}{kg}\) y tira de la cuerda del sistema de la figura. Si sube a velocidad constante, ¿con cuánta fuerza tira? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{750}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{625}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{250}{N}\)</button><button type="button" class="pr-opc" data-o="e">\(\qty{75}{N}\)</button><button type="button" class="pr-opc" data-o="f">\(\qty{50}{N}\)</button><button type="button" class="pr-opc" data-o="g">imposible de determinar</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Una persona de \(\qty{50}{kg}\) está de pie sobre una plataforma de \(\qty{25}{kg}\) y tira de la cuerda del sistema de la figura. Si sube a velocidad constante, ¿con cuánta fuerza tira? (\(g = \qty{10}{m/s^2}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{750}{N}\)</button><button type="button" class="pr-opc" data-o="b">\(\qty{375}{N}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{500}{N}\)</button><button type="button" class="pr-opc" data-o="d">\(\qty{250}{N}\)</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Sobre el sistema persona + plataforma tiran hacia arriba <strong>tres</strong> tramos: dos en la polea de la plataforma y el que agarra la persona. \(3T = (\qty{75}{kg})(\qty{10}{m/s^2})\Rightarrow T = \qty{250}{N}\).</p></div></div>
       <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Toma como sistema la persona más la plataforma. ¿Cuántos tramos de cuerda tiran de ese sistema hacia arriba? Incluye el que sostiene la persona.</p></div>
@@ -2640,7 +2660,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Pregunta conceptual 12 de 13 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-caja" data-label="Práctica conceptual: Tirar de una caja: ¿qué sistema?" data-speaker-notes="Respuestas: 1) 3; 2) 1; 3) 2. Error de la pregunta 1: confundir «sistema aislado» con «fuerza externa neta cero». Pregunta conceptual 12 de 13 (diapositiva 13 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 12 / 13</p>
   <h2 class="titulo">Tirar de una caja: ¿qué sistema?</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">
@@ -2653,7 +2673,7 @@ table.tw-tab tr.tw-area td{color:var(--caso1);font-weight:700}
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Pregunta conceptual 13 de 13 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
+<section class="diapositiva compacta pc-slide" data-seccion="Práctica" id="pc-dron" data-label="Práctica conceptual: Trabajo con vectores: el dron de reparto" data-speaker-notes="Respuesta: W = 138 J. Errores frecuentes: usar B en vez de B − A, o sumar componentes sin multiplicar. Pregunta conceptual 13 de 13 (diapositiva 15 del PowerPoint de práctica). Al acertar, o con «Ver explicación», aparece la justificación.">
   <p class="ceja">Práctica conceptual 13 / 13</p>
   <h2 class="titulo">Trabajo con vectores: el dron de reparto</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)">

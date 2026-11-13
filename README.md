@@ -69,44 +69,44 @@ glosario.
 
 ### Capítulo 2 · Relatividad especial
 
-27 diapositivas en cinco bloques: postulados y derivación de las
+30 diapositivas en cinco bloques: postulados y derivación de las
 transformaciones de Lorentz (con su límite de Galileo), el factor $\gamma$ y un
-diagrama de Minkowski con el evento arrastrable; dilatación del tiempo con dos
+diagrama de Minkowski con el evento arrastrable, precedido por dos actividades (cuándo ocurre un evento y la simultaneidad de dos luces en un cohete); dilatación del tiempo con dos
 relojes de luz animados, contracción de la longitud (tenista y hormiga),
 demostración de la contracción a partir de la dilatación, muones cósmicos y
-aplicaciones (GPS, ADN, qubits); suma de velocidades clásica frente a
-relativista; cuadrivectores, $E = \gamma m c^2$, la relación energía-momento,
-un laboratorio de energía cinética y el efecto Doppler relativista; y práctica:
+aplicaciones (GPS, ADN, qubits), con predicciones antes de cada explorador (pion en el acelerador, nave de 100 m), una actividad con entrega sobre el muón en los dos sistemas de referencia y una en parejas sobre los gemelos; suma de velocidades clásica frente a
+relativista, con una predicción en parejas (láser y sonda); cuadrivectores con su ventana de símbolos, $E = \gamma m c^2$, la relación energía-momento,
+un laboratorio de energía cinética precedido por una predicción sobre un protón del LHC y el efecto Doppler relativista; y práctica:
 reto «¿propio o no?», cuestionario, 12 ejercicios con respuestas y glosario.
 
 ### Capítulo 3 · Dinámica newtoniana
 
-96 diapositivas en seis bloques: leyes de Newton; solución numérica (diagrama
+97 diapositivas en seis bloques: leyes de Newton; solución numérica (diagrama
 de flujo, lanzamiento vertical y el **ejemplo 3.2.1, oscilador armónico
 $F=-kx$**, con la tabla paso a paso, el simulador Euler-Cromer trasladado
 de la implementación p5.js y la comparación de energía con Euler explícito);
 aceleración constante y energía (con una actividad individual en la que se arma con fichas la
 conservación de la energía de la montaña rusa del parcial entre A y el punto que se toque en la
 figura, B, C o E, se elige la solución analítica y se vota en el formulario, y una actividad con entrega de tiro horizontal —una bola soltada y otra lanzada— con simulador estroboscópico y justificación escrita); cantidad de movimiento (con una actividad en parejas de acción y reacción: el choque de un carro y un camión, con dinamómetros que se revelan con la explicación); fuerzas (fricción,
-centrípeta, órbita Tierra–Luna); práctica, reto y glosario.
+centrípeta, órbita Tierra–Luna con una predicción sobre si la Luna está cayendo); práctica, reto y glosario.
 
 ### Capítulo 4 · Electromagnetismo
 
-57 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+63 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
 enlace covalente con el par de electrones arrastrable y el enlace iónico y
 Van der Waals); electricidad (campo eléctrico y ley de Coulomb con cargas
-arrastrables, energía potencial y electronvoltio, una actividad para arrastrar
+arrastrables, una actividad en parejas sobre las cargas 4q y q, energía potencial y electronvoltio, una actividad para arrastrar
 factores de conversión entre J, eV, MeV, GeV y TeV, la fisión del uranio
 como una gota cargada que se parte (energía eléctrica antes y después y la
 idea de Meitner y Frisch), los cinco tipos de enlace químico con sus energías,
 dos actividades sobre enlaces (agua frente a metano y una clasificación con
 envío de la captura al formulario), la factura de energía de EPM, la actividad de la etiqueta de la nevera, una
 actividad en parejas con la placa de una nevera (0,6 A frente a 280 W), aplicaciones,
-corriente y potencia con un calculador de la factura); magnetismo (limaduras de hierro que se orientan
-con las líneas de campo al colocar un imán de barra, Ampère en un
+corriente y potencia con un calculador de la factura, la capacidad de una batería en mAh frente a Wh con un explorador de la duración de una luz de 40 W y una actividad individual para comparar baterías); magnetismo (limaduras de hierro que se orientan
+con las líneas de campo al colocar un imán de barra, una predicción del experimento de Ørsted, Ampère en un
 alambre, dos diapositivas que explican por qué la ley usa un producto escalar
 (lazos de distinta forma, tramo por tramo) y solo la corriente encerrada (tres
 alambres y un lazo arrastrable), el campo de dos alambres paralelos por superposición (líneas de campo como óvalos de Cassini o círculos de Apolonio y una elipse de Ampère que muestra por qué la ley no basta), fuerza entre alambres paralelos, diseño de un solenoide hecho de un
@@ -115,9 +115,9 @@ eléctrico con conmutador y una ventana con la vista frontal de la espira; una a
 ⊙ y ⊗ para la corriente inducida, los polos del imán inducido, un imán
 arrastrable y galvanómetro; aplicaciones interactivas: generador de una
 hidroeléctrica (central en corte vertical y corte superior del generador), frenado regenerativo de un carro eléctrico (con el motor en corte: imanes que giran y bobinas fijas), cocina de inducción
-(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; ecuaciones de Maxwell en una línea conceptual: las cuatro leyes antes de Maxwell (con μ₀, ε₀ y j = I/A), una actividad para completar por simetría la ley de Ampère arrastrando μ₀ε₀ ∂E/∂t, la onda electromagnética que se sostiene sola, la ecuación de onda con la sorpresa de v = 1/√(μ₀ε₀) = c, la corriente de desplazamiento con un lazo y dos superficies (las fórmulas avanzadas se marcan como fuera del curso) y la figura 4.15 animada: el campo B aparece entre las placas mientras el condensador se carga o se descarga),
+(con la bobina en espiral vista desde arriba) y carga inalámbrica del celular; una actividad individual sobre la ley de Lenz y una actividad con entrega por captura que relaciona las cuatro aplicaciones; ecuaciones de Maxwell en una línea conceptual: las cuatro leyes antes de Maxwell (con μ₀, ε₀ y j = I/A), una actividad para completar por simetría la ley de Ampère arrastrando μ₀ε₀ ∂E/∂t, la onda electromagnética que se sostiene sola, la ecuación de onda con la sorpresa de v = 1/√(μ₀ε₀) = c, la corriente de desplazamiento con un lazo y dos superficies (las fórmulas avanzadas se marcan como fuera del curso) y la figura 4.15 animada, precedida por una predicción con el condensador ya cargado: el campo B aparece entre las placas mientras el condensador se carga o se descarga),
 la antena dipolo animada (figura del libro), espectro y antenas, una actividad en parejas y otra con entrega sobre las antenas de emisoras de FM); del átomo clásico a Bohr
-(colapso por radiación de Larmor, radiación de sincrotrón, espectros atómicos,
+(colapso por radiación de Larmor con una predicción sobre el electrón en órbita, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,
 cuestionario, los 10 ejercicios con respuestas y glosario.

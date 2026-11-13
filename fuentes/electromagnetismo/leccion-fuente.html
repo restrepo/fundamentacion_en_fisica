@@ -310,6 +310,15 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .envio-sec{background:var(--panel);color:var(--tinta);border-color:var(--linea)}
 .envio-nota{font-size:26px;color:var(--tinta2)}
 /* envio-formulario:css-fin */
+
+/* actividades:justifica */
+/* casilla para justificar por escrito (entra en la captura) */
+.ac-just{display:block;font-size:25px}
+.ac-just span{display:block;font-weight:600;margin-bottom:4px}
+.ac-just textarea{width:100%;font:400 24px/1.35 var(--font-body);padding:8px 10px;border:2px solid var(--linea);background:var(--panel);color:var(--tinta);resize:vertical}
+.ac-just textarea:focus{outline:3px solid var(--res);outline-offset:1px}
+.ac-just-fig{padding:0 18px 12px}
+/* actividades:justifica-fin */
 </style></head>
 <body>
 <div id="escenario">
@@ -350,7 +359,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
         <li class="frag"><strong>¿Por qué no atraviesas el piso?</strong> Las nubes de electrones de tus zapatos y las del piso se repelen (con ayuda del <span class="prop" data-pop="pop-pauli">principio de Pauli</span>).</li>
       </ul>
       <div class="kf frag" style="font-size:31px">Entre dos protones, la fuerza eléctrica es
-        \[ \dfrac{F_e}{F_g} = \dfrac{k\,e^{2}}{G\,m_p^{2}} \approx 1{,}2\times 10^{36} \]
+        \[ \dfrac{F_e}{F_g} = \dfrac{k\,e^{2}}{G\,m_p^{2}} \approx 1{,}2\times 10^{36} \]<span style="display:block;font-size:24px;color:var(--tinta2)">(\(e\) y \(m_p\): carga y masa del protón; \(G\): constante de gravitación)</span>
         veces mayor que la gravitacional. Si no la notamos a diario es porque la materia es casi perfectamente <strong>neutra</strong>.</div>
     </div>
   </div>
@@ -396,7 +405,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Cargas" id="dp-fermi" data-label="El mar de Fermi">
+<section class="diapositiva compacta" data-seccion="Cargas" id="dp-fermi" data-label="El mar de Fermi" data-speaker-notes="Pregunta de predicción para la clase, antes de explorar: si los electrones del cobre se mueven a unos 1600 km/s, ¿por qué la velocidad de deriva de la corriente es de menos de un milímetro por segundo?">
   <p class="ceja">§ 4.0 · Motivación · Metales</p>
   <h2 class="titulo">Mar de Fermi: electrones veloces, corriente lenta</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.15fr) minmax(0,0.85fr)">
@@ -407,8 +416,8 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <p class="nota" style="margin:0">Cable de cobre de \(\qty{1}{mm^{2}}\). La deriva está muy exagerada: en el cable real es unas \(10^{10}\) veces menor que la rapidez de los electrones. La flecha marca su desplazamiento promedio.</p>
     </figure>
     <div class="pila">
-      <figure class="fg"><img class="foto" style="--fh:310px" src="img/mar-fermi.webp" alt="Distribución de velocidades de los electrones de valencia: todas las velocidades entre menos v_F y v_F están ocupadas"><figcaption>Por el principio de Pauli, dos electrones de valencia no pueden moverse con la misma velocidad (y el mismo espín). Fuente: N. Bonesteel, NHMFL.</figcaption></figure>
-      <div class="caja frag" style="font-size:27px"><p style="margin:0">Los electrones llenan los niveles hasta \(E_F \approx \qty{7}{eV}\) en el cobre:
+      <figure class="fg"><img class="foto" style="--fh:265px" src="img/mar-fermi.webp" alt="Distribución de velocidades de los electrones de valencia: todas las velocidades entre menos v_F y v_F están ocupadas"><figcaption>Por el principio de Pauli, dos electrones de valencia no pueden moverse con la misma velocidad (y el mismo espín). Fuente: N. Bonesteel, NHMFL.</figcaption></figure>
+      <div class="caja frag" style="font-size:27px"><p style="margin:0">Los electrones (masa \(m_e\)) llenan los niveles hasta \(E_F \approx \qty{7}{eV}\) en el cobre:
         \[ v_F = \sqrt{\dfrac{2E_F}{m_e}} \approx \qty{1{,}6\times 10^{6}}{m/s} \approx \dfrac{c}{190} \,. \]</p></div>
       <div class="caja c2 frag" style="font-size:27px"><p style="margin:0">Con \(n = \qty{8{,}5\times 10^{28}}{m^{-3}}\) electrones libres, una corriente de \(\qty{1}{A}\) solo necesita una deriva \(v_d = I/(n e A) \approx \qty{0{,}07}{mm/s}\). La luz se prende al instante porque lo que viaja casi a la velocidad de la luz es el <strong>campo</strong>, no los electrones.</p></div>
     </div>
@@ -445,7 +454,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="g2" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:28px;align-items:center">
         <figure class="fg"><img class="foto" style="--fh:400px" src="img/enlace-ionico.webp" alt="El sodio cede su electrón de valencia al cloro y quedan los iones Na+ y Cl−"><figcaption>El Na cede su electrón de valencia al Cl. © Encyclopædia Britannica.</figcaption></figure>
         <div class="pila">
-          <div class="kf frag" style="font-size:30px">\[ U_e = -k\,\dfrac{\abs{q_1}\,\abs{q_2}}{r} \]</div>
+          <div class="kf frag" style="font-size:30px">\[ U_e = -k\,\dfrac{\abs{q_1}\,\abs{q_2}}{r} \]<p class="nota" style="margin:0;font-size:22px">\(q_1, q_2\): cargas de los iones; \(r\): distancia entre ellos.</p></div>
           <div class="caja frag" style="font-size:26px"><p style="margin:0">Con \(k e^{2} = \qty{1{,}44}{eV\cdot nm}\) y \(r = \qty{0{,}236}{nm}\) entre el Na⁺ y el Cl⁻:
             \[ U_e = -\dfrac{\qty{1{,}44}{eV\cdot nm}}{\qty{0{,}236}{nm}} \approx -\qty{6{,}1}{eV} \,. \]
             Un pozo profundo: separar los iones cuesta, según la medición, unos \(\qty{5{,}8}{eV}\). El modelo de dos cargas puntuales casi lo explica todo.</p></div>
@@ -489,6 +498,24 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <tr><td class="izq">\(e\)</td><td class="izq">carga elemental (exacta)</td><td class="izq">\(\qty{1{,}602\,176\,634\times 10^{-19}}{C}\)</td></tr>
     </table>
     <p style="margin:10px 0 0">Relaciones: \(\varepsilon_0 = 1/(\mu_0 c^{2})\) y \(k = 1/(4\pi\varepsilon_0) = \mu_0 c^{2}/4\pi \approx 10^{-7}\,c^{2}\). El \(4\pi\) es el área de la esfera unitaria: el campo se reparte sobre \(4\pi r^{2}\). \(\mu_0 = 4\pi\times 10^{-7}\) era exacto hasta 2019; hoy \(c\) y \(e\) son exactos y \(\varepsilon_0\), \(\mu_0\), \(k\) se miden (CODATA 2022). El paréntesis es la incertidumbre en las últimas cifras: \(8{,}854\,187\,818\,8(14)\) significa \(\pm 14\) unidades de la última cifra, es decir, \(\pm 0{,}000\,000\,001\,4\).</p></div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Electricidad" id="ac-coulomb" data-label="Actividad: Una carga de 4q frente a una de q" data-speaker-notes="Actividad en parejas (instrucción entre pares). Pregunta 1: respuesta 3 (la misma: por acción y reacción, las dos fuerzas de Coulomb son iguales y opuestas). Errores: 1) «la carga mayor empuja más», el mismo error del choque bus–carro llevado a la electrostática (CSEM); 2) invierte el efecto; 4) eleva al cuadrado la razón de cargas. Pregunta 2: respuesta 4 (se cuadruplica: F ∝ 1/r²). Errores: 1) proporcionalidad inversa lineal; 2) proporcionalidad directa; 3) cree que la fuerza no depende de la distancia.">
+  <p class="ceja">§ 4.1 · Ley de Coulomb · Actividad en parejas</p>
+  <h2 class="titulo">Una carga de 4q frente a una de q</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">1. Una carga de \(4q\) y una de \(q\) se repelen. Comparada con la fuerza que la carga \(q\) ejerce sobre la de \(4q\), la fuerza que la de \(4q\) ejerce sobre la de \(q\) es:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">4 veces mayor</button><button type="button" class="pr-opc" data-o="b">4 veces menor</button><button type="button" class="pr-opc" data-o="c">igual en magnitud y opuesta</button><button type="button" class="pr-opc" data-o="d">16 veces mayor</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Las dos fuerzas son \(F = k\,(4q)(q)/r^{2}\): el mismo producto de las cargas para ambas. Por <strong>acción y reacción</strong> son iguales en magnitud y opuestas; la carga mayor no empuja más. Lo que cambia es el efecto: si las masas son iguales, se aceleran igual.</p></div></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">2. Si la distancia entre ellas se reduce a la mitad, la fuerza sobre cada una:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">se duplica</button><button type="button" class="pr-opc" data-o="b">se reduce a la mitad</button><button type="button" class="pr-opc" data-o="c">no cambia</button><button type="button" class="pr-opc" data-o="d">se cuadruplica</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Con \(F \propto 1/r^{2}\), a la mitad de la distancia la fuerza es \(1/(1/2)^{2} = 4\) veces mayor.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-coulomb">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Escribe la ley de Coulomb para cada una de las dos fuerzas: ¿qué cambia entre ellas?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-coulomb" class="gform-dlg" aria-label="Formulario: Actividad: Una carga de 4q frente a una de q">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Una carga de 4q frente a una de q" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <section class="diapositiva" data-seccion="Electricidad" id="dp-pot" data-label="Energía potencial electrostática">
@@ -608,7 +635,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-fis3" data-label="Meitner y Frisch: la energía de la fisión">
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-fis3" data-label="Meitner y Frisch: la energía de la fisión" data-speaker-notes="Pregunta de predicción para la clase, antes de explorar: ¿de dónde sale la energía de la fisión: de la fuerza eléctrica, de la nuclear o de la gravitacional?">
   <p class="ceja">§ 4.1 · Fisión nuclear · La idea de Lise Meitner</p>
   <h2 class="titulo">Meitner y Frisch: la repulsión eléctrica lanza los fragmentos</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr)">
@@ -717,6 +744,56 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-bateria" data-label="Capacidad de una batería: mAh y Wh" data-speaker-notes="§ 4.2. La capacidad en mAh es una carga, no una energía: Q = I t, y 1 mAh = (10⁻³ A)(3600 s) = 3,6 C. La energía es E = Q V (con V el voltaje nominal): en Wh, E = (mAh/1000) × V. Ejemplo pedido: luz de 40 W. Un celular de 5000 mAh a 3,85 V guarda 19,25 Wh: alimentaría la luz unos 29 min si todo se aprovechara, unos 25 min con 85 % de eficiencia. Un power bank de 20 000 mAh (celdas de 3,7 V) guarda 74 Wh: 1,85 h ideal, unas 1 h 34 min con 85 %. Una batería de carro de 60 Ah a 12 V guarda 720 Wh: unas 18 h ideal, pero una de plomo-ácido no debe descargarse por debajo del 50 %, así que en la práctica unas 9 h. La corriente que entrega es I = P/V: 40 W a 12 V son 3,3 A. Pregunta puente: un power bank de 20 000 mAh no carga cuatro veces un celular de 5000 mAh porque sus mAh están a 3,7 V y el celular se carga a 5 V con pérdidas: con 85 % de eficiencia, 74 Wh × 0,85 / 19,25 Wh ≈ 3,3 cargas, menos aún con las pérdidas del propio celular (unas 3).">
+  <p class="ceja">§ 4.2 · Corriente eléctrica · Baterías</p>
+  <h2 class="titulo">¿Qué significa «5000 mAh»? Carga, no energía</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>La batería alimenta una luz</span><span class="val" id="ba-lect"></span></div>
+      <div id="ba-fig"></div>
+      <div class="fila-btn" style="margin:6px 12px 10px"><button type="button" class="btn" id="ba-play">▶ Encender la luz</button><button type="button" class="btn" id="ba-rein">↺ Recargar</button></div>
+    </figure>
+    <div class="pila">
+      <p>Los mAh miden <strong>carga</strong>, \(Q = I\,t\): \(\qty{1}{mAh} = \qty{3{,}6}{C}\). La energía depende también del voltaje (<span class="prop" data-pop="pop-ba-var">¿qué es cada símbolo?</span>):</p>
+      <div class="kf" style="padding:0 14px">\[ E = Q\,V, \qquad t = \dfrac{\eta\,E}{P} \]</div>
+      <div class="fila-btn" id="ba-pre"><button type="button" class="btn activo" data-q="20000" data-v="3.7">Power bank</button><button type="button" class="btn" data-q="5000" data-v="3.85">Celular</button><button type="button" class="btn" data-q="60000" data-v="12">Batería de carro</button></div>
+      <label class="ctrl"><span>Capacidad</span><input type="range" id="ba-q" min="1000" max="100000" step="500" value="20000"><span class="v" id="ba-qv"></span></label>
+      <label class="ctrl"><span>Voltaje \(V\)</span><input type="range" id="ba-v" min="1.2" max="24" step="0.05" value="3.7"><span class="v" id="ba-vv"></span></label>
+      <label class="ctrl"><span>Potencia \(P\)</span><input type="range" id="ba-p" min="1" max="200" step="1" value="40"><span class="v" id="ba-pv"></span></label>
+      <label class="ctrl"><span>Eficiencia \(\eta\)</span><input type="range" id="ba-e" min="50" max="100" step="1" value="85"><span class="v" id="ba-ev"></span></label>
+      <p class="nota" id="ba-nota" style="margin:0"></p>
+      <p class="puente" style="margin:0">→ ¿Por qué un power bank de 20 000 mAh no carga cuatro veces un celular de 5000 mAh?</p>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-ba-var" style="display:none"><h4>Los símbolos de la batería</h4>
+    <table class="pop-tab">
+      <tr><td>\(Q\)</td><td>carga que la batería entrega al descargarse: su capacidad (1 mAh = 3,6 C)</td><td>C o mAh</td></tr>
+      <tr><td>\(I\)</td><td>corriente que entrega la batería</td><td>A</td></tr>
+      <tr><td>\(t\)</td><td>tiempo de funcionamiento</td><td>s o h</td></tr>
+      <tr><td>\(V\)</td><td>voltaje nominal de la batería (una celda de litio: 3,6 a 3,85 V)</td><td>V</td></tr>
+      <tr><td>\(E\)</td><td>energía almacenada (1 Wh = 3600 J)</td><td>J o Wh</td></tr>
+      <tr><td>\(P\)</td><td>potencia del aparato que se alimenta</td><td>W</td></tr>
+      <tr><td>\(\eta\)</td><td>eficiencia: fracción de la energía que llega al aparato; el resto se pierde en el convertidor y en el cableado</td><td>—</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Electricidad" id="ac-bateria" data-label="Actividad: ¿Cuál batería guarda más energía?" data-speaker-notes="Actividad individual. Respuesta: 1 (A: 5 Ah × 12 V = 60 Wh; B: 10 Ah × 3,7 V = 37 Wh). Errores: 2) compara mAh como si fueran energía, el error más común; 3) cree que los mAh lo dicen todo; 4) cree que la energía depende del aparato.">
+  <p class="ceja">§ 4.2 · Baterías · Actividad individual</p>
+  <h2 class="titulo">¿Cuál batería guarda más energía?</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="a"><div class="pr-q">La batería A tiene 5000 mAh a 12 V. La batería B tiene 10 000 mAh a 3,7 V. ¿Cuál guarda más energía?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">A: unos 60 Wh frente a unos 37 Wh</button><button type="button" class="pr-opc" data-o="b">B, porque tiene el doble de mAh</button><button type="button" class="pr-opc" data-o="c">son iguales: lo que cuenta son los mAh</button><button type="button" class="pr-opc" data-o="d">no se puede saber sin conocer el aparato que alimentan</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Los mAh son carga; la energía es \(E = Q\,V\). A: \(\qty{5}{Ah} \times \qty{12}{V} = \qty{60}{Wh}\). B: \(\qty{10}{Ah} \times \qty{3{,}7}{V} = \qty{37}{Wh}\). Con la luz de 40 W, A dura 1,5 h y B menos de 1 h, sin contar pérdidas.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-bateria">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Pasa cada capacidad a Ah y multiplícala por su voltaje.</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-bateria" class="gform-dlg" aria-label="Formulario: Actividad: ¿Cuál batería guarda más energía?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: ¿Cuál batería guarda más energía?" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Electricidad" id="dp-nevera" data-label="Actividad: la etiqueta de la nevera">
   <p class="ceja">§ 4.2 · Corriente eléctrica · Actividad <span class="score">Aciertos: <b class="pr-score">0</b> / 4</span></p>
   <h2 class="titulo">Lee la etiqueta: ¿cuánta potencia usa esta nevera?</h2>
@@ -794,6 +871,25 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Magnetismo" id="ac-oersted" data-label="Actividad: Predice: la brújula bajo el cable" data-speaker-notes="Actividad individual, predicción antes de la ley de Ampère (clase demostrativa interactiva: si hay brújula y pila en el salón, hacer el experimento después de votar). Respuesta: 4 (la aguja gira y tiende a quedar perpendicular al cable: el campo de una corriente rodea el cable). Errores: 1) «solo los imanes hacen campo magnético», la idea previa que ataca (CSEM); 2) imagina una atracción eléctrica hacia el cable; 3) cree que el efecto es pasajero. Ørsted lo observó en 1820.">
+  <p class="ceja">§ 4.3 · Experimento de Ørsted · Actividad individual</p>
+  <h2 class="titulo">Predice: la brújula bajo el cable</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 640 420" class="fig" role="img" aria-label="Brújula debajo de un cable recto alineado con la aguja, conectado a una pila con un interruptor abierto"><line x1="40" y1="120" x2="600" y2="120" style="stroke:var(--caso2);stroke-width:12;stroke-linecap:round"/><line x1="40" y1="120" x2="40" y2="340" style="stroke:var(--caso2);stroke-width:8"/><line x1="600" y1="120" x2="600" y2="340" style="stroke:var(--caso2);stroke-width:8"/><line x1="40" y1="340" x2="240" y2="340" style="stroke:var(--caso2);stroke-width:8"/><line x1="240" y1="340" x2="300" y2="305" style="stroke:var(--tinta);stroke-width:7;stroke-linecap:round"/><circle cx="240" cy="340" r="8" style="fill:var(--tinta)"/><circle cx="310" cy="340" r="8" style="fill:var(--tinta)"/><line x1="310" y1="340" x2="440" y2="340" style="stroke:var(--caso2);stroke-width:8"/><rect x="440" y="315" width="70" height="50" rx="6" style="fill:var(--panel);stroke:var(--tinta);stroke-width:5"/><text x="475" y="350" text-anchor="middle" style="font:700 26px Archivo,system-ui,sans-serif;fill:var(--tinta)">+ −</text><line x1="510" y1="340" x2="600" y2="340" style="stroke:var(--caso2);stroke-width:8"/><text x="275" y="395" text-anchor="middle" style="font:600 24px Archivo,system-ui,sans-serif;fill:var(--tinta2)">interruptor abierto</text><circle cx="320" cy="215" r="62" style="fill:var(--panel);stroke:var(--tinta);stroke-width:5"/><polygon points="320,215 276,207 276,223" style="fill:var(--tinta2)"/><polygon points="320,215 364,207 364,223" style="fill:var(--mal)"/><text x="392" y="222" style="font:800 26px Archivo,system-ui,sans-serif;fill:var(--mal)">N</text><text x="320" y="72" text-anchor="middle" style="font:600 26px Archivo,system-ui,sans-serif;fill:var(--caso2)">cable, encima de la brújula</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Una brújula está debajo de un cable recto, con la aguja alineada con el cable. Se cierra el interruptor y pasa una corriente grande. La aguja:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">no se mueve: el cable no es un imán</button><button type="button" class="pr-opc" data-o="b">apunta hacia el cable, atraída por la corriente</button><button type="button" class="pr-opc" data-o="c">vibra un instante y vuelve a su posición</button><button type="button" class="pr-opc" data-o="d">gira y tiende a quedar perpendicular al cable</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La corriente produce un campo magnético cuyas líneas son <strong>círculos alrededor del cable</strong>. Debajo del cable ese campo es perpendicular a él, y la aguja gira para alinearse con él mientras haya corriente. Es el experimento de Ørsted (1820): la primera prueba de que electricidad y magnetismo están relacionados.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-oersted">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿Qué forma tienen las líneas del campo magnético alrededor de un cable con corriente?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-oersted" class="gform-dlg" aria-label="Formulario: Actividad: Predice: la brújula bajo el cable">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Predice: la brújula bajo el cable" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva" data-seccion="Magnetismo" id="dp-amp" data-label="Ley de Ampère: alambre recto">
   <p class="ceja">§ 4.3 · Ley de Ampère</p>
   <h2 class="titulo">Las corrientes crean campos magnéticos</h2>
@@ -833,7 +929,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva" data-seccion="Magnetismo" id="dp-amp-enc" data-label="Ampère: solo la corriente encerrada" data-speaker-notes="§ 4.3. Por qué solo cuenta la corriente encerrada. Para un alambre, B = μ0 I /(2π r) y la componente de ΔL a lo largo de B es r Δφ, donde Δφ es el ángulo que barre el tramo visto desde el alambre. Entonces B·ΔL = (μ0 I / 2π) Δφ: la distancia se cancela. Si el alambre está dentro del lazo, al dar la vuelta el ángulo barrido suma 2π y el aporte total es μ0 I, sin importar la forma. Si está fuera, el ángulo primero crece y luego decrece: en un lado del lazo B acompaña al camino (aporte positivo, verde) y en el otro va en contra (negativo, rojo), y la suma es cero. El signo sigue la regla de la mano derecha: con el lazo recorrido en sentido antihorario, la corriente que sale (⊙) cuenta positiva y la que entra (⊗) negativa. Arrastrar el lazo para encerrar distintos alambres; los botones muestran el aporte de un solo alambre.">
+<section class="diapositiva" data-seccion="Magnetismo" id="dp-amp-enc" data-label="Ampère: solo la corriente encerrada" data-speaker-notes="Pregunta de predicción para la clase, antes de explorar: si un alambre queda por fuera, ¿su aporte a la suma es positivo, negativo o cero? § 4.3. Por qué solo cuenta la corriente encerrada. Para un alambre, B = μ0 I /(2π r) y la componente de ΔL a lo largo de B es r Δφ, donde Δφ es el ángulo que barre el tramo visto desde el alambre. Entonces B·ΔL = (μ0 I / 2π) Δφ: la distancia se cancela. Si el alambre está dentro del lazo, al dar la vuelta el ángulo barrido suma 2π y el aporte total es μ0 I, sin importar la forma. Si está fuera, el ángulo primero crece y luego decrece: en un lado del lazo B acompaña al camino (aporte positivo, verde) y en el otro va en contra (negativo, rojo), y la suma es cero. El signo sigue la regla de la mano derecha: con el lazo recorrido en sentido antihorario, la corriente que sale (⊙) cuenta positiva y la que entra (⊗) negativa. Arrastrar el lazo para encerrar distintos alambres; los botones muestran el aporte de un solo alambre.">
   <p class="ceja">§ 4.3 · Ley de Ampère · Corriente encerrada</p>
   <h2 class="titulo">Solo cuenta la corriente que atraviesa el lazo</h2>
   <div class="g2-60">
@@ -1005,7 +1101,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-lenz" data-label="Actividad: El imán se aleja de la bobina" data-speaker-notes="Actividad individual con dos preguntas. 1) Si el polo N se aleja, el flujo por la bobina decrece y la corriente inducida crea un S en el extremo cercano, que atrae al imán y se opone a que se aleje. Respuesta: 2. Error común: «N, que lo repele» (1), aplicando la regla del imán que se acerca. 2) La fem es proporcional a la rapidez con que cambia el flujo: al doble de rapidez, la corriente casi se duplica. Respuesta: 2.">
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-lenz" data-label="Actividad: El imán se aleja de la bobina" data-speaker-notes="Actividad individual con dos preguntas. 1) Si el polo N se aleja, el flujo por la bobina decrece y la corriente inducida crea un S en el extremo cercano, que atrae al imán y se opone a que se aleje. Respuesta: 2. Errores: 1) «N, que lo repele», aplicando la regla del imán que se acerca; 3) cree que solo hay corriente al acercar; 4) cree que la polaridad depende de la rapidez. 2) La fem es proporcional a la rapidez con que cambia el flujo: al doble de rapidez, la corriente casi se duplica. Respuesta: 4. Errores: 1) cree que la corriente no depende de la rapidez; 2) invierte la relación; 3) confunde rapidez con sentido.">
   <p class="ceja">§ 4.4 · Ley de Lenz · Actividad individual</p>
   <h2 class="titulo">El imán se aleja de la bobina</h2>
   <div class="g2-60" style="grid-template-columns:minmax(0,0.75fr) minmax(0,1.25fr)">
@@ -1013,7 +1109,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     <div class="pila pc-col">
       <div class="pc-q" data-ok="b"><div class="pr-q">El polo \(N\) del imán <strong>se aleja</strong> de la bobina. En el extremo cercano de la bobina aparece:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">un polo \(N\), que repele al imán</button><button type="button" class="pr-opc" data-o="b">un polo \(S\), que atrae al imán y se opone a que se aleje</button><button type="button" class="pr-opc" data-o="c">ningún polo: solo hay corriente cuando el imán se acerca</button><button type="button" class="pr-opc" data-o="d">un polo que depende de la rapidez con que se aleja</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El flujo por la bobina <strong>disminuye</strong>. Por la ley de Lenz, la corriente inducida trata de mantenerlo: crea un campo en el mismo sentido que el del imán, y su extremo cercano queda como un polo \(S\), que atrae al \(N\) del imán.</p></div></div>
-      <div class="pc-q" data-ok="b"><div class="pr-q">Si el imán se aleja con el <strong>doble de rapidez</strong>, la corriente inducida:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">no cambia</button><button type="button" class="pr-opc" data-o="b">se duplica, aproximadamente</button><button type="button" class="pr-opc" data-o="c">se reduce a la mitad</button><button type="button" class="pr-opc" data-o="d">cambia de sentido</button></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">Si el imán se aleja con el <strong>doble de rapidez</strong>, la corriente inducida:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">no cambia</button><button type="button" class="pr-opc" data-o="b">se reduce a la mitad</button><button type="button" class="pr-opc" data-o="c">cambia de sentido</button><button type="button" class="pr-opc" data-o="d">se duplica, aproximadamente</button></div>
         <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">La fem inducida es \(\varepsilon = -\Delta\Phi/\Delta t\): el mismo cambio de flujo en la mitad del tiempo da el doble de fem y, con la misma resistencia, el doble de corriente. El sentido no cambia porque el flujo sigue disminuyendo.</p></div></div>
       <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-lenz">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
       <div class="pc-pista" style="display:none"><p style="margin:0">💡 Pregúntate primero si el flujo por la bobina aumenta o disminuye. La corriente inducida se opone a ese cambio.</p></div>
@@ -1100,6 +1196,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <label class="ctrl"><span>Potencia</span><input type="range" id="co2-p" min="0" max="2000" step="100" value="1200"><span class="v" id="co2-pv"></span></label>
       <p class="nota">\(\otimes\) y \(\odot\) marcan la corriente que entra y sale de la pantalla, en la bobina y en el fondo de la olla: van en sentidos opuestos (ley de Lenz). El vidrio no conduce, así que solo se calienta por contacto con la olla.</p>
       <div class="fila-btn"><button type="button" class="btn prop" data-pop="pop-co-arriba">Vista desde arriba</button></div>
+      <p class="puente" style="margin:0">→ Predice: ¿qué pasa si se pone una olla de vidrio sobre la cocina de inducción?</p>
     </div>
   </div>
   <div class="pop-src" id="pop-co-arriba" style="display:none"><h4>La bobina vista desde arriba</h4>
@@ -1174,7 +1271,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta pc-slide ac-slide ac-individual ac-captura" data-seccion="Inducción y ondas" id="ac-mx-termino" data-label="Después de Maxwell: completar la simetría" data-speaker-notes="Actividad individual de arrastrar. La motivación de Maxwell fue de simetría matemática: en (3) un B que cambia crea E; en (4) faltaba que un E que cambia creara B. El término correcto es μ₀ε₀ ∂E/∂t (μ₀ por la densidad de corriente de desplazamiento ε₀ ∂E/∂t). Todavía no aparece c: sale en la diapositiva de la ecuación de onda. Distractores: −∂B/∂t (ya está en Faraday), ρ/ε₀ (fuente de Gauss), μ₀ε₀ ∂B/∂t (cambia el campo equivocado).">
+<section class="diapositiva compacta pc-slide ac-slide ac-individual ac-captura" data-seccion="Inducción y ondas" id="ac-mx-termino" data-label="Después de Maxwell: completar la simetría" data-speaker-notes="Respuesta: el término μ₀ε₀ ∂E/∂t completa la ecuación (4). Actividad individual de arrastrar. La motivación de Maxwell fue de simetría matemática: en (3) un B que cambia crea E; en (4) faltaba que un E que cambia creara B. El término correcto es μ₀ε₀ ∂E/∂t (μ₀ por la densidad de corriente de desplazamiento ε₀ ∂E/∂t). Todavía no aparece c: sale en la diapositiva de la ecuación de onda. Distractores: −∂B/∂t (ya está en Faraday), ρ/ε₀ (fuente de Gauss), μ₀ε₀ ∂B/∂t (cambia el campo equivocado).">
   <p class="ceja">§ 4.5 · Después de Maxwell · Actividad con entrega</p>
   <h2 class="titulo">Después de Maxwell: completa la simetría</h2>
   <p class="mx-aviso">Las fórmulas con \(\nabla\) y derivadas parciales <strong>no hacen parte del curso</strong>: están aquí para facilitar la discusión.</p>
@@ -1289,6 +1386,22 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Inducción y ondas" id="ac-condensador-lleno" data-label="Actividad: Predice: con el condensador ya cargado" data-speaker-notes="Actividad individual, predicción antes de la animación de la figura 4.15. Respuesta: 3 (no: B depende de qué tan rápido cambia E, no de cuánto vale). Errores: 1) cree que B depende del valor de E; 2) cree que las cargas en reposo producen campo magnético; 4) cree que hace falta un material. La animación muestra que con las placas llenas, E es máximo y B es cero.">
+  <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Actividad individual</p>
+  <h2 class="titulo">Predice: con el condensador ya cargado</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="c"><div class="pr-q">Un condensador se conecta a una pila y, después de un rato, queda <strong>completamente cargado</strong>: ya no llega corriente a las placas. En la región entre las placas:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">hay campo magnético, porque el campo eléctrico es máximo</button><button type="button" class="pr-opc" data-o="b">hay campo magnético, producido por las cargas acumuladas</button><button type="button" class="pr-opc" data-o="c">no hay campo magnético, porque el campo eléctrico ya no cambia</button><button type="button" class="pr-opc" data-o="d">hay campo magnético solo si entre las placas hay un material</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El término de Maxwell dice que un campo eléctrico <strong>que cambia</strong> produce campo magnético: \(\mu_0\varepsilon_0\,\Delta E/\Delta t\). Con el condensador lleno, \(E\) es máximo pero constante, así que \(B = 0\). Las cargas en reposo producen solo campo eléctrico.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-condensador-lleno">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿De qué depende el término de Maxwell: del valor de E o de su cambio?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-condensador-lleno" class="gform-dlg" aria-label="Formulario: Actividad: Predice: con el condensador ya cargado">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Predice: con el condensador ya cargado" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva" data-seccion="Inducción y ondas" id="dp-maxwell-cond" data-label="Campo magnético entre las placas de un condensador" data-speaker-notes="§ 4.5. Figura 4.15 del libro, E(t), animada. Al cerrar el interruptor, la batería lleva carga a las placas a través de una resistencia: Q(t) = Q₀(1 − e^(−t/τ)), con τ = RC, e I = ΔQ/Δt decrece exponencialmente. Entre las placas no cruza carga, pero el campo E = Q/(ε₀A) crece, y con él el flujo Φ_E = AE: la corriente de desplazamiento I_d = ε₀ ΔΦ_E/Δt es igual a la corriente del cable. Por eso el campo B entre las placas es el mismo que alrededor del cable. Puntos clave para discutir: (1) B depende de qué tan rápido cambia E, no de cuánto vale E: con las placas llenas, E es máximo y B es cero. (2) Al descargar, E disminuye y B cambia de sentido. (3) Con más resistencia la carga es más lenta y B es más débil pero dura más. El botón ⏸ congela un instante.">
   <p class="ceja">§ 4.5 · Ecuaciones de Maxwell · Figura 4.15</p>
   <h2 class="titulo">Entre las placas no pasa carga, pero aparece \(\vect{B}\)</h2>
@@ -1326,6 +1439,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="fila-btn"><button type="button" class="btn" id="an-pausa">⏸ Detener el tiempo</button></div>
       <label class="ctrl"><span>Frecuencia del oscilador</span><input type="range" id="an-f" min="1" max="4" step="0.5" value="2"><span class="v" id="an-fv"></span></label>
       <p class="nota">\(I(t)\): corriente en las varillas; \(\vect{E}\), \(\vect{B}\): campos eléctrico y magnético; \(c\): rapidez de la luz. La frecuencia de la onda es la del oscilador.</p>
+      <p class="puente" style="margin:0">→ Predice: si se duplica la frecuencia del oscilador, ¿qué le pasa a la longitud de onda emitida?</p>
     </div>
   </div>
 </section>
@@ -1415,6 +1529,22 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Del átomo clásico a Bohr" id="ac-atomo-clasico" data-label="Actividad: Predice: un electrón que gira alrededor del núcleo" data-speaker-notes="Actividad individual, predicción antes de la radiación de sincrotrón. Respuesta: 4 (radia y cae en espiral en unos 10⁻¹¹ s). Errores: 1) analogía planetaria: olvida que una carga acelerada radia; 2) confunde con ionización; 3) cree que solo radian las cargas que chocan. Prepara la diapositiva siguiente: la radiación de sincrotrón es justamente la luz que emite una carga en órbita circular.">
+  <p class="ceja">§ 4.7 · El átomo clásico · Actividad individual</p>
+  <h2 class="titulo">Predice: un electrón que gira alrededor del núcleo</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="d"><div class="pr-q">Según el electromagnetismo clásico, un electrón que gira en círculo alrededor de un núcleo:</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">gira para siempre, como un planeta alrededor del Sol</button><button type="button" class="pr-opc" data-o="b">se escapa del átomo por la fuerza centrífuga</button><button type="button" class="pr-opc" data-o="c">radia solo cuando choca con otro átomo</button><button type="button" class="pr-opc" data-o="d">radia energía y cae en espiral al núcleo en una fracción de nanosegundo</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Un electrón en órbita circular está <strong>acelerado</strong> (su velocidad cambia de dirección), y toda carga acelerada radia ondas electromagnéticas, como la antena. Al perder energía cae en espiral: el cálculo clásico da unos \(10^{-11}\ \text{s}\). Como los átomos son estables, la física clásica falla aquí: es la puerta al modelo de Bohr.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-atomo-clasico">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿Qué hace una carga acelerada, como los electrones de una antena?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-atomo-clasico" class="gform-dlg" aria-label="Formulario: Actividad: Predice: un electrón que gira alrededor del núcleo">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Predice: un electrón que gira alrededor del núcleo" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
 <section class="diapositiva" data-seccion="Del átomo clásico a Bohr" id="dp-sin" data-label="Radiación de sincrotrón">
   <p class="ceja">§ 4.7 · Radiación de sincrotrón</p>
   <h2 class="titulo">El muro de los aceleradores circulares: \(P \propto \gamma^{4}\)</h2>
@@ -1481,6 +1611,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
       <div class="lectura" style="grid-template-columns:1fr 1fr"><div>Energía del fotón<b id="bo-e"></b></div><div>\(\lambda = hc/E\)<b id="bo-l"></b></div></div>
       <div id="bo-color" style="height:60px;border:2px solid var(--linea)"></div>
       <p class="nota">\(hc \approx \qty{1239{,}84}{eV\cdot nm}\). \(n_f = 1\): serie de Lyman (ultravioleta); \(n_f = 2\): Balmer (visible); \(n_f = 3\): Paschen (infrarrojo).</p>
+      <p class="puente" style="margin:0">→ Predice antes de explorar: si el electrón pasa de n = 3 a n = 2, ¿emite o absorbe luz? ¿De qué color?</p>
     </div>
   </div>
 </section>
@@ -4367,6 +4498,66 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   });
 })();
 /* envio-formulario:js-fin */
+
+/* ═══ BATERÍA: mAh, Wh Y DURACIÓN ══════════════════════════════════════ */
+(function () {
+  const host = document.getElementById('ba-fig');
+  if (!host) return;
+  const rq = document.getElementById('ba-q'), rv = document.getElementById('ba-v'), rp = document.getElementById('ba-p'), re_ = document.getElementById('ba-e');
+  const bPlay = document.getElementById('ba-play'), bRein = document.getElementById('ba-rein'), pres = $$('#ba-pre .btn');
+  let frac = 1, corre = false, ult = 0;
+  const hm = h => { const m = Math.round(h * 60); return m < 60 ? m + ' min' : Math.floor(m / 60) + ' h ' + String(m % 60).padStart(2, '0') + ' min'; };
+  const datos = () => { const Q = +rq.value, V = +rv.value, P = +rp.value, eta = +re_.value / 100, E = Q / 1000 * V; return { Q, V, P, eta, E, t: eta * E / P, I: P / V }; };
+  function pinta() {
+    const d = datos();
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 1180 560', class: 'fig' }, host);
+    /* batería */
+    const bx = 70, by = 70, bw = 300, bh = 400;
+    nodo('rect', { x: bx + bw / 2 - 45, y: by - 26, width: 90, height: 30, rx: 6, style: 'fill:var(--tinta)' }, svg);
+    nodo('rect', { x: bx, y: by, width: bw, height: bh, rx: 22, style: 'fill:var(--panel);stroke:var(--tinta);stroke-width:6' }, svg);
+    const hh = (bh - 24) * frac;
+    nodo('rect', { x: bx + 12, y: by + bh - 12 - hh, width: bw - 24, height: hh, rx: 12, style: 'fill:' + (frac > 0.2 ? 'var(--caso1)' : 'var(--mal)') + ';opacity:.85' }, svg);
+    rotulo(svg, bx + bw / 2, by + 120, num(d.Q, 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' mAh', { 'font-size': 38, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-weight:800;font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    rotulo(svg, bx + bw / 2, by + 170, 'a ' + num(d.V, 2) + ' V', { 'font-size': 32, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    rotulo(svg, bx + bw / 2, by + 250, num(d.E * frac, 1) + ' Wh', { 'font-size': 40, 'text-anchor': 'middle', style: 'fill:var(--res);font-weight:800;font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    rotulo(svg, bx + bw / 2, by + 292, '= ' + num(d.E * frac * 3.6, 1) + ' kJ', { 'font-size': 28, 'text-anchor': 'middle', style: 'fill:var(--tinta2);font-family:' + FTXT + ';paint-order:stroke;stroke:var(--panel);stroke-width:8px' });
+    /* cables y corriente */
+    nodo('path', { d: 'M ' + (bx + bw) + ' 170 L 820 170 L 820 205', style: 'fill:none;stroke:var(--tinta);stroke-width:5' }, svg);
+    nodo('path', { d: 'M ' + (bx + bw) + ' 400 L 820 400 L 820 335', style: 'fill:none;stroke:var(--tinta);stroke-width:5' }, svg);
+    flecha(svg, 520, 170, 600, 170, 'var(--caso2)', 5);
+    rotulo(svg, 560, 150, '*I* = ' + num(d.I, 2) + ' A', { 'font-size': 30, 'text-anchor': 'middle', style: 'fill:var(--caso2);font-family:' + FMATH + ';font-weight:700' });
+    /* bombillo */
+    const on = corre && frac > 0, cx = 820, cy = 270;
+    if (on) for (let k = 0; k < 12; k++) { const a = k * Math.PI / 6; nodo('line', { x1: cx + 78 * Math.cos(a), y1: cy + 78 * Math.sin(a), x2: cx + 104 * Math.cos(a), y2: cy + 104 * Math.sin(a), style: 'stroke:var(--caso2);stroke-width:5;stroke-linecap:round' }, svg); }
+    nodo('circle', { cx: cx, cy: cy, r: 62, style: 'fill:' + (on ? 'var(--caso2-50)' : 'var(--panel)') + ';stroke:var(--tinta);stroke-width:5' }, svg);
+    nodo('path', { d: 'M ' + (cx - 22) + ' ' + (cy + 10) + ' q 11 -30 22 0 q 11 30 22 0', style: 'fill:none;stroke:' + (on ? 'var(--caso2)' : 'var(--tinta2)') + ';stroke-width:5' }, svg);
+    rotulo(svg, cx, cy + 108 + 20, '*P* = ' + num(d.P, 0) + ' W', { 'font-size': 32, 'text-anchor': 'middle', style: 'fill:var(--tinta);font-family:' + FMATH + ';font-weight:700' });
+    /* reloj de la descarga */
+    const tt = d.t * (1 - frac);
+    rotulo(svg, 1000, 470, 'encendida: ' + hm(tt), { 'font-size': 28, 'text-anchor': 'middle', style: 'fill:var(--tinta2);font-family:' + FTXT });
+    rotulo(svg, 1000, 510, 'duración total: ' + hm(d.t), { 'font-size': 30, 'text-anchor': 'middle', style: 'fill:var(--res);font-weight:800;font-family:' + FTXT });
+    document.getElementById('ba-qv').textContent = num(d.Q, 0).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' mAh';
+    document.getElementById('ba-vv').textContent = num(d.V, 2) + ' V';
+    document.getElementById('ba-pv').textContent = num(d.P, 0) + ' W';
+    document.getElementById('ba-ev').textContent = num(d.eta * 100, 0) + ' %';
+    document.getElementById('ba-lect').textContent = 'E = ' + num(d.E, 1) + ' Wh · t = ' + hm(d.t);
+    document.getElementById('ba-nota').textContent = 'E = ' + num(d.Q / 1000, 1) + ' Ah × ' + num(d.V, 2) + ' V = ' + num(d.E, 1) + ' Wh; t = ' + num(d.eta, 2) + ' × ' + num(d.E, 1) + ' Wh / ' + num(d.P, 0) + ' W ≈ ' + hm(d.t) + '.';
+  }
+  function bucle(ms) {
+    if (corre && activa(host) && ms - ult > 40) {
+      ult = ms; frac = Math.max(0, frac - 0.004);
+      if (frac === 0) { corre = false; bPlay.textContent = '▶ Encender la luz'; }
+      pinta();
+    }
+    requestAnimationFrame(bucle);
+  }
+  bPlay.addEventListener('click', () => { if (frac === 0) frac = 1; corre = !corre; bPlay.textContent = corre ? '⏸ Apagar' : '▶ Encender la luz'; pinta(); });
+  bRein.addEventListener('click', () => { frac = 1; corre = false; bPlay.textContent = '▶ Encender la luz'; pinta(); });
+  [rq, rv, rp, re_].forEach(x => x.addEventListener('input', () => { pres.forEach(b => b.classList.remove('activo')); pinta(); }));
+  pres.forEach(b => b.addEventListener('click', () => { rq.value = b.dataset.q; rv.value = b.dataset.v; pres.forEach(o => o.classList.toggle('activo', o === b)); frac = 1; pinta(); }));
+  pinta(); requestAnimationFrame(bucle);
+})();
 
 </script>
 </body></html>

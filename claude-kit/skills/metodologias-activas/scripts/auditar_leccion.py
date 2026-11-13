@@ -37,7 +37,7 @@ OPERADORES = {'Delta', 'partial', 'nabla', 'sum', 'int', 'oint', 'infty', 'pi', 
               'dfrac', 'tfrac', 'left', 'right', 'quad', 'qquad', 'approx', 'propto', 'to', 'sin', 'cos', 'tan',
               'ln', 'log', 'exp', 'lim', 'max', 'min', 'pm', 'mp', 'le', 'ge', 'leq', 'geq', 'ne', 'neq', 'equiv'}
 # Símbolos que se consideran evidentes o índices: no se piden en la ventana de símbolos.
-EVIDENTES = {'t', 'x', 'y', 'z', 'd', 'i', 'j', 'k', 'n', 'e', 'pi'}
+EVIDENTES = {'t', 'x', 'y', 'z', 'd', 'i', 'j', 'k', 'n', 'e', 'pi', 'c'}   # c: rapidez de la luz
 
 
 def sin_tildes(s):
@@ -96,6 +96,8 @@ def tiene_pregunta(sec):
     h = sec['html']
     if 'class="puente"' in h or 'pc-q' in h:
         return True
+    if re.search(r'pregunta de prediccion|pregunta para la clase|prediccion para la clase', sin_tildes(sec.get('notas', ''))):
+        return True                       # el profesor la plantea en voz alta (diapositivas sin espacio)
     visible = texto_plano(re.sub(r'<div class="pop-src".*?</div>\s*</div>|\\\[.*?\\\]|\\\(.*?\\\)', ' ', h, flags=re.S))
     return '¿' in visible or 'predic' in sin_tildes(visible)
 
@@ -112,12 +114,36 @@ def math_en_linea(h):
     return re.findall(r'\\\((.*?)\\\)', h, flags=re.S)
 
 
+def quitar_comando(t, nombres, nargs, reemplazo=' '):
+    """Quita \\nombre{…}{…} con llaves anidadas (nargs argumentos)."""
+    patron = re.compile(r'\\(%s)\s*\{' % '|'.join(nombres))
+    while True:
+        m = patron.search(t)
+        if not m:
+            return t
+        i, fin = m.end() - 1, m.end() - 1
+        for _ in range(nargs):
+            while fin < len(t) and t[fin] in ' \n':
+                fin += 1
+            if fin >= len(t) or t[fin] != '{':
+                break
+            nivel = 0
+            for k in range(fin, len(t)):
+                nivel += {'{': 1, '}': -1}.get(t[k], 0)
+                if nivel == 0:
+                    fin = k + 1
+                    break
+            else:
+                fin = len(t)
+        t = t[:m.start()] + reemplazo + t[fin:]
+
+
 def simbolos(tex):
     t = tex
     t = re.sub(r'\\(begin|end)\s*\{[^{}]*\}', ' ', t)
-    t = re.sub(r'\\(text|mathrm|operatorname|textrm|mbox|label|tag)\s*\{[^{}]*\}', ' ', t)
+    t = quitar_comando(t, ['qty'], 2, ' N ')                            # cantidades con unidad: número
+    t = quitar_comando(t, ['text', 'mathrm', 'operatorname', 'textrm', 'mbox', 'label', 'tag', 'SI', 'num', 'unit'], 1)
     t = re.sub(r'_\s*\{[^{}]*\}|_\s*\\?[A-Za-z0-9]', ' ', t)          # subíndices: cuenta el símbolo base
-    t = re.sub(r'\\qty\s*\{[^{}]*\}\s*\{[^{}]*\}', ' N ', t)            # cantidades con unidad: número
     t = re.sub(r'\\(resalta|vect|boldsymbol|mathbf|hat|vec|bar|dot|ddot|tilde|abs)\b', ' ', t)
     out = set()
     for m in re.finditer(r'\\([A-Za-z]+)|([A-Za-z])', t):
@@ -131,9 +157,23 @@ def simbolos(tex):
     return {s for s in out if s.strip('\\') not in EVIDENTES and s.strip('\\') not in OPERADORES}
 
 
+def definidos_por_ecuacion(tex):
+    """Símbolos que una ecuación define: el lado izquierdo de «X = …» cuando es un solo símbolo."""
+    out = set()
+    for parte in re.split(r'\\qquad|\\quad|\\\\|,|;', tex):
+        if '=' not in parte:
+            continue
+        izq = simbolos(parte.split('=')[0].replace('&', ' '))
+        if len(izq) == 1:
+            out |= izq
+    return out
+
+
 def definidos_en(h):
     """Símbolos que aparecen en matemáticas en línea, en tablas de símbolos o en texto con letras griegas."""
     s = set()
+    for eq in ecuaciones_destacadas(h):
+        s |= definidos_por_ecuacion(eq)
     sin_display = re.sub(r'\\\[.*?\\\]|\$\$.*?\$\$', ' ', h, flags=re.S)
     for m in math_en_linea(sin_display):
         s |= simbolos(m)
