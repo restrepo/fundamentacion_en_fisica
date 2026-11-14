@@ -120,6 +120,12 @@ Antes de editar, ejecuta `git pull`, porque el usuario también sube cambios des
   diccionario de `claude-kit/skills/leccion-a-deck/assets/siglas.js`; las
   propias de una lección se definen en la fuente con
   `<dl class="siglas-def" hidden><dt>SIGLA</dt><dd><b>Nombre</b>: …</dd></dl>`.
+- **Notas del expositor** (`data-speaker-notes` de cada sección): respuesta,
+  error que revela cada distractor y preguntas de predicción para hacer en voz
+  alta. Se ven solo en la **vista de profesor**: el enlace con `?profesor` y la
+  tecla N (`assets/notas.js` y `notas.css` de `leccion-a-deck`, incluidos por el
+  build; `--sin-notas` los quita). «↗ Ventana aparte» las abre en otra ventana
+  para la pantalla extendida.
 - Línea de crédito: «Diseño de material de estudio · W. Alexander Flórez».
 
 ## Convenciones del LaTeX del libro

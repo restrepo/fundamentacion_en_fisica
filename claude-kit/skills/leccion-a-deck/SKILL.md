@@ -100,6 +100,8 @@ lección (p. ej. \(\varepsilon_0\) y \(\mu_0\) después de la ley de Coulomb y d
 Ampère). Ante la duda, explica. Antes de entregar, recorre las ecuaciones
 nuevas y comprueba que ninguna variable quede sin explicar.
 
+**Vista de profesor** (`assets/notas.css` y `assets/notas.js`, incluidos por `build_html.py`; `--sin-notas` los quita): con `?profesor` en el enlace, la tecla N muestra u oculta un panel con las `data-speaker-notes` de la diapositiva actual, y «↗ Ventana aparte» las abre en otra ventana sincronizada (sus flechas pasan diapositivas), para dejarla en la pantalla del computador mientras el proyector muestra la lección. Sin `?profesor` no se crea nada. Por eso las notas de cada actividad deben decir la respuesta y el error de cada distractor: el profesor las lee en clase.
+
 **Siglas y acrónimos con ventana emergente** (`assets/siglas.css`,
 `assets/siglas.js`, incluidos siempre; `--sin-siglas` los quita): toda sigla
 del texto de las diapositivas («fem», «LHC», «SI», «rpm»…) queda subrayada con

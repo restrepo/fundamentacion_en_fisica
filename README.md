@@ -26,6 +26,13 @@ línea): también funciona descargado y abierto sin conexión.
 pequeñas (pasos) · espacio (todo en orden) · F o ⛶ (pantalla completa) · menú
 superior por secciones · clic en el contador para saltar a un número.
 
+**Vista de profesor:** agregue `?profesor` al final del enlace (por ejemplo
+`…/capitulo-4-electromagnetismo.html?profesor`). La tecla **N** muestra u oculta
+las notas de la diapositiva actual: respuesta de cada actividad, errores que revela
+cada distractor y preguntas de predicción. «↗ Ventana aparte» las abre en otra
+ventana para dejarla en la pantalla del computador mientras el proyector muestra la
+lección; las flechas en esa ventana también pasan las diapositivas.
+
 ### Capítulo 0 · Estructura de la materia
 
 82 diapositivas en doce bloques, a partir de las presentaciones del curso

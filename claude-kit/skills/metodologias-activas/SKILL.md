@@ -57,8 +57,9 @@ Es una revisión heurística. Antes de corregir, confirma cada hallazgo mirando 
    - La posición de la clave queda balanceada en la lección (`nueva_actividad.py` baraja las tablas; en las preguntas, ordénalas tú).
    - En una entrega: pista en forma de **pregunta**, sin solución visible (la captura la incluiría), y sin pedir el nombre.
    - Convenciones del curso: «ley de la fuerza», «acción y reacción», \(U\), coma decimal. Cada símbolo explicado y cada sigla con ventana.
-4. **Para convertir un explorador en clase demostrativa interactiva**, coloca antes de él una actividad `individual` que pida la predicción. Las notas deben indicar que se anima solo después de votar. Si la animación es de la misma diapositiva, usa un botón que revele el resultado después del voto, como los dinamómetros de `ac-carro-camion`.
-5. **Construye** con `leccion-a-deck/scripts/nueva_actividad.py`, regenera, verifica con `verificar_html.py` y vuelve a auditar.
+4. **Las notas del expositor se leen en clase** con la vista de profesor (`?profesor` y la tecla N, o «↗ Ventana aparte» en la pantalla del computador). Si una diapositiva no tiene espacio para la pregunta de predicción, escríbela al inicio de las notas como «Pregunta de predicción para la clase, antes de explorar: …»; el auditor la reconoce.
+5. **Para convertir un explorador en clase demostrativa interactiva**, coloca antes de él una actividad `individual` que pida la predicción. Las notas deben indicar que se anima solo después de votar. Si la animación es de la misma diapositiva, usa un botón que revele el resultado después del voto, como los dinamómetros de `ac-carro-camion`.
+6. **Construye** con `leccion-a-deck/scripts/nueva_actividad.py`, regenera, verifica con `verificar_html.py` y vuelve a auditar.
 
 ### 3. Pruebas de entrada y salida
 

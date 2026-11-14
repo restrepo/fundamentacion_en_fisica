@@ -5,7 +5,7 @@ autocontenido, con la navegación y el cromo originales de clase-slides.
 Uso:
   python build_html.py LECCION.html --ds RUTA/_ds/<sistema> --out SALIDA.html
          [--ancho 2280 --alto 1080] [--sin-posters] [--sin-cierre]
-         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO | --credito-leccion] [--sin-visor] [--sin-siglas]
+         [--mathjax inline|cdn] [--marca TEXTO] [--credito TEXTO | --credito-leccion] [--sin-visor] [--sin-siglas] [--sin-notas]
 
 Qué produce (ver references/autonomo.md):
   · #escenario 19:9 adaptable con el cromo de clase-slides: barra (marca, menú
@@ -148,6 +148,7 @@ def main():
     ap.add_argument('--credito-leccion', action='store_true', help='usar el crédito que trae la lección fuente')
     ap.add_argument('--sin-visor', action='store_true', help='no incluir el visor de imágenes a pantalla completa')
     ap.add_argument('--sin-siglas', action='store_true', help='no marcar las siglas con su ventana emergente')
+    ap.add_argument('--sin-notas', action='store_true', help='no incluir la vista de profesor (notas del expositor con ?profesor y la tecla N)')
     a = ap.parse_args()
 
     src = leer(a.leccion)
@@ -191,6 +192,7 @@ def main():
     css_total = ds_css + '\n\n' + css + '\n\n' + capa + '\n\n' + cromo
     if not a.sin_visor: css_total += '\n\n' + leer(os.path.join(ASSETS, 'visor-img.css'))
     if not a.sin_siglas: css_total += '\n\n' + leer(os.path.join(ASSETS, 'siglas.css'))
+    if not a.sin_notas: css_total += '\n\n' + leer(os.path.join(ASSETS, 'notas.css'))
 
     # cuerpo: diapositivas, fuentes de ventanas emergentes y scripts
     cuerpo = src[src.find('<body'):]
@@ -246,7 +248,8 @@ def main():
     escala = leer(os.path.join(ASSETS, 'escala.js')).replace('%%ANCHO%%', str(a.ancho))
     visor = '' if a.sin_visor else leer(os.path.join(ASSETS, 'visor-img.js'))
     siglas = '' if a.sin_siglas else leer(os.path.join(ASSETS, 'siglas.js'))
-    js = '\n\n'.join([tok, escala, js_autonomo(scripts), visor, siglas, 'window.__leccionTypeset();'])
+    notas = '' if a.sin_notas else leer(os.path.join(ASSETS, 'notas.js'))
+    js = '\n\n'.join([tok, escala, js_autonomo(scripts), visor, siglas, notas, 'window.__leccionTypeset();'])
     for t in (css_total, diapos, pops_html, mj_cfg):
         if '</script' in t.lower(): raise SystemExit('contenido con </script>')
 

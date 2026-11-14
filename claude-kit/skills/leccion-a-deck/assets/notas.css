@@ -1,0 +1,22 @@
+/* vista de profesor: panel con las notas del expositor (solo con ?profesor) */
+.notas-prof{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:9000;
+  width:min(620px,46vw);max-height:44vh;display:none;flex-direction:column;background:var(--panel);color:var(--tinta);
+  border:2px solid var(--res);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.28);font:400 16px/1.45 Archivo,system-ui,sans-serif}
+.notas-prof.visible{display:flex}
+.notas-cab{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--linea)}
+.notas-tit{font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--res)}
+.notas-num{padding:6px 14px 0;font-weight:700;font-size:15px;color:var(--tinta2)}
+.notas-ven{margin-left:auto;border:1px solid var(--linea);background:none;color:var(--res);border-radius:6px;font:600 13px Archivo,system-ui,sans-serif;padding:3px 8px;cursor:pointer}
+.notas-x{border:0;background:none;color:var(--tinta2);font-size:24px;line-height:1;cursor:pointer;padding:0 4px}
+.notas-txt{padding:10px 14px;overflow:auto;white-space:pre-wrap}
+.notas-txt strong{color:var(--res)}
+.notas-txt em{font-style:normal;font-weight:700;color:var(--mal)}
+.notas-pred{display:block;background:var(--caso2-50);border-left:5px solid var(--caso2);padding:6px 10px;margin-bottom:6px}
+.notas-vacia{color:var(--tinta2)}
+.notas-pie{padding:6px 12px;border-top:1px solid var(--linea);font-size:12px;color:var(--tinta2)}
+.notas-chip{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:9000;
+  border:1px solid var(--linea);background:var(--panel);color:var(--tinta2);border-radius:999px;padding:4px 12px;
+  font:600 13px Archivo,system-ui,sans-serif;cursor:pointer;opacity:.75}
+.notas-chip.con-notas{border-color:var(--res);color:var(--res);opacity:1}
+.notas-chip.oculto{display:none}
+.notas-prof button:focus-visible,.notas-chip:focus-visible{outline:3px solid var(--res);outline-offset:2px}

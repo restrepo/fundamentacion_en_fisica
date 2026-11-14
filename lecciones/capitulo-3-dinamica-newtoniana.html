@@ -790,6 +790,30 @@ abbr.sigla:hover,abbr.sigla:focus-visible{background:var(--res-50);outline:none}
 .sigla-pop .sigla-n{font-weight:800;color:var(--tinta)}
 .sigla-x{position:absolute;top:4px;right:10px;border:0;background:none;font-size:32px;line-height:1;cursor:pointer;color:var(--tinta2)}
 
+
+/* vista de profesor: panel con las notas del expositor (solo con ?profesor) */
+.notas-prof{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:9000;
+  width:min(620px,46vw);max-height:44vh;display:none;flex-direction:column;background:var(--panel);color:var(--tinta);
+  border:2px solid var(--res);border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.28);font:400 16px/1.45 Archivo,system-ui,sans-serif}
+.notas-prof.visible{display:flex}
+.notas-cab{display:flex;align-items:center;gap:10px;padding:8px 12px;border-bottom:1px solid var(--linea)}
+.notas-tit{font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:var(--res)}
+.notas-num{padding:6px 14px 0;font-weight:700;font-size:15px;color:var(--tinta2)}
+.notas-ven{margin-left:auto;border:1px solid var(--linea);background:none;color:var(--res);border-radius:6px;font:600 13px Archivo,system-ui,sans-serif;padding:3px 8px;cursor:pointer}
+.notas-x{border:0;background:none;color:var(--tinta2);font-size:24px;line-height:1;cursor:pointer;padding:0 4px}
+.notas-txt{padding:10px 14px;overflow:auto;white-space:pre-wrap}
+.notas-txt strong{color:var(--res)}
+.notas-txt em{font-style:normal;font-weight:700;color:var(--mal)}
+.notas-pred{display:block;background:var(--caso2-50);border-left:5px solid var(--caso2);padding:6px 10px;margin-bottom:6px}
+.notas-vacia{color:var(--tinta2)}
+.notas-pie{padding:6px 12px;border-top:1px solid var(--linea);font-size:12px;color:var(--tinta2)}
+.notas-chip{position:fixed;right:max(12px,env(safe-area-inset-right,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:9000;
+  border:1px solid var(--linea);background:var(--panel);color:var(--tinta2);border-radius:999px;padding:4px 12px;
+  font:600 13px Archivo,system-ui,sans-serif;cursor:pointer;opacity:.75}
+.notas-chip.con-notas{border-color:var(--res);color:var(--res);opacity:1}
+.notas-chip.oculto{display:none}
+.notas-prof button:focus-visible,.notas-chip:focus-visible{outline:3px solid var(--res);outline-offset:2px}
+
 </style>
 <script>
 window.MathJax = {
@@ -7855,6 +7879,103 @@ function lienzoOrbita(cv, trazos, marcas) {
   }, true);
   document.addEventListener('slidechange', cierra);
   document.addEventListener('diapositiva', cierra);
+})();
+
+
+/* ═══ VISTA DE PROFESOR: NOTAS DEL EXPOSITOR ═══════════════════════════
+   Solo se activa si la página se abre con «?profesor» en el enlace
+   (…/capitulo-4-electromagnetismo.html?profesor). La tecla N muestra u oculta
+   un panel con las notas (data-speaker-notes) de la diapositiva actual:
+   respuesta, errores de cada distractor y preguntas de predicción.
+   El botón «↗ Ventana aparte» abre las notas en otra ventana, para dejarla en
+   la pantalla del computador mientras el proyector muestra la lección
+   (pantalla extendida); las flechas en esa ventana también pasan diapositivas.
+   Sin «?profesor» no se crea nada en la página. */
+(function () {
+  let activo = false;
+  try { activo = new URLSearchParams(location.search).has('profesor'); } catch (e) {}
+  if (!activo) return;
+
+  const panel = document.createElement('aside');
+  panel.className = 'notas-prof no-captura';
+  panel.setAttribute('aria-live', 'polite');
+  panel.innerHTML = '<div class="notas-cab"><span class="notas-tit">Notas del expositor</span>' +
+    '<button type="button" class="notas-ven">↗ Ventana aparte</button><button type="button" class="notas-x" aria-label="Ocultar las notas">×</button></div>' +
+    '<div class="notas-num"></div>' +
+    '<div class="notas-txt"></div><div class="notas-pie">N: mostrar u ocultar · vista de profesor</div>';
+  const chip = document.createElement('button');
+  chip.type = 'button';
+  chip.className = 'notas-chip no-captura';
+  chip.textContent = 'N · notas';
+  chip.title = 'Mostrar las notas del expositor (tecla N)';
+  document.body.appendChild(panel);
+  document.body.appendChild(chip);
+
+  const esc = s => s.replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+  function formatea(t) {
+    let h = esc(t);
+    h = h.replace(/\s(Pregunta \d+[:.]|\d\) (?=[A-ZÁÉÍÓÚ«]))/g, '\n\n$1');   // cada pregunta en su párrafo
+    h = h.replace(/(\b[Rr]espuestas?\b\s*:?[^.;]*)/g, '<strong>$1</strong>');
+    h = h.replace(/(Pregunta de predicción para la clase[^?]*\?)/g, '<span class="notas-pred">$1</span>');
+    h = h.replace(/(Errores( comunes| frecuentes)?:|Error común:|Errores de la pregunta \d:)/g, '<em>$1</em>');
+    return h;
+  }
+  function actual() {
+    const todas = Array.from(document.querySelectorAll('section.diapositiva'));
+    const s = document.querySelector('section.diapositiva[data-deck-active]');
+    return { s, n: s ? todas.indexOf(s) + 1 : 0, total: todas.length };
+  }
+  let win = null;
+  function abreVentana() {
+    win = window.open('', 'notas-profesor', 'width=680,height=560');
+    if (!win) return;
+    const d = win.document;
+    d.open();
+    d.write('<!doctype html><meta charset="utf-8"><title>Notas del expositor</title>' +
+      '<style>body{margin:0;padding:18px 22px;font:400 19px/1.5 Archivo,system-ui,sans-serif;background:Canvas;color:CanvasText;color-scheme:light dark}' +
+      'h1{font-size:15px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 4px;opacity:.7}h2{font-size:22px;margin:0 0 12px}' +
+      '#t{white-space:pre-wrap}strong{color:#1d4ed8}em{font-style:normal;font-weight:700;color:#b91c1c}' +
+      '.notas-pred{display:block;border-left:5px solid #b45309;padding:6px 10px;margin-bottom:8px;background:rgba(180,83,9,.12)}' +
+      'p.ayuda{font-size:13px;opacity:.6;margin-top:18px}</style>' +
+      '<h1>Notas del expositor</h1><h2 id="tit"></h2><div id="t"></div><p class="ayuda">← → pasan las diapositivas de la lección.</p>');
+    d.close();
+    d.addEventListener('keydown', e => {
+      if (/^Arrow|^Page|^ $/.test(e.key)) { e.preventDefault(); window.dispatchEvent(new KeyboardEvent('keydown', { key: e.key, bubbles: true })); }
+    });
+    muestra(false);
+    pinta();
+  }
+  function pinta() {
+    const { s, n, total } = actual();
+    const t = s ? (s.getAttribute('data-speaker-notes') || '').trim() : '';
+    const tit = s ? (s.getAttribute('data-label') || '') : '';
+    const cuerpo = t ? formatea(t) : '<span class="notas-vacia">Esta diapositiva no tiene notas.</span>';
+    panel.querySelector('.notas-num').textContent = tit;
+    panel.querySelector('.notas-txt').innerHTML = cuerpo;
+    chip.classList.toggle('con-notas', !!t);
+    if (win && !win.closed) {
+      try { win.document.getElementById('tit').textContent = tit; win.document.getElementById('t').innerHTML = cuerpo; } catch (e) {}
+    }
+  }
+  function muestra(v) {
+    panel.classList.toggle('visible', v);
+    chip.classList.toggle('oculto', v);
+    if (v) pinta();
+  }
+  window.addEventListener('keydown', e => {
+    if ((e.key === 'n' || e.key === 'N') && !e.ctrlKey && !e.metaKey && !e.altKey) {
+      const el = e.target;
+      if (el && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName))) return;
+      e.preventDefault();
+      muestra(!panel.classList.contains('visible'));
+    }
+  }, true);
+  chip.addEventListener('click', () => muestra(true));
+  panel.querySelector('.notas-x').addEventListener('click', () => muestra(false));
+  panel.querySelector('.notas-ven').addEventListener('click', abreVentana);
+  document.addEventListener('slidechange', pinta);
+  new MutationObserver(pinta).observe(document.body, { subtree: true, attributes: true, attributeFilter: ['data-deck-active'] });
+  pinta();
 })();
 
 
