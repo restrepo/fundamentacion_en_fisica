@@ -1199,7 +1199,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <div class="fila-btn" style="margin:6px 12px 10px"><button type="button" class="btn" id="ba-play">▶ Encender la luz</button><button type="button" class="btn" id="ba-rein">↺ Recargar</button></div>
     </figure>
     <div class="pila">
-      <p>Los mAh miden <strong>carga</strong>, \(Q = I\,t\): \(\qty{1}{mAh} = \qty{3{,}6}{C}\). La energía depende también del voltaje (<span class="prop" data-pop="pop-ba-var">¿qué es cada símbolo?</span>):</p>
+      <p>Los mAh miden <strong>carga</strong>, \(Q = I\,t\): <span class="prop" data-pop="pop-ba-mah">\(\qty{1}{mAh} = \qty{3{,}6}{C}\)</span>. La energía depende también del voltaje (<span class="prop" data-pop="pop-ba-var">¿qué es cada símbolo?</span>):</p>
       <div class="kf" style="padding:0 14px">\[ E = Q\,V, \qquad t = \dfrac{\eta\,E}{P} \]</div>
       <div class="fila-btn" id="ba-pre"><button type="button" class="btn activo" data-q="20000" data-v="3.7">Power bank</button><button type="button" class="btn" data-q="5000" data-v="3.85">Celular</button><button type="button" class="btn" data-q="60000" data-v="12">Batería de carro</button></div>
       <label class="ctrl"><span>Capacidad</span><input type="range" id="ba-q" min="1000" max="100000" step="500" value="20000"><span class="v" id="ba-qv"></span></label>
@@ -1209,6 +1209,15 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <p class="nota" id="ba-nota" style="margin:0"></p>
       <p class="puente" style="margin:0">→ ¿Por qué un power bank de 20 000 mAh no carga cuatro veces un celular de 5000 mAh?</p>
     </div>
+  </div>
+  <div class="pop-src" id="pop-ba-mah" style="display:none"><h4>¿Por qué 1 mAh = 3,6 C?</h4>
+    <p style="margin:0 0 8px">«mAh» es <strong>miliamperio-hora</strong>: la carga que pasa cuando circula una corriente de 1 mA durante 1 hora. Como la corriente es carga por unidad de tiempo, \(I = Q/t\), la carga es \(Q = I\,t\).</p>
+    <ul style="margin:0 0 8px;padding-left:1.2em">
+      <li>Un amperio es un culombio por segundo: <span style="white-space:nowrap">\(\qty{1}{A} = \qty{1}{C/s}\),</span> así que \(\qty{1}{mA} = 10^{-3}\,\mathrm{C/s}\).</li>
+      <li>Una hora tiene \(60 \times 60 = \qty{3600}{s}\).</li>
+    </ul>
+    \[ \qty{1}{mAh} = \left(10^{-3}\,\dfrac{\mathrm{C}}{\mathrm{s}}\right)(\qty{3600}{s}) = \qty{3{,}6}{C} \]
+    <p style="margin:8px 0 0">Entonces \(\qty{1}{Ah} = \qty{3600}{C}\) y la batería de un celular de \(\qty{5000}{mAh}\) entrega \(18\,000\,\mathrm{C}\). Con la carga del electrón, \(e = 1{,}602\times 10^{-19}\,\mathrm{C}\), 1 mAh son unos \(3{,}6/(1{,}602\times 10^{-19}) \approx 2{,}2\times 10^{19}\) electrones. Los mAh no dicen nada del voltaje: por eso no miden energía.</p>
   </div>
   <div class="pop-src" id="pop-ba-var" style="display:none"><h4>Los símbolos de la batería</h4>
     <table class="pop-tab">
@@ -2201,6 +2210,15 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <p style="margin:0 0 6px">Con la masa del electrón (CODATA 2022) y la velocidad de la luz (exacta):</p>
     \[ \begin{aligned} m_e &= \qty{9{,}109\,383\,713\,9(28)\times 10^{-31}}{kg}, \qquad c = \qty{299\,792\,458}{m/s} \\ E_0 = m_e c^{2} &= \qty{9{,}109\,383\,714\times 10^{-31}}{kg}\times\qty{8{,}987\,551\,787\times 10^{16}}{m^{2}/s^{2}} \\ &= \qty{8{,}187\,105\,788\times 10^{-14}}{J} \end{aligned} \]
     <p style="margin:6px 0 0">En el problema se redondea a \(\qty{8{,}187\times 10^{-14}}{J}\). Ahora conviértelo a MeV con los factores.</p></div>
+<div class="pop-src" id="pop-ba-mah" style="display:none"><h4>¿Por qué 1 mAh = 3,6 C?</h4>
+    <p style="margin:0 0 8px">«mAh» es <strong>miliamperio-hora</strong>: la carga que pasa cuando circula una corriente de 1 mA durante 1 hora. Como la corriente es carga por unidad de tiempo, \(I = Q/t\), la carga es \(Q = I\,t\).</p>
+    <ul style="margin:0 0 8px;padding-left:1.2em">
+      <li>Un amperio es un culombio por segundo: <span style="white-space:nowrap">\(\qty{1}{A} = \qty{1}{C/s}\),</span> así que \(\qty{1}{mA} = 10^{-3}\,\mathrm{C/s}\).</li>
+      <li>Una hora tiene \(60 \times 60 = \qty{3600}{s}\).</li>
+    </ul>
+    \[ \qty{1}{mAh} = \left(10^{-3}\,\dfrac{\mathrm{C}}{\mathrm{s}}\right)(\qty{3600}{s}) = \qty{3{,}6}{C} \]
+    <p style="margin:8px 0 0">Entonces \(\qty{1}{Ah} = \qty{3600}{C}\) y la batería de un celular de \(\qty{5000}{mAh}\) entrega \(18\,000\,\mathrm{C}\). Con la carga del electrón, \(e = 1{,}602\times 10^{-19}\,\mathrm{C}\), 1 mAh son unos \(3{,}6/(1{,}602\times 10^{-19}) \approx 2{,}2\times 10^{19}\) electrones. Los mAh no dicen nada del voltaje: por eso no miden energía.</p>
+  </div>
 <div class="pop-src" id="pop-ba-var" style="display:none"><h4>Los símbolos de la batería</h4>
     <table class="pop-tab">
       <tr><td>\(Q\)</td><td>carga que la batería entrega al descargarse: su capacidad (1 mAh = 3,6 C)</td><td>C o mAh</td></tr>
