@@ -225,6 +225,8 @@ figure.fg figcaption{font-size:22px;line-height:1.35;color:var(--tinta2);margin-
 .pop-tab td{padding:4px 10px}
 .pop-tab td:nth-child(2){white-space:nowrap}
 .popover:has(.pop-tab) p{font-size:26px;line-height:1.4}
+.popover:has(.pop-larga){max-width:1240px;max-height:1000px;overflow-y:auto;font-size:25px;line-height:1.4}
+.popover:has(.pop-larga) p,.popover:has(.pop-larga) li{font-size:25px}
 #ac-varilla figcaption{font-size:22px}
 .pc-slide .pc-col > * + *{margin-top:10px}
 .pc-slide .pr-opcs{display:flex;flex-direction:column;align-items:stretch;gap:8px}
@@ -1987,16 +1989,59 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <h2 class="titulo">El átomo clásico debería colapsar en \(\sim 10^{-11}\qty{}{s}\)</h2>
   <div class="g2">
     <div class="pila">
-      <p class="frag"><strong>Larmor.</strong> Por análisis dimensional con \(k e^{2}\), \(a\) y \(c\), la potencia radiada es
+      <p class="frag"><strong>Larmor.</strong> Por <span class="prop" data-pop="pop-larmor">análisis dimensional</span> con \(k e^{2}\), \(a\) y \(c\), la potencia radiada es
         \[ P = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}. \]</p>
-      <p class="frag"><strong>Energía disponible.</strong> Con \(m v^{2}/r = k e^{2}/r^{2}\):
-        \[ E = \tfrac12 m v^{2} - \dfrac{k e^{2}}{r} = -\dfrac{k e^{2}}{2r}, \qquad a = \dfrac{k e^{2}}{m r^{2}}. \]</p>
+      <p class="frag"><strong><span class="prop" data-pop="pop-col-energia">Energía disponible.</span></strong> Con \(m v^{2}/r = k e^{2}/r^{2}\):
+        \[ E = \tfrac12 m v^{2} - \dfrac{k e^{2}}{r} = -\dfrac{k e^{2}}{2r}, \qquad a = \dfrac{k e^{2}}{m r^{2}}. \]<span class="prop" data-pop="pop-col-acel" style="font-size:24px">¿De dónde sale \(a\)?</span></p>
       <div class="kf frag">\[ \Delta t \approx \dfrac{\abs{E}}{P} = \dfrac{3 c^{3} m^{2} r^{3}}{4 k^{2} e^{4}} \approx \qty{4{,}7\times 10^{-11}}{s} \]</div>
     </div>
     <figure class="svgbox" style="margin:0"><div class="svghd"><span>La espiral de la muerte</span><span class="val" id="col-lect"></span></div>
       <canvas class="lienzo" id="col-cv" width="1000" height="600"></canvas>
       <label class="ctrl"><span>Radio inicial \(r_0/a_0\)</span><input type="range" id="col-r" min="0.5" max="3" step="0.1" value="1"><span class="v" id="col-rv"></span></label>
     </figure>
+  </div>
+  <div class="pop-src" id="pop-col-acel" style="display:none"><h4 class="pop-larga">La aceleración del electrón en órbita</h4>
+    <p style="margin:0 0 6px"><strong>1 · Aceleración centrípeta.</strong> En una órbita circular de radio \(r\) con rapidez \(v\) constante, la velocidad gira un ángulo \(\Delta\theta\) en el tiempo \(\Delta t = r\,\Delta\theta/v\). Su cambio es un vector de magnitud \(\Delta v \approx v\,\Delta\theta\) que apunta hacia el centro, así que</p>
+    \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{v\,\Delta\theta}{r\,\Delta\theta/v} = \dfrac{v^{2}}{r}. \]
+    <p style="margin:6px 0 6px"><strong>2 · La fuerza que la produce.</strong> La única fuerza sobre el electrón es la atracción eléctrica del protón, \(F = k e^{2}/r^{2}\), dirigida al centro. Por la ley de la fuerza, \(F = m a\):</p>
+    \[ m\,\dfrac{v^{2}}{r} = \dfrac{k e^{2}}{r^{2}} \qquad\Longrightarrow\qquad a = \dfrac{v^{2}}{r} = \dfrac{k e^{2}}{m r^{2}}. \]
+    <p style="margin:6px 0 0">Para el hidrógeno, con \(r = a_0 \approx \qty{0{,}053}{nm}\): \(a \approx 9\times 10^{22}\,\mathrm{m/s^{2}}\), unas \(10^{22}\) veces la gravedad. Por eso la radiación de Larmor, que va como \(a^{2}\), vacía la energía tan rápido.</p>
+    <table class="pop-tab" style="margin-top:8px">
+      <tr><td>\(m\)</td><td>masa del electrón</td><td>kg</td></tr>
+      <tr><td>\(e\)</td><td>carga del electrón (y del protón)</td><td>C</td></tr>
+      <tr><td>\(k\)</td><td>constante de Coulomb</td><td>\(\mathrm{N\,m^{2}/C^{2}}\)</td></tr>
+      <tr><td>\(r\), \(v\)</td><td>radio de la órbita y rapidez del electrón</td><td>m, m/s</td></tr>
+      <tr><td>\(a_0\)</td><td>radio de Bohr</td><td>m</td></tr>
+    </table>
+  </div>
+  <div class="pop-src" id="pop-col-energia" style="display:none"><h4 class="pop-larga">La energía que el electrón puede perder</h4>
+    <p style="margin:0 0 6px"><strong>1 · Energía potencial.</strong> Con la referencia \(U = 0\) cuando el electrón está infinitamente lejos del protón, la energía potencial eléctrica a la distancia \(r\) es \(U = -k e^{2}/r\): negativa, porque las cargas se atraen.</p>
+    <p style="margin:0 0 6px"><strong>2 · Energía cinética.</strong> En la órbita circular, la atracción eléctrica es la fuerza centrípeta:</p>
+    \[ m\,\dfrac{v^{2}}{r} = \dfrac{k e^{2}}{r^{2}} \qquad\Longrightarrow\qquad K = \tfrac12 m v^{2} = \dfrac{k e^{2}}{2r}. \]
+    <p style="margin:6px 0 6px"><strong>3 · Energía total.</strong></p>
+    \[ E = K + U = \dfrac{k e^{2}}{2r} - \dfrac{k e^{2}}{r} = -\dfrac{k e^{2}}{2r}. \]
+    <p style="margin:6px 0 6px">Es negativa: el electrón está <strong>ligado</strong>. Para el hidrógeno, con \(r = a_0\), \(E \approx \qty{-13{,}6}{eV}\), justo la energía que hay que darle para arrancarlo.</p>
+    <p style="margin:0 0 6px"><strong>4 · ¿Por qué se puede perder?</strong> Al radiar, \(E\) disminuye (se hace más negativa), así que \(r\) se reduce: el electrón cae en espiral. Mientras baja, \(K\) <em>aumenta</em>, pero \(U\) baja el doble. La escala de energía que tiene que perder es \(\abs{E} = k e^{2}/(2r)\), y por eso el tiempo de vida se estima como \(\Delta t \approx \abs{E}/P\).</p>
+    <p style="margin:0">El cálculo exacto suma la pérdida radio por radio. Con \(P = \tfrac23\,k^{3} e^{6}/(m^{2} c^{3} r^{4})\) se obtiene \(t = m^{2} c^{3} r^{3}/(4 k^{2} e^{4}) \approx \qty{1{,}6\times 10^{-11}}{s}\): un tercio de la estimación, con el mismo orden de magnitud.</p>
+  </div>
+  <div class="pop-src" id="pop-larmor" style="display:none"><h4 class="pop-larga">La fórmula de Larmor por análisis dimensional</h4>
+    <p style="margin:0 0 6px"><strong>1 · ¿De qué puede depender la potencia radiada \(P\)?</strong></p>
+    <ul style="margin:0 0 8px;padding-left:1.2em">
+      <li>De la <strong>carga</strong>, como \(k e^{2}\): el campo es proporcional a \(e\) y su energía, al cuadrado del campo.</li>
+      <li>De la <strong>aceleración</strong> \(a\), no de \(v\): una carga con velocidad constante no radia (en su propio sistema está quieta).</li>
+      <li>De la <strong>rapidez de la luz</strong> \(c\): la radiación es una onda electromagnética. No depende de la masa.</li>
+    </ul>
+    <p style="margin:0 0 6px"><strong>2 · Unidades de cada cantidad</strong> (kg, m, s):</p>
+    <table class="pop-tab">
+      <tr><td>\(P\)</td><td>potencia radiada</td><td>\(\mathrm{W} = \mathrm{kg\,m^{2}\,s^{-3}}\)</td></tr>
+      <tr><td>\(k e^{2}\)</td><td>energía × distancia (ley de Coulomb)</td><td>\(\mathrm{J\,m} = \mathrm{kg\,m^{3}\,s^{-2}}\)</td></tr>
+      <tr><td>\(a\)</td><td>aceleración del electrón</td><td>\(\mathrm{m\,s^{-2}}\)</td></tr>
+      <tr><td>\(c\)</td><td>rapidez de la luz</td><td>\(\mathrm{m\,s^{-1}}\)</td></tr>
+    </table>
+    <p style="margin:8px 0 6px"><strong>3 · Se propone</strong> \(P = C\,(k e^{2})^{\alpha}\,a^{\beta}\,c^{\gamma}\), con \(C\) un número sin unidades, y se igualan los exponentes de cada unidad:</p>
+    \[ \begin{aligned} \mathrm{kg}&:\ \ 1 = \alpha \\ \mathrm{m}&:\ \ 2 = 3\alpha + \beta + \gamma \\ \mathrm{s}&:\ -3 = -2\alpha - 2\beta - \gamma \end{aligned} \qquad\Longrightarrow\qquad \alpha = 1,\ \ \beta = 2,\ \ \gamma = -3 \]
+    <p style="margin:6px 0 6px"><strong>4 · Resultado</strong>: \(P = C\,k e^{2} a^{2}/c^{3}\). Tres ecuaciones y tres incógnitas: las unidades fijan toda la dependencia. El \(a^{2}\) también tiene sentido: la potencia no cambia de signo si la aceleración se invierte.</p>
+    <p style="margin:0"><strong>5 · Lo que el análisis dimensional no da</strong> es el número \(C\). El cálculo completo con las ecuaciones de Maxwell (Larmor, 1897) da \(C = \tfrac23\).</p>
   </div>
 </section>
 
@@ -2292,6 +2337,49 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <tr><td>\(\Delta\vect{L}\)</td><td>tramo pequeño del lazo de Ampère</td><td>m</td></tr>
       <tr><td>\(I_{\text{enc}}\)</td><td>corriente que atraviesa la superficie apoyada en el lazo</td><td>A</td></tr>
     </table>
+  </div>
+<div class="pop-src" id="pop-col-acel" style="display:none"><h4 class="pop-larga">La aceleración del electrón en órbita</h4>
+    <p style="margin:0 0 6px"><strong>1 · Aceleración centrípeta.</strong> En una órbita circular de radio \(r\) con rapidez \(v\) constante, la velocidad gira un ángulo \(\Delta\theta\) en el tiempo \(\Delta t = r\,\Delta\theta/v\). Su cambio es un vector de magnitud \(\Delta v \approx v\,\Delta\theta\) que apunta hacia el centro, así que</p>
+    \[ a = \dfrac{\Delta v}{\Delta t} = \dfrac{v\,\Delta\theta}{r\,\Delta\theta/v} = \dfrac{v^{2}}{r}. \]
+    <p style="margin:6px 0 6px"><strong>2 · La fuerza que la produce.</strong> La única fuerza sobre el electrón es la atracción eléctrica del protón, \(F = k e^{2}/r^{2}\), dirigida al centro. Por la ley de la fuerza, \(F = m a\):</p>
+    \[ m\,\dfrac{v^{2}}{r} = \dfrac{k e^{2}}{r^{2}} \qquad\Longrightarrow\qquad a = \dfrac{v^{2}}{r} = \dfrac{k e^{2}}{m r^{2}}. \]
+    <p style="margin:6px 0 0">Para el hidrógeno, con \(r = a_0 \approx \qty{0{,}053}{nm}\): \(a \approx 9\times 10^{22}\,\mathrm{m/s^{2}}\), unas \(10^{22}\) veces la gravedad. Por eso la radiación de Larmor, que va como \(a^{2}\), vacía la energía tan rápido.</p>
+    <table class="pop-tab" style="margin-top:8px">
+      <tr><td>\(m\)</td><td>masa del electrón</td><td>kg</td></tr>
+      <tr><td>\(e\)</td><td>carga del electrón (y del protón)</td><td>C</td></tr>
+      <tr><td>\(k\)</td><td>constante de Coulomb</td><td>\(\mathrm{N\,m^{2}/C^{2}}\)</td></tr>
+      <tr><td>\(r\), \(v\)</td><td>radio de la órbita y rapidez del electrón</td><td>m, m/s</td></tr>
+      <tr><td>\(a_0\)</td><td>radio de Bohr</td><td>m</td></tr>
+    </table>
+  </div>
+<div class="pop-src" id="pop-col-energia" style="display:none"><h4 class="pop-larga">La energía que el electrón puede perder</h4>
+    <p style="margin:0 0 6px"><strong>1 · Energía potencial.</strong> Con la referencia \(U = 0\) cuando el electrón está infinitamente lejos del protón, la energía potencial eléctrica a la distancia \(r\) es \(U = -k e^{2}/r\): negativa, porque las cargas se atraen.</p>
+    <p style="margin:0 0 6px"><strong>2 · Energía cinética.</strong> En la órbita circular, la atracción eléctrica es la fuerza centrípeta:</p>
+    \[ m\,\dfrac{v^{2}}{r} = \dfrac{k e^{2}}{r^{2}} \qquad\Longrightarrow\qquad K = \tfrac12 m v^{2} = \dfrac{k e^{2}}{2r}. \]
+    <p style="margin:6px 0 6px"><strong>3 · Energía total.</strong></p>
+    \[ E = K + U = \dfrac{k e^{2}}{2r} - \dfrac{k e^{2}}{r} = -\dfrac{k e^{2}}{2r}. \]
+    <p style="margin:6px 0 6px">Es negativa: el electrón está <strong>ligado</strong>. Para el hidrógeno, con \(r = a_0\), \(E \approx \qty{-13{,}6}{eV}\), justo la energía que hay que darle para arrancarlo.</p>
+    <p style="margin:0 0 6px"><strong>4 · ¿Por qué se puede perder?</strong> Al radiar, \(E\) disminuye (se hace más negativa), así que \(r\) se reduce: el electrón cae en espiral. Mientras baja, \(K\) <em>aumenta</em>, pero \(U\) baja el doble. La escala de energía que tiene que perder es \(\abs{E} = k e^{2}/(2r)\), y por eso el tiempo de vida se estima como \(\Delta t \approx \abs{E}/P\).</p>
+    <p style="margin:0">El cálculo exacto suma la pérdida radio por radio. Con \(P = \tfrac23\,k^{3} e^{6}/(m^{2} c^{3} r^{4})\) se obtiene \(t = m^{2} c^{3} r^{3}/(4 k^{2} e^{4}) \approx \qty{1{,}6\times 10^{-11}}{s}\): un tercio de la estimación, con el mismo orden de magnitud.</p>
+  </div>
+<div class="pop-src" id="pop-larmor" style="display:none"><h4 class="pop-larga">La fórmula de Larmor por análisis dimensional</h4>
+    <p style="margin:0 0 6px"><strong>1 · ¿De qué puede depender la potencia radiada \(P\)?</strong></p>
+    <ul style="margin:0 0 8px;padding-left:1.2em">
+      <li>De la <strong>carga</strong>, como \(k e^{2}\): el campo es proporcional a \(e\) y su energía, al cuadrado del campo.</li>
+      <li>De la <strong>aceleración</strong> \(a\), no de \(v\): una carga con velocidad constante no radia (en su propio sistema está quieta).</li>
+      <li>De la <strong>rapidez de la luz</strong> \(c\): la radiación es una onda electromagnética. No depende de la masa.</li>
+    </ul>
+    <p style="margin:0 0 6px"><strong>2 · Unidades de cada cantidad</strong> (kg, m, s):</p>
+    <table class="pop-tab">
+      <tr><td>\(P\)</td><td>potencia radiada</td><td>\(\mathrm{W} = \mathrm{kg\,m^{2}\,s^{-3}}\)</td></tr>
+      <tr><td>\(k e^{2}\)</td><td>energía × distancia (ley de Coulomb)</td><td>\(\mathrm{J\,m} = \mathrm{kg\,m^{3}\,s^{-2}}\)</td></tr>
+      <tr><td>\(a\)</td><td>aceleración del electrón</td><td>\(\mathrm{m\,s^{-2}}\)</td></tr>
+      <tr><td>\(c\)</td><td>rapidez de la luz</td><td>\(\mathrm{m\,s^{-1}}\)</td></tr>
+    </table>
+    <p style="margin:8px 0 6px"><strong>3 · Se propone</strong> \(P = C\,(k e^{2})^{\alpha}\,a^{\beta}\,c^{\gamma}\), con \(C\) un número sin unidades, y se igualan los exponentes de cada unidad:</p>
+    \[ \begin{aligned} \mathrm{kg}&:\ \ 1 = \alpha \\ \mathrm{m}&:\ \ 2 = 3\alpha + \beta + \gamma \\ \mathrm{s}&:\ -3 = -2\alpha - 2\beta - \gamma \end{aligned} \qquad\Longrightarrow\qquad \alpha = 1,\ \ \beta = 2,\ \ \gamma = -3 \]
+    <p style="margin:6px 0 6px"><strong>4 · Resultado</strong>: \(P = C\,k e^{2} a^{2}/c^{3}\). Tres ecuaciones y tres incógnitas: las unidades fijan toda la dependencia. El \(a^{2}\) también tiene sentido: la potencia no cambia de signo si la aceleración se invierte.</p>
+    <p style="margin:0"><strong>5 · Lo que el análisis dimensional no da</strong> es el número \(C\). El cálculo completo con las ecuaciones de Maxwell (Larmor, 1897) da \(C = \tfrac23\).</p>
   </div>
 </div>
 <script>
@@ -5079,7 +5167,7 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   const t0 = 4.7e-11;                         /* vida para r0 = a0; escala como r0³ */
   let s = 0, ult = 0;
   function dibuja() {
-    const r0 = +rr.value, esc = 90;
+    const r0 = +rr.value, esc = Math.min(210, 270 / r0);   /* píxeles por a₀: grande, y cabe con r₀ = 3 */
     g.clearRect(0, 0, W, H);
     const cx = W / 2, cy = H / 2;
     /* r(τ) con r³ decreciendo linealmente en el tiempo (P ∝ 1/r⁴, E ∝ 1/r) */
@@ -5089,10 +5177,12 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
       const ph = 60 * (1 - Math.pow(Math.max(0, 1 - tau), 0.5)) / Math.pow(r0, 1.5);
       tr.push([cx + esc * r * Math.cos(ph * 6), cy - esc * r * Math.sin(ph * 6)]);
     }
-    g.strokeStyle = tok('--caso1'); g.lineWidth = 2.5; g.beginPath(); tr.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke();
-    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(cx, cy, 16, 0, 2 * Math.PI); g.fill();
-    const q = tr[tr.length - 1]; g.fillStyle = tok('--res'); g.beginPath(); g.arc(q[0], q[1], 10, 0, 2 * Math.PI); g.fill();
-    g.fillStyle = tok('--tinta2'); g.font = '24px ' + FTXT; g.fillText('protón', cx + 22, cy + 34);
+    g.save(); g.setLineDash([8, 10]); g.strokeStyle = tok('--rejilla'); g.lineWidth = 2; g.beginPath(); g.arc(cx, cy, esc, 0, 2 * Math.PI); g.stroke(); g.restore();
+    g.fillStyle = tok('--tinta2'); g.font = 'italic 26px ' + FMATH; g.fillText('a₀', cx + esc * 0.72 + 8, cy - esc * 0.72 - 8);
+    g.strokeStyle = tok('--caso1'); g.lineWidth = 3.5; g.beginPath(); tr.forEach((q, i) => i ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke();
+    g.fillStyle = tok('--caso2'); g.beginPath(); g.arc(cx, cy, 24, 0, 2 * Math.PI); g.fill();
+    const q = tr[tr.length - 1]; g.fillStyle = tok('--res'); g.beginPath(); g.arc(q[0], q[1], 14, 0, 2 * Math.PI); g.fill();
+    g.fillStyle = tok('--tinta2'); g.font = '26px ' + FTXT; g.fillText('protón', cx + 30, cy + 44);
     document.getElementById('col-rv').textContent = num(r0, 1);
     document.getElementById('col-lect').textContent = 'vida ≈ ' + cientTxt(t0 * Math.pow(r0, 3), 2) + ' s';
   }
