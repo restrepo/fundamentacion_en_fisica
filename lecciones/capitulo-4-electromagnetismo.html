@@ -2109,11 +2109,25 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     </figure>
     <div class="pila">
       \[ P = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}\,\gamma^{4}, \qquad a = \dfrac{c^{2}}{R} \]\[ \Delta E \approx 8{,}85\times 10^{-5}\,\dfrac{E^{4}}{R} \]
-      <p class="nota">\(\Delta E\) y \(E\) en \(\mathrm{GeV}\), \(R\) en metros. El botón carga los datos del LEP.</p>
+      <p class="nota">\(\Delta E\) y \(E\) en \(\mathrm{GeV}\), \(R\) en metros. El botón carga los datos del LEP. <span class="prop" data-pop="pop-gamma4">¿De dónde sale \(\gamma^{4}\)?</span></p>
       <label class="ctrl"><span>Energía \(E\) [GeV]</span><input type="range" id="si-e" min="1" max="120" step="0.5" value="50"><span class="v" id="si-ev"></span></label>
       <label class="ctrl"><span>Radio \(R\) [m]</span><input type="range" id="si-r" min="100" max="5000" step="10" value="1000"><span class="v" id="si-rv"></span></label>
       <div class="fila-btn"><button type="button" class="btn" id="si-lep">LEP (\(\qty{27}{km}\), \(\qty{104{,}5}{GeV}\))</button></div>
     </div>
+  </div>
+  <div class="pop-src" id="pop-gamma4" style="display:none"><h4 class="pop-larga">¿De dónde sale el factor \(\gamma^{4}\)?</h4>
+    <p style="margin:0 0 6px"><strong>1 · Larmor vale donde el electrón está quieto.</strong> La fórmula \(P = \tfrac23\,k e^{2} a^{2}/c^{3}\) se dedujo para cargas lentas. Para un electrón a casi \(c\) se aplica en el sistema de referencia que, en ese instante, se mueve con él (sistema propio), con la aceleración \(a'\) que se mide allí.</p>
+    <p style="margin:0 0 6px"><strong>2 · La potencia es la misma en los dos sistemas.</strong> En el sistema propio la radiación sale simétrica hacia adelante y hacia atrás. Al pasar al laboratorio, la energía emitida y el tiempo en que se emite se multiplican por el mismo \(\gamma\) (capítulo 2): su cociente, la potencia, no cambia, \(P = P'\).</p>
+    <p style="margin:0 0 6px"><strong>3 · La aceleración propia es \(\gamma^{2}\) veces mayor.</strong> En la órbita la aceleración es perpendicular a la velocidad (centrípeta). Para ese caso, dos factores de \(\gamma\):</p>
+    <ul style="margin:0 0 6px;padding-left:1.2em">
+      <li><strong>El tiempo:</strong> el reloj del electrón marca menos, \(\Delta t' = \Delta t/\gamma\) (dilatación del tiempo).</li>
+      <li><strong>La velocidad transversal:</strong> por la suma relativista de velocidades, un cambio pequeño \(\Delta v_\perp\) perpendicular al movimiento se ve \(\gamma\) veces mayor desde el sistema propio, \(\Delta u' = \gamma\,\Delta v_\perp\).</li>
+    </ul>
+    \[ a' = \dfrac{\Delta u'}{\Delta t'} = \dfrac{\gamma\,\Delta v_\perp}{\Delta t/\gamma} = \gamma^{2}\,a \qquad\Longrightarrow\qquad P = \dfrac23\,\dfrac{k e^{2}\,(\gamma^{2} a)^{2}}{c^{3}} = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}\,\gamma^{4}. \]
+    <p style="margin:6px 0 6px"><strong>4 · Energía perdida por vuelta.</strong> Con \(a = v^{2}/R \approx c^{2}/R\) y el tiempo de una vuelta \(2\pi R/c\):</p>
+    \[ \Delta E = P\,\dfrac{2\pi R}{c} = \dfrac{4\pi}{3}\,\dfrac{k e^{2}\,\gamma^{4}}{R}, \qquad \gamma = \dfrac{E}{m c^{2}}, \]
+    <p style="margin:6px 0 6px">que, con \(m c^{2} = \qty{0{,}511}{MeV}\) del electrón y \(k e^{2} = \qty{1{,}44}{eV\,nm}\), da el \(8{,}85\times 10^{-5}\,E^{4}/R\) de la diapositiva.</p>
+    <p style="margin:0"><strong>5 · Por qué el LHC usa protones.</strong> A la misma energía, \(\gamma\) es inversamente proporcional a la masa: el protón tiene 1836 veces la masa del electrón, así que radia \(1836^{4} \approx 10^{13}\) veces menos. En el LEP, con electrones de \(\qty{104{,}5}{GeV}\), \(\gamma \approx 2\times 10^{5}\) y \(\gamma^{4} \approx 2\times 10^{21}\): cada electrón perdía unos \(\qty{3}{GeV}\) por vuelta.</p>
   </div>
 </section>
 
@@ -2437,6 +2451,20 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     \[ \begin{aligned} \mathrm{kg}&:\ \ 1 = \alpha \\ \mathrm{m}&:\ \ 2 = 3\alpha + \beta + \gamma \\ \mathrm{s}&:\ -3 = -2\alpha - 2\beta - \gamma \end{aligned} \qquad\Longrightarrow\qquad \alpha = 1,\ \ \beta = 2,\ \ \gamma = -3 \]
     <p style="margin:6px 0 6px"><strong>4 · Resultado</strong>: \(P = C\,k e^{2} a^{2}/c^{3}\). Tres ecuaciones y tres incógnitas: las unidades fijan toda la dependencia. El \(a^{2}\) también tiene sentido: la potencia no cambia de signo si la aceleración se invierte.</p>
     <p style="margin:0"><strong>5 · Lo que el análisis dimensional no da</strong> es el número \(C\). El cálculo completo con las ecuaciones de Maxwell (Larmor, 1897) da \(C = \tfrac23\).</p>
+  </div>
+<div class="pop-src" id="pop-gamma4" style="display:none"><h4 class="pop-larga">¿De dónde sale el factor \(\gamma^{4}\)?</h4>
+    <p style="margin:0 0 6px"><strong>1 · Larmor vale donde el electrón está quieto.</strong> La fórmula \(P = \tfrac23\,k e^{2} a^{2}/c^{3}\) se dedujo para cargas lentas. Para un electrón a casi \(c\) se aplica en el sistema de referencia que, en ese instante, se mueve con él (sistema propio), con la aceleración \(a'\) que se mide allí.</p>
+    <p style="margin:0 0 6px"><strong>2 · La potencia es la misma en los dos sistemas.</strong> En el sistema propio la radiación sale simétrica hacia adelante y hacia atrás. Al pasar al laboratorio, la energía emitida y el tiempo en que se emite se multiplican por el mismo \(\gamma\) (capítulo 2): su cociente, la potencia, no cambia, \(P = P'\).</p>
+    <p style="margin:0 0 6px"><strong>3 · La aceleración propia es \(\gamma^{2}\) veces mayor.</strong> En la órbita la aceleración es perpendicular a la velocidad (centrípeta). Para ese caso, dos factores de \(\gamma\):</p>
+    <ul style="margin:0 0 6px;padding-left:1.2em">
+      <li><strong>El tiempo:</strong> el reloj del electrón marca menos, \(\Delta t' = \Delta t/\gamma\) (dilatación del tiempo).</li>
+      <li><strong>La velocidad transversal:</strong> por la suma relativista de velocidades, un cambio pequeño \(\Delta v_\perp\) perpendicular al movimiento se ve \(\gamma\) veces mayor desde el sistema propio, \(\Delta u' = \gamma\,\Delta v_\perp\).</li>
+    </ul>
+    \[ a' = \dfrac{\Delta u'}{\Delta t'} = \dfrac{\gamma\,\Delta v_\perp}{\Delta t/\gamma} = \gamma^{2}\,a \qquad\Longrightarrow\qquad P = \dfrac23\,\dfrac{k e^{2}\,(\gamma^{2} a)^{2}}{c^{3}} = \dfrac23\,\dfrac{k e^{2} a^{2}}{c^{3}}\,\gamma^{4}. \]
+    <p style="margin:6px 0 6px"><strong>4 · Energía perdida por vuelta.</strong> Con \(a = v^{2}/R \approx c^{2}/R\) y el tiempo de una vuelta \(2\pi R/c\):</p>
+    \[ \Delta E = P\,\dfrac{2\pi R}{c} = \dfrac{4\pi}{3}\,\dfrac{k e^{2}\,\gamma^{4}}{R}, \qquad \gamma = \dfrac{E}{m c^{2}}, \]
+    <p style="margin:6px 0 6px">que, con \(m c^{2} = \qty{0{,}511}{MeV}\) del electrón y \(k e^{2} = \qty{1{,}44}{eV\,nm}\), da el \(8{,}85\times 10^{-5}\,E^{4}/R\) de la diapositiva.</p>
+    <p style="margin:0"><strong>5 · Por qué el LHC usa protones.</strong> A la misma energía, \(\gamma\) es inversamente proporcional a la masa: el protón tiene 1836 veces la masa del electrón, así que radia \(1836^{4} \approx 10^{13}\) veces menos. En el LEP, con electrones de \(\qty{104{,}5}{GeV}\), \(\gamma \approx 2\times 10^{5}\) y \(\gamma^{4} \approx 2\times 10^{21}\): cada electrón perdía unos \(\qty{3}{GeV}\) por vuelta.</p>
   </div>
 </div>
 <script>
