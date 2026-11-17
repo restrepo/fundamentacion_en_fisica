@@ -1719,12 +1719,12 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     <p style="margin:4px 0 6px"><strong>Unidades:</strong> \(\dfrac{\mathrm{J^{2}\,s^{2}}}{\mathrm{kg\,J\,m}} = \dfrac{\mathrm{J\,s^{2}}}{\mathrm{kg\,m}} = \dfrac{(\mathrm{kg\,m^{2}/s^{2}})\,\mathrm{s^{2}}}{\mathrm{kg\,m}} = \mathrm{m}\).</p>
     <p style="margin:0"><strong>Atajo con electronvoltios.</strong> Multiplicando arriba y abajo por \(c^{2}\): \(a_0 = \dfrac{(\hbar c)^{2}}{(m c^{2})(k e^{2})}\), con \(\hbar c = \qty{197{,}33}{eV\,nm}\), \(m c^{2} = \qty{510\,999}{eV}\) y \(k e^{2} = \qty{1{,}440}{eV\,nm}\): \(a_0 = \dfrac{38\,938}{735\,820}\ \mathrm{nm} = \qty{0{,}052\,92}{nm}\).</p>
   </div>
-  <div class="pop-src" id="pop-bohr-136" style="display:none"><h4 class="pop-larga">El 13,6 eV, cuenta por cuenta</h4>
-    <p style="margin:0 0 6px"><strong>1 · La forma más corta.</strong> En el nivel \(n = 1\), \(E_1 = -\dfrac12\,\dfrac{k e^{2}}{a_0}\). Con \(k e^{2} = \qty{1{,}440}{eV\,nm}\) y \(a_0 = \qty{0{,}052\,92}{nm}\):</p>
-    \[ \abs{E_1} = \dfrac{\qty{1{,}440}{eV\,nm}}{2\times\qty{0{,}052\,92}{nm}} = \qty{13{,}606}{eV}. \]
-    <p style="margin:6px 0 6px"><strong>2 · En julios.</strong> Con \(k e^{2} = 2{,}307\,078\times 10^{-28}\,\mathrm{J\,m}\) y \(a_0 = 5{,}291\,77\times 10^{-11}\,\mathrm{m}\): \(\abs{E_1} = 2{,}179\,87\times 10^{-18}\,\mathrm{J}\). Dividiendo por \(1\ \mathrm{eV} = 1{,}602\,177\times 10^{-19}\,\mathrm{J}\) se obtiene \(\qty{13{,}606}{eV}\).</p>
-    <p style="margin:0 0 6px"><strong>3 · ¿De dónde sale \(k e^{2} = \qty{1{,}44}{eV\,nm}\)?</strong> \(k e^{2} = 2{,}307\times 10^{-28}\,\mathrm{J\,m}\); dividiendo por \(1{,}602\times 10^{-19}\,\mathrm{J/eV}\) y pasando metros a nanómetros (\(\times 10^{9}\)): \(1{,}440\,\mathrm{eV\,nm}\).</p>
-    <p style="margin:0"><strong>4 · Con la constante de estructura fina.</strong> El número sin unidades \(\alpha = k e^{2}/(\hbar c) = 1{,}440/197{,}33 \approx 1/137\) mide la intensidad de la fuerza eléctrica. Con él, \(\abs{E_1} = \tfrac12\,\alpha^{2}\,m c^{2} = \tfrac12\,(1/137{,}036)^{2}\,(\qty{510\,999}{eV}) = \qty{13{,}606}{eV}\): la energía del hidrógeno es una pequeña fracción, unos \(2{,}7\times 10^{-5}\), de la energía en reposo del electrón.</p>
+  <div class="pop-src" id="pop-bohr-136" style="display:none"><h4 class="pop-larga">El 13,6 eV es el factor que acompaña a \(1/n^{2}\)</h4>
+    <p style="margin:0 0 6px">En \(E_n = -\left(\dfrac{m k^{2} e^{4}}{2\hbar^{2}}\right)\dfrac{1}{n^{2}}\) solo hay que calcular el paréntesis, con \(m = \qty{9{,}109\times 10^{-31}}{kg}\), \(k = \qty{8{,}988\times 10^{9}}{N\,m^{2}/C^{2}}\), \(e = \qty{1{,}602\times 10^{-19}}{C}\) y \(\hbar = \qty{1{,}055\times 10^{-34}}{J\,s}\):</p>
+    \[ \dfrac{m k^{2} e^{4}}{2\hbar^{2}} = \dfrac{(9{,}109\times 10^{-31})\,(8{,}078\times 10^{19})\,(6{,}589\times 10^{-76})}{2\,(1{,}112\times 10^{-68})} = \dfrac{4{,}849\times 10^{-86}}{2{,}224\times 10^{-68}} = \qty{2{,}180\times 10^{-18}}{J}. \]
+    <p style="margin:6px 0 6px">Ahí van \(k^{2} = 8{,}078\times 10^{19}\), \(e^{4} = 6{,}589\times 10^{-76}\) y \(\hbar^{2} = 1{,}112\times 10^{-68}\), en unidades del SI. En electronvoltios, con \(\qty{1}{eV} = \qty{1{,}602\times 10^{-19}}{J}\):</p>
+    \[ \dfrac{\qty{2{,}180\times 10^{-18}}{J}}{\qty{1{,}602\times 10^{-19}}{J/eV}} = \resalta{\qty{13{,}6}{eV}}. \]
+    <p style="margin:6px 0 0">Unidades: \(\mathrm{kg}\,(\mathrm{N\,m^{2}/C^{2}})^{2}\,\mathrm{C^{4}}/(\mathrm{J\,s})^{2} = \mathrm{kg\,m^{2}/s^{2}} = \mathrm{J}\), usando \(\mathrm{J} = \mathrm{N\,m}\).</p>
   </div>
 </section>
 
