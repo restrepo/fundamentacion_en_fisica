@@ -1522,6 +1522,44 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 </section>
 
 <!-- ═════════════ §4 · DEL ÁTOMO CLÁSICO A BOHR ═════════════ -->
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" id="dp-binaria" data-label="Colapso de dos estrellas de neutrones" data-speaker-notes="Pregunta de predicción para la clase, antes de iniciar: si las estrellas pierden energía, ¿se alejan o se acercan? ¿Giran más rápido o más lento? § 4.7. Antes del átomo clásico, el mismo mecanismo a escala astronómica: GW170817 (17 de agosto de 2017, LIGO y Virgo), dos estrellas de neutrones de 1,46 y 1,27 masas solares, de unos 12 km de radio. Centro de masa: m₁r₁ = m₂r₂ y, como giran con el mismo período, v₁/v₂ = m₂/m₁: la más liviana va más rápido. Con r = 400 km la onda gravitacional tiene 24 Hz (el doble de la frecuencia orbital) y faltan unos 100 s para el choque; a 100 km las estrellas van a 0,09c y 0,11c; al tocarse (r ≈ 24 km), a 0,19c y 0,22c, con rapidez relativa de 0,41c. La energía ligada E = −Gm₁m₂/(2r) tiene la misma forma que la del átomo, con ke² → Gm₁m₂; al radiar, E baja, r se reduce y la frecuencia sube (el «chirrido»). Potencia radiada (fórmula del cuadrupolo, que no hace parte del curso): P = (32/5) G⁴ m₁²m₂² M/(c⁵r⁵). Entre 400 km y el contacto se radian unos 10⁴⁶ J, ≈ 0,05 M☉c² en esta estimación newtoniana. No hay radiación gravitacional dipolar porque el centro de masa no acelera: la cantidad de movimiento total se conserva. La animación es a cámara lenta y el zoom sigue la órbita: las estrellas parecen crecer porque la separación disminuye. El sistema de Hulse y Taylor (1974, Nobel 1993) mostró antes este acortamiento de la órbita.">
+  <p class="ceja">§ 4.7 · Ondas gravitacionales</p>
+  <h2 class="titulo">Dos estrellas de neutrones caen en espiral y chocan</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>GW170817, a cámara lenta</span><span class="val" id="bn-lect"></span></div>
+      <canvas class="lienzo" id="bn-cv" width="1000" height="540"></canvas>
+      <div class="fila-btn" style="margin:4px 12px 8px"><button type="button" class="btn" id="bn-play">▶ Iniciar</button><button type="button" class="btn" id="bn-rein">↺ Reiniciar</button><label class="ctrl" style="flex:1;margin:0"><span>\(m_2\)</span><input type="range" id="bn-m2" min="1.0" max="1.46" step="0.01" value="1.27"><span class="v" id="bn-m2v"></span></label></div>
+    </figure>
+    <div class="pila">
+      <p>Giran alrededor de su <strong>centro de masa</strong>, \(m_1 r_1 = m_2 r_2\): la más liviana va más rápido, \(v_1/v_2 = m_2/m_1\), hasta \(\sim 0{,}2\,c\).</p>
+      <div class="kf" style="padding:0 14px">\[ E = -\dfrac{G\,m_1 m_2}{2r}, \qquad P = \dfrac{32}{5}\,\dfrac{G^{4} m_1^{2} m_2^{2} M}{c^{5}\,r^{5}} \]</div>
+      <p class="nota" style="margin:0">La energía del átomo con \(k e^{2} \to G m_1 m_2\). Las ondas se llevan energía: \(E\) baja, \(r\) se reduce, la frecuencia sube. (\(P\) no hace parte del curso.) <span class="prop" data-pop="pop-bn-var">Símbolos</span> · <span class="prop" data-pop="pop-bn-cm">El centro de masa</span></p>
+      <div class="lectura" style="grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px"><div>Separación<b id="bn-r"></b></div><div>\(v_1\) y \(v_2\)<b id="bn-v"></b></div><div>Ondas<b id="bn-f"></b></div><div>Para el choque<b id="bn-t"></b></div><div style="grid-column:span 2">Energía radiada<b id="bn-e"></b></div></div>
+      <p class="puente" style="margin:0">→ ¿Y un electrón que gira y radia luz?</p>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-bn-var" style="display:none"><h4>Los símbolos del sistema binario</h4>
+    <table class="pop-tab">
+      <tr><td>\(m_1,\ m_2\)</td><td>masas de las estrellas (GW170817: 1,46 y 1,27 masas solares)</td><td>kg o \(M_\odot\)</td></tr>
+      <tr><td>\(M\)</td><td>masa total, \(m_1 + m_2\)</td><td>kg</td></tr>
+      <tr><td>\(r\)</td><td>separación entre los centros de las estrellas</td><td>m</td></tr>
+      <tr><td>\(r_1,\ r_2\)</td><td>distancias de cada estrella al centro de masa</td><td>m</td></tr>
+      <tr><td>\(v_1,\ v_2\)</td><td>rapidez de cada estrella alrededor del centro de masa</td><td>m/s</td></tr>
+      <tr><td>\(G\)</td><td>constante de gravitación, \(6{,}674\times 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}\)</td><td>\(\mathrm{N\,m^{2}/kg^{2}}\)</td></tr>
+      <tr><td>\(E\)</td><td>energía mecánica de la órbita: cinética más potencial gravitacional</td><td>J</td></tr>
+      <tr><td>\(P\)</td><td>potencia que se llevan las ondas gravitacionales</td><td>W</td></tr>
+      <tr><td>\(M_\odot\)</td><td>masa del Sol, \(1{,}989\times 10^{30}\,\mathrm{kg}\)</td><td>kg</td></tr>
+    </table>
+  </div>
+  <div class="pop-src" id="pop-bn-cm" style="display:none"><h4 class="pop-larga">El centro de masa en el sistema binario</h4>
+    <p style="margin:0 0 6px"><strong>1 · Dónde está.</strong> Sobre la línea que une las estrellas, en el punto donde \(m_1 r_1 = m_2 r_2\), con \(r_1 + r_2 = r\): \(r_1 = \dfrac{m_2}{M}\,r\) y \(r_2 = \dfrac{m_1}{M}\,r\). Las fuerzas que se hacen son de acción y reacción, iguales y opuestas, así que la cantidad de movimiento total no cambia y el centro de masa queda quieto.</p>
+    <p style="margin:0 0 6px"><strong>2 · Quién va más rápido.</strong> Las dos estrellas dan la vuelta en el mismo tiempo, así que \(v_1/v_2 = r_1/r_2 = m_2/m_1\): la más liviana recorre un círculo más grande y va más rápido. Sus cantidades de movimiento son iguales y opuestas, \(m_1 v_1 = m_2 v_2\).</p>
+    <p style="margin:0 0 6px"><strong>3 · La rapidez.</strong> La atracción \(G m_1 m_2/r^{2}\) es la fuerza centrípeta de cada estrella; con la rapidez angular \(\Omega\) común, \(\Omega^{2} = G M/r^{3}\) y \(v_1 = \Omega r_1\). A \(r = \qty{24}{km}\), justo al tocarse, \(v_1 \approx 0{,}19\,c\) y \(v_2 \approx 0{,}22\,c\): velocidades relativistas, con \(\gamma \approx 1{,}02\).</p>
+    <p style="margin:0"><strong>4 · Por qué no hay radiación «dipolar».</strong> En el átomo, la carga que se acelera radia (Larmor). En la gravedad, la «carga» es la masa, y el dipolo de masa es \(M\) por la posición del centro de masa: como el centro de masa no acelera, ese término es cero. La gravedad solo radia por el cambio de la <em>forma</em> de la distribución de masa (el cuadrupolo), un efecto mucho más débil: por eso hacen falta estrellas de neutrones, muy masivas y muy rápidas, para que se note.</p>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" id="dp-col" data-label="El colapso del átomo clásico">
   <p class="ceja">§ 4.7 · El límite de la física newtoniana</p>
   <h2 class="titulo">El átomo clásico debería colapsar en \(\sim 10^{-11}\qty{}{s}\)</h2>
@@ -4613,6 +4651,96 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
   [rq, rv, rp, re_].forEach(x => x.addEventListener('input', () => { pres.forEach(b => b.classList.remove('activo')); pinta(); }));
   pres.forEach(b => b.addEventListener('click', () => { rq.value = b.dataset.q; rv.value = b.dataset.v; pres.forEach(o => o.classList.toggle('activo', o === b)); frac = 1; pinta(); }));
   pinta(); requestAnimationFrame(bucle);
+})();
+
+/* ═══ BINARIA DE ESTRELLAS DE NEUTRONES: ESPIRAL Y CHOQUE ═══════════════ */
+(function () {
+  const cv = document.getElementById('bn-cv');
+  if (!cv) return;
+  const g = cv.getContext('2d'), W = cv.width, H = cv.height;
+  const G = 6.674e-11, MS = 1.989e30, C = 2.998e8, R0 = 400e3, RC = 24e3, RNS = 12e3, NVIS = 24, DUR = 12;
+  const rm = document.getElementById('bn-m2'), bPlay = document.getElementById('bn-play'), bRein = document.getElementById('bn-rein');
+  let tab = null, u = 0, corre = false, ult = 0;
+  function prepara() {                               /* r(t) exacta de la espiral por radiación cuadrupolar */
+    const m1 = 1.46 * MS, m2 = +rm.value * MS, M = m1 + m2;
+    const beta = 64 / 5 * Math.pow(G, 3) * m1 * m2 * M / Math.pow(C, 5);
+    const T = (Math.pow(R0, 4) - Math.pow(RC, 4)) / (4 * beta), N = 3000, pts = [];
+    let fase = 0;
+    for (let i = 0; i <= N; i++) {
+      const t = T * i / N, r = Math.pow(Math.pow(R0, 4) - 4 * beta * t, 0.25), w = Math.sqrt(G * M / Math.pow(r, 3));
+      if (i) fase += w * T / N;
+      pts.push({ t, r, w });
+    }
+    pts.forEach(p => { p.fv = 0; });
+    let acc = 0; for (let i = 1; i <= N; i++) { acc += pts[i].w * T / N; pts[i].fv = acc / fase * NVIS * 2 * Math.PI; }
+    tab = { m1, m2, M, T, N, pts, fase };
+  }
+  const muestra = () => tab.pts[Math.min(tab.N, Math.round(u * tab.N))];
+  const tiempo = t => t >= 1 ? num(t, t < 10 ? 1 : 0) + ' s' : t >= 1e-3 ? num(t * 1000, t < 0.01 ? 1 : 0) + ' ms' : '0 s';
+  function dibuja() {
+    const { m1, m2, M, T, N, pts } = tab, p = muestra(), r = p.r;
+    g.clearRect(0, 0, W, H);
+    const cx = W / 2, cy = 205, esc = 260 / Math.max(r, 50e3);        /* zoom que sigue la órbita */
+    const r1 = r * m2 / M, r2 = r * m1 / M, ph = p.fv;
+    const x1 = cx - esc * r1 * Math.cos(ph), y1 = cy - esc * r1 * Math.sin(ph);
+    const x2 = cx + esc * r2 * Math.cos(ph), y2 = cy + esc * r2 * Math.sin(ph);
+    const choque = u >= 1;
+    /* órbitas y centro de masa */
+    g.save(); g.setLineDash([6, 8]); g.strokeStyle = tok('--rejilla'); g.lineWidth = 2;
+    [r1, r2].forEach(q => { g.beginPath(); g.arc(cx, cy, esc * q, 0, 2 * Math.PI); g.stroke(); }); g.restore();
+    g.strokeStyle = tok('--tinta'); g.lineWidth = 3;
+    g.beginPath(); g.moveTo(cx - 12, cy); g.lineTo(cx + 12, cy); g.moveTo(cx, cy - 12); g.lineTo(cx, cy + 12); g.stroke();
+    g.fillStyle = tok('--tinta2'); g.font = '22px ' + FTXT; g.fillText('CM', cx + 14, cy - 12);
+    if (choque) {
+      g.fillStyle = tok('--caso2'); g.globalAlpha = .35; g.beginPath(); g.arc(cx, cy, 130, 0, 2 * Math.PI); g.fill(); g.globalAlpha = 1;
+      g.fillStyle = tok('--tinta'); g.font = '700 34px ' + FTXT; g.textAlign = 'center'; g.fillText('¡Choque! Kilonova y estallido de rayos gamma', cx, cy + 10); g.textAlign = 'left';
+    } else {
+      const v = p.w * r, v1 = v * m2 / M, v2 = v * m1 / M;
+      [[x1, y1, m1, v1, 1, '--res'], [x2, y2, m2, v2, -1, '--caso1']].forEach(([x, y, m, vv, sg, col], k) => {
+        g.fillStyle = tok(col); g.beginPath(); g.arc(x, y, Math.max(9, esc * RNS), 0, 2 * Math.PI); g.fill();
+        /* flecha de velocidad, tangente a la órbita */
+        const L = 40 + 380 * vv / C, tx = sg * Math.sin(ph), ty = -sg * Math.cos(ph);
+        const ex = x + L * tx, ey = y + L * ty;
+        g.strokeStyle = tok(col); g.lineWidth = 4; g.beginPath(); g.moveTo(x, y); g.lineTo(ex, ey); g.stroke();
+        const a = Math.atan2(ey - y, ex - x); g.beginPath(); g.moveTo(ex, ey); g.lineTo(ex - 16 * Math.cos(a - .4), ey - 16 * Math.sin(a - .4)); g.lineTo(ex - 16 * Math.cos(a + .4), ey - 16 * Math.sin(a + .4)); g.closePath(); g.fill();
+        g.font = '700 24px ' + FTXT; g.fillText(num(vv / C, 2) + 'c', ex + 8, ey + (k ? 22 : -8));
+      });
+      /* barra de escala */
+      const km = r > 200e3 ? 100 : r > 90e3 ? 50 : 20, bl = esc * km * 1e3;
+      g.strokeStyle = tok('--tinta2'); g.lineWidth = 3; g.beginPath(); g.moveTo(40, 395); g.lineTo(40 + bl, 395); g.stroke();
+      g.fillStyle = tok('--tinta2'); g.font = '22px ' + FTXT; g.fillText(km + ' km', 40, 383);
+    }
+    /* señal de la onda: amplitud ∝ 1/r, frecuencia = 2 × orbital */
+    const y0 = 485, A = 38;
+    g.strokeStyle = tok('--linea'); g.lineWidth = 1.5; g.beginPath(); g.moveTo(30, y0); g.lineTo(W - 30, y0); g.stroke();
+    g.strokeStyle = tok('--caso2'); g.lineWidth = 2.5; g.beginPath();
+    const hasta = Math.round(u * N);
+    for (let i = 0; i <= hasta; i += 1) { const q = pts[i], x = 30 + (W - 60) * i / N, y = y0 - A * (R0 / q.r) / (R0 / RC) * 3.2 * Math.cos(2 * q.fv); if (i) g.lineTo(x, y); else g.moveTo(x, y); }
+    g.stroke();
+    g.fillStyle = tok('--tinta2'); g.font = '20px ' + FTXT; g.fillText('onda gravitacional que llega a la Tierra (el «chirrido»)', 30, y0 - A - 8);
+    /* lecturas */
+    const v = p.w * r, Erad = G * m1 * m2 / 2 * (1 / r - 1 / R0);
+    document.getElementById('bn-r').textContent = num(r / 1e3, 0) + ' km';
+    document.getElementById('bn-v').textContent = choque ? '—' : num(v * m2 / M / C, 2) + 'c · ' + num(v * m1 / M / C, 2) + 'c';
+    document.getElementById('bn-f').textContent = num(p.w / Math.PI, 0) + ' Hz';
+    document.getElementById('bn-t').textContent = tiempo(T - p.t);
+    document.getElementById('bn-e').textContent = cientTxt(Erad, 2) + ' J = ' + num(Erad / (MS * C * C), 3) + ' M☉c²';
+    document.getElementById('bn-m2v').textContent = num(+rm.value, 2) + ' M☉';
+    document.getElementById('bn-lect').textContent = 'm₁ = 1,46 M☉ · m₂ = ' + num(+rm.value, 2) + ' M☉';
+  }
+  function bucle(ms) {
+    if (corre && activa(cv)) {
+      const dt = ult ? Math.min(0.05, (ms - ult) / 1000) : 0;
+      u = Math.min(1, u + dt / DUR);
+      if (u >= 1) { corre = false; bPlay.textContent = '▶ Iniciar'; }
+      dibuja();
+    }
+    ult = ms; requestAnimationFrame(bucle);
+  }
+  bPlay.addEventListener('click', () => { if (u >= 1) u = 0; corre = !corre; bPlay.textContent = corre ? '⏸ Pausa' : '▶ Seguir'; dibuja(); });
+  bRein.addEventListener('click', () => { u = 0; corre = false; bPlay.textContent = '▶ Iniciar'; dibuja(); });
+  rm.addEventListener('input', () => { prepara(); dibuja(); });
+  prepara(); dibuja(); requestAnimationFrame(bucle);
 })();
 
 </script>
