@@ -2195,7 +2195,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
   <h2 class="titulo">Saltos entre niveles y el color de la luz emitida</h2>
   <div class="g2-60">
     <figure class="svgbox" style="margin:0">
-      <div class="svghd"><span>Niveles \(E_n\) y órbitas \(r_n = n^{2} a_0\)</span><span class="val" id="bo-lect"></span></div>
+      <div class="svghd"><span>Niveles \(E_n\) y órbitas \(r_n = n^{2} a_0\) · <span class="prop" data-pop="pop-bo-niveles" style="text-transform:none;letter-spacing:0">¿de dónde salen las energías?</span></span><span class="val" id="bo-lect"></span></div>
       <div id="bo-fig"></div>
     </figure>
     <div class="pila">
@@ -2206,6 +2206,20 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
       <p class="nota">\(hc \approx \qty{1239{,}84}{eV\cdot nm}\). \(n_f = 1\): serie de Lyman (ultravioleta); \(n_f = 2\): Balmer (visible); \(n_f = 3\): Paschen (infrarrojo).</p>
       <p class="puente" style="margin:0">→ Predice antes de explorar: si el electrón pasa de n = 3 a n = 2, ¿emite o absorbe luz? ¿De qué color?</p>
     </div>
+  </div>
+
+  <div class="pop-src" id="pop-bo-niveles" style="display:none"><h4 class="pop-larga">Las energías de los niveles: \(E_n = -\dfrac{\qty{13{,}6}{eV}}{n^{2}}\)</h4>
+    <p style="margin:0 0 6px">Para cada nivel se divide 13,6 eV entre \(n^{2}\) y se pone el signo menos:</p>
+    <table class="pop-tab" style="text-align:center">
+      <tr><td>\(n\)</td><td>\(n^{2}\)</td><td>\(E_n = -13{,}6/n^{2}\)</td><td>\(E_n\)</td></tr>
+      <tr><td>\(1\)</td><td>\(1\)</td><td>\(-\dfrac{13{,}6}{1}\)</td><td>\(-13{,}61\ \mathrm{eV}\)</td></tr><tr><td>\(2\)</td><td>\(4\)</td><td>\(-\dfrac{13{,}6}{4}\)</td><td>\(-3{,}40\ \mathrm{eV}\)</td></tr><tr><td>\(3\)</td><td>\(9\)</td><td>\(-\dfrac{13{,}6}{9}\)</td><td>\(-1{,}51\ \mathrm{eV}\)</td></tr><tr><td>\(4\)</td><td>\(16\)</td><td>\(-\dfrac{13{,}6}{16}\)</td><td>\(-0{,}85\ \mathrm{eV}\)</td></tr><tr><td>\(5\)</td><td>\(25\)</td><td>\(-\dfrac{13{,}6}{25}\)</td><td>\(-0{,}54\ \mathrm{eV}\)</td></tr><tr><td>\(6\)</td><td>\(36\)</td><td>\(-\dfrac{13{,}6}{36}\)</td><td>\(-0{,}38\ \mathrm{eV}\)</td></tr><tr><td>\(7\)</td><td>\(49\)</td><td>\(-\dfrac{13{,}6}{49}\)</td><td>\(-0{,}28\ \mathrm{eV}\)</td></tr>
+      <tr><td>\(\infty\)</td><td>\(\infty\)</td><td>\(-13{,}6/\infty\)</td><td>\(0\ \mathrm{eV}\)</td></tr>
+    </table>
+    <ul style="margin:8px 0 6px;padding-left:1.2em">
+      <li><strong>Son negativas</strong> porque el electrón está ligado: \(E = 0\) es el electrón libre, lejos del protón. Para arrancarlo desde \(n = 1\) hay que darle 13,6 eV (la energía de ionización).</li>
+      <li><strong>Se juntan hacia arriba:</strong> como dependen de \(1/n^{2}\), los niveles altos quedan cada vez más cerca unos de otros y de \(E = 0\). Por eso en la figura las líneas se apiñan arriba.</li>
+    </ul>
+    <p style="margin:0"><strong>Ejemplo, de \(n = 3\) a \(n = 2\):</strong> \(\Delta E = E_3 - E_2 = (-1{,}51) - (-3{,}40) = \qty{1{,}89}{eV}\). El fotón lleva esa energía y su longitud de onda es \(\lambda = hc/\Delta E = \qty{1239{,}84}{eV\,nm}/\qty{1{,}89}{eV} \approx \qty{656}{nm}\): la línea roja de Balmer.</p>
   </div>
 </section>
 
@@ -2513,6 +2527,19 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.mhchemParser=void 0;var r=fun
     <p style="margin:6px 0 6px"><strong>2 · En julios.</strong> Con \(k e^{2} = 2{,}307\,078\times 10^{-28}\,\mathrm{J\,m}\) y \(a_0 = 5{,}291\,77\times 10^{-11}\,\mathrm{m}\): \(\abs{E_1} = 2{,}179\,87\times 10^{-18}\,\mathrm{J}\). Dividiendo por \(1\ \mathrm{eV} = 1{,}602\,177\times 10^{-19}\,\mathrm{J}\) se obtiene \(\qty{13{,}606}{eV}\).</p>
     <p style="margin:0 0 6px"><strong>3 · ¿De dónde sale \(k e^{2} = \qty{1{,}44}{eV\,nm}\)?</strong> \(k e^{2} = 2{,}307\times 10^{-28}\,\mathrm{J\,m}\); dividiendo por \(1{,}602\times 10^{-19}\,\mathrm{J/eV}\) y pasando metros a nanómetros (\(\times 10^{9}\)): \(1{,}440\,\mathrm{eV\,nm}\).</p>
     <p style="margin:0"><strong>4 · Con la constante de estructura fina.</strong> El número sin unidades \(\alpha = k e^{2}/(\hbar c) = 1{,}440/197{,}33 \approx 1/137\) mide la intensidad de la fuerza eléctrica. Con él, \(\abs{E_1} = \tfrac12\,\alpha^{2}\,m c^{2} = \tfrac12\,(1/137{,}036)^{2}\,(\qty{510\,999}{eV}) = \qty{13{,}606}{eV}\): la energía del hidrógeno es una pequeña fracción, unos \(2{,}7\times 10^{-5}\), de la energía en reposo del electrón.</p>
+  </div>
+<div class="pop-src" id="pop-bo-niveles" style="display:none"><h4 class="pop-larga">Las energías de los niveles: \(E_n = -\dfrac{\qty{13{,}6}{eV}}{n^{2}}\)</h4>
+    <p style="margin:0 0 6px">Para cada nivel se divide 13,6 eV entre \(n^{2}\) y se pone el signo menos:</p>
+    <table class="pop-tab" style="text-align:center">
+      <tr><td>\(n\)</td><td>\(n^{2}\)</td><td>\(E_n = -13{,}6/n^{2}\)</td><td>\(E_n\)</td></tr>
+      <tr><td>\(1\)</td><td>\(1\)</td><td>\(-\dfrac{13{,}6}{1}\)</td><td>\(-13{,}61\ \mathrm{eV}\)</td></tr><tr><td>\(2\)</td><td>\(4\)</td><td>\(-\dfrac{13{,}6}{4}\)</td><td>\(-3{,}40\ \mathrm{eV}\)</td></tr><tr><td>\(3\)</td><td>\(9\)</td><td>\(-\dfrac{13{,}6}{9}\)</td><td>\(-1{,}51\ \mathrm{eV}\)</td></tr><tr><td>\(4\)</td><td>\(16\)</td><td>\(-\dfrac{13{,}6}{16}\)</td><td>\(-0{,}85\ \mathrm{eV}\)</td></tr><tr><td>\(5\)</td><td>\(25\)</td><td>\(-\dfrac{13{,}6}{25}\)</td><td>\(-0{,}54\ \mathrm{eV}\)</td></tr><tr><td>\(6\)</td><td>\(36\)</td><td>\(-\dfrac{13{,}6}{36}\)</td><td>\(-0{,}38\ \mathrm{eV}\)</td></tr><tr><td>\(7\)</td><td>\(49\)</td><td>\(-\dfrac{13{,}6}{49}\)</td><td>\(-0{,}28\ \mathrm{eV}\)</td></tr>
+      <tr><td>\(\infty\)</td><td>\(\infty\)</td><td>\(-13{,}6/\infty\)</td><td>\(0\ \mathrm{eV}\)</td></tr>
+    </table>
+    <ul style="margin:8px 0 6px;padding-left:1.2em">
+      <li><strong>Son negativas</strong> porque el electrón está ligado: \(E = 0\) es el electrón libre, lejos del protón. Para arrancarlo desde \(n = 1\) hay que darle 13,6 eV (la energía de ionización).</li>
+      <li><strong>Se juntan hacia arriba:</strong> como dependen de \(1/n^{2}\), los niveles altos quedan cada vez más cerca unos de otros y de \(E = 0\). Por eso en la figura las líneas se apiñan arriba.</li>
+    </ul>
+    <p style="margin:0"><strong>Ejemplo, de \(n = 3\) a \(n = 2\):</strong> \(\Delta E = E_3 - E_2 = (-1{,}51) - (-3{,}40) = \qty{1{,}89}{eV}\). El fotón lleva esa energía y su longitud de onda es \(\lambda = hc/\Delta E = \qty{1239{,}84}{eV\,nm}/\qty{1{,}89}{eV} \approx \qty{656}{nm}\): la línea roja de Balmer.</p>
   </div>
 </div>
 <script>
