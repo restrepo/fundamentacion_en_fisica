@@ -1686,20 +1686,43 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
-<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" data-label="Derivación del modelo de Bohr">
+<section class="diapositiva compacta" data-seccion="Del átomo clásico a Bohr" id="dp-bohr-deriv" data-label="Derivación del modelo de Bohr">
   <p class="ceja">§ 4.9 · Modelo de Bohr</p>
   <h2 class="titulo">Dos ecuaciones, dos incógnitas: \(v\) y \(r\)</h2>
   <div class="g2">
     <div class="pila">
       <div class="caja neutra frag"><h3>1 · Física clásica</h3>\[ \dfrac{m v^{2}}{r} = k\,\dfrac{e^{2}}{r^{2}} \;\Longrightarrow\; m v^{2} = \dfrac{k e^{2}}{r} \]</div>
       <div class="caja c1 frag"><h3>2 · Nueva física: cuantización</h3>\[ L = m v r = n\hbar, \qquad n = 1, 2, 3, \dots \]</div>
-      <div class="frag">\[ m\left(\dfrac{n\hbar}{m r}\right)^{2} = \dfrac{k e^{2}}{r} \;\Longrightarrow\; r_n = \dfrac{n^{2}\hbar^{2}}{m k e^{2}}, \quad a_0 \approx \qty{5{,}29\times 10^{-11}}{m} \]</div>
+      <div class="frag">\[ m\left(\dfrac{n\hbar}{m r}\right)^{2} = \dfrac{k e^{2}}{r} \;\Longrightarrow\; r_n = \dfrac{n^{2}\hbar^{2}}{m k e^{2}}, \quad a_0 \approx \qty{5{,}29\times 10^{-11}}{m} \]<p class="nota" style="margin:0;text-align:right"><span class="prop" data-pop="pop-bohr-a0">¿Cómo se calcula \(a_0\)?</span></p></div>
     </div>
     <div class="pila">
       <div class="frag">\[ E_n = -\dfrac12\,\dfrac{k e^{2}}{r_n} = -\left(\dfrac{m k^{2} e^{4}}{2\hbar^{2}}\right)\dfrac{1}{n^{2}} \]</div>
-      <div class="kf frag">\[ E_n = -\dfrac{\qty{13{,}6}{eV}}{n^{2}} \]</div>
+      <div class="kf frag">\[ E_n = -\dfrac{\qty{13{,}6}{eV}}{n^{2}} \]<p class="nota" style="margin:0;text-align:right"><span class="prop" data-pop="pop-bohr-136">¿De dónde sale \(\qty{13{,}6}{eV}\)?</span></p></div>
       <p class="frag">Los electrones solo existen en esos niveles; la luz se emite al saltar de un nivel a otro inferior, con \(E_{\text{fotón}} = \abs{\Delta E}\).</p>
     </div>
+  </div>
+
+  <div class="pop-src" id="pop-bohr-a0" style="display:none"><h4 class="pop-larga">El radio de Bohr, cuenta por cuenta</h4>
+    <p style="margin:0 0 6px">Con \(n = 1\), \(a_0 = \dfrac{\hbar^{2}}{m k e^{2}}\). Los valores (CODATA 2022):</p>
+    <table class="pop-tab">
+      <tr><td>\(\hbar\)</td><td>constante de Planck reducida, \(h/2\pi\)</td><td>\(1{,}054\,572\times 10^{-34}\,\mathrm{J\,s}\)</td></tr>
+      <tr><td>\(m\)</td><td>masa del electrón</td><td>\(9{,}109\,384\times 10^{-31}\,\mathrm{kg}\)</td></tr>
+      <tr><td>\(k\)</td><td>constante de Coulomb</td><td>\(8{,}987\,552\times 10^{9}\,\mathrm{N\,m^{2}/C^{2}}\)</td></tr>
+      <tr><td>\(e\)</td><td>carga del electrón</td><td>\(1{,}602\,177\times 10^{-19}\,\mathrm{C}\)</td></tr>
+    </table>
+    <p style="margin:8px 0 4px"><strong>1 · Numerador:</strong> \(\hbar^{2} = (1{,}054\,572\times 10^{-34})^{2} = 1{,}112\,122\times 10^{-68}\,\mathrm{J^{2}\,s^{2}}\).</p>
+    <p style="margin:0 0 4px"><strong>2 · Denominador:</strong> \(e^{2} = 2{,}566\,970\times 10^{-38}\,\mathrm{C^{2}}\); \(k e^{2} = 2{,}307\,078\times 10^{-28}\,\mathrm{J\,m}\); \(m k e^{2} = 2{,}101\,605\times 10^{-58}\,\mathrm{kg\,J\,m}\).</p>
+    <p style="margin:0 0 4px"><strong>3 · Cociente:</strong></p>
+    \[ a_0 = \dfrac{1{,}112\,122\times 10^{-68}}{2{,}101\,605\times 10^{-58}}\ \mathrm{m} = 5{,}291\,77\times 10^{-11}\ \mathrm{m} \approx \qty{0{,}0529}{nm}. \]
+    <p style="margin:4px 0 6px"><strong>Unidades:</strong> \(\dfrac{\mathrm{J^{2}\,s^{2}}}{\mathrm{kg\,J\,m}} = \dfrac{\mathrm{J\,s^{2}}}{\mathrm{kg\,m}} = \dfrac{(\mathrm{kg\,m^{2}/s^{2}})\,\mathrm{s^{2}}}{\mathrm{kg\,m}} = \mathrm{m}\).</p>
+    <p style="margin:0"><strong>Atajo con electronvoltios.</strong> Multiplicando arriba y abajo por \(c^{2}\): \(a_0 = \dfrac{(\hbar c)^{2}}{(m c^{2})(k e^{2})}\), con \(\hbar c = \qty{197{,}33}{eV\,nm}\), \(m c^{2} = \qty{510\,999}{eV}\) y \(k e^{2} = \qty{1{,}440}{eV\,nm}\): \(a_0 = \dfrac{38\,938}{735\,820}\ \mathrm{nm} = \qty{0{,}052\,92}{nm}\).</p>
+  </div>
+  <div class="pop-src" id="pop-bohr-136" style="display:none"><h4 class="pop-larga">El 13,6 eV, cuenta por cuenta</h4>
+    <p style="margin:0 0 6px"><strong>1 · La forma más corta.</strong> En el nivel \(n = 1\), \(E_1 = -\dfrac12\,\dfrac{k e^{2}}{a_0}\). Con \(k e^{2} = \qty{1{,}440}{eV\,nm}\) y \(a_0 = \qty{0{,}052\,92}{nm}\):</p>
+    \[ \abs{E_1} = \dfrac{\qty{1{,}440}{eV\,nm}}{2\times\qty{0{,}052\,92}{nm}} = \qty{13{,}606}{eV}. \]
+    <p style="margin:6px 0 6px"><strong>2 · En julios.</strong> Con \(k e^{2} = 2{,}307\,078\times 10^{-28}\,\mathrm{J\,m}\) y \(a_0 = 5{,}291\,77\times 10^{-11}\,\mathrm{m}\): \(\abs{E_1} = 2{,}179\,87\times 10^{-18}\,\mathrm{J}\). Dividiendo por \(1\ \mathrm{eV} = 1{,}602\,177\times 10^{-19}\,\mathrm{J}\) se obtiene \(\qty{13{,}606}{eV}\).</p>
+    <p style="margin:0 0 6px"><strong>3 · ¿De dónde sale \(k e^{2} = \qty{1{,}44}{eV\,nm}\)?</strong> \(k e^{2} = 2{,}307\times 10^{-28}\,\mathrm{J\,m}\); dividiendo por \(1{,}602\times 10^{-19}\,\mathrm{J/eV}\) y pasando metros a nanómetros (\(\times 10^{9}\)): \(1{,}440\,\mathrm{eV\,nm}\).</p>
+    <p style="margin:0"><strong>4 · Con la constante de estructura fina.</strong> El número sin unidades \(\alpha = k e^{2}/(\hbar c) = 1{,}440/197{,}33 \approx 1/137\) mide la intensidad de la fuerza eléctrica. Con él, \(\abs{E_1} = \tfrac12\,\alpha^{2}\,m c^{2} = \tfrac12\,(1/137{,}036)^{2}\,(\qty{510\,999}{eV}) = \qty{13{,}606}{eV}\): la energía del hidrógeno es una pequeña fracción, unos \(2{,}7\times 10^{-5}\), de la energía en reposo del electrón.</p>
   </div>
 </section>
 
