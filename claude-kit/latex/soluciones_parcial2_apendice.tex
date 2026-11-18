@@ -1,0 +1,236 @@
+% =====================================================================
+% Soluciones de los problemas del segundo examen parcial (capítulo 3).
+%
+% Dónde va: al final del apéndice, después de la sección «Ejercicios
+% resueltos» y antes de \end{document}.
+%
+% Los enunciados están en problemas_parcial2_cap3.tex. Cada solución lleva
+% el rótulo sol:parcial2-… al que apuntan los \pageref de los enunciados.
+%
+% Requiere: amsmath, siunitx, cancel y enumitem (ya cargados en main.tex).
+% =====================================================================
+
+\section{Soluciones de los problemas del segundo examen parcial}
+\label{sec:soluciones-parcial2}
+
+Soluciones de los problemas de la
+sección~\ref{sec:problemas-parcial2} del capítulo de dinámica newtoniana.
+
+% ----- Energía ---------------------------------------------------------
+\subsection*{Problema~\ref{prob:parcial2-caida}: caída libre y energía}
+\label{sol:parcial2-caida}
+
+Arriba la piedra está en reposo y, justo antes de tocar el suelo, su altura
+es cero:
+\begin{align}
+    0 + \cancel{m}gh &= \frac{1}{2}\cancel{m}v^2 + 0\,, \nonumber\\
+    v &= \sqrt{2gh} = \sqrt{2 \times 9.8 \times 20}\,\si{\meter\per\second}
+      \approx \SI{19.8}{\meter\per\second}\,.
+\end{align}
+La masa se cancela: la rapidez de llegada no depende de la masa de la
+piedra.
+
+\subsection*{Problema~\ref{prob:parcial2-montana}: montaña rusa sin fricción}
+\label{sol:parcial2-montana}
+
+Sin fricción se conserva la energía mecánica. Con el carro en reposo en $A$,
+\begin{equation*}
+    \frac{1}{2}\cancel{m}v^2 + \cancel{m}gh = \cancel{m}gh_A\,,
+\end{equation*}
+de donde
+\begin{equation}
+    v = \sqrt{2g\,(h_A - h)}\,.
+\end{equation}
+\begin{enumerate}[label=\alph*)]
+    \item En $B$ ($h = 0$) y en $C$ ($h = \SI{12}{\meter}$):
+    \begin{align}
+        v_B &= \sqrt{2(9.8)(20)}\,\si{\meter\per\second}
+            \approx \SI{19.8}{\meter\per\second}\,, &
+        v_C &= \sqrt{2(9.8)(20 - 12)}\,\si{\meter\per\second}
+            \approx \SI{12.5}{\meter\per\second}\,.
+    \end{align}
+    \item No. Para llegar a $E$ necesitaría una energía
+    $mg\,(\SI{22}{\meter})$, mayor que toda la que tiene,
+    $mg\,(\SI{20}{\meter})$: se detiene a \SI{20}{\meter} de altura y
+    regresa. Cualquier colina más baja que \SI{20}{\meter}, la altura de
+    partida, se supera; una de exactamente \SI{20}{\meter} se alcanza con
+    rapidez cero.
+    \item No. La masa se cancela, así que la rapidez en cada punto depende
+    solo de la diferencia de altura con $A$, no de la masa ni de la forma de
+    la vía.
+\end{enumerate}
+
+\subsection*{Problema~\ref{prob:parcial2-rebote}: energía perdida en un rebote}
+\label{sol:parcial2-rebote}
+
+\begin{enumerate}[label=\alph*)]
+    \item En los puntos más altos la pelota está quieta, así que toda la
+    energía es potencial:
+    \begin{align}
+        E_i &= mgh_i = (0.5)(10)(10)\,\si{\joule} = \SI{50}{\joule}\,, \nonumber\\
+        E_f &= mgh_f = (0.5)(10)(8)\,\si{\joule} = \SI{40}{\joule}\,, \nonumber\\
+        \Delta E &= E_f - E_i = mg\,(h_f - h_i) = \SI{-10}{\joule}\,.
+    \end{align}
+    Se perdieron \SI{10}{\joule}, es decir,
+    $\dfrac{h_i - h_f}{h_i} = \dfrac{2}{10} = \SI{20}{\percent}$ de la
+    energía inicial. El porcentaje no depende de la masa.
+    \item Con $v = \sqrt{2gh}$:
+    \begin{align}
+        v_{\text{antes}} &= \sqrt{2(10)(10)}\,\si{\meter\per\second}
+            \approx \SI{14.1}{\meter\per\second}\,, &
+        v_{\text{después}} &= \sqrt{2(10)(8)}\,\si{\meter\per\second}
+            \approx \SI{12.6}{\meter\per\second}\,.
+    \end{align}
+    \item En calor (la pelota y el suelo se calientan un poco), en sonido y
+    en la deformación de la pelota durante el choque. La energía total se
+    conserva, pero la energía mecánica no: el choque con el suelo no es
+    elástico.
+\end{enumerate}
+
+\subsection*{Problema~\ref{prob:parcial2-lanzamiento}: reponer la energía del rebote}
+\label{sol:parcial2-lanzamiento}
+
+\begin{enumerate}[label=\alph*)]
+    \item La energía antes del rebote es
+    $E = \tfrac{1}{2}mv_0^2 + mgh$. Después del rebote queda el
+    \SI{80}{\percent} y, en el punto más alto, a la altura $h$ y en reposo,
+    toda es potencial:
+    \begin{align}
+        0.8\left(\frac{1}{2}\cancel{m}v_0^2 + \cancel{m}gh\right) &= \cancel{m}gh\,, \nonumber\\
+        \frac{1}{2}v_0^2 &= \frac{gh}{0.8} - gh = \frac{gh}{4}\,, \nonumber\\
+        v_0 &= \sqrt{\frac{gh}{2}} = \sqrt{\frac{9.8 \times 10}{2}}\,\si{\meter\per\second}
+            = \SI{7}{\meter\per\second}\,.
+    \end{align}
+    La energía cinética del lanzamiento,
+    $\tfrac{1}{2}mv_0^2 = \tfrac{1}{4}mgh$, repone exactamente lo que se
+    pierde en el rebote: el \SI{20}{\percent} de $\tfrac{5}{4}mgh$.
+    \item No importa. La energía cinética depende de $v_0^2$, no de la
+    dirección. Si se lanza hacia arriba, sube, se detiene y pasa de nuevo por
+    la altura $h$ con la misma rapidez $v_0$ hacia abajo, y llega al suelo con
+    la misma energía.
+\end{enumerate}
+
+\subsection*{Problema~\ref{prob:parcial2-frenado}: distancia de frenado}
+\label{sol:parcial2-frenado}
+
+\begin{enumerate}[label=\alph*)]
+    \item Por el teorema del trabajo y la energía, con el carro detenido al
+    final:
+    \begin{align}
+        W &= K_f - K_i\,, \nonumber\\
+        -\mu \cancel{m} g\, d &= 0 - \frac{1}{2}\cancel{m}v_0^2\,, \nonumber\\
+        d &= \frac{v_0^2}{2\mu g}\,.
+    \end{align}
+    \item No. La masa se cancela, porque tanto la fuerza de fricción como la
+    energía cinética son proporcionales a $m$.
+    \item
+    \begin{equation}
+        d = \frac{(20)^2}{2 \times 0.7 \times 9.8}\,\si{\meter}
+          \approx \SI{29}{\meter}\,.
+    \end{equation}
+    Como $d \propto v_0^2$, al duplicar la rapidez la distancia se
+    multiplica por $2^2 = 4$: $d \approx \SI{117}{\meter}$.
+\end{enumerate}
+
+% ----- Cantidad de movimiento --------------------------------------------
+\subsection*{Problema~\ref{prob:parcial2-impulso}: impulso de un bate}
+\label{sol:parcial2-impulso}
+
+Tomando como positivo el sentido de salida:
+\begin{align}
+    \Delta p &= m v_f - m v_i = (0.15)(40) - (0.15)(-40)\,\si{\kilogram\meter\per\second}
+              = \SI{12}{\kilogram\meter\per\second}\,, \nonumber\\
+    F &= \frac{\Delta p}{\Delta t}
+       = \frac{\SI{12}{\kilogram\meter\per\second}}{\SI{2e-3}{\second}}
+       = \SI{6000}{\newton}\,.
+\end{align}
+El cambio de signo de la velocidad duplica el cambio en la cantidad de
+movimiento: no es $mv$ sino $2mv$.
+
+\subsection*{Problema~\ref{prob:parcial2-camion}: carro contra camión}
+\label{sol:parcial2-camion}
+
+\begin{enumerate}[label=(\Roman*)]
+    \item Respuesta c). Por acción y reacción, las fuerzas que se hacen dos
+    cuerpos son iguales en magnitud y opuestas, sin importar sus masas ni sus
+    velocidades.
+    \item Las dos fuerzas actúan durante el mismo tiempo $\Delta t$, así que
+    los dos vehículos tienen el mismo
+    $\lvert\Delta\boldsymbol{p}\rvert = F\,\Delta t$, es decir,
+    \begin{equation}
+        m_{\text{carro}}\,\lvert\Delta\boldsymbol{v}_{\text{carro}}\rvert
+        = m_{\text{camión}}\,\lvert\Delta\boldsymbol{v}_{\text{camión}}\rvert\,.
+    \end{equation}
+    Como el carro tiene mucha menos masa, su cambio de velocidad es mucho
+    mayor: por eso es el más afectado.
+\end{enumerate}
+
+\subsection*{Problema~\ref{prob:parcial2-patinadores}: dos patinadores se empujan}
+\label{sol:parcial2-patinadores}
+
+Antes de empujarse la cantidad de movimiento total es cero, y se conserva:
+\begin{align}
+    0 &= m_1 v_1 + m_2 v_2\,, \nonumber\\
+    v_2 &= -\frac{m_1}{m_2}\,v_1 = -\frac{50}{75} \times \SI{3}{\meter\per\second}
+         = \SI{-2}{\meter\per\second}\,,
+\end{align}
+es decir, \SI{2}{\meter\per\second} hacia la izquierda: el más pesado sale más
+despacio. Las fuerzas que se hicieron son iguales y opuestas (acción y
+reacción).
+
+\subsection*{Problema~\ref{prob:parcial2-choque}: choque en el que los carros quedan pegados}
+\label{sol:parcial2-choque}
+
+\begin{enumerate}[label=\alph*)]
+    \item
+    \begin{align}
+        m_1 v + m_2 \cdot 0 &= (m_1 + m_2)\,v_f\,, \nonumber\\
+        v_f &= \frac{m_1}{m_1 + m_2}\,v\,.
+    \end{align}
+    \item
+    \begin{align}
+        K_f &= \frac{1}{2}(m_1 + m_2)\,v_f^2
+             = \frac{1}{2}\cancel{(m_1 + m_2)}\,\frac{m_1^2}{(m_1 + m_2)^{\cancel{2}}}\,v^2 \nonumber\\
+            &= \frac{m_1}{m_1 + m_2}\left(\frac{1}{2}m_1 v^2\right)
+             = \frac{m_1}{m_1 + m_2}\,K_i\,.
+    \end{align}
+    \item
+    \begin{equation}
+        v_f = \frac{1000}{2500} \times \SI{20}{\meter\per\second}
+            = \SI{8}{\meter\per\second}\,,
+        \qquad
+        \frac{K_f}{K_i} = \frac{1000}{2500} = 0.4\,.
+    \end{equation}
+    Se pierde el \SI{60}{\percent} de la energía cinética, que se convierte en
+    deformación, calor y sonido. La cantidad de movimiento sí se conserva.
+\end{enumerate}
+
+% ----- Momento angular -------------------------------------------------
+\subsection*{Problema~\ref{prob:parcial2-cometa}: el cometa Halley}
+\label{sol:parcial2-cometa}
+
+\begin{enumerate}[label=\alph*)]
+    \item La fuerza gravitacional apunta hacia el Sol, es decir, a lo largo de
+    $-\boldsymbol{r}$. Entonces
+    $\boldsymbol{\tau} = \boldsymbol{r}\times\boldsymbol{F} = \boldsymbol{0}$
+    y, como $\Delta\boldsymbol{L} = \boldsymbol{\tau}\,\Delta t$, el momento
+    angular no cambia.
+    \item
+    \begin{align}
+        \cancel{m}\, r_p v_p &= \cancel{m}\, r_a v_a\,, \nonumber\\
+        v_a &= \frac{r_p}{r_a}\,v_p
+             = \frac{0.59}{35} \times \SI{54}{\kilo\meter\per\second}
+             \approx \SI{0.91}{\kilo\meter\per\second}\,.
+    \end{align}
+    Las unidades astronómicas se cancelan, así que no hace falta convertirlas
+    a metros. El cometa va unas 60 veces más despacio en el afelio: es la
+    segunda ley de Kepler.
+\end{enumerate}
+
+\subsection*{Problema~\ref{prob:parcial2-patinadora}: la patinadora que recoge los brazos}
+\label{sol:parcial2-patinadora}
+
+Respuesta b). Sin torque externo el momento angular se conserva. Cada parte
+de los brazos contribuye con $m\,r\,v$; al reducir $r$, la rapidez $v$ debe
+aumentar para mantener $L$ constante, así que la patinadora gira más rápido.
+Es la misma razón por la que un planeta va más rápido en el perihelio.
