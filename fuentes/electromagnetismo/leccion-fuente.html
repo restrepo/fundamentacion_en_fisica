@@ -3471,12 +3471,14 @@ function sentidoLazo(svg, P) {           /* flechas que marcan el recorrido anti
     q.fillText('fuente', ox + 190, 548);
     /* corriente y fuerzas */
     if (on) {
-      fl(xa, 255 + sg * 45, xa, 255 - sg * 45, tok('--res'), 5);
-      fl(xb, 255 - sg * 45, xb, 255 + sg * 45, tok('--res'), 5);
+      /* vista desde arriba: la pantalla hacia arriba es −z del corte, así que si en el corte
+         la corriente sale (⊙) en el lado a, aquí baja; I × B da la fuerza hacia el observador (⊙) */
+      fl(xa, 255 - sg * 45, xa, 255 + sg * 45, tok('--res'), 5);
+      fl(xb, 255 + sg * 45, xb, 255 - sg * 45, tok('--res'), 5);
       const ux = Math.sign(xa - xb) || 1;
       if (Math.abs(xa - xb) > 120) fl(ox - ux * sg * 50, yT, ox + ux * sg * 50, yT, tok('--res'), 5);
       q.fillStyle = tok('--res'); q.font = 'italic 700 30px ' + FMATH; q.textAlign = 'center';
-      q.fillText('I', xa + 28, 255 - sg * 20); q.fillText('I', xb + 28, 255 + sg * 20);
+      q.fillText('I', xa + 28, 255 + sg * 20); q.fillText('I', xb + 28, 255 - sg * 20);
       const fz = (x, out) => {
         q.fillStyle = tok('--panel'); q.strokeStyle = tok('--res'); q.lineWidth = 4;
         q.beginPath(); q.arc(x, 165, 22, 0, 2 * Math.PI); q.fill(); q.stroke();
