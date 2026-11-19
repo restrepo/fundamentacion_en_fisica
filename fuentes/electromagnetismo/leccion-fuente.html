@@ -321,6 +321,24 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .ac-just textarea:focus{outline:3px solid var(--res);outline-offset:1px}
 .ac-just-fig{padding:0 18px 12px}
 /* actividades:justifica-fin */
+/* problemas del capítulo con respuesta numérica y solución completa */
+.pq-slide .pq-izq > * + *{margin-top:10px}
+.pq-enun{background:var(--panel);border-left:8px solid var(--caso1);padding:6px 16px;font-size:24px;line-height:1.35}
+.pq-slide .pc-col > * + *{margin-top:6px}
+.pq-slide .pc-q + .pc-q{margin-top:6px;padding-top:6px}
+.pq-fila{display:grid;grid-template-columns:minmax(0,1fr) 170px auto;gap:10px;align-items:center}
+.pq-slide .pr-q{font-size:24px}
+.pq-slide .pr-in{font-size:24px;width:100%;box-sizing:border-box;padding:6px 10px}
+.pq-slide .pr-btn{font-size:21px;padding:6px 10px}
+.pq-slide .pc-fb{font-size:21px}
+.pq-slide .pc-exp{font-size:22px;padding:4px 12px;margin-top:2px}
+.pq-slide .pc-pista{font-size:22px;padding:4px 12px}
+.gl-dcl-fondo{position:absolute;inset:0;z-index:50;background:color-mix(in srgb, var(--tinta) 40%, transparent);display:flex;align-items:center;justify-content:center}
+.gl-dcl-caja{position:relative;width:1880px;max-height:930px;overflow:auto;background:var(--panel);border:2px solid var(--tinta);box-shadow:0 18px 48px rgba(0,0,0,.25);padding:22px 34px}
+.gl-dcl-caja h3{margin:0 0 10px;font:800 40px/1.2 var(--font-heading);color:var(--res)}
+.gl-dcl-x{position:absolute;top:8px;right:16px;border:0;background:none;font-size:48px;line-height:1;cursor:pointer;color:var(--tinta2)}
+.gl-dcl-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:start}
+.gl-dcl-txt{font-size:25px;line-height:1.35}
 </style></head>
 <body>
 <div id="escenario">
@@ -1820,6 +1838,160 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-helio" data-label="Ejercicio 2: dos protones en el núcleo de helio" data-speaker-notes="Ejercicio 2 de las notas. Pregunta de predicción para la clase, antes de calcular: dos protones a 2 fm, ¿la fuerza eléctrica entre ellos es de micronewtons, de newtons o de toneladas? U_e = ke²/r = (8,99×10⁹)(1,6×10⁻¹⁹)²/(2,0×10⁻¹⁵) ≈ 1,15×10⁻¹³ J; dividiendo por 1,6×10⁻¹³ J/MeV ≈ 0,72 MeV. La fuerza, F = ke²/r² ≈ 58 N: el peso de unos 6 kg sobre dos partículas de 10⁻²⁷ kg. Algo más fuerte que la repulsión eléctrica los mantiene juntos: la fuerza nuclear fuerte. Respuestas: 1,15; 0,72; 58. Error común: olvidar elevar e al cuadrado o usar r² en la energía.">
+  <p class="ceja">Ejercicios del capítulo · Ejercicio 2</p>
+  <h2 class="titulo">Dos protones en el núcleo de helio: la energía de repulsión</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 300" class="fig" role="img" aria-label="Dos protones separados una distancia r que se repelen"><circle cx="220" cy="150" r="58" style="fill:var(--mal)"/><circle cx="480" cy="150" r="58" style="fill:var(--mal)"/><text x="220" y="168" text-anchor="middle" style="font:800 52px Archivo,system-ui,sans-serif;fill:var(--papel)">+</text><text x="480" y="168" text-anchor="middle" style="font:800 52px Archivo,system-ui,sans-serif;fill:var(--papel)">+</text><line x1="155" y1="150" x2="70" y2="150" style="stroke:var(--res);stroke-width:7"/><polygon points="44,150 74,136 74,164" style="fill:var(--res)"/><line x1="545" y1="150" x2="630" y2="150" style="stroke:var(--res);stroke-width:7"/><polygon points="656,150 626,136 626,164" style="fill:var(--res)"/><text x="88" y="128" style="font:italic 700 38px 'STIX Two Text',Georgia,serif;fill:var(--res)">F</text><text x="598" y="128" style="font:italic 700 38px 'STIX Two Text',Georgia,serif;fill:var(--res)">F</text><line x1="220" y1="250" x2="480" y2="250" style="stroke:var(--tinta2);stroke-width:3"/><polygon points="220,250 242,240 242,260" style="fill:var(--tinta2)"/><polygon points="480,250 458,240 458,260" style="fill:var(--tinta2)"/><text x="350" y="240" text-anchor="middle" style="font:italic 34px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">r = 2,0 fm</text></svg></figure>
+      <div class="pq-enun">En el núcleo de helio hay dos protones, cada uno con carga \(e = \qty{1{,}6\times 10^{-19}}{C}\), separados \(r = \qty{2{,}0\times 10^{-15}}{m}\). Calcule la energía potencial eléctrica \(U_e = k\,e^{2}/r\) que tiende a separarlos, con \(k = \qty{8{,}99\times 10^{9}}{N\,m^2/C^2}\) y \(\qty{1}{MeV} = \qty{1{,}6\times 10^{-13}}{J}\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="1.15" data-tol="0.02"><div class="pq-fila"><div class="pr-q">a) Energía \(U_e\), en \(10^{-13}\,\mathrm{J}\)</div><input class="pr-in pc-in" type="text" placeholder="×10⁻¹³ J" aria-label="a) Energía U_e, en 10^-13 J"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(U_e = \dfrac{(8{,}99\times 10^{9})(1{,}6\times 10^{-19})^{2}}{2{,}0\times 10^{-15}}\,\mathrm{J} \approx \qty{1{,}15\times 10^{-13}}{J}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="0.72" data-tol="0.01"><div class="pq-fila"><div class="pr-q">b) La misma energía, en \(\mathrm{MeV}\)</div><input class="pr-in pc-in" type="text" placeholder="MeV" aria-label="b) La misma energía, en MeV"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(U_e = \dfrac{\qty{1{,}15\times 10^{-13}}{J}}{\qty{1{,}6\times 10^{-13}}{J/MeV}} \approx \qty{0{,}72}{MeV}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="57.5" data-tol="1"><div class="pq-fila"><div class="pr-q">c) Fuerza de repulsión \(F = k\,e^{2}/r^{2}\), en \(\mathrm{N}\)</div><input class="pr-in pc-in" type="text" placeholder="N" aria-label="c) Fuerza de repulsión, en N"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(F = U_e/r = (\qty{1{,}15\times 10^{-13}}{J})/(\qty{2{,}0\times 10^{-15}}{m}) \approx \qty{58}{N}\): el peso de unos \(\qty{6}{kg}\), sobre dos partículas diminutas.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-helio-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Eleva al cuadrado la carga: \(e^{2} = \qty{2{,}56\times 10^{-38}}{C^2}\). Para pasar a MeV, divide por los julios que tiene un MeV. Y fíjate que \(F = U_e/r\).</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-helio-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-helio-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-helio-sol-tit">Ejercicio 2: energía potencial electrostática</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) Energía en julios.</strong> Las dos cargas son iguales, \(q_1 = q_2 = e\):
+  \[ U_e = k\,\dfrac{e^{2}}{r} = \dfrac{(\qty{8{,}99\times 10^{9}}{N\,m^2/C^2})(\qty{1{,}6\times 10^{-19}}{C})^{2}}{\qty{2{,}0\times 10^{-15}}{m}} \,, \]
+  \[ U_e = \dfrac{\qty{2{,}30\times 10^{-28}}{J\,m}}{\qty{2{,}0\times 10^{-15}}{m}} \approx \qty{1{,}15\times 10^{-13}}{J} \,. \]</p>
+<p style="margin:0"><strong>b) En megaelectronvoltios.</strong> Con \(\qty{1}{MeV} = \qty{1{,}6\times 10^{-13}}{J}\):
+  \[ U_e = \dfrac{\qty{1{,}15\times 10^{-13}}{J}}{\qty{1{,}6\times 10^{-13}}{J/MeV}} \approx \qty{0{,}72}{MeV} \,. \]
+  Es una energía enorme comparada con los \(\qty{13{,}6}{eV}\) que ligan al electrón del hidrógeno: unas \(5\times 10^{4}\) veces más.</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) La fuerza.</strong> Por la ley de Coulomb,
+  \[ F = k\,\dfrac{e^{2}}{r^{2}} = \dfrac{U_e}{r} = \dfrac{\qty{1{,}15\times 10^{-13}}{J}}{\qty{2{,}0\times 10^{-15}}{m}} \approx \qty{58}{N} \,, \]
+  más o menos el peso de un objeto de \(\qty{6}{kg}\), actuando sobre dos partículas de \(\qty{1{,}7\times 10^{-27}}{kg}\) cada una.</p>
+<p style="margin:0"><strong>¿Qué los mantiene unidos?</strong> La repulsión eléctrica debería separarlos de inmediato. Si el núcleo existe, es porque actúa una interacción más intensa a esas distancias, la <em>fuerza nuclear fuerte</em>, que atrae protones y neutrones entre sí y se apaga a unos pocos femtómetros.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-solenoide" data-label="Ejercicio 5: diseño de un solenoide" data-speaker-notes="Ejercicio 5 de las notas. Dentro del solenoide largo, por la ley de Ampère, B = μ₀ N I/L. Vueltas por metro: n = B/(μ₀ I) = 0,02/(4π×10⁻⁷ × 5) ≈ 3183 m⁻¹. N = n L ≈ 1591,5: como es el número mínimo, se redondea hacia arriba, 1592 (las notas dan ≈ 1591; con 1591 el campo queda apenas por debajo de 0,02 T). Si la corriente se reduce a la mitad hacen falta el doble de vueltas, unas 3184. Respuestas: 3183; 1592; 3184. Error común: olvidar dividir por L o usar la fórmula del alambre recto, μ₀I/(2πr).">
+  <p class="ceja">Ejercicios del capítulo · Ejercicio 5</p>
+  <h2 class="titulo">Diseño de un electroimán: ¿cuántas vueltas hacen falta?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 300" class="fig" role="img" aria-label="Solenoide de longitud L con corriente I y campo B uniforme en su interior"><rect x="110" y="90" width="480" height="110" style="fill:var(--caso1);opacity:.12"/><path d="M110 90 q10 55 0 110 M150 90 q10 55 0 110 M190 90 q10 55 0 110 M230 90 q10 55 0 110 M270 90 q10 55 0 110 M310 90 q10 55 0 110 M350 90 q10 55 0 110 M390 90 q10 55 0 110 M430 90 q10 55 0 110 M470 90 q10 55 0 110 M510 90 q10 55 0 110 M550 90 q10 55 0 110 M590 90 q10 55 0 110" style="fill:none;stroke:var(--caso2);stroke-width:7"/><line x1="140" y1="145" x2="545" y2="145" style="stroke:var(--caso1);stroke-width:6"/><polygon points="575,145 545,131 545,159" style="fill:var(--caso1)"/><text x="350" y="72" text-anchor="middle" style="font:italic 700 38px 'STIX Two Text',Georgia,serif;fill:var(--caso1)">B</text><line x1="110" y1="245" x2="590" y2="245" style="stroke:var(--tinta2);stroke-width:3"/><polygon points="110,245 132,235 132,255" style="fill:var(--tinta2)"/><polygon points="590,245 568,235 568,255" style="fill:var(--tinta2)"/><text x="350" y="285" text-anchor="middle" style="font:italic 32px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">L = 0,5 m</text><line x1="40" y1="200" x2="110" y2="200" style="stroke:var(--caso2);stroke-width:6"/><line x1="70" y1="200" x2="90" y2="200" style="stroke:var(--res);stroke-width:6"/><polygon points="104,200 82,190 82,210" style="fill:var(--res)"/><text x="55" y="185" style="font:italic 700 34px 'STIX Two Text',Georgia,serif;fill:var(--res)">I</text><text x="650" y="70" text-anchor="end" style="font:600 26px Archivo,system-ui,sans-serif;fill:var(--tinta2)">N vueltas</text></svg></figure>
+      <div class="pq-enun">Un electroimán cilíndrico (solenoide) de \(L = \qty{0{,}5}{m}\) debe producir en su interior un campo uniforme \(B = \qty{0{,}02}{T}\). El alambre soporta como máximo \(I = \qty{5{,}0}{A}\). Dentro del solenoide, \(B = \mu_0 N I/L\), con \(\mu_0 = 4\pi\times 10^{-7}\,\mathrm{T\,m/A}\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="3183" data-tol="5"><div class="pq-fila"><div class="pr-q">a) Vueltas por metro, \(n = N/L\), en \(\mathrm{m^{-1}}\)</div><input class="pr-in pc-in" type="text" placeholder="1/m" aria-label="a) Vueltas por metro, en 1/m"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(n = \dfrac{B}{\mu_0 I} = \dfrac{0{,}02}{(4\pi\times 10^{-7})(5{,}0)}\,\mathrm{m^{-1}} \approx \qty{3183}{m^{-1}}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1592" data-tol="1"><div class="pq-fila"><div class="pr-q">b) Número mínimo de vueltas \(N\)</div><input class="pr-in pc-in" type="text" placeholder="vueltas" aria-label="b) Número mínimo de vueltas N"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(N = nL \approx (3183)(0{,}5) = 1591{,}5\). Como es el mínimo, se redondea hacia arriba: \(N = 1592\) vueltas.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="3184" data-tol="2"><div class="pq-fila"><div class="pr-q">c) Vueltas necesarias si solo se usan \(\qty{2{,}5}{A}\)</div><input class="pr-in pc-in" type="text" placeholder="vueltas" aria-label="c) Vueltas necesarias con 2,5 A"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(N \propto 1/I\): con la mitad de la corriente hace falta el doble, \(N = 3183{,}1 \to 3184\) vueltas.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-solenoide-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Despeja \(N\) de \(B = \mu_0 N I/L\). ¿El campo depende de \(N\) y \(L\) por separado, o solo de las vueltas por metro, \(N/L\)?</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-solenoide-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-solenoide-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-solenoide-sol-tit">Ejercicio 5: diseño de un solenoide</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>El campo dentro del solenoide.</strong> Con la ley de Ampère sobre un rectángulo que tiene un lado de longitud \(L\) adentro, \(B\,L = \mu_0 N I\):
+  \[ B = \mu_0\,\dfrac{N}{L}\,I = \mu_0\,n\,I \,. \]
+  Solo importan las vueltas por metro, \(n = N/L\), no el radio.</p>
+<p style="margin:0"><strong>a) Vueltas por metro.</strong>
+  \[ n = \dfrac{B}{\mu_0 I} = \dfrac{\qty{0{,}02}{T}}{(\qty{4\pi \times 10^{-7}}{T\,m/A})(\qty{5{,}0}{A})} \approx \qty{3183}{m^{-1}} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>b) Número mínimo de vueltas.</strong>
+  \[ N = n\,L = (\qty{3183}{m^{-1}})(\qty{0{,}5}{m}) = 1591{,}5 \,. \]
+  No se puede dar media vuelta, y con 1591 el campo queda un poco por debajo de \(\qty{0{,}02}{T}\); el mínimo es \(N = 1592\) vueltas.</p>
+<p style="margin:0"><strong>c) Con la mitad de la corriente.</strong> Como \(N = BL/(\mu_0 I)\), si \(I\) se reduce a la mitad hace falta el doble de vueltas: \(N = 3183{,}1\), es decir, \(3184\) vueltas. Es el compromiso del diseño: más corriente calienta el alambre; más vueltas gastan más alambre.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-wifi" data-label="Ejercicio 8: la antena del Wi-Fi" data-speaker-notes="Ejercicio 8 de las notas. Pregunta de predicción para la clase, antes de calcular: ¿la antena del enrutador debe medir milímetros, centímetros o metros? λ = c/f = 3×10⁸/2,4×10⁹ = 0,125 m = 12,5 cm; la antena de un cuarto de onda mide λ/4 ≈ 3,1 cm, el tamaño de las antenitas de los enrutadores. El período T = 1/f ≈ 0,42 ns: en ese tiempo la luz recorre justo una longitud de onda. Respuestas: 12,5; 3,1; 0,42. Error común: no pasar GHz a Hz (10⁹) o dejar la respuesta en metros.">
+  <p class="ceja">Ejercicios del capítulo · Ejercicio 8</p>
+  <h2 class="titulo">Ondas electromagnéticas: el tamaño de la antena del Wi-Fi</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 300" class="fig" role="img" aria-label="Enrutador con antena que emite una onda de longitud lambda"><rect x="30" y="200" width="150" height="50" rx="8" style="fill:var(--panel);stroke:var(--tinta);stroke-width:4"/><circle cx="60" cy="225" r="5" style="fill:var(--res)"/><circle cx="80" cy="225" r="5" style="fill:var(--res)"/><line x1="150" y1="200" x2="150" y2="110" style="stroke:var(--tinta);stroke-width:8;stroke-linecap:round"/><text x="164" y="150" style="font:italic 28px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">λ/4</text><path d="M220 150 C 255 70, 290 70, 325 150 S 395 230, 430 150 S 500 70, 535 150 S 605 230, 640 150" style="fill:none;stroke:var(--caso1);stroke-width:5"/><line x1="220" y1="270" x2="430" y2="270" style="stroke:var(--tinta2);stroke-width:3"/><polygon points="220,270 242,260 242,280" style="fill:var(--tinta2)"/><polygon points="430,270 408,260 408,280" style="fill:var(--tinta2)"/><text x="325" y="258" text-anchor="middle" style="font:italic 34px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">λ</text><text x="105" y="290" text-anchor="middle" style="font:600 24px Archivo,system-ui,sans-serif;fill:var(--tinta2)">enrutador</text><text x="430" y="60" text-anchor="middle" style="font:600 26px Archivo,system-ui,sans-serif;fill:var(--caso1)">f = 2,4 GHz, rapidez c</text></svg></figure>
+      <div class="pq-enun">Un enrutador de Wi-Fi transmite con ondas electromagnéticas de frecuencia \(f = \qty{2{,}4}{GHz} = \qty{2{,}4\times 10^{9}}{Hz}\), que viajan a \(c = \qty{3\times 10^{8}}{m/s}\). La antena óptima mide un cuarto de la longitud de onda, \(\lambda/4\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="12.5" data-tol="0.1"><div class="pq-fila"><div class="pr-q">a) Longitud de onda \(\lambda\), en \(\mathrm{cm}\)</div><input class="pr-in pc-in" type="text" placeholder="cm" aria-label="a) Longitud de onda, en cm"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\lambda = c/f = (\qty{3\times 10^{8}}{m/s})/(\qty{2{,}4\times 10^{9}}{Hz}) = \qty{0{,}125}{m} = \qty{12{,}5}{cm}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="3.125" data-tol="0.03"><div class="pq-fila"><div class="pr-q">b) Largo de la antena, \(\lambda/4\), en \(\mathrm{cm}\)</div><input class="pr-in pc-in" type="text" placeholder="cm" aria-label="b) Largo de la antena, en cm"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\lambda/4 = \qty{12{,}5}{cm}/4 \approx \qty{3{,}1}{cm}\): el tamaño de las antenitas de un enrutador.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="0.417" data-tol="0.005"><div class="pq-fila"><div class="pr-q">c) Período de la oscilación \(T = 1/f\), en \(\mathrm{ns}\)</div><input class="pr-in pc-in" type="text" placeholder="ns" aria-label="c) Período de la oscilación, en ns"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(T = 1/(\qty{2{,}4\times 10^{9}}{Hz}) \approx \qty{4{,}17\times 10^{-10}}{s} = \qty{0{,}417}{ns}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-wifi-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Una onda avanza una longitud de onda en cada período: \(c = \lambda f\). Recuerda que \(\mathrm{G} = 10^{9}\) y que \(\qty{1}{m} = \qty{100}{cm}\).</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-wifi-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-wifi-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-wifi-sol-tit">Ejercicio 8: ondas electromagnéticas y antenas</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) Longitud de onda.</strong> La onda avanza una longitud de onda \(\lambda\) en cada período \(T = 1/f\), así que \(c = \lambda/T = \lambda f\):
+  \[ \lambda = \dfrac{c}{f} = \dfrac{\qty{3\times 10^{8}}{m/s}}{\qty{2{,}4\times 10^{9}}{Hz}} = \qty{0{,}125}{m} = \qty{12{,}5}{cm} \,. \]</p>
+<p style="margin:0"><strong>b) La antena.</strong> Un cuarto de longitud de onda:
+  \[ \dfrac{\lambda}{4} = \dfrac{\qty{12{,}5}{cm}}{4} = \qty{3{,}125}{cm} \approx \qty{3{,}1}{cm} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>c) Período.</strong>
+  \[ T = \dfrac{1}{f} = \dfrac{1}{\qty{2{,}4\times 10^{9}}{Hz}} \approx \qty{4{,}17\times 10^{-10}}{s} = \qty{0{,}417}{ns} \,. \]
+  En ese tiempo la onda recorre \(cT = (\qty{3\times 10^{8}}{m/s})(\qty{4{,}17\times 10^{-10}}{s}) = \qty{12{,}5}{cm}\), una longitud de onda.</p>
+<p style="margin:0"><strong>¿Por qué \(\lambda/4\)?</strong> Los electrones van y vienen en la antena con la frecuencia de la señal. Con un cuarto de onda, la corriente es máxima en la base y cero en la punta: la antena entra en resonancia y radia con eficiencia. Por eso las antenas de la radio de FM, con \(\lambda\) de unos \(\qty{3}{m}\), son mucho más largas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-halfa" data-label="Ejercicio 10: la línea roja del hidrógeno" data-speaker-notes="Ejercicio 10 de las notas. E₃ = −13,6/9 ≈ −1,51 eV; E₂ = −13,6/4 = −3,40 eV; la energía del fotón es E₃ − E₂ ≈ 1,89 eV (positiva: el átomo pierde esa energía y la emite). λ = hc/E = 1239,84 eV·nm / 1,89 eV ≈ 656 nm, luz roja: la línea Hα de Balmer, el color rojo de las nebulosas de hidrógeno. Respuestas: −1,51; −3,40; 1,89; 656. Errores comunes: olvidar el signo menos de Eₙ, restar al revés (−1,89) o elevar n sin cuadrado.">
+  <p class="ceja">Ejercicios del capítulo · Ejercicio 10</p>
+  <h2 class="titulo">El átomo de Bohr: el fotón rojo de la línea \(H_\alpha\)</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 700 300" class="fig" role="img" aria-label="Niveles de energía del hidrógeno y salto de n = 3 a n = 2 con emisión de un fotón rojo"><line x1="80" y1="40" x2="420" y2="40" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 6"/><text x="430" y="48" style="font:24px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">n = ∞, E = 0</text><line x1="80" y1="70" x2="420" y2="70" style="stroke:var(--tinta);stroke-width:3"/><text x="430" y="78" style="font:24px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">n = 4</text><line x1="80" y1="105" x2="420" y2="105" style="stroke:var(--caso2);stroke-width:5"/><text x="430" y="113" style="font:700 26px 'STIX Two Text',Georgia,serif;fill:var(--caso2)">n = 3 · E₃ = ?</text><line x1="80" y1="185" x2="420" y2="185" style="stroke:var(--caso2);stroke-width:5"/><text x="430" y="193" style="font:700 26px 'STIX Two Text',Georgia,serif;fill:var(--caso2)">n = 2 · E₂ = ?</text><line x1="80" y1="280" x2="420" y2="280" style="stroke:var(--tinta);stroke-width:3"/><text x="430" y="288" style="font:24px 'STIX Two Text',Georgia,serif;fill:var(--tinta2)">n = 1 (−13,6 eV)</text><line x1="160" y1="110" x2="160" y2="166" style="stroke:var(--tinta);stroke-width:5"/><polygon points="160,182 148,160 172,160" style="fill:var(--tinta)"/><path d="M180 145 q12 -16 24 0 t24 0 t24 0 t24 0 t24 0" style="fill:none;stroke:var(--mal);stroke-width:5"/><polygon points="316,145 296,135 296,155" style="fill:var(--mal)"/><text x="330" y="152" style="font:600 24px Archivo,system-ui,sans-serif;fill:var(--mal)">fotón</text></svg></figure>
+      <div class="pq-enun">En el modelo de Bohr, las energías del electrón del hidrógeno son \(E_n = -\qty{13{,}6}{eV}/n^{2}\). Cuando el electrón cae de \(n = 3\) a \(n = 2\), el átomo emite la línea roja \(H_\alpha\). La longitud de onda del fotón es \(\lambda = hc/E_{\text{fotón}}\), con \(hc = \qty{1239{,}84}{eV\,nm}\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="-1.511" data-tol="0.01"><div class="pq-fila"><div class="pr-q">a) Energía del nivel \(n = 3\), \(E_3\), en \(\mathrm{eV}\)</div><input class="pr-in pc-in" type="text" placeholder="eV" aria-label="a) Energía del nivel 3, en eV"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(E_3 = -\qty{13{,}6}{eV}/9 \approx -\qty{1{,}51}{eV}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="-3.40" data-tol="0.01"><div class="pq-fila"><div class="pr-q">b) Energía del nivel \(n = 2\), \(E_2\), en \(\mathrm{eV}\)</div><input class="pr-in pc-in" type="text" placeholder="eV" aria-label="b) Energía del nivel 2, en eV"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(E_2 = -\qty{13{,}6}{eV}/4 = -\qty{3{,}40}{eV}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1.889" data-tol="0.01"><div class="pq-fila"><div class="pr-q">c) Energía del fotón, \(E_3 - E_2\), en \(\mathrm{eV}\)</div><input class="pr-in pc-in" type="text" placeholder="eV" aria-label="c) Energía del fotón, en eV"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(E_{\text{fotón}} = -1{,}51 - (-3{,}40) \approx \qty{1{,}89}{eV}\): lo que pierde el átomo se lo lleva el fotón.</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="656" data-tol="2"><div class="pq-fila"><div class="pr-q">d) Longitud de onda del fotón, en \(\mathrm{nm}\)</div><input class="pr-in pc-in" type="text" placeholder="nm" aria-label="d) Longitud de onda del fotón, en nm"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(\lambda = (\qty{1239{,}84}{eV\,nm})/(\qty{1{,}889}{eV}) \approx \qty{656}{nm}\): luz roja.</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-halfa-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 No olvides el signo menos de \(E_n\). Al caer, el electrón pasa de una energía mayor (\(E_3\), menos negativa) a una menor: la diferencia, positiva, es la energía del fotón.</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-halfa-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-halfa-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-halfa-sol-tit">Ejercicio 10: niveles de energía cuantizados</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>a) y b) Los dos niveles.</strong> Con \(E_n = -\qty{13{,}6}{eV}/n^{2}\):
+  \[ E_3 = -\dfrac{\qty{13{,}6}{eV}}{9} \approx -\qty{1{,}51}{eV} \,, \qquad E_2 = -\dfrac{\qty{13{,}6}{eV}}{4} = -\qty{3{,}40}{eV} \,. \]
+  Son negativas porque el electrón está ligado: \(E = 0\) es el electrón libre.</p>
+<p style="margin:0"><strong>c) La energía del fotón.</strong> Por conservación de la energía, lo que pierde el átomo lo lleva el fotón:
+  \[ E_{\text{fotón}} = E_3 - E_2 = -\qty{1{,}51}{eV} - (-\qty{3{,}40}{eV}) \approx \qty{1{,}89}{eV} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>d) El color.</strong> Con \(E_{\text{fotón}} = hf = hc/\lambda\):
+  \[ \lambda = \dfrac{hc}{E_{\text{fotón}}} = \dfrac{\qty{1239{,}84}{eV\,nm}}{\qty{1{,}889}{eV}} \approx \qty{656}{nm} \,, \]
+  luz roja, la línea \(H_\alpha\) de la serie de Balmer.</p>
+<p style="margin:0"><strong>Por qué importa.</strong> Esta línea es la que da el color rojizo a las nebulosas de hidrógeno, y su medida en el laboratorio coincide con el cálculo de Bohr: fue una de las pruebas de que la energía del átomo está cuantizada.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios del capítulo 4">
   <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
   <h2 class="titulo">Diez ejercicios del capítulo</h2>
@@ -2271,6 +2443,18 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
         if (fb) { fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal'); fb.textContent = ok ? '✓ ¡Correcto!' : '✗ Aún no. Prueba otra opción o pide una pista.'; }
         if (ok) muestra(q);
       }));
+      const inp = $('.pc-in', q);                    /* problemas con respuesta numérica */
+      if (inp) {
+        const lee = v => parseFloat(String(v).replace(/\s/g, '').replace('−', '-').replace(',', '.'));
+        const revisa = () => {
+          const ok = Math.abs(lee(inp.value) - +q.dataset.okNum) <= +q.dataset.tol;
+          inp.style.borderColor = ok ? 'var(--res)' : 'var(--mal)';
+          fb.className = 'pc-fb ' + (ok ? 'ok' : 'mal'); fb.textContent = ok ? '✓ ¡Correcto!' : '✗ Aún no. Revisa el cálculo o pide una pista.';
+          if (ok) muestra(q);
+        };
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); revisa(); } });
+        $('.pc-comprobar', q).addEventListener('click', revisa);
+      }
     });
     const vp = $('.pc-verpista', sl), ve = $('.pc-verexp', sl), pi = $('.pc-pista', sl);
     if (vp && pi) vp.addEventListener('click', () => { pi.style.display = pi.style.display === 'none' ? '' : 'none'; });
@@ -2283,6 +2467,21 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     d.querySelector('.gform-cerrar').addEventListener('click', () => d.close());
     d.addEventListener('click', e => { if (e.target === d) d.close(); });
     document.addEventListener('slidechange', () => { if (d.open) d.close(); });
+  });
+})();
+
+/* ═══ PROBLEMAS DEL CAPÍTULO: SOLUCIÓN COMPLETA (ventanas emergentes) ═════ */
+(function () {
+  $$('.pq-solbtn').forEach(btn => {
+    const modal = document.getElementById(btn.dataset.pop);
+    if (!modal) return;
+    const abre = () => { modal.style.display = 'flex'; $('.gl-dcl-x', modal).focus({ preventScroll: true }); };
+    const cierra = () => { modal.style.display = 'none'; };
+    btn.addEventListener('click', abre);
+    $('.gl-dcl-x', modal).addEventListener('click', cierra);
+    modal.addEventListener('click', e => { if (e.target === modal) cierra(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.style.display !== 'none') cierra(); });
+    document.addEventListener('slidechange', cierra);
   });
 })();
 
