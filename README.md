@@ -99,14 +99,14 @@ centrípeta, órbita Tierra–Luna con una predicción sobre si la Luna está ca
 
 ### Capítulo 4 · Electromagnetismo
 
-68 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+72 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
 enlace covalente con el par de electrones arrastrable y el enlace iónico y
 Van der Waals); electricidad (campo eléctrico y ley de Coulomb con cargas
 arrastrables, una actividad en parejas sobre las cargas 4q y q, energía potencial y electronvoltio, una actividad para arrastrar
-factores de conversión entre J, eV, MeV, GeV y TeV, la fisión del uranio
+factores de conversión entre J, eV, MeV, GeV y TeV, la energía potencial en un campo uniforme, U = qEy, con placas cargadas y la comparación de qE con el peso para una esfera, un protón y un electrón, una actividad en parejas y una individual sobre la «montaña rusa eléctrica» (esfera cargada en una vía dentro del campo), la fisión del uranio
 como una gota cargada que se parte (energía eléctrica antes y después y la
 idea de Meitner y Frisch), los cinco tipos de enlace químico con sus energías,
 dos actividades sobre enlaces (agua frente a metano y una clasificación con
@@ -127,7 +127,7 @@ la antena dipolo animada (figura del libro), espectro y antenas, una actividad e
 (una estrella de neutrones que cae en espiral hacia un agujero negro de 30 masas solares, con el centro de masa dentro del horizonte, la estrella a 0,4c en la última órbita estable y la energía que se llevan las ondas gravitacionales; colapso por radiación de Larmor, con ventanas sobre el análisis dimensional, la aceleración y la energía disponible, y una predicción sobre el electrón en órbita, radiación de sincrotrón, espectros atómicos,
 derivación del modelo de Bohr, laboratorio de transiciones con el color de la
 luz, Pauli y la regla del octeto); y práctica: reto de las líneas de Balmer,
-cuestionario, cuatro problemas con respuesta numérica, pista y solución completa (ejercicios 2, 5, 8 y 10 de las notas: dos protones en el núcleo de helio, diseño de un solenoide, la antena del Wi-Fi y la línea Hα), los 10 ejercicios con respuestas y glosario.
+cuestionario, cuatro problemas con respuesta numérica, pista y solución completa (ejercicios 2, 5, 8 y 10 de las notas: dos protones en el núcleo de helio, diseño de un solenoide, la antena del Wi-Fi y la línea Hα) y uno de la montaña rusa eléctrica (ejercicio 11), los 11 ejercicios con respuestas y glosario.
 
 ## Contenido del repositorio
 

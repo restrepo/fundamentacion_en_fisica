@@ -339,6 +339,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
 .gl-dcl-x{position:absolute;top:8px;right:16px;border:0;background:none;font-size:48px;line-height:1;cursor:pointer;color:var(--tinta2)}
 .gl-dcl-g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:start}
 .gl-dcl-txt{font-size:25px;line-height:1.35}
+#ac-esfera-peso .pr-opcs{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px}
 </style></head>
 <body>
 <div id="escenario">
@@ -599,6 +600,75 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     </div>
   </div>
   <!-- envio-formulario:fin -->
+</section>
+
+<section class="diapositiva compacta" data-seccion="Electricidad" id="dp-u-uniforme" data-label="Energía potencial en un campo uniforme" data-speaker-notes="Pregunta de predicción para la clase, antes de mover la carga: si subimos una carga positiva en contra del campo, ¿su energía potencial aumenta o disminuye? ¿Y la de un electrón? § 4.1. Entre dos placas paralelas cargadas el campo es uniforme (aquí E = 5,0 × 10³ N/C, placas a 25 cm, 1250 V). La fuerza qE es constante, como el peso cerca del suelo. Al desplazar la carga una distancia y en contra del campo, la fuerza eléctrica hace un trabajo W = −qEy, y la energía potencial aumenta lo mismo: U = qEy, con U = 0 en la placa negativa. Es la versión eléctrica de U = mgh, con qE en el papel de mg. Para el electrón (q < 0) U = qEy disminuye al subir: el electrón «cae» hacia la placa positiva. El peso: si E y g son paralelos, U = (qE + mg)y y la aceleración efectiva es qE/m + g; el peso se desprecia si qE/m ≫ g. Electrón: qE/m ≈ 9 × 10¹³ g; protón ≈ 5 × 10¹⁰ g; la esfera de 2 g y 2 μC del problema: qE/m = 5,0 m/s², la mitad de g, así que su peso NO se puede despreciar; por eso el problema pone la vía sobre una mesa horizontal.">
+  <p class="ceja">§ 4.1 · Campo eléctrico uniforme</p>
+  <h2 class="titulo">En un campo uniforme, \(U = qEy\), como \(U = mgh\)</h2>
+  <div class="g2-60">
+    <figure class="svgbox" style="margin:0">
+      <div class="svghd"><span>Dos placas cargadas, en corte</span><span class="val" id="uu-lect"></span></div>
+      <div id="uu-fig"></div>
+      <div class="fila-btn" style="margin:4px 12px 0"><button type="button" class="btn uu-p activo" data-p="esfera">Esfera de 2 g y 2 μC</button><button type="button" class="btn uu-p" data-p="proton">Protón</button><button type="button" class="btn uu-p" data-p="electron">Electrón</button></div>
+      <label class="ctrl" style="margin:4px 12px 8px"><span>Distancia \(y\)</span><input type="range" id="uu-y" min="0" max="25" step="0.5" value="15"><span class="v" id="uu-yv"></span></label>
+    </figure>
+    <div class="pila">
+      <p style="margin:0">La fuerza \(q\vect{E}\) es constante. Si la carga se aleja \(y\) <strong>en contra del campo</strong>:</p>
+      <div class="kf">\[ W = -qE\,y \;\Longrightarrow\; U = -W = qE\,y \]</div>
+      <div class="caja frag"><p style="margin:0">Con \(U = 0\) en la placa negativa: es \(U = mgh\) con \(qE\) en lugar de \(mg\). Si \(q \lt 0\), \(U\) baja al alejarse. <span class="prop" data-pop="pop-uu-var">Símbolos</span></p></div>
+      <div class="caja c2 frag"><p style="margin:0"><strong>¿Y el peso?</strong> Con \(\vect{E}\) y \(\vect{g}\) paralelos, \(U = (qE + mg)\,y\). Se desprecia solo si \(g \ll qE/m\): en el electrón, \(qE/m \approx 10^{14}\,g\); en la esfera de \(\qty{2}{g}\) y \(\qty{2}{\mu C}\), no.</p></div>
+      <p class="puente" style="margin:0">→ ¿Y una esfera cargada que recorre una vía?</p>
+    </div>
+  </div>
+  <div class="pop-src" id="pop-uu-var" style="display:none"><h4>Los símbolos del campo uniforme</h4>
+    <table class="pop-tab">
+      <tr><td>\(q\)</td><td>carga de la partícula, con su signo</td><td>C</td></tr>
+      <tr><td>\(E\)</td><td>magnitud del campo eléctrico entre las placas, la misma en todos los puntos</td><td>N/C = V/m</td></tr>
+      <tr><td>\(y\)</td><td>distancia medida en contra del campo, desde la placa negativa</td><td>m</td></tr>
+      <tr><td>\(W\)</td><td>trabajo que hace la fuerza eléctrica al alejar la carga esa distancia</td><td>J</td></tr>
+      <tr><td>\(U\)</td><td>energía potencial eléctrica de la carga, \(U = 0\) en la placa negativa</td><td>J</td></tr>
+      <tr><td>\(m\), \(g\)</td><td>masa de la partícula y aceleración de la gravedad, \(\qty{9{,}8}{m/s^2}\)</td><td>kg, m/s²</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide" data-seccion="Electricidad" id="ac-esfera-masa" data-label="Actividad: Una esfera cargada en la vía: ¿más masa, más rápido?" data-speaker-notes="Pregunta de predicción para la clase, antes de votar: en la montaña rusa la masa no importa; ¿y en la vía dentro del campo eléctrico? Vista desde arriba: la vía está sobre una mesa horizontal y el campo apunta hacia abajo en la figura, así que el peso no influye. La energía que entrega el campo de A a B es qE(0,20 m) = 2,0 × 10⁻³ J, la misma para las dos esferas. Con ½mv² = qEΔy, v = √(2qEΔy/m): con el doble de masa, v se divide por √2, 1,41 → 1,00 m/s. Respuesta: 2. Errores: 1, trasladar la montaña rusa: allí la masa se cancela porque el peso mg es proporcional a m, pero qE no depende de m; 3, pensar que v ∝ 1/m, olvidando que la energía va con v²; 4, creer que más masa significa más energía.">
+  <p class="ceja">§ 4.1 · Campo eléctrico uniforme · Actividad en parejas</p>
+  <h2 class="titulo">Una esfera cargada en la vía: ¿más masa, más rápido?</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,1fr) minmax(0,1fr)">
+    <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 720 360" class="fig" role="img" aria-label="Vía vista desde arriba dentro de un campo eléctrico uniforme, con los puntos A, B, C y D"><g style="opacity:.35"><line x1="70" y1="20" x2="70" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="70,318 62,298 78,298" style="fill:var(--caso1)"/><line x1="170" y1="20" x2="170" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="170,318 162,298 178,298" style="fill:var(--caso1)"/><line x1="270" y1="20" x2="270" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="270,318 262,298 278,298" style="fill:var(--caso1)"/><line x1="370" y1="20" x2="370" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="370,318 362,298 378,298" style="fill:var(--caso1)"/><line x1="470" y1="20" x2="470" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="470,318 462,298 478,298" style="fill:var(--caso1)"/><line x1="570" y1="20" x2="570" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="570,318 562,298 578,298" style="fill:var(--caso1)"/><line x1="670" y1="20" x2="670" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="670,318 662,298 678,298" style="fill:var(--caso1)"/></g><text x="318" y="100" style="font:italic 700 34px 'STIX Two Text',Georgia,serif;fill:var(--caso1)">E</text><line x1="30" y1="296" x2="700" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 6"/><path d="M 45 80 L 100 80 C 175 80, 175 296, 250 296 C 325 296, 325 168, 400 168 C 462 168, 462 245, 525 245 C 588 245, 588 58, 650 58 L 690 58" style="fill:none;stroke:var(--tinta);stroke-width:6"/><line x1="100" y1="80" x2="100" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><line x1="400" y1="168" x2="400" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><line x1="650" y1="58" x2="650" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><circle cx="72" cy="66" r="13" style="fill:var(--mal)"/><text x="72" y="74" text-anchor="middle" style="font:800 22px Archivo,system-ui,sans-serif;fill:var(--papel)">+</text><text x="100" y="58" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">A</text><text x="250" y="336" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">B</text><text x="400" y="150" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">C</text><text x="650" y="40" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">D</text><text x="108" y="200" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">20 cm</text><text x="408" y="240" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">12 cm</text><text x="584" y="190" text-anchor="end" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">22 cm</text></svg></figure>
+    <div class="pila pc-col">
+      <div class="pc-q" data-ok="b"><div class="pr-q">Una esfera de \(\qty{2{,}0}{g}\) y carga \(+\qty{2{,}0}{\mu C}\) parte del reposo en \(A\) y llega a \(B\) con \(\qty{1{,}41}{m/s}\). Se repite con una esfera del <strong>doble de masa</strong> y la misma carga. ¿Con qué rapidez llega a \(B\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\qty{1{,}41}{m/s}\): la masa se cancela, como en la montaña rusa</button><button type="button" class="pr-opc" data-o="b">\(\qty{1{,}00}{m/s}\): la rapidez se divide por \(\sqrt{2}\)</button><button type="button" class="pr-opc" data-o="c">\(\qty{0{,}71}{m/s}\): la rapidez se divide por 2</button><button type="button" class="pr-opc" data-o="d">\(\qty{2{,}00}{m/s}\): la rapidez se multiplica por \(\sqrt{2}\)</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El campo entrega la misma energía, \(qE\,\Delta y = \qty{2{,}0\times 10^{-3}}{J}\), a las dos esferas. Con \(\tfrac12 (2m) v^{2} = qE\,\Delta y\), la rapidez es \(\qty{1{,}41}{m/s}/\sqrt{2} = \qty{1{,}00}{m/s}\). La masa no se cancela porque la fuerza \(qE\) no depende de \(m\); el peso \(mg\), sí.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-esfera-masa">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 ¿Cambia la fuerza eléctrica si cambia la masa? Si la energía que recibe la esfera es la misma, ¿qué le pasa a \(v\) en \(\tfrac12 m v^{2}\)?</p></div>
+      <div class="ac-pasos"><strong>Instrucción entre pares</strong><ol><li><strong>Piensa solo</strong> (1 min) y vota en el formulario con el número de tu respuesta.</li><li><strong>Discute con tu compañero</strong> (2 min): trata de convencerlo con un argumento físico.</li><li><strong>Vota de nuevo</strong> en el formulario.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+    </div>
+  </div>
+  <dialog id="gform-ac-esfera-masa" class="gform-dlg" aria-label="Formulario: Actividad: Una esfera cargada en la vía: ¿más masa, más rápido?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: Una esfera cargada en la vía: ¿más masa, más rápido?" loading="lazy">Cargando…</iframe>
+  </dialog>
+</section>
+
+<section class="diapositiva compacta pc-slide ac-slide ac-individual" data-seccion="Electricidad" id="ac-esfera-peso" data-label="Actividad: La esfera de la vía: ¿llega a D? ¿Cuándo se desprecia el peso?" data-speaker-notes="Actividad individual sobre la misma vía. Pregunta 1: respuesta 1. Con la energía conservada necesitaría qE(22 cm) y solo tiene qE(20 cm): se detiene a 20 cm y regresa, sin importar q, m ni E. Errores: 2, pensar que la rapidez ganada en B «sobra» para subir más; 3 y 4, creer que la masa o la intensidad del campo cambian hasta dónde llega. Pregunta 2: respuesta 4. Con la vía vertical, mg = 0,020 N es el doble de qE = 0,010 N: no se puede despreciar; las energías se suman, U = (qE + mg)y. Errores: 1, «el campo es muy intenso» sin comparar; 2, confundir paralelo con despreciable; 3, el peso sí hace trabajo cuando la esfera baja. Pregunta 3: respuesta 3. qE/m = (1,6 × 10⁻¹⁹)(5,0 × 10³)/(9,11 × 10⁻³¹) ≈ 8,8 × 10¹⁴ m/s² ≈ 9 × 10¹³ g: para el electrón el peso es despreciable aunque apunte igual que el campo. Errores: 4, invertir el cociente; 1 y 2, no calcular.">
+  <p class="ceja">§ 4.1 · Campo eléctrico uniforme · Actividad individual</p>
+  <h2 class="titulo">La esfera de la vía: ¿llega a D? ¿Cuándo se desprecia el peso?</h2>
+  <div class="pila pc-col">
+      <div class="pc-q" data-ok="a"><div class="pr-q">1. En la vía anterior, la esfera parte del reposo en \(A\), a \(\qty{20}{cm}\). ¿Llega hasta \(D\), a \(\qty{22}{cm}\) de la recta de \(B\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">No: se detiene a \(\qty{20}{cm}\) y regresa</button><button type="button" class="pr-opc" data-o="b">Sí: le sobra la rapidez que ganó en \(B\)</button><button type="button" class="pr-opc" data-o="c">Sí, si su masa es menor</button><button type="button" class="pr-opc" data-o="d">Sí, si el campo es más intenso</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Para llegar a \(D\) necesitaría una energía potencial \(qE\,(\qty{22}{cm})\), y solo tiene \(qE\,(\qty{20}{cm})\). No depende de \(q\), \(m\) ni \(E\).</p></div></div>
+      <div class="pc-q" data-ok="d"><div class="pr-q">2. Si la vía estuviera vertical, con \(\vect{E}\) hacia abajo como \(\vect{g}\), ¿se podría despreciar el peso de la esfera? (\(qE = \qty{0{,}010}{N}\), \(mg = \qty{0{,}020}{N}\))</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">Sí: el campo eléctrico es muy intenso</button><button type="button" class="pr-opc" data-o="b">Sí: el peso y la fuerza eléctrica son paralelos</button><button type="button" class="pr-opc" data-o="c">Sí: el peso no hace trabajo</button><button type="button" class="pr-opc" data-o="d">No: el peso es el doble de la fuerza eléctrica</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">Se compara \(mg\) con \(qE\): el peso es el doble. Las dos energías se suman, \(U = (qE + mg)\,y\). Por eso el problema pone la vía sobre una mesa horizontal.</p></div></div>
+      <div class="pc-q" data-ok="c"><div class="pr-q">3. Para un electrón en el mismo campo, \(E = \qty{5{,}0\times 10^{3}}{N/C}\), ¿cuánto vale \(qE/m\) comparado con \(g\)?</div><div class="pr-opcs"><button type="button" class="pr-opc" data-o="a">\(\approx g\)</button><button type="button" class="pr-opc" data-o="b">\(\approx 10^{3}\,g\)</button><button type="button" class="pr-opc" data-o="c">\(\approx 10^{14}\,g\)</button><button type="button" class="pr-opc" data-o="d">\(\approx 10^{-14}\,g\)</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(qE/m \approx \qty{8{,}8\times 10^{14}}{m/s^2} \approx 9\times 10^{13}\,g\): en el electrón el peso es despreciable aunque apunte igual que el campo.</p></div></div>
+      <div class="fila-btn"><button type="button" class="gform-btn" data-gform-open="gform-ac-esfera-peso">📝 Votar en el formulario</button><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pc-verexp">Ver explicación</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Compara energías en la pregunta 1 y fuerzas en las otras dos: ¿cuántas veces cabe una en la otra?</p></div>
+      <div class="ac-pasos"><strong>Actividad individual</strong><ol><li><strong>Resuelve solo</strong>, sin consultar a tus compañeros.</li><li><strong>Vota</strong> en el formulario con el número de tu respuesta.</li><li><strong>Comprueba</strong> aquí tu respuesta y lee la explicación.</li></ol></div>
+  </div>
+  <dialog id="gform-ac-esfera-peso" class="gform-dlg" aria-label="Formulario: Actividad: La esfera de la vía: ¿llega a D? ¿Cuándo se desprecia el peso?">
+    <button type="button" class="gform-cerrar" aria-label="Cerrar">✕</button>
+    <iframe data-src="https://docs.google.com/forms/d/1_f4tDlfpjM18APUR145CmdcKjKXl5g40Zws70QzCX0k/viewform?embedded=true" title="Formulario: Actividad: La esfera de la vía: ¿llega a D? ¿Cuándo se desprecia el peso?" loading="lazy">Cargando…</iframe>
+  </dialog>
 </section>
 
 <section class="diapositiva" data-seccion="Electricidad" data-label="La electricidad en la materia">
@@ -1992,9 +2062,51 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
   </div>
 </section>
 
+<section class="diapositiva compacta pc-slide pq-slide" data-seccion="Práctica" id="pq-montana-e" data-label="Ejercicio 11: la montaña rusa eléctrica" data-speaker-notes="Ejercicio 11 de las notas. La vía está sobre una mesa horizontal, vista desde arriba; el campo apunta hacia abajo en la figura. U = qEy y la energía se conserva: v = √(2(qE/m)(y_A − y)). qE/m = (2,0 × 10⁻⁶)(5,0 × 10³)/(2,0 × 10⁻³) = 5,0 m/s²; v_B = √(2·5,0·0,20) ≈ 1,41 m/s; v_C = √(2·5,0·0,08) ≈ 0,89 m/s. Con la vía vertical y E hacia abajo, el peso se suma: aceleración efectiva g + qE/m = 14,8 m/s² y v_B ≈ 2,43 m/s. Respuestas: 5,0; 1,41; 0,89; 2,43. Error común: usar la distancia a D, o restar g en vez de sumarla.">
+  <p class="ceja">Ejercicios del capítulo · Ejercicio 11</p>
+  <h2 class="titulo">Montaña rusa eléctrica: una esfera en un campo uniforme</h2>
+  <div class="g2-60" style="grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr)">
+    <div class="pila pq-izq">
+      <figure class="svgbox pc-figura" style="margin:0"><svg viewBox="0 0 720 360" class="fig" role="img" aria-label="Vía vista desde arriba dentro de un campo eléctrico uniforme, con los puntos A, B, C y D"><g style="opacity:.35"><line x1="70" y1="20" x2="70" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="70,318 62,298 78,298" style="fill:var(--caso1)"/><line x1="170" y1="20" x2="170" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="170,318 162,298 178,298" style="fill:var(--caso1)"/><line x1="270" y1="20" x2="270" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="270,318 262,298 278,298" style="fill:var(--caso1)"/><line x1="370" y1="20" x2="370" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="370,318 362,298 378,298" style="fill:var(--caso1)"/><line x1="470" y1="20" x2="470" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="470,318 462,298 478,298" style="fill:var(--caso1)"/><line x1="570" y1="20" x2="570" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="570,318 562,298 578,298" style="fill:var(--caso1)"/><line x1="670" y1="20" x2="670" y2="300" style="stroke:var(--caso1);stroke-width:3"/><polygon points="670,318 662,298 678,298" style="fill:var(--caso1)"/></g><text x="318" y="100" style="font:italic 700 34px 'STIX Two Text',Georgia,serif;fill:var(--caso1)">E</text><line x1="30" y1="296" x2="700" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:8 6"/><path d="M 45 80 L 100 80 C 175 80, 175 296, 250 296 C 325 296, 325 168, 400 168 C 462 168, 462 245, 525 245 C 588 245, 588 58, 650 58 L 690 58" style="fill:none;stroke:var(--tinta);stroke-width:6"/><line x1="100" y1="80" x2="100" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><line x1="400" y1="168" x2="400" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><line x1="650" y1="58" x2="650" y2="296" style="stroke:var(--tinta2);stroke-width:2;stroke-dasharray:6 5"/><circle cx="72" cy="66" r="13" style="fill:var(--mal)"/><text x="72" y="74" text-anchor="middle" style="font:800 22px Archivo,system-ui,sans-serif;fill:var(--papel)">+</text><text x="100" y="58" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">A</text><text x="250" y="336" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">B</text><text x="400" y="150" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">C</text><text x="650" y="40" text-anchor="middle" style="font:italic 700 30px 'STIX Two Text',Georgia,serif;fill:var(--tinta)">D</text><text x="108" y="200" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">20 cm</text><text x="408" y="240" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">12 cm</text><text x="584" y="190" text-anchor="end" style="font:600 22px Archivo,system-ui,sans-serif;fill:var(--tinta2)">22 cm</text></svg></figure>
+      <div class="pq-enun">Una esfera de \(m = \qty{2{,}0}{g}\) y \(q = +\qty{2{,}0}{\mu C}\) parte del reposo en \(A\) y se mueve sin fricción por una vía sobre una mesa horizontal, vista desde arriba, en un campo uniforme \(E = \qty{5{,}0\times 10^{3}}{N/C}\). Las distancias se miden en contra del campo desde la recta de \(B\), y \(U = qEy\).</div>
+    </div>
+    <div class="pila pc-col">
+      <div class="pc-q pq-q" data-ok-num="5.0" data-tol="0.05"><div class="pq-fila"><div class="pr-q">a) Aceleración que da el campo, \(qE/m\), en \(\mathrm{m/s^2}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s²" aria-label="a) qE/m en m/s²"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(qE/m = (\qty{2{,}0\times 10^{-6}}{C})(\qty{5{,}0\times 10^{3}}{N/C})/(\qty{2{,}0\times 10^{-3}}{kg}) = \qty{5{,}0}{m/s^2}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="1.414" data-tol="0.02"><div class="pq-fila"><div class="pr-q">b) Rapidez en \(B\), en \(\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s" aria-label="b) Rapidez en B, en m/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v_B = \sqrt{2(5{,}0)(0{,}20)}\,\mathrm{m/s} \approx \qty{1{,}41}{m/s}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="0.894" data-tol="0.01"><div class="pq-fila"><div class="pr-q">c) Rapidez en \(C\), en \(\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s" aria-label="c) Rapidez en C, en m/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">\(v_C = \sqrt{2(5{,}0)(0{,}20 - 0{,}12)}\,\mathrm{m/s} \approx \qty{0{,}89}{m/s}\).</p></div></div>
+      <div class="pc-q pq-q" data-ok-num="2.43" data-tol="0.03"><div class="pq-fila"><div class="pr-q">d) Rapidez en \(B\) si la vía fuera vertical, con \(\vect{E}\) hacia abajo como \(\vect{g}\), en \(\mathrm{m/s}\)</div><input class="pr-in pc-in" type="text" placeholder="m/s" aria-label="d) Rapidez en B con la vía vertical, en m/s"><button type="button" class="pr-btn pc-comprobar">Comprobar</button></div>
+        <div class="pc-fb"></div><div class="pc-exp" style="display:none"><p style="margin:0">El peso se suma: \(g + qE/m = \qty{14{,}8}{m/s^2}\) y \(v_B = \sqrt{2(14{,}8)(0{,}20)}\,\mathrm{m/s} \approx \qty{2{,}43}{m/s}\).</p></div></div>
+      <div class="fila-btn pc-btns"><button type="button" class="btn pc-verpista">💡 Pista</button><button type="button" class="btn pq-solbtn" data-pop="pq-montana-e-sol">📖 Solución completa</button></div>
+      <div class="pc-pista" style="display:none"><p style="margin:0">💡 Es la montaña rusa con \(qE\) en lugar de \(mg\): \(\tfrac12 m v^{2} + qEy = qEy_A\). En la vía vertical, ¿qué fuerzas empujan la esfera hacia abajo?</p></div>
+    </div>
+  </div>
+  <div class="gl-dcl-fondo" id="pq-montana-e-sol" style="display:none" role="dialog" aria-modal="true" aria-labelledby="pq-montana-e-sol-tit">
+    <div class="gl-dcl-caja" style="width:1800px">
+      <button type="button" class="gl-dcl-x" aria-label="Cerrar">×</button>
+      <h3 id="pq-montana-e-sol-tit">Ejercicio 11: la montaña rusa eléctrica</h3>
+      <div class="gl-dcl-g">
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>La energía.</strong> La fuerza \(q\vect{E}\) es constante, como el peso, y su energía potencial es \(U = qEy\). Sin fricción, y como la normal no hace trabajo:
+  \[ \tfrac12 m v^{2} + qEy = qEy_A \;\Longrightarrow\; v = \sqrt{\dfrac{2qE}{m}\,(y_A - y)} \,. \]</p>
+<p style="margin:0"><strong>a) La aceleración del campo.</strong>
+  \[ \dfrac{qE}{m} = \dfrac{(\qty{2{,}0\times 10^{-6}}{C})(\qty{5{,}0\times 10^{3}}{N/C})}{\qty{2{,}0\times 10^{-3}}{kg}} = \qty{5{,}0}{m/s^2} \,. \]</p></div>
+        <div class="gl-dcl-txt"><p style="margin:0 0 6px"><strong>b) y c) Rapideces.</strong>
+  \[ v_B = \sqrt{2(5{,}0)(0{,}20)}\,\mathrm{m/s} \approx \qty{1{,}41}{m/s} \,, \]
+  \[ v_C = \sqrt{2(5{,}0)(0{,}08)}\,\mathrm{m/s} \approx \qty{0{,}89}{m/s} \,. \]
+  La esfera no llega a \(D\): se detiene a \(\qty{20}{cm}\) y regresa.</p>
+<p style="margin:0"><strong>d) Con la vía vertical.</strong> El peso, \(mg = \qty{0{,}020}{N}\), es el doble de \(qE = \qty{0{,}010}{N}\): no se puede despreciar. Las energías se suman, \(U = (qE + mg)\,y\):
+  \[ v_B = \sqrt{2\left(g + \dfrac{qE}{m}\right)(0{,}20)} = \sqrt{2(14{,}8)(0{,}20)}\,\mathrm{m/s} \approx \qty{2{,}43}{m/s} \,. \]
+  Para un electrón, en cambio, \(qE/m \approx 10^{14}\,g\) y el peso no cuenta.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="diapositiva compacta" data-seccion="Práctica" data-label="Ejercicios del capítulo 4">
   <p class="ceja">Ejercicios propuestos · ↓ revela cada respuesta</p>
-  <h2 class="titulo">Diez ejercicios del capítulo</h2>
+  <h2 class="titulo">Once ejercicios del capítulo</h2>
   <ol class="ej">
     <li>Punto de fuerza nula entre \(+\qty{4}{\mu C}\) y \(+\qty{9}{\mu C}\) a \(\qty{10}{cm}\). <span class="frag aparece resp">\(x = \qty{4{,}0}{cm}\) de \(q_1\)</span></li>
     <li>Dos protones a \(\qty{2{,}0\times 10^{-15}}{m}\): \(U_e\). <span class="frag aparece resp">\(\approx \qty{1{,}15\times 10^{-13}}{J} \approx \qty{0{,}72}{MeV}\)</span></li>
@@ -2006,6 +2118,7 @@ section.diapositiva .gform-btn{font:600 24px/1 var(--font-body);padding:8px 14px
     <li>Wi-Fi de \(\qty{2{,}4}{GHz}\): \(\lambda\) y antena \(\lambda/4\). <span class="frag aparece resp">\(\qty{12{,}5}{cm}\); \(\approx \qty{3{,}1}{cm}\)</span></li>
     <li>Sincrotrón: \(R = \qty{1000}{m}\), \(E = \qty{50}{GeV}\). <span class="frag aparece resp">\(\approx \qty{0{,}553}{GeV}\) por vuelta</span></li>
     <li>Línea \(H_\alpha\): de \(n = 3\) a \(n = 2\). <span class="frag aparece resp">\(\qty{1{,}89}{eV}\)</span></li>
+    <li>Esfera de \(\qty{2}{g}\) y \(\qty{2}{\mu C}\) en una vía, \(E = \qty{5\times 10^{3}}{N/C}\). <span class="frag aparece resp">\(v_B \approx \qty{1{,}41}{m/s}\), \(v_C \approx \qty{0{,}89}{m/s}\)</span></li>
   </ol>
 </section>
 
@@ -2468,6 +2581,62 @@ const unidadSI = (v, u, d) => {       /* 1,23 mT, 45,6 μT… */
     d.addEventListener('click', e => { if (e.target === d) d.close(); });
     document.addEventListener('slidechange', () => { if (d.open) d.close(); });
   });
+})();
+
+/* ═══ CAMPO UNIFORME: U = qEy y comparación de qE con el peso ═════════ */
+(function () {
+  const host = document.getElementById('uu-fig');
+  if (!host) return;
+  const ry = document.getElementById('uu-y'), lect = document.getElementById('uu-lect');
+  const E = 5.0e3, G = 9.8, D = 0.25;
+  const P = {
+    esfera: { m: 2.0e-3, q: 2.0e-6, nom: 'esfera' },
+    proton: { m: 1.673e-27, q: 1.602e-19, nom: 'protón' },
+    electron: { m: 9.109e-31, q: -1.602e-19, nom: 'electrón' }
+  };
+  let sel = 'esfera';
+  function pinta() {
+    const p = P[sel], y = +ry.value / 100, W = 660, H = 300, yT = 34, yB = 262, X = 250;
+    host.innerHTML = '';
+    const svg = nodo('svg', { viewBox: '0 0 ' + W + ' ' + H, class: 'fig' }, host);
+    /* campo uniforme hacia abajo */
+    for (let x = 60; x <= 440; x += 95) { nodo('line', { x1: x, y1: yT + 22, x2: x, y2: yB - 26, style: 'stroke:var(--caso1);stroke-width:3;opacity:.35' }, svg); nodo('polygon', { points: [x, yB - 10, x - 9, yB - 30, x + 9, yB - 30].join(','), style: 'fill:var(--caso1);opacity:.35' }, svg); }
+    rotulo(svg, 452, yT + 70, '!E!', { 'font-size': 32, style: 'fill:var(--caso1);font-family:' + FMATH });
+    /* placas */
+    nodo('rect', { x: 30, y: yT - 14, width: 440, height: 14, style: 'fill:var(--mal)' }, svg);
+    nodo('rect', { x: 30, y: yB, width: 440, height: 14, style: 'fill:var(--caso1)' }, svg);
+    nodo('text', { x: 18, y: yT - 1, 'text-anchor': 'middle', 'font-size': 30, style: 'fill:var(--mal);font-weight:800;font-family:' + FTXT, txt: '+' }, svg);
+    nodo('text', { x: 18, y: yB + 14, 'text-anchor': 'middle', 'font-size': 34, style: 'fill:var(--caso1);font-weight:800;font-family:' + FTXT, txt: '−' }, svg);
+    /* carga y distancia y */
+    const yc = yB - y / D * (yB - yT - 30);
+    nodo('line', { x1: X - 100, y1: yB, x2: X - 100, y2: yc, style: 'stroke:var(--tinta2);stroke-width:2.5;stroke-dasharray:7 6' }, svg);
+    nodo('line', { x1: X - 112, y1: yc, x2: X - 88, y2: yc, style: 'stroke:var(--tinta2);stroke-width:2.5' }, svg);
+    rotulo(svg, X - 140, (yc + yB) / 2 + 10, '*y*', { 'font-size': 32 });
+    const pos = p.q > 0;
+    nodo('circle', { cx: X, cy: yc, r: 20, style: 'fill:' + (pos ? 'var(--mal)' : 'var(--caso1)') }, svg);
+    nodo('text', { x: X, y: yc + 9, 'text-anchor': 'middle', 'font-size': 28, style: 'fill:var(--papel);font-weight:800;font-family:' + FTXT, txt: pos ? '+' : '−' }, svg);
+    /* fuerzas: qE (siempre 90 px) y mg a escala */
+    const fE = Math.abs(p.q) * E, mg = p.m * G, L = 90, s = pos ? 1 : -1;
+    flecha(svg, X + 26, yc, X + 26, yc + s * L, 'var(--res)', 5);
+    rotulo(svg, X + 40, yc + s * L * 0.7 + 8, '*q*!E!', { 'font-size': 28, style: 'fill:var(--res);font-family:' + FMATH });
+    const Lg = L * mg / fE;
+    if (Lg > 3) {
+      flecha(svg, X - 26, yc, X - 26, yc + Math.min(Lg, H - yc - 34), 'var(--tinta)', 5);
+      rotulo(svg, X - 36, yc + Math.min(Lg, H - yc - 34) / 2 + 10, '*m*!g!', { 'font-size': 28, 'text-anchor': 'end', style: 'fill:var(--tinta);font-family:' + FMATH });
+    } else rotulo(svg, X - 30, yc - 30, '*m*!g!: no se ve', { 'font-size': 24, 'text-anchor': 'end', style: 'fill:var(--tinta2);font-family:' + FTXT });
+    /* barra de energía potencial */
+    const Umax = fE * D, U = p.q * E * y, h0 = 180, xb = 560, y0 = pos ? 258 : 70;
+    nodo('line', { x1: xb - 40, y1: y0, x2: xb + 40, y2: y0, style: 'stroke:var(--tinta);stroke-width:2.5' }, svg);
+    const hb = Math.abs(U) / Umax * h0;
+    nodo('rect', { x: xb - 26, y: U >= 0 ? y0 - hb : y0, width: 52, height: Math.max(1, hb), style: 'fill:' + (U >= 0 ? 'var(--caso2)' : 'var(--caso1)') + ';opacity:.8' }, svg);
+    rotulo(svg, xb, pos ? y0 - h0 - 16 : y0 - 22, '*U* = *qEy*', { 'font-size': 28, 'text-anchor': 'middle', style: 'fill:var(--caso2);font-family:' + FMATH });
+    /* lecturas */
+    document.getElementById('uu-yv').textContent = num(+ry.value, 1) + ' cm';
+    lect.textContent = 'U = ' + cientTxt(U, 3) + ' J · qE/mg = ' + cientTxt(fE / mg, 2);
+  }
+  ry.addEventListener('input', pinta);
+  $$('.uu-p').forEach(b => b.addEventListener('click', () => { sel = b.dataset.p; $$('.uu-p').forEach(o => o.classList.toggle('activo', o === b)); pinta(); }));
+  pinta();
 })();
 
 /* ═══ PROBLEMAS DEL CAPÍTULO: SOLUCIÓN COMPLETA (ventanas emergentes) ═════ */
