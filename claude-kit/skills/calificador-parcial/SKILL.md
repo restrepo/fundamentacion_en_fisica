@@ -32,7 +32,7 @@ git clone --depth 1 https://github.com/restrepo/calificador-examenes /tmp/ce
 KIT=/tmp/ce/.claude/skills/calificador-parcial
 ```
 
-`calificador-examenes` es privado. Si el chat no tiene acceso a él, usa la copia sincronizada del repositorio público de las lecciones:
+Si no puedes clonarlo, usa la copia sincronizada del repositorio de las lecciones:
 
 ```bash
 git clone --depth 1 https://github.com/restrepo/fundamentacion_en_fisica /tmp/ff
