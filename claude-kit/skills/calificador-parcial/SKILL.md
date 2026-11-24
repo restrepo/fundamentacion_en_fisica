@@ -32,6 +32,13 @@ git clone --depth 1 https://github.com/restrepo/calificador-examenes /tmp/ce
 KIT=/tmp/ce/.claude/skills/calificador-parcial
 ```
 
+`calificador-examenes` es privado. Si el chat no tiene acceso a él, usa la copia sincronizada del repositorio público de las lecciones:
+
+```bash
+git clone --depth 1 https://github.com/restrepo/fundamentacion_en_fisica /tmp/ff
+KIT=/tmp/ff/claude-kit/skills/calificador-parcial
+```
+
 Si no hay red hacia GitHub, lee con la herramienta Artifact (`action: "read"`) el calificador de referencia, `https://claude.ai/artifact/8KsdGx1KRHBtw24Gysxzm3`. Es la misma plantilla ya construida para el Parcial 2. Úsalo de base y cambia solo el bloque `<script type="application/json" id="examen">` y los textos que dependen del examen: título, etiqueta, número de páginas y total de puntos. Avísale al usuario que así se hizo.
 
 ## 1. Recibir y leer el examen
