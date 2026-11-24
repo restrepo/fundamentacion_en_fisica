@@ -16,7 +16,7 @@ Toda la lógica vive en una plantilla fija. Para cada examen solo cambia un JSON
 
 ## 0. Conseguir el kit
 
-El kit (plantilla, scripts y un ejemplo) está en el repositorio público de las lecciones, en `claude-kit/skills/calificador-parcial/`. Este repositorio solo aporta la plantilla; el examen llega aparte (sección 1).
+El kit (plantilla, scripts y un ejemplo) vive en el repositorio `restrepo/calificador-examenes`, en `.claude/skills/calificador-parcial/`. Ese repositorio también guarda, en `examenes/<examen>/`, el LaTeX o el JSON de cada examen; el examen nuevo puede llegar aparte (sección 1).
 
 ```
 assets/plantilla.html           plantilla con marcadores __…__
@@ -25,11 +25,11 @@ scripts/verificar.py            prueba los dos modos con Playwright
 ejemplos/parcial-2-2025-2.json  ejemplo completo (Parcial 2, dinámica newtoniana)
 ```
 
-Si esos archivos ya están junto a esta skill o en un clon local del repositorio, úsalos (haz `git pull` antes, para tener la plantilla más reciente). Si no, clona el repositorio:
+Si trabajas dentro de un clon de ese repositorio, usa `KIT=.claude/skills/calificador-parcial` (haz `git pull` antes, para tener la plantilla más reciente). Si los archivos ya están junto a esta skill, úsalos. Si no, clona el repositorio:
 
 ```bash
-git clone --depth 1 https://github.com/restrepo/fundamentacion_en_fisica /tmp/ff
-KIT=/tmp/ff/claude-kit/skills/calificador-parcial
+git clone --depth 1 https://github.com/restrepo/calificador-examenes /tmp/ce
+KIT=/tmp/ce/.claude/skills/calificador-parcial
 ```
 
 Si no hay red hacia GitHub, lee con la herramienta Artifact (`action: "read"`) el calificador de referencia, `https://claude.ai/artifact/8KsdGx1KRHBtw24Gysxzm3`. Es la misma plantilla ya construida para el Parcial 2. Úsalo de base y cambia solo el bloque `<script type="application/json" id="examen">` y los textos que dependen del examen: título, etiqueta, número de páginas y total de puntos. Avísale al usuario que así se hizo.
@@ -129,14 +129,14 @@ Al entregar, dile al usuario en pocas líneas:
 
 ## 5. Cambios a la plantilla
 
-Si el usuario pide cambiar el comportamiento del calificador (textos de la guía, criterios de calificación, columnas del listado), cambia `assets/plantilla.html` en el repositorio `restrepo/fundamentacion_en_fisica`, no solo la página publicada.
+Si el usuario pide cambiar el comportamiento del calificador (textos de la guía, criterios de calificación, columnas del listado), cambia `assets/plantilla.html` en el repositorio `restrepo/calificador-examenes`, no solo la página publicada.
 
 - Mantén los marcadores `__EXAMEN_JSON__`, `__KATEX_CSS__`, `__ETIQUETA__`, `__EXAMEN__`, `__NPAL__`, `__LISTAPAG__`, `__TH_PROBLEMAS__`, `__ESCALA__` y `__TOTAL__`.
 - Reconstruye el ejemplo con `construir.py` y verifícalo.
-- Haz commit, y vuelve a empaquetar `skills/calificador-parcial.skill` (un zip de la carpeta `calificador-parcial/`).
+- Haz commit, y vuelve a empaquetar las skills con `python3 -B scripts/empaquetar_skills.py` (deja los `.skill` en `dist/`).
 - Las convenciones de escritura matemática están en la constante `ESTANDAR_LATEX` de la plantilla: convenciones comunes del curso y una sección de delimitadores por asistente. Claude: `$...$` en línea y `$$...$$` solo en su propia línea, nunca dentro de oraciones, listas o tablas. Gemini: igual, con `$$` solo para ecuaciones complejas. ChatGPT: `<math>...</math>`. El chat dentro de la página renderiza `$...$`, `$$...$$` y `\[...\]`.
 - Las instrucciones que copia el estudiante traen, solo para Gemini, reglas de evaluación rigurosa subordinadas a la rúbrica del examen.
-- Las convenciones de lenguaje del curso están en `instructions.md` del repositorio.
+- Las convenciones de lenguaje del curso están en `CLAUDE.md` de este repositorio y en `instructions.md` del repositorio de las lecciones (`restrepo/fundamentacion_en_fisica`).
 
 ## 6. Ejemplos de uso por estudiantes
 
