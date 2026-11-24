@@ -29,6 +29,15 @@ a.tarjeta:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 ul{padding-left:1.1em} li{margin-bottom:6px}
 a{color:var(--ac)}
 footer{margin-top:48px;padding-top:14px;border-top:2px solid var(--div);color:var(--tx2);font-size:15px}
+.descargas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:8px}
+.descarga{display:flex;flex-direction:column;gap:6px;background:var(--sup);border:2px solid var(--div);border-radius:6px;padding:16px 18px}
+.descarga b{font-size:19px}
+.descarga span{color:var(--tx2);font-size:15.5px;flex:1}
+.btn-desc{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:9px 16px;border-radius:6px;background:var(--ac);color:var(--bg);font-weight:600;font-size:16px;text-decoration:none}
+.btn-desc:hover{filter:brightness(1.08)}
+.btn-desc:focus-visible{outline:2px solid var(--ac);outline-offset:3px}
+.descarga.todo{grid-column:1/-1;border-left:8px solid var(--ac)}
+.descarga small{color:var(--tx2);font-size:14px}
 </style>
 </head>
 <body>
@@ -69,10 +78,46 @@ footer{margin-top:48px;padding-top:14px;border-top:2px solid var(--div);color:va
     <li>Cada lección es un único archivo HTML: también puede descargarse y abrirse sin conexión.</li>
   </ul>
 
+  <h2>Skills para reproducir las lecciones</h2>
+  <p>Las lecciones se construyen con estas skills de Claude. Súbelas en claude.ai (Configuración → Capacidades → Skills) o descomprímelas en <code>~/.claude/skills/</code> para Claude Code.</p>
+  <div class="descargas">
+    <div class="descarga todo">
+      <b>Paquete completo</b>
+      <span>Las cinco skills del deck, el sistema de diseño <code>_ds/</code> y un LEEME con la instalación y el flujo de trabajo.</span>
+      <a class="btn-desc" href="skills/skills-lecciones-interactivas.zip" download>⬇ Descargar todo (.zip · 939 KB)</a>
+    </div>
+    <div class="descarga">
+      <b>leccion-a-deck</b>
+      <span>Construye la lección: un solo HTML autocontenido con navegación, MathJax sin conexión, exploradores, ventanas emergentes, siglas y vista de profesor.</span>
+      <a class="btn-desc" href="skills/leccion-a-deck.skill" download>⬇ Descargar · 827 KB</a>
+    </div>
+    <div class="descarga">
+      <b>metodologias-activas</b>
+      <span>Qué actividad poner y dónde, auditoría pedagógica de una lección y pruebas de entrada y salida con su análisis.</span>
+      <a class="btn-desc" href="skills/metodologias-activas.skill" download>⬇ Descargar · 47 KB</a>
+    </div>
+    <div class="descarga">
+      <b>boton-formulario</b>
+      <span>Botón «📷 Enviar» que toma una captura de la diapositiva y abre el formulario de Google para entregarla.</span>
+      <a class="btn-desc" href="skills/boton-formulario.skill" download>⬇ Descargar · 55 KB</a>
+    </div>
+    <div class="descarga">
+      <b>google-form-popup</b>
+      <span>Formulario de Google en una ventana emergente, para las votaciones de instrucción entre pares.</span>
+      <a class="btn-desc" href="skills/google-form-popup.skill" download>⬇ Descargar · 4 KB</a>
+    </div>
+    <div class="descarga">
+      <b>actualizar-repositorio</b>
+      <span>Regenera las lecciones y prepara la actualización del repositorio, o el zip cuando no hay acceso de escritura.</span>
+      <a class="btn-desc" href="skills/actualizar-repositorio.skill" download>⬇ Descargar · 9 KB</a>
+    </div>
+  </div>
+  <p><small>Aparte, para los exámenes: <a href="skills/calificador-parcial.skill" download>calificador-parcial</a> (27 KB), el calificador con rúbrica en modo profesor y modo estudiante.</small></p>
+
   <h2>Fuentes</h2>
   <ul>
     <li><a id="enlace-original" href="https://github.com/restrepo/Derivaci-n-de-las-transformaciones-de-Lorentz">Repositorio original del libro</a></li>
-    <li><a href="https://github.com/restrepo/fundamentacion_en_fisica" id="enlace-este">Este repositorio</a>: lecciones, fuentes y la skill <code>leccion-a-deck</code> con la que se generan.</li>
+    <li><a href="https://github.com/restrepo/fundamentacion_en_fisica" id="enlace-este">Este repositorio</a>: lecciones, fuentes y las skills con las que se generan.</li>
   </ul>
 
   <footer>Material de estudio · Fundamentación en Física.</footer>

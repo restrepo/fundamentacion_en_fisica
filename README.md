@@ -162,6 +162,17 @@ skills/
   actualizar-repositorio.skill
   boton-formulario/                 skill que agrega a una diapositiva el botón de captura y envío a un formulario de Google
   boton-formulario.skill
+  metodologias-activas.skill        actividades, auditoría pedagógica y pruebas de entrada y salida
+  google-form-popup.skill           formulario de Google en ventana emergente
+  calificador-parcial.skill         calificador de exámenes
+  skills-lecciones-interactivas.zip paquete con las skills del deck, el sistema de diseño y un LEEME
+```
+
+Las skills se descargan con botones desde la portada del sitio. Para
+reempaquetarlas (de forma determinista) después de cambiar una skill:
+
+```bash
+python3 -B claude-kit/empaquetar_skills.py
 ```
 
 ## Regenerar una lección
@@ -188,7 +199,8 @@ y la entrega como un único HTML con la navegación original: barra con menú
 de secciones y pantalla completa, flechas ‹ › y ↑ ↓, contador, recta de
 progreso y crédito. Sigue estándares LaTeX estrictos (`\abs{}`, `\vect{}`,
 `\qty{}{}`, coma decimal `0{,}5`, colores por rol). Para instalarla en
-Claude, sube `skills/leccion-a-deck.skill` desde *Configuración → Skills*.
+Claude, sube `skills/leccion-a-deck.skill` desde *Configuración → Skills*,
+o descarga el paquete completo desde la portada del sitio.
 
 ## Actualizar el repositorio
 
