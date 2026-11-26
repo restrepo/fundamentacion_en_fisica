@@ -99,14 +99,14 @@ centrípeta, órbita Tierra–Luna con una predicción sobre si la Luna está ca
 
 ### Capítulo 4 · Electromagnetismo
 
-72 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
+73 diapositivas en seis bloques: cargas (motivación: las cargas en la vida
 cotidiana, una actividad de instrucción entre pares sobre la varilla frotada
 que atrae papelitos, el metal como superátomo con bandas que se llenan hasta la
 energía de Fermi, el mar de Fermi con la velocidad de deriva, la paradoja del
 enlace covalente con el par de electrones arrastrable y el enlace iónico y
 Van der Waals); electricidad (campo eléctrico y ley de Coulomb con cargas
 arrastrables, una actividad en parejas sobre las cargas 4q y q, energía potencial y electronvoltio, una actividad para arrastrar
-factores de conversión entre J, eV, MeV, GeV y TeV, la energía potencial en un campo uniforme, U = qEy, con placas cargadas y la comparación de qE con el peso para una esfera, un protón y un electrón, una actividad en parejas y una individual sobre la «montaña rusa eléctrica» (esfera cargada en una vía dentro del campo), la fisión del uranio
+factores de conversión entre J, eV, MeV, GeV y TeV, la energía potencial en un campo uniforme, U = qEy, con placas cargadas y la comparación de qE con el peso para una esfera, un protón y un electrón, una actividad en parejas y una individual sobre la «montaña rusa eléctrica» (esfera cargada en una vía dentro del campo), una actividad con entrega para pasar el campo de N/C a V/m y calcular voltajes con ΔV = EΔy, la fisión del uranio
 como una gota cargada que se parte (energía eléctrica antes y después y la
 idea de Meitner y Frisch), los cinco tipos de enlace químico con sus energías,
 dos actividades sobre enlaces (agua frente a metano y una clasificación con
