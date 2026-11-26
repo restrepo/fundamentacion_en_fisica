@@ -16,7 +16,7 @@ Conversa con el usuario en **español de Colombia y Latinoamérica**.
 | `fuentes/_ds/` | Sistema de diseño compartido. |
 | `lecciones/*.html` | **Generado.** Nunca se edita a mano; se regenera desde la fuente. |
 | `index.html`, `README.md` | Portada del sitio y descripción del repositorio. |
-| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción y marcado de las actividades), `metodologias-activas` (qué actividad poner y dónde, auditoría pedagógica de una lección, pruebas de entrada y salida y su análisis), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante; su copia canónica vive en el repositorio privado `restrepo/calificador-examenes`, y esta es una copia sincronizada). |
+| `claude-kit/skills/` | Skills canónicas: `leccion-a-deck` (construcción y marcado de las actividades), `metodologias-activas` (qué actividad poner y dónde, auditoría pedagógica de una lección, pruebas de entrada y salida y su análisis), `actualizar-repositorio`, `google-form-popup`, `calificador-parcial` (calificador de exámenes, modos profesor y estudiante; su copia canónica vive en el repositorio `restrepo/calificador-examenes`, y esta es una copia sincronizada). |
 | `claude-kit/latex/` | Fragmentos LaTeX pendientes de pegar en `main.tex` del libro. |
 | `skills/` | Copias empaquetadas (`.skill`) y el paquete `skills-lecciones-interactivas.zip`, que la portada ofrece con botones de descarga. Se regeneran con `python3 -B claude-kit/empaquetar_skills.py` cada vez que cambia una skill. |
 
