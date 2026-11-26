@@ -143,6 +143,7 @@ Si el usuario pide cambiar el comportamiento del calificador (textos de la guía
 - Haz commit, y vuelve a empaquetar las skills con `python3 -B scripts/empaquetar_skills.py` (deja los `.skill` en `dist/`).
 - Las convenciones de escritura matemática están en la constante `ESTANDAR_LATEX` de la plantilla: convenciones comunes del curso y una sección de delimitadores por asistente. Claude: `$...$` en línea y `$$...$$` solo en su propia línea, nunca dentro de oraciones, listas o tablas. Gemini: igual, con `$$` solo para ecuaciones complejas. ChatGPT: `<math>...</math>`. El chat dentro de la página renderiza `$...$`, `$$...$$` y `\[...\]`.
 - Las instrucciones que copia el estudiante traen, solo para Gemini, reglas de evaluación rigurosa subordinadas a la rúbrica del examen.
+- Las instrucciones que copia el estudiante piden al asistente, antes de evaluar cada problema, repetir la respuesta del estudiante reescrita en LaTeX de la forma más literal posible, porque al compartir la conversación las imágenes suelen perderse. En todas las evaluaciones las unidades solo se exigen en la respuesta final, no en los cálculos intermedios.
 - Las convenciones de lenguaje del curso están en `CLAUDE.md` de este repositorio y en `instructions.md` del repositorio de las lecciones (`restrepo/fundamentacion_en_fisica`).
 
 ## 6. Ejemplos de uso por estudiantes

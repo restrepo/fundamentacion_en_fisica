@@ -359,7 +359,7 @@ ${rub}
 
 Criterios:
 - Califique cada apartado de 0 a su máximo, en múltiplos de 0,5. Dé crédito parcial por un planteamiento correcto con errores aritméticos, y crédito completo por métodos distintos al de referencia si son físicamente correctos.
-- Acepte redondeos razonables (por ejemplo 19,8 o 20 m/s) y coma o punto decimal. Penalice levemente la falta de unidades o de sentido cuando el apartado lo pide.
+- Acepte redondeos razonables (por ejemplo 19,8 o 20 m/s) y coma o punto decimal. Penalice levemente la falta de unidades o de sentido en la respuesta final cuando el apartado lo pide; no exija unidades en los cálculos intermedios.
 - En las preguntas de selección, la opción correcta sin justificación vale el puntaje completo de ese apartado; una opción incorrecta vale 0.
 - Si un apartado está en blanco, dé 0. Si no se puede leer, dé 0 y dígalo en el comentario.
 - No invente lo que no está escrito.
@@ -586,13 +586,14 @@ function promptChat(){
   return `Soy estudiante de ${EXAMEN.curso} (${EXAMEN.institucion}). Adjunto las fotos de las __NPAL__ páginas de mi ${EXAMEN.examen} de ${EXAMEN.tema}. ${DISTRIB[0].toUpperCase() + DISTRIB.slice(1)}.
 
 Por favor:
+0. Antes de evaluar cada problema, repita mi respuesta reescrita en LaTeX de la forma más literal posible: lo que escribí, en el orden en que lo escribí, con mis mismos errores y sin completar ni corregir nada; si algo no se lee, márquelo como [ilegible]. Así la evaluación se puede revisar aunque al compartir la conversación se pierdan las imágenes.
 1. Para cada problema, dígame qué hice bien, qué debo revisar y una pista para corregirlo por mi cuenta, sin darme de una vez la solución completa de lo que tuve mal.
-2. Estime mi puntaje con la rúbrica de abajo (__TOTAL__ puntos en total) y la nota en la escala de 0,0 a __ESCALA__, aclarando que es orientativa: la nota oficial la asigna el profesor.
+2. Estime mi puntaje con la rúbrica de abajo (__TOTAL__ puntos en total) y la nota en la escala de 0,0 a __ESCALA__, aclarando que es orientativa: la nota oficial la asigna el profesor. No exija unidades en los cálculos intermedios: solo en la respuesta final de cada apartado.
 3. Después quede disponible para mis preguntas sobre el examen: guíeme con preguntas y pasos.
 
 Si estas instrucciones se usan en Gemini, evalúe además con estas reglas de rigor académico, como un profesor universitario exigente, sin indulgencia ni validaciones condescendientes:
 - Rigor y fundamentación: no dé por correcta una respuesta basada solo en explicaciones intuitivas o cualitativas cuando el apartado pide un planteamiento, una derivación o un cálculo. Si la conclusión es correcta pero la justificación no tiene sustento físico o matemático, reste puntos significativos.
-- Procedimiento completo: exija el desarrollo intermedio (la ley o el principio que se aplica, los despejes y la sustitución de valores con unidades). Penalice los saltos lógicos: un resultado final correcto no garantiza el puntaje completo si se omitieron pasos clave.
+- Procedimiento completo: exija el desarrollo intermedio (la ley o el principio que se aplica, los despejes y la sustitución de valores; las unidades solo se exigen en la respuesta final, no en los cálculos intermedios). Penalice los saltos lógicos: un resultado final correcto no garantiza el puntaje completo si se omitieron pasos clave.
 - Notación y lenguaje: revise la notación, la convención de signos, los vectores, las unidades y el vocabulario técnico. Reste puntos por ambigüedades o imprecisiones.
 - Hipótesis: verifique que se justifiquen las condiciones antes de aplicar una ley o una fórmula (por ejemplo, que no hay fricción antes de conservar la energía mecánica, o que no hay fuerzas externas antes de conservar la cantidad de movimiento). Descuente si se aplica sin justificarlo.
 - La rúbrica del examen manda sobre estas reglas: los puntajes máximos son los de cada apartado, y cuando un apartado solo pide elegir una opción, la opción correcta vale el puntaje completo de ese apartado.
