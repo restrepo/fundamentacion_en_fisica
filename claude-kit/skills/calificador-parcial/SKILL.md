@@ -55,11 +55,12 @@ Si llegan varias piezas, por ejemplo el PDF del examen impreso y el LaTeX con so
 
 **Si llega LaTeX** (lo preferible):
 
-- **Problemas incluidos:** son los ítems del `enumerate` principal que **no** están dentro de un entorno excluido. Revisa `\excludecomment{…}`, normalmente `comment`. Los ítems dentro de `\begin{comment}…\end{comment}` son el banco y no van.
-- **Soluciones:** están en el entorno `solution`, aunque esté excluido con `\excludecomment{solution}`. Léelas del fuente. Si el examen marca las soluciones de otra forma (otro entorno, un `\ifsolucion`, un archivo aparte), identifícala antes de seguir.
-- **Etiquetas:** cada ítem suele traer `\label{item:xxx}`. Úsalas para no confundir problemas.
+- **Formato xsim (el del curso desde 2025-2):** cada problema es un `\begin{exercise}[ID=…, tags={…}, points=…]` con su `solution` debajo. Los problemas incluidos son los que tienen la etiqueta de `\xsimsetup{tags={…}}` del preámbulo; los de otra etiqueta (`banco`) no van. `points` da el puntaje del problema. `python3 -B .claude/skills/banco-examenes/scripts/banco.py listar examen.tex` muestra la tabla de problemas, cuáles se imprimen y sus puntos.
+- **Formato antiguo:** son los ítems del `enumerate` principal que **no** están dentro de un entorno excluido. Revisa `\excludecomment{…}`, normalmente `comment`. Los ítems dentro de `\begin{comment}…\end{comment}` son el banco y no van.
+- **Soluciones:** están en el entorno `solution`, aunque no se impriman (`\solucionesfalse` en xsim, `\excludecomment{solution}` en el formato antiguo). Léelas del fuente. Si el examen marca las soluciones de otra forma (otro entorno, un `\ifsolucion`, un archivo aparte), identifícala antes de seguir.
+- **Identificadores:** cada problema trae `ID=…` (xsim) o `\label{item:xxx}` (antiguo). Úsalos para no confundir problemas.
 - **Partes:** los subítems (`a)`, `b)`, `(I)`, `(II)`) son los apartados de la rúbrica. Dentro de un subítem puede haber partes comentadas que no se preguntaron. Excluye también su solución.
-- **Páginas y distribución:** compila el examen tal como se imprime, con las soluciones excluidas, y cuenta las páginas con `pdfinfo`. Mira en qué página cae cada problema con `pdftotext -f N -l N`. Si falta `babel-spanish`, instala `texlive-lang-spanish`; si las fuentes salen en bits, instala `cm-super`.
+- **Páginas y distribución:** compila el examen tal como se imprime, sin soluciones, y cuenta las páginas con `pdfinfo`. Mira en qué página cae cada problema con `pdftotext -f N -l N`. Si falta `babel-spanish`, instala `texlive-lang-spanish`; si las fuentes salen en bits, instala `cm-super`.
 - **Si no compila** (faltan imágenes, paquetes o archivos de `\input`): no te detengas. Estima la distribución con los `\newpage` o `\clearpage` del fuente y confírmala con el usuario, o pídele el PDF impreso.
 
 **Si llega un PDF:** léelo con la skill de lectura de PDF. Si es escaneado (sin capa de texto), rasterízalo y lee las páginas como imágenes.
